@@ -1,0 +1,19 @@
+== Plot Recipes
+
+=== Creating a Bar Chart
+
+[source,groovy]
+.Create a basic bar chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createBarChart,indent=0]
+----
+[.thumb]
+image::plot_bar_chart.png[]
+
+[source,groovy]
+.Create a bar chart with categories
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createBarChartWithCategories,indent=0]
+----
+[.thumb]
+image::plot_bar_chart_with_categories.png[]

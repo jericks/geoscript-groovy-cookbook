@@ -1,0 +1,110 @@
+== Geometry Recipes
+
+=== Creating Geometries
+
+[source,groovy]
+.Create a Point with an XY
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createPoint,indent=0]
+----
+[.thumb]
+image::geometry_create_point.png[]
+
+[source,groovy]
+.Create a LineString from Coordinates
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createLineStringFromCoordinates,indent=0]
+----
+[.thumb]
+image::geometry_create_linestring_coordinates.png[]
+
+[source,groovy]
+.Create a Polygon from a List of Coordinates
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createPolygon,indent=0]
+----
+[.thumb]
+image::geometry_create_polygon.png[]
+
+[source,groovy]
+.Create a MultiPoint with a List of Points
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createMultiPoint,indent=0]
+----
+[.thumb]
+image::geometry_create_multipoint.png[]
+
+[source,groovy]
+.Create a MultiLineString with a List of LineStrings
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createMultiLineString,indent=0]
+----
+[.thumb]
+image::geometry_create_multilinestring.png[]
+
+[source,groovy]
+.Create a MultiPolygon with a List of Polygons
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createMultiPolygon,indent=0]
+----
+[.thumb]
+image::geometry_create_multipolygon.png[]
+
+[source,groovy]
+.Create a CircularString with a List of Points
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCircularString,indent=0]
+----
+[.thumb]
+image::geometry_create_circularstring.png[]
+
+[source,groovy]
+.Create a CircularRing with a List of Points
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCircularRing,indent=0]
+----
+[.thumb]
+image::geometry_create_circularring.png[]
+
+[source,groovy]
+.Create a CompoundCurve with a List of CircularStrings and LineStrings
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCompoundCurve,indent=0]
+----
+[.thumb]
+image::geometry_create_compoundcurve.png[]
+
+[source,groovy]
+.Create a CompoundRing with a connected List of CircularStrings and LineStrings
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCompoundRing,indent=0]
+----
+[.thumb]
+image::geometry_create_compoundring.png[]
+
+[source,groovy]
+.Create a Bounds from four coordinates (minx, miny, maxx, maxy) and a projection.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createBounds,indent=0]
+----
+[.thumb]
+image::geometry_create_bounds.png[]
+
+=== Procesing Geometries
+
+[source,groovy]
+.Buffer a Point
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bufferPoint,indent=0]
+----
+[.thumb]
+image::geometry_buffer_point.png[]
+
+[source,groovy]
+.Get Bounds from a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bounds,indent=0]
+----
+[.thumb]
+image::geometry_bounds.png[]
+

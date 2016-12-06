@@ -1,0 +1,30 @@
+== Projection Recipes
+
+=== Creating Projections
+
+[source,groovy]
+.Create a Projection from an EPSG Code
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createFromEpsg,indent=0]
+----
+....
+include::output/projection_createprojectionfromepsg.txt[]
+....
+
+[source,groovy]
+.Create a Projection from a WKT Projection String
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createFromWkt,indent=0]
+----
+....
+include::output/projection_createprojectionfromwkt.txt[]
+....
+
+[source,groovy]
+.Create a Projection from well known name
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createFromName,indent=0]
+----
+....
+include::output/projection_createprojectionfromname.txt[]
+....
