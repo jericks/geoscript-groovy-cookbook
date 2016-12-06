@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jericks/geoscript-groovy-cookbook.svg?branch=master)](https://travis-ci.org/jericks/geoscript-groovy-cookbook)
+
 GeoScript Groovy Cookbook
 =========================
 The GeoScript Groovy Cookbook contains short recipes showing how to use the GeoScript Groovy API.
