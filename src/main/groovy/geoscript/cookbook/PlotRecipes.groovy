@@ -7,6 +7,9 @@ class PlotRecipes {
 
     private void drawChart(String name, Chart chart) {
         File file = new File("src/docs/asciidoc/images/${name}.png")
+        if(!file.parentFile.exists()) {
+            file.parentFile.mkdir()
+        }
         chart.save(file, size: [300,300])
     }
 

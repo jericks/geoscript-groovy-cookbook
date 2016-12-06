@@ -18,11 +18,17 @@ class GeometryRecipes {
   
     private void drawGeometry(String name, Geometry g) {
         File file = new File("src/docs/asciidoc/images/${name}.png")
+        if(!file.parentFile.exists()) {
+            file.parentFile.mkdir()
+        }
         Viewer.drawToFile(g, file, size: [200,200], drawCoords: true)
     }
 
     private void drawGeometries(String name, List<Geometry> geometries) {
         File file = new File("src/docs/asciidoc/images/${name}.png")
+        if(!file.parentFile.exists()) {
+            file.parentFile.mkdir()
+        }
         Viewer.drawToFile(geometries, file, size: [200,200], drawCoords: true)
     }
 
