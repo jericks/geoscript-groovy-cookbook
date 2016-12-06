@@ -7,7 +7,14 @@
     <version>0.1.0-SNAPSHOT</version>
     <name>GeoScript Groovy Cookbook</name>
     <description>The GeoScript Groovy Cookbook.</description>
+    <scm>
+        <url>https://github.com/jericks/geoscript-groovy-cookbook</url>
+        <connection>scm:git:git://github.com/jericks/geoscript-groovy-cookbook.git</connection>
+        <developerConnection>scm:git:git@github.com:jericks/geoscript-groovy-cookbook.git</developerConnection>
+    </scm>
     <properties>
+        <github.global.server>github</github.global.server>
+        <github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <asciidoctor.maven.plugin.version>1.5.3</asciidoctor.maven.plugin.version>
         <asciidoctorj.version>1.5.4.1</asciidoctorj.version>
@@ -127,6 +134,58 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <message>Creating site for ${project.version}</message>
+                    <outputDirectory>${project.build.directory}/generated-docs</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>boundless</id>
+            <name>Boundless Maven Repository</name>
+            <url>https://repo.boundlessgeo.com/main/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>osgeo</id>
+            <name>Open Source Geospatial Foundation Repository</name>
+            <url>http://download.osgeo.org/webdav/geotools/</url>
+        </repository>
+        <repository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net repository</name>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+        <repository>
+            <id>geosolutions</id>
+            <name>GeoSolutions Repository</name>
+            <url>http://maven.geo-solutions.it/</url>
+        </repository>
+        <repository>
+            <id>unidata</id>
+            <name>Unidata UCAR Repository</name>
+            <url>https://artifacts.unidata.ucar.edu/content/repositories/unidata/</url>
+        </repository>
+        <repository>
+            <id>ecc</id>
+            <name>ECC Repository</name>
+            <url>https://github.com/ElectronicChartCentre/ecc-mvn-repo/raw/master/releases</url>
+        </repository>
+    </repositories>
 </project>
