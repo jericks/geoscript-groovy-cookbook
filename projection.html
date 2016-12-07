@@ -600,13 +600,26 @@ println proj.wkt</code></pre>
   AXIS["Northing", NORTH]]</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Transform a Geometry from one projection to another</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry epsg4326Geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
+Geometry epsg2927Geom = Projection.transform(epsg4326Geom, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
+println epsg2927Geom</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-07 00:52:38 UTC
+Last updated 2016-12-07 02:15:16 UTC
 </div>
 </div>
 </body>
