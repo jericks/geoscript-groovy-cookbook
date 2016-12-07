@@ -4,7 +4,7 @@ jdk:
 script:
 - mvn clean package
 - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      script mvn package -Ppublish -DskipTests
+      script mvn package -Ppublish -DskipTests;
   fi
 env:
   global:
