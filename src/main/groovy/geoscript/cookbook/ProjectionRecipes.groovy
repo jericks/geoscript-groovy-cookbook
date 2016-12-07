@@ -1,6 +1,8 @@
 package geoscript.cookbook
 
 import geoscript.proj.Projection
+import geoscript.geom.Point
+import geoscript.geom.Geometry
 
 class ProjectionRecipes {
 
@@ -33,6 +35,15 @@ class ProjectionRecipes {
         println proj.wkt
         // end::createFromName[]
         proj
+    }
+
+    Geometry transformStatic() {
+        // tag::transformStatic[]
+        Geometry epsg4326Geom = new Point(-122.440, 47.245)
+        Geometry epsg2927Geom = Projection.transform(epsg4326Geom, "EPSG:4326", "EPSG:2927")
+        println epsg2927Geom
+        // end::transformStatic[]
+        epsg2927Geom
     }
 
 }

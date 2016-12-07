@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.geom.Geometry
 import geoscript.proj.Projection
 import org.junit.Test
 
@@ -36,6 +37,12 @@ class ProjectionRecipesTest {
         //assertEquals("EPSG:4326", proj.id)
         writeFile("projection_createprojectionfromname.txt", proj.wkt)
     }
-
+    
+    @Test void transformStatic() {
+      ProjectionRecipes recipes = new ProjectionRecipes()
+      Geometry geom = recipes.transformStatic()
+      assertEquals("POINT (1158609.2040371667 703068.0661327887)", geom.wkt)
+      writeFile("projection_transformstatic.txt", geom.wkt)
+    }
 
 }
