@@ -29,6 +29,8 @@ include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createFrom
 include::output/projection_createprojectionfromname.txt[]
 ....
 
+=== Using Projections
+
 [source,groovy]
 .Transform a Geometry from one projection to another
 ----
