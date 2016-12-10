@@ -811,13 +811,45 @@ Geometry geometry = Geometry.fromWKT(wkt)</code></pre>
 <img src="./images/geometry_read_geometryfromwkt.png" alt="geometry read geometryfromwkt">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Get WKT of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+<span class="predefined-type">String</span> wkt = geometry.wkt
+println wkt</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (-123.15 46.237)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to  WKT using the WktWriter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+WktWriter writer = <span class="keyword">new</span> WktWriter()
+<span class="predefined-type">String</span> wkt = writer.write(geometry)
+println wkt</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-10 15:37:42 UTC
+Last updated 2016-12-10 17:31:08 UTC
 </div>
 </div>
 </body>
