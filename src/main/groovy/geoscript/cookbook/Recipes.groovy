@@ -27,7 +27,7 @@ class Recipes {
         if (!dir.exists()) {
             dir.mkdir()
         }
-        File file = new File(dir, name)
+        File file = new File(dir, "${name}.txt")
         file.text = text
     }
 

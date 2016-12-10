@@ -13,6 +13,7 @@ import geoscript.geom.MultiPolygon
 import geoscript.geom.Point
 import geoscript.geom.Polygon
 import geoscript.geom.io.WktReader
+import geoscript.geom.io.WktWriter
 import geoscript.viewer.Viewer
 
 class GeometryRecipes extends Recipes {
@@ -245,4 +246,31 @@ class GeometryRecipes extends Recipes {
         drawGeometry("geometry_read_geometryfromwkt", geometry)
         geometry
     }
+
+    String writeGeometryToWKT() {
+        // tag::writeGeometryToWKT[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        String wkt = geometry.wkt
+        println wkt
+        // end::writeGeometryToWKT[]
+        writeFile("geometry_to_wkt", wkt)
+        wkt
+    }
+
+    String writeGeometryToWKTUsingWriter() {
+        // tag::writeGeometryToWKTUsingWriter[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        WktWriter writer = new WktWriter()
+        String wkt = writer.write(geometry)
+        println wkt
+        // end::writeGeometryToWKTUsingWriter[]
+        writeFile("geometry_to_wkt_using_writer", wkt)
+        wkt
+    }
+
 }

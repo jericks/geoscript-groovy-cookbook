@@ -105,4 +105,15 @@ class GeometryRecipesTest {
         assertEquals("LINESTRING (3.198 43.164, 6.7138 49.755, 9.702 42.592, 15.327 53.798)", geom.wkt)
     }
 
+    @Test void writeGeometryToWKT() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String wkt = recipes.writeGeometryToWKT()
+        assertEquals("POINT (-123.15 46.237)", wkt)
+    }
+
+    @Test void writeGeometryToWKTUsingWriter() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String wkt = recipes.writeGeometryToWKTUsingWriter()
+        assertEquals("LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)", wkt)
+    }
 }

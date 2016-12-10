@@ -11,7 +11,7 @@ class ProjectionRecipes extends Recipes {
         Projection proj = new Projection("EPSG:4326")
         println proj.wkt
         // end::createFromEpsg[]
-        writeFile("projection_createprojectionfromepsg.txt", proj.wkt)
+        writeFile("projection_createprojectionfromepsg", proj.wkt)
         proj
     }
 
@@ -27,7 +27,7 @@ class ProjectionRecipes extends Recipes {
   AXIS["Geodetic latitude", NORTH],
   AUTHORITY["EPSG","4326"]]""")
         // end::createFromWkt[]
-        writeFile("projection_createprojectionfromwkt.txt", proj.wkt)
+        writeFile("projection_createprojectionfromwkt", proj.wkt)
         proj
     }
 
@@ -36,7 +36,7 @@ class ProjectionRecipes extends Recipes {
         Projection proj = new Projection("Mollweide")
         println proj.wkt
         // end::createFromName[]
-        writeFile("projection_createprojectionfromname.txt", proj.wkt)
+        writeFile("projection_createprojectionfromname", proj.wkt)
         proj
     }
 
@@ -46,7 +46,7 @@ class ProjectionRecipes extends Recipes {
         Geometry epsg2927Geom = Projection.transform(epsg4326Geom, "EPSG:4326", "EPSG:2927")
         println epsg2927Geom
         // end::transformStatic[]
-        writeFile("projection_transformstatic.txt", epsg2927Geom.wkt)
+        writeFile("projection_transformstatic", epsg2927Geom.wkt)
         epsg2927Geom
     }
 

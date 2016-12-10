@@ -125,3 +125,21 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometry
 ----
 [.thumb]
 image::geometry_read_geometryfromwkt.png[]
+
+[source,groovy]
+.Get WKT of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToWKT,indent=0]
+----
+....
+include::output/geometry_to_wkt.txt[]
+....
+
+[source,groovy]
+.Write a Geometry to  WKT using the WktWriter
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToWKTUsingWriter,indent=0]
+----
+....
+include::output/geometry_to_wkt_using_writer.txt[]
+....
