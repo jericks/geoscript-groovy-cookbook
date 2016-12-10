@@ -108,3 +108,20 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bounds,inden
 [.thumb]
 image::geometry_bounds.png[]
 
+=== Read and Write Geometries
+
+[source,groovy]
+.Read a Geometry from WKT using the WKTReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromWKTReader,indent=0]
+----
+[.thumb]
+image::geometry_read_wktreader.png[]
+
+[source,groovy]
+.Read a Geometry from WKT using the Geometry.fromWKT() static method
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromWKT,indent=0]
+----
+[.thumb]
+image::geometry_read_geometryfromwkt.png[]

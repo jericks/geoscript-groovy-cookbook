@@ -93,4 +93,16 @@ class GeometryRecipesTest {
         assertNotNull(bounds)
     }
 
+    @Test void readGeometryFromWKTReader() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromWKTReader()
+        assertEquals("POINT (-123.15 46.237)", geom.wkt)
+    }
+
+    @Test void readGeometryFromWKT() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromWKT()
+        assertEquals("LINESTRING (3.198 43.164, 6.7138 49.755, 9.702 42.592, 15.327 53.798)", geom.wkt)
+    }
+
 }

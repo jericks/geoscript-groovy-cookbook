@@ -12,26 +12,11 @@ import geoscript.geom.MultiPoint
 import geoscript.geom.MultiPolygon
 import geoscript.geom.Point
 import geoscript.geom.Polygon
+import geoscript.geom.io.WktReader
 import geoscript.viewer.Viewer
 
-class GeometryRecipes {
+class GeometryRecipes extends Recipes {
   
-    private void drawGeometry(String name, Geometry g) {
-        File file = new File("src/docs/asciidoc/images/${name}.png")
-        if(!file.parentFile.exists()) {
-            file.parentFile.mkdir()
-        }
-        Viewer.drawToFile(g, file, size: [200,200], drawCoords: true)
-    }
-
-    private void drawGeometries(String name, List<Geometry> geometries) {
-        File file = new File("src/docs/asciidoc/images/${name}.png")
-        if(!file.parentFile.exists()) {
-            file.parentFile.mkdir()
-        }
-        Viewer.drawToFile(geometries, file, size: [200,200], drawCoords: true)
-    }
-
     Point createPoint() {
         // tag::createPoint[]
         Point point = new Point(-123,46)
@@ -242,4 +227,22 @@ class GeometryRecipes {
         bounds
     }
 
+    Geometry readGeometryFromWKTReader() {
+        // tag::readGeometryFromWKTReader[]
+        String wkt = "POINT (-123.15 46.237)"
+        WktReader reader = new WktReader()
+        Geometry geometry = reader.read(wkt)
+        // end::readGeometryFromWKTReader[]
+        drawGeometry("geometry_read_wktreader", geometry)
+        geometry
+    }
+
+    Geometry readGeometryFromWKT() {
+        // tag::readGeometryFromWKT[]
+        String wkt = "LINESTRING (3.198 43.164, 6.7138 49.755, 9.702 42.592, 15.327 53.798)"
+        Geometry geometry = Geometry.fromWKT(wkt)
+        // end::readGeometryFromWKT[]
+        drawGeometry("geometry_read_geometryfromwkt", geometry)
+        geometry
+    }
 }

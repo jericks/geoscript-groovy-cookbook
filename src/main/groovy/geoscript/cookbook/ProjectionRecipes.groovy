@@ -4,13 +4,14 @@ import geoscript.proj.Projection
 import geoscript.geom.Point
 import geoscript.geom.Geometry
 
-class ProjectionRecipes {
+class ProjectionRecipes extends Recipes {
 
     Projection createFromEpsg() {
         // tag::createFromEpsg[]
         Projection proj = new Projection("EPSG:4326")
         println proj.wkt
         // end::createFromEpsg[]
+        writeFile("projection_createprojectionfromepsg.txt", proj.wkt)
         proj
     }
 
@@ -26,6 +27,7 @@ class ProjectionRecipes {
   AXIS["Geodetic latitude", NORTH],
   AUTHORITY["EPSG","4326"]]""")
         // end::createFromWkt[]
+        writeFile("projection_createprojectionfromwkt.txt", proj.wkt)
         proj
     }
 
@@ -34,6 +36,7 @@ class ProjectionRecipes {
         Projection proj = new Projection("Mollweide")
         println proj.wkt
         // end::createFromName[]
+        writeFile("projection_createprojectionfromname.txt", proj.wkt)
         proj
     }
 
@@ -43,6 +46,7 @@ class ProjectionRecipes {
         Geometry epsg2927Geom = Projection.transform(epsg4326Geom, "EPSG:4326", "EPSG:2927")
         println epsg2927Geom
         // end::transformStatic[]
+        writeFile("projection_transformstatic.txt", epsg2927Geom.wkt)
         epsg2927Geom
     }
 
