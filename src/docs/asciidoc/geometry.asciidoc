@@ -111,7 +111,7 @@ image::geometry_bounds.png[]
 === Read and Write Geometries
 
 [source,groovy]
-.Read a Geometry from WKT using the WKTReader
+.Read a Geometry from WKT using the WktReader
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromWKTReader,indent=0]
 ----
@@ -127,7 +127,7 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometry
 image::geometry_read_geometryfromwkt.png[]
 
 [source,groovy]
-.Get WKT of a Geometry
+.Get the WKT of a Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToWKT,indent=0]
 ----
