@@ -519,6 +519,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#creating-geometries">Creating Geometries</a></li>
 <li><a href="#procesing-geometries">Procesing Geometries</a></li>
+<li><a href="#read-and-write-geometries">Read and Write Geometries</a></li>
 </ul>
 </li>
 <li><a href="#projection-recipes">Projection Recipes</a>
@@ -795,6 +796,34 @@ Bounds bounds = polygon.bounds</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="read-and-write-geometries"><a class="anchor" href="#read-and-write-geometries"></a>Read and Write Geometries</h3>
+<div class="listingblock">
+<div class="title">Read a Geometry from WKT using the WKTReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> wkt = <span class="string"><span class="delimiter">&quot;</span><span class="content">POINT (-123.15 46.237)</span><span class="delimiter">&quot;</span></span>
+WktReader reader = <span class="keyword">new</span> WktReader()
+Geometry geometry = reader.read(wkt)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_wktreader.png" alt="geometry read wktreader">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from WKT using the Geometry.fromWKT() static method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> wkt = <span class="string"><span class="delimiter">&quot;</span><span class="content">LINESTRING (3.198 43.164, 6.7138 49.755, 9.702 42.592, 15.327 53.798)</span><span class="delimiter">&quot;</span></span>
+Geometry geometry = Geometry.fromWKT(wkt)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_geometryfromwkt.png" alt="geometry read geometryfromwkt">
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -932,7 +961,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-07 04:26:42 UTC
+Last updated 2016-12-10 15:37:42 UTC
 </div>
 </div>
 </body>
