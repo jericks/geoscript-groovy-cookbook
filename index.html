@@ -5,6 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="author" content="Jared Erickson">
 <title>Geoscript Groovy Cookbook</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -512,6 +513,9 @@ table.CodeRay td.code>pre{padding:0}
 <body class="article toc2 toc-left">
 <div id="header">
 <h1>Geoscript Groovy Cookbook</h1>
+<div class="details">
+<span id="author" class="author">Jared Erickson</span><br>
+</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -798,6 +802,11 @@ Bounds bounds = polygon.bounds</code></pre>
 </div>
 <div class="sect2">
 <h3 id="read-and-write-geometries"><a class="anchor" href="#read-and-write-geometries"></a>Read and Write Geometries</h3>
+<div class="paragraph">
+<p>The geoscript.geom.io package has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.</p>
+</div>
+<div class="sect3">
+<h4 id="wkt"><a class="anchor" href="#wkt"></a>WKT</h4>
 <div class="listingblock">
 <div class="title">Read a Geometry from WKT using the WktReader</div>
 <div class="content">
@@ -853,6 +862,67 @@ println wkt</code></pre>
 <div class="literalblock">
 <div class="content">
 <pre>LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="geojson"><a class="anchor" href="#geojson"></a>GeoJSON</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from GeoJSON using the GeoJSONReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> json = <span class="string"><span class="delimiter">'</span><span class="content">{&quot;type&quot;:&quot;Point&quot;,&quot;coordinates&quot;:[-123.15,46.237]}</span><span class="delimiter">'</span></span>
+GeoJSONReader reader = <span class="keyword">new</span> GeoJSONReader()
+Geometry geometry = reader.read(json)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_geojsonreader.png" alt="geometry read geojsonreader">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from GeoJSON using the Geometry.fromGeoJSON() static method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> json = <span class="string"><span class="delimiter">'</span><span class="content">{&quot;type&quot;:&quot;LineString&quot;,&quot;coordinates&quot;:[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}</span><span class="delimiter">'</span></span>
+Geometry geometry = Geometry.fromGeoJSON(json)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_geometryfromgeojson.png" alt="geometry read geometryfromgeojson">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the GeoJSON of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+<span class="predefined-type">String</span> json = geometry.geoJSON
+println json</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{"type":"Point","coordinates":[-123.15,46.237]}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to  GeoJSON using the GeoJSONWriter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+GeoJSONWriter writer = <span class="keyword">new</span> GeoJSONWriter()
+<span class="predefined-type">String</span> json = writer.write(geometry)
+println json</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{"type":"LineString","coordinates":[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}</pre>
+</div>
 </div>
 </div>
 </div>
@@ -993,7 +1063,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-10 23:36:54 UTC
+Last updated 2016-12-11 19:01:54 UTC
 </div>
 </div>
 </body>
