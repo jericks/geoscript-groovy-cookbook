@@ -110,6 +110,10 @@ image::geometry_bounds.png[]
 
 === Read and Write Geometries
 
+The geoscript.geom.io package has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.
+
+==== WKT
+
 [source,groovy]
 .Read a Geometry from WKT using the WktReader
 ----
@@ -142,4 +146,40 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 ----
 ....
 include::output/geometry_to_wkt_using_writer.txt[]
+....
+
+==== GeoJSON
+
+[source,groovy]
+.Read a Geometry from GeoJSON using the GeoJSONReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGeoJSONReader,indent=0]
+----
+[.thumb]
+image::geometry_read_geojsonreader.png[]
+
+[source,groovy]
+.Read a Geometry from GeoJSON using the Geometry.fromGeoJSON() static method
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGeoJSON,indent=0]
+----
+[.thumb]
+image::geometry_read_geometryfromgeojson.png[]
+
+[source,groovy]
+.Get the GeoJSON of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGeoJSON,indent=0]
+----
+....
+include::output/geometry_to_geojson.txt[]
+....
+
+[source,groovy]
+.Write a Geometry to  GeoJSON using the GeoJSONWriter
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGeoJSONUsingWriter,indent=0]
+----
+....
+include::output/geometry_to_geojson_using_writer.txt[]
 ....

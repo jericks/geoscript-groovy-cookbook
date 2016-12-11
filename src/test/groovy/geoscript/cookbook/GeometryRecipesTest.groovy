@@ -116,4 +116,28 @@ class GeometryRecipesTest {
         String wkt = recipes.writeGeometryToWKTUsingWriter()
         assertEquals("LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)", wkt)
     }
+
+    @Test void readGeometryFromGeoJSONReader() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGeoJSONReader()
+        assertEquals('{"type":"Point","coordinates":[-123.15,46.237]}', geom.geoJSON)
+    }
+
+    @Test void readGeometryFromGeoJSON() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGeoJSON()
+        assertEquals('{"type":"LineString","coordinates":[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}', geom.geoJSON)
+    }
+
+    @Test void writeGeometryToGeoJSON() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String json = recipes.writeGeometryToGeoJSON()
+        assertEquals('{"type":"Point","coordinates":[-123.15,46.237]}', json)
+    }
+
+    @Test void writeGeometryToGeoJSONUsingWriter() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String json = recipes.writeGeometryToGeoJSONUsingWriter()
+        assertEquals('{"type":"LineString","coordinates":[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}', json)
+    }
 }

@@ -12,6 +12,8 @@ import geoscript.geom.MultiPoint
 import geoscript.geom.MultiPolygon
 import geoscript.geom.Point
 import geoscript.geom.Polygon
+import geoscript.geom.io.GeoJSONReader
+import geoscript.geom.io.GeoJSONWriter
 import geoscript.geom.io.WktReader
 import geoscript.geom.io.WktWriter
 import geoscript.viewer.Viewer
@@ -271,6 +273,51 @@ class GeometryRecipes extends Recipes {
         // end::writeGeometryToWKTUsingWriter[]
         writeFile("geometry_to_wkt_using_writer", wkt)
         wkt
+    }
+
+    Geometry readGeometryFromGeoJSONReader() {
+        // tag::readGeometryFromGeoJSONReader[]
+        String json = '{"type":"Point","coordinates":[-123.15,46.237]}'
+        GeoJSONReader reader = new GeoJSONReader()
+        Geometry geometry = reader.read(json)
+        // end::readGeometryFromGeoJSONReader[]
+        drawGeometry("geometry_read_geojsonreader", geometry)
+        geometry
+    }
+
+    Geometry readGeometryFromGeoJSON() {
+        // tag::readGeometryFromGeoJSON[]
+        String json = '{"type":"LineString","coordinates":[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}'
+        Geometry geometry = Geometry.fromGeoJSON(json)
+        // end::readGeometryFromGeoJSON[]
+        drawGeometry("geometry_read_geometryfromgeojson", geometry)
+        geometry
+    }
+
+    String writeGeometryToGeoJSON() {
+        // tag::writeGeometryToGeoJSON[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        String json = geometry.geoJSON
+        println json
+        // end::writeGeometryToGeoJSON[]
+        writeFile("geometry_to_geojson", json)
+        json
+    }
+
+    String writeGeometryToGeoJSONUsingWriter() {
+        // tag::writeGeometryToGeoJSONUsingWriter[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        GeoJSONWriter writer = new GeoJSONWriter()
+        String json = writer.write(geometry)
+        println json
+        // end::writeGeometryToGeoJSONUsingWriter[]
+        writeFile("geometry_to_geojson_using_writer", json)
+        json
     }
 
 }
