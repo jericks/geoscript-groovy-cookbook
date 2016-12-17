@@ -93,6 +93,24 @@ image::geometry_create_bounds.png[]
 === Procesing Geometries
 
 [source,groovy]
+.Get the area of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getArea,indent=0]
+----
+....
+include::output/geometry_getarea.txt[]
+....
+
+[source,groovy]
+.Get the length of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getLength,indent=0]
+----
+....
+include::output/geometry_getlength.txt[]
+....
+
+[source,groovy]
 .Buffer a Point
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bufferPoint,indent=0]

@@ -206,9 +206,36 @@ class GeometryRecipes extends Recipes {
     Bounds createBounds() {
         // tag::createBounds[]
         Bounds bounds = new Bounds(-127.265, 43.068, -113.554, 50.289, "EPSG:4326")
-        drawGeometries("geometry_create_bounds", [bounds.geometry])
         // end::createBounds[]
+        drawGeometries("geometry_create_bounds", [bounds.geometry])
         bounds
+    }
+
+    double getArea() {
+        // tag::getArea[]
+        Polygon polygon = new Polygon([[
+            [-124.80, 48.92],
+            [-126.21, 45.33],
+            [-114.60, 45.08],
+            [-115.31, 51.17],
+            [-121.99, 52.05],
+            [-124.80, 48.92]
+        ]])
+        double area = polygon.area
+        println area
+        // end::getArea[]
+        writeFile("geometry_getarea", "${area}")
+        return area
+    }
+
+    double getLength() {
+        // tag::getLength[]
+        LineString lineString = new LineString([-122.69, 49.61], [-99.84, 45.33])
+        double length = lineString.length
+        println length
+        // end::getLength[]
+        writeFile("geometry_getlength", "${length}")
+        return length
     }
 
     Geometry bufferPoint() {

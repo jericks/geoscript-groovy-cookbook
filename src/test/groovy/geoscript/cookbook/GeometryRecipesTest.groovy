@@ -93,6 +93,18 @@ class GeometryRecipesTest {
         assertNotNull(bounds)
     }
 
+    @Test void getArea() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        double area = recipes.getArea()
+        assertEquals(62.402, area, 0.01)
+    }
+
+    @Test void getLength() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        double length = recipes.getLength()
+        assertEquals(23.247, length, 0.01)
+    }
+
     @Test void readGeometryFromWKTReader() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.readGeometryFromWKTReader()
