@@ -762,8 +762,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="listingblock">
 <div class="title">Create a Bounds from four coordinates (minx, miny, maxx, maxy) and a projection.</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-drawGeometries(<span class="string"><span class="delimiter">&quot;</span><span class="content">geometry_create_bounds</span><span class="delimiter">&quot;</span></span>, [bounds.geometry])</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -774,6 +773,39 @@ drawGeometries(<span class="string"><span class="delimiter">&quot;</span><span c
 </div>
 <div class="sect2">
 <h3 id="procesing-geometries"><a class="anchor" href="#procesing-geometries"></a>Procesing Geometries</h3>
+<div class="listingblock">
+<div class="title">Get the area of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">124.80</span>, <span class="float">48.92</span>],
+    [-<span class="float">126.21</span>, <span class="float">45.33</span>],
+    [-<span class="float">114.60</span>, <span class="float">45.08</span>],
+    [-<span class="float">115.31</span>, <span class="float">51.17</span>],
+    [-<span class="float">121.99</span>, <span class="float">52.05</span>],
+    [-<span class="float">124.80</span>, <span class="float">48.92</span>]
+]])
+<span class="type">double</span> area = polygon.area
+println area</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>62.4026</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the length of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString([-<span class="float">122.69</span>, <span class="float">49.61</span>], [-<span class="float">99.84</span>, <span class="float">45.33</span>])
+<span class="type">double</span> length = lineString.length
+println length</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>23.24738479915536</pre>
+</div>
+</div>
 <div class="listingblock">
 <div class="title">Buffer a Point</div>
 <div class="content">
@@ -1063,7 +1095,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-11 19:01:54 UTC
+Last updated 2016-12-17 02:29:18 UTC
 </div>
 </div>
 </body>
