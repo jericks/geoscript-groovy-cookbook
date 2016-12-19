@@ -519,6 +519,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-geometries">Creating Geometries</a></li>
 <li><a href="#procesing-geometries">Procesing Geometries</a></li>
 <li><a href="#read-and-write-geometries">Read and Write Geometries</a></li>
+<li><a href="#bounds-properties">Bounds Properties</a></li>
 </ul>
 </li>
 </ul>
@@ -942,12 +943,76 @@ println json</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="bounds-properties"><a class="anchor" href="#bounds-properties"></a>Bounds Properties</h3>
+<div class="listingblock">
+<div class="title">Create a Bounds and view it&#8217;s string representation</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> boundsStr = bounds.toString()
+println boundsStr</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(-127.265,43.068,-113.554,50.289,EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the minimum x coordinate</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> minX = bounds.minX
+println minX</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-127.265</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the minimum y coordinate</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> minY = bounds.minY
+println minY</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>43.068</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the maximum x coordinate</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> maxX = bounds.maxX
+println maxX</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-113.554</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the maximum y coordinate</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> maxY = bounds.maxY
+println maxY</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>50.289</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-17 02:29:18 UTC
+Last updated 2016-12-19 01:42:08 UTC
 </div>
 </div>
 </body>
