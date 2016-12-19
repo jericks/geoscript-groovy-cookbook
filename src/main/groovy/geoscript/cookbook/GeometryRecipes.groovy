@@ -211,6 +211,48 @@ class GeometryRecipes extends Recipes {
         bounds
     }
 
+    Map getBoundsProperties() {
+
+        // tag::getBoundsProperties[]
+        Bounds bounds = new Bounds(-127.265, 43.068, -113.554, 50.289, "EPSG:4326")
+        String boundsStr = bounds.toString()
+        println boundsStr
+        // end::getBoundsProperties[]
+        writeFile("geometry_bounds_properties", boundsStr)
+
+        // tag::getBoundsProperties_minX[]
+        double minX = bounds.minX
+        println minX
+        // end::getBoundsProperties_minX[]
+        writeFile("geometry_bounds_properties_minx", "${minX}")
+
+        // tag::getBoundsProperties_minY[]
+        double minY = bounds.minY
+        println minY
+        // end::getBoundsProperties_minY[]
+        writeFile("geometry_bounds_properties_miny", "${minY}")
+
+        // tag::getBoundsProperties_maxX[]
+        double maxX = bounds.maxX
+        println maxX
+        // end::getBoundsProperties_maxX[]
+        writeFile("geometry_bounds_properties_maxx", "${maxX}")
+
+        // tag::getBoundsProperties_maxY[]
+        double maxY = bounds.maxY
+        println maxY
+        // end::getBoundsProperties_maxY[]
+        writeFile("geometry_bounds_properties_maxy", "${maxY}")
+
+        [
+                bounds: boundsStr,
+                minX: minX,
+                minY: minY,
+                maxX: maxX,
+                maxY: maxY
+        ]
+    }
+
     double getArea() {
         // tag::getArea[]
         Polygon polygon = new Polygon([[

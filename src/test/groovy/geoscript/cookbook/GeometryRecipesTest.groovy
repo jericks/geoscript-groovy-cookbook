@@ -93,6 +93,16 @@ class GeometryRecipesTest {
         assertNotNull(bounds)
     }
 
+    @Test void getBoundsProperties() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map properties = recipes.getBoundsProperties()
+        assertEquals("(-127.265,43.068,-113.554,50.289,EPSG:4326)", properties.bounds)
+        assertEquals(-127.265, properties.minX, 0.01)
+        assertEquals(43.068, properties.minY, 0.01)
+        assertEquals(-113.554, properties.maxX, 0.01)
+        assertEquals(50.289, properties.maxY, 0.01)
+    }
+
     @Test void getArea() {
         GeometryRecipes recipes = new GeometryRecipes()
         double area = recipes.getArea()

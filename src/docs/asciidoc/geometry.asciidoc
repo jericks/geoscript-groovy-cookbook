@@ -201,3 +201,50 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 ....
 include::output/geometry_to_geojson_using_writer.txt[]
 ....
+
+=== Bounds Properties
+
+[source,groovy]
+.Create a Bounds and view it's string representation
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties,indent=0]
+----
+....
+include::output/geometry_bounds_properties.txt[]
+....
+
+[source,groovy]
+.Get the minimum x coordinate
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties_minX,indent=0]
+----
+....
+include::output/geometry_bounds_properties_minx.txt[]
+....
+
+[source,groovy]
+.Get the minimum y coordinate
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties_minY,indent=0]
+----
+....
+include::output/geometry_bounds_properties_miny.txt[]
+....
+
+[source,groovy]
+.Get the maximum x coordinate
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties_maxX,indent=0]
+----
+....
+include::output/geometry_bounds_properties_maxx.txt[]
+....
+
+[source,groovy]
+.Get the maximum y coordinate
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties_maxY,indent=0]
+----
+....
+include::output/geometry_bounds_properties_maxy.txt[]
+....
