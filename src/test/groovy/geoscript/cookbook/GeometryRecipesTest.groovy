@@ -101,6 +101,11 @@ class GeometryRecipesTest {
         assertEquals(43.068, properties.minY, 0.01)
         assertEquals(-113.554, properties.maxX, 0.01)
         assertEquals(50.289, properties.maxY, 0.01)
+        assertEquals(99.007, properties.area, 0.01)
+        assertEquals(13.710, properties.width, 0.01)
+        assertEquals(7.221, properties.height, 0.01)
+        assertEquals(1.898, properties.aspect, 0.01)
+
     }
 
     @Test void getArea() {

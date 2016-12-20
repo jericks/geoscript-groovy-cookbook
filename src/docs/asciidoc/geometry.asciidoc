@@ -248,3 +248,39 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsPro
 ....
 include::output/geometry_bounds_properties_maxy.txt[]
 ....
+
+[source,groovy]
+.Get the area
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties_area,indent=0]
+----
+....
+include::output/geometry_bounds_properties_area.txt[]
+....
+
+[source,groovy]
+.Get the width
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties_width,indent=0]
+----
+....
+include::output/geometry_bounds_properties_width.txt[]
+....
+
+[source,groovy]
+.Get the height
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties_height,indent=0]
+----
+....
+include::output/geometry_bounds_properties_height.txt[]
+....
+
+[source,groovy]
+.Get the aspect ratio
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties_aspect,indent=0]
+----
+....
+include::output/geometry_bounds_properties_aspect.txt[]
+....

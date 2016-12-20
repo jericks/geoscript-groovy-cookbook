@@ -244,12 +244,41 @@ class GeometryRecipes extends Recipes {
         // end::getBoundsProperties_maxY[]
         writeFile("geometry_bounds_properties_maxy", "${maxY}")
 
+        // tag::getBoundsProperties_area[]
+        double area = bounds.area
+        println area
+        // end::getBoundsProperties_area[]
+        writeFile("geometry_bounds_properties_area", "${area}")
+
+        // tag::getBoundsProperties_width[]
+        double width = bounds.width
+        println width
+        // end::getBoundsProperties_width[]
+        writeFile("geometry_bounds_properties_width", "${width}")
+
+        // tag::getBoundsProperties_height[]
+        double height = bounds.height
+        println height
+        // end::getBoundsProperties_height[]
+        writeFile("geometry_bounds_properties_height", "${height}")
+
+        // tag::getBoundsProperties_aspect[]
+        double aspect = bounds.aspect
+        println aspect
+        // end::getBoundsProperties_aspect[]
+        writeFile("geometry_bounds_properties_aspect", "${aspect}")
+
+
         [
                 bounds: boundsStr,
                 minX: minX,
                 minY: minY,
                 maxX: maxX,
-                maxY: maxY
+                maxY: maxY,
+                area: area,
+                width: width,
+                height: height,
+                aspect: aspect
         ]
     }
 
