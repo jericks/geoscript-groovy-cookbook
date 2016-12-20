@@ -81,6 +81,18 @@ class GeometryRecipesTest {
         assertEquals("(-127.265,43.068,-113.554,50.289,EPSG:4326)", bounds.toString())
     }
 
+    @Test void createBoundsFromStringWithCommas() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Bounds bounds = recipes.createBoundsFromStringWithCommas()
+        assertEquals("(-127.265,43.068,-113.554,50.289,EPSG:4326)", bounds.toString())
+    }
+
+    @Test void createBoundsFromStringWithSpaces() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Bounds bounds = recipes.createBoundsFromStringWithSpaces()
+        assertEquals("(12.919921874999998,40.84706035607122,15.99609375,41.77131167976407,EPSG:4326)", bounds.toString())
+    }
+
     @Test void bufferPoint() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.bufferPoint()

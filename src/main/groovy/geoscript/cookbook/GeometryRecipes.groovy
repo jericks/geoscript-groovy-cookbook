@@ -211,6 +211,22 @@ class GeometryRecipes extends Recipes {
         bounds
     }
 
+    Bounds createBoundsFromStringWithCommas() {
+        // tag::createBoundsFromStringWithCommas[]
+        Bounds bounds = Bounds.fromString("-127.265,43.068,-113.554,50.289,EPSG:4326")
+        // end::createBoundsFromStringWithCommas[]
+        drawGeometries("geometry_create_bounds_fromstring_withcommas", [bounds.geometry])
+        bounds
+    }
+
+    Bounds createBoundsFromStringWithSpaces() {
+        // tag::createBoundsFromStringWithSpaces[]
+        Bounds bounds = Bounds.fromString("12.919921874999998 40.84706035607122 15.99609375 41.77131167976407 EPSG:4326")
+        // end::createBoundsFromStringWithSpaces[]
+        drawGeometries("geometry_create_bounds_fromstring_withspaces", [bounds.geometry])
+        bounds
+    }
+
     Map getBoundsProperties() {
 
         // tag::getBoundsProperties[]

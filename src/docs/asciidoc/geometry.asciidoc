@@ -82,13 +82,6 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCompou
 [.thumb]
 image::geometry_create_compoundring.png[]
 
-[source,groovy]
-.Create a Bounds from four coordinates (minx, miny, maxx, maxy) and a projection.
-----
-include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createBounds,indent=0]
-----
-[.thumb]
-image::geometry_create_bounds.png[]
 
 === Procesing Geometries
 
@@ -126,7 +119,7 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bounds,inden
 [.thumb]
 image::geometry_bounds.png[]
 
-=== Read and Write Geometries
+=== Reading and Writing Geometries
 
 The geoscript.geom.io package has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.
 
@@ -202,7 +195,33 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 include::output/geometry_to_geojson_using_writer.txt[]
 ....
 
-=== Bounds Properties
+=== Creating Bounds
+
+[source,groovy]
+.Create a Bounds from four coordinates (minx, miny, maxx, maxy) and a projection.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createBounds,indent=0]
+----
+[.thumb]
+image::geometry_create_bounds.png[]
+
+[source,groovy]
+.Create a Bounds from a string with commas delimiting minx, miny, maxx, maxy and projection values.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createBoundsFromStringWithCommas,indent=0]
+----
+[.thumb]
+image::geometry_create_bounds_fromstring_withcommas.png[]
+
+[source,groovy]
+.Create a Bounds from a string with spaces delimiting minx, miny, maxx, maxy and projection values.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createBoundsFromStringWithSpaces,indent=0]
+----
+[.thumb]
+image::geometry_create_bounds_fromstring_withspaces.png[]
+
+=== Getting Bounds Properties
 
 [source,groovy]
 .Create a Bounds and view it's string representation
