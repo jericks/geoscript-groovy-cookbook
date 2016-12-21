@@ -303,3 +303,13 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsPro
 ....
 include::output/geometry_bounds_properties_aspect.txt[]
 ....
+
+=== Processing Bounds
+
+[source,groovy]
+.Expand a Bounds by a given distance
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=expandByBounds,indent=0]
+----
+[.thumb]
+image::gemetry_bounds_expandby.png[]

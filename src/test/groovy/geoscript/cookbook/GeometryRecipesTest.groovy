@@ -93,6 +93,12 @@ class GeometryRecipesTest {
         assertEquals("(12.919921874999998,40.84706035607122,15.99609375,41.77131167976407,EPSG:4326)", bounds.toString())
     }
 
+    @Test void expandByBounds() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Bounds bounds = recipes.expandByBounds()
+        assertEquals("(-137.365,32.967999999999996,-103.45400000000001,60.389,EPSG:4326)", bounds.toString())
+    }
+
     @Test void bufferPoint() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.bufferPoint()
