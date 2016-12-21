@@ -526,6 +526,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#reading-and-writing-geometries">Reading and Writing Geometries</a></li>
 <li><a href="#creating-bounds">Creating Bounds</a></li>
 <li><a href="#getting-bounds-properties">Getting Bounds Properties</a></li>
+<li><a href="#processing-bounds">Processing Bounds</a></li>
 </ul>
 </li>
 <li><a href="#projection-recipes">Projection Recipes</a>
@@ -1097,6 +1098,22 @@ println aspect</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="processing-bounds"><a class="anchor" href="#processing-bounds"></a>Processing Bounds</h3>
+<div class="listingblock">
+<div class="title">Expand a Bounds by a given distance</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Bounds bounds2 = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+bounds2.expandBy(<span class="float">10.1</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/gemetry_bounds_expandby.png" alt="gemetry bounds expandby">
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1234,7 +1251,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-20 21:57:57 UTC
+Last updated 2016-12-21 22:14:57 UTC
 </div>
 </div>
 </body>
