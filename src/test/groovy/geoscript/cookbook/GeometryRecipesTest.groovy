@@ -117,6 +117,31 @@ class GeometryRecipesTest {
         assertEquals("(-134.1205,39.457499999999996,-106.6985,53.8995)", bounds.toString())
     }
 
+    @Test void reprojectBounds() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Bounds bounds = recipes.reprojectBounds()
+        assertEquals("(1147444.7684517875,703506.223164177,1155828.120242509,711367.9403610165,EPSG:2927)", bounds.toString())
+    }
+
+    @Test void boundsGetGeometry() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.boundsGetGeometry()
+        assertEquals("POLYGON ((-122.485 47.246, -122.485 47.267, -122.452 47.267, -122.452 47.246, -122.485 47.246))", geometry.wkt)
+    }
+
+    @Test void boundsGetPolygon() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Polygon polygon = recipes.boundsGetPolygon()
+        assertEquals("POLYGON ((-122.485 47.246, -122.485 47.267, -122.452 47.267, -122.452 47.246, -122.485 47.246))", polygon.wkt)
+    }
+
+    @Test void boundsGetCorners() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Point> points = recipes.boundsGetCorners()
+        assertEquals(4, points.size())
+        assertEquals("GEOMETRYCOLLECTION (POINT (-122.485 47.246), POINT (-122.485 47.267), POINT (-122.452 47.267), POINT (-122.452 47.246))", new GeometryCollection(points).wkt)
+    }
+
     @Test void bufferPoint() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.bufferPoint()

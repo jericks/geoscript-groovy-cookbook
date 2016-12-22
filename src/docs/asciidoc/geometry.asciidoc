@@ -285,7 +285,6 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsPro
 include::output/geometry_bounds_properties_proj.txt[]
 ....
 
-
 [source,groovy]
 .Get the area
 ----
@@ -322,7 +321,48 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsPro
 include::output/geometry_bounds_properties_aspect.txt[]
 ....
 
+[source,groovy]
+.A Bounds is not a Geometry but you can get a Geometry from a Bounds
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetGeometry,indent=0]
+----
+[.thumb]
+image::gemetry_bounds_geometry.png[]
+
+[source,groovy]
+.You can also get a Polygon from a Bounds
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetPolygon,indent=0]
+----
+[.thumb]
+image::gemetry_bounds_polygon.png[]
+
+[source,groovy]
+.Get the four corners from a Bounds as a List of Points
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetCorners,indent=0]
+----
+[.thumb]
+image::gemetry_bounds_corners.png[]
+
 === Processing Bounds
+
+[source,groovy]
+.Reproject a Bounds from one Projection to another.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=reprojectBounds1,indent=0]
+----
+....
+include::output/geometry_bounds_reproject1.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=reprojectBounds2,indent=0]
+----
+....
+include::output/geometry_bounds_reproject2.txt[]
+....
 
 [source,groovy]
 .Expand a Bounds by a given distance

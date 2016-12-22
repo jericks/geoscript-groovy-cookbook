@@ -345,6 +345,47 @@ class GeometryRecipes extends Recipes {
         bounds2
     }
 
+    Bounds reprojectBounds() {
+        // tag::reprojectBounds1[]
+        Bounds bounds = new Bounds(-122.485, 47.246, -122.452, 47.267, "EPSG:4326")
+        println bounds
+        // end::reprojectBounds1[]
+        writeFile("geometry_bounds_reproject1", "${bounds}")
+        // tag::reprojectBounds2[]
+        Bounds reprojectedBounds = bounds.reproject("EPSG:2927")
+        println reprojectedBounds
+        // end::reprojectBounds2[]
+        writeFile("geometry_bounds_reproject2", "${reprojectedBounds}")
+        reprojectedBounds
+    }
+
+    Geometry boundsGetGeometry() {
+        // tag::boundsGetGeometry[]
+        Bounds bounds = new Bounds(-122.485, 47.246, -122.452, 47.267, "EPSG:4326")
+        Geometry geometry = bounds.geometry
+        // end::boundsGetGeometry[]
+        drawGeometries("gemetry_bounds_geometry", [geometry])
+        geometry
+    }
+
+    Polygon boundsGetPolygon() {
+        // tag::boundsGetPolygon[]
+        Bounds bounds = new Bounds(-122.485, 47.246, -122.452, 47.267, "EPSG:4326")
+        Polygon polygon = bounds.polygon
+        // end::boundsGetPolygon[]
+        drawGeometries("gemetry_bounds_polygon", [polygon])
+        polygon
+    }
+
+    List<Point> boundsGetCorners() {
+        // tag::boundsGetCorners[]
+        Bounds bounds = new Bounds(-122.485, 47.246, -122.452, 47.267, "EPSG:4326")
+        List<Point> points = bounds.corners
+        // end::boundsGetCorners[]
+        drawGeometries("gemetry_bounds_corners", points)
+        points
+    }
+
     double getArea() {
         // tag::getArea[]
         Polygon polygon = new Polygon([[
