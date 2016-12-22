@@ -308,6 +308,17 @@ class GeometryRecipes extends Recipes {
         bounds2
     }
 
+    Bounds expandBounds() {
+        // tag::expandBounds[]
+        Bounds bounds1 = new Bounds(8.4375, 37.996162679728116, 19.6875, 46.07323062540835, "EPSG:4326")
+        Bounds bounds2 = new Bounds(22.5, 31.952162238024975, 30.937499999999996, 37.43997405227057, "EPSG:4326")
+        bounds1.expand(bounds2)
+        // end::expandBounds[]
+        Bounds bounds3 = new Bounds(8.4375, 37.996162679728116, 19.6875, 46.07323062540835, "EPSG:4326")
+        drawGeometries("gemetry_bounds_expand", [bounds1.polygon, bounds2.polygon, bounds3.polygon])
+        bounds1
+    }
+
     double getArea() {
         // tag::getArea[]
         Polygon polygon = new Polygon([[

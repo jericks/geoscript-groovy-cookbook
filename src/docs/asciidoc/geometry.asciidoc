@@ -313,3 +313,11 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=expandByBoun
 ----
 [.thumb]
 image::gemetry_bounds_expandby.png[]
+
+[source,groovy]
+.Expand a Bounds to include another Bounds
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=expandBounds,indent=0]
+----
+[.thumb]
+image::gemetry_bounds_expand.png[]
