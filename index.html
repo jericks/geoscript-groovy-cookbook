@@ -964,6 +964,18 @@ println json</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a Bounds from four coordinates (minx, miny, maxx, maxy) without a projection.  The projection can be set later.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>)
+bounds.proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_create_bounds_no_proj.png" alt="geometry create bounds no proj">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Create a Bounds from a string with commas delimiting minx, miny, maxx, maxy and projection values.</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = Bounds.fromString(<span class="string"><span class="delimiter">&quot;</span><span class="content">-127.265,43.068,-113.554,50.289,EPSG:4326</span><span class="delimiter">&quot;</span></span>)</code></pre>
@@ -1050,6 +1062,18 @@ println maxY</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Get the Projection</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = bounds.proj
+println proj.id</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>EPSG:4326</pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Get the area</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> area = bounds.area
@@ -1124,6 +1148,18 @@ bounds1.expand(bounds2)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/gemetry_bounds_expand.png" alt="gemetry bounds expand">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Scale an existing Bounds some distance to create a new Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Bounds bounds2 = bounds1.scale(<span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/gemetry_bounds_scale.png" alt="gemetry bounds scale">
 </div>
 </div>
 </div>
@@ -1264,7 +1300,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-22 01:13:00 UTC
+Last updated 2016-12-22 20:32:07 UTC
 </div>
 </div>
 </body>
