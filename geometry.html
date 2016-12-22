@@ -1097,13 +1097,26 @@ bounds2.expandBy(<span class="float">10.1</span>)</code></pre>
 <img src="./images/gemetry_bounds_expandby.png" alt="gemetry bounds expandby">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Expand a Bounds to include another Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(<span class="float">8.4375</span>, <span class="float">37.996162679728116</span>, <span class="float">19.6875</span>, <span class="float">46.07323062540835</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Bounds bounds2 = <span class="keyword">new</span> Bounds(<span class="float">22.5</span>, <span class="float">31.952162238024975</span>, <span class="float">30.937499999999996</span>, <span class="float">37.43997405227057</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+bounds1.expand(bounds2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/gemetry_bounds_expand.png" alt="gemetry bounds expand">
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-21 22:14:57 UTC
+Last updated 2016-12-22 01:13:00 UTC
 </div>
 </div>
 </body>
