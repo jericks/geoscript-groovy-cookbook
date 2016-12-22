@@ -16,6 +16,7 @@ import geoscript.geom.io.GeoJSONReader
 import geoscript.geom.io.GeoJSONWriter
 import geoscript.geom.io.WktReader
 import geoscript.geom.io.WktWriter
+import geoscript.proj.Projection
 import geoscript.viewer.Viewer
 
 class GeometryRecipes extends Recipes {
@@ -211,6 +212,15 @@ class GeometryRecipes extends Recipes {
         bounds
     }
 
+    Bounds createBoundsNoProjection() {
+        // tag::createBoundsNoProjection[]
+        Bounds bounds = new Bounds(-127.265, 43.068, -113.554, 50.289)
+        bounds.proj = new Projection("EPSG:4326")
+        // end::createBoundsNoProjection[]
+        drawGeometries("geometry_create_bounds_no_proj", [bounds.geometry])
+        bounds
+    }
+
     Bounds createBoundsFromStringWithCommas() {
         // tag::createBoundsFromStringWithCommas[]
         Bounds bounds = Bounds.fromString("-127.265,43.068,-113.554,50.289,EPSG:4326")
@@ -260,6 +270,12 @@ class GeometryRecipes extends Recipes {
         // end::getBoundsProperties_maxY[]
         writeFile("geometry_bounds_properties_maxy", "${maxY}")
 
+        // tag::getBoundsProperties_proj[]
+        Projection proj = bounds.proj
+        println proj.id
+        // end::getBoundsProperties_proj[]
+        writeFile("geometry_bounds_properties_proj", "${proj.id}")
+
         // tag::getBoundsProperties_area[]
         double area = bounds.area
         println area
@@ -291,6 +307,7 @@ class GeometryRecipes extends Recipes {
                 minY: minY,
                 maxX: maxX,
                 maxY: maxY,
+                proj: proj,
                 area: area,
                 width: width,
                 height: height,
@@ -317,6 +334,15 @@ class GeometryRecipes extends Recipes {
         Bounds bounds3 = new Bounds(8.4375, 37.996162679728116, 19.6875, 46.07323062540835, "EPSG:4326")
         drawGeometries("gemetry_bounds_expand", [bounds1.polygon, bounds2.polygon, bounds3.polygon])
         bounds1
+    }
+
+    Bounds scaleBounds() {
+        // tag::scaleBounds[]
+        Bounds bounds1 = new Bounds(-127.265, 43.068, -113.554, 50.289, "EPSG:4326")
+        Bounds bounds2 = bounds1.scale(2)
+        // end::scaleBounds[]
+        drawGeometries("gemetry_bounds_scale", [bounds2.polygon, bounds1.polygon])
+        bounds2
     }
 
     double getArea() {

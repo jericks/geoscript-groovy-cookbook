@@ -81,6 +81,12 @@ class GeometryRecipesTest {
         assertEquals("(-127.265,43.068,-113.554,50.289,EPSG:4326)", bounds.toString())
     }
 
+    @Test void createBoundsNoProjection() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Bounds bounds = recipes.createBoundsNoProjection()
+        assertEquals("(-127.265,43.068,-113.554,50.289,EPSG:4326)", bounds.toString())
+    }
+
     @Test void createBoundsFromStringWithCommas() {
         GeometryRecipes recipes = new GeometryRecipes()
         Bounds bounds = recipes.createBoundsFromStringWithCommas()
@@ -105,6 +111,12 @@ class GeometryRecipesTest {
         assertEquals("(8.4375,31.952162238024975,30.937499999999996,46.07323062540835,EPSG:4326)", bounds.toString())
     }
 
+    @Test void scaleBounds() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Bounds bounds = recipes.scaleBounds()
+        assertEquals("(-134.1205,39.457499999999996,-106.6985,53.8995)", bounds.toString())
+    }
+
     @Test void bufferPoint() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.bufferPoint()
@@ -125,6 +137,7 @@ class GeometryRecipesTest {
         assertEquals(43.068, properties.minY, 0.01)
         assertEquals(-113.554, properties.maxX, 0.01)
         assertEquals(50.289, properties.maxY, 0.01)
+        assertEquals("EPSG:4326", properties.proj.id)
         assertEquals(99.007, properties.area, 0.01)
         assertEquals(13.710, properties.width, 0.01)
         assertEquals(7.221, properties.height, 0.01)

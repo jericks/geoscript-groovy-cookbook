@@ -4,6 +4,10 @@ GeoScript Groovy Cookbook
 =========================
 The GeoScript Groovy Cookbook contains short recipes showing how to use the GeoScript Groovy API.
 
+[Web Site](https://jericks.github.io/geoscript-groovy-cookbook/)
+
+[PDF](https://jericks.github.io/geoscript-groovy-cookbook/index.pdf)
+
 Key Features
 ------------
 1. Cookbook with Recipes

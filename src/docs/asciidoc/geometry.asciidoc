@@ -206,6 +206,14 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createBounds
 image::geometry_create_bounds.png[]
 
 [source,groovy]
+.Create a Bounds from four coordinates (minx, miny, maxx, maxy) without a projection.  The projection can be set later.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createBoundsNoProjection,indent=0]
+----
+[.thumb]
+image::geometry_create_bounds_no_proj.png[]
+
+[source,groovy]
 .Create a Bounds from a string with commas delimiting minx, miny, maxx, maxy and projection values.
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createBoundsFromStringWithCommas,indent=0]
@@ -269,6 +277,16 @@ include::output/geometry_bounds_properties_maxy.txt[]
 ....
 
 [source,groovy]
+.Get the Projection
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties_proj,indent=0]
+----
+....
+include::output/geometry_bounds_properties_proj.txt[]
+....
+
+
+[source,groovy]
 .Get the area
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getBoundsProperties_area,indent=0]
@@ -321,3 +339,11 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=expandBounds
 ----
 [.thumb]
 image::gemetry_bounds_expand.png[]
+
+[source,groovy]
+.Scale an existing Bounds some distance to create a new Bounds
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=scaleBounds,indent=0]
+----
+[.thumb]
+image::gemetry_bounds_scale.png[]
