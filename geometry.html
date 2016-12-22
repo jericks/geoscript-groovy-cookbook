@@ -1105,9 +1105,68 @@ println aspect</code></pre>
 <pre>1.8987674837280144</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">A Bounds is not a Geometry but you can get a Geometry from a Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">122.485</span>, <span class="float">47.246</span>, -<span class="float">122.452</span>, <span class="float">47.267</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = bounds.geometry</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/gemetry_bounds_geometry.png" alt="gemetry bounds geometry">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">You can also get a Polygon from a Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">122.485</span>, <span class="float">47.246</span>, -<span class="float">122.452</span>, <span class="float">47.267</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.polygon</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/gemetry_bounds_polygon.png" alt="gemetry bounds polygon">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the four corners from a Bounds as a List of Points</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">122.485</span>, <span class="float">47.246</span>, -<span class="float">122.452</span>, <span class="float">47.267</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">Point</span>&gt; points = bounds.corners</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/gemetry_bounds_corners.png" alt="gemetry bounds corners">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="processing-bounds"><a class="anchor" href="#processing-bounds"></a>Processing Bounds</h3>
+<div class="listingblock">
+<div class="title">Reproject a Bounds from one Projection to another.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">122.485</span>, <span class="float">47.246</span>, -<span class="float">122.452</span>, <span class="float">47.267</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+println bounds</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(-122.485,47.246,-122.452,47.267,EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds reprojectedBounds = bounds.reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
+println reprojectedBounds</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(1147444.7684517875,703506.223164177,1155828.120242509,711367.9403610165,EPSG:2927)</pre>
+</div>
+</div>
 <div class="listingblock">
 <div class="title">Expand a Bounds by a given distance</div>
 <div class="content">
@@ -1152,7 +1211,7 @@ Bounds bounds2 = bounds1.scale(<span class="integer">2</span>)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-22 20:32:07 UTC
+Last updated 2016-12-22 22:19:29 UTC
 </div>
 </div>
 </body>
