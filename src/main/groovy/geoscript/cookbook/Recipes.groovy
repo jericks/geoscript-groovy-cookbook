@@ -6,6 +6,8 @@ import geoscript.viewer.Viewer
 
 class Recipes {
 
+    protected static final String NEW_LINE = System.getProperty("line.separator")
+
     protected void drawGeometry(Map options = [:], String name, Geometry g) {
         File file = new File("src/docs/asciidoc/images/${name}.png")
         if(!file.parentFile.exists()) {

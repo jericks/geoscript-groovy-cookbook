@@ -395,3 +395,29 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsTile,i
 ----
 [.thumb]
 image::geometry_bounds_tile.png[]
+
+[source,groovy]
+.Calculate a quad tree for this Bounds between the start and stop levels. A Closure is called for each new Bounds generated.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsQuadTree,indent=0]
+----
+....
+include::output/geometry_bounds_quadtree.txt[]
+....
+
+[source,groovy]
+.Determine whether a Bounds is empty or not. A Bounds is empty if it is null or it's area is 0.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsIsEmpty_false,indent=0]
+----
+....
+include::output/geometry_bounds_isempty_false.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsIsEmpty_true,indent=0]
+----
+....
+include::output/geometry_bounds_isempty_true.txt[]
+....

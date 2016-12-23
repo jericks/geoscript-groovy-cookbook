@@ -396,6 +396,42 @@ class GeometryRecipes extends Recipes {
         subBounds
     }
 
+    List<Bounds> boundsQuadTree() {
+        // tag::boundsQuadTree[]
+        Bounds bounds = new Bounds(-180, -90, 180, 90, "EPSG:4326")
+        bounds.quadTree(0,2) { Bounds b ->
+            println b
+        }
+        // end::boundsQuadTree[]
+        StringBuilder str = new StringBuilder()
+        List<Bounds> subBounds = []
+        bounds.quadTree(0,2) { Bounds b ->
+            str.append(b.toString()).append(NEW_LINE)
+            subBounds.add(b)
+        }
+        writeFile("geometry_bounds_quadtree", str.toString())
+        subBounds
+    }
+
+    Map<String, Boolean> boundsIsEmpty() {
+        // tag::boundsIsEmpty_false[]
+        Bounds bounds = new Bounds(0,10,10,20)
+        println bounds.isEmpty()
+        // end::boundsIsEmpty_false[]
+        writeFile("geometry_bounds_isempty_false", "${bounds.isEmpty()}")
+
+        // tag::boundsIsEmpty_true[]
+        Bounds emptyBounds = new Bounds(0,10,10,10)
+        println emptyBounds.isEmpty()
+        // end::boundsIsEmpty_true[]
+        writeFile("geometry_bounds_isempty_true", "${emptyBounds.isEmpty()}")
+
+        [
+                bounds: bounds.isEmpty(),
+                emptyBounds: emptyBounds.isEmpty()
+        ]
+    }
+
     double getArea() {
         // tag::getArea[]
         Polygon polygon = new Polygon([[

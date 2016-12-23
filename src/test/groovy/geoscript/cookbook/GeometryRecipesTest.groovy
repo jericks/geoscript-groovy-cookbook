@@ -165,6 +165,25 @@ class GeometryRecipesTest {
                 "(-122.46024999999999,47.261750000000006,-122.452,47.267,EPSG:4326)]", bounds.toString())
     }
 
+    @Test void boundsQuadTree() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Bounds> bounds = recipes.boundsQuadTree()
+        assertEquals(5, bounds.size())
+        assertEquals("[" +
+                "(-180.0,-90.0,180.0,90.0,EPSG:4326), " +
+                "(-180.0,-90.0,0.0,0.0,EPSG:4326), " +
+                "(-180.0,0.0,0.0,90.0,EPSG:4326), " +
+                "(0.0,-90.0,180.0,0.0,EPSG:4326), " +
+                "(0.0,0.0,180.0,90.0,EPSG:4326)]", bounds.toString())
+    }
+
+    @Test void boundsIsEmpty() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> result = recipes.boundsIsEmpty()
+        assertFalse(result.bounds)
+        assertTrue(result.emptyBounds)
+    }
+
     @Test void bufferPoint() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.bufferPoint()
