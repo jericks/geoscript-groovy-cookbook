@@ -1114,7 +1114,7 @@ Geometry geometry = bounds.geometry</code></pre>
 </div>
 <div class="imageblock thumb">
 <div class="content">
-<img src="./images/gemetry_bounds_geometry.png" alt="gemetry bounds geometry">
+<img src="./images/geometry_bounds_geometry.png" alt="geometry bounds geometry">
 </div>
 </div>
 <div class="listingblock">
@@ -1126,7 +1126,7 @@ Geometry geometry = bounds.geometry</code></pre>
 </div>
 <div class="imageblock thumb">
 <div class="content">
-<img src="./images/gemetry_bounds_polygon.png" alt="gemetry bounds polygon">
+<img src="./images/geometry_bounds_polygon.png" alt="geometry bounds polygon">
 </div>
 </div>
 <div class="listingblock">
@@ -1138,7 +1138,7 @@ Geometry geometry = bounds.geometry</code></pre>
 </div>
 <div class="imageblock thumb">
 <div class="content">
-<img src="./images/gemetry_bounds_corners.png" alt="gemetry bounds corners">
+<img src="./images/geometry_bounds_corners.png" alt="geometry bounds corners">
 </div>
 </div>
 </div>
@@ -1177,7 +1177,7 @@ bounds2.expandBy(<span class="float">10.1</span>)</code></pre>
 </div>
 <div class="imageblock thumb">
 <div class="content">
-<img src="./images/gemetry_bounds_expandby.png" alt="gemetry bounds expandby">
+<img src="./images/geometry_bounds_expandby.png" alt="geometry bounds expandby">
 </div>
 </div>
 <div class="listingblock">
@@ -1190,7 +1190,7 @@ bounds1.expand(bounds2)</code></pre>
 </div>
 <div class="imageblock thumb">
 <div class="content">
-<img src="./images/gemetry_bounds_expand.png" alt="gemetry bounds expand">
+<img src="./images/geometry_bounds_expand.png" alt="geometry bounds expand">
 </div>
 </div>
 <div class="listingblock">
@@ -1202,7 +1202,19 @@ Bounds bounds2 = bounds1.scale(<span class="integer">2</span>)</code></pre>
 </div>
 <div class="imageblock thumb">
 <div class="content">
-<img src="./images/gemetry_bounds_scale.png" alt="gemetry bounds scale">
+<img src="./images/geometry_bounds_scale.png" alt="geometry bounds scale">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Divide a Bounds into smaller tiles or Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">122.485</span>, <span class="float">47.246</span>, -<span class="float">122.452</span>, <span class="float">47.267</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span>&lt;Bounds&gt; subBounds = bounds.tile(<span class="float">0.25</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_tile.png" alt="geometry bounds tile">
 </div>
 </div>
 </div>
@@ -1211,7 +1223,7 @@ Bounds bounds2 = bounds1.scale(<span class="integer">2</span>)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-22 22:19:29 UTC
+Last updated 2016-12-23 18:15:17 UTC
 </div>
 </div>
 </body>
