@@ -1233,6 +1233,47 @@ Bounds bounds2 = bounds1.scale(<span class="integer">2</span>)</code></pre>
 <img src="./images/geometry_bounds_tile.png" alt="geometry bounds tile">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Calculate a quad tree for this Bounds between the start and stop levels. A Closure is called for each new Bounds generated.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+bounds.quadTree(<span class="integer">0</span>,<span class="integer">2</span>) { Bounds b -&gt;
+    println b
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(-180.0,-90.0,180.0,90.0,EPSG:4326)
+(-180.0,-90.0,0.0,0.0,EPSG:4326)
+(-180.0,0.0,0.0,90.0,EPSG:4326)
+(0.0,-90.0,180.0,0.0,EPSG:4326)
+(0.0,0.0,180.0,90.0,EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Determine whether a Bounds is empty or not. A Bounds is empty if it is null or it&#8217;s area is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">10</span>,<span class="integer">10</span>,<span class="integer">20</span>)
+println bounds.isEmpty()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds emptyBounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">10</span>,<span class="integer">10</span>,<span class="integer">10</span>)
+println emptyBounds.isEmpty()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1371,7 +1412,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-23 18:15:17 UTC
+Last updated 2016-12-23 22:11:41 UTC
 </div>
 </div>
 </body>
