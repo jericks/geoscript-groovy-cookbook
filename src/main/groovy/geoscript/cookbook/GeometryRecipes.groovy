@@ -6,6 +6,7 @@ import geoscript.geom.CircularString
 import geoscript.geom.CompoundCurve
 import geoscript.geom.CompoundRing
 import geoscript.geom.Geometry
+import geoscript.geom.GeometryCollection
 import geoscript.geom.LineString
 import geoscript.geom.MultiLineString
 import geoscript.geom.MultiPoint
@@ -321,7 +322,7 @@ class GeometryRecipes extends Recipes {
         Bounds bounds2 = new Bounds(-127.265, 43.068, -113.554, 50.289, "EPSG:4326")
         bounds2.expandBy(10.1)
         // end::expandByBounds[]
-        drawGeometries("gemetry_bounds_expandby", [bounds2.polygon, bounds1.polygon])
+        drawGeometries("geometry_bounds_expandby", [bounds2.polygon, bounds1.polygon])
         bounds2
     }
 
@@ -332,7 +333,7 @@ class GeometryRecipes extends Recipes {
         bounds1.expand(bounds2)
         // end::expandBounds[]
         Bounds bounds3 = new Bounds(8.4375, 37.996162679728116, 19.6875, 46.07323062540835, "EPSG:4326")
-        drawGeometries("gemetry_bounds_expand", [bounds1.polygon, bounds2.polygon, bounds3.polygon])
+        drawGeometries("geometry_bounds_expand", [bounds1.polygon, bounds2.polygon, bounds3.polygon])
         bounds1
     }
 
@@ -341,7 +342,7 @@ class GeometryRecipes extends Recipes {
         Bounds bounds1 = new Bounds(-127.265, 43.068, -113.554, 50.289, "EPSG:4326")
         Bounds bounds2 = bounds1.scale(2)
         // end::scaleBounds[]
-        drawGeometries("gemetry_bounds_scale", [bounds2.polygon, bounds1.polygon])
+        drawGeometries("geometry_bounds_scale", [bounds2.polygon, bounds1.polygon])
         bounds2
     }
 
@@ -364,7 +365,7 @@ class GeometryRecipes extends Recipes {
         Bounds bounds = new Bounds(-122.485, 47.246, -122.452, 47.267, "EPSG:4326")
         Geometry geometry = bounds.geometry
         // end::boundsGetGeometry[]
-        drawGeometries("gemetry_bounds_geometry", [geometry])
+        drawGeometries("geometry_bounds_geometry", [geometry])
         geometry
     }
 
@@ -373,7 +374,7 @@ class GeometryRecipes extends Recipes {
         Bounds bounds = new Bounds(-122.485, 47.246, -122.452, 47.267, "EPSG:4326")
         Polygon polygon = bounds.polygon
         // end::boundsGetPolygon[]
-        drawGeometries("gemetry_bounds_polygon", [polygon])
+        drawGeometries("geometry_bounds_polygon", [polygon])
         polygon
     }
 
@@ -382,8 +383,17 @@ class GeometryRecipes extends Recipes {
         Bounds bounds = new Bounds(-122.485, 47.246, -122.452, 47.267, "EPSG:4326")
         List<Point> points = bounds.corners
         // end::boundsGetCorners[]
-        drawGeometries("gemetry_bounds_corners", points)
+        drawGeometries("geometry_bounds_corners", points)
         points
+    }
+
+    List<Bounds> boundsTile() {
+        // tag::boundsTile[]
+        Bounds bounds = new Bounds(-122.485, 47.246, -122.452, 47.267, "EPSG:4326")
+        List<Bounds> subBounds = bounds.tile(0.25)
+        // end::boundsTile[]
+        drawGeometries("geometry_bounds_tile", [bounds.geometry, new GeometryCollection(subBounds.collect { Bounds b -> b.geometry})])
+        subBounds
     }
 
     double getArea() {

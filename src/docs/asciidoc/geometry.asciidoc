@@ -327,7 +327,7 @@ include::output/geometry_bounds_properties_aspect.txt[]
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetGeometry,indent=0]
 ----
 [.thumb]
-image::gemetry_bounds_geometry.png[]
+image::geometry_bounds_geometry.png[]
 
 [source,groovy]
 .You can also get a Polygon from a Bounds
@@ -335,7 +335,7 @@ image::gemetry_bounds_geometry.png[]
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetPolygon,indent=0]
 ----
 [.thumb]
-image::gemetry_bounds_polygon.png[]
+image::geometry_bounds_polygon.png[]
 
 [source,groovy]
 .Get the four corners from a Bounds as a List of Points
@@ -343,7 +343,7 @@ image::gemetry_bounds_polygon.png[]
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetCorners,indent=0]
 ----
 [.thumb]
-image::gemetry_bounds_corners.png[]
+image::geometry_bounds_corners.png[]
 
 === Processing Bounds
 
@@ -370,7 +370,7 @@ include::output/geometry_bounds_reproject2.txt[]
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=expandByBounds,indent=0]
 ----
 [.thumb]
-image::gemetry_bounds_expandby.png[]
+image::geometry_bounds_expandby.png[]
 
 [source,groovy]
 .Expand a Bounds to include another Bounds
@@ -378,7 +378,7 @@ image::gemetry_bounds_expandby.png[]
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=expandBounds,indent=0]
 ----
 [.thumb]
-image::gemetry_bounds_expand.png[]
+image::geometry_bounds_expand.png[]
 
 [source,groovy]
 .Scale an existing Bounds some distance to create a new Bounds
@@ -386,4 +386,12 @@ image::gemetry_bounds_expand.png[]
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=scaleBounds,indent=0]
 ----
 [.thumb]
-image::gemetry_bounds_scale.png[]
+image::geometry_bounds_scale.png[]
+
+[source,groovy]
+.Divide a Bounds into smaller tiles or Bounds
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsTile,indent=0]
+----
+[.thumb]
+image::geometry_bounds_tile.png[]
