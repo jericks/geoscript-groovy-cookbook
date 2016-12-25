@@ -1274,6 +1274,121 @@ println emptyBounds.isEmpty()</code></pre>
 <pre>true</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Determine if a Bounds contains another Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(-<span class="float">107.226</span>, <span class="float">34.597</span>, -<span class="float">92.812</span>, <span class="float">43.068</span>)
+Bounds bounds2 = <span class="keyword">new</span> Bounds(-<span class="float">104.326</span>, <span class="float">37.857</span>, -<span class="float">98.349</span>, <span class="float">40.913</span>)
+println bounds1.contains(bounds2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_contains_bounds1.png" alt="geometry bounds contains bounds1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds3 = <span class="keyword">new</span> Bounds(-<span class="float">112.412</span>, <span class="float">36.809</span>, -<span class="float">99.316</span>, <span class="float">44.777</span>)
+println bounds1.contains(bounds3)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_contains_bounds2.png" alt="geometry bounds contains bounds2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Determine if a Bounds contains a Point</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">107.226</span>, <span class="float">34.597</span>, -<span class="float">92.812</span>, <span class="float">43.068</span>)
+<span class="predefined-type">Point</span> point1 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">95.976</span>, <span class="float">39.639</span>)
+println bounds.contains(point1)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_contains_point1.png" alt="geometry bounds contains point1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point2 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">89.384</span>, <span class="float">38.959</span>)
+println bounds.contains(point2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_contains_point2.png" alt="geometry bounds contains point2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Determine if two Bounds intersect</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(-<span class="float">95.885</span>, <span class="float">46.765</span>, -<span class="float">95.788</span>, <span class="float">46.811</span>)
+Bounds bounds2 = <span class="keyword">new</span> Bounds(-<span class="float">95.847</span>, <span class="float">46.818</span>, -<span class="float">95.810</span>, <span class="float">46.839</span>)
+println bounds1.intersects(bounds2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_intersects1.png" alt="geometry bounds intersects1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds3 = <span class="keyword">new</span> Bounds(-<span class="float">95.904</span>, <span class="float">46.747</span>, -<span class="float">95.839</span>, <span class="float">46.792</span>)
+println bounds1.intersects(bounds3)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_intersects2.png" alt="geometry bounds intersects2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the intersection between two Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(-<span class="float">95.885</span>, <span class="float">46.765</span>, -<span class="float">95.788</span>, <span class="float">46.811</span>)
+Bounds bounds2 = <span class="keyword">new</span> Bounds(-<span class="float">95.904</span>, <span class="float">46.747</span>, -<span class="float">95.839</span>, <span class="float">46.792</span>)
+Bounds bounds3 = bounds1.intersection(bounds2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_intersection.png" alt="geometry bounds intersection">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1412,7 +1527,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-23 22:11:41 UTC
+Last updated 2016-12-25 22:09:39 UTC
 </div>
 </div>
 </body>
