@@ -432,6 +432,82 @@ class GeometryRecipes extends Recipes {
         ]
     }
 
+    Map<String, Boolean> boundsContainsBounds() {
+        // tag::boundsContainsBounds1[]
+        Bounds bounds1 = new Bounds(-107.226, 34.597, -92.812, 43.068)
+        Bounds bounds2 = new Bounds(-104.326, 37.857, -98.349, 40.913)
+        println bounds1.contains(bounds2)
+        // end::boundsContainsBounds1[]
+        drawGeometries("geometry_bounds_contains_bounds1", [bounds1.geometry, bounds2.geometry])
+        writeFile("geometry_bounds_contains_bounds1", "${bounds1.contains(bounds2)}")
+
+        // tag::boundsContainsBounds2[]
+        Bounds bounds3 = new Bounds(-112.412, 36.809, -99.316, 44.777)
+        println bounds1.contains(bounds3)
+        // end::boundsContainsBounds2[]
+        writeFile("geometry_bounds_contains_bounds2", "${bounds1.contains(bounds3)}")
+        drawGeometries("geometry_bounds_contains_bounds2", [bounds1.geometry, bounds3.geometry])
+
+        [
+                bounds2: bounds1.contains(bounds2),
+                bounds3: bounds1.contains(bounds3)
+        ]
+    }
+
+    Map<String, Boolean> boundsContainsPoint() {
+        // tag::boundsContainsPoint1[]
+        Bounds bounds = new Bounds(-107.226, 34.597, -92.812, 43.068)
+        Point point1 = new Point(-95.976, 39.639)
+        println bounds.contains(point1)
+        // end::boundsContainsPoint1[]
+        writeFile("geometry_bounds_contains_point1", "${bounds.contains(point1)}")
+        drawGeometries("geometry_bounds_contains_point1", [bounds.geometry, point1])
+
+        // tag::boundsContainsPoint2[]
+        Point point2 = new Point(-89.384, 38.959)
+        println bounds.contains(point2)
+        // end::boundsContainsPoint2[]
+        writeFile("geometry_bounds_contains_point2", "${bounds.contains(point1)}")
+        drawGeometries("geometry_bounds_contains_point2", [bounds.geometry, point2])
+
+        [
+            point1: bounds.contains(point1),
+            point2: bounds.contains(point2)
+        ]
+    }
+
+    Map<String, Boolean> boundsIntersectsBounds() {
+        // tag::boundsIntersectsBounds1[]
+        Bounds bounds1 = new Bounds(-95.885, 46.765, -95.788, 46.811)
+        Bounds bounds2 = new Bounds(-95.847, 46.818, -95.810, 46.839)
+        println bounds1.intersects(bounds2)
+        // end::boundsIntersectsBounds1[]
+        writeFile("geometry_bounds_intersects1", "${bounds1.intersects(bounds2)}")
+        drawGeometries("geometry_bounds_intersects1", [bounds1.geometry, bounds2.geometry])
+
+        // tag::boundsIntersectsBounds2[]
+        Bounds bounds3 = new Bounds(-95.904, 46.747, -95.839, 46.792)
+        println bounds1.intersects(bounds3)
+        // end::boundsIntersectsBounds2[]
+        writeFile("geometry_bounds_intersects2", "${bounds1.intersects(bounds3)}")
+        drawGeometries("geometry_bounds_intersects2", [bounds1.geometry, bounds3.geometry])
+
+        [
+                bounds2: bounds1.intersects(bounds2),
+                bounds3: bounds1.intersects(bounds3)
+        ]
+    }
+
+    Bounds boundsIntersection() {
+        // tag::boundsIntersection[]
+        Bounds bounds1 = new Bounds(-95.885, 46.765, -95.788, 46.811)
+        Bounds bounds2 = new Bounds(-95.904, 46.747, -95.839, 46.792)
+        Bounds bounds3 = bounds1.intersection(bounds2)
+        // end::boundsIntersection[]
+        drawGeometries("geometry_bounds_intersection", [bounds1.geometry, bounds2.geometry, bounds3.geometry])
+        bounds3
+    }
+
     double getArea() {
         // tag::getArea[]
         Polygon polygon = new Polygon([[

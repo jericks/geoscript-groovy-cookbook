@@ -209,7 +209,33 @@ class GeometryRecipesTest {
         assertEquals(13.710, properties.width, 0.01)
         assertEquals(7.221, properties.height, 0.01)
         assertEquals(1.898, properties.aspect, 0.01)
+    }
 
+    @Test void boundsContainsBounds() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map results = recipes.boundsContainsBounds()
+        assertTrue(results.bounds2)
+        assertFalse(results.bounds3)
+    }
+
+    @Test void boundsContainsPoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map results = recipes.boundsContainsPoint()
+        assertTrue(results.point1)
+        assertFalse(results.point2)
+    }
+
+    @Test void boundsIntersectsBounds() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map results = recipes.boundsIntersectsBounds()
+        assertFalse(results.bounds2)
+        assertTrue(results.bounds3)
+    }
+
+    @Test void boundsIntersection() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Bounds bounds = recipes.boundsIntersection()
+        assertEquals("(-95.885,46.765,-95.839,46.792)", bounds.toString())
     }
 
     @Test void getArea() {
