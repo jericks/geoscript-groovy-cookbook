@@ -1431,13 +1431,108 @@ Geometry geometry = bounds.generateGrid(<span class="float">72.0</span>,<span cl
 <div class="title">Generate a grid from a Bounds with a given cell width and height and an inverted hexagon shape.</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-Geometry geometry = bounds.getGrid(<span class="integer">5</span>,<span class="integer">5</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">hexagon-inv</span><span class="delimiter">&quot;</span></span>)
-drawGeometries(<span class="string"><span class="delimiter">&quot;</span><span class="content">geometry_bounds_grid_hexagoninv_colsrows</span><span class="delimiter">&quot;</span></span>, [geometry], <span class="key">drawCoords</span>: <span class="predefined-constant">false</span>)</code></pre>
+Geometry geometry = bounds.getGrid(<span class="integer">5</span>,<span class="integer">5</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">hexagon-inv</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_bounds_grid_hexagoninv_colsrows.png" alt="geometry bounds grid hexagoninv colsrows">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a rectangle from a Bounds with a given number of Points and a rotation angle in radians.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createRectangle(<span class="integer">20</span>,<span class="predefined-type">Math</span>.toRadians(<span class="integer">45</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createrectangle.png" alt="geometry bounds createrectangle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create an ellipse from a Bounds. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createEllipse()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createreellipse.png" alt="geometry bounds createreellipse">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a squircle from a Bounds. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createSquircle()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createresquircle.png" alt="geometry bounds createresquircle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a super circle from a Bounds with a given power. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createSuperCircle(<span class="float">1.75</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createresupercircle.png" alt="geometry bounds createresupercircle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create an arc from a Bounds with a start angle and angle extent. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+LineString lineString = bounds.createArc(<span class="predefined-type">Math</span>.toRadians(<span class="integer">45</span>), <span class="predefined-type">Math</span>.toRadians(<span class="integer">90</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createrearc.png" alt="geometry bounds createrearc">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create an arc polygon from a Bounds with a start angle and angle extent. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createArcPolygon(<span class="predefined-type">Math</span>.toRadians(<span class="integer">45</span>), <span class="predefined-type">Math</span>.toRadians(<span class="integer">90</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createrearcpolygon.png" alt="geometry bounds createrearcpolygon">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a sine star from a Bounds with a number of arms and an arm length ratio. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createSineStar(<span class="integer">5</span>, <span class="float">2.3</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createsinestar.png" alt="geometry bounds createsinestar">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a hexagon from a Bounds that is either inverted (false) or not (true).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createHexagon(<span class="predefined-constant">false</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createhexagon.png" alt="geometry bounds createhexagon">
 </div>
 </div>
 </div>
@@ -1446,7 +1541,7 @@ drawGeometries(<span class="string"><span class="delimiter">&quot;</span><span c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-29 00:21:13 UTC
+Last updated 2016-12-29 03:15:30 UTC
 </div>
 </div>
 </body>
