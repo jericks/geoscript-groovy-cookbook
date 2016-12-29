@@ -492,3 +492,43 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsInters
 ----
 [.thumb]
 image::geometry_bounds_intersection.png[]
+
+[source,groovy]
+.Generate a grid from a Bounds with a given number of columns and rows and the polygon shape.  Other shapes include: polygon, point, circle/ellipse, hexagon, hexagon-inv).
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetPolygonGridByColumnsAndRows,indent=0]
+----
+[.thumb]
+image::geometry_bounds_grid_polygon_colsrows.png[]
+
+[source,groovy]
+.Generate a grid from a Bounds with a given number of columns and rows and a point shape.  A Closure that is called with a geometry, column, and row for each grid cell that is created.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGeneratePointGridByColumnsAndRows,indent=0]
+----
+[.thumb]
+image::geometry_bounds_grid_point_colsrows.png[]
+
+[source,groovy]
+.Generate a grid from a Bounds with a given cell width and height and a circle/ellipse shape.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetCircleGridByCellWidthAndHeight,indent=0]
+----
+[.thumb]
+image::geometry_bounds_grid_circle_cellwidthheight.png[]
+
+[source,groovy]
+.Generate a grid from a Bounds with a given cell width and height and a hexagon shape.  A Closure is called with a geometry, column, and row for each grid cell generated.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetHexagonGridByColumnsAndRows,indent=0]
+----
+[.thumb]
+image::geometry_bounds_grid_hexagon_cellwidthheight.png[]
+
+[source,groovy]
+.Generate a grid from a Bounds with a given cell width and height and an inverted hexagon shape.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetHexagonInvGridByColumnsAndRows,indent=0]
+----
+[.thumb]
+image::geometry_bounds_grid_hexagoninv_colsrows.png[]

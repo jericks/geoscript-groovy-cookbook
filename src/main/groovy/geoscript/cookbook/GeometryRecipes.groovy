@@ -508,6 +508,57 @@ class GeometryRecipes extends Recipes {
         bounds3
     }
 
+    Geometry boundsGetPolygonGridByColumnsAndRows() {
+        // tag::boundsGetPolygonGridByColumnsAndRows[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        Geometry geometry = bounds.getGrid(5,4,"polygon")
+        // end::boundsGetPolygonGridByColumnsAndRows[]
+        drawGeometries("geometry_bounds_grid_polygon_colsrows", [geometry], drawCoords: false)
+        geometry
+    }
+
+    Geometry boundsGeneratePointGridByColumnsAndRows() {
+        // tag::boundsGeneratePointGridByColumnsAndRows[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        List geometries = []
+        Geometry geometry = bounds.generateGrid(10,8,"point") { Geometry g, int col, int row ->
+            geometries.add(g)
+        }
+        // end::boundsGeneratePointGridByColumnsAndRows[]
+        drawGeometries("geometry_bounds_grid_point_colsrows", geometries)
+        new GeometryCollection(geometries)
+    }
+
+    Geometry boundsGetCircleGridByCellWidthAndHeight() {
+        // tag::boundsGetCircleGridByCellWidthAndHeight[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        Geometry geometry = bounds.getGrid(72.0,72.0,"circle")
+        // end::boundsGetCircleGridByCellWidthAndHeight[]
+        drawGeometries("geometry_bounds_grid_circle_cellwidthheight", [geometry], drawCoords: false)
+        geometry
+    }
+
+    Geometry boundsGetHexagonGridByColumnsAndRows() {
+        // tag::boundsGetHexagonGridByColumnsAndRows[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        List geometries = []
+        Geometry geometry = bounds.generateGrid(72.0,72.0,"hexagon") { Geometry g, int col, int row ->
+            geometries.add(g)
+        }
+        // end::boundsGetHexagonGridByColumnsAndRows[]
+        drawGeometries("geometry_bounds_grid_hexagon_cellwidthheight", geometries, drawCoords: false)
+        new GeometryCollection(geometries)
+    }
+
+    Geometry boundsGetHexagonInvGridByColumnsAndRows() {
+        // tag::boundsGetHexagonInvGridByColumnsAndRows[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        Geometry geometry = bounds.getGrid(5,5,"hexagon-inv")
+        drawGeometries("geometry_bounds_grid_hexagoninv_colsrows", [geometry], drawCoords: false)
+        // end::boundsGetHexagonInvGridByColumnsAndRows[]
+        geometry
+    }
+
     double getArea() {
         // tag::getArea[]
         Polygon polygon = new Polygon([[

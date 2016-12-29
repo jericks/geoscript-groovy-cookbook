@@ -238,6 +238,41 @@ class GeometryRecipesTest {
         assertEquals("(-95.885,46.765,-95.839,46.792)", bounds.toString())
     }
 
+    @Test void boundsGetPolygonGridByColumnsAndRows() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.boundsGetPolygonGridByColumnsAndRows()
+        assertTrue(geometry instanceof GeometryCollection)
+        assertEquals(20, geometry.numGeometries)
+    }
+
+    @Test void boundsGeneratePointGridByColumnsAndRows() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.boundsGeneratePointGridByColumnsAndRows()
+        assertTrue(geometry instanceof GeometryCollection)
+        assertEquals(80, geometry.numGeometries)
+    }
+
+    @Test void boundsGetCircleGridByCellWidthAndHeight() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.boundsGetCircleGridByCellWidthAndHeight()
+        assertTrue(geometry instanceof GeometryCollection)
+        assertEquals(15, geometry.numGeometries)
+    }
+
+    @Test void boundsGetHexagonGridByColumnsAndRows() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.boundsGetHexagonGridByColumnsAndRows()
+        assertTrue(geometry instanceof GeometryCollection)
+        assertEquals(15, geometry.numGeometries)
+    }
+
+    @Test void boundsGetHexagonInvGridByColumnsAndRows() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.boundsGetHexagonInvGridByColumnsAndRows()
+        assertTrue(geometry instanceof GeometryCollection)
+        assertEquals(25, geometry.numGeometries)
+    }
+
     @Test void getArea() {
         GeometryRecipes recipes = new GeometryRecipes()
         double area = recipes.getArea()
