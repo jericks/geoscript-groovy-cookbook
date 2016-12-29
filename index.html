@@ -1389,6 +1389,73 @@ Bounds bounds3 = bounds1.intersection(bounds2)</code></pre>
 <img src="./images/geometry_bounds_intersection.png" alt="geometry bounds intersection">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given number of columns and rows and the polygon shape.  Other shapes include: polygon, point, circle/ellipse, hexagon, hexagon-inv).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = bounds.getGrid(<span class="integer">5</span>,<span class="integer">4</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">polygon</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_polygon_colsrows.png" alt="geometry bounds grid polygon colsrows">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given number of columns and rows and a point shape.  A Closure that is called with a geometry, column, and row for each grid cell that is created.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span> geometries = <span class="type">[]</span>
+Geometry geometry = bounds.generateGrid(<span class="integer">10</span>,<span class="integer">8</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">point</span><span class="delimiter">&quot;</span></span>) { Geometry g, <span class="type">int</span> col, <span class="type">int</span> row -&gt;
+    geometries.add(g)
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_point_colsrows.png" alt="geometry bounds grid point colsrows">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given cell width and height and a circle/ellipse shape.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = bounds.getGrid(<span class="float">72.0</span>,<span class="float">72.0</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">circle</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_circle_cellwidthheight.png" alt="geometry bounds grid circle cellwidthheight">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given cell width and height and a hexagon shape.  A Closure is called with a geometry, column, and row for each grid cell generated.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span> geometries = <span class="type">[]</span>
+Geometry geometry = bounds.generateGrid(<span class="float">72.0</span>,<span class="float">72.0</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">hexagon</span><span class="delimiter">&quot;</span></span>) { Geometry g, <span class="type">int</span> col, <span class="type">int</span> row -&gt;
+    geometries.add(g)
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_hexagon_cellwidthheight.png" alt="geometry bounds grid hexagon cellwidthheight">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given cell width and height and an inverted hexagon shape.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = bounds.getGrid(<span class="integer">5</span>,<span class="integer">5</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">hexagon-inv</span><span class="delimiter">&quot;</span></span>)
+drawGeometries(<span class="string"><span class="delimiter">&quot;</span><span class="content">geometry_bounds_grid_hexagoninv_colsrows</span><span class="delimiter">&quot;</span></span>, [geometry], <span class="key">drawCoords</span>: <span class="predefined-constant">false</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_hexagoninv_colsrows.png" alt="geometry bounds grid hexagoninv colsrows">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1527,7 +1594,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-25 22:09:39 UTC
+Last updated 2016-12-29 00:21:13 UTC
 </div>
 </div>
 </body>
