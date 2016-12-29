@@ -554,9 +554,81 @@ class GeometryRecipes extends Recipes {
         // tag::boundsGetHexagonInvGridByColumnsAndRows[]
         Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
         Geometry geometry = bounds.getGrid(5,5,"hexagon-inv")
-        drawGeometries("geometry_bounds_grid_hexagoninv_colsrows", [geometry], drawCoords: false)
         // end::boundsGetHexagonInvGridByColumnsAndRows[]
+        drawGeometries("geometry_bounds_grid_hexagoninv_colsrows", [geometry], drawCoords: false)
         geometry
+    }
+
+    Polygon boundsCreateRectangle() {
+        // tag::boundsCreateRectangle[]
+        Bounds bounds = new Bounds(0,0,20,20)
+        Polygon polygon = bounds.createRectangle(20,Math.toRadians(45))
+        // end::boundsCreateRectangle[]
+        drawGeometries("geometry_bounds_createrectangle", [bounds.geometry, polygon])
+        polygon
+    }
+
+    Polygon boundsCreateEllipse() {
+        // tag::boundsCreateEllipse[]
+        Bounds bounds = new Bounds(0,0,20,20)
+        Polygon polygon = bounds.createEllipse()
+        // end::boundsCreateEllipse[]
+        drawGeometries("geometry_bounds_createreellipse", [bounds.geometry, polygon])
+        polygon
+    }
+
+    Polygon boundsCreateSquircle() {
+        // tag::boundsCreateSquircle[]
+        Bounds bounds = new Bounds(0,0,20,20)
+        Polygon polygon = bounds.createSquircle()
+        // end::boundsCreateSquircle[]
+        drawGeometries("geometry_bounds_createresquircle", [bounds.geometry, polygon])
+        polygon
+    }
+
+    Polygon boundsCreateSuperCircle() {
+        // tag::boundsCreateSuperCircle[]
+        Bounds bounds = new Bounds(0,0,20,20)
+        Polygon polygon = bounds.createSuperCircle(1.75)
+        // end::boundsCreateSuperCircle[]
+        drawGeometries("geometry_bounds_createresupercircle", [bounds.geometry, polygon])
+        polygon
+    }
+
+    LineString boundsCreateArc() {
+        // tag::boundsCreateArc[]
+        Bounds bounds = new Bounds(0,0,20,20)
+        LineString lineString = bounds.createArc(Math.toRadians(45), Math.toRadians(90))
+        // end::boundsCreateArc[]
+        drawGeometries("geometry_bounds_createrearc", [bounds.geometry, lineString])
+        lineString
+    }
+
+    Polygon boundsCreateArcPolygon() {
+        // tag::boundsCreateArcPolygon[]
+        Bounds bounds = new Bounds(0,0,20,20)
+        Polygon polygon = bounds.createArcPolygon(Math.toRadians(45), Math.toRadians(90))
+        // end::boundsCreateArcPolygon[]
+        drawGeometries("geometry_bounds_createrearcpolygon", [bounds.geometry, polygon])
+        polygon
+    }
+
+    Polygon boundsCreateSineStar() {
+        // tag::boundsCreateSineStar[]
+        Bounds bounds = new Bounds(0,0,20,20)
+        Polygon polygon = bounds.createSineStar(5, 2.3)
+        // end::boundsCreateSineStar[]
+        drawGeometries("geometry_bounds_createsinestar", [bounds.geometry, polygon])
+        polygon
+    }
+
+    Polygon boundsCreateHexagon() {
+        // tag::boundsCreateHexagon[]
+        Bounds bounds = new Bounds(0,0,20,20)
+        Polygon polygon = bounds.createHexagon(false)
+        // end::boundsCreateHexagon[]
+        drawGeometries("geometry_bounds_createhexagon", [bounds.geometry, polygon])
+        polygon
     }
 
     double getArea() {

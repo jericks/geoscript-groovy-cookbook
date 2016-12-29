@@ -532,3 +532,67 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsGetHex
 ----
 [.thumb]
 image::geometry_bounds_grid_hexagoninv_colsrows.png[]
+
+[source,groovy]
+.Create a rectangle from a Bounds with a given number of Points and a rotation angle in radians.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsCreateRectangle,indent=0]
+----
+[.thumb]
+image::geometry_bounds_createrectangle.png[]
+
+[source,groovy]
+.Create an ellipse from a Bounds. The default number of points is 20 and the default rotation angle in radians is 0.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsCreateEllipse,indent=0]
+----
+[.thumb]
+image::geometry_bounds_createreellipse.png[]
+
+[source,groovy]
+.Create a squircle from a Bounds. The default number of points is 20 and the default rotation angle in radians is 0.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsCreateSquircle,indent=0]
+----
+[.thumb]
+image::geometry_bounds_createresquircle.png[]
+
+[source,groovy]
+.Create a super circle from a Bounds with a given power. The default number of points is 20 and the default rotation angle in radians is 0.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsCreateSuperCircle,indent=0]
+----
+[.thumb]
+image::geometry_bounds_createresupercircle.png[]
+
+[source,groovy]
+.Create an arc from a Bounds with a start angle and angle extent. The default number of points is 20 and the default rotation angle in radians is 0.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsCreateArc,indent=0]
+----
+[.thumb]
+image::geometry_bounds_createrearc.png[]
+
+[source,groovy]
+.Create an arc polygon from a Bounds with a start angle and angle extent. The default number of points is 20 and the default rotation angle in radians is 0.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsCreateArcPolygon,indent=0]
+----
+[.thumb]
+image::geometry_bounds_createrearcpolygon.png[]
+
+[source,groovy]
+.Create a sine star from a Bounds with a number of arms and an arm length ratio. The default number of points is 20 and the default rotation angle in radians is 0.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsCreateSineStar,indent=0]
+----
+[.thumb]
+image::geometry_bounds_createsinestar.png[]
+
+[source,groovy]
+.Create a hexagon from a Bounds that is either inverted (false) or not (true).
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundsCreateHexagon,indent=0]
+----
+[.thumb]
+image::geometry_bounds_createhexagon.png[]
