@@ -29,13 +29,96 @@ include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createFrom
 include::output/projection_createprojectionfromname.txt[]
 ....
 
+=== Getting Projection Properties
+
+[source,groovy]
+.Get the id
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=getProperties_id,indent=0]
+----
+....
+include::output/projection_id.txt[]
+....
+
+[source,groovy]
+.Get the srs
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=getProperties_srs,indent=0]
+----
+....
+include::output/projection_srs.txt[]
+....
+
+[source,groovy]
+.Get the epsg code
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=getProperties_epsg,indent=0]
+----
+....
+include::output/projection_epsg.txt[]
+....
+
+[source,groovy]
+.Get the WKT
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=getProperties_wkt,indent=0]
+----
+....
+include::output/projection_wkt.txt[]
+....
+
+[source,groovy]
+.Get the Bounds in the native Projection
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=getProperties_bounds,indent=0]
+----
+....
+include::output/projection_bounds.txt[]
+....
+
+[source,groovy]
+.Get the Bounds in the EPSG:4326
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=getProperties_geobounds,indent=0]
+----
+....
+include::output/projection_geobounds.txt[]
+....
+
 === Using Projections
 
 [source,groovy]
-.Transform a Geometry from one projection to another
+.Transform a Geometry from one projection to another using the Projection static method with strings
 ----
-include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=transformStatic,indent=0]
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=transformStaticStr,indent=0]
 ----
 ....
-include::output/projection_transformstatic.txt[]
+include::output/projection_transformstaticstr.txt[]
+....
+
+[source,groovy]
+.Transform a Geometry from one projection to another using the Projection static method with Projections
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=transformStaticProj,indent=0]
+----
+....
+include::output/projection_transformstaticproj.txt[]
+....
+
+[source,groovy]
+.Transform a Geometry from one projection to another using two Projections
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=transformProj,indent=0]
+----
+....
+include::output/projection_transformproj.txt[]
+....
+
+[source,groovy]
+.Transform a Geometry from one projection to another using a Projections and a String
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=transformStr,indent=0]
+----
+....
+include::output/projection_transformstr.txt[]
 ....
