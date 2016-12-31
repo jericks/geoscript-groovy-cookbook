@@ -517,6 +517,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#projection-recipes">Projection Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#creating-projections">Creating Projections</a></li>
+<li><a href="#getting-projection-properties">Getting Projection Properties</a></li>
 <li><a href="#using-projections">Using Projections</a></li>
 </ul>
 </li>
@@ -603,13 +604,135 @@ println proj.wkt</code></pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="getting-projection-properties"><a class="anchor" href="#getting-projection-properties"></a>Getting Projection Properties</h3>
+<div class="listingblock">
+<div class="title">Get the id</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> id = proj.id</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>EPSG:4326</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the srs</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> srs = proj.srs</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>EPSG:4326</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the epsg code</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> epsg = proj.epsg</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>4326</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the WKT</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> wkt = proj.wkt</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>GEOGCS["WGS 84",
+  DATUM["World Geodetic System 1984",
+    SPHEROID["WGS 84", 6378137.0, 298.257223563, AUTHORITY["EPSG","7030"]],
+    AUTHORITY["EPSG","6326"]],
+  PRIMEM["Greenwich", 0.0, AUTHORITY["EPSG","8901"]],
+  UNIT["degree", 0.017453292519943295],
+  AXIS["Geodetic longitude", EAST],
+  AXIS["Geodetic latitude", NORTH],
+  AUTHORITY["EPSG","4326"]]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Bounds in the native Projection</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = proj.bounds</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(-180.0,-90.0,180.0,90.0,EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Bounds in the EPSG:4326</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds geoBounds = proj.geoBounds</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(-180.0,-90.0,180.0,90.0,EPSG:4326)</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="using-projections"><a class="anchor" href="#using-projections"></a>Using Projections</h3>
 <div class="listingblock">
-<div class="title">Transform a Geometry from one projection to another</div>
+<div class="title">Transform a Geometry from one projection to another using the Projection static method with strings</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Geometry epsg4326Geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
 Geometry epsg2927Geom = Projection.transform(epsg4326Geom, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
 println epsg2927Geom</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Transform a Geometry from one projection to another using the Projection static method with Projections</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection epsg4326 = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Projection epsg2927 = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
+Geometry epsg4326Geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
+Geometry epsg2927Geom = Projection.transform(epsg4326Geom, epsg4326, epsg2927)
+println epsg2927Geom</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Transform a Geometry from one projection to another using two Projections</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection fromProj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Projection toProj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
+Geometry geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
+Geometry projectedGeom = fromProj.transform(geom, toProj)
+println projectedGeom</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Transform a Geometry from one projection to another using a Projections and a String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection fromProj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
+Geometry projectedGeom = fromProj.transform(geom, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
+println projectedGeom</code></pre>
 </div>
 </div>
 <div class="literalblock">
@@ -623,7 +746,7 @@ println epsg2927Geom</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-29 03:15:30 UTC
+Last updated 2016-12-31 03:59:10 UTC
 </div>
 </div>
 </body>
