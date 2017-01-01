@@ -29,6 +29,15 @@ include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createFrom
 include::output/projection_createprojectionfromname.txt[]
 ....
 
+[source,groovy]
+.Get a List of all supported Projections (this is really slow)
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=getAllProjections,indent=0]
+----
+....
+include::output/projection_projections.txt[]
+....
+
 === Getting Projection Properties
 
 [source,groovy]
@@ -121,4 +130,219 @@ include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=transformS
 ----
 ....
 include::output/projection_transformstr.txt[]
+....
+
+=== Using Geodetic
+
+[source,groovy]
+.Create a Geodetic object with an ellipsoid
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createGeodetic,indent=0]
+----
+....
+include::output/projection_geodetic.txt[]
+....
+
+[source,groovy]
+.Calculate the forward and back azimuth and distance between the given two Points.
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=inverseGeodetic1,indent=0]
+----
+....
+include::output/projection_geodetic_inverse_1.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=inverseGeodetic2,indent=0]
+----
+....
+include::output/projection_geodetic_inverse_2.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=inverseGeodetic3,indent=0]
+----
+....
+include::output/projection_geodetic_inverse_3.txt[]
+....
+
+[source,groovy]
+.Calculate a new Point and back azimuth given the starting Point, azimuth, and distance.
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=forwardGeodetic1,indent=0]
+----
+....
+include::output/projection_geodetic_forward_1.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=forwardGeodetic2,indent=0]
+----
+....
+include::output/projection_geodetic_forward_2.txt[]
+....
+
+[source,groovy]
+.Place the given number of points between starting and ending Points
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=placePointsGeodetic,indent=0]
+----
+....
+include::output/projection_geodetic_points.txt[]
+....
+
+=== Using Decimal Degrees
+
+[source,groovy]
+.Create a new DecimalDegrees from a longitude and latitude
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createDecimalDegreesFromLongitudeAndLatitude,indent=0]
+----
+....
+include::output/projection_decimaldegrees_longitude_latitude.txt[]
+....
+
+[source,groovy]
+.Create a new DecimalDegrees from a Point
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createDecimalDegreesFromPoint,indent=0]
+----
+....
+include::output/projection_decimaldegrees_point.txt[]
+....
+
+[source,groovy]
+.Create a new DecimalDegrees from a Longitude and Latitude string
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createDecimalDegreesFromLongitudeLatitudeString,indent=0]
+----
+....
+include::output/projection_decimaldegrees_longitudelatitudestring.txt[]
+....
+
+[source,groovy]
+.Create a new DecimalDegrees from two strings with glyphs
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createDecimalDegreesFromTwoStringsWithGlyphs,indent=0]
+----
+....
+include::output/projection_decimaldegrees_twostrings_glyphs.txt[]
+....
+
+[source,groovy]
+.Create a new DecimalDegrees from two strings
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createDecimalDegreesFromTwoStringsWithCharacters,indent=0]
+----
+....
+include::output/projection_decimaldegrees_twostrings_characters.txt[]
+....
+
+[source,groovy]
+.Create a new DecimalDegrees from a single Degrees Minutes Seconds formatted string
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createDecimalDegreesFromOneDMSString,indent=0]
+----
+....
+include::output/projection_decimaldegrees_dmsstring.txt[]
+....
+
+[source,groovy]
+.Create a new DecimalDegrees from a single Decimal Degree Minutes formatted string with glyphs
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createDecimalDegreesFromOneDDMGlyphsString,indent=0]
+----
+....
+include::output/projection_decimaldegrees_ddmglyphstring.txt[]
+....
+
+[source,groovy]
+.Create a new DecimalDegrees from a single Decimal Degree Minutes formatted string
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=createDecimalDegreesFromOneDDMString,indent=0]
+----
+....
+include::output/projection_decimaldegrees_ddmstring.txt[]
+....
+
+[source,groovy]
+.Get degrees minutes seconds from a DecimalDegrees object
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=decimalDegreesGetDms1,indent=0]
+----
+....
+include::output/projection_decimaldegrees_dms_1.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=decimalDegreesGetDms2,indent=0]
+----
+....
+include::output/projection_decimaldegrees_dms_2.txt[]
+....
+
+[source,groovy]
+.Convert a DecimalDegrees object to a DMS String with glyphs
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=decimalDegreesToDms1,indent=0]
+----
+....
+include::output/projection_decimaldegrees_todms1.txt[]
+....
+
+[source,groovy]
+.Convert a DecimalDegrees object to a DMS String without glyphs
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=decimalDegreesToDms2,indent=0]
+----
+....
+include::output/projection_decimaldegrees_todms2.txt[]
+....
+
+[source,groovy]
+.Get degrees minutes from a DecimalDegrees object
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=decimalDegreesGetDdm1,indent=0]
+----
+....
+include::output/projection_decimaldegrees_ddm_1.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=decimalDegreesGetDdm2,indent=0]
+----
+....
+include::output/projection_decimaldegrees_ddm_2.txt[]
+....
+
+[source,groovy]
+.Convert a DecimalDegrees object to a DDM String with glyphs
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=decimalDegreesToDdm1,indent=0]
+----
+....
+include::output/projection_decimaldegrees_toddm1.txt[]
+....
+
+[source,groovy]
+.Convert a DecimalDegrees object to a DDM String without glyphs
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=decimalDegreesToDdm2,indent=0]
+----
+....
+include::output/projection_decimaldegrees_toddm2.txt[]
+....
+
+[source,groovy]
+.Get a Point from a DecimalDegrees object
+----
+include::{sourcedir}/geoscript/cookbook/ProjectionRecipes.groovy[tags=decimalDegreesGetPoint,indent=0]
+----
+....
+include::output/projection_decimaldegrees_point.txt[]
 ....
