@@ -1,0 +1,33 @@
+== Spatial Index Recipes
+
+=== Creating Projections
+
+[source,groovy]
+.Create a STRtree spatial index
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createSTRtree_create,indent=0]
+----
+
+[source,groovy]
+.Insert Geometries and their Bounds
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createSTRtree_insert,indent=0]
+----
+
+[source,groovy]
+.Get the size of the index
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createSTRtree_size,indent=0]
+----
+....
+include::output/spatialindex_strtree_size.txt[]
+....
+
+[source,groovy]
+.Query the index
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createSTRtree_results,indent=0]
+----
+....
+include::output/spatialindex_strtree_results.txt[]
+....
