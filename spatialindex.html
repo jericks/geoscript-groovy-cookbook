@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<title>Projection Recipes</title>
+<title>Spatial Index Recipes</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -514,13 +514,9 @@ table.CodeRay td.code>pre{padding:0}
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#projection-recipes">Projection Recipes</a>
+<li><a href="#spatial-index-recipes">Spatial Index Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#creating-projections">Creating Projections</a></li>
-<li><a href="#getting-projection-properties">Getting Projection Properties</a></li>
-<li><a href="#using-projections">Using Projections</a></li>
-<li><a href="#using-geodetic">Using Geodetic</a></li>
-<li><a href="#using-decimal-degrees">Using Decimal Degrees</a></li>
 </ul>
 </li>
 </ul>
@@ -528,554 +524,50 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="projection-recipes"><a class="anchor" href="#projection-recipes"></a>Projection Recipes</h2>
+<h2 id="spatial-index-recipes"><a class="anchor" href="#spatial-index-recipes"></a>Spatial Index Recipes</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="creating-projections"><a class="anchor" href="#creating-projections"></a>Creating Projections</h3>
 <div class="listingblock">
-<div class="title">Create a Projection from an EPSG Code</div>
+<div class="title">Create a STRtree spatial index</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-println proj.wkt</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">STRtree index = <span class="keyword">new</span> STRtree()</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Insert Geometries and their Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">index.insert(<span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">10</span>,<span class="integer">10</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">5</span>,<span class="integer">5</span>))
+index.insert(<span class="keyword">new</span> Bounds(<span class="integer">2</span>,<span class="integer">2</span>,<span class="integer">6</span>,<span class="integer">6</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">4</span>,<span class="integer">4</span>))
+index.insert(<span class="keyword">new</span> Bounds(<span class="integer">20</span>,<span class="integer">20</span>,<span class="integer">60</span>,<span class="integer">60</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">30</span>,<span class="integer">30</span>))
+index.insert(<span class="keyword">new</span> Bounds(<span class="integer">22</span>,<span class="integer">22</span>,<span class="integer">44</span>,<span class="integer">44</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">32</span>,<span class="integer">32</span>))</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the size of the index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> size = index.size
+println size</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>GEOGCS["WGS 84",
-  DATUM["World Geodetic System 1984",
-    SPHEROID["WGS 84", 6378137.0, 298.257223563, AUTHORITY["EPSG","7030"]],
-    AUTHORITY["EPSG","6326"]],
-  PRIMEM["Greenwich", 0.0, AUTHORITY["EPSG","8901"]],
-  UNIT["degree", 0.017453292519943295],
-  AXIS["Geodetic longitude", EAST],
-  AXIS["Geodetic latitude", NORTH],
-  AUTHORITY["EPSG","4326"]]</pre>
+<pre>4</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Create a Projection from a WKT Projection String</div>
+<div class="title">Query the index</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">      Projection proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">GEOGCS[&quot;WGS 84&quot;,
-DATUM[&quot;World Geodetic System 1984&quot;,
-  SPHEROID[&quot;WGS 84&quot;, 6378137.0, 298.257223563, AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
-  AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
-PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
-UNIT[&quot;degree&quot;, 0.017453292519943295],
-AXIS[&quot;Geodetic longitude&quot;, EAST],
-AXIS[&quot;Geodetic latitude&quot;, NORTH],
-AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</span><span class="delimiter">&quot;&quot;&quot;</span></span>)</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>GEOGCS["WGS 84",
-  DATUM["World Geodetic System 1984",
-    SPHEROID["WGS 84", 6378137.0, 298.257223563, AUTHORITY["EPSG","7030"]],
-    AUTHORITY["EPSG","6326"]],
-  PRIMEM["Greenwich", 0.0, AUTHORITY["EPSG","8901"]],
-  UNIT["degree", 0.017453292519943295],
-  AXIS["Geodetic longitude", EAST],
-  AXIS["Geodetic latitude", NORTH],
-  AUTHORITY["EPSG","4326"]]</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a Projection from well known name</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">Mollweide</span><span class="delimiter">&quot;</span></span>)
-println proj.wkt</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>PROJCS["Mollweide",
-  GEOGCS["WGS84",
-    DATUM["WGS84",
-      SPHEROID["WGS84", 6378137.0, 298.257223563]],
-    PRIMEM["Greenwich", 0.0],
-    UNIT["degree", 0.017453292519943295],
-    AXIS["Longitude", EAST],
-    AXIS["Latitude", NORTH]],
-  PROJECTION["Mollweide"],
-  PARAMETER["semi-minor axis", 6378137.0],
-  PARAMETER["Longitude of natural origin", 0.0],
-  UNIT["m", 1.0],
-  AXIS["Easting", EAST],
-  AXIS["Northing", NORTH]]</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get a List of all supported Projections (this is really slow)</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;Projection&gt; projections = Projection.projections()</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>EPSG:4326
-EPSG:4269
-EPSG:26918
-EPSG:2263
-EPSG:2927
-...</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="getting-projection-properties"><a class="anchor" href="#getting-projection-properties"></a>Getting Projection Properties</h3>
-<div class="listingblock">
-<div class="title">Get the id</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">String</span> id = proj.id</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>EPSG:4326</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get the srs</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> srs = proj.srs</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>EPSG:4326</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get the epsg code</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> epsg = proj.epsg</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>4326</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get the WKT</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> wkt = proj.wkt</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>GEOGCS["WGS 84",
-  DATUM["World Geodetic System 1984",
-    SPHEROID["WGS 84", 6378137.0, 298.257223563, AUTHORITY["EPSG","7030"]],
-    AUTHORITY["EPSG","6326"]],
-  PRIMEM["Greenwich", 0.0, AUTHORITY["EPSG","8901"]],
-  UNIT["degree", 0.017453292519943295],
-  AXIS["Geodetic longitude", EAST],
-  AXIS["Geodetic latitude", NORTH],
-  AUTHORITY["EPSG","4326"]]</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get the Bounds in the native Projection</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = proj.bounds</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>(-180.0,-90.0,180.0,90.0,EPSG:4326)</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get the Bounds in the EPSG:4326</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Bounds geoBounds = proj.geoBounds</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>(-180.0,-90.0,180.0,90.0,EPSG:4326)</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="using-projections"><a class="anchor" href="#using-projections"></a>Using Projections</h3>
-<div class="listingblock">
-<div class="title">Transform a Geometry from one projection to another using the Projection static method with strings</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Geometry epsg4326Geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
-Geometry epsg2927Geom = Projection.transform(epsg4326Geom, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
-println epsg2927Geom</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Transform a Geometry from one projection to another using the Projection static method with Projections</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection epsg4326 = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-Projection epsg2927 = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
-Geometry epsg4326Geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
-Geometry epsg2927Geom = Projection.transform(epsg4326Geom, epsg4326, epsg2927)
-println epsg2927Geom</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Transform a Geometry from one projection to another using two Projections</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection fromProj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-Projection toProj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
-Geometry geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
-Geometry projectedGeom = fromProj.transform(geom, toProj)
-println projectedGeom</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Transform a Geometry from one projection to another using a Projections and a String</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection fromProj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-Geometry geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
-Geometry projectedGeom = fromProj.transform(geom, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
-println projectedGeom</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="using-geodetic"><a class="anchor" href="#using-geodetic"></a>Using Geodetic</h3>
-<div class="listingblock">
-<div class="title">Create a Geodetic object with an ellipsoid</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Geodetic geodetic = <span class="keyword">new</span> Geodetic(<span class="string"><span class="delimiter">&quot;</span><span class="content">wgs84</span><span class="delimiter">&quot;</span></span>)
-println geodetic</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Geodetic [SPHEROID["WGS 84", 6378137.0, 298.257223563]]</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Calculate the forward and back azimuth and distance between the given two Points.</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Geodetic geodetic = <span class="keyword">new</span> Geodetic(<span class="string"><span class="delimiter">&quot;</span><span class="content">clrk66</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Point</span> bostonPoint = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">71.117</span>, <span class="float">42.25</span>)
-<span class="predefined-type">Point</span> portlandPoint = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.683</span>, <span class="float">45.52</span>)
-<span class="predefined-type">Map</span> results = geodetic.inverse(bostonPoint, portlandPoint)
-<span class="type">double</span> forwardAzimuth =  results.forwardAzimuth
-println forwardAzimuth</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-66.52547810974724</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> backAzimuth = results.backAzimuth
-println backAzimuth</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>75.65817457195088</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> distance = results.distance
-println distance</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>4164050.4598800642</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Calculate a new Point and back azimuth given the starting Point, azimuth, and distance.</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Geodetic geodetic = <span class="keyword">new</span> Geodetic(<span class="string"><span class="delimiter">&quot;</span><span class="content">clrk66</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Point</span> bostonPoint = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">71.117</span>, <span class="float">42.25</span>)
-<span class="predefined-type">Map</span> results = geodetic.forward(bostonPoint, -<span class="float">66.531</span>, <span class="float">4164192.708</span>)
-<span class="predefined-type">Point</span> point = results.point
-println point</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>POINT (-123.6835797667373 45.516427795897236)</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> azimuth = results.backAzimuth
-println azimuth</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>75.65337425050724</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Place the given number of points between starting and ending Points</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Geodetic geodetic = <span class="keyword">new</span> Geodetic(<span class="string"><span class="delimiter">&quot;</span><span class="content">clrk66</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Point</span> bostonPoint = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">71.117</span>, <span class="float">42.25</span>)
-<span class="predefined-type">Point</span> portlandPoint = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.683</span>, <span class="float">45.52</span>)
-<span class="predefined-type">List</span>&lt;<span class="predefined-type">Point</span>&gt; points = geodetic.placePoints(bostonPoint, portlandPoint, <span class="integer">10</span>)
-points.each { <span class="predefined-type">Point</span> point -&gt;
-    println point.wkt
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> results = index.query(<span class="keyword">new</span> Bounds(<span class="integer">1</span>,<span class="integer">1</span>,<span class="integer">5</span>,<span class="integer">5</span>))
+results.each { Geometry geometry -&gt;
+    println geometry
 }</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>POINT (-75.41357382496236 43.52791689304304)
-POINT (-79.8828640042499 44.63747566950249)
-POINT (-84.51118758826816 45.565540142641005)
-POINT (-89.27793446221685 46.300124344169255)
-POINT (-94.15564606698499 46.83102721803566)
-POINT (-99.11079892605703 47.15045006457598)
-POINT (-104.10532353179985 47.25351783423774)
-POINT (-109.09873812691617 47.13862709798196)
-POINT (-114.05062990603696 46.80756425557422)
-POINT (-118.92312608779855 46.26537395700513)</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="using-decimal-degrees"><a class="anchor" href="#using-decimal-degrees"></a>Using Decimal Degrees</h3>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a longitude and latitude</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(-<span class="float">122.525619</span>, <span class="float">47.212023</span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2284" W, 47° 12' 43.2828" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a Point</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.525619</span>,<span class="float">47.212023</span>))
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>POINT (-122.52561944444444 47.212022222222224)</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a Longitude and Latitude string</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">-122.525619, 47.212023</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2284" W, 47° 12' 43.2828" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from two strings with glyphs</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122</span><span class="char">\u00B0</span><span class="content"> 31' 32.23</span><span class="char">\&quot;</span><span class="content"> W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47</span><span class="char">\u00B0</span><span class="content"> 12' 43.28</span><span class="char">\&quot;</span><span class="content"> N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2300" W, 47° 12' 43.2800" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from two strings</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2300" W, 47° 12' 43.2800" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a single Degrees Minutes Seconds formatted string</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W, 47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2300" W, 47° 12' 43.2800" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a single Decimal Degree Minutes formatted string with glyphs</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122</span><span class="char">\u00B0</span><span class="content"> 31.5372' W, 47</span><span class="char">\u00B0</span><span class="content"> 12.7213' N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2320" W, 47° 12' 43.2780" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a single Decimal Degree Minutes formatted string</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31.5372m W, 47d 12.7213m N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2320" W, 47° 12' 43.2780" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get degrees minutes seconds from a DecimalDegrees object</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Map</span> dms = decimalDegrees.dms
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Degrees: </span><span class="inline"><span class="inline-delimiter">${</span>dms.longitude.degrees<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Minutes: </span><span class="inline"><span class="inline-delimiter">${</span>dms.longitude.minutes<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Seconds: </span><span class="inline"><span class="inline-delimiter">${</span>dms.longitude.seconds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Degrees: -122
-Minutes: 31
-Seconds: 32.22999999998388</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">println <span class="string"><span class="delimiter">&quot;</span><span class="content">Degrees: </span><span class="inline"><span class="inline-delimiter">${</span>dms.latitude.degrees<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Minutes: </span><span class="inline"><span class="inline-delimiter">${</span>dms.latitude.minutes<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Seconds: </span><span class="inline"><span class="inline-delimiter">${</span>dms.latitude.seconds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Degrees: 47
-Minutes: 12
-Seconds: 43.280000000006396</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Convert a DecimalDegrees object to a DMS String with glyphs</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees.toDms(<span class="predefined-constant">true</span>)</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2300" W, 47° 12' 43.2800" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Convert a DecimalDegrees object to a DMS String without glyphs</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">println decimalDegrees.toDms(<span class="predefined-constant">false</span>)</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122d 31m 32.2300s W, 47d 12m 43.2800s N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get degrees minutes from a DecimalDegrees object</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Map</span> dms = decimalDegrees.ddm
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Degrees: </span><span class="inline"><span class="inline-delimiter">${</span>dms.longitude.degrees<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Minutes: </span><span class="inline"><span class="inline-delimiter">${</span>dms.longitude.minutes<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Degrees: -122
-Minutes: 31.537166666666398</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">println <span class="string"><span class="delimiter">&quot;</span><span class="content">Degrees: </span><span class="inline"><span class="inline-delimiter">${</span>dms.latitude.degrees<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Minutes: </span><span class="inline"><span class="inline-delimiter">${</span>dms.latitude.minutes<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Degrees: 47
-Minutes: 12.72133333333344</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Convert a DecimalDegrees object to a DDM String with glyphs</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees.toDdm(<span class="predefined-constant">true</span>)</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31.5372' W, 47° 12.7213' N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Convert a DecimalDegrees object to a DDM String without glyphs</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">println decimalDegrees.toDdm(<span class="predefined-constant">false</span>)</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122d 31.5372m W, 47d 12.7213m N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get a Point from a DecimalDegrees object</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Point</span> point = decimalDegrees.point</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>POINT (-122.52561944444444 47.212022222222224)</pre>
+<pre>POINT (4 4)
+POINT (5 5)</pre>
 </div>
 </div>
 </div>

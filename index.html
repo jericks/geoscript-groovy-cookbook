@@ -538,6 +538,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#using-decimal-degrees">Using Decimal Degrees</a></li>
 </ul>
 </li>
+<li><a href="#spatial-index-recipes">Spatial Index Recipes</a>
+<ul class="sectlevel2">
+<li><a href="#creating-projections-2">Creating Projections</a></li>
+</ul>
+</li>
 <li><a href="#plot-recipes">Plot Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#creating-a-bar-chart">Creating a Bar Chart</a></li>
@@ -2112,6 +2117,56 @@ println decimalDegrees.toDdm(<span class="predefined-constant">true</span>)</cod
 </div>
 </div>
 <div class="sect1">
+<h2 id="spatial-index-recipes"><a class="anchor" href="#spatial-index-recipes"></a>Spatial Index Recipes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="creating-projections-2"><a class="anchor" href="#creating-projections-2"></a>Creating Projections</h3>
+<div class="listingblock">
+<div class="title">Create a STRtree spatial index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">STRtree index = <span class="keyword">new</span> STRtree()</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Insert Geometries and their Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">index.insert(<span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">10</span>,<span class="integer">10</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">5</span>,<span class="integer">5</span>))
+index.insert(<span class="keyword">new</span> Bounds(<span class="integer">2</span>,<span class="integer">2</span>,<span class="integer">6</span>,<span class="integer">6</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">4</span>,<span class="integer">4</span>))
+index.insert(<span class="keyword">new</span> Bounds(<span class="integer">20</span>,<span class="integer">20</span>,<span class="integer">60</span>,<span class="integer">60</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">30</span>,<span class="integer">30</span>))
+index.insert(<span class="keyword">new</span> Bounds(<span class="integer">22</span>,<span class="integer">22</span>,<span class="integer">44</span>,<span class="integer">44</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">32</span>,<span class="integer">32</span>))</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the size of the index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> size = index.size
+println size</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>4</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Query the index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> results = index.query(<span class="keyword">new</span> Bounds(<span class="integer">1</span>,<span class="integer">1</span>,<span class="integer">5</span>,<span class="integer">5</span>))
+results.each { Geometry geometry -&gt;
+    println geometry
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (4 4)
+POINT (5 5)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="plot-recipes"><a class="anchor" href="#plot-recipes"></a>Plot Recipes</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -2150,7 +2205,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-01 21:59:18 UTC
+Last updated 2017-01-02 23:17:48 UTC
 </div>
 </div>
 </body>
