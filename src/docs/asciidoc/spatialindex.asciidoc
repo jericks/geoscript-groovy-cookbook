@@ -1,6 +1,6 @@
 == Spatial Index Recipes
 
-=== Using STRtree Spatial Index
+=== Using STRtree
 
 [source,groovy]
 .Create a STRtree spatial index
@@ -30,4 +30,54 @@ include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createST
 ----
 ....
 include::output/spatialindex_strtree_results.txt[]
+....
+
+=== Using Quadtree
+
+[source,groovy]
+.Create a Quadtree spatial index
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createQuadtree_create,indent=0]
+----
+
+[source,groovy]
+.Insert Geometries and their Bounds
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createQuadtree_insert,indent=0]
+----
+
+[source,groovy]
+.Get the size of the index
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createQuadtree_size,indent=0]
+----
+....
+include::output/spatialindex_quadtree_size.txt[]
+....
+
+[source,groovy]
+.Query the index with a Bounds
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createQuadtree_results,indent=0]
+----
+....
+include::output/spatialindex_quadtree_results.txt[]
+....
+
+[source,groovy]
+.Query the entire index
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createQuadtree_allresults,indent=0]
+----
+....
+include::output/createQuadtree_allresults.txt[]
+....
+
+[source,groovy]
+.Remove an item from the index
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createQuadtree_remove,indent=0]
+----
+....
+include::output/spatialindex_quadtree_remove.txt[]
 ....
