@@ -518,6 +518,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#using-strtree">Using STRtree</a></li>
 <li><a href="#using-quadtree">Using Quadtree</a></li>
+<li><a href="#using-geohash">Using GeoHash</a></li>
 </ul>
 </li>
 </ul>
@@ -651,12 +652,69 @@ Size = 3</pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="using-geohash"><a class="anchor" href="#using-geohash"></a>Using GeoHash</h3>
+<div class="listingblock">
+<div class="title">Encode a Point as a String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+<span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="float">112.5584</span>, <span class="float">37.8324</span>)
+<span class="predefined-type">String</span> hash = geohash.encode(point)
+println hash</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ww8p1r4t8</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Decode a String to a Point</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+<span class="predefined-type">Point</span> point = geohash.decode(<span class="string"><span class="delimiter">&quot;</span><span class="content">ww8p1r4t8</span><span class="delimiter">&quot;</span></span>)
+println point</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (112.55838632583618 37.83238649368286)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Encode a Point as a Long</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+<span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="float">112.5584</span>, <span class="float">37.8324</span>)
+<span class="type">long</span> hash = geohash.encodeLong(point)
+println <span class="type">long</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>4064984913515641</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Decode a String to a Point</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+<span class="predefined-type">Point</span> point = geohash.decode(<span class="integer">4064984913515641</span>)
+println point</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (112.55839973688126 37.83240124583244)</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-03 17:36:44 PST
+Last updated 2017-01-05 03:25:47 UTC
 </div>
 </div>
 </body>
