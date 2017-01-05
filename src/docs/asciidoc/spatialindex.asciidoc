@@ -81,3 +81,41 @@ include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createQu
 ....
 include::output/spatialindex_quadtree_remove.txt[]
 ....
+
+=== Using GeoHash
+
+[source,groovy]
+.Encode a Point as a String
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashEncodePoint,indent=0]
+----
+....
+include::output/spatialindex_geohash_encodepoints.txt[]
+....
+
+[source,groovy]
+.Decode a String to a Point
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashDecodeString,indent=0]
+----
+....
+include::output/spatialindex_geohash_decodestring.txt[]
+....
+
+[source,groovy]
+.Encode a Point as a Long
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashEncodePointAsLong,indent=0]
+----
+....
+include::output/spatialindex_geohash_encodepoints_long.txt[]
+....
+
+[source,groovy]
+.Decode a String to a Point
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashDecodeLong,indent=0]
+----
+....
+include::output/spatialindex_geohash_decodelong.txt[]
+....

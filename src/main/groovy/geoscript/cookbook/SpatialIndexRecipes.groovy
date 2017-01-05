@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.Point
+import geoscript.index.GeoHash
 import geoscript.index.Quadtree
 import geoscript.index.STRtree
 
@@ -84,5 +85,46 @@ class SpatialIndexRecipes extends Recipes {
         index
     }
 
+    String geohashEncodePoint() {
+        // tag::geohashEncodePoint[]
+        GeoHash geohash = new GeoHash()
+        Point point = new Point(112.5584, 37.8324)
+        String hash = geohash.encode(point)
+        println hash
+        // end::geohashEncodePoint[]
+        writeFile("spatialindex_geohash_encodepoints", "${hash}")
+        hash
+    }
+
+    Point geohashDecodeString() {
+        // tag::geohashDecodeString[]
+        GeoHash geohash = new GeoHash()
+        Point point = geohash.decode("ww8p1r4t8")
+        println point
+        // end::geohashDecodeString[]
+        writeFile("spatialindex_geohash_decodestring", "${point.wkt}")
+        point
+    }
+
+    long geohashEncodePointAsLong() {
+        // tag::geohashEncodePointAsLong[]
+        GeoHash geohash = new GeoHash()
+        Point point = new Point(112.5584, 37.8324)
+        long hash = geohash.encodeLong(point)
+        println long
+        // end::geohashEncodePointAsLong[]
+        writeFile("spatialindex_geohash_encodepoints_long", "${hash}")
+        hash
+    }
+
+    Point geohashDecodeLong() {
+        // tag::geohashDecodeLong[]
+        GeoHash geohash = new GeoHash()
+        Point point = geohash.decode(4064984913515641)
+        println point
+        // end::geohashDecodeLong[]
+        writeFile("spatialindex_geohash_decodelong", "${point.wkt}")
+        point
+    }
 
 }
