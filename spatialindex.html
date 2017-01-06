@@ -669,7 +669,7 @@ println hash</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Decode a String to a Point</div>
+<div class="title">Decode a Point from a String</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
 <span class="predefined-type">Point</span> point = geohash.decode(<span class="string"><span class="delimiter">&quot;</span><span class="content">ww8p1r4t8</span><span class="delimiter">&quot;</span></span>)
@@ -696,7 +696,7 @@ println <span class="type">long</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Decode a String to a Point</div>
+<div class="title">Decode a Point from a Long</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
 <span class="predefined-type">Point</span> point = geohash.decode(<span class="integer">4064984913515641</span>)
@@ -708,13 +708,185 @@ println point</code></pre>
 <pre>POINT (112.55839973688126 37.83240124583244)</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Decode a Bounds from a String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+Bounds bounds = geohash.decodeBounds(<span class="string"><span class="delimiter">&quot;</span><span class="content">ww8p1r4t8</span><span class="delimiter">&quot;</span></span>)
+println bounds</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(112.55836486816406,37.83236503601074,112.5584077835083,37.83240795135498)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Decode a Bounds from a Long</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+Bounds bounds = geohash.decodeBounds(<span class="integer">4064984913515641</span>)
+println bounds</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(112.55836486816406,37.83236503601074,112.5584077835083,37.83240795135498)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find neighboring geohash strings</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+<span class="predefined-type">String</span> hash = <span class="string"><span class="delimiter">&quot;</span><span class="content">dqcjq</span><span class="delimiter">&quot;</span></span>
+<span class="predefined-type">String</span> north     = geohash.neighbor(hash, GeoHash.Direction.NORTH)
+<span class="predefined-type">String</span> northwest = geohash.neighbor(hash, GeoHash.Direction.NORTHWEST)
+<span class="predefined-type">String</span> west      = geohash.neighbor(hash, GeoHash.Direction.WEST)
+<span class="predefined-type">String</span> southwest = geohash.neighbor(hash, GeoHash.Direction.SOUTHWEST)
+<span class="predefined-type">String</span> south     = geohash.neighbor(hash, GeoHash.Direction.SOUTH)
+<span class="predefined-type">String</span> southeast = geohash.neighbor(hash, GeoHash.Direction.SOUTHEAST)
+<span class="predefined-type">String</span> east      = geohash.neighbor(hash, GeoHash.Direction.EAST)
+<span class="predefined-type">String</span> northeast = geohash.neighbor(hash, GeoHash.Direction.NORTHEAST)
+<span class="predefined-type">String</span> str = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>northwest<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>north<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>northeast<span class="inline-delimiter">}</span></span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>west<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>hash<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>east<span class="inline-delimiter">}</span></span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>southwest<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>south<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>southeast<span class="inline-delimiter">}</span></span><span class="content">
+             |</span><span class="delimiter">&quot;&quot;&quot;</span></span>.stripMargin()
+println str</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> dqcjt dqcjw dqcjx
+ dqcjm dqcjq dqcjr
+ dqcjj dqcjn dqcjp</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find neighboring geohash longs</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+<span class="type">long</span> hash = <span class="integer">1702789509</span>
+<span class="type">long</span> north     = geohash.neighbor(hash, GeoHash.Direction.NORTH)
+<span class="type">long</span> northwest = geohash.neighbor(hash, GeoHash.Direction.NORTHWEST)
+<span class="type">long</span> west      = geohash.neighbor(hash, GeoHash.Direction.WEST)
+<span class="type">long</span> southwest = geohash.neighbor(hash, GeoHash.Direction.SOUTHWEST)
+<span class="type">long</span> south     = geohash.neighbor(hash, GeoHash.Direction.SOUTH)
+<span class="type">long</span> southeast = geohash.neighbor(hash, GeoHash.Direction.SOUTHEAST)
+<span class="type">long</span> east      = geohash.neighbor(hash, GeoHash.Direction.EAST)
+<span class="type">long</span> northeast = geohash.neighbor(hash, GeoHash.Direction.NORTHEAST)
+<span class="predefined-type">String</span> str = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>northwest<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>north<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>northeast<span class="inline-delimiter">}</span></span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>west<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>hash<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>east<span class="inline-delimiter">}</span></span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>southwest<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>south<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>southeast<span class="inline-delimiter">}</span></span><span class="content">
+             |</span><span class="delimiter">&quot;&quot;&quot;</span></span>.stripMargin()
+println str</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> 1702789434 1702789520 1702789522
+ 1702789423 1702789509 1702789511
+ 1702789422 1702789508 1702789510</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find all neighboring geohash strings</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+<span class="predefined-type">String</span> hash = <span class="string"><span class="delimiter">&quot;</span><span class="content">dqcjq</span><span class="delimiter">&quot;</span></span>
+<span class="predefined-type">Map</span> neighbors = geohash.neighbors(hash)
+<span class="predefined-type">String</span> north     = neighbors[GeoHash.Direction.NORTH]
+<span class="predefined-type">String</span> northwest = neighbors[GeoHash.Direction.NORTHWEST]
+<span class="predefined-type">String</span> west      = neighbors[GeoHash.Direction.WEST]
+<span class="predefined-type">String</span> southwest = neighbors[GeoHash.Direction.SOUTHWEST]
+<span class="predefined-type">String</span> south     = neighbors[GeoHash.Direction.SOUTH]
+<span class="predefined-type">String</span> southeast = neighbors[GeoHash.Direction.SOUTHEAST]
+<span class="predefined-type">String</span> east      = neighbors[GeoHash.Direction.EAST]
+<span class="predefined-type">String</span> northeast = neighbors[GeoHash.Direction.NORTHEAST]
+<span class="predefined-type">String</span> str = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>northwest<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>north<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>northeast<span class="inline-delimiter">}</span></span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>west<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>hash<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>east<span class="inline-delimiter">}</span></span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>southwest<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>south<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>southeast<span class="inline-delimiter">}</span></span><span class="content">
+             |</span><span class="delimiter">&quot;&quot;&quot;</span></span>.stripMargin()
+println str</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> dqcjt dqcjw dqcjx
+ dqcjm dqcjq dqcjr
+ dqcjj dqcjn dqcjp</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find all neighboring geohash longs</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+<span class="type">long</span> hash = <span class="integer">1702789509</span>
+<span class="predefined-type">Map</span> neighbors = geohash.neighbors(hash)
+<span class="type">long</span> north     = neighbors[GeoHash.Direction.NORTH]
+<span class="type">long</span> northwest = neighbors[GeoHash.Direction.NORTHWEST]
+<span class="type">long</span> west      = neighbors[GeoHash.Direction.WEST]
+<span class="type">long</span> southwest = neighbors[GeoHash.Direction.SOUTHWEST]
+<span class="type">long</span> south     = neighbors[GeoHash.Direction.SOUTH]
+<span class="type">long</span> southeast = neighbors[GeoHash.Direction.SOUTHEAST]
+<span class="type">long</span> east      = neighbors[GeoHash.Direction.EAST]
+<span class="type">long</span> northeast = neighbors[GeoHash.Direction.NORTHEAST]
+<span class="predefined-type">String</span> str = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>northwest<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>north<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>northeast<span class="inline-delimiter">}</span></span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>west<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>hash<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>east<span class="inline-delimiter">}</span></span><span class="content">
+             | </span><span class="inline"><span class="inline-delimiter">${</span>southwest<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>south<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>southeast<span class="inline-delimiter">}</span></span><span class="content">
+             |</span><span class="delimiter">&quot;&quot;&quot;</span></span>.stripMargin()
+println str</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> 1702789434 1702789520 1702789522
+ 1702789423 1702789509 1702789511
+ 1702789422 1702789508 1702789510</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find all geohashes as strings within a Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; bboxes = geohash.bboxes(<span class="keyword">new</span> Bounds(<span class="integer">120</span>, <span class="integer">30</span>, <span class="float">120.0001</span>, <span class="float">30.0001</span>), <span class="integer">8</span>)
+bboxes.each { <span class="predefined-type">String</span> hash -&gt;
+    println hash
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>wtm6dtm6
+wtm6dtm7</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find all geohashes as longs within a Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeoHash geohash = <span class="keyword">new</span> GeoHash()
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">Long</span>&gt; bboxes = geohash.bboxesLong(<span class="keyword">new</span> Bounds(<span class="integer">120</span>, <span class="integer">30</span>, <span class="float">120.0001</span>, <span class="float">30.0001</span>), <span class="integer">40</span>)
+bboxes.each { <span class="type">long</span> hash -&gt;
+    println hash
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>989560464998
+989560464999</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-05 03:25:47 UTC
+Last updated 2017-01-06 05:17:23 UTC
 </div>
 </div>
 </body>
