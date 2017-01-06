@@ -94,7 +94,7 @@ include::output/spatialindex_geohash_encodepoints.txt[]
 ....
 
 [source,groovy]
-.Decode a String to a Point
+.Decode a Point from a String
 ----
 include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashDecodeString,indent=0]
 ----
@@ -112,10 +112,82 @@ include::output/spatialindex_geohash_encodepoints_long.txt[]
 ....
 
 [source,groovy]
-.Decode a String to a Point
+.Decode a Point from a Long
 ----
 include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashDecodeLong,indent=0]
 ----
 ....
 include::output/spatialindex_geohash_decodelong.txt[]
+....
+
+[source,groovy]
+.Decode a Bounds from a String
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashDecodeBoundsFromString,indent=0]
+----
+....
+include::output/spatialindex_geohash_decode_bounds_string.txt[]
+....
+
+[source,groovy]
+.Decode a Bounds from a Long
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashDecodeBoundsFromLong,indent=0]
+----
+....
+include::output/spatialindex_geohash_decode_bounds_string.txt[]
+....
+
+[source,groovy]
+.Find neighboring geohash strings
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashNeighborFromString,indent=0]
+----
+....
+include::output/spatialindex_geohash_neighbor_from_string.txt[]
+....
+
+[source,groovy]
+.Find neighboring geohash longs
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashNeighborFromLong,indent=0]
+----
+....
+include::output/spatialindex_geohash_neighbor_from_long.txt[]
+....
+
+[source,groovy]
+.Find all neighboring geohash strings
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashNeighborsFromString,indent=0]
+----
+....
+include::output/spatialindex_geohash_neighbors_from_string.txt[]
+....
+
+[source,groovy]
+.Find all neighboring geohash longs
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashNeighborsFromLong,indent=0]
+----
+....
+include::output/spatialindex_geohash_neighbors_from_long.txt[]
+....
+
+[source,groovy]
+.Find all geohashes as strings within a Bounds
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashBboxesAsStrings,indent=0]
+----
+....
+include::output/spatialindex_geohash_bboxes_as_strings.txt[]
+....
+
+[source,groovy]
+.Find all geohashes as longs within a Bounds
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=geohashBboxesAsLongs,indent=0]
+----
+....
+include::output/spatialindex_geohash_bboxes_as_longs.txt[]
 ....

@@ -127,4 +127,141 @@ class SpatialIndexRecipes extends Recipes {
         point
     }
 
+    Bounds geohashDecodeBoundsFromString() {
+        // tag::geohashDecodeBoundsFromString[]
+        GeoHash geohash = new GeoHash()
+        Bounds bounds = geohash.decodeBounds("ww8p1r4t8")
+        println bounds
+        // end::geohashDecodeBoundsFromString[]
+        writeFile("spatialindex_geohash_decode_bounds_string", "${bounds}")
+        bounds
+    }
+
+    Bounds geohashDecodeBoundsFromLong() {
+        // tag::geohashDecodeBoundsFromLong[]
+        GeoHash geohash = new GeoHash()
+        Bounds bounds = geohash.decodeBounds(4064984913515641)
+        println bounds
+        // end::geohashDecodeBoundsFromLong[]
+        writeFile("spatialindex_geohash_decode_bounds_string", "${bounds}")
+        bounds
+    }
+
+    String geohashNeighborFromString() {
+        // tag::geohashNeighborFromString[]
+        GeoHash geohash = new GeoHash()
+        String hash = "dqcjq"
+        String north     = geohash.neighbor(hash, GeoHash.Direction.NORTH)
+        String northwest = geohash.neighbor(hash, GeoHash.Direction.NORTHWEST)
+        String west      = geohash.neighbor(hash, GeoHash.Direction.WEST)
+        String southwest = geohash.neighbor(hash, GeoHash.Direction.SOUTHWEST)
+        String south     = geohash.neighbor(hash, GeoHash.Direction.SOUTH)
+        String southeast = geohash.neighbor(hash, GeoHash.Direction.SOUTHEAST)
+        String east      = geohash.neighbor(hash, GeoHash.Direction.EAST)
+        String northeast = geohash.neighbor(hash, GeoHash.Direction.NORTHEAST)
+        String str = """
+                     | ${northwest} ${north} ${northeast}
+                     | ${west} ${hash} ${east}
+                     | ${southwest} ${south} ${southeast}
+                     |""".stripMargin()
+        println str
+        // end::geohashNeighborFromString[]
+        writeFile("spatialindex_geohash_neighbor_from_string", "${str}")
+        str
+    }
+
+    String geohashNeighborFromLong() {
+        // tag::geohashNeighborFromLong[]
+        GeoHash geohash = new GeoHash()
+        long hash = 1702789509
+        long north     = geohash.neighbor(hash, GeoHash.Direction.NORTH)
+        long northwest = geohash.neighbor(hash, GeoHash.Direction.NORTHWEST)
+        long west      = geohash.neighbor(hash, GeoHash.Direction.WEST)
+        long southwest = geohash.neighbor(hash, GeoHash.Direction.SOUTHWEST)
+        long south     = geohash.neighbor(hash, GeoHash.Direction.SOUTH)
+        long southeast = geohash.neighbor(hash, GeoHash.Direction.SOUTHEAST)
+        long east      = geohash.neighbor(hash, GeoHash.Direction.EAST)
+        long northeast = geohash.neighbor(hash, GeoHash.Direction.NORTHEAST)
+        String str = """
+                     | ${northwest} ${north} ${northeast}
+                     | ${west} ${hash} ${east}
+                     | ${southwest} ${south} ${southeast}
+                     |""".stripMargin()
+        println str
+        // end::geohashNeighborFromLong[]
+        writeFile("spatialindex_geohash_neighbor_from_long", "${str}")
+        str
+    }
+
+    String geohashNeighborsFromString() {
+        // tag::geohashNeighborsFromString[]
+        GeoHash geohash = new GeoHash()
+        String hash = "dqcjq"
+        Map neighbors = geohash.neighbors(hash)
+        String north     = neighbors[GeoHash.Direction.NORTH]
+        String northwest = neighbors[GeoHash.Direction.NORTHWEST]
+        String west      = neighbors[GeoHash.Direction.WEST]
+        String southwest = neighbors[GeoHash.Direction.SOUTHWEST]
+        String south     = neighbors[GeoHash.Direction.SOUTH]
+        String southeast = neighbors[GeoHash.Direction.SOUTHEAST]
+        String east      = neighbors[GeoHash.Direction.EAST]
+        String northeast = neighbors[GeoHash.Direction.NORTHEAST]
+        String str = """
+                     | ${northwest} ${north} ${northeast}
+                     | ${west} ${hash} ${east}
+                     | ${southwest} ${south} ${southeast}
+                     |""".stripMargin()
+        println str
+        // end::geohashNeighborsFromString[]
+        writeFile("spatialindex_geohash_neighbors_from_string", "${str}")
+        str
+    }
+
+    String geohashNeighborsFromLong() {
+        // tag::geohashNeighborsFromLong[]
+        GeoHash geohash = new GeoHash()
+        long hash = 1702789509
+        Map neighbors = geohash.neighbors(hash)
+        long north     = neighbors[GeoHash.Direction.NORTH]
+        long northwest = neighbors[GeoHash.Direction.NORTHWEST]
+        long west      = neighbors[GeoHash.Direction.WEST]
+        long southwest = neighbors[GeoHash.Direction.SOUTHWEST]
+        long south     = neighbors[GeoHash.Direction.SOUTH]
+        long southeast = neighbors[GeoHash.Direction.SOUTHEAST]
+        long east      = neighbors[GeoHash.Direction.EAST]
+        long northeast = neighbors[GeoHash.Direction.NORTHEAST]
+        String str = """
+                     | ${northwest} ${north} ${northeast}
+                     | ${west} ${hash} ${east}
+                     | ${southwest} ${south} ${southeast}
+                     |""".stripMargin()
+        println str
+        // end::geohashNeighborsFromLong[]
+        writeFile("spatialindex_geohash_neighbors_from_long", "${str}")
+        str
+    }
+
+    List geohashBboxesAsStrings() {
+        // tag::geohashBboxesAsStrings[]
+        GeoHash geohash = new GeoHash()
+        List<String> bboxes = geohash.bboxes(new Bounds(120, 30, 120.0001, 30.0001), 8)
+        bboxes.each { String hash ->
+            println hash
+        }
+        // end::geohashBboxesAsStrings[]
+        writeFile("spatialindex_geohash_bboxes_as_strings", bboxes.join(NEW_LINE))
+        bboxes
+    }
+
+    List geohashBboxesAsLongs() {
+        // tag::geohashBboxesAsLongs[]
+        GeoHash geohash = new GeoHash()
+        List<Long> bboxes = geohash.bboxesLong(new Bounds(120, 30, 120.0001, 30.0001), 40)
+        bboxes.each { long hash ->
+            println hash
+        }
+        // end::geohashBboxesAsLongs[]
+        writeFile("spatialindex_geohash_bboxes_as_longs", bboxes.join(NEW_LINE))
+        bboxes
+    }
 }
