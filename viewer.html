@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<title>Plot Recipes</title>
+<title>Viewer Recipes</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -514,9 +514,9 @@ table.CodeRay td.code>pre{padding:0}
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#plot-recipes">Plot Recipes</a>
+<li><a href="#viewer-recipes">Viewer Recipes</a>
 <ul class="sectlevel2">
-<li><a href="#creating-a-bar-chart">Creating a Bar Chart</a></li>
+<li><a href="#drawing-geometries">Drawing geometries</a></li>
 </ul>
 </li>
 </ul>
@@ -524,36 +524,52 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="plot-recipes"><a class="anchor" href="#plot-recipes"></a>Plot Recipes</h2>
+<h2 id="viewer-recipes"><a class="anchor" href="#viewer-recipes"></a>Viewer Recipes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="creating-a-bar-chart"><a class="anchor" href="#creating-a-bar-chart"></a>Creating a Bar Chart</h3>
+<h3 id="drawing-geometries"><a class="anchor" href="#drawing-geometries"></a>Drawing geometries</h3>
 <div class="listingblock">
-<div class="title">Create a basic bar chart</div>
+<div class="title">Draw a geometry to an image</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> data = [
-        [<span class="integer">1</span>,<span class="integer">10</span>],[<span class="integer">45</span>,<span class="integer">12</span>],[<span class="integer">23</span>,<span class="integer">3</span>],[<span class="integer">5</span>,<span class="integer">20</span>]
-]
-Chart chart = Bar.xy(data)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>],
+       [-<span class="float">101.5576171875</span>, <span class="float">46.93526088057719</span>],
+       [-<span class="float">100.12939453125</span>, <span class="float">46.51351558059737</span>],
+       [-<span class="float">99.77783203125</span>, <span class="float">47.44294999517949</span>],
+       [-<span class="float">100.45898437499999</span>, <span class="float">47.88688085106901</span>],
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>]
+]])
+<span class="predefined-type">BufferedImage</span> image = Viewer.drawToImage(polygon)</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
 <div class="content">
-<img src="./images/plot_bar_chart.png" alt="plot bar chart">
+<img src="./images/viewer_draw2image.png" alt="viewer draw2image">
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Create a bar chart with categories</div>
+<div class="title">Draw a geometry to an image with options</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> data = [
-        <span class="string"><span class="delimiter">&quot;</span><span class="content">A</span><span class="delimiter">&quot;</span></span>:<span class="integer">20</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">B</span><span class="delimiter">&quot;</span></span>:<span class="integer">45</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">C</span><span class="delimiter">&quot;</span></span>:<span class="integer">2</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">D</span><span class="delimiter">&quot;</span></span>:<span class="integer">14</span>
-]
-Chart chart = Bar.category(data)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>],
+       [-<span class="float">101.5576171875</span>, <span class="float">46.93526088057719</span>],
+       [-<span class="float">100.12939453125</span>, <span class="float">46.51351558059737</span>],
+       [-<span class="float">99.77783203125</span>, <span class="float">47.44294999517949</span>],
+       [-<span class="float">100.45898437499999</span>, <span class="float">47.88688085106901</span>],
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>]
+]])
+<span class="predefined-type">BufferedImage</span> image = Viewer.drawToImage(
+        polygon,
+        <span class="key">size</span>: [<span class="integer">200</span>,<span class="integer">200</span>],
+        <span class="key">drawCoords</span>: <span class="predefined-constant">true</span>,
+        <span class="key">fillCoords</span>: <span class="predefined-constant">true</span>,
+        <span class="key">fillPolys</span>: <span class="predefined-constant">true</span>
+)</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
 <div class="content">
-<img src="./images/plot_bar_chart_with_categories.png" alt="plot bar chart with categories">
+<img src="./images/viewer_draw2imagewithoptions.png" alt="viewer draw2imagewithoptions">
 </div>
 </div>
 </div>

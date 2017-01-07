@@ -545,6 +545,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#using-geohash">Using GeoHash</a></li>
 </ul>
 </li>
+<li><a href="#viewer-recipes">Viewer Recipes</a>
+<ul class="sectlevel2">
+<li><a href="#drawing-geometries">Drawing geometries</a></li>
+</ul>
+</li>
 <li><a href="#plot-recipes">Plot Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#creating-a-bar-chart">Creating a Bar Chart</a></li>
@@ -2477,6 +2482,58 @@ bboxes.each { <span class="type">long</span> hash -&gt;
 </div>
 </div>
 <div class="sect1">
+<h2 id="viewer-recipes"><a class="anchor" href="#viewer-recipes"></a>Viewer Recipes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="drawing-geometries"><a class="anchor" href="#drawing-geometries"></a>Drawing geometries</h3>
+<div class="listingblock">
+<div class="title">Draw a geometry to an image</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>],
+       [-<span class="float">101.5576171875</span>, <span class="float">46.93526088057719</span>],
+       [-<span class="float">100.12939453125</span>, <span class="float">46.51351558059737</span>],
+       [-<span class="float">99.77783203125</span>, <span class="float">47.44294999517949</span>],
+       [-<span class="float">100.45898437499999</span>, <span class="float">47.88688085106901</span>],
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>]
+]])
+<span class="predefined-type">BufferedImage</span> image = Viewer.drawToImage(polygon)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/viewer_draw2image.png" alt="viewer draw2image">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Draw a geometry to an image with options</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>],
+       [-<span class="float">101.5576171875</span>, <span class="float">46.93526088057719</span>],
+       [-<span class="float">100.12939453125</span>, <span class="float">46.51351558059737</span>],
+       [-<span class="float">99.77783203125</span>, <span class="float">47.44294999517949</span>],
+       [-<span class="float">100.45898437499999</span>, <span class="float">47.88688085106901</span>],
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>]
+]])
+<span class="predefined-type">BufferedImage</span> image = Viewer.drawToImage(
+        polygon,
+        <span class="key">size</span>: [<span class="integer">200</span>,<span class="integer">200</span>],
+        <span class="key">drawCoords</span>: <span class="predefined-constant">true</span>,
+        <span class="key">fillCoords</span>: <span class="predefined-constant">true</span>,
+        <span class="key">fillPolys</span>: <span class="predefined-constant">true</span>
+)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/viewer_draw2imagewithoptions.png" alt="viewer draw2imagewithoptions">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="plot-recipes"><a class="anchor" href="#plot-recipes"></a>Plot Recipes</h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -2515,7 +2572,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-06 05:17:23 UTC
+Last updated 2017-01-07 03:48:57 UTC
 </div>
 </div>
 </body>
