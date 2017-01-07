@@ -1,0 +1,19 @@
+== Viewer Recipes
+
+=== Drawing geometries
+
+[source,groovy]
+.Draw a geometry to an image
+----
+include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=drawToImage,indent=0]
+----
+[.thumb]
+image::viewer_draw2image.png[]
+
+[source,groovy]
+.Draw a geometry to an image with options
+----
+include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=drawToImageWithOptions,indent=0]
+----
+[.thumb]
+image::viewer_draw2imagewithoptions.png[]

@@ -4,6 +4,9 @@ import geoscript.geom.Geometry
 import geoscript.plot.Chart
 import geoscript.viewer.Viewer
 
+import javax.imageio.ImageIO
+import java.awt.image.BufferedImage
+
 class Recipes {
 
     protected static final String NEW_LINE = System.getProperty("line.separator")
@@ -22,6 +25,14 @@ class Recipes {
             file.parentFile.mkdir()
         }
         Viewer.drawToFile(geometries, file, size: options.get("size", [200,200]), drawCoords: options.get("drawCoords", true))
+    }
+
+    protected void saveImage(String name, BufferedImage image) {
+        File file = new File("src/docs/asciidoc/images/${name}.png")
+        if(!file.parentFile.exists()) {
+            file.parentFile.mkdir()
+        }
+        ImageIO.write(image, "png", file)
     }
 
     protected void writeFile(String name, String text) {
