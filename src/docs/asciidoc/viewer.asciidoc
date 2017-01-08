@@ -3,6 +3,14 @@
 === Drawing geometries
 
 [source,groovy]
+.Draw a geometry in a simple GUI
+----
+include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=draw,indent=0]
+----
+[.thumb]
+image::viewer_draw.png[]
+
+[source,groovy]
 .Draw a geometry to an image
 ----
 include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=drawToImage,indent=0]
@@ -35,6 +43,14 @@ include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=drawToFile,ind
 image::viewer_drawtofile.png[]
 
 === Plotting geometries
+
+[source,groovy]
+.Plot a geometry in a simple GUI
+----
+include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=plot,indent=0]
+----
+[.thumb]
+image::viewer_plot.png[]
 
 [source,groovy]
 .Plot a Geometry to an image

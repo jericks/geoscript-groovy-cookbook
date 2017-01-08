@@ -4,11 +4,38 @@ import geoscript.geom.Geometry
 import geoscript.geom.Point
 import geoscript.geom.Polygon
 import geoscript.viewer.Viewer
-import org.apache.commons.io.FileUtils
 
 import java.awt.image.BufferedImage
 
 class ViewerRecipes extends Recipes {
+
+    void draw() {
+        // tag::draw[]
+        Polygon polygon = new Polygon([[
+               [-101.35986328125, 47.754097979680026],
+               [-101.5576171875, 46.93526088057719],
+               [-100.12939453125, 46.51351558059737],
+               [-99.77783203125, 47.44294999517949],
+               [-100.45898437499999, 47.88688085106901],
+               [-101.35986328125, 47.754097979680026]
+        ]])
+        Viewer.draw(polygon)
+        // end::draw[]
+    }
+
+    void plot() {
+        // tag::plot[]
+        Polygon polygon = new Polygon([[
+               [-101.35986328125, 47.754097979680026],
+               [-101.5576171875, 46.93526088057719],
+               [-100.12939453125, 46.51351558059737],
+               [-99.77783203125, 47.44294999517949],
+               [-100.45898437499999, 47.88688085106901],
+               [-101.35986328125, 47.754097979680026]
+        ]])
+        Viewer.plot(polygon)
+        // end::plot[]
+    }
 
     BufferedImage drawToImage() {
         // tag::drawToImage[]
