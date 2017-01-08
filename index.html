@@ -2488,6 +2488,25 @@ bboxes.each { <span class="type">long</span> hash -&gt;
 <div class="sect2">
 <h3 id="drawing-geometries"><a class="anchor" href="#drawing-geometries"></a>Drawing geometries</h3>
 <div class="listingblock">
+<div class="title">Draw a geometry in a simple GUI</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>],
+       [-<span class="float">101.5576171875</span>, <span class="float">46.93526088057719</span>],
+       [-<span class="float">100.12939453125</span>, <span class="float">46.51351558059737</span>],
+       [-<span class="float">99.77783203125</span>, <span class="float">47.44294999517949</span>],
+       [-<span class="float">100.45898437499999</span>, <span class="float">47.88688085106901</span>],
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>]
+]])
+Viewer.draw(polygon)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/viewer_draw.png" alt="viewer draw">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Draw a geometry to an image</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
@@ -2568,6 +2587,25 @@ Viewer.drawToFile([buffer, point], file, <span class="key">size</span>: [<span c
 </div>
 <div class="sect2">
 <h3 id="plotting-geometries"><a class="anchor" href="#plotting-geometries"></a>Plotting geometries</h3>
+<div class="listingblock">
+<div class="title">Plot a geometry in a simple GUI</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>],
+       [-<span class="float">101.5576171875</span>, <span class="float">46.93526088057719</span>],
+       [-<span class="float">100.12939453125</span>, <span class="float">46.51351558059737</span>],
+       [-<span class="float">99.77783203125</span>, <span class="float">47.44294999517949</span>],
+       [-<span class="float">100.45898437499999</span>, <span class="float">47.88688085106901</span>],
+       [-<span class="float">101.35986328125</span>, <span class="float">47.754097979680026</span>]
+]])
+Viewer.plot(polygon)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/viewer_plot.png" alt="viewer plot">
+</div>
+</div>
 <div class="listingblock">
 <div class="title">Plot a Geometry to an image</div>
 <div class="content">
@@ -2663,7 +2701,7 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-08 18:07:40 UTC
+Last updated 2017-01-08 21:33:35 UTC
 </div>
 </div>
 </body>
