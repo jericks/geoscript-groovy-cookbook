@@ -17,3 +17,45 @@ include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=drawToImageWit
 ----
 [.thumb]
 image::viewer_draw2imagewithoptions.png[]
+
+[source,groovy]
+.Draw a List of geometries to an image
+----
+include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=drawToImageGeometries,indent=0]
+----
+[.thumb]
+image::viewer_draw2imagegeometries.png[]
+
+[source,groovy]
+.Draw a List of Geometries to a File
+----
+include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=drawToFile,indent=0]
+----
+[.thumb]
+image::viewer_drawtofile.png[]
+
+=== Plotting geometries
+
+[source,groovy]
+.Plot a Geometry to an image
+----
+include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=plotToImage,indent=0]
+----
+[.thumb]
+image::viewer_plot2image.png[]
+
+[source,groovy]
+.Plot a List of Geometries to an image
+----
+include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=plotToImageGeometries,indent=0]
+----
+[.thumb]
+image::viewer_plot2imagegeometries.png[]
+
+[source,groovy]
+.Plot a Geometry to a File
+----
+include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=plotToFile,indent=0]
+----
+[.thumb]
+image::viewer_plottofile.png[]

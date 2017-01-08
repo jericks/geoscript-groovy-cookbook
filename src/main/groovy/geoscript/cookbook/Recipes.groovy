@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.geom.Geometry
 import geoscript.plot.Chart
 import geoscript.viewer.Viewer
+import org.apache.commons.io.FileUtils
 
 import javax.imageio.ImageIO
 import java.awt.image.BufferedImage
@@ -33,6 +34,18 @@ class Recipes {
             file.parentFile.mkdir()
         }
         ImageIO.write(image, "png", file)
+    }
+
+    protected File getImageFile(String name) {
+        new File("src/docs/asciidoc/images/${name}.png")
+    }
+
+    protected File moveFile(File fromFile, File toFile) {
+        if (toFile.exists()) {
+            toFile.delete()
+        }
+        FileUtils.moveFile(fromFile, toFile)
+        toFile
     }
 
     protected void writeFile(String name, String text) {
