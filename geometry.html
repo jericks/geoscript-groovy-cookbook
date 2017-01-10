@@ -807,6 +807,41 @@ Bounds bounds = polygon.bounds</code></pre>
 <img src="./images/geometry_bounds.png" alt="geometry bounds">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a Geometry of a String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = Geometry.createFromText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Geo</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_createfromtext.png" alt="geometry createfromtext">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Sierpinski Carpet in a given Bounds and with a number of points</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="float">21.645</span>,<span class="float">36.957</span>,<span class="float">21.676</span>,<span class="float">36.970</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = Geometry.createSierpinskiCarpet(bounds, <span class="integer">50</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_sierpinskicarpet.png" alt="geometry sierpinskicarpet">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Kock Snowflake in a given Bounds and with a number of points</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="float">21.645</span>,<span class="float">36.957</span>,<span class="float">21.676</span>,<span class="float">36.970</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = Geometry.createKochSnowflake(bounds, <span class="integer">50</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_kochsnowflake.png" alt="geometry kochsnowflake">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -1541,7 +1576,7 @@ LineString lineString = bounds.createArc(<span class="predefined-type">Math</spa
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-08 21:33:35 UTC
+Last updated 2017-01-10 02:06:09 UTC
 </div>
 </div>
 </body>
