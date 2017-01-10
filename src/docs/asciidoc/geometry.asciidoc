@@ -119,6 +119,30 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bounds,inden
 [.thumb]
 image::geometry_bounds.png[]
 
+[source,groovy]
+.Create a Geometry of a String
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createFromText,indent=0]
+----
+[.thumb]
+image::geometry_createfromtext.png[]
+
+[source,groovy]
+.Create a Sierpinski Carpet in a given Bounds and with a number of points
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createSierpinskiCarpet,indent=0]
+----
+[.thumb]
+image::geometry_sierpinskicarpet.png[]
+
+[source,groovy]
+.Create a Kock Snowflake in a given Bounds and with a number of points
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createKochSnowflake,indent=0]
+----
+[.thumb]
+image::geometry_kochsnowflake.png[]
+
 === Reading and Writing Geometries
 
 The geoscript.geom.io package has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.

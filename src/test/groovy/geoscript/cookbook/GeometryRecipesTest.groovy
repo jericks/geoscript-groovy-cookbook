@@ -384,6 +384,18 @@ class GeometryRecipesTest {
         assertEquals(23.247, length, 0.01)
     }
 
+    @Test void createSierpinskiCarpet() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.createSierpinskiCarpet()
+        assertNotNull geometry
+    }
+
+    @Test void createKochSnowflake() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.createKochSnowflake()
+        assertNotNull geometry
+    }
+
     @Test void readGeometryFromWKTReader() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.readGeometryFromWKTReader()

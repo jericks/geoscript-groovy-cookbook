@@ -677,6 +677,35 @@ class GeometryRecipes extends Recipes {
         bounds
     }
 
+    Geometry createFromText() {
+        // tag::createFromText[]
+        Geometry geometry = Geometry.createFromText("Geo")
+        // end::createFromText[]
+        Viewer.drawToFile(geometry, new File("src/main/resources/docs/images/geometry_createfromtext.png"), size:[300,300])
+    }
+
+    static void main(String[] args) {
+        new GeometryRecipes().createFromText()
+    }
+
+    Geometry createSierpinskiCarpet() {
+        // tag::createSierpinskiCarpet[]
+        Bounds bounds = new Bounds(21.645,36.957,21.676,36.970, "EPSG:4326")
+        Geometry geometry = Geometry.createSierpinskiCarpet(bounds, 50)
+        // end::createSierpinskiCarpet[]
+        drawGeometry("geometry_sierpinskicarpet", geometry, drawCoords: false)
+        geometry
+    }
+
+    Geometry createKochSnowflake() {
+        // tag::createKochSnowflake[]
+        Bounds bounds = new Bounds(21.645,36.957,21.676,36.970, "EPSG:4326")
+        Geometry geometry = Geometry.createKochSnowflake(bounds, 50)
+        // end::createKochSnowflake[]
+        drawGeometry("geometry_kochsnowflake", geometry, drawCoords: false)
+        geometry
+    }
+
     Geometry readGeometryFromWKTReader() {
         // tag::readGeometryFromWKTReader[]
         String wkt = "POINT (-123.15 46.237)"
