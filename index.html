@@ -556,6 +556,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-a-bar-chart">Creating a Bar Chart</a></li>
 </ul>
 </li>
+<li><a href="#feature-recipes">Feature Recipes</a>
+<ul class="sectlevel2">
+<li><a href="#creating-fields">Creating Fields</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -2733,10 +2738,88 @@ Chart chart = Bar.category(data)</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="feature-recipes"><a class="anchor" href="#feature-recipes"></a>Feature Recipes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="creating-fields"><a class="anchor" href="#creating-fields"></a>Creating Fields</h3>
+<div class="listingblock">
+<div class="title">Create a Field with a name and a type</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Field</span> field = <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+println field</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>name: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Geometry Field with a name and a geometry type and an optional projection</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Field</span> field = <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+println field</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geom: Point(EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Field with a List of Strings (name, type, projection)</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Field</span> field = <span class="keyword">new</span> <span class="predefined-type">Field</span>([<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>])
+println field</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geom: Polygon(EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Field from a Map where keys are name, type, proj</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Field</span> field = <span class="keyword">new</span> <span class="predefined-type">Field</span>([
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">LineString</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">proj</span><span class="delimiter">&quot;</span></span>: <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+])
+println field</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geom: LineString(EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Access a Field&#8217;s properties</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Field</span> field = <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Name = </span><span class="inline"><span class="inline-delimiter">${</span>field.name<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Type = </span><span class="inline"><span class="inline-delimiter">${</span>field.typ<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Projection = </span><span class="inline"><span class="inline-delimiter">${</span>field.proj<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is Geometry = </span><span class="inline"><span class="inline-delimiter">${</span>field.geometry<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Name = geom
+Type = Point
+Projection = "EPSG:4326
+Is Geometry = true</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-10 02:06:09 UTC
+Last updated 2017-01-11 00:24:14 UTC
 </div>
 </div>
 </body>
