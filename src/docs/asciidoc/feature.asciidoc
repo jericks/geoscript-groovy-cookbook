@@ -1,0 +1,48 @@
+== Feature Recipes
+
+=== Creating Fields
+
+[source,groovy]
+.Create a Field with a name and a type
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createField,indent=0]
+----
+....
+include::output/feature_field_create.txt[]
+....
+
+[source,groovy]
+.Create a Geometry Field with a name and a geometry type and an optional projection
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createGeometryField,indent=0]
+----
+....
+include::output/feature_field_create_geometry.txt[]
+....
+
+[source,groovy]
+.Create a Field with a List of Strings (name, type, projection)
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFieldFromList,indent=0]
+----
+....
+include::output/feature_field_create_list.txt[]
+....
+
+[source,groovy]
+.Create a Field from a Map where keys are name, type, proj
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFieldFromMap,indent=0]
+----
+....
+include::output/feature_field_create_map.txt[]
+....
+
+[source,groovy]
+.Access a Field's properties
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getFieldProperties,indent=0]
+----
+....
+include::output/feature_field_properties.txt[]
+....
