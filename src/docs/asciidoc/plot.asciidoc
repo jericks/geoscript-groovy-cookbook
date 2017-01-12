@@ -1,6 +1,6 @@
 == Plot Recipes
 
-=== Creating a Bar Chart
+=== Creating Bar Charts
 
 [source,groovy]
 .Create a basic bar chart
@@ -17,3 +17,47 @@ include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createBarChartWi
 ----
 [.thumb]
 image::plot_bar_chart_with_categories.png[]
+
+[source,groovy]
+.Create a stacked bar chart with two series of data
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createBarChartCategoryStacked,indent=0]
+----
+[.thumb]
+image::plot_bar_chart_with_categories_stacked.png[]
+
+[source,groovy]
+.Create a 3D bar chart with categories
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createBarChartCategory3D,indent=0]
+----
+[.thumb]
+image::plot_bar_chart_with_categories_3d.png[]
+
+=== Creating Pie Charts
+
+[source,groovy]
+.Create a pie chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createPieChart,indent=0]
+----
+[.thumb]
+image::plot_pie_chart.png[]
+
+[source,groovy]
+.Create a 3D pie chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createPieChart3D,indent=0]
+----
+[.thumb]
+image::plot_pie_chart3d.png[]
+
+=== Creating Box Charts
+
+[source,groovy]
+.Create a box chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createBoxPlot,indent=0]
+----
+[.thumb]
+image::plot_box.png[]

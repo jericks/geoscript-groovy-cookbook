@@ -19,4 +19,33 @@ class PlotRecipesTest {
         assertNotNull(chart)
     }
 
+    @Test void createBarChartCategoryStacked() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createBarChartCategoryStacked()
+        assertNotNull(chart)
+    }
+
+    @Test void createBarChartCategory3D() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createBarChartCategory3D()
+        assertNotNull(chart)
+    }
+
+    @Test void createPieChart() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createPieChart()
+        assertNotNull(chart)
+    }
+
+    @Test void createPieChart3D() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createPieChart3D()
+        assertNotNull(chart)
+    }
+
+    @Test void createBoxPlot() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createBoxPlot()
+        assertNotNull(chart)
+    }
 }
