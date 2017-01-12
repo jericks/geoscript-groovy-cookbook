@@ -553,7 +553,9 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#plot-recipes">Plot Recipes</a>
 <ul class="sectlevel2">
-<li><a href="#creating-a-bar-chart">Creating a Bar Chart</a></li>
+<li><a href="#creating-bar-charts">Creating Bar Charts</a></li>
+<li><a href="#creating-pie-charts">Creating Pie Charts</a></li>
+<li><a href="#creating-box-charts">Creating Box Charts</a></li>
 </ul>
 </li>
 <li><a href="#feature-recipes">Feature Recipes</a>
@@ -2706,7 +2708,7 @@ Viewer.plotToFile([buffer, point], file, <span class="key">size</span>: [<span c
 <h2 id="plot-recipes"><a class="anchor" href="#plot-recipes"></a>Plot Recipes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="creating-a-bar-chart"><a class="anchor" href="#creating-a-bar-chart"></a>Creating a Bar Chart</h3>
+<h3 id="creating-bar-charts"><a class="anchor" href="#creating-bar-charts"></a>Creating Bar Charts</h3>
 <div class="listingblock">
 <div class="title">Create a basic bar chart</div>
 <div class="content">
@@ -2733,6 +2735,86 @@ Chart chart = Bar.category(data)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/plot_bar_chart_with_categories.png" alt="plot bar chart with categories">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a stacked bar chart with two series of data</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> data = [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">A</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">B</span><span class="delimiter">&quot;</span></span>:<span class="integer">50</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">C</span><span class="delimiter">&quot;</span></span>:<span class="integer">25</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">D</span><span class="delimiter">&quot;</span></span>:<span class="integer">25</span>],
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">F</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">G</span><span class="delimiter">&quot;</span></span>:<span class="integer">75</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">H</span><span class="delimiter">&quot;</span></span>:<span class="integer">10</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">I</span><span class="delimiter">&quot;</span></span>:<span class="integer">15</span>]
+]
+Chart chart = Bar.category(data, <span class="key">stacked</span>: <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_bar_chart_with_categories_stacked.png" alt="plot bar chart with categories stacked">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a 3D bar chart with categories</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> data = [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">A</span><span class="delimiter">&quot;</span></span>:<span class="integer">20</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">B</span><span class="delimiter">&quot;</span></span>:<span class="integer">45</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">C</span><span class="delimiter">&quot;</span></span>:<span class="integer">2</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">D</span><span class="delimiter">&quot;</span></span>:<span class="integer">14</span>
+]
+Chart chart = Bar.category(data, <span class="key">trid</span>: <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_bar_chart_with_categories_3d.png" alt="plot bar chart with categories 3d">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-pie-charts"><a class="anchor" href="#creating-pie-charts"></a>Creating Pie Charts</h3>
+<div class="listingblock">
+<div class="title">Create a pie chart</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> data = [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">A</span><span class="delimiter">&quot;</span></span>:<span class="integer">20</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">B</span><span class="delimiter">&quot;</span></span>:<span class="integer">45</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">C</span><span class="delimiter">&quot;</span></span>:<span class="integer">2</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">D</span><span class="delimiter">&quot;</span></span>:<span class="integer">14</span>
+]
+Chart chart = Pie.pie(data)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_pie_chart.png" alt="plot pie chart">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a 3D pie chart</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> data = [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">A</span><span class="delimiter">&quot;</span></span>:<span class="integer">20</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">B</span><span class="delimiter">&quot;</span></span>:<span class="integer">45</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">C</span><span class="delimiter">&quot;</span></span>:<span class="integer">2</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">D</span><span class="delimiter">&quot;</span></span>:<span class="integer">14</span>
+]
+Chart chart = Pie.pie(data, <span class="key">trid</span>: <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_pie_chart3d.png" alt="plot pie chart3d">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-box-charts"><a class="anchor" href="#creating-box-charts"></a>Creating Box Charts</h3>
+<div class="listingblock">
+<div class="title">Create a box chart</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> data = [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">A</span><span class="delimiter">&quot;</span></span>:[<span class="integer">1</span>,<span class="integer">10</span>,<span class="integer">20</span>],
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">B</span><span class="delimiter">&quot;</span></span>:[<span class="integer">45</span>,<span class="integer">39</span>,<span class="integer">10</span>],
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">C</span><span class="delimiter">&quot;</span></span>:[<span class="integer">40</span>,<span class="integer">30</span>,<span class="integer">20</span>],
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">D</span><span class="delimiter">&quot;</span></span>:[<span class="integer">14</span>,<span class="integer">25</span>,<span class="integer">19</span>]
+]
+Chart chart = <span class="predefined-type">Box</span>.box(data)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_box.png" alt="plot box">
 </div>
 </div>
 </div>
@@ -2819,7 +2901,7 @@ Is Geometry = true</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-11 00:24:14 UTC
+Last updated 2017-01-12 03:42:39 UTC
 </div>
 </div>
 </body>
