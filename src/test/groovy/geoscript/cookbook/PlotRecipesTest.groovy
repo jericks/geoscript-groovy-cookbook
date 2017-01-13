@@ -48,4 +48,22 @@ class PlotRecipesTest {
         Chart chart = plotRecipes.createBoxPlot()
         assertNotNull(chart)
     }
+
+    @Test void createCurve() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createCurve()
+        assertNotNull(chart)
+    }
+
+    @Test void createCurveSmooth() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createCurveSmooth()
+        assertNotNull(chart)
+    }
+
+    @Test void createCurve3D() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createCurve3D()
+        assertNotNull(chart)
+    }
 }

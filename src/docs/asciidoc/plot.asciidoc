@@ -61,3 +61,29 @@ include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createBoxPlot,in
 ----
 [.thumb]
 image::plot_box.png[]
+
+=== Creating Curve Charts
+
+[source,groovy]
+.Create a curve chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createCurve,indent=0]
+----
+[.thumb]
+image::plot_curve.png[]
+
+[source,groovy]
+.Create a smooth curve chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createCurveSmooth,indent=0]
+----
+[.thumb]
+image::plot_curve_smooth.png[]
+
+[source,groovy]
+.Create a 3D curve chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createCurve3D,indent=0]
+----
+[.thumb]
+image::plot_curve3d.png[]

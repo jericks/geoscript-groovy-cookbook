@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.plot.Bar
 import geoscript.plot.Box
 import geoscript.plot.Chart
+import geoscript.plot.Curve
 import geoscript.plot.Pie
 
 class PlotRecipes extends Recipes {
@@ -87,4 +88,38 @@ class PlotRecipes extends Recipes {
         drawChart("plot_box", chart)
         chart
     }
+
+    Chart createCurve() {
+        // tag::createCurve[]
+        List data = [
+                [1,10],[45,12],[23,3],[5,20]
+        ]
+        Chart chart = Curve.curve(data)
+        // end::createCurve[]
+        drawChart("plot_curve", chart)
+        chart
+    }
+
+    Chart createCurveSmooth() {
+        // tag::createCurveSmooth[]
+        List data = [
+                [1,10],[45,12],[23,3],[5,20]
+        ]
+        Chart chart = Curve.curve(data, smooth: true)
+        // end::createCurveSmooth[]
+        drawChart("plot_curve_smooth", chart)
+        chart
+    }
+
+    Chart createCurve3D() {
+        // tag::createCurve3D[]
+        List data = [
+                [1,10],[45,12],[23,3],[5,20]
+        ]
+        Chart chart = Curve.curve(data, trid: true)
+        // end::createCurve3D[]
+        drawChart("plot_curve3d", chart)
+        chart
+    }
+
 }
