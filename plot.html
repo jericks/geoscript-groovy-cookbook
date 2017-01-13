@@ -519,6 +519,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-bar-charts">Creating Bar Charts</a></li>
 <li><a href="#creating-pie-charts">Creating Pie Charts</a></li>
 <li><a href="#creating-box-charts">Creating Box Charts</a></li>
+<li><a href="#creating-curve-charts">Creating Curve Charts</a></li>
 </ul>
 </li>
 </ul>
@@ -639,12 +640,57 @@ Chart chart = <span class="predefined-type">Box</span>.box(data)</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="creating-curve-charts"><a class="anchor" href="#creating-curve-charts"></a>Creating Curve Charts</h3>
+<div class="listingblock">
+<div class="title">Create a curve chart</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> data = [
+        [<span class="integer">1</span>,<span class="integer">10</span>],[<span class="integer">45</span>,<span class="integer">12</span>],[<span class="integer">23</span>,<span class="integer">3</span>],[<span class="integer">5</span>,<span class="integer">20</span>]
+]
+Chart chart = Curve.curve(data)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_curve.png" alt="plot curve">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a smooth curve chart</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> data = [
+        [<span class="integer">1</span>,<span class="integer">10</span>],[<span class="integer">45</span>,<span class="integer">12</span>],[<span class="integer">23</span>,<span class="integer">3</span>],[<span class="integer">5</span>,<span class="integer">20</span>]
+]
+Chart chart = Curve.curve(data, <span class="key">smooth</span>: <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_curve_smooth.png" alt="plot curve smooth">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a 3D curve chart</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> data = [
+        [<span class="integer">1</span>,<span class="integer">10</span>],[<span class="integer">45</span>,<span class="integer">12</span>],[<span class="integer">23</span>,<span class="integer">3</span>],[<span class="integer">5</span>,<span class="integer">20</span>]
+]
+Chart chart = Curve.curve(data, <span class="key">trid</span>: <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_curve3d.png" alt="plot curve3d">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-12 03:42:39 UTC
+Last updated 2017-01-13 01:55:24 UTC
 </div>
 </div>
 </body>
