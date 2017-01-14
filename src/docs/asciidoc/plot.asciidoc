@@ -1,5 +1,39 @@
 == Plot Recipes
 
+=== Processing Charts
+
+[source,groovy]
+.Show a chart in a GUI
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=showChart,indent=0]
+----
+[.thumb]
+image::plot_show.png[]
+
+[source,groovy]
+.Get an image from a chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=getImageChart,indent=0]
+----
+[.thumb]
+image::plot_getimage.png[]
+
+[source,groovy]
+.Save a chart to a file
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=saveChart,indent=0]
+----
+[.thumb]
+image::plot_save.png[]
+
+[source,groovy]
+.Overlay multiple charts
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=overlayCharts,indent=0]
+----
+[.thumb]
+image::plot_overlay.png[]
+
 === Creating Bar Charts
 
 [source,groovy]
@@ -87,3 +121,31 @@ include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createCurve3D,in
 ----
 [.thumb]
 image::plot_curve3d.png[]
+
+=== Creating Regression Charts
+
+[source,groovy]
+.Create a linear regression chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createLinearRegression,indent=0]
+----
+[.thumb]
+image::plot_linear_regression.png[]
+
+[source,groovy]
+.Create a power regression chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createPowerRegression,indent=0]
+----
+[.thumb]
+image::plot_power_regression.png[]
+
+=== Creating Scatter Plot Charts
+
+[source,groovy]
+.Create a scatter plot chart
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createScatterPlot,indent=0]
+----
+[.thumb]
+image::plot_scatterplot.png[]

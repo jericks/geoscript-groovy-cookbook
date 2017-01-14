@@ -3,9 +3,30 @@ package geoscript.cookbook
 import geoscript.plot.Chart
 import javafx.scene.chart.BarChart
 import org.junit.Test
+
+import java.awt.image.BufferedImage
+
 import static org.junit.Assert.*
 
 class PlotRecipesTest {
+
+    @Test void getImageChart() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        BufferedImage image = plotRecipes.getImageChart()
+        assertNotNull(image)
+    }
+
+    @Test void saveChart() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.saveChart()
+        assertNotNull(chart)
+    }
+
+    @Test void overlayCharts() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.overlayCharts()
+        assertNotNull(chart)
+    }
 
     @Test void createBarChart() {
         PlotRecipes plotRecipes = new PlotRecipes()
@@ -64,6 +85,24 @@ class PlotRecipesTest {
     @Test void createCurve3D() {
         PlotRecipes plotRecipes = new PlotRecipes()
         Chart chart = plotRecipes.createCurve3D()
+        assertNotNull(chart)
+    }
+
+    @Test void createLinearRegression() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createLinearRegression()
+        assertNotNull(chart)
+    }
+
+    @Test void createPowerRegression() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createPowerRegression()
+        assertNotNull(chart)
+    }
+
+    @Test void createScatterPlot() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createScatterPlot()
         assertNotNull(chart)
     }
 }
