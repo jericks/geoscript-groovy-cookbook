@@ -516,10 +516,13 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#plot-recipes">Plot Recipes</a>
 <ul class="sectlevel2">
+<li><a href="#processing-charts">Processing Charts</a></li>
 <li><a href="#creating-bar-charts">Creating Bar Charts</a></li>
 <li><a href="#creating-pie-charts">Creating Pie Charts</a></li>
 <li><a href="#creating-box-charts">Creating Box Charts</a></li>
 <li><a href="#creating-curve-charts">Creating Curve Charts</a></li>
+<li><a href="#creating-regression-charts">Creating Regression Charts</a></li>
+<li><a href="#creating-scatter-plot-charts">Creating Scatter Plot Charts</a></li>
 </ul>
 </li>
 </ul>
@@ -529,6 +532,74 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect1">
 <h2 id="plot-recipes"><a class="anchor" href="#plot-recipes"></a>Plot Recipes</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="processing-charts"><a class="anchor" href="#processing-charts"></a>Processing Charts</h3>
+<div class="listingblock">
+<div class="title">Show a chart in a GUI</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> data = [
+        [<span class="integer">1</span>,<span class="integer">10</span>],[<span class="integer">45</span>,<span class="integer">12</span>],[<span class="integer">23</span>,<span class="integer">3</span>],[<span class="integer">5</span>,<span class="integer">20</span>]
+]
+Chart chart = Bar.xy(data)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_show.png" alt="plot show">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get an image from a chart</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> data = [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">A</span><span class="delimiter">&quot;</span></span>:<span class="integer">20</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">B</span><span class="delimiter">&quot;</span></span>:<span class="integer">45</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">C</span><span class="delimiter">&quot;</span></span>:<span class="integer">2</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">D</span><span class="delimiter">&quot;</span></span>:<span class="integer">14</span>
+]
+Chart chart = Pie.pie(data)
+<span class="predefined-type">BufferedImage</span> image = chart.image</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_getimage.png" alt="plot getimage">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Save a chart to a file</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> data = [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">A</span><span class="delimiter">&quot;</span></span>:[<span class="integer">1</span>,<span class="integer">10</span>,<span class="integer">20</span>],
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">B</span><span class="delimiter">&quot;</span></span>:[<span class="integer">45</span>,<span class="integer">39</span>,<span class="integer">10</span>],
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">C</span><span class="delimiter">&quot;</span></span>:[<span class="integer">40</span>,<span class="integer">30</span>,<span class="integer">20</span>],
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">D</span><span class="delimiter">&quot;</span></span>:[<span class="integer">14</span>,<span class="integer">25</span>,<span class="integer">19</span>]
+]
+Chart chart = <span class="predefined-type">Box</span>.box(data)
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">chart.png</span><span class="delimiter">&quot;</span></span>)
+chart.save(file)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_save.png" alt="plot save">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Overlay multiple charts</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> data = [
+        [<span class="integer">1</span>,<span class="integer">10</span>],[<span class="integer">45</span>,<span class="integer">12</span>],[<span class="integer">23</span>,<span class="integer">3</span>],[<span class="integer">5</span>,<span class="integer">20</span>]
+]
+Chart chart1 = Bar.xy(data)
+Chart chart2 = Curve.curve(data)
+Chart chart3 = Regression.linear(data)
+chart1.overlay([chart2,chart3])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_overlay.png" alt="plot overlay">
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="creating-bar-charts"><a class="anchor" href="#creating-bar-charts"></a>Creating Bar Charts</h3>
 <div class="listingblock">
@@ -685,12 +756,63 @@ Chart chart = Curve.curve(data, <span class="key">trid</span>: <span class="pred
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="creating-regression-charts"><a class="anchor" href="#creating-regression-charts"></a>Creating Regression Charts</h3>
+<div class="listingblock">
+<div class="title">Create a linear regression chart</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiPoint mulitPoint = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">100</span>,<span class="integer">100</span>).geometry, <span class="integer">10</span>)
+<span class="predefined-type">List</span> data = mulitPoint.geometries.collect{ <span class="predefined-type">Point</span> pt -&gt;
+    [pt.x, pt.y]
+}
+Chart chart = Regression.linear(data)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_linear_regression.png" alt="plot linear regression">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a power regression chart</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiPoint mulitPoint = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">100</span>,<span class="integer">100</span>).geometry, <span class="integer">10</span>)
+<span class="predefined-type">List</span> data = mulitPoint.geometries.collect{ <span class="predefined-type">Point</span> pt -&gt;
+    [pt.x, pt.y]
+}
+Chart chart = Regression.power(data)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_power_regression.png" alt="plot power regression">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-scatter-plot-charts"><a class="anchor" href="#creating-scatter-plot-charts"></a>Creating Scatter Plot Charts</h3>
+<div class="listingblock">
+<div class="title">Create a scatter plot chart</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiPoint mulitPoint = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">100</span>,<span class="integer">100</span>).geometry, <span class="integer">10</span>)
+<span class="predefined-type">List</span> data = mulitPoint.geometries.collect{ <span class="predefined-type">Point</span> pt -&gt;
+    [pt.x, pt.y]
+}
+Chart chart = Scatter.scatterplot(data)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_scatterplot.png" alt="plot scatterplot">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-13 01:55:24 UTC
+Last updated 2017-01-14 01:50:31 UTC
 </div>
 </div>
 </body>
