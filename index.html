@@ -565,6 +565,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#feature-recipes">Feature Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#creating-fields">Creating Fields</a></li>
+<li><a href="#creating-schemas">Creating Schemas</a></li>
 </ul>
 </li>
 </ul>
@@ -3064,12 +3065,75 @@ Is Geometry = true</pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="creating-schemas"><a class="anchor" href="#creating-schemas"></a>Creating Schemas</h3>
+<div class="listingblock">
+<div class="title">Create a Schema from a list of Fields</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+println schema</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities geom: Point(EPSG:4326), id: Integer, name: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Schema from a list of Lists</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        [<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>],
+        [<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>],
+        [<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>]
+])
+println schema</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities geom: Point(EPSG:4326), id: Integer, name: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Schema from a list of Maps</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        [<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="key">type</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="key">proj</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>],
+        [<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>,   <span class="key">type</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>],
+        [<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="key">type</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>]
+])
+println schema</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities geom: Point(EPSG:4326), id: Integer, name: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Schema from a string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">geom:Point:srid=4326,id:Integer,name:String</span><span class="delimiter">&quot;</span></span>)
+println schema</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities geom: Point(EPSG:4326), id: Integer, name: String</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-14 01:50:31 UTC
+Last updated 2017-01-16 02:23:04 UTC
 </div>
 </div>
 </body>
