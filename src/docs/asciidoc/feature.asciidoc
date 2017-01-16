@@ -84,3 +84,79 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createSchemaF
 ....
 include::output/schema_create_string.txt[]
 ....
+
+=== Getting Schema Properties
+
+[source,groovy]
+.Get the Schema's name
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaProperties_name,indent=0]
+----
+....
+include::output/schema_properties_name.txt[]
+....
+
+[source,groovy]
+.Get the Schema's geometry Field
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaProperties_geom,indent=0]
+----
+....
+include::output/schema_properties_geom.txt[]
+....
+
+[source,groovy]
+.Get the Schema's Projection
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaProperties_proj,indent=0]
+----
+....
+include::output/schema_properties_proj.txt[]
+....
+
+[source,groovy]
+.Get the Schema's URI
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaProperties_uri,indent=0]
+----
+....
+include::output/schema_properties_uri.txt[]
+....
+
+=== Getting Schema Fields
+
+[source,groovy]
+.Get the Schema's Fields
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaFields_fields,indent=0]
+----
+....
+include::output/schema_fields_fields.txt[]
+....
+
+[source,groovy]
+.Get a Field
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaFields_field_name,indent=0]
+----
+....
+include::output/schema_fields_field.txt[]
+....
+
+[source,groovy]
+.Get a Field
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaFields_get,indent=0]
+----
+....
+include::output/schema_fields_get.txt[]
+....
+
+[source,groovy]
+.Check if a Schema has a Field
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaFields_has,indent=0]
+----
+....
+include::output/schema_fields_has.txt[]
+....

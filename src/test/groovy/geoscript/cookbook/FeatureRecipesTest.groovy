@@ -61,4 +61,20 @@ class FeatureRecipesTest {
         assertEquals("cities geom: Point(EPSG:4326), id: Integer, name: String", schema.toString())
     }
 
+    @Test void getSchemaProperties() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.getSchemaProperties()
+        assertEquals("cities geom: Point(EPSG:4326), id: Integer, name: String", schema.toString())
+    }
+
+    @Test void getSchemaFields() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Map<String,Object> results = recipes.getSchemaFields()
+        assertEquals(3, results.fields.size())
+        assertNotNull(results.nameField)
+        assertNotNull(results.idField)
+        assertFalse(results.hasArea)
+        assertTrue(results.hasGeom)
+    }
+
 }

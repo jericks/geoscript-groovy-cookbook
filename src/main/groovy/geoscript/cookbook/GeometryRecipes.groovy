@@ -684,10 +684,6 @@ class GeometryRecipes extends Recipes {
         Viewer.drawToFile(geometry, new File("src/main/resources/docs/images/geometry_createfromtext.png"), size:[300,300])
     }
 
-    static void main(String[] args) {
-        new GeometryRecipes().createFromText()
-    }
-
     Geometry createSierpinskiCarpet() {
         // tag::createSierpinskiCarpet[]
         Bounds bounds = new Bounds(21.645,36.957,21.676,36.970, "EPSG:4326")
