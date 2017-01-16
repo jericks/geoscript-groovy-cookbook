@@ -46,3 +46,41 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getFieldPrope
 ....
 include::output/feature_field_properties.txt[]
 ....
+
+=== Creating Schemas
+
+[source,groovy]
+.Create a Schema from a list of Fields
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createSchemaFromFields,indent=0]
+----
+....
+include::output/schema_create_fields.txt[]
+....
+
+[source,groovy]
+.Create a Schema from a list of Lists
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createSchemaFromLists,indent=0]
+----
+....
+include::output/schema_create_lists.txt[]
+....
+
+[source,groovy]
+.Create a Schema from a list of Maps
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createSchemaFromMaps,indent=0]
+----
+....
+include::output/schema_create_maps.txt[]
+....
+
+[source,groovy]
+.Create a Schema from a string
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createSchemaFromString,indent=0]
+----
+....
+include::output/schema_create_string.txt[]
+....
