@@ -566,6 +566,8 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#creating-fields">Creating Fields</a></li>
 <li><a href="#creating-schemas">Creating Schemas</a></li>
+<li><a href="#getting-schema-properties">Getting Schema Properties</a></li>
+<li><a href="#getting-schema-fields">Getting Schema Fields</a></li>
 </ul>
 </li>
 </ul>
@@ -3128,12 +3130,132 @@ println schema</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="getting-schema-properties"><a class="anchor" href="#getting-schema-properties"></a>Getting Schema Properties</h3>
+<div class="listingblock">
+<div class="title">Get the Schema&#8217;s name</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">https://github.com/jericks/geoscript-groovy-cookbook</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> name = schema.name
+println name</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Schema&#8217;s geometry Field</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Field</span> geomField = schema.geom
+println geomField</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geom: Point(EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Schema&#8217;s Projection</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = schema.proj
+println proj</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>EPSG:4326</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Schema&#8217;s URI</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> uri = schema.uri
+println uri</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>https://github.com/jericks/geoscript-groovy-cookbook</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-schema-fields"><a class="anchor" href="#getting-schema-fields"></a>Getting Schema Fields</h3>
+<div class="listingblock">
+<div class="title">Get the Schema&#8217;s Fields</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">Field</span>&gt; fields = schema.fields
+fields.each { <span class="predefined-type">Field</span> field -&gt;
+    println field
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geom: Point(EPSG:4326)
+id: Integer
+name: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Field</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Field</span> nameField = schema.field(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>)
+println nameField</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>name: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Field</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Field</span> idField = schema.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>)
+println idField</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>id: Integer</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check if a Schema has a Field</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">boolean</span> hasArea = schema.has(<span class="string"><span class="delimiter">&quot;</span><span class="content">area</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Has area Field? </span><span class="inline"><span class="inline-delimiter">${</span>hasArea<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="type">boolean</span> hasGeom = schema.has(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Has geom Field? </span><span class="inline"><span class="inline-delimiter">${</span>hasGeom<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false
+true</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-16 02:23:04 UTC
+Last updated 2017-01-16 21:34:28 UTC
 </div>
 </div>
 </body>
