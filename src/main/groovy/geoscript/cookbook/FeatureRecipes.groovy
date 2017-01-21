@@ -1,7 +1,9 @@
 package geoscript.cookbook
 
+import geoscript.feature.Feature
 import geoscript.feature.Field
 import geoscript.feature.Schema
+import geoscript.geom.Point
 import geoscript.proj.Projection
 
 class FeatureRecipes extends Recipes {
@@ -140,6 +142,12 @@ Is Geometry = ${field.geometry}
         // end::getSchemaProperties_uri[]
         writeFile("schema_properties_uri", "${uri}")
 
+        // tag::getSchemaProperties_spec[]
+        String spec = schema.spec
+        println spec
+        // end::getSchemaProperties_spec[]
+        writeFile("schema_properties_spec", "${spec}")
+
         schema
     }
 
@@ -188,4 +196,129 @@ Is Geometry = ${field.geometry}
         results
     }
 
+    Feature createFeatureFromSchemaMap() {
+        // tag::createFeatureFromSchemaMap[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = schema.feature([
+                id: 1,
+                name: 'Seattle',
+                geom: new Point( -122.3204, 47.6024)
+        ], "city.1")
+        println feature
+        // end::createFeatureFromSchemaMap[]
+        writeFile("schema_create_feature_map","${feature}")
+        feature
+    }
+
+    Feature createFeatureFromSchemaList() {
+        // tag::createFeatureFromSchemaList[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = schema.feature([
+                new Point( -122.3204, 47.6024),
+                1,
+                'Seattle'
+        ], "city.1")
+        println feature
+        // end::createFeatureFromSchemaList[]
+        writeFile("schema_create_feature_list","${feature}")
+        feature
+    }
+
+    Feature createFeatureFromSchemaFeature() {
+        // tag::createFeatureFromSchemaFeature[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature1 = new Feature([
+                id: 1,
+                name: 'Seattle',
+                geom: new Point( -122.3204, 47.6024)
+        ], "city.1", schema)
+        println feature1
+        Feature feature2 = schema.feature(feature1)
+        println feature2
+        // end::createFeatureFromSchemaFeature[]
+        writeFile("schema_create_feature_feature","${feature1}${NEW_LINE}${feature2}")
+        feature2
+    }
+
+    Feature createFeatureFromSchemaEmpty() {
+        // tag::createFeatureFromSchemaEmpty[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = schema.feature()
+        println feature
+        // end::createFeatureFromSchemaEmpty[]
+        writeFile("schema_create_feature_empty","${feature}")
+        feature
+    }
+
+    Schema reprojectSchema() {
+        // tag::reprojectSchema[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Schema reprojectedSchema = schema.reproject("EPSG:2927", "cities_spws")
+        // end::reprojectSchema[]
+        writeFile("schema_reproject","${reprojectedSchema}")
+        reprojectedSchema
+    }
+
+    Schema changeGeometryTypeSchema() {
+        // tag::changeGeometryTypeSchema[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Schema polyognSchema = schema.changeGeometryType("Polygon", "cities_buffer")
+        // end::changeGeometryTypeSchema[]
+        writeFile("schema_changegeometrytype","${polyognSchema}")
+        polyognSchema
+    }
+
+    Schema changeFieldSchema() {
+        // tag::changeFieldSchema[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Schema guidSchema = schema.changeField(schema.field('id'), new Field('guid','String'), 'cities_guid')
+        // end::changeFieldSchema[]
+        writeFile("schema_changefield","${guidSchema}")
+        guidSchema
+    }
+
+    Schema changeFieldsSchema() {
+        // tag::changeFieldsSchema[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Schema updatedSchema = schema.changeFields(
+                [
+                    (schema.field('id'))   : new Field('guid','String'),
+                    (schema.field('name')) : new Field('description','String')
+                ], 'cities_updated')
+        // end::changeFieldsSchema[]
+        writeFile("schema_changefields","${updatedSchema}")
+        updatedSchema
+    }
 }

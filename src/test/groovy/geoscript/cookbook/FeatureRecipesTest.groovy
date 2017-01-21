@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.feature.Feature
 import geoscript.feature.Field
 import geoscript.feature.Schema
 import org.junit.Test
@@ -75,6 +76,57 @@ class FeatureRecipesTest {
         assertNotNull(results.idField)
         assertFalse(results.hasArea)
         assertTrue(results.hasGeom)
+    }
+
+    @Test void createFeatureFromSchemaMap() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.createFeatureFromSchemaMap()
+        assertEquals("cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle", feature.toString())
+    }
+
+    @Test void createFeatureFromSchemaList() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.createFeatureFromSchemaList()
+        assertEquals("cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle", feature.toString())
+    }
+
+    @Test void createFeatureFromSchemaFeature() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.createFeatureFromSchemaFeature()
+        assertEquals("cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle", feature.toString())
+    }
+
+    @Test void createFeatureFromSchemaEmpty() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.createFeatureFromSchemaEmpty()
+        assertNotNull(feature.id)
+        assertNull(feature.geom)
+        assertNull(feature['id'])
+        assertNull(feature['name'])
+    }
+
+    @Test void reprojectSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.reprojectSchema()
+        assertEquals("cities_spws geom: Point(EPSG:2927), id: Integer, name: String", schema.toString())
+    }
+
+    @Test void changeGeometryTypeSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.changeGeometryTypeSchema()
+        assertEquals("cities_buffer geom: Polygon(EPSG:4326), id: Integer, name: String", schema.toString())
+    }
+
+    @Test void changeFieldSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.changeFieldSchema()
+        assertEquals("cities_guid geom: Point(EPSG:4326), guid: String, name: String", schema.toString())
+    }
+
+    @Test void changeFieldsSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.changeFieldsSchema()
+        assertEquals("cities_updated geom: Point(EPSG:4326), guid: String, description: String", schema.toString())
     }
 
 }

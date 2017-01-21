@@ -123,6 +123,15 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaProp
 include::output/schema_properties_uri.txt[]
 ....
 
+[source,groovy]
+.Get the Schema's specification string
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaProperties_spec,indent=0]
+----
+....
+include::output/schema_properties_spec.txt[]
+....
+
 === Getting Schema Fields
 
 [source,groovy]
@@ -159,4 +168,80 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getSchemaFiel
 ----
 ....
 include::output/schema_fields_has.txt[]
+....
+
+=== Modifying Schemas
+
+[source,groovy]
+.Change the projection of a Schema
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=reprojectSchema,indent=0]
+----
+....
+include::output/schema_reproject.txt[]
+....
+
+[source,groovy]
+.Change the geometry type of a Schema
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=changeGeometryTypeSchema,indent=0]
+----
+....
+include::output/schema_changegeometrytype.txt[]
+....
+
+[source,groovy]
+.Change a Field definition of a Schema
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=changeFieldSchema,indent=0]
+----
+....
+include::output/schema_changefield.txt[]
+....
+
+[source,groovy]
+.Change Field definitions of a Schema
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=changeFieldsSchema,indent=0]
+----
+....
+include::output/schema_changefields.txt[]
+....
+
+=== Creating Features from a Schema
+
+[source,groovy]
+.Create a Feature from a Schema with a Map of values
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFeatureFromSchemaMap,indent=0]
+----
+....
+include::output/schema_create_feature_map.txt[]
+....
+
+[source,groovy]
+.Create a Feature from a Schema with a List of values.  The order of the values must match the order of the Fields.
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFeatureFromSchemaList,indent=0]
+----
+....
+include::output/schema_create_feature_list.txt[]
+....
+
+[source,groovy]
+.Create a Feature from a Schema with another Feature.
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFeatureFromSchemaFeature,indent=0]
+----
+....
+include::output/schema_create_feature_feature.txt[]
+....
+
+[source,groovy]
+.Create an empty Feature from a Schema.
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFeatureFromSchemaEmpty,indent=0]
+----
+....
+include::output/schema_create_feature_empty.txt[]
 ....
