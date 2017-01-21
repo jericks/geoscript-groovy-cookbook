@@ -568,6 +568,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-schemas">Creating Schemas</a></li>
 <li><a href="#getting-schema-properties">Getting Schema Properties</a></li>
 <li><a href="#getting-schema-fields">Getting Schema Fields</a></li>
+<li><a href="#modifying-schemas">Modifying Schemas</a></li>
+<li><a href="#creating-features-from-a-schema">Creating Features from a Schema</a></li>
 </ul>
 </li>
 </ul>
@@ -3185,6 +3187,18 @@ println uri</code></pre>
 <pre>https://github.com/jericks/geoscript-groovy-cookbook</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Get the Schema&#8217;s specification string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> spec = schema.spec
+println spec</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geom:Point:srid=4326,id:Integer,name:String</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="getting-schema-fields"><a class="anchor" href="#getting-schema-fields"></a>Getting Schema Fields</h3>
@@ -3250,12 +3264,169 @@ true</pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="modifying-schemas"><a class="anchor" href="#modifying-schemas"></a>Modifying Schemas</h3>
+<div class="listingblock">
+<div class="title">Change the projection of a Schema</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">Schema</span> reprojectedSchema = schema.reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cities_spws</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities_spws geom: Point(EPSG:2927), id: Integer, name: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Change the geometry type of a Schema</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">Schema</span> polyognSchema = schema.changeGeometryType(<span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cities_buffer</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities_buffer geom: Polygon(EPSG:4326), id: Integer, name: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Change a Field definition of a Schema</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">Schema</span> guidSchema = schema.changeField(schema.field(<span class="string"><span class="delimiter">'</span><span class="content">id</span><span class="delimiter">'</span></span>), <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">'</span><span class="content">guid</span><span class="delimiter">'</span></span>,<span class="string"><span class="delimiter">'</span><span class="content">String</span><span class="delimiter">'</span></span>), <span class="string"><span class="delimiter">'</span><span class="content">cities_guid</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities_guid geom: Point(EPSG:4326), guid: String, name: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Change Field definitions of a Schema</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">Schema</span> updatedSchema = schema.changeFields(
+        [
+            (schema.field(<span class="string"><span class="delimiter">'</span><span class="content">id</span><span class="delimiter">'</span></span>))   : <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">'</span><span class="content">guid</span><span class="delimiter">'</span></span>,<span class="string"><span class="delimiter">'</span><span class="content">String</span><span class="delimiter">'</span></span>),
+            (schema.field(<span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>)) : <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">'</span><span class="content">description</span><span class="delimiter">'</span></span>,<span class="string"><span class="delimiter">'</span><span class="content">String</span><span class="delimiter">'</span></span>)
+        ], <span class="string"><span class="delimiter">'</span><span class="content">cities_updated</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities_updated geom: Point(EPSG:4326), guid: String, description: String</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-features-from-a-schema"><a class="anchor" href="#creating-features-from-a-schema"></a>Creating Features from a Schema</h3>
+<div class="listingblock">
+<div class="title">Create a Feature from a Schema with a Map of values</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = schema.feature([
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Seattle</span><span class="delimiter">'</span></span>,
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>( -<span class="float">122.3204</span>, <span class="float">47.6024</span>)
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>)
+println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Feature from a Schema with a List of values.  The order of the values must match the order of the Fields.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = schema.feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>( -<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">'</span><span class="content">Seattle</span><span class="delimiter">'</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>)
+println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Feature from a Schema with another Feature.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature1 = <span class="keyword">new</span> Feature([
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Seattle</span><span class="delimiter">'</span></span>,
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>( -<span class="float">122.3204</span>, <span class="float">47.6024</span>)
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+println feature1
+Feature feature2 = schema.feature(feature1)
+println feature2</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle
+cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create an empty Feature from a Schema.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = schema.feature()
+println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities.fid--3b7da46f_159be927e6b_-8000 geom: null, id: null, name: null</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-16 21:34:28 UTC
+Last updated 2017-01-21 01:06:42 UTC
 </div>
 </div>
 </body>
