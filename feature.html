@@ -869,6 +869,78 @@ true</pre>
 <pre>cities_updated geom: Point(EPSG:4326), guid: String, description: String</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Add a Field to a Schema</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">Schema</span> updatedSchema = schema.addField(<span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">area</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Double</span><span class="delimiter">&quot;</span></span>), <span class="string"><span class="delimiter">&quot;</span><span class="content">countries_area</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>countries_area geom: Polygon(EPSG:4326), id: Integer, name: String, area: Double</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Add a List of Fields to a Schema</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">Schema</span> updatedSchema = schema.addFields([
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">area</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Double</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">perimeter</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Double</span><span class="delimiter">&quot;</span></span>),
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">countries_areaperimeter</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>countries_areaperimeter geom: Polygon(EPSG:4326), id: Integer, name: String, area: Double, perimeter: Double</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Remove a Field from a Schema</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">area</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Double</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">Schema</span> updatedSchema = schema.removeField(schema.field(<span class="string"><span class="delimiter">&quot;</span><span class="content">area</span><span class="delimiter">&quot;</span></span>), <span class="string"><span class="delimiter">&quot;</span><span class="content">countries_updated</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>countries_updated geom: Polygon(EPSG:4326), id: Integer, name: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Remove a List of Fields from a Schema</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">area</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Double</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">Schema</span> updatedSchema = schema.removeFields([
+        schema.field(<span class="string"><span class="delimiter">&quot;</span><span class="content">area</span><span class="delimiter">&quot;</span></span>),
+        schema.field(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>)
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">countries_updated</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>countries_updated geom: Polygon(EPSG:4326), id: Integer</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="creating-features-from-a-schema"><a class="anchor" href="#creating-features-from-a-schema"></a>Creating Features from a Schema</h3>
@@ -952,7 +1024,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--3b7da46f_159be927e6b_-8000 geom: null, id: null, name: null</pre>
+<pre>cities.fid-24da3124_159c349ab9d_-8000 geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -961,7 +1033,7 @@ println feature</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-21 01:06:42 UTC
+Last updated 2017-01-21 23:05:13 UTC
 </div>
 </div>
 </body>
