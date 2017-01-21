@@ -321,4 +321,67 @@ Is Geometry = ${field.geometry}
         writeFile("schema_changefields","${updatedSchema}")
         updatedSchema
     }
+
+    Schema addFieldSchema() {
+        // tag::addFieldSchema[]
+        Schema schema = new Schema("countries", [
+                new Field("geom", "Polygon", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Schema updatedSchema = schema.addField(new Field("area", "Double"), "countries_area")
+        // end::addFieldSchema[]
+        writeFile("schema_addfield","${updatedSchema}")
+        updatedSchema
+    }
+
+    Schema addFieldsSchema() {
+        // tag::addFieldsSchema[]
+        Schema schema = new Schema("countries", [
+                new Field("geom", "Polygon", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Schema updatedSchema = schema.addFields([
+                new Field("area", "Double"),
+                new Field("perimeter", "Double"),
+        ], "countries_areaperimeter")
+        // end::addFieldsSchema[]
+        writeFile("schema_addfields","${updatedSchema}")
+        updatedSchema
+    }
+
+    Schema removeFieldSchema() {
+        // tag::removeFieldSchema[]
+        Schema schema = new Schema("countries", [
+                new Field("geom", "Polygon", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String"),
+                new Field("area", "Double")
+        ])
+        Schema updatedSchema = schema.removeField(schema.field("area"), "countries_updated")
+        // end::removeFieldSchema[]
+        writeFile("schema_removefield","${updatedSchema}")
+        updatedSchema
+    }
+
+    Schema removeFieldsSchema() {
+        // tag::removeFieldsSchema[]
+        Schema schema = new Schema("countries", [
+                new Field("geom", "Polygon", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String"),
+                new Field("area", "Double")
+        ])
+        Schema updatedSchema = schema.removeFields([
+                schema.field("area"),
+                schema.field("name")
+        ], "countries_updated")
+        // end::removeFieldsSchema[]
+        writeFile("schema_removefields","${updatedSchema}")
+        updatedSchema
+    }
+
+
+
 }

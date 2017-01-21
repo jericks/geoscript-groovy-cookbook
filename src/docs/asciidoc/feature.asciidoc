@@ -208,6 +208,42 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=changeFieldsS
 include::output/schema_changefields.txt[]
 ....
 
+[source,groovy]
+.Add a Field to a Schema
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=addFieldSchema,indent=0]
+----
+....
+include::output/schema_addfield.txt[]
+....
+
+[source,groovy]
+.Add a List of Fields to a Schema
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=addFieldsSchema,indent=0]
+----
+....
+include::output/schema_addfields.txt[]
+....
+
+[source,groovy]
+.Remove a Field from a Schema
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=removeFieldSchema,indent=0]
+----
+....
+include::output/schema_removefield.txt[]
+....
+
+[source,groovy]
+.Remove a List of Fields from a Schema
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=removeFieldsSchema,indent=0]
+----
+....
+include::output/schema_removefields.txt[]
+....
+
 === Creating Features from a Schema
 
 [source,groovy]

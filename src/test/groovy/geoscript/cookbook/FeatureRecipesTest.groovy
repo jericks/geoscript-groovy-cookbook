@@ -129,4 +129,27 @@ class FeatureRecipesTest {
         assertEquals("cities_updated geom: Point(EPSG:4326), guid: String, description: String", schema.toString())
     }
 
+    @Test void addFieldSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.addFieldSchema()
+        assertEquals("countries_area geom: Polygon(EPSG:4326), id: Integer, name: String, area: Double", schema.toString())
+    }
+
+    @Test void addFieldsSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.addFieldsSchema()
+        assertEquals("countries_areaperimeter geom: Polygon(EPSG:4326), id: Integer, name: String, area: Double, perimeter: Double", schema.toString())
+    }
+
+    @Test void removeFieldSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.removeFieldSchema()
+        assertEquals("countries_updated geom: Polygon(EPSG:4326), id: Integer, name: String", schema.toString())
+    }
+
+    @Test void removeFieldsSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.removeFieldsSchema()
+        assertEquals("countries_updated geom: Polygon(EPSG:4326), id: Integer", schema.toString())
+    }
 }
