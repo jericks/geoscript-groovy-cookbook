@@ -569,6 +569,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#getting-schema-properties">Getting Schema Properties</a></li>
 <li><a href="#getting-schema-fields">Getting Schema Fields</a></li>
 <li><a href="#modifying-schemas">Modifying Schemas</a></li>
+<li><a href="#combining-schemas">Combining Schemas</a></li>
 <li><a href="#creating-features-from-a-schema">Creating Features from a Schema</a></li>
 </ul>
 </li>
@@ -3406,6 +3407,154 @@ true</pre>
 <pre>countries_updated geom: Polygon(EPSG:4326), id: Integer</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a new Schema from an existing Schema but only including a subset of Fields</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">area</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Double</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">Schema</span> updatedSchema = schema.removeFields([
+        schema.field(<span class="string"><span class="delimiter">&quot;</span><span class="content">area</span><span class="delimiter">&quot;</span></span>),
+        schema.field(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>)
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">countries_updated</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>countries_updated geom: Polygon(EPSG:4326), name: String</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="combining-schemas"><a class="anchor" href="#combining-schemas"></a>Combining Schemas</h3>
+<div class="paragraph">
+<p>Combining two Schemas results in a Map with two values: schema and fields.  The schema property contains
+the new Schema.  The fields property is List of two Maps which both contain a mapping between the fields
+of the original Schema and the newly created Schema.</p>
+</div>
+<div class="paragraph">
+<p>Optional arguments to the Schema.addSchema method are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>postfixAll: Whether to postfix all field names (true) or not (false). If true, all Fields from the this current Schema will have '1' at the end of their name while the other Schema&#8217;s Fields will have '2'. Defaults to false.</p>
+</li>
+<li>
+<p>includeDuplicates: Whether or not to include duplicate fields names. Defaults to false. If a duplicate is found a '2' will be added.</p>
+</li>
+<li>
+<p>maxFieldNameLength: The maximum new Field name length (mostly to support shapefiles where Field names can&#8217;t be longer than 10 characters</p>
+</li>
+<li>
+<p>firstPostfix: The postfix string (default is '1') for Fields from the current Schema. Only applicable when postfixAll or includeDuplicates is true.</p>
+</li>
+<li>
+<p>secondPostfix: The postfix string (default is '2') for Fields from the other Schema. Only applicable when postfixAll or includeDuplicates is true.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Combine two Schemas with no duplicate fields and no postfixes to field names</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> shopSchema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">shops</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+
+<span class="predefined-type">Schema</span> cafeSchema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cafes</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">address</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+
+<span class="predefined-type">Map</span> result = shopSchema.addSchema(cafeSchema, <span class="string"><span class="delimiter">&quot;</span><span class="content">business</span><span class="delimiter">&quot;</span></span>)
+
+<span class="predefined-type">Schema</span> combinedSchema = result.schema
+println combinedSchema</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>business geom: Point(EPSG:4326), id: Integer, name: String, address: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>,<span class="predefined-type">String</span>&gt; shopSchemaFieldMapping = result.fields[<span class="integer">0</span>]
+println shopSchemaFieldMapping</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[geom:geom, id:id, name:name]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>,<span class="predefined-type">String</span>&gt; cafeSchemaSchemaFieldMapping = result.fields[<span class="integer">1</span>]
+println cafeSchemaSchemaFieldMapping</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[address:address]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Combine two Schemas with no duplicate fields and postfixes</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> shopSchema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">shops</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+
+<span class="predefined-type">Schema</span> cafeSchema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cafes</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">address</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+
+<span class="predefined-type">Map</span> result = shopSchema.addSchema(cafeSchema, <span class="string"><span class="delimiter">&quot;</span><span class="content">business</span><span class="delimiter">&quot;</span></span>, <span class="key">postfixAll</span>: <span class="predefined-constant">true</span>, <span class="key">includeDuplicates</span>: <span class="predefined-constant">false</span>)
+
+<span class="predefined-type">Schema</span> combinedSchema = result.schema
+println combinedSchema</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>business geom: Point(EPSG:4326), id1: Integer, name1: String, id2: Integer, name2: String, address2: String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>,<span class="predefined-type">String</span>&gt; shopSchemaFieldMapping = result.fields[<span class="integer">0</span>]
+println shopSchemaFieldMapping</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[geom:geom, id:id1, name:name1]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>,<span class="predefined-type">String</span>&gt; cafeSchemaSchemaFieldMapping = result.fields[<span class="integer">1</span>]
+println cafeSchemaSchemaFieldMapping</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[id:id2, name:name2, address:address2]</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="creating-features-from-a-schema"><a class="anchor" href="#creating-features-from-a-schema"></a>Creating Features from a Schema</h3>
@@ -3489,7 +3638,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-7b0ac272_159c35a7cb1_-8000 geom: null, id: null, name: null</pre>
+<pre>cities.fid--67fbe020_159c94c068b_-8000 geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -3498,7 +3647,7 @@ println feature</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-21 23:23:31 UTC
+Last updated 2017-01-23 03:05:14 UTC
 </div>
 </div>
 </body>
