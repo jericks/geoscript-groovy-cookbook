@@ -244,6 +244,79 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=removeFieldsS
 include::output/schema_removefields.txt[]
 ....
 
+[source,groovy]
+.Create a new Schema from an existing Schema but only including a subset of Fields
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=removeFieldsSchema,indent=0]
+----
+....
+include::output/schema_includefields.txt[]
+....
+
+=== Combining Schemas
+
+Combining two Schemas results in a Map with two values: schema and fields.  The schema property contains
+the new Schema.  The fields property is List of two Maps which both contain a mapping between the fields
+of the original Schema and the newly created Schema.
+
+Optional arguments to the Schema.addSchema method are:
+
+* postfixAll: Whether to postfix all field names (true) or not (false). If true, all Fields from the this current Schema will have '1' at the end of their name while the other Schema's Fields will have '2'. Defaults to false.
+* includeDuplicates: Whether or not to include duplicate fields names. Defaults to false. If a duplicate is found a '2' will be added.
+* maxFieldNameLength: The maximum new Field name length (mostly to support shapefiles where Field names can't be longer than 10 characters
+* firstPostfix: The postfix string (default is '1') for Fields from the current Schema. Only applicable when postfixAll or includeDuplicates is true.
+* secondPostfix: The postfix string (default is '2') for Fields from the other Schema. Only applicable when postfixAll or includeDuplicates is true.
+
+[source,groovy]
+.Combine two Schemas with no duplicate fields and no postfixes to field names
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=addSchemaNoPrefixNoDuplicates_1,indent=0]
+----
+....
+include::output/schema_addschema_noprefix_noduplicates_1.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=addSchemaNoPrefixNoDuplicates_2,indent=0]
+----
+....
+include::output/schema_addschema_noprefix_noduplicates_2.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=addSchemaNoPrefixNoDuplicates_3,indent=0]
+----
+....
+include::output/schema_addschema_noprefix_noduplicates_3.txt[]
+....
+
+[source,groovy]
+.Combine two Schemas with no duplicate fields and postfixes
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=addSchemaPostFixAllNoDuplicates_1,indent=0]
+----
+....
+include::output/schema_addschema_postfixall_noduplicates_1.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=addSchemaPostFixAllNoDuplicates_2,indent=0]
+----
+....
+include::output/schema_addschema_postfixall_noduplicates_2.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=addSchemaPostFixAllNoDuplicates_3,indent=0]
+----
+....
+include::output/schema_addschema_postfixall_noduplicates_3.txt[]
+....
+
 === Creating Features from a Schema
 
 [source,groovy]

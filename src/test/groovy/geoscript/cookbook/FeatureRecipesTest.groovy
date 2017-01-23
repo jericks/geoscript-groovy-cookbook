@@ -152,4 +152,22 @@ class FeatureRecipesTest {
         Schema schema = recipes.removeFieldsSchema()
         assertEquals("countries_updated geom: Polygon(EPSG:4326), id: Integer", schema.toString())
     }
+
+    @Test void includeFieldsSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.includeFieldsSchema()
+        assertEquals("countries_updated geom: Polygon(EPSG:4326), name: String", schema.toString())
+    }
+
+    @Test void addSchemaNoPrefixNoDuplicates() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.addSchemaNoPrefixNoDuplicates()
+        assertEquals("business geom: Point(EPSG:4326), id: Integer, name: String, address: String", schema.toString())
+    }
+
+    @Test void addSchemaPostFixAllNoDuplicates() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.addSchemaPostFixAllNoDuplicates()
+        assertEquals("business geom: Point(EPSG:4326), id1: Integer, name1: String, id2: Integer, name2: String, address2: String", schema.toString())
+    }
 }

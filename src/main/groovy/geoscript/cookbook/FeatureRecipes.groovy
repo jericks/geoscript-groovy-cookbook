@@ -382,6 +382,96 @@ Is Geometry = ${field.geometry}
         updatedSchema
     }
 
+    Schema includeFieldsSchema() {
+        // tag::includeFieldsSchema[]
+        Schema schema = new Schema("countries", [
+                new Field("geom", "Polygon", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String"),
+                new Field("area", "Double")
+        ])
+        Schema updatedSchema = schema.includeFields([
+                schema.field("geom"),
+                schema.field("name")
+        ], "countries_updated")
+        // end::includeFieldsSchema[]
+        writeFile("schema_includefields","${updatedSchema}")
+        updatedSchema
+    }
 
+    Schema addSchemaNoPrefixNoDuplicates() {
+        // tag::addSchemaNoPrefixNoDuplicates_1[]
+        Schema shopSchema = new Schema("shops", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+
+        Schema cafeSchema = new Schema("cafes", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String"),
+                new Field("address", "String")
+        ])
+
+        Map result = shopSchema.addSchema(cafeSchema, "business")
+
+        Schema combinedSchema = result.schema
+        println combinedSchema
+        // end::addSchemaNoPrefixNoDuplicates_1[]
+        writeFile("schema_addschema_noprefix_noduplicates_1", "${combinedSchema}")
+
+        // tag::addSchemaNoPrefixNoDuplicates_2[]
+        Map<String,String> shopSchemaFieldMapping = result.fields[0]
+        println shopSchemaFieldMapping
+        // end::addSchemaNoPrefixNoDuplicates_2[]
+        writeFile("schema_addschema_noprefix_noduplicates_2", "${shopSchemaFieldMapping}")
+
+        // tag::addSchemaNoPrefixNoDuplicates_3[]
+        Map<String,String> cafeSchemaSchemaFieldMapping = result.fields[1]
+        println cafeSchemaSchemaFieldMapping
+        // end::addSchemaNoPrefixNoDuplicates_3[]
+        writeFile("schema_addschema_noprefix_noduplicates_3", "${cafeSchemaSchemaFieldMapping}")
+
+        combinedSchema
+    }
+
+    Schema addSchemaPostFixAllNoDuplicates() {
+        // tag::addSchemaPostFixAllNoDuplicates_1[]
+        Schema shopSchema = new Schema("shops", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+
+        Schema cafeSchema = new Schema("cafes", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String"),
+                new Field("address", "String")
+        ])
+
+        Map result = shopSchema.addSchema(cafeSchema, "business", postfixAll: true, includeDuplicates: false)
+
+        Schema combinedSchema = result.schema
+        println combinedSchema
+        // end::addSchemaPostFixAllNoDuplicates_1[]
+        writeFile("schema_addschema_postfixall_noduplicates_1", "${combinedSchema}")
+
+        // tag::addSchemaPostFixAllNoDuplicates_2[]
+        Map<String,String> shopSchemaFieldMapping = result.fields[0]
+        println shopSchemaFieldMapping
+        // end::addSchemaPostFixAllNoDuplicates_2[]
+        writeFile("schema_addschema_postfixall_noduplicates_2", "${shopSchemaFieldMapping}")
+
+        // tag::addSchemaPostFixAllNoDuplicates_3[]
+        Map<String,String> cafeSchemaSchemaFieldMapping = result.fields[1]
+        println cafeSchemaSchemaFieldMapping
+        // end::addSchemaPostFixAllNoDuplicates_3[]
+        writeFile("schema_addschema_postfixall_noduplicates_3", "${cafeSchemaSchemaFieldMapping}")
+
+        combinedSchema
+
+    }
 
 }
