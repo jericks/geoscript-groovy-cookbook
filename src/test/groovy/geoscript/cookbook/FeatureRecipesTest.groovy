@@ -188,4 +188,10 @@ class FeatureRecipesTest {
         Feature feature = recipes.createFeatureFromListWithSchema()
         assertEquals("cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle", feature.toString())
     }
+
+    @Test void getFeatureProperties() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.getFeatureProperties()
+        assertEquals("cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle", feature.toString())
+    }
 }

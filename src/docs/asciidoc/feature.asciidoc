@@ -383,3 +383,41 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFeature
 ....
 include::output/feature_create_map.txt[]
 ....
+
+=== Getting Feature Properties
+
+[source,groovy]
+.Get a Feature's ID
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getFeatureProperties_1,indent=0]
+----
+....
+include::output/feature_properties_1.txt[]
+....
+
+[source,groovy]
+.Get a Feature's Geometry
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getFeatureProperties_2,indent=0]
+----
+....
+include::output/feature_properties_2.txt[]
+....
+
+[source,groovy]
+.Get a Feature's Bounds
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getFeatureProperties_3,indent=0]
+----
+....
+include::output/feature_properties_3.txt[]
+....
+
+[source,groovy]
+.Get a Feature's attributes
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getFeatureProperties_4,indent=0]
+----
+....
+include::output/feature_properties_4.txt[]
+....

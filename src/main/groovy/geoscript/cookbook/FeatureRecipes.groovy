@@ -3,6 +3,8 @@ package geoscript.cookbook
 import geoscript.feature.Feature
 import geoscript.feature.Field
 import geoscript.feature.Schema
+import geoscript.geom.Bounds
+import geoscript.geom.Geometry
 import geoscript.geom.Point
 import geoscript.proj.Projection
 
@@ -520,6 +522,45 @@ Is Geometry = ${field.geometry}
         println feature
         // end::createFeatureFromListWithSchema[]
         writeFile("feature_create_list_schema", "${feature}")
+        feature
+    }
+
+    Feature getFeatureProperties() {
+        // tag::getFeatureProperties_1[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        String id = feature.id
+        println id
+        // end::getFeatureProperties_1[]
+        writeFile("feature_properties_1", "${id}")
+
+        // tag::getFeatureProperties_2[]
+        Geometry geometry = feature.geom
+        println geometry
+        // end::getFeatureProperties_2[]
+        writeFile("feature_properties_2", "${geometry}")
+
+        // tag::getFeatureProperties_3[]
+        Bounds bounds = feature.bounds
+        println bounds
+        // end::getFeatureProperties_3[]
+        writeFile("feature_properties_3", "${bounds}")
+
+        // tag::getFeatureProperties_4[]
+        Map attributes = feature.attributes
+        println attributes
+        // end::getFeatureProperties_4[]
+        writeFile("feature_properties_4", "${attributes}")
+
         feature
     }
 
