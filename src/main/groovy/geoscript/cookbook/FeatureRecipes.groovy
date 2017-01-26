@@ -474,4 +474,53 @@ Is Geometry = ${field.geometry}
 
     }
 
+    Feature createFeatureFromMap() {
+      // tag::createFeatureFromMap[]
+      Feature feature = new Feature([
+        id: 1,
+        name: "Seattle",
+        geom: new Point(-122.3204, 47.6024)
+      ], "city.1")
+      println feature
+      // end::createFeatureFromMap[]
+      writeFile("feature_create_map", "${feature}")
+      feature
+    }
+
+    Feature createFeatureFromMapWithSchema() {
+        // tag::createFeatureFromMapWithSchema[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                id: 1,
+                name: "Seattle",
+                geom: new Point(-122.3204, 47.6024)
+        ], "city.1", schema)
+        println feature
+        // end::createFeatureFromMapWithSchema[]
+        writeFile("feature_create_map_schema", "${feature}")
+        feature
+    }
+
+    Feature createFeatureFromListWithSchema() {
+        // tag::createFeatureFromListWithSchema[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+        println feature
+        // end::createFeatureFromListWithSchema[]
+        writeFile("feature_create_list_schema", "${feature}")
+        feature
+    }
+
 }

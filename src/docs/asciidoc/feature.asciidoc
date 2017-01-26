@@ -354,3 +354,32 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFeature
 ....
 include::output/schema_create_feature_empty.txt[]
 ....
+
+=== Creating Features
+
+[source,groovy]
+.Create an empty Feature from a Map of values and a Schema.
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFeatureFromMapWithSchema,indent=0]
+----
+....
+include::output/feature_create_map_schema.txt[]
+....
+
+[source,groovy]
+.Create an empty Feature from a List of values and a Schema.
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFeatureFromListWithSchema,indent=0]
+----
+....
+include::output/feature_create_list_schema.txt[]
+....
+
+[source,groovy]
+.Create an empty Feature from a Map of values.  The Schema is inferred from the values.
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFeatureFromMap,indent=0]
+----
+....
+include::output/feature_create_map.txt[]
+....

@@ -170,4 +170,22 @@ class FeatureRecipesTest {
         Schema schema = recipes.addSchemaPostFixAllNoDuplicates()
         assertEquals("business geom: Point(EPSG:4326), id1: Integer, name1: String, id2: Integer, name2: String, address2: String", schema.toString())
     }
+    
+    @Test void createFeatureFromMap() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.createFeatureFromMap()
+        assertEquals("feature.city.1 id: 1, name: Seattle, geom: POINT (-122.3204 47.6024)", feature.toString())
+    }
+
+    @Test void createFeatureFromMapWithSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.createFeatureFromMapWithSchema()
+        assertEquals("cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle", feature.toString())
+    }
+
+    @Test void createFeatureFromListWithSchema() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.createFeatureFromListWithSchema()
+        assertEquals("cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle", feature.toString())
+    }
 }
