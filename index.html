@@ -571,6 +571,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#modifying-schemas">Modifying Schemas</a></li>
 <li><a href="#combining-schemas">Combining Schemas</a></li>
 <li><a href="#creating-features-from-a-schema">Creating Features from a Schema</a></li>
+<li><a href="#creating-features">Creating Features</a></li>
+<li><a href="#getting-feature-properties">Getting Feature Properties</a></li>
 </ul>
 </li>
 </ul>
@@ -3638,7 +3640,130 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--67fbe020_159c94c068b_-8000 geom: null, id: null, name: null</pre>
+<pre>cities.fid-44b67d68_159d8d03921_-8000 geom: null, id: null, name: null</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-features"><a class="anchor" href="#creating-features"></a>Creating Features</h3>
+<div class="listingblock">
+<div class="title">Create an empty Feature from a Map of values and a Schema.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>)
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create an empty Feature from a List of values and a Schema.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create an empty Feature from a Map of values.  The Schema is inferred from the values.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Feature feature = <span class="keyword">new</span> Feature([
+  <span class="key">id</span>: <span class="integer">1</span>,
+  <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>)
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>)
+println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>feature.city.1 id: 1, name: Seattle, geom: POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-feature-properties"><a class="anchor" href="#getting-feature-properties"></a>Getting Feature Properties</h3>
+<div class="listingblock">
+<div class="title">Get a Feature&#8217;s ID</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+<span class="predefined-type">String</span> id = feature.id
+println id</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>city.1</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Feature&#8217;s Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = feature.geom
+println geometry</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Feature&#8217;s Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = feature.bounds
+println bounds</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(-122.3204,47.6024,-122.3204,47.6024,EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Feature&#8217;s attributes</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> attributes = feature.attributes
+println attributes</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</pre>
 </div>
 </div>
 </div>
@@ -3647,7 +3772,7 @@ println feature</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-23 03:05:14 UTC
+Last updated 2017-01-09 19:41:38 PST
 </div>
 </div>
 </body>
