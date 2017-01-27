@@ -421,3 +421,59 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getFeaturePro
 ....
 include::output/feature_properties_4.txt[]
 ....
+
+=== Getting Feature Attributes
+
+[source,groovy]
+.Get an attribute from a Feature using a Field name
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getAndSetFeatureAttributes_1,indent=0]
+----
+....
+include::output/feature_attribute_1.txt[]
+....
+
+[source,groovy]
+.Get an attribute from a Feature using a Field
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getAndSetFeatureAttributes_2,indent=0]
+----
+....
+include::output/feature_attribute_2.txt[]
+....
+
+[source,groovy]
+.Set an attribute of a Feature using a Field name and a new value
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getAndSetFeatureAttributes_3,indent=0]
+----
+....
+include::output/feature_attribute_3.txt[]
+....
+
+[source,groovy]
+.Set an attribute of a Feature using a Field and a new value
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getAndSetFeatureAttributes_4,indent=0]
+----
+....
+include::output/feature_attribute_4.txt[]
+....
+
+[source,groovy]
+.Set attributes of a Feature using a Map of new values
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getAndSetFeatureAttributes_5,indent=0]
+----
+....
+include::output/feature_attribute_5.txt[]
+....
+
+[source,groovy]
+.Set a new Geometry value
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getAndSetFeatureAttributes_6,indent=0]
+----
+....
+include::output/feature_attribute_6.txt[]
+....

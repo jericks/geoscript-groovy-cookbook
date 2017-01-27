@@ -564,4 +564,55 @@ Is Geometry = ${field.geometry}
         feature
     }
 
+    Feature getAndSetFeatureAttributes() {
+        // tag::getAndSetFeatureAttributes_1[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        int id = feature.get("id")
+        println id
+        // end::getAndSetFeatureAttributes_1[]
+        writeFile("feature_attribute_1", "${id}")
+
+        // tag::getAndSetFeatureAttributes_2[]
+        String name = feature.get(schema.field("name"))
+        println name
+        // end::getAndSetFeatureAttributes_2[]
+        writeFile("feature_attribute_2", "${name}")
+
+        // tag::getAndSetFeatureAttributes_3[]
+        feature.set("name", "Tacoma")
+        println feature["name"]
+        // end::getAndSetFeatureAttributes_3[]
+        writeFile("feature_attribute_3", "${feature['name']}")
+
+        // tag::getAndSetFeatureAttributes_4[]
+        feature.set(schema.field("name"), "Mercer Island")
+        println feature["name"]
+        // end::getAndSetFeatureAttributes_4[]
+        writeFile("feature_attribute_4", "${feature['name']}")
+
+        // tag::getAndSetFeatureAttributes_5[]
+        feature.set([id: 2])
+        println feature["id"]
+        // end::getAndSetFeatureAttributes_5[]
+        writeFile("feature_attribute_5", "${feature['id']}")
+
+        // tag::getAndSetFeatureAttributes_6[]
+        feature.geom = new Point(-122.2220, 47.5673)
+        println feature.geom
+        // end::getAndSetFeatureAttributes_6[]
+        writeFile("feature_attribute_6", "${feature.geom}")
+
+        feature
+    }
+
 }

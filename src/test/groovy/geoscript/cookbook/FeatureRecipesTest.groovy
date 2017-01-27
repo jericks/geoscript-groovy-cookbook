@@ -194,4 +194,11 @@ class FeatureRecipesTest {
         Feature feature = recipes.getFeatureProperties()
         assertEquals("cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle", feature.toString())
     }
+
+    @Test void getAndSetFeatureAttributes() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.getAndSetFeatureAttributes()
+        assertEquals("cities.city.1 geom: POINT (-122.222 47.5673), id: 2, name: Mercer Island", feature.toString())
+    }
+
 }
