@@ -480,6 +480,8 @@ include::output/feature_attribute_6.txt[]
 
 === Reading and Writing Features
 
+==== GeoJSON
+
 [source,groovy]
 .Get a GeoJSON String from a Feature
 ----
@@ -515,3 +517,42 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=readFeatureFr
 ....
 include::output/feature_read_geojson.txt[]
 ....
+
+==== GeoBuf
+
+[source,groovy]
+.Get a GeoBuf String from a Feature
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=featureGetGeobuf,indent=0]
+----
+....
+include::output/feature_get_geobuf.txt[]
+....
+
+[source,groovy]
+.Get a Feature from a GeoBuf String
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=featureFromGeoBuf,indent=0]
+----
+....
+include::output/feature_from_geobuf.txt[]
+....
+
+[source,groovy]
+.Write a Feature to a GeoBuf String
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=writeFeatureToGeoBuf,indent=0]
+----
+....
+include::output/feature_write_geobuf.txt[]
+....
+
+[source,groovy]
+.Read a Feature from a GeoBuf String
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=readFeatureFromGeoBuf,indent=0]
+----
+....
+include::output/feature_read_geobuf.txt[]
+....
+

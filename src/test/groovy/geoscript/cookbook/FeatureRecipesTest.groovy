@@ -201,6 +201,8 @@ class FeatureRecipesTest {
         assertEquals("cities.city.1 geom: POINT (-122.222 47.5673), id: 2, name: Mercer Island", feature.toString())
     }
 
+    // GeoJSON
+
     @Test void writeFeatureToGeoJson() {
         FeatureRecipes recipes = new FeatureRecipes()
         String geojson = recipes.writeFeatureToGeoJson()
@@ -225,6 +227,32 @@ class FeatureRecipesTest {
         FeatureRecipes recipes = new FeatureRecipes()
         Feature feature = recipes.readFeatureFromGeoJson()
         assertEquals('feature.city.1 id: 1, name: Seattle, geometry: POINT (-122.3204 47.6024)', feature.toString())
+    }
+
+    // GeoBuf
+
+    @Test void featureGetGeobuf() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.featureGetGeobuf()
+        assertEquals('0a0269640a046e616d65100218062a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c65', str)
+    }
+
+    @Test void featureFromGeoBuf() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.featureFromGeoBuf()
+        assertEquals('features.0 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle', feature.toString())
+    }
+
+    @Test void writeFeatureToGeoBuf() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.writeFeatureToGeoBuf()
+        assertEquals('0a0269640a046e616d65100218062a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c65', str)
+    }
+
+    @Test void readFeatureFromGeoBuf() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.readFeatureFromGeoBuf()
+        assertEquals('features.0 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle', feature.toString())
     }
 
 }

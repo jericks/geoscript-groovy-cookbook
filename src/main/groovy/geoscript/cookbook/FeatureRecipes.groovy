@@ -5,6 +5,8 @@ import geoscript.feature.Field
 import geoscript.feature.Schema
 import geoscript.feature.io.GeoJSONReader
 import geoscript.feature.io.GeoJSONWriter
+import geoscript.feature.io.GeobufReader
+import geoscript.feature.io.GeobufWriter
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.Point
@@ -637,6 +639,16 @@ Is Geometry = ${field.geometry}
         geojson
     }
 
+    Feature featureFromGeoJSON() {
+        // tag::featureFromGeoJSON[]
+        String geojson = '{"type":"Feature","geometry":{"type":"Point","coordinates":[-122.3204,47.6024]},"properties":{"id":1,"name":"Seattle"},"id":"city.1"}'
+        Feature feature = Feature.fromGeoJSON(geojson)
+        println feature
+        // end::featureFromGeoJSON[]
+        writeFile("feature_from_geojson", "${feature}")
+        feature
+    }
+
     String writeFeatureToGeoJson() {
         // tag::writeFeatureToGeoJson[]
         Schema schema = new Schema("cities", [
@@ -658,16 +670,6 @@ Is Geometry = ${field.geometry}
         geojson
     }
 
-    Feature featureFromGeoJSON() {
-        // tag::featureFromGeoJSON[]
-        String geojson = '{"type":"Feature","geometry":{"type":"Point","coordinates":[-122.3204,47.6024]},"properties":{"id":1,"name":"Seattle"},"id":"city.1"}'
-        Feature feature = Feature.fromGeoJSON(geojson)
-        println feature
-        // end::featureFromGeoJSON[]
-        writeFile("feature_from_geojson", "${feature}")
-        feature
-    }
-
     Feature readFeatureFromGeoJson() {
         // tag::readFeatureFromGeoJson[]
         GeoJSONReader reader = new GeoJSONReader()
@@ -678,4 +680,69 @@ Is Geometry = ${field.geometry}
         writeFile("feature_read_geojson", "${feature}")
         feature
     }
+
+    // GeoBuf
+
+    String featureGetGeobuf() {
+        // tag::featureGetGeobuf[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        String geobuf = feature.geobuf
+        println geobuf
+        // end::featureGetGeobuf[]
+        writeFile("feature_get_geobuf", "${geobuf}")
+        geobuf
+    }
+
+    Feature featureFromGeoBuf() {
+        // tag::featureFromGeoBuf[]
+        String geobuf = '0a0269640a046e616d65100218062a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c65'
+        Feature feature = Feature.fromGeobuf(geobuf)
+        println feature
+        // end::featureFromGeoBuf[]
+        writeFile("feature_from_geobuf", "${feature}")
+        feature
+    }
+
+    String writeFeatureToGeoBuf() {
+        // tag::writeFeatureToGeoBuf[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        GeobufWriter writer = new GeobufWriter()
+        String geobuf = writer.write(feature)
+        println geobuf
+        // end::writeFeatureToGeoBuf[]
+        writeFile("feature_write_geobuf", "${geobuf}")
+        geobuf
+    }
+
+    Feature readFeatureFromGeoBuf() {
+        // tag::readFeatureFromGeoBuf[]
+        GeobufReader reader = new GeobufReader()
+        String geobuf = '0a0269640a046e616d65100218062a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c65'
+        Feature feature = reader.read(geobuf)
+        println feature
+        // end::readFeatureFromGeoBuf[]
+        writeFile("feature_read_geobuf", "${feature}")
+        feature
+    }
+
 }
