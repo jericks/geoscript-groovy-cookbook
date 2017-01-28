@@ -201,4 +201,30 @@ class FeatureRecipesTest {
         assertEquals("cities.city.1 geom: POINT (-122.222 47.5673), id: 2, name: Mercer Island", feature.toString())
     }
 
+    @Test void writeFeatureToGeoJson() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String geojson = recipes.writeFeatureToGeoJson()
+        assertEquals('{"type":"Feature","geometry":{"type":"Point","coordinates":[-122.3204,47.6024]},' +
+                '"properties":{"id":1,"name":"Seattle"},"id":"city.1"}', geojson)
+    }
+
+    @Test void featureGetGeoJson() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String geojson = recipes.featureGetGeoJson()
+        assertEquals('{"type":"Feature","geometry":{"type":"Point","coordinates":[-122.3204,47.6024]},' +
+                '"properties":{"id":1,"name":"Seattle"},"id":"city.1"}', geojson)
+    }
+
+    @Test void featureFromGeoJSON() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.featureFromGeoJSON()
+        assertEquals('feature.city.1 id: 1, name: Seattle, geometry: POINT (-122.3204 47.6024)', feature.toString())
+    }
+
+    @Test void readFeatureFromGeoJson() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.readFeatureFromGeoJson()
+        assertEquals('feature.city.1 id: 1, name: Seattle, geometry: POINT (-122.3204 47.6024)', feature.toString())
+    }
+
 }

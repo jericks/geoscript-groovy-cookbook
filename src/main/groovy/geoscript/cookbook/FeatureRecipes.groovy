@@ -3,6 +3,8 @@ package geoscript.cookbook
 import geoscript.feature.Feature
 import geoscript.feature.Field
 import geoscript.feature.Schema
+import geoscript.feature.io.GeoJSONReader
+import geoscript.feature.io.GeoJSONWriter
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.Point
@@ -615,4 +617,65 @@ Is Geometry = ${field.geometry}
         feature
     }
 
+    String featureGetGeoJson() {
+        // tag::featureGetGeoJson[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        String geojson = feature.geoJSON
+        println geojson
+        // end::featureGetGeoJson[]
+        writeFile("feature_get_geojson", "${geojson}")
+        geojson
+    }
+
+    String writeFeatureToGeoJson() {
+        // tag::writeFeatureToGeoJson[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        GeoJSONWriter writer = new GeoJSONWriter()
+        String geojson = writer.write(feature)
+        println geojson
+        // end::writeFeatureToGeoJson[]
+        writeFile("feature_write_geojson", "${geojson}")
+        geojson
+    }
+
+    Feature featureFromGeoJSON() {
+        // tag::featureFromGeoJSON[]
+        String geojson = '{"type":"Feature","geometry":{"type":"Point","coordinates":[-122.3204,47.6024]},"properties":{"id":1,"name":"Seattle"},"id":"city.1"}'
+        Feature feature = Feature.fromGeoJSON(geojson)
+        println feature
+        // end::featureFromGeoJSON[]
+        writeFile("feature_from_geojson", "${feature}")
+        feature
+    }
+
+    Feature readFeatureFromGeoJson() {
+        // tag::readFeatureFromGeoJson[]
+        GeoJSONReader reader = new GeoJSONReader()
+        String geojson = '{"type":"Feature","geometry":{"type":"Point","coordinates":[-122.3204,47.6024]},"properties":{"id":1,"name":"Seattle"},"id":"city.1"}'
+        Feature feature = reader.read(geojson)
+        println feature
+        // end::readFeatureFromGeoJson[]
+        writeFile("feature_read_geojson", "${feature}")
+        feature
+    }
 }
