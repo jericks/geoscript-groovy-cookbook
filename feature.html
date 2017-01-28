@@ -1177,7 +1177,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--4d8aee6f_159e2fb4c2d_-8000 geom: null, id: null, name: null</pre>
+<pre>cities.fid--76640f3e_159e6845b8e_-8000 geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -1392,6 +1392,8 @@ println feature.geom</code></pre>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-features"><a class="anchor" href="#reading-and-writing-features"></a>Reading and Writing Features</h3>
+<div class="sect3">
+<h4 id="geojson"><a class="anchor" href="#geojson"></a>GeoJSON</h4>
 <div class="listingblock">
 <div class="title">Get a GeoJSON String from a Feature</div>
 <div class="content">
@@ -1467,12 +1469,90 @@ println feature</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="geobuf"><a class="anchor" href="#geobuf"></a>GeoBuf</h4>
+<div class="listingblock">
+<div class="title">Get a GeoBuf String from a Feature</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+<span class="predefined-type">String</span> geobuf = feature.geobuf
+println geobuf</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0a0269640a046e616d65100218062a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c65</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Feature from a GeoBuf String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> geobuf = <span class="string"><span class="delimiter">'</span><span class="content">0a0269640a046e616d65100218062a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c65</span><span class="delimiter">'</span></span>
+Feature feature = Feature.fromGeobuf(geobuf)
+println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>features.0 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Feature to a GeoBuf String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+GeobufWriter writer = <span class="keyword">new</span> GeobufWriter()
+<span class="predefined-type">String</span> geobuf = writer.write(feature)
+println geobuf</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0a0269640a046e616d65100218062a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c65</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Feature from a GeoBuf String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GeobufReader reader = <span class="keyword">new</span> GeobufReader()
+<span class="predefined-type">String</span> geobuf = <span class="string"><span class="delimiter">'</span><span class="content">0a0269640a046e616d65100218062a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c65</span><span class="delimiter">'</span></span>
+Feature feature = reader.read(geobuf)
+println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>features.0 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-27 18:50:10 PST
+Last updated 2017-01-28 19:15:51 UTC
 </div>
 </div>
 </body>
