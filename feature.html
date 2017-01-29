@@ -1177,7 +1177,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--76640f3e_159e6845b8e_-8000 geom: null, id: null, name: null</pre>
+<pre>cities.fid-47d5d92c_159eb7b7bad_-7ffe geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -1546,13 +1546,102 @@ println feature</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="georss"><a class="anchor" href="#georss"></a>GeoRSS</h4>
+<div class="listingblock">
+<div class="title">Get a GeoRSS String from a Feature</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+<span class="predefined-type">String</span> georss = feature.geoRSS
+println georss</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Jan 29 18:27:35 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Feature from a GeoRSS String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> georss = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;
+    &lt;title&gt;city.1&lt;/title&gt;
+    &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
+    &lt;updated&gt;Sat Jan 28 15:51:47 PST 2017&lt;/updated&gt;
+    &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
+&lt;/entry&gt;
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        Feature feature = Feature.fromGeoRSS(georss)
+        println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>georss.fid-47d5d92c_159eb7b7bad_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Feature to a GeoRSS String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+GeoRSSWriter writer = <span class="keyword">new</span> GeoRSSWriter()
+<span class="predefined-type">String</span> georss = writer.write(feature)
+println georss</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Jan 29 18:27:35 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Feature from a GeoRSS String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        GeoRSSReader reader = <span class="keyword">new</span> GeoRSSReader()
+        <span class="predefined-type">String</span> georss = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;
+    &lt;title&gt;city.1&lt;/title&gt;
+    &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
+    &lt;updated&gt;Sat Jan 28 15:51:47 PST 2017&lt;/updated&gt;
+    &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
+&lt;/entry&gt;
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        Feature feature = reader.read(georss)
+        println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>georss.fid-47d5d92c_159eb7b7bad_-7fff title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-28 19:15:51 UTC
+Last updated 2017-01-29 18:22:54 UTC
 </div>
 </div>
 </body>
