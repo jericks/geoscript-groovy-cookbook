@@ -5,6 +5,8 @@ import geoscript.feature.Field
 import geoscript.feature.Schema
 import geoscript.feature.io.GeoJSONReader
 import geoscript.feature.io.GeoJSONWriter
+import geoscript.feature.io.GeoRSSReader
+import geoscript.feature.io.GeoRSSWriter
 import geoscript.feature.io.GeobufReader
 import geoscript.feature.io.GeobufWriter
 import geoscript.geom.Bounds
@@ -744,5 +746,82 @@ Is Geometry = ${field.geometry}
         writeFile("feature_read_geobuf", "${feature}")
         feature
     }
+
+    // GeoRSS
+
+    String featureGetGeoRSS() {
+        // tag::featureGetGeoRSS[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        String georss = feature.geoRSS
+        println georss
+        // end::featureGetGeoRSS[]
+        writeFile("feature_get_georss", "${georss}")
+        georss
+    }
+
+    Feature featureFromGeoRSS() {
+        // tag::featureFromGeoRSS[]
+        String georss = """<entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'>
+    <title>city.1</title>
+    <summary>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>
+    <updated>Sat Jan 28 15:51:47 PST 2017</updated>
+    <georss:point>47.6024 -122.3204</georss:point>
+</entry>
+"""
+        Feature feature = Feature.fromGeoRSS(georss)
+        println feature
+        // end::featureFromGeoRSS[]
+        writeFile("feature_from_georss", "${feature}")
+        feature
+    }
+
+    String writeFeatureToGeoRSS() {
+        // tag::writeFeatureToGeoRSS[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        GeoRSSWriter writer = new GeoRSSWriter()
+        String georss = writer.write(feature)
+        println georss
+        // end::writeFeatureToGeoRSS[]
+        writeFile("feature_write_georss", "${georss}")
+        georss
+    }
+
+    Feature readFeatureFromGeoRSS() {
+        // tag::readFeatureFromGeoRSS[]
+        GeoRSSReader reader = new GeoRSSReader()
+        String georss = """<entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'>
+    <title>city.1</title>
+    <summary>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>
+    <updated>Sat Jan 28 15:51:47 PST 2017</updated>
+    <georss:point>47.6024 -122.3204</georss:point>
+</entry>
+"""
+        Feature feature = reader.read(georss)
+        println feature
+        // end::readFeatureFromGeoRSS[]
+        writeFile("feature_read_georss", "${feature}")
+        feature
+    }
+
 
 }

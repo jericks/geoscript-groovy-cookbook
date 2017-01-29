@@ -556,3 +556,40 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=readFeatureFr
 include::output/feature_read_geobuf.txt[]
 ....
 
+==== GeoRSS
+
+[source,groovy]
+.Get a GeoRSS String from a Feature
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=featureGetGeoRSS,indent=0]
+----
+....
+include::output/feature_get_georss.txt[]
+....
+
+[source,groovy]
+.Get a Feature from a GeoRSS String
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=featureFromGeoRSS,indent=0]
+----
+....
+include::output/feature_from_georss.txt[]
+....
+
+[source,groovy]
+.Write a Feature to a GeoRSS String
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=writeFeatureToGeoRSS,indent=0]
+----
+....
+include::output/feature_write_georss.txt[]
+....
+
+[source,groovy]
+.Read a Feature from a GeoRSS String
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=readFeatureFromGeoRSS,indent=0]
+----
+....
+include::output/feature_read_georss.txt[]
+....

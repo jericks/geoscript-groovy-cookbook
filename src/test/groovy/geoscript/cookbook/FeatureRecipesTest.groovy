@@ -255,4 +255,35 @@ class FeatureRecipesTest {
         assertEquals('features.0 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle', feature.toString())
     }
 
+    // GeoRSS
+
+    @Test void featureGetGeoRSS() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.featureGetGeoRSS()
+        assertTrue(str.contains("<entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'>"))
+        assertTrue(str.contains('<title>city.1</title>'))
+        assertTrue(str.contains('<summary>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>'))
+        assertTrue(str.contains('<georss:point>47.6024 -122.3204</georss:point>'))
+    }
+
+    @Test void featureFromGeoRSS() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.featureFromGeoRSS()
+        assertEquals("POINT (-122.3204 47.6024)", feature.geom.wkt)
+    }
+
+    @Test void writeFeatureToGeoRSS() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.writeFeatureToGeoRSS()
+        assertTrue(str.contains("<entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'>"))
+        assertTrue(str.contains('<title>city.1</title>'))
+        assertTrue(str.contains('<summary>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>'))
+        assertTrue(str.contains('<georss:point>47.6024 -122.3204</georss:point>'))
+    }
+
+    @Test void readFeatureFromGeoRSS() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.readFeatureFromGeoRSS()
+        assertEquals("POINT (-122.3204 47.6024)", feature.geom.wkt)
+    }
 }
