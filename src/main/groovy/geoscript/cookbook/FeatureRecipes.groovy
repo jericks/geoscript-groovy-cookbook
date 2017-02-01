@@ -9,10 +9,15 @@ import geoscript.feature.io.GeoRSSReader
 import geoscript.feature.io.GeoRSSWriter
 import geoscript.feature.io.GeobufReader
 import geoscript.feature.io.GeobufWriter
+import geoscript.feature.io.GmlReader
+import geoscript.feature.io.GmlWriter
+import geoscript.feature.io.GpxReader
+import geoscript.feature.io.GpxWriter
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.Point
 import geoscript.proj.Projection
+import groovy.xml.XmlUtil
 
 class FeatureRecipes extends Recipes {
 
@@ -823,5 +828,156 @@ Is Geometry = ${field.geometry}
         feature
     }
 
+    // GML
+
+    String featureGetGml() {
+        // tag::featureGetGml[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        String gml = feature.gml
+        println gml
+        // end::featureGetGml[]
+        writeFile("feature_get_gml", "${gml}")
+        gml
+    }
+
+    Feature featureFromGml() {
+        // tag::featureFromGml[]
+        String gml = """<gsf:cities xmlns:gsf="http://geoscript.org/feature" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" fid="city.1">
+    <gml:name>Seattle</gml:name>
+    <gsf:geom>
+        <gml:Point>
+            <gml:coord>
+                <gml:X>-122.3204</gml:X>
+                <gml:Y>47.6024</gml:Y>
+            </gml:coord>
+        </gml:Point>
+    </gsf:geom>
+    <gsf:id>1</gsf:id>
+</gsf:cities>
+"""
+        Feature feature = Feature.fromGml(gml)
+        println feature
+        // end::featureFromGml[]
+        writeFile("feature_from_gml", "${feature}")
+        feature
+    }
+
+    String writeFeatureToGml() {
+        // tag::writeFeatureToGml[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        GmlWriter writer = new GmlWriter()
+        String gml = writer.write(feature)
+        println gml
+        // end::writeFeatureToGml[]
+        writeFile("feature_write_gml", "${gml}")
+        gml
+    }
+
+    Feature readFeatureFromGml() {
+        // tag::readFeatureFromGml[]
+        GmlReader reader = new GmlReader()
+        String gml = """<gsf:cities xmlns:gsf="http://geoscript.org/feature" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" fid="city.1">
+    <gml:name>Seattle</gml:name>
+    <gsf:geom>
+        <gml:Point>
+            <gml:coord>
+                <gml:X>-122.3204</gml:X>
+                <gml:Y>47.6024</gml:Y>
+            </gml:coord>
+        </gml:Point>
+    </gsf:geom>
+    <gsf:id>1</gsf:id>
+</gsf:cities>
+"""
+        Feature feature = reader.read(gml)
+        println feature
+        // end::readFeatureFromGml[]
+        writeFile("feature_read_gml", "${feature}")
+        feature
+    }
+
+    // GPX
+
+    String featureGetGpx() {
+        // tag::featureGetGpx[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        String gpx = feature.gpx
+        println gpx
+        // end::featureGetGpx[]
+        writeFile("feature_get_gpx", "${gpx}")
+        gpx
+    }
+
+    Feature featureFromGpx() {
+        // tag::featureFromGpx[]
+        String gpx = "<wpt lat='47.6024' lon='-122.3204' xmlns='http://www.topografix.com/GPX/1/1'><name>city.1</name></wpt>"
+        Feature feature = Feature.fromGpx(gpx)
+        println feature
+        // end::featureFromGpx[]
+        writeFile("feature_from_gpx", "${feature}")
+        feature
+    }
+
+    String writeFeatureToGpx() {
+        // tag::writeFeatureToGpx[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        GpxWriter writer = new GpxWriter()
+        String gpx = writer.write(feature)
+        println gpx
+        // end::writeFeatureToGpx[]
+        writeFile("feature_write_gpx", "${gpx}")
+        gpx
+    }
+
+    Feature readFeatureFromGpx() {
+        // tag::readFeatureFromGpx[]
+        GpxReader reader = new GpxReader()
+        String gpx = "<wpt lat='47.6024' lon='-122.3204' xmlns='http://www.topografix.com/GPX/1/1'><name>city.1</name></wpt>"
+        Feature feature = reader.read(gpx)
+        println feature
+        // end::readFeatureFromGpx[]
+        writeFile("feature_read_gpx", "${feature}")
+        feature
+    }
 
 }

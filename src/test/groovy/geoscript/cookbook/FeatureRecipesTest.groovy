@@ -286,4 +286,82 @@ class FeatureRecipesTest {
         Feature feature = recipes.readFeatureFromGeoRSS()
         assertEquals("POINT (-122.3204 47.6024)", feature.geom.wkt)
     }
+
+    // GML
+
+    @Test void featureGetGml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.featureGetGml()
+        assertEquals("""<gsf:cities xmlns:gsf="http://geoscript.org/feature" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" fid="city.1">
+<gml:name>Seattle</gml:name>
+<gsf:geom>
+<gml:Point>
+<gml:coord>
+<gml:X>-122.3204</gml:X>
+<gml:Y>47.6024</gml:Y>
+</gml:coord>
+</gml:Point>
+</gsf:geom>
+<gsf:id>1</gsf:id>
+</gsf:cities>
+""", str)
+    }
+
+    @Test void featureFromGml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.featureFromGml()
+        assertEquals("feature.city.1 name: Seattle, id: 1, geom: POINT (-122.3204 47.6024)", feature.toString())
+    }
+
+    @Test void writeFeatureToGml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.writeFeatureToGml()
+        assertEquals("""<gsf:cities xmlns:gsf="http://geoscript.org/feature" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" fid="city.1">
+<gml:name>Seattle</gml:name>
+<gsf:geom>
+<gml:Point>
+<gml:coord>
+<gml:X>-122.3204</gml:X>
+<gml:Y>47.6024</gml:Y>
+</gml:coord>
+</gml:Point>
+</gsf:geom>
+<gsf:id>1</gsf:id>
+</gsf:cities>
+""", str)
+    }
+
+    @Test void readFeatureFromGml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.readFeatureFromGml()
+        assertEquals("feature.city.1 name: Seattle, id: 1, geom: POINT (-122.3204 47.6024)", feature.toString())
+    }
+
+    // GPX
+
+    @Test void featureGetGpx() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.featureGetGpx()
+        assertEquals("<wpt lat='47.6024' lon='-122.3204' xmlns='http://www.topografix.com/GPX/1/1'><name>city.1</name></wpt>", str)
+    }
+
+    @Test void featureFromGpx() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.featureFromGpx()
+        assertEquals("POINT (-122.3204 47.6024)", feature.geom.wkt)
+        assertEquals("city.1", feature['name'])
+    }
+
+    @Test void writeFeatureToGpx() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.writeFeatureToGpx()
+        assertEquals("<wpt lat='47.6024' lon='-122.3204' xmlns='http://www.topografix.com/GPX/1/1'><name>city.1</name></wpt>", str)
+    }
+
+    @Test void readFeatureFromGpx() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.readFeatureFromGpx()
+        assertEquals("POINT (-122.3204 47.6024)", feature.geom.wkt)
+        assertEquals("city.1", feature['name'])
+    }
 }
