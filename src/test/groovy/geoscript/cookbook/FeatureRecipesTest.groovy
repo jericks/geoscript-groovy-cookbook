@@ -364,4 +364,42 @@ class FeatureRecipesTest {
         assertEquals("POINT (-122.3204 47.6024)", feature.geom.wkt)
         assertEquals("city.1", feature['name'])
     }
+
+    // KML
+
+    @Test void featureGetKml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.featureGetKml()
+        assertEquals("""<kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1">
+<kml:name>Seattle</kml:name>
+<kml:Point>
+<kml:coordinates>-122.3204,47.6024</kml:coordinates>
+</kml:Point>
+</kml:Placemark>
+""", str)
+    }
+
+    @Test void featureFromKml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.featureFromKml()
+        assertEquals("placemark.city.1 name: Seattle, description: null, Geometry: POINT (-122.3204 47.6024)", feature.toString())
+    }
+
+    @Test void writeFeatureToKml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.writeFeatureToKml()
+        assertEquals("""<kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1">
+<kml:name>Seattle</kml:name>
+<kml:Point>
+<kml:coordinates>-122.3204,47.6024</kml:coordinates>
+</kml:Point>
+</kml:Placemark>
+""", str)
+    }
+
+    @Test void readFeatureFromKml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.readFeatureFromKml()
+        assertEquals("placemark.city.1 name: Seattle, description: null, Geometry: POINT (-122.3204 47.6024)", feature.toString())
+    }
 }

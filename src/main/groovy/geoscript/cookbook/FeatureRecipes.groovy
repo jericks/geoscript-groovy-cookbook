@@ -13,11 +13,12 @@ import geoscript.feature.io.GmlReader
 import geoscript.feature.io.GmlWriter
 import geoscript.feature.io.GpxReader
 import geoscript.feature.io.GpxWriter
+import geoscript.feature.io.KmlReader
+import geoscript.feature.io.KmlWriter
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.Point
 import geoscript.proj.Projection
-import groovy.xml.XmlUtil
 
 class FeatureRecipes extends Recipes {
 
@@ -977,6 +978,80 @@ Is Geometry = ${field.geometry}
         println feature
         // end::readFeatureFromGpx[]
         writeFile("feature_read_gpx", "${feature}")
+        feature
+    }
+
+    // KML
+
+    String featureGetKml() {
+        // tag::featureGetKml[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        String kml = feature.kml
+        println kml
+        // end::featureGetKml[]
+        writeFile("feature_get_kml", "${kml}")
+        kml
+    }
+
+    Feature featureFromKml() {
+        // tag::featureFromKml[]
+        String kml = """<kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1">
+    <kml:name>Seattle</kml:name>
+    <kml:Point>
+        <kml:coordinates>-122.3204,47.6024</kml:coordinates>
+    </kml:Point>
+</kml:Placemark>"""
+        Feature feature = Feature.fromKml(kml)
+        println feature
+        // end::featureFromKml[]
+        writeFile("feature_from_kml", "${feature}")
+        feature
+    }
+
+    String writeFeatureToKml() {
+        // tag::writeFeatureToKml[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        KmlWriter writer = new KmlWriter()
+        String kml = writer.write(feature)
+        println kml
+        // end::writeFeatureToKml[]
+        writeFile("feature_write_kml", "${kml}")
+        kml
+    }
+
+    Feature readFeatureFromKml() {
+        // tag::readFeatureFromKml[]
+        KmlReader reader = new KmlReader()
+        String kml = """<kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1">
+    <kml:name>Seattle</kml:name>
+    <kml:Point>
+        <kml:coordinates>-122.3204,47.6024</kml:coordinates>
+    </kml:Point>
+</kml:Placemark>"""
+        Feature feature = reader.read(kml)
+        println feature
+        // end::readFeatureFromKml[]
+        writeFile("feature_read_kml", "${feature}")
         feature
     }
 
