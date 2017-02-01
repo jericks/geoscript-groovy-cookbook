@@ -1177,7 +1177,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--76aa9ae9_159f7283e64_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--378bf863_159f7d13514_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -1568,7 +1568,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Feb 01 00:52:06 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Feb 01 03:56:40 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1587,7 +1587,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--76aa9ae9_159f7283e64_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--378bf863_159f7d13514_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1611,7 +1611,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Feb 01 00:52:07 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Feb 01 03:56:40 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1631,7 +1631,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--76aa9ae9_159f7283e64_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--378bf863_159f7d13514_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -1793,7 +1793,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--76aa9ae9_159f7283e64_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--378bf863_159f7d13514_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1831,7 +1831,104 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--76aa9ae9_159f7283e64_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--378bf863_159f7d13514_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="kml"><a class="anchor" href="#kml"></a>KML</h4>
+<div class="listingblock">
+<div class="title">Get a KML String from a Feature</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+<span class="predefined-type">String</span> kml = feature.kml
+println kml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1"&gt;
+&lt;kml:name&gt;Seattle&lt;/kml:name&gt;
+&lt;kml:Point&gt;
+&lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
+&lt;/kml:Point&gt;
+&lt;/kml:Placemark&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Feature from a KML String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> kml = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">&lt;kml:Placemark xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:kml=&quot;http://earth.google.com/kml/2.1&quot; id=&quot;city.1&quot;&gt;
+    &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
+    &lt;kml:Point&gt;
+        &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
+    &lt;/kml:Point&gt;
+&lt;/kml:Placemark&gt;</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        Feature feature = Feature.fromKml(kml)
+        println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>placemark.city.1 name: Seattle, description: null, Geometry: POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Feature to a KML String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+KmlWriter writer = <span class="keyword">new</span> KmlWriter()
+<span class="predefined-type">String</span> kml = writer.write(feature)
+println kml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1"&gt;
+&lt;kml:name&gt;Seattle&lt;/kml:name&gt;
+&lt;kml:Point&gt;
+&lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
+&lt;/kml:Point&gt;
+&lt;/kml:Placemark&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Feature from a KML String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        KmlReader reader = <span class="keyword">new</span> KmlReader()
+        <span class="predefined-type">String</span> kml = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">&lt;kml:Placemark xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:kml=&quot;http://earth.google.com/kml/2.1&quot; id=&quot;city.1&quot;&gt;
+    &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
+    &lt;kml:Point&gt;
+        &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
+    &lt;/kml:Point&gt;
+&lt;/kml:Placemark&gt;</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        Feature feature = reader.read(kml)
+        println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>placemark.city.1 name: Seattle, description: null, Geometry: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -1841,7 +1938,7 @@ println feature</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-01 00:43:46 UTC
+Last updated 2017-02-01 03:53:03 UTC
 </div>
 </div>
 </body>
