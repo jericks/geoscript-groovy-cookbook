@@ -3642,7 +3642,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-47d5d92c_159eb7b7bad_-7ffe geom: null, id: null, name: null</pre>
+<pre>cities.fid--76aa9ae9_159f7283e64_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -4033,7 +4033,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Jan 29 18:27:35 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Feb 01 00:52:06 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4052,7 +4052,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-47d5d92c_159eb7b7bad_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--76aa9ae9_159f7283e64_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4076,7 +4076,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Jan 29 18:27:35 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Feb 01 00:52:07 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4096,7 +4096,207 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-47d5d92c_159eb7b7bad_-7fff title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--76aa9ae9_159f7283e64_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gml"><a class="anchor" href="#gml"></a>GML</h4>
+<div class="listingblock">
+<div class="title">Get a GML String from a Feature</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+<span class="predefined-type">String</span> gml = feature.gml
+println gml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" fid="city.1"&gt;
+&lt;gml:name&gt;Seattle&lt;/gml:name&gt;
+&lt;gsf:geom&gt;
+&lt;gml:Point&gt;
+&lt;gml:coord&gt;
+&lt;gml:X&gt;-122.3204&lt;/gml:X&gt;
+&lt;gml:Y&gt;47.6024&lt;/gml:Y&gt;
+&lt;/gml:coord&gt;
+&lt;/gml:Point&gt;
+&lt;/gsf:geom&gt;
+&lt;gsf:id&gt;1&lt;/gsf:id&gt;
+&lt;/gsf:cities&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Feature from a GML String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> gml = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">&lt;gsf:cities xmlns:gsf=&quot;http://geoscript.org/feature&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; fid=&quot;city.1&quot;&gt;
+    &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
+    &lt;gsf:geom&gt;
+        &lt;gml:Point&gt;
+            &lt;gml:coord&gt;
+                &lt;gml:X&gt;-122.3204&lt;/gml:X&gt;
+                &lt;gml:Y&gt;47.6024&lt;/gml:Y&gt;
+            &lt;/gml:coord&gt;
+        &lt;/gml:Point&gt;
+    &lt;/gsf:geom&gt;
+    &lt;gsf:id&gt;1&lt;/gsf:id&gt;
+&lt;/gsf:cities&gt;
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        Feature feature = Feature.fromGml(gml)
+        println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>feature.city.1 name: Seattle, id: 1, geom: POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Feature to a GML String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+GmlWriter writer = <span class="keyword">new</span> GmlWriter()
+<span class="predefined-type">String</span> gml = writer.write(feature)
+println gml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" fid="city.1"&gt;
+&lt;gml:name&gt;Seattle&lt;/gml:name&gt;
+&lt;gsf:geom&gt;
+&lt;gml:Point&gt;
+&lt;gml:coord&gt;
+&lt;gml:X&gt;-122.3204&lt;/gml:X&gt;
+&lt;gml:Y&gt;47.6024&lt;/gml:Y&gt;
+&lt;/gml:coord&gt;
+&lt;/gml:Point&gt;
+&lt;/gsf:geom&gt;
+&lt;gsf:id&gt;1&lt;/gsf:id&gt;
+&lt;/gsf:cities&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Feature from a GML String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        GmlReader reader = <span class="keyword">new</span> GmlReader()
+        <span class="predefined-type">String</span> gml = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">&lt;gsf:cities xmlns:gsf=&quot;http://geoscript.org/feature&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; fid=&quot;city.1&quot;&gt;
+    &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
+    &lt;gsf:geom&gt;
+        &lt;gml:Point&gt;
+            &lt;gml:coord&gt;
+                &lt;gml:X&gt;-122.3204&lt;/gml:X&gt;
+                &lt;gml:Y&gt;47.6024&lt;/gml:Y&gt;
+            &lt;/gml:coord&gt;
+        &lt;/gml:Point&gt;
+    &lt;/gsf:geom&gt;
+    &lt;gsf:id&gt;1&lt;/gsf:id&gt;
+&lt;/gsf:cities&gt;
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        Feature feature = reader.read(gml)
+        println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>feature.city.1 name: Seattle, id: 1, geom: POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gpx"><a class="anchor" href="#gpx"></a>GPX</h4>
+<div class="listingblock">
+<div class="title">Get a GPX String from a Feature</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+<span class="predefined-type">String</span> gpx = feature.gpx
+println gpx</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;wpt lat='47.6024' lon='-122.3204' xmlns='http://www.topografix.com/GPX/1/1'&gt;&lt;name&gt;city.1&lt;/name&gt;&lt;/wpt&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Feature from a GPX String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> gpx = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;wpt lat='47.6024' lon='-122.3204' xmlns='http://www.topografix.com/GPX/1/1'&gt;&lt;name&gt;city.1&lt;/name&gt;&lt;/wpt&gt;</span><span class="delimiter">&quot;</span></span>
+Feature feature = Feature.fromGpx(gpx)
+println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>gpx.fid--76aa9ae9_159f7283e64_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Feature to a GPX String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Feature feature = <span class="keyword">new</span> Feature([
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="integer">1</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>, schema)
+
+GpxWriter writer = <span class="keyword">new</span> GpxWriter()
+<span class="predefined-type">String</span> gpx = writer.write(feature)
+println gpx</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;wpt lat='47.6024' lon='-122.3204' xmlns='http://www.topografix.com/GPX/1/1'&gt;&lt;name&gt;city.1&lt;/name&gt;&lt;/wpt&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Feature from a GPX String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GpxReader reader = <span class="keyword">new</span> GpxReader()
+<span class="predefined-type">String</span> gpx = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;wpt lat='47.6024' lon='-122.3204' xmlns='http://www.topografix.com/GPX/1/1'&gt;&lt;name&gt;city.1&lt;/name&gt;&lt;/wpt&gt;</span><span class="delimiter">&quot;</span></span>
+Feature feature = reader.read(gpx)
+println feature</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>gpx.fid--76aa9ae9_159f7283e64_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -4106,7 +4306,7 @@ println georss</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-29 18:22:54 UTC
+Last updated 2017-02-01 00:43:46 UTC
 </div>
 </div>
 </body>
