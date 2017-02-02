@@ -480,6 +480,44 @@ include::output/feature_attribute_6.txt[]
 
 === Reading and Writing Features
 
+==== Finding Feature Writer and Readers
+
+[source,groovy]
+.List all Feature Writers
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=listFeatureWriters,indent=0]
+----
+....
+include::output/features_writers_list.txt[]
+....
+
+[source,groovy]
+.Find a Feature Writer
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getFeatureWriter,indent=0]
+----
+....
+include::output/features_writer_get.txt[]
+....
+
+[source,groovy]
+.List all Feature Readers
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=listFeatureReaders,indent=0]
+----
+....
+include::output/features_readers_list.txt[]
+....
+
+[source,groovy]
+.Find a Feature Reader
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=getFeatureReader,indent=0]
+----
+....
+include::output/features_reader_get.txt[]
+....
+
 ==== GeoJSON
 
 [source,groovy]

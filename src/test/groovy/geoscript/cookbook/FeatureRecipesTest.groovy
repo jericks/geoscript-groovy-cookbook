@@ -3,6 +3,8 @@ package geoscript.cookbook
 import geoscript.feature.Feature
 import geoscript.feature.Field
 import geoscript.feature.Schema
+import geoscript.feature.io.Reader
+import geoscript.feature.io.Writer
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -401,5 +403,29 @@ class FeatureRecipesTest {
         FeatureRecipes recipes = new FeatureRecipes()
         Feature feature = recipes.readFeatureFromKml()
         assertEquals("placemark.city.1 name: Seattle, description: null, Geometry: POINT (-122.3204 47.6024)", feature.toString())
+    }
+
+    @Test void listFeatureWriters() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        List<Writer> writers = recipes.listFeatureWriters()
+        assertTrue(writers.size() > 0)
+    }
+
+    @Test void getFeatureWriter() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Writer writer = recipes.getFeatureWriter()
+        assertNotNull(writer)
+    }
+
+    @Test void listFeatureReaders() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        List<Reader> readers = recipes.listFeatureReaders()
+        assertTrue(readers.size() > 0)
+    }
+
+    @Test void getFeatureReader() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Reader reader = recipes.getFeatureReader()
+        assertNotNull(reader)
     }
 }

@@ -15,6 +15,10 @@ import geoscript.feature.io.GpxReader
 import geoscript.feature.io.GpxWriter
 import geoscript.feature.io.KmlReader
 import geoscript.feature.io.KmlWriter
+import geoscript.feature.io.Reader
+import geoscript.feature.io.Readers
+import geoscript.feature.io.Writer
+import geoscript.feature.io.Writers
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.Point
@@ -1053,6 +1057,46 @@ Is Geometry = ${field.geometry}
         // end::readFeatureFromKml[]
         writeFile("feature_read_kml", "${feature}")
         feature
+    }
+
+    List<Writer> listFeatureWriters() {
+        // tag::listFeatureWriters[]
+        List<Writer> writers = Writers.list()
+        writers.each { Writer writer ->
+            println writer.class.simpleName
+        }
+        // end::listFeatureWriters[]
+        writeFile("features_writers_list", "${writers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        writers
+    }
+
+    Writer getFeatureWriter() {
+        // tag::getFeatureWriter[]
+        Writer writer = Writers.find("geojson")
+        println writer.class.simpleName
+        // end::getFeatureWriter[]
+        writeFile("features_writer_get", "${writer.class.simpleName}")
+        writer
+    }
+
+    List<Reader> listFeatureReaders() {
+        // tag::listFeatureReaders[]
+        List<Reader> readers = Readers.list()
+        readers.each { Reader reader ->
+            println reader.class.simpleName
+        }
+        // end::listFeatureReaders[]
+        writeFile("features_readers_list", "${readers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        readers
+    }
+
+    Reader getFeatureReader() {
+        // tag::getFeatureReader[]
+        Reader reader = Readers.find("geojson")
+        println reader.class.simpleName
+        // end::getFeatureReader[]
+        writeFile("features_reader_get", "${reader.class.simpleName}")
+        reader
     }
 
 }
