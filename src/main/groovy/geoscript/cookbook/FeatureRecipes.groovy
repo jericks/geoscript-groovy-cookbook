@@ -17,6 +17,10 @@ import geoscript.feature.io.KmlReader
 import geoscript.feature.io.KmlWriter
 import geoscript.feature.io.Reader
 import geoscript.feature.io.Readers
+import geoscript.feature.io.SchemaReader
+import geoscript.feature.io.SchemaReaders
+import geoscript.feature.io.SchemaWriter
+import geoscript.feature.io.SchemaWriters
 import geoscript.feature.io.Writer
 import geoscript.feature.io.Writers
 import geoscript.geom.Bounds
@@ -490,6 +494,54 @@ Is Geometry = ${field.geometry}
 
         combinedSchema
 
+    }
+
+    List<SchemaReader> listSchemaReaders() {
+        // tag::listSchemaReaders[]
+        List<SchemaReader> readers = SchemaReaders.list()
+        readers.each { SchemaReader reader ->
+            println reader.class.simpleName
+        }
+        // end::listSchemaReaders[]
+        writeFile("schema_list_readers", "${readers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        readers
+    }
+
+    Schema findSchemaReader() {
+        // tag::findSchemaReader[]
+        SchemaReader reader = SchemaReaders.find("string")
+        Schema schema = reader.read("geom:Point:srid=4326,id:Integer,name:String")
+        println schema
+        // end::findSchemaReader[]
+        writeFile("schema_find_reader", "${schema}")
+        schema
+    }
+
+    List<SchemaWriter> listSchemaWriters() {
+        // tag::listSchemaWriters[]
+        List<SchemaWriter> writers = SchemaWriters.list()
+        writers.each { SchemaWriter writer ->
+            println writer.class.simpleName
+        }
+        // end::listSchemaWriters[]
+        writeFile("schema_list_writers", "${writers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        writers
+    }
+
+    String findSchemaWriter() {
+        // tag::findSchemaWriter[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+
+        SchemaWriter writer = SchemaWriters.find("string")
+        String schemaStr = writer.write(schema)
+        println schemaStr
+        // end::findSchemaWriter[]
+        writeFile("schema_find_writer", "${schemaStr}")
+        schemaStr
     }
 
     Feature createFeatureFromMap() {

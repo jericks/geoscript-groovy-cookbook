@@ -355,6 +355,46 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=createFeature
 include::output/schema_create_feature_empty.txt[]
 ....
 
+=== Reading and Writing Schemas
+
+==== Finding Schema Writer and Readers
+
+[source,groovy]
+.List all Schema Writers
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=listSchemaWriters,indent=0]
+----
+....
+include::output/schema_list_writers.txt[]
+....
+
+[source,groovy]
+.Find a Schema Writer
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=findSchemaWriter,indent=0]
+----
+....
+include::output/schema_find_writer.txt[]
+....
+
+[source,groovy]
+.List all Schema Readers
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=listSchemaReaders,indent=0]
+----
+....
+include::output/schema_list_readers.txt[]
+....
+
+[source,groovy]
+.Find a Schema Reader
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=findSchemaReader,indent=0]
+----
+....
+include::output/schema_find_reader.txt[]
+....
+
 === Creating Features
 
 [source,groovy]

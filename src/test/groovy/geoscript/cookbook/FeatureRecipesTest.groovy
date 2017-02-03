@@ -4,6 +4,8 @@ import geoscript.feature.Feature
 import geoscript.feature.Field
 import geoscript.feature.Schema
 import geoscript.feature.io.Reader
+import geoscript.feature.io.SchemaReader
+import geoscript.feature.io.SchemaWriter
 import geoscript.feature.io.Writer
 import org.junit.Test
 import static org.junit.Assert.*
@@ -172,7 +174,31 @@ class FeatureRecipesTest {
         Schema schema = recipes.addSchemaPostFixAllNoDuplicates()
         assertEquals("business geom: Point(EPSG:4326), id1: Integer, name1: String, id2: Integer, name2: String, address2: String", schema.toString())
     }
-    
+
+    @Test void listSchemaReaders() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        List<SchemaReader> readers = recipes.listSchemaReaders()
+        assertTrue(readers.size() > 0)
+    }
+
+    @Test void findSchemaReader() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.findSchemaReader()
+        assertEquals("layer geom: Point(EPSG:4326), id: Integer, name: String", schema.toString())
+    }
+
+    @Test void listSchemaWriters() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        List<SchemaWriter> writers = recipes.listSchemaWriters()
+        assertTrue(writers.size() > 0)
+    }
+
+    @Test void findSchemaWriter() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String schemaStr = recipes.findSchemaWriter()
+        assertEquals("geom:Point:srid=4326,id:Integer,name:String", schemaStr)
+    }
+
     @Test void createFeatureFromMap() {
         FeatureRecipes recipes = new FeatureRecipes()
         Feature feature = recipes.createFeatureFromMap()
