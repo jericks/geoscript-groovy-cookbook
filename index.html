@@ -571,6 +571,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#modifying-schemas">Modifying Schemas</a></li>
 <li><a href="#combining-schemas">Combining Schemas</a></li>
 <li><a href="#creating-features-from-a-schema">Creating Features from a Schema</a></li>
+<li><a href="#reading-and-writing-schemas">Reading and Writing Schemas</a></li>
 <li><a href="#creating-features">Creating Features</a></li>
 <li><a href="#getting-feature-properties">Getting Feature Properties</a></li>
 <li><a href="#getting-feature-attributes">Getting Feature Attributes</a></li>
@@ -3642,7 +3643,77 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--15cee946_15a0176b93c_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-3bcc5c86_15a01a47dc7_-7ffc geom: null, id: null, name: null</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reading-and-writing-schemas"><a class="anchor" href="#reading-and-writing-schemas"></a>Reading and Writing Schemas</h3>
+<div class="sect3">
+<h4 id="finding-schema-writer-and-readers"><a class="anchor" href="#finding-schema-writer-and-readers"></a>Finding Schema Writer and Readers</h4>
+<div class="listingblock">
+<div class="title">List all Schema Writers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;SchemaWriter&gt; writers = SchemaWriters.list()
+writers.each { SchemaWriter writer -&gt;
+    println writer.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>JsonSchemaWriter
+StringSchemaWriter
+XmlSchemaWriter</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Schema Writer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+
+SchemaWriter writer = SchemaWriters.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> schemaStr = writer.write(schema)
+println schemaStr</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geom:Point:srid=4326,id:Integer,name:String</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">List all Schema Readers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;SchemaReader&gt; readers = SchemaReaders.list()
+readers.each { SchemaReader reader -&gt;
+    println reader.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>JsonSchemaReader
+StringSchemaReader
+XmlSchemaReader</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Schema Reader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">SchemaReader reader = SchemaReaders.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Schema</span> schema = reader.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom:Point:srid=4326,id:Integer,name:String</span><span class="delimiter">&quot;</span></span>)
+println schema</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>layer geom: Point(EPSG:4326), id: Integer, name: String</pre>
+</div>
 </div>
 </div>
 </div>
@@ -4098,7 +4169,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Feb 02 16:54:02 PST 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Feb 03 01:44:02 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4117,7 +4188,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--15cee946_15a0176b93c_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-3bcc5c86_15a01a47dc7_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4141,7 +4212,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Feb 02 16:54:03 PST 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Feb 03 01:44:02 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4161,7 +4232,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--15cee946_15a0176b93c_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-3bcc5c86_15a01a47dc7_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -4323,7 +4394,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--15cee946_15a0176b93c_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-3bcc5c86_15a01a47dc7_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4361,7 +4432,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--15cee946_15a0176b93c_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-3bcc5c86_15a01a47dc7_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -4468,7 +4539,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-09 19:41:38 PST
+Last updated 2017-02-03 01:40:05 UTC
 </div>
 </div>
 </body>
