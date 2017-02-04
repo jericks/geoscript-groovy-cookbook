@@ -1,6 +1,7 @@
 package geoscript.cookbook
 
 import geoscript.geom.*
+import geoscript.geom.io.Reader
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -395,6 +396,34 @@ class GeometryRecipesTest {
         Geometry geometry = recipes.createKochSnowflake()
         assertNotNull geometry
     }
+
+    // IO
+
+    @Test void getGeometryReaders() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Reader> readers = recipes.getGeometryReaders()
+        assertTrue(readers.size() > 0)
+    }
+
+    @Test void getGeometryWriters() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Writer> writers = recipes.getGeometryWriters()
+        assertTrue(writers.size() > 0)
+    }
+
+    @Test void findGeometryReader() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.findGeometryReader()
+        assertEquals("POINT (-123.15 46.237)", geometry.wkt)
+    }
+
+    @Test void findGeometryWriter() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String str = recipes.findGeometryWriter()
+        assertEquals('{"type":"Point","coordinates":[-122.45,43.21]}', str)
+    }
+
+    // WKT
 
     @Test void readGeometryFromWKTReader() {
         GeometryRecipes recipes = new GeometryRecipes()

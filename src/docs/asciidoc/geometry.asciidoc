@@ -82,7 +82,6 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCompou
 [.thumb]
 image::geometry_create_compoundring.png[]
 
-
 === Procesing Geometries
 
 [source,groovy]
@@ -146,6 +145,43 @@ image::geometry_kochsnowflake.png[]
 === Reading and Writing Geometries
 
 The geoscript.geom.io package has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.
+
+==== Readers and Writers
+
+[source,groovy]
+.Find all Geometry Readers
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getGeometryReaders,indent=0]
+----
+....
+include::output/geometry_list_readers.txt[]
+....
+
+[source,groovy]
+.Find a Geometry Reader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=findGeometryReader,indent=0]
+----
+[.thumb]
+image::geometry_find_reader.png[]
+
+[source,groovy]
+.Find all Geometry Writers
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getGeometryWriters,indent=0]
+----
+....
+include::output/geometry_list_writers.txt[]
+....
+
+[source,groovy]
+.Find a Geometry Writer
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=findGeometryWriter,indent=0]
+----
+....
+include::output/geometry_find_writer.txt[]
+....
 
 ==== WKT
 

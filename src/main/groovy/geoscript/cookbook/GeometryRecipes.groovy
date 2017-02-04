@@ -15,8 +15,12 @@ import geoscript.geom.Point
 import geoscript.geom.Polygon
 import geoscript.geom.io.GeoJSONReader
 import geoscript.geom.io.GeoJSONWriter
+import geoscript.geom.io.Reader
+import geoscript.geom.io.Readers
 import geoscript.geom.io.WktReader
 import geoscript.geom.io.WktWriter
+import geoscript.geom.io.Writer
+import geoscript.geom.io.Writers
 import geoscript.proj.Projection
 import geoscript.viewer.Viewer
 
@@ -702,6 +706,51 @@ class GeometryRecipes extends Recipes {
         geometry
     }
 
+    List<Reader> getGeometryReaders() {
+        // tag::getGeometryReaders[]
+        List<Reader> readers = Readers.list()
+        readers.each { Reader reader ->
+            println reader.class.simpleName
+        }
+        // end::getGeometryReaders[]
+        writeFile("geometry_list_readers", "${readers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        readers
+    }
+
+    Geometry findGeometryReader() {
+        // tag::findGeometryReader[]
+        String wkt = "POINT (-123.15 46.237)"
+        Reader reader = Readers.find("wkt")
+        Geometry geometry = reader.read(wkt)
+        // end::findGeometryReader[]
+        drawGeometry("geometry_find_reader", geometry)
+        geometry
+    }
+
+    List<Writer> getGeometryWriters() {
+        // tag::getGeometryWriters[]
+        List<Writer> writers = Writers.list()
+        writers.each { Writer writer ->
+            println writer.class.simpleName
+        }
+        // end::getGeometryWriters[]
+        writeFile("geometry_list_writers", "${writers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        writers
+    }
+
+    String findGeometryWriter() {
+        // tag::findGeometryWriter[]
+        Geometry geometry = new Point(-122.45, 43.21)
+        Writer writer = Writers.find("geojson")
+        String geojson = writer.write(geometry)
+        println geojson
+        // end::findGeometryWriter[]
+        writeFile("geometry_find_writer", "${geojson}")
+        geojson
+    }
+
+    // WKT
+
     Geometry readGeometryFromWKTReader() {
         // tag::readGeometryFromWKTReader[]
         String wkt = "POINT (-123.15 46.237)"
@@ -746,6 +795,8 @@ class GeometryRecipes extends Recipes {
         writeFile("geometry_to_wkt_using_writer", wkt)
         wkt
     }
+
+    // GeoJSON
 
     Geometry readGeometryFromGeoJSONReader() {
         // tag::readGeometryFromGeoJSONReader[]
