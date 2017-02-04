@@ -199,6 +199,81 @@ class FeatureRecipesTest {
         assertEquals("geom:Point:srid=4326,id:Integer,name:String", schemaStr)
     }
 
+    @Test void readSchemaFromString() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.readSchemaFromString()
+        assertEquals("points geom: Point(EPSG:4326), id: Integer, name: String", schema.toString())
+    }
+
+    @Test void writeSchemaToString() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String schemaStr = recipes.writeSchemaToString()
+        assertEquals("geom:Point:srid=4326,id:Integer,name:String", schemaStr)
+    }
+
+    @Test void readSchemaFromJson() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.readSchemaFromJson()
+        assertEquals("cities geom: Point(EPSG:4326), id: Integer, name: String", schema.toString())
+    }
+
+    @Test void writeSchemaToJson() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String schemaStr = recipes.writeSchemaToJson()
+        assertEquals("""{
+    "name": "cities",
+    "projection": "EPSG:4326",
+    "geometry": "geom",
+    "fields": [
+        {
+            "name": "geom",
+            "type": "Point",
+            "geometry": true,
+            "projection": "EPSG:4326"
+        },
+        {
+            "name": "id",
+            "type": "Integer"
+        },
+        {
+            "name": "name",
+            "type": "String"
+        }
+    ]
+}""", schemaStr)
+    }
+
+    @Test void readSchemaFromXml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Schema schema = recipes.readSchemaFromXml()
+        assertEquals("cities geom: Point(EPSG:4326), id: Integer, name: String", schema.toString())
+    }
+
+    @Test void writeSchemaToXml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String schemaStr = recipes.writeSchemaToXml()
+        assertEquals("""<schema>
+  <name>cities</name>
+  <projection>EPSG:4326</projection>
+  <geometry>geom</geometry>
+  <fields>
+    <field>
+      <name>geom</name>
+      <type>Point</type>
+      <projection>EPSG:4326</projection>
+    </field>
+    <field>
+      <name>id</name>
+      <type>Integer</type>
+    </field>
+    <field>
+      <name>name</name>
+      <type>String</type>
+    </field>
+  </fields>
+</schema>""", schemaStr)
+    }
+
     @Test void createFeatureFromMap() {
         FeatureRecipes recipes = new FeatureRecipes()
         Feature feature = recipes.createFeatureFromMap()

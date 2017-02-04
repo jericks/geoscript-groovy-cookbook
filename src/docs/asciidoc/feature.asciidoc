@@ -395,6 +395,66 @@ include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=findSchemaRea
 include::output/schema_find_reader.txt[]
 ....
 
+==== String
+
+[source,groovy]
+.Read a Schema from a String
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=readSchemaFromString,indent=0]
+----
+....
+include::output/schema_read_string.txt[]
+....
+
+[source,groovy]
+.Write a Schema to a String
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=writeSchemaToString,indent=0]
+----
+....
+include::output/schema_write_string.txt[]
+....
+
+==== JSON
+
+[source,groovy]
+.Read a Schema from a JSON
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=readSchemaFromJson,indent=0]
+----
+....
+include::output/schema_read_json.txt[]
+....
+
+[source,groovy]
+.Write a Schema to a JSON
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=writeSchemaToJson,indent=0]
+----
+....
+include::output/schema_write_json.txt[]
+....
+
+==== XML
+
+[source,groovy]
+.Read a Schema from a XML
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=readSchemaFromXml,indent=0]
+----
+....
+include::output/schema_read_xml.txt[]
+....
+
+[source,groovy]
+.Write a Schema to a XML
+----
+include::{sourcedir}/geoscript/cookbook/FeatureRecipes.groovy[tags=writeSchemaToXml,indent=0]
+----
+....
+include::output/schema_write_xml.txt[]
+....
+
 === Creating Features
 
 [source,groovy]

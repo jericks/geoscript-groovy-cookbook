@@ -13,6 +13,8 @@ import geoscript.feature.io.GmlReader
 import geoscript.feature.io.GmlWriter
 import geoscript.feature.io.GpxReader
 import geoscript.feature.io.GpxWriter
+import geoscript.feature.io.JsonSchemaReader
+import geoscript.feature.io.JsonSchemaWriter
 import geoscript.feature.io.KmlReader
 import geoscript.feature.io.KmlWriter
 import geoscript.feature.io.Reader
@@ -21,8 +23,12 @@ import geoscript.feature.io.SchemaReader
 import geoscript.feature.io.SchemaReaders
 import geoscript.feature.io.SchemaWriter
 import geoscript.feature.io.SchemaWriters
+import geoscript.feature.io.StringSchemaReader
+import geoscript.feature.io.StringSchemaWriter
 import geoscript.feature.io.Writer
 import geoscript.feature.io.Writers
+import geoscript.feature.io.XmlSchemaReader
+import geoscript.feature.io.XmlSchemaWriter
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.Point
@@ -541,6 +547,123 @@ Is Geometry = ${field.geometry}
         println schemaStr
         // end::findSchemaWriter[]
         writeFile("schema_find_writer", "${schemaStr}")
+        schemaStr
+    }
+
+    Schema readSchemaFromString() {
+        // tag::readSchemaFromString[]
+        StringSchemaReader reader = new StringSchemaReader()
+        Schema schema = reader.read("geom:Point:srid=4326,id:Integer,name:String", name: "points")
+        println schema
+        // end::readSchemaFromString[]
+        writeFile("schema_read_string", "${schema}")
+        schema
+    }
+
+    String writeSchemaToString() {
+        // tag::writeSchemaToString[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+
+        StringSchemaWriter writer = new StringSchemaWriter()
+        String schemaStr = writer.write(schema)
+        println schemaStr
+        // end::writeSchemaToString[]
+        writeFile("schema_write_string", "${schemaStr}")
+        schemaStr
+    }
+
+    Schema readSchemaFromJson() {
+        // tag::readSchemaFromJson[]
+        JsonSchemaReader reader = new JsonSchemaReader()
+        Schema schema = reader.read("""{
+    "name": "cities",
+    "projection": "EPSG:4326",
+    "geometry": "geom",
+    "fields": [
+        {
+            "name": "geom",
+            "type": "Point",
+            "geometry": true,
+            "projection": "EPSG:4326"
+        },
+        {
+            "name": "id",
+            "type": "Integer"
+        },
+        {
+            "name": "name",
+            "type": "String"
+        }
+    ]
+}""")
+        println schema
+        // end::readSchemaFromJson[]
+        writeFile("schema_read_json", "${schema}")
+        schema
+    }
+
+    String writeSchemaToJson() {
+        // tag::writeSchemaToJson[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+
+        JsonSchemaWriter writer = new JsonSchemaWriter()
+        String schemaStr = writer.write(schema)
+        println schemaStr
+        // end::writeSchemaToJson[]
+        writeFile("schema_write_json", "${schemaStr}")
+        schemaStr
+    }
+
+    Schema readSchemaFromXml() {
+        // tag::readSchemaFromXml[]
+        XmlSchemaReader reader = new XmlSchemaReader()
+        Schema schema = reader.read("""<schema>
+  <name>cities</name>
+  <projection>EPSG:4326</projection>
+  <geometry>geom</geometry>
+  <fields>
+    <field>
+      <name>geom</name>
+      <type>Point</type>
+      <projection>EPSG:4326</projection>
+    </field>
+    <field>
+      <name>id</name>
+      <type>Integer</type>
+    </field>
+    <field>
+      <name>name</name>
+      <type>String</type>
+    </field>
+  </fields>
+</schema>""")
+        println schema
+        // end::readSchemaFromXml[]
+        writeFile("schema_read_xml", "${schema}")
+        schema
+    }
+
+    String writeSchemaToXml() {
+        // tag::writeSchemaToXml[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+
+        XmlSchemaWriter writer = new XmlSchemaWriter()
+        String schemaStr = writer.write(schema)
+        println schemaStr
+        // end::writeSchemaToXml[]
+        writeFile("schema_write_xml", "${schemaStr}")
         schemaStr
     }
 
