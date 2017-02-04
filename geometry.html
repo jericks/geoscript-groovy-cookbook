@@ -849,6 +849,82 @@ Geometry geometry = Geometry.createKochSnowflake(bounds, <span class="integer">5
 <p>The geoscript.geom.io package has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.</p>
 </div>
 <div class="sect3">
+<h4 id="readers-and-writers"><a class="anchor" href="#readers-and-writers"></a>Readers and Writers</h4>
+<div class="listingblock">
+<div class="title">Find all Geometry Readers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Reader</span>&gt; readers = Readers.list()
+readers.each { <span class="predefined-type">Reader</span> reader -&gt;
+    println reader.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>GeobufReader
+GeoJSONReader
+GeoRSSReader
+Gml2Reader
+Gml3Reader
+GpxReader
+KmlReader
+WkbReader
+WktReader
+GooglePolylineEncoder</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Geometry Reader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> wkt = <span class="string"><span class="delimiter">&quot;</span><span class="content">POINT (-123.15 46.237)</span><span class="delimiter">&quot;</span></span>
+<span class="predefined-type">Reader</span> reader = Readers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">wkt</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = reader.read(wkt)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_find_reader.png" alt="geometry find reader">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find all Geometry Writers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Writer</span>&gt; writers = Writers.list()
+writers.each { <span class="predefined-type">Writer</span> writer -&gt;
+    println writer.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>GeobufWriter
+GeoJSONWriter
+GeoRSSWriter
+Gml2Writer
+Gml3Writer
+GpxWriter
+KmlWriter
+WkbWriter
+WktWriter
+GooglePolylineEncoder</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Geometry Writer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.45</span>, <span class="float">43.21</span>)
+<span class="predefined-type">Writer</span> writer = Writers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">geojson</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> geojson = writer.write(geometry)
+println geojson</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{"type":"Point","coordinates":[-122.45,43.21]}</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="wkt"><a class="anchor" href="#wkt"></a>WKT</h4>
 <div class="listingblock">
 <div class="title">Read a Geometry from WKT using the WktReader</div>
@@ -1576,7 +1652,7 @@ LineString lineString = bounds.createArc(<span class="predefined-type">Math</spa
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-04 02:55:29 UTC
+Last updated 2017-02-04 23:36:35 UTC
 </div>
 </div>
 </body>
