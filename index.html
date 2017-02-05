@@ -578,6 +578,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#reading-and-writing-features">Reading and Writing Features</a></li>
 </ul>
 </li>
+<li><a href="#filter-recipes">Filter Recipes</a>
+<ul class="sectlevel2">
+<li><a href="#creating-colors">Creating Colors</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -3719,7 +3724,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-3c338972_15a0b8039f3_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-f9d61c1_15a104ff135_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -4428,7 +4433,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 04 23:40:38 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 05 22:05:59 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4447,7 +4452,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-3c338972_15a0b8039f3_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-f9d61c1_15a104ff135_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4471,7 +4476,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 04 23:40:38 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 05 22:05:59 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4491,7 +4496,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-3c338972_15a0b8039f3_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-f9d61c1_15a104ff135_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -4653,7 +4658,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-3c338972_15a0b8039f3_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-f9d61c1_15a104ff135_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4691,7 +4696,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-3c338972_15a0b8039f3_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-f9d61c1_15a104ff135_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -4795,10 +4800,106 @@ println kml</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="filter-recipes"><a class="anchor" href="#filter-recipes"></a>Filter Recipes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="creating-colors"><a class="anchor" href="#creating-colors"></a>Creating Colors</h3>
+<div class="listingblock">
+<div class="title">Create a Color from a RGB color string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="keyword">new</span> <span class="predefined-type">Color</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">0,255,0</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/filter_color_rbgstring.png" alt="filter color rbgstring">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Color from a CSS color name</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="keyword">new</span> <span class="predefined-type">Color</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">silver</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/filter_color_csscolorname.png" alt="filter color csscolorname">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Color from a hexadecimal string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="keyword">new</span> <span class="predefined-type">Color</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#0000ff</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/filter_color_hexadecimal.png" alt="filter color hexadecimal">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Color from a RGB List</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="keyword">new</span> <span class="predefined-type">Color</span>([<span class="integer">255</span>,<span class="integer">0</span>,<span class="integer">0</span>])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/filter_color_rgblist.png" alt="filter color rgblist">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Color from a RGB Map</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="keyword">new</span> <span class="predefined-type">Color</span>([<span class="key">r</span>: <span class="integer">5</span>, <span class="key">g</span>: <span class="integer">35</span>, <span class="key">b</span>:<span class="integer">45</span>])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/filter_color_rgbmap.png" alt="filter color rgbmap">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Color from a HLS Map</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="keyword">new</span> <span class="predefined-type">Color</span>([<span class="key">h</span>: <span class="integer">0</span>, <span class="key">s</span>: <span class="float">1.0</span>, <span class="key">l</span>: <span class="float">0.5</span>])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/filter_color_hlsmap.png" alt="filter color hlsmap">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Random Color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="predefined-type">Color</span>.getRandom()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/filter_color_random.png" alt="filter color random">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Random Pastel Color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="predefined-type">Color</span>.getRandomPastel()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/filter_color_random_pastel.png" alt="filter color random pastel">
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-04 23:36:35 UTC
+Last updated 2017-02-05 21:48:43 UTC
 </div>
 </div>
 </body>
