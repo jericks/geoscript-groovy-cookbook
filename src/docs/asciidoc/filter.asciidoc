@@ -1,0 +1,67 @@
+== Filter Recipes
+
+=== Creating Colors
+
+[source,groovy]
+.Create a Color from a RGB color string
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createColorFromRBGString,indent=0]
+----
+[.thumb]
+image::filter_color_rbgstring.png[]
+
+[source,groovy]
+.Create a Color from a CSS color name
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createColorFromCSSColorName,indent=0]
+----
+[.thumb]
+image::filter_color_csscolorname.png[]
+
+[source,groovy]
+.Create a Color from a hexadecimal string
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createColorFromHexadecimal,indent=0]
+----
+[.thumb]
+image::filter_color_hexadecimal.png[]
+
+[source,groovy]
+.Create a Color from a RGB List
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createColorFromRGBList,indent=0]
+----
+[.thumb]
+image::filter_color_rgblist.png[]
+
+[source,groovy]
+.Create a Color from a RGB Map
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createColorFromRGBMap,indent=0]
+----
+[.thumb]
+image::filter_color_rgbmap.png[]
+
+[source,groovy]
+.Create a Color from a HLS Map
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createColorFromHLSMap,indent=0]
+----
+[.thumb]
+image::filter_color_hlsmap.png[]
+
+[source,groovy]
+.Get a Random Color
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getRandomColor,indent=0]
+----
+[.thumb]
+image::filter_color_random.png[]
+
+[source,groovy]
+.Get a Random Pastel Color
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getRandomPastelColor,indent=0]
+----
+[.thumb]
+image::filter_color_random_pastel.png[]
