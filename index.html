@@ -581,6 +581,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#filter-recipes">Filter Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#creating-colors">Creating Colors</a></li>
+<li><a href="#using-color-palettes">Using Color Palettes</a></li>
 </ul>
 </li>
 </ul>
@@ -3724,7 +3725,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-f9d61c1_15a104ff135_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-240439_15a161a9437_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -4433,7 +4434,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 05 22:05:59 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Feb 07 01:05:25 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4452,7 +4453,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-f9d61c1_15a104ff135_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-240439_15a161a9437_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4476,7 +4477,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 05 22:05:59 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Feb 07 01:05:25 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4496,7 +4497,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-f9d61c1_15a104ff135_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-240439_15a161a9437_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -4658,7 +4659,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-f9d61c1_15a104ff135_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-240439_15a161a9437_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4696,7 +4697,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-f9d61c1_15a104ff135_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-240439_15a161a9437_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -4894,12 +4895,209 @@ println kml</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="using-color-palettes"><a class="anchor" href="#using-color-palettes"></a>Using Color Palettes</h3>
+<div class="listingblock">
+<div class="title">Get all color palettes</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; allPalettes = <span class="predefined-type">Color</span>.getPaletteNames(<span class="string"><span class="delimiter">&quot;</span><span class="content">all</span><span class="delimiter">&quot;</span></span>)
+allPalettes.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>YlOrRd
+PRGn
+PuOr
+RdGy
+Spectral
+Grays
+PuBuGn
+RdPu
+BuPu
+YlOrBr
+Greens
+BuGn
+Accents
+GnBu
+PuRd
+Purples
+RdYlGn
+Paired
+Blues
+RdBu
+Oranges
+RdYlBu
+PuBu
+OrRd
+Set3
+Set2
+Set1
+Reds
+PiYG
+Dark2
+YlGn
+BrBG
+YlGnBu
+Pastel2
+Pastel1
+BlueToOrange
+GreenToOrange
+BlueToRed
+GreenToRedOrange
+Sunset
+Green
+YellowToRedHeatMap
+BlueToYellowToRedHeatMap
+DarkRedToYellowWhiteHeatMap
+LightPurpleToDarkPurpleHeatMap
+BoldLandUse
+MutedTerrain
+BoldLandUse
+MutedTerrain</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get diverging color palettes</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; divergingPalettes = <span class="predefined-type">Color</span>.getPaletteNames(<span class="string"><span class="delimiter">&quot;</span><span class="content">diverging</span><span class="delimiter">&quot;</span></span>)
+divergingPalettes.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>PRGn
+PuOr
+RdGy
+Spectral
+RdYlGn
+RdBu
+RdYlBu
+PiYG
+BrBG
+BlueToOrange
+GreenToOrange
+BlueToRed
+GreenToRedOrange</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get sequential color palettes</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; sequentialPalettes = <span class="predefined-type">Color</span>.getPaletteNames(<span class="string"><span class="delimiter">&quot;</span><span class="content">sequential</span><span class="delimiter">&quot;</span></span>)
+sequentialPalettes.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>YlOrRd
+Grays
+PuBuGn
+RdPu
+BuPu
+YlOrBr
+Greens
+BuGn
+GnBu
+PuRd
+Purples
+Blues
+Oranges
+PuBu
+OrRd
+Reds
+YlGn
+YlGnBu
+Sunset
+Green
+YellowToRedHeatMap
+BlueToYellowToRedHeatMap
+DarkRedToYellowWhiteHeatMap
+LightPurpleToDarkPurpleHeatMap
+BoldLandUse
+MutedTerrain</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get qualitative color palettes</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; qualitativePalettes = <span class="predefined-type">Color</span>.getPaletteNames(<span class="string"><span class="delimiter">&quot;</span><span class="content">qualitative</span><span class="delimiter">&quot;</span></span>)
+qualitativePalettes.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Accents
+Paired
+Set3
+Set2
+Set1
+Dark2
+Pastel2
+Pastel1
+BoldLandUse
+MutedTerrain</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Blue Green Color Palette</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> colors = <span class="predefined-type">Color</span>.getPaletteColors(<span class="string"><span class="delimiter">&quot;</span><span class="content">BuGn</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/color_palette_bugn.png" alt="color palette bugn">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Purple Color Palette with only four colors</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">colors = <span class="predefined-type">Color</span>.getPaletteColors(<span class="string"><span class="delimiter">&quot;</span><span class="content">Purples</span><span class="delimiter">&quot;</span></span>, <span class="integer">4</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/color_palette_purples.png" alt="color palette purples">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Blue Green Color Palette</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">colors = <span class="predefined-type">Color</span>.getPaletteColors(<span class="string"><span class="delimiter">&quot;</span><span class="content">MutedTerrain</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/color_palette_mutedterrain.png" alt="color palette mutedterrain">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Blue Green Color Palette</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">colors = <span class="predefined-type">Color</span>.getPaletteColors(<span class="string"><span class="delimiter">&quot;</span><span class="content">BlueToYellowToRedHeatMap</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/color_palette_bluetoyellowtoredheatmap.png" alt="color palette bluetoyellowtoredheatmap">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-05 21:48:43 UTC
+Last updated 2017-02-07 01:02:00 UTC
 </div>
 </div>
 </body>
