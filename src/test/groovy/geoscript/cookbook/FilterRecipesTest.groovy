@@ -56,4 +56,23 @@ class FilterRecipesTest {
         assertNotNull(color)
     }
 
+    // Color Palettes
+
+    @Test void getColorPalettes() {
+        FilterRecipes recipes = new FilterRecipes()
+        Map<String, List<String>> palettes = recipes.getColorPalettes()
+        assertTrue(palettes.containsKey('all'))
+        assertTrue(palettes.containsKey('diverging'))
+        assertTrue(palettes.containsKey('qualitative'))
+        assertTrue(palettes.containsKey('sequential'))
+    }
+
+    @Test void getPaletteColors() {
+        FilterRecipes recipes = new FilterRecipes()
+        Map<String, List<Color>> palettes = recipes.getPaletteColors()
+        assertTrue(palettes.containsKey('BuGn'))
+        assertTrue(palettes.containsKey('Purples'))
+        assertTrue(palettes.containsKey('MutedTerrain'))
+        assertTrue(palettes.containsKey('BlueToYellowToRedHeatMap'))
+    }
 }

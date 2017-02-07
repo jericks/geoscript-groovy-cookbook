@@ -65,3 +65,73 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getRandomPaste
 ----
 [.thumb]
 image::filter_color_random_pastel.png[]
+
+=== Using Color Palettes
+
+[source,groovy]
+.Get all color palettes
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getColorPalettes_all,indent=0]
+----
+....
+include::output/getColorPalettes_all.txt[]
+....
+
+[source,groovy]
+.Get diverging color palettes
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getColorPalettes_diverging,indent=0]
+----
+....
+include::output/getColorPalettes_diverging.txt[]
+....
+
+[source,groovy]
+.Get sequential color palettes
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getColorPalettes_sequential,indent=0]
+----
+....
+include::output/getColorPalettes_sequential.txt[]
+....
+
+[source,groovy]
+.Get qualitative color palettes
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getColorPalettes_qualitative,indent=0]
+----
+....
+include::output/getColorPalettes_qualitative.txt[]
+....
+
+[source,groovy]
+.Get a Blue Green Color Palette
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getPaletteColors_BuGn,indent=0]
+----
+[.thumb]
+image::color_palette_bugn.png[]
+
+[source,groovy]
+.Get a Purple Color Palette with only four colors
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getPaletteColors_Purples,indent=0]
+----
+[.thumb]
+image::color_palette_purples.png[]
+
+[source,groovy]
+.Get a Blue Green Color Palette
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getPaletteColors_MutedTerrain,indent=0]
+----
+[.thumb]
+image::color_palette_mutedterrain.png[]
+
+[source,groovy]
+.Get a Blue Green Color Palette
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getPaletteColors_BlueToYellowToRedHeatMap,indent=0]
+----
+[.thumb]
+image::color_palette_bluetoyellowtoredheatmap.png[]

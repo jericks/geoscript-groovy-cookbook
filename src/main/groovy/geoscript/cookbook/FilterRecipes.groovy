@@ -70,4 +70,79 @@ class FilterRecipes extends Recipes {
         color
     }
 
+    // Color Palettes
+
+    Map<String, List<String>> getColorPalettes() {
+        Map<String, List<String>> paletteMap = [:]
+
+        // tag::getColorPalettes_all[]
+        List<String> allPalettes = Color.getPaletteNames("all")
+        allPalettes.each { String name ->
+            println name
+        }
+        // end::getColorPalettes_all[]
+        writeFile("getColorPalettes_all","${allPalettes.join(NEW_LINE)}")
+        paletteMap.put('all', allPalettes)
+
+        // tag::getColorPalettes_diverging[]
+        List<String> divergingPalettes = Color.getPaletteNames("diverging")
+        divergingPalettes.each { String name ->
+            println name
+        }
+        // end::getColorPalettes_diverging[]
+        writeFile("getColorPalettes_diverging","${divergingPalettes.join(NEW_LINE)}")
+        paletteMap.put('diverging', divergingPalettes)
+
+        // tag::getColorPalettes_qualitative[]
+        List<String> qualitativePalettes = Color.getPaletteNames("qualitative")
+        qualitativePalettes.each { String name ->
+            println name
+        }
+        // end::getColorPalettes_qualitative[]
+        writeFile("getColorPalettes_qualitative","${qualitativePalettes.join(NEW_LINE)}")
+        paletteMap.put('qualitative', qualitativePalettes)
+
+        // tag::getColorPalettes_sequential[]
+        List<String> sequentialPalettes = Color.getPaletteNames("sequential")
+        sequentialPalettes.each { String name ->
+            println name
+        }
+        // end::getColorPalettes_sequential[]
+        writeFile("getColorPalettes_sequential","${sequentialPalettes.join(NEW_LINE)}")
+        paletteMap.put('sequential', sequentialPalettes)
+
+        paletteMap
+    }
+
+    Map<String, List<Color>> getPaletteColors() {
+
+        Map<String, List<Color>> colorMap = [:]
+
+        // tag::getPaletteColors_BuGn[]
+        List colors = Color.getPaletteColors("BuGn")
+        // end::getPaletteColors_BuGn[]
+        saveImage("color_palette_bugn", Color.drawToImage(colors, "horizontal"))
+        colorMap.put("BuGn", colors)
+
+        // tag::getPaletteColors_Purples[]
+        colors = Color.getPaletteColors("Purples", 4)
+        // end::getPaletteColors_Purples[]
+        saveImage("color_palette_purples", Color.drawToImage(colors, "horizontal"))
+        colorMap.put("Purples", colors)
+
+        // tag::getPaletteColors_MutedTerrain[]
+        colors = Color.getPaletteColors("MutedTerrain")
+        // end::getPaletteColors_MutedTerrain[]
+        saveImage("color_palette_mutedterrain", Color.drawToImage(colors, "horizontal"))
+        colorMap.put("MutedTerrain", colors)
+
+        // tag::getPaletteColors_BlueToYellowToRedHeatMap[]
+        colors = Color.getPaletteColors("BlueToYellowToRedHeatMap")
+        // end::getPaletteColors_BlueToYellowToRedHeatMap[]
+        saveImage("color_palette_bluetoyellowtoredheatmap", Color.drawToImage(colors, "horizontal"))
+        colorMap.put("BlueToYellowToRedHeatMap", colors)
+
+        colorMap
+    }
+
 }
