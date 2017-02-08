@@ -517,6 +517,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#filter-recipes">Filter Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#creating-colors">Creating Colors</a></li>
+<li><a href="#getting-color-formats">Getting Color Formats</a></li>
 <li><a href="#using-color-palettes">Using Color Palettes</a></li>
 </ul>
 </li>
@@ -615,6 +616,80 @@ table.CodeRay td.code>pre{padding:0}
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/filter_color_random_pastel.png" alt="filter color random pastel">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a darker Color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="keyword">new</span> <span class="predefined-type">Color</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">lightblue</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Color</span> darkerColor = color.darker()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/getDarkerColor.png" alt="getDarkerColor">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a brighter Color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="keyword">new</span> <span class="predefined-type">Color</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">purple</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Color</span> brigtherColor = color.brighter()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/getBrighterColor.png" alt="getBrighterColor">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-color-formats"><a class="anchor" href="#getting-color-formats"></a>Getting Color Formats</h3>
+<div class="listingblock">
+<div class="title">Create a Color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Color</span> color = <span class="keyword">new</span> <span class="predefined-type">Color</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">wheat</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/getColorProperties.png" alt="getColorProperties">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get Hex</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> hex = color.hex
+println hex</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>#f5deb3</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get RGB</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> rgb = color.rgb
+println rgb</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[245, 222, 179]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get HSL</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> hsl = color.hsl
+println hsl</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[0.10858585256755147, 0.7674419030001307, 0.8313725489999999]</pre>
 </div>
 </div>
 </div>
@@ -820,7 +895,7 @@ MutedTerrain</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-07 01:02:00 UTC
+Last updated 2017-02-07 17:51:58 PST
 </div>
 </div>
 </body>
