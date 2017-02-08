@@ -85,4 +85,18 @@ class FilterRecipesTest {
         assertEquals(0.76744, colors.hsl[1], 0.001)
         assertEquals(0.83137, colors.hsl[2], 0.001)
     }
+
+    // Manipulating Colors
+
+    @Test void getDarkerColor() {
+        FilterRecipes recipes = new FilterRecipes()
+        Color color = recipes.getDarkerColor()
+        assertEquals("#7997a1", color.hex)
+    }
+
+    @Test void getBrighterColor() {
+        FilterRecipes recipes = new FilterRecipes()
+        Color color = recipes.getBrighterColor()
+        assertEquals("#b600b6", color.hex)
+    }
 }

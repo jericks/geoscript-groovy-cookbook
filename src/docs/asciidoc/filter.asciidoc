@@ -66,6 +66,22 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getRandomPaste
 [.thumb]
 image::filter_color_random_pastel.png[]
 
+[source,groovy]
+.Get a darker Color
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getDarkerColor,indent=0]
+----
+[.thumb]
+image::getDarkerColor.png[]
+
+[source,groovy]
+.Get a brighter Color
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getBrighterColor,indent=0]
+----
+[.thumb]
+image::getBrighterColor.png[]
+
 === Getting Color Formats
 
 [source,groovy]

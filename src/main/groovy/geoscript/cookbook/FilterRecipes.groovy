@@ -180,4 +180,22 @@ class FilterRecipes extends Recipes {
         props
     }
 
+    Color getDarkerColor() {
+        // tag::getDarkerColor[]
+        Color color = new Color("lightblue")
+        Color darkerColor = color.darker()
+        // end::getDarkerColor[]
+        saveImage("getDarkerColor", Color.drawToImage([color, darkerColor], "horizontal"))
+        darkerColor
+    }
+
+    Color getBrighterColor() {
+        // tag::getBrighterColor[]
+        Color color = new Color("purple")
+        Color brigtherColor = color.brighter()
+        // end::getBrighterColor[]
+        saveImage("getBrighterColor", Color.drawToImage([color, brigtherColor], "horizontal"))
+        brigtherColor
+    }
+
 }
