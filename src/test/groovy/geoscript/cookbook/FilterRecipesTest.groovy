@@ -75,4 +75,14 @@ class FilterRecipesTest {
         assertTrue(palettes.containsKey('MutedTerrain'))
         assertTrue(palettes.containsKey('BlueToYellowToRedHeatMap'))
     }
+
+    @Test void getColorProperties() {
+        FilterRecipes recipes = new FilterRecipes()
+        Map<String, String> colors = recipes.getColorProperties()
+        assertEquals("#f5deb3", colors.hex)
+        assertEquals([245, 222, 179], colors.rgb)
+        assertEquals(0.10858, colors.hsl[0], 0.001)
+        assertEquals(0.76744, colors.hsl[1], 0.001)
+        assertEquals(0.83137, colors.hsl[2], 0.001)
+    }
 }

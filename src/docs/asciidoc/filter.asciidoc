@@ -66,6 +66,43 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getRandomPaste
 [.thumb]
 image::filter_color_random_pastel.png[]
 
+=== Getting Color Formats
+
+[source,groovy]
+.Create a Color
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getColorProperties_create,indent=0]
+----
+[.thumb]
+image::getColorProperties.png[]
+
+[source,groovy]
+.Get Hex
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getColorProperties_hex,indent=0]
+----
+....
+include::output/getColorProperties_hex.txt[]
+....
+
+[source,groovy]
+.Get RGB
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getColorProperties_rgb,indent=0]
+----
+....
+include::output/getColorProperties_rgb.txt[]
+....
+
+[source,groovy]
+.Get HSL
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getColorProperties_hsl,indent=0]
+----
+....
+include::output/getColorProperties_hsl.txt[]
+....
+
 === Using Color Palettes
 
 [source,groovy]

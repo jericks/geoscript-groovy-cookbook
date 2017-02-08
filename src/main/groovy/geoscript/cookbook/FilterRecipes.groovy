@@ -145,4 +145,39 @@ class FilterRecipes extends Recipes {
         colorMap
     }
 
+    // Color properties
+
+    Map<String, String> getColorProperties() {
+
+        Map<String,String> props = [:]
+
+        // tag::getColorProperties_create[]
+        Color color = new Color("wheat")
+        // end::getColorProperties_create[]
+        saveImage("getColorProperties", Color.drawToImage([color]))
+
+        // tag::getColorProperties_hex[]
+        String hex = color.hex
+        println hex
+        // end::getColorProperties_hex[]
+        writeFile("getColorProperties_hex", "${hex}")
+        props.put("hex", hex)
+
+        // tag::getColorProperties_rgb[]
+        List rgb = color.rgb
+        println rgb
+        // end::getColorProperties_rgb[]
+        writeFile("getColorProperties_rgb", "${rgb}")
+        props.put("rgb", rgb)
+
+        // tag::getColorProperties_hsl[]
+        List hsl = color.hsl
+        println hsl
+        // end::getColorProperties_hsl[]
+        writeFile("getColorProperties_hsl", "${hsl}")
+        props.put("hsl", hsl)
+
+        props
+    }
+
 }
