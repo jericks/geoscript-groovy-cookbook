@@ -2,6 +2,9 @@ package geoscript.cookbook
 
 import geoscript.filter.Color
 import org.junit.Test
+
+import java.awt.image.BufferedImage
+
 import static org.junit.Assert.*
 
 class FilterRecipesTest {
@@ -84,6 +87,7 @@ class FilterRecipesTest {
         assertEquals(0.10858, colors.hsl[0], 0.001)
         assertEquals(0.76744, colors.hsl[1], 0.001)
         assertEquals(0.83137, colors.hsl[2], 0.001)
+        assertNotNull(colors.awt)
     }
 
     // Manipulating Colors
@@ -99,4 +103,25 @@ class FilterRecipesTest {
         Color color = recipes.getBrighterColor()
         assertEquals("#b600b6", color.hex)
     }
+
+    @Test void interpolateColors() {
+        FilterRecipes recipes = new FilterRecipes()
+        List<Color> colors = recipes.interpolateColors()
+        assertEquals(10, colors.size())
+    }
+
+    @Test void interpolateColorsStatic() {
+        FilterRecipes recipes = new FilterRecipes()
+        List<Color> colors = recipes.interpolateColorsStatic()
+        assertEquals(8, colors.size())
+    }
+
+    // Displaying colors
+
+    @Test void drawColorToImage() {
+        FilterRecipes recipes = new FilterRecipes()
+        BufferedImage image = recipes.drawColorToImage()
+        assertNotNull(image)
+    }
+
 }

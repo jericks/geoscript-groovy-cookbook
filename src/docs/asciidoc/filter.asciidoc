@@ -119,6 +119,33 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getColorProper
 include::output/getColorProperties_hsl.txt[]
 ....
 
+[source,groovy]
+.Get the java.awt.Color
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getColorProperties_awt,indent=0]
+----
+....
+include::output/getColorProperties_awt.txt[]
+....
+
+=== Displaying Colors
+
+[source,groovy]
+.Draw a List of Colors to a BufferedImage
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=drawColorToImage,indent=0]
+----
+[.thumb]
+image::filter_color_draw2img.png[]
+
+[source,groovy]
+.Draw a List of Colors to a simple GUI
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=drawColorToGui,indent=0]
+----
+[.thumb]
+image::filter_color_drawgui.png[]
+
 === Using Color Palettes
 
 [source,groovy]
@@ -188,3 +215,19 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getPaletteColo
 ----
 [.thumb]
 image::color_palette_bluetoyellowtoredheatmap.png[]
+
+[source,groovy]
+.Create a Color palette by interpolating between two colors
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=interpolateColors,indent=0]
+----
+[.thumb]
+image::filter_color_interpolate.png[]
+
+[source,groovy]
+.Create a Color palette by interpolating between two colors
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=interpolateColorsStatic,indent=0]
+----
+[.thumb]
+image::filter_color_interpolate_static.png[]

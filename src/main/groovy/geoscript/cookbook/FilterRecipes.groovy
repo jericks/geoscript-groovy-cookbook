@@ -2,6 +2,8 @@ package geoscript.cookbook
 
 import geoscript.filter.Color
 
+import java.awt.image.BufferedImage
+
 class FilterRecipes extends Recipes {
 
     // Color
@@ -177,6 +179,13 @@ class FilterRecipes extends Recipes {
         writeFile("getColorProperties_hsl", "${hsl}")
         props.put("hsl", hsl)
 
+        // tag::getColorProperties_awt[]
+        java.awt.Color awtColor = color.asColor()
+        println awtColor
+        // end::getColorProperties_awt[]
+        writeFile("getColorProperties_awt", "${awtColor}")
+        props.put("awt", awtColor)
+
         props
     }
 
@@ -196,6 +205,48 @@ class FilterRecipes extends Recipes {
         // end::getBrighterColor[]
         saveImage("getBrighterColor", Color.drawToImage([color, brigtherColor], "horizontal"))
         brigtherColor
+    }
+
+    List<Color> interpolateColors() {
+        // tag::interpolateColors[]
+        Color startColor = new Color("red")
+        Color endColor = new Color("green")
+        List<Color> colors = startColor.interpolate(endColor, 10)
+        // end::interpolateColors[]
+        saveImage("filter_color_interpolate", Color.drawToImage(colors, "horizontal"))
+        colors
+    }
+
+    List<Color> interpolateColorsStatic() {
+        // tag::interpolateColorsStatic[]
+        Color startColor = new Color("wheat")
+        Color endColor = new Color("lightblue")
+        List<Color> colors = Color.interpolate(startColor, endColor, 8)
+        // end::interpolateColorsStatic[]
+        saveImage("filter_color_interpolate_static", Color.drawToImage(colors, "horizontal"))
+        colors
+    }
+
+    // Displaying Colors
+
+    BufferedImage drawColorToImage() {
+        // tag::drawColorToImage[]
+        Color color = new Color("pink")
+        BufferedImage image = Color.drawToImage(
+                [color.brighter(), color, color.darker()],
+                "vertical",
+                40
+        )
+        // end::drawColorToImage[]
+        saveImage("filter_color_draw2img", image)
+        image
+    }
+
+    void drawColorToGui() {
+        // tag::drawColorToGui[]
+        List<Color> colors = Color.getPaletteColors("YlOrBr")
+        Color.draw(colors, "horizontal", 50)
+        // end::drawColorToGui[]
     }
 
 }
