@@ -1,6 +1,7 @@
 package geoscript.cookbook
 
 import geoscript.filter.Color
+import geoscript.filter.Property
 import org.junit.Test
 
 import java.awt.image.BufferedImage
@@ -8,6 +9,28 @@ import java.awt.image.BufferedImage
 import static org.junit.Assert.*
 
 class FilterRecipesTest {
+
+    // Property
+
+    @Test void createPropertyFromString() {
+        FilterRecipes recipes = new FilterRecipes()
+        Property property = recipes.createPropertyFromString()
+        assertEquals("name", property.toString())
+    }
+
+    @Test void createPropertyFromField() {
+        FilterRecipes recipes = new FilterRecipes()
+        Property property = recipes.createPropertyFromField()
+        assertEquals("geom", property.toString())
+    }
+
+    @Test void evaluateProperty() {
+        FilterRecipes recipes = new FilterRecipes()
+        Map<String, Object> values = recipes.evaluateProperty()
+        assertEquals(1, values.id)
+        assertEquals("Seattle", values.name)
+        assertEquals("POINT (-122.3204 47.6024)", values.geometry.wkt)
+    }
 
     // Color
 

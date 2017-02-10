@@ -1,5 +1,54 @@
 == Filter Recipes
 
+=== Creating Properties
+
+[source,groovy]
+.Create a Property from a string
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createPropertyFromString,indent=0]
+----
+....
+include::output/filter_property_create_string.txt[]
+....
+
+[source,groovy]
+.Create a Property from a Field
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createPropertyFromField,indent=0]
+----
+....
+include::output/filter_property_create_field.txt[]
+....
+
+=== Evaluating Properties
+
+[source,groovy]
+.Evaluate a Property to get values from a Feature. Get the id
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateProperty_1,indent=0]
+----
+....
+include::output/filter_property_evaluate_1.txt[]
+....
+
+[source,groovy]
+.Get the name
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateProperty_2,indent=0]
+----
+....
+include::output/filter_property_evaluate_2.txt[]
+....
+
+[source,groovy]
+.Get the geometry
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateProperty_3,indent=0]
+----
+....
+include::output/filter_property_evaluate_3.txt[]
+....
+
 === Creating Colors
 
 [source,groovy]

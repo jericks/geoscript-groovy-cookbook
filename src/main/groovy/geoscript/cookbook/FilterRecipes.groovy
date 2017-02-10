@@ -1,10 +1,72 @@
 package geoscript.cookbook
 
+import geoscript.feature.Feature
+import geoscript.feature.Field
 import geoscript.filter.Color
+import geoscript.filter.Property
+import geoscript.geom.Geometry
+import geoscript.geom.Point
 
 import java.awt.image.BufferedImage
 
 class FilterRecipes extends Recipes {
+
+    // Property
+
+    Property createPropertyFromString() {
+        // tag::createPropertyFromString[]
+        Property property = new Property("name")
+        println property
+        // end::createPropertyFromString[]
+        writeFile("filter_property_create_string", "${property}")
+        property
+    }
+
+    Property createPropertyFromField() {
+        // tag::createPropertyFromField[]
+        Field field = new Field("geom", "Polygon")
+        Property property = new Property(field)
+        println property
+        // end::createPropertyFromField[]
+        writeFile("filter_property_create_field", "${property}")
+        property
+    }
+
+    Map<String,Object> evaluateProperty() {
+        Map values = [:]
+
+        // tag::evaluateProperty_1[]
+        Feature feature = new Feature([
+            id: 1,
+            name: "Seattle",
+            geom: new Point(-122.3204, 47.6024)
+        ], "city.1")
+
+        Property idProperty = new Property("id")
+        int id = idProperty.evaluate(feature)
+        println id
+        // end::evaluateProperty_1[]
+        writeFile("filter_property_evaluate_1", "${id}")
+        values.put("id", id)
+
+        // tag::evaluateProperty_2[]
+        Property nameProperty = new Property("name")
+        String name = nameProperty.evaluate(feature)
+        println name
+        // end::evaluateProperty_2[]
+        writeFile("filter_property_evaluate_2", "${name}")
+        values.put("name", name)
+
+        // tag::evaluateProperty_3[]
+        Property geomProperty = new Property("geom")
+        Geometry geometry = geomProperty.evaluate(feature)
+        println geometry
+        // end::evaluateProperty_3[]
+        writeFile("filter_property_evaluate_3", "${geometry}")
+        values.put("geometry", geometry)
+
+        values
+    }
 
     // Color
 
