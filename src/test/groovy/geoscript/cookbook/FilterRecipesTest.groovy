@@ -1,6 +1,7 @@
 package geoscript.cookbook
 
 import geoscript.filter.Color
+import geoscript.filter.Expression
 import geoscript.filter.Property
 import org.junit.Test
 
@@ -9,6 +10,53 @@ import java.awt.image.BufferedImage
 import static org.junit.Assert.*
 
 class FilterRecipesTest {
+
+    // CQL
+
+    @Test void getLiteralNumberFromCQL() {
+        FilterRecipes recipes = new FilterRecipes()
+        Expression expression = recipes.getLiteralNumberFromCQL()
+        assertEquals("12", expression.toString())
+    }
+
+    @Test void getLiteralStringFromCQL() {
+        FilterRecipes recipes = new FilterRecipes()
+        Expression expression = recipes.getLiteralStringFromCQL()
+        assertEquals("Washington", expression.toString())
+    }
+
+    @Test void getPropertyFromCql() {
+        FilterRecipes recipes = new FilterRecipes()
+        Expression expression = recipes.getPropertyFromCql()
+        assertEquals("NAME", expression.toString())
+    }
+
+    @Test void getFunctionFromCql() {
+        FilterRecipes recipes = new FilterRecipes()
+        Expression expression = recipes.getFunctionFromCql()
+        assertEquals("centroid([the_geom])", expression.toString())
+    }
+
+    // Literal
+
+    @Test void createLiteralFromNumber() {
+        FilterRecipes recipes = new FilterRecipes()
+        Expression expression = recipes.createLiteralFromNumber()
+        assertEquals("3.56", expression.toString())
+    }
+
+    @Test void createLiteralFromString() {
+        FilterRecipes recipes = new FilterRecipes()
+        Expression expression = recipes.createLiteralFromString()
+        assertEquals("Seattle", expression.toString())
+    }
+
+    @Test void evaluateLiteral() {
+        FilterRecipes recipes = new FilterRecipes()
+        Object value = recipes.evaluateLiteral()
+        assertEquals(3.56, value as double, 0.01)
+    }
+
 
     // Property
 

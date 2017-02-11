@@ -1,5 +1,34 @@
 == Filter Recipes
 
+=== Creating Literals
+
+[source,groovy]
+.Create a literal Expression from a number
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createLiteralFromNumber,indent=0]
+----
+....
+include::output/filter_literal_create_number.txt[]
+....
+
+[source,groovy]
+.Create a literal Expression from a string
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createLiteralFromString,indent=0]
+----
+....
+include::output/filter_literal_create_string.txt[]
+....
+
+[source,groovy]
+.Evaluating a literal Expression just gives you the value
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateLiteral,indent=0]
+----
+....
+include::output/filter_literal_evaluate.txt[]
+....
+
 === Creating Properties
 
 [source,groovy]
@@ -280,3 +309,41 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=interpolateCol
 ----
 [.thumb]
 image::filter_color_interpolate_static.png[]
+
+=== Creating Expressions from CQL
+
+[source,groovy]
+.Create a literal number Expression from a CQL String
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getLiteralNumberFromCQL,indent=0]
+----
+....
+include::output/filter_cql_literal_number.txt[]
+....
+
+[source,groovy]
+.Create a literal string Expression from a CQL String
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getLiteralStringFromCQL,indent=0]
+----
+....
+include::output/filter_cql_literal_string.txt[]
+....
+
+[source,groovy]
+.Create a Property from a CQL String
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getPropertyFromCql,indent=0]
+----
+....
+include::output/filter_cql_property.txt[]
+....
+
+[source,groovy]
+.Create a Function from a CQL String
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getFunctionFromCql,indent=0]
+----
+....
+include::output/filter_cql_function.txt[]
+....

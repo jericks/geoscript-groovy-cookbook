@@ -3,6 +3,8 @@ package geoscript.cookbook
 import geoscript.feature.Feature
 import geoscript.feature.Field
 import geoscript.filter.Color
+import geoscript.filter.Expression
+import geoscript.filter.Function
 import geoscript.filter.Property
 import geoscript.geom.Geometry
 import geoscript.geom.Point
@@ -10,6 +12,74 @@ import geoscript.geom.Point
 import java.awt.image.BufferedImage
 
 class FilterRecipes extends Recipes {
+
+    // CQL
+
+    Expression getLiteralNumberFromCQL() {
+        // tag::getLiteralNumberFromCQL[]
+        Expression expression = Expression.fromCQL("12")
+        println expression
+        // end::getLiteralNumberFromCQL[]
+        writeFile("filter_cql_literal_number", "${expression}")
+        expression
+    }
+
+    Expression getLiteralStringFromCQL() {
+        // tag::getLiteralStringFromCQL[]
+        Expression expression = Expression.fromCQL("'Washington'")
+        println expression
+        // end::getLiteralStringFromCQL[]
+        writeFile("filter_cql_literal_string", "${expression}")
+        expression
+    }
+
+    Expression getPropertyFromCql() {
+        // tag::getPropertyFromCql[]
+        Expression expression = Expression.fromCQL("NAME")
+        println expression
+        // end::getPropertyFromCql[]
+        writeFile("filter_cql_property", "${expression}")
+        expression
+    }
+
+    Expression getFunctionFromCql() {
+        // tag::getFunctionFromCql[]
+        Expression expression = Expression.fromCQL("centroid(the_geom)")
+        println expression
+        // end::getFunctionFromCql[]
+        writeFile("filter_cql_function", "${expression}")
+        expression
+    }
+
+    // Expression literals
+
+    Expression createLiteralFromNumber() {
+        // tag::createLiteralFromNumber[]
+        Expression expression = new Expression(3.56)
+        println expression
+        // end::createLiteralFromNumber[]
+        writeFile("filter_literal_create_number", "${expression}")
+        expression
+    }
+
+    Expression createLiteralFromString() {
+        // tag::createLiteralFromString[]
+        Expression expression = new Expression("Seattle")
+        println expression
+        // end::createLiteralFromString[]
+        writeFile("filter_literal_create_string", "${expression}")
+        expression
+    }
+
+    Object evaluateLiteral() {
+        // tag::evaluateLiteral[]
+        Expression expression = new Expression(3.56)
+        double number = expression.evaluate()
+        println number
+        // end::evaluateLiteral[]
+        writeFile("filter_literal_evaluate", "${number}")
+        number
+    }
 
     // Property
 
