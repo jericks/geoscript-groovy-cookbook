@@ -2,7 +2,9 @@ package geoscript.cookbook
 
 import geoscript.filter.Color
 import geoscript.filter.Expression
+import geoscript.filter.Function
 import geoscript.filter.Property
+import geoscript.geom.Polygon
 import org.junit.Test
 
 import java.awt.image.BufferedImage
@@ -78,6 +80,46 @@ class FilterRecipesTest {
         assertEquals(1, values.id)
         assertEquals("Seattle", values.name)
         assertEquals("POINT (-122.3204 47.6024)", values.geometry.wkt)
+    }
+
+    // Function
+
+    @Test void createFunctionFromCql() {
+        FilterRecipes recipes = new FilterRecipes()
+        Function function = recipes.createFunctionFromCql()
+        assertEquals("centroid([the_geom])", function.toString())
+    }
+
+    @Test void createFromNameAndExpressions() {
+        FilterRecipes recipes = new FilterRecipes()
+        Function function = recipes.createFromNameAndExpressions()
+        assertEquals("centroid([the_geom])", function.toString())
+    }
+
+    @Test void createFromNameClosureAndExpressions() {
+        FilterRecipes recipes = new FilterRecipes()
+        Function function = recipes.createFromNameClosureAndExpressions()
+        assertEquals("my_centroid([the_geom])", function.toString())
+    }
+
+    @Test void createFromCqlAndClosure() {
+        FilterRecipes recipes = new FilterRecipes()
+        Function function = recipes.createFromCqlAndClosure()
+        assertEquals("my_centroid([the_geom])", function.toString())
+    }
+
+    @Test void evaulateFunctions() {
+        FilterRecipes recipes = new FilterRecipes()
+        Map<String,Object> values = recipes.evaulateFunctions()
+        assertTrue(values.polygon instanceof Polygon)
+        assertEquals("seattle", values.lowerCaseName)
+    }
+
+    @Test void getFunctionNames() {
+        FilterRecipes recipes = new FilterRecipes()
+        List<String> names = recipes.getFunctionNames()
+        assertTrue(names.size() > 0)
+        assertTrue(names.contains("buffer"))
     }
 
     // Color

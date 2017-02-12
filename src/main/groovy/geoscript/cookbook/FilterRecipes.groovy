@@ -138,6 +138,84 @@ class FilterRecipes extends Recipes {
         values
     }
 
+    // Function
+
+    Function createFunctionFromCql() {
+        // tag::createFunctionFromCql[]
+        Function function = new Function("centroid(the_geom)")
+        println function
+        // end::createFunctionFromCql[]
+        writeFile("filter_function_create_cql","${function}")
+        function
+    }
+
+    Function createFromNameAndExpressions() {
+        // tag::createFromNameAndExpressions[]
+        Function function = new Function("centroid", new Property("the_geom"))
+        println function
+        // end::createFromNameAndExpressions[]
+        writeFile("filter_function_create_name_expressions","${function}")
+        function
+    }
+
+    Function createFromNameClosureAndExpressions() {
+        // tag::createFromNameClosureAndExpressions[]
+        Function function = new Function("my_centroid", {g-> g.centroid}, new Property("the_geom"))
+        println function
+        // end::createFromNameClosureAndExpressions[]
+        writeFile("filter_function_create_name_closure_expressions","${function}")
+        function
+    }
+
+    Function createFromCqlAndClosure() {
+        // tag::createFromCqlAndClosure[]
+        Function function = new Function("my_centroid(the_geom)", {g-> g.centroid})
+        println function
+        // end::createFromCqlAndClosure[]
+        writeFile("filter_function_create_cql_closure","${function}")
+        function
+    }
+
+    Map<String,Object> evaulateFunctions() {
+
+        Map<String,Object> values = [:]
+
+        // tag::evaulateFunctions_buffer[]
+        Feature feature = new Feature([
+                id: 1,
+                name: "Seattle",
+                geom: new Point(-122.3204, 47.6024)
+        ], "city.1")
+
+        Function bufferFunction = new Function("buffer(geom, 10)")
+        Geometry polygon = bufferFunction.evaluate(feature)
+        // end::evaulateFunctions_buffer[]
+        drawGeometries("filter_function_evaluate_buffer", [polygon,feature.geom])
+        values.put("polygon", polygon)
+
+        // tag::evaulateFunctions_lowercase[]
+        Function lowerCaseFunction = new Function("strToLowerCase(name)")
+        String lowerCaseName = lowerCaseFunction.evaluate(feature)
+        println lowerCaseName
+        // end::evaulateFunctions_lowercase[]
+        writeFile("filter_function_evaluate_lowercase", lowerCaseName)
+        values.put("lowerCaseName", lowerCaseName)
+
+        values
+    }
+
+    List<String> getFunctionNames() {
+        // tag::getFunctionNames[]
+        List<String> functionNames = Function.getFunctionNames()
+        println "There are ${functionNames.size()} Functions:"
+        functionNames.sort().subList(0,10).each { String name ->
+            println name
+        }
+        // end::getFunctionNames[]
+        writeFile("filter_function_names","There are ${functionNames.size()} Functions:${NEW_LINE}${functionNames.sort().subList(0,10).collect { it }.join(NEW_LINE)}")
+        functionNames
+    }
+
     // Color
 
     Color createColorFromRBGString() {

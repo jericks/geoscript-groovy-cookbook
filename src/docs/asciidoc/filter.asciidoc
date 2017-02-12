@@ -78,6 +78,72 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateProper
 include::output/filter_property_evaluate_3.txt[]
 ....
 
+=== Creating Functions
+
+[source,groovy]
+.Create a Function from a CQL string
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createFunctionFromCql,indent=0]
+----
+....
+include::output/filter_function_create_cql.txt[]
+....
+
+[source,groovy]
+.Create a Function from a name and Expressions
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createFromNameAndExpressions,indent=0]
+----
+....
+include::output/filter_function_create_name_expressions.txt[]
+....
+
+[source,groovy]
+.Create a Function from a name, a Closure, and Expressions
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createFromNameClosureAndExpressions,indent=0]
+----
+....
+include::output/filter_function_create_name_closure_expressions.txt[]
+....
+
+[source,groovy]
+.Create a Function from a CQL string and a Closure
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createFromCqlAndClosure,indent=0]
+----
+....
+include::output/filter_function_create_cql_closure.txt[]
+....
+
+[source,groovy]
+.You can get a list of built in Functions
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getFunctionNames,indent=0]
+----
+....
+include::output/filter_function_names.txt[]
+....
+
+=== Evaluating Functions
+
+[source,groovy]
+.Evaulate a geometry Function
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaulateFunctions_buffer,indent=0]
+----
+[.thumb]
+image::filter_function_evaluate_buffer.png[]
+
+[source,groovy]
+.Evaulate a geometry Function
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaulateFunctions_lowercase,indent=0]
+----
+....
+include::output/filter_function_evaluate_lowercase.txt[]
+....
+
 === Creating Colors
 
 [source,groovy]
