@@ -519,6 +519,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-literals">Creating Literals</a></li>
 <li><a href="#creating-properties">Creating Properties</a></li>
 <li><a href="#evaluating-properties">Evaluating Properties</a></li>
+<li><a href="#creating-functions">Creating Functions</a></li>
+<li><a href="#evaluating-functions">Evaluating Functions</a></li>
 <li><a href="#creating-colors">Creating Colors</a></li>
 <li><a href="#getting-color-formats">Getting Color Formats</a></li>
 <li><a href="#displaying-colors">Displaying Colors</a></li>
@@ -646,6 +648,116 @@ println geometry</code></pre>
 <div class="literalblock">
 <div class="content">
 <pre>POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-functions"><a class="anchor" href="#creating-functions"></a>Creating Functions</h3>
+<div class="listingblock">
+<div class="title">Create a Function from a CQL string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Function function = <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">centroid(the_geom)</span><span class="delimiter">&quot;</span></span>)
+println function</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>centroid([the_geom])</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Function from a name and Expressions</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Function function = <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">centroid</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> Property(<span class="string"><span class="delimiter">&quot;</span><span class="content">the_geom</span><span class="delimiter">&quot;</span></span>))
+println function</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>centroid([the_geom])</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Function from a name, a Closure, and Expressions</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Function function = <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">my_centroid</span><span class="delimiter">&quot;</span></span>, {g-&gt; g.centroid}, <span class="keyword">new</span> Property(<span class="string"><span class="delimiter">&quot;</span><span class="content">the_geom</span><span class="delimiter">&quot;</span></span>))
+println function</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>my_centroid([the_geom])</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Function from a CQL string and a Closure</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Function function = <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">my_centroid(the_geom)</span><span class="delimiter">&quot;</span></span>, {g-&gt; g.centroid})
+println function</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>my_centroid([the_geom])</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">You can get a list of built in Functions</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; functionNames = Function.getFunctionNames()
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">There are </span><span class="inline"><span class="inline-delimiter">${</span>functionNames.size()<span class="inline-delimiter">}</span></span><span class="content"> Functions:</span><span class="delimiter">&quot;</span></span>
+functionNames.sort().subList(<span class="integer">0</span>,<span class="integer">10</span>).each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>There are 277 Functions:
+Area
+Categorize
+Collection_Average
+Collection_Bounds
+Collection_Count
+Collection_Max
+Collection_Median
+Collection_Min
+Collection_Nearest
+Collection_Sum</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evaluating-functions"><a class="anchor" href="#evaluating-functions"></a>Evaluating Functions</h3>
+<div class="listingblock">
+<div class="title">Evaulate a geometry Function</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Feature feature = <span class="keyword">new</span> Feature([
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>)
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>)
+
+Function bufferFunction = <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">buffer(geom, 10)</span><span class="delimiter">&quot;</span></span>)
+Geometry polygon = bufferFunction.evaluate(feature)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/filter_function_evaluate_buffer.png" alt="filter function evaluate buffer">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Evaulate a geometry Function</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Function lowerCaseFunction = <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">strToLowerCase(name)</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> lowerCaseName = lowerCaseFunction.evaluate(feature)
+println lowerCaseName</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>seattle</pre>
 </div>
 </div>
 </div>
@@ -1136,7 +1248,7 @@ println expression</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-11 01:49:38 UTC
+Last updated 2017-02-12 20:50:23 UTC
 </div>
 </div>
 </body>
