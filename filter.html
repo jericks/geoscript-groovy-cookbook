@@ -516,6 +516,9 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#filter-recipes">Filter Recipes</a>
 <ul class="sectlevel2">
+<li><a href="#creating-filters">Creating Filters</a></li>
+<li><a href="#using-filters">Using Filters</a></li>
+<li><a href="#evaluating-filters">Evaluating Filters</a></li>
 <li><a href="#creating-literals">Creating Literals</a></li>
 <li><a href="#creating-properties">Creating Properties</a></li>
 <li><a href="#evaluating-properties">Evaluating Properties</a></li>
@@ -535,6 +538,150 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect1">
 <h2 id="filter-recipes"><a class="anchor" href="#filter-recipes"></a>Filter Recipes</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="creating-filters"><a class="anchor" href="#creating-filters"></a>Creating Filters</h3>
+<div class="listingblock">
+<div class="title">Create a Filter from a CQL string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="keyword">new</span> <span class="predefined-type">Filter</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name='Seattle'</span><span class="delimiter">&quot;</span></span>)
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[ name = Seattle ]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Filter from a CQL string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="keyword">new</span> <span class="predefined-type">Filter</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;filter&gt;&lt;PropertyIsEqualTo&gt;&lt;PropertyName&gt;soilType&lt;/PropertyName&gt;&lt;Literal&gt;Mollisol&lt;/Literal&gt;&lt;/PropertyIsEqualTo&gt;&lt;/filter&gt;</span><span class="delimiter">&quot;</span></span>)
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[ soilType = Mollisol ]</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-filters"><a class="anchor" href="#using-filters"></a>Using Filters</h3>
+<div class="listingblock">
+<div class="title">Get a CQL string from a Filter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="keyword">new</span> <span class="predefined-type">Filter</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name='Seattle'</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> cql = filter.cql
+println cql</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>name = 'Seattle'</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get an XML string from a Filter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> xml = filter.xml
+println xml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;ogc:Filter xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc"&gt;
+&lt;ogc:PropertyIsEqualTo&gt;
+&lt;ogc:PropertyName&gt;name&lt;/ogc:PropertyName&gt;
+&lt;ogc:Literal&gt;Seattle&lt;/ogc:Literal&gt;
+&lt;/ogc:PropertyIsEqualTo&gt;
+&lt;/ogc:Filter&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evaluating-filters"><a class="anchor" href="#evaluating-filters"></a>Evaluating Filters</h3>
+<div class="listingblock">
+<div class="title">Test to see if a Filter matches a Feature by attribute</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Feature feature = <span class="keyword">new</span> Feature([
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>)
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>)
+
+<span class="predefined-type">Filter</span> isNameFilter = <span class="keyword">new</span> <span class="predefined-type">Filter</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name='Seattle'</span><span class="delimiter">&quot;</span></span>)
+<span class="type">boolean</span> isName = isNameFilter.evaluate(feature)
+println isName</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Filter isNotNameFilter = new Filter("name='Tacoma'")
+boolean isNotName = isNotNameFilter.evaluate(feature)
+println isNotName</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Test to see if a Filter matches a Feature by feature id</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> isIdFilter = <span class="predefined-type">Filter</span>.id(<span class="string"><span class="delimiter">&quot;</span><span class="content">city.1</span><span class="delimiter">&quot;</span></span>)
+<span class="type">boolean</span> isId = isIdFilter.evaluate(feature)
+println isId</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Filter isNotIdFilter = Filter.id("city.2")
+boolean isNotId = isNotIdFilter.evaluate(feature)
+println isNotId</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Test to see if a Filter matches a Feature by a spatial bounding box</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> isInBboxFilter = <span class="predefined-type">Filter</span>.bbox(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>,  <span class="keyword">new</span> Bounds(-<span class="float">132.539</span>, <span class="float">42.811</span>, -<span class="float">111.796</span>, <span class="float">52.268</span>))
+<span class="type">boolean</span> isInBbox = isInBboxFilter.evaluate(feature)
+println isInBbox</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Filter isNotInBboxFilter = Filter.bbox("geom", new Bounds(-12.656, 18.979, 5.273, 34.597))
+boolean isNotInBbox = isNotInBboxFilter.evaluate(feature)
+println isNotInBbox</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="creating-literals"><a class="anchor" href="#creating-literals"></a>Creating Literals</h3>
 <div class="listingblock">
@@ -1248,7 +1395,7 @@ println expression</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-12 20:50:23 UTC
+Last updated 2017-02-15 02:16:48 UTC
 </div>
 </div>
 </body>
