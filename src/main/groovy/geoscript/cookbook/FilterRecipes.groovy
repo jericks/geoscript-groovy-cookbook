@@ -4,14 +4,118 @@ import geoscript.feature.Feature
 import geoscript.feature.Field
 import geoscript.filter.Color
 import geoscript.filter.Expression
+import geoscript.filter.Filter
 import geoscript.filter.Function
 import geoscript.filter.Property
+import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.Point
 
 import java.awt.image.BufferedImage
 
 class FilterRecipes extends Recipes {
+
+    // Filter
+
+    Filter createFilterFromCql() {
+        // tag::createFilterFromCql[]
+        Filter filter = new Filter("name='Seattle'")
+        println filter.toString()
+        // end::createFilterFromCql[]
+        writeFile("filter_from_cql","${filter}")
+        filter
+    }
+
+    Filter createFilterFromXml() {
+        // tag::createFilterFromXml[]
+        Filter filter = new Filter("<filter><PropertyIsEqualTo><PropertyName>soilType</PropertyName><Literal>Mollisol</Literal></PropertyIsEqualTo></filter>")
+        println filter.toString()
+        // end::createFilterFromXml[]
+        writeFile("filter_from_xml","${filter}")
+        filter
+    }
+
+    Map<String,String> getCqlAndXmlFromFilter() {
+        Map<String,String> values = [:]
+
+        // tag::getCqlAndXmlFromFilter_cql[]
+        Filter filter = new Filter("name='Seattle'")
+        String cql = filter.cql
+        println cql
+        // end::getCqlAndXmlFromFilter_cql[]
+        writeFile("filter_cql", "${cql}")
+        values.put("cql", cql)
+
+        // tag::getCqlAndXmlFromFilter_xml[]
+        String xml = filter.xml
+        println xml
+        // end::getCqlAndXmlFromFilter_xml[]
+        writeFile("filter_xml", "${xml}")
+        values.put("xml", xml)
+
+        values
+    }
+
+    Map<String, Boolean> evaluateFilters() {
+
+        Map<String, Boolean> values = [:]
+
+        // tag::evaluateFilters_isname[]
+        Feature feature = new Feature([
+                id: 1,
+                name: "Seattle",
+                geom: new Point(-122.3204, 47.6024)
+        ], "city.1")
+
+        Filter isNameFilter = new Filter("name='Seattle'")
+        boolean isName = isNameFilter.evaluate(feature)
+        println isName
+        // end::evaluateFilters_isname[]
+        writeFile("filter_evaluate_isname", "${isName}")
+        values.put("isName", isName)
+
+        // tag::evaluateFilters_isnotname[]
+        Filter isNotNameFilter = new Filter("name='Tacoma'")
+        boolean isNotName = isNotNameFilter.evaluate(feature)
+        println isNotName
+        // end::evaluateFilters_isnotname[]
+        writeFile("filter_evaluate_isnotname", "${isNotName}")
+        values.put("isNotName", isNotName)
+
+        // tag::evaluateFilters_isid[]
+        Filter isIdFilter = Filter.id("city.1")
+        boolean isId = isIdFilter.evaluate(feature)
+        println isId
+        // end::evaluateFilters_isid[]
+        writeFile("filter_evaluate_isid", "${isId}")
+        values.put("isId", isId)
+
+        // tag::evaluateFilters_isnotid[]
+        Filter isNotIdFilter = Filter.id("city.2")
+        boolean isNotId = isNotIdFilter.evaluate(feature)
+        println isNotId
+        // end::evaluateFilters_isnotid[]
+        writeFile("filter_evaluate_isnotid", "${isNotId}")
+        values.put("isNotId", isNotId)
+
+        // tag::evaluateFilters_isbbox[]
+        Filter isInBboxFilter = Filter.bbox("geom",  new Bounds(-132.539, 42.811, -111.796, 52.268))
+        boolean isInBbox = isInBboxFilter.evaluate(feature)
+        println isInBbox
+        // end::evaluateFilters_isbbox[]
+        writeFile("filter_evaluate_isbbox", "${isInBbox}")
+        values.put("isInBbox", isInBbox)
+
+        // tag::evaluateFilters_isnotbbox[]
+        Filter isNotInBboxFilter = Filter.bbox("geom", new Bounds(-12.656, 18.979, 5.273, 34.597))
+        boolean isNotInBbox = isNotInBboxFilter.evaluate(feature)
+        println isNotInBbox
+        // end::evaluateFilters_isnotbbox[]
+        writeFile("filter_evaluate_isnotbbox", "${isNotInBbox}")
+        values.put("isNotInBbox", isNotInBbox)
+
+        values
+    }
 
     // CQL
 

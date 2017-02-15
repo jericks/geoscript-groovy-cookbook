@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.filter.Color
 import geoscript.filter.Expression
+import geoscript.filter.Filter
 import geoscript.filter.Function
 import geoscript.filter.Property
 import geoscript.geom.Polygon
@@ -12,6 +13,44 @@ import java.awt.image.BufferedImage
 import static org.junit.Assert.*
 
 class FilterRecipesTest {
+
+    // Filter
+
+    @Test void createFilterFromCql() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createFilterFromCql()
+        assertEquals("[ name = Seattle ]", filter.toString())
+    }
+
+    @Test void createFilterFromXml() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createFilterFromXml()
+        assertEquals("[ soilType = Mollisol ]", filter.toString())
+    }
+
+    @Test void getCqlAndXmlFromFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Map<String,String> values = recipes.getCqlAndXmlFromFilter()
+        assertEquals("name = 'Seattle'", values.cql)
+        assertEquals("""<ogc:Filter xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc">
+<ogc:PropertyIsEqualTo>
+<ogc:PropertyName>name</ogc:PropertyName>
+<ogc:Literal>Seattle</ogc:Literal>
+</ogc:PropertyIsEqualTo>
+</ogc:Filter>
+""", values.xml)
+    }
+
+    @Test void evaluateFilters() {
+        FilterRecipes recipes = new FilterRecipes()
+        Map<String, Boolean> values = recipes.evaluateFilters()
+        assertTrue(values.isName)
+        assertFalse(values.isNotName)
+        assertTrue(values.isId)
+        assertFalse(values.isNotId)
+        assertTrue(values.isInBbox)
+        assertFalse(values.isNotInBbox)
+    }
 
     // CQL
 

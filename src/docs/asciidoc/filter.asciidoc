@@ -1,5 +1,95 @@
 == Filter Recipes
 
+=== Creating Filters
+
+[source,groovy]
+.Create a Filter from a CQL string
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createFilterFromCql,indent=0]
+----
+....
+include::output/filter_from_cql.txt[]
+....
+
+[source,groovy]
+.Create a Filter from a CQL string
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createFilterFromXml,indent=0]
+----
+....
+include::output/filter_from_xml.txt[]
+....
+
+=== Using Filters
+
+[source,groovy]
+.Get a CQL string from a Filter
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getCqlAndXmlFromFilter_cql,indent=0]
+----
+....
+include::output/filter_cql.txt[]
+....
+
+[source,groovy]
+.Get an XML string from a Filter
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getCqlAndXmlFromFilter_xml,indent=0]
+----
+....
+include::output/filter_xml.txt[]
+....
+
+=== Evaluating Filters
+
+[source,groovy]
+.Test to see if a Filter matches a Feature by attribute
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateFilters_isname,indent=0]
+----
+....
+include::output/filter_evaluate_isname.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateFilters_isnotname,indent=0]
+----
+....
+include::output/filter_evaluate_isnotname.txt[]
+....
+
+[source,groovy]
+.Test to see if a Filter matches a Feature by feature id
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateFilters_isid,indent=0]
+----
+....
+include::output/filter_evaluate_isid.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateFilters_isnotid,indent=0]
+----
+....
+include::output/filter_evaluate_isnotid.txt[]
+....
+
+[source,groovy]
+.Test to see if a Filter matches a Feature by a spatial bounding box
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateFilters_isbbox,indent=0]
+----
+....
+include::output/filter_evaluate_isbbox.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaluateFilters_isnotbbox,indent=0]
+----
+....
+include::output/filter_evaluate_isnotbbox.txt[]
+....
+
 === Creating Literals
 
 [source,groovy]
