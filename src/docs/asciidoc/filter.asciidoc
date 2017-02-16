@@ -20,6 +20,87 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createFilterFr
 include::output/filter_from_xml.txt[]
 ....
 
+[source,groovy]
+.Create a pass Filter that return true for everything
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createPassFilter,indent=0]
+----
+....
+include::output/filter_pass.txt[]
+....
+
+[source,groovy]
+.Create a fail Filter that return false for everything
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createFailFilter,indent=0]
+----
+....
+include::output/filter_fail.txt[]
+....
+
+[source,groovy]
+.Create a spatial bounding box Filter from a Bounds
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createBboxFilter,indent=0]
+----
+....
+include::output/filter_bbox.txt[]
+....
+
+[source,groovy]
+.Create a spatial contains Filter from a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createContainsFilter,indent=0]
+----
+....
+include::output/filter_contains.txt[]
+....
+
+[source,groovy]
+.Create a spatial distance within Filter from a Geometry and a distance
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createDistanceWithinFilter,indent=0]
+----
+....
+include::output/filter_dwithin.txt[]
+....
+
+[source,groovy]
+.Create a spatial crosses Filter from a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createCrossesFilter,indent=0]
+----
+....
+include::output/filter_crosses.txt[]
+....
+
+[source,groovy]
+.Create a spatial intersects Filter from a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createIntersectsFilter,indent=0]
+----
+....
+include::output/filter_intersects.txt[]
+....
+
+[source,groovy]
+.Create a feature id Filter
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createIdFilter,indent=0]
+----
+....
+include::output/filter_id.txt[]
+....
+
+[source,groovy]
+.Create a feature ids Filter
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createIdsFilter,indent=0]
+----
+....
+include::output/filter_ids.txt[]
+....
+
 === Using Filters
 
 [source,groovy]

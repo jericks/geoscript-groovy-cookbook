@@ -35,6 +35,87 @@ class FilterRecipes extends Recipes {
         filter
     }
 
+    Filter createPassFilter() {
+        // tag::createPassFilter[]
+        Filter filter = Filter.PASS
+        println filter.toString()
+        // end::createPassFilter[]
+        writeFile("filter_pass","${filter}")
+        filter
+    }
+
+    Filter createFailFilter() {
+        // tag::createFailFilter[]
+        Filter filter = Filter.FAIL
+        println filter.toString()
+        // end::createFailFilter[]
+        writeFile("filter_fail","${filter}")
+        filter
+    }
+
+    Filter createBboxFilter() {
+        // tag::createBboxFilter[]
+        Filter filter = Filter.bbox(new Bounds(-102, 43.5, -100, 47.5))
+        println filter.toString()
+        // end::createBboxFilter[]
+        writeFile("filter_bbox","${filter}")
+        filter
+    }
+
+    Filter createContainsFilter() {
+        // tag::createContainsFilter[]
+        Filter filter = Filter.contains(Geometry.fromWKT("POLYGON ((-104 45, -95 45, -95 50, -104 50, -104 45))"))
+        println filter.toString()
+        // end::createContainsFilter[]
+        writeFile("filter_contains","${filter}")
+        filter
+    }
+
+    Filter createDistanceWithinFilter() {
+        // tag::createDistanceWithinFilter[]
+        Filter filter = Filter.dwithin("the_geom", Geometry.fromWKT("POINT (-100 47)"), 10.2, "feet")
+        println filter.toString()
+        // end::createDistanceWithinFilter[]
+        writeFile("filter_dwithin","${filter}")
+        filter
+    }
+
+    Filter createCrossesFilter() {
+        // tag::createCrossesFilter[]
+        Filter filter = Filter.crosses("the_geom", Geometry.fromWKT("LINESTRING (-104 45, -95 45)"))
+        println filter.toString()
+        // end::createCrossesFilter[]
+        writeFile("filter_crosses","${filter}")
+        filter
+    }
+
+    Filter createIntersectsFilter() {
+        // tag::createIntersectsFilter[]
+        Filter filter = Filter.intersects(Geometry.fromWKT("POLYGON ((-104 45, -95 45, -95 50, -104 50, -104 45))"))
+        println filter.toString()
+        // end::createIntersectsFilter[]
+        writeFile("filter_intersects","${filter}")
+        filter
+    }
+
+    Filter createIdFilter() {
+        // tag::createIdFilter[]
+        Filter filter = Filter.id("points.1")
+        println filter.toString()
+        // end::createIdFilter[]
+        writeFile("filter_id","${filter}")
+        filter
+    }
+
+    Filter createIdsFilter() {
+        // tag::createIdsFilter[]
+        Filter filter = Filter.ids(["points.1","points.2","points.3"])
+        println filter.toString()
+        // end::createIdsFilter[]
+        writeFile("filter_ids","${filter}")
+        filter
+    }
+
     Map<String,String> getCqlAndXmlFromFilter() {
         Map<String,String> values = [:]
 

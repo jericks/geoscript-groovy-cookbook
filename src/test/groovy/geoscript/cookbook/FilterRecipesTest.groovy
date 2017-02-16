@@ -28,6 +28,60 @@ class FilterRecipesTest {
         assertEquals("[ soilType = Mollisol ]", filter.toString())
     }
 
+    @Test void createPassFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createPassFilter()
+        assertEquals("Filter.INCLUDE", filter.toString())
+    }
+
+    @Test void createFailFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createFailFilter()
+        assertEquals("Filter.EXCLUDE", filter.toString())
+    }
+
+    @Test void createBboxFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createBboxFilter()
+        assertEquals("[ the_geom bbox POLYGON ((-102 43.5, -102 47.5, -100 47.5, -100 43.5, -102 43.5)) ]", filter.toString())
+    }
+
+    @Test void createContainsFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createContainsFilter()
+        assertEquals("[ the_geom contains POLYGON ((-104 45, -95 45, -95 50, -104 50, -104 45)) ]", filter.toString())
+    }
+
+    @Test void createDistanceWithinFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createDistanceWithinFilter()
+        assertEquals("[ the_geom dwithin POINT (-100 47), distance: 10.2 ]", filter.toString())
+    }
+
+    @Test void createCrossesFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createCrossesFilter()
+        assertEquals("[ the_geom crosses LINESTRING (-104 45, -95 45) ]", filter.toString())
+    }
+
+    @Test void createIntersectsFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createIntersectsFilter()
+        assertEquals("[ the_geom intersects POLYGON ((-104 45, -95 45, -95 50, -104 50, -104 45)) ]", filter.toString())
+    }
+
+    @Test void createIdFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createIdFilter()
+        assertEquals("[ points.1 ]", filter.toString())
+    }
+
+    @Test void createIdsFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createIdsFilter()
+        assertEquals("[ points.1, points.2, points.3 ]", filter.toString())
+    }
+
     @Test void getCqlAndXmlFromFilter() {
         FilterRecipes recipes = new FilterRecipes()
         Map<String,String> values = recipes.getCqlAndXmlFromFilter()
