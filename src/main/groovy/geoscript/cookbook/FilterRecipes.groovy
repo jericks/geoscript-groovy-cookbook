@@ -220,20 +220,20 @@ class FilterRecipes extends Recipes {
 
     Expression getPropertyFromCql() {
         // tag::getPropertyFromCql[]
-        Expression expression = Expression.fromCQL("NAME")
-        println expression
+        Property property = Expression.fromCQL("NAME")
+        println property
         // end::getPropertyFromCql[]
-        writeFile("filter_cql_property", "${expression}")
-        expression
+        writeFile("filter_cql_property", "${property}")
+        property
     }
 
     Expression getFunctionFromCql() {
         // tag::getFunctionFromCql[]
-        Expression expression = Expression.fromCQL("centroid(the_geom)")
-        println expression
+        Function function = Expression.fromCQL("centroid(the_geom)")
+        println function
         // end::getFunctionFromCql[]
-        writeFile("filter_cql_function", "${expression}")
-        expression
+        writeFile("filter_cql_function", "${function}")
+        function
     }
 
     // Expression literals
