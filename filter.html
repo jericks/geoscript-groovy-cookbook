@@ -564,6 +564,114 @@ println filter.toString()</code></pre>
 <pre>[ soilType = Mollisol ]</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a pass Filter that return true for everything</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="predefined-type">Filter</span>.PASS
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Filter.INCLUDE</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a fail Filter that return false for everything</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="predefined-type">Filter</span>.FAIL
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Filter.EXCLUDE</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a spatial bounding box Filter from a Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="predefined-type">Filter</span>.bbox(<span class="keyword">new</span> Bounds(-<span class="integer">102</span>, <span class="float">43.5</span>, -<span class="integer">100</span>, <span class="float">47.5</span>))
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[ the_geom bbox POLYGON ((-102 43.5, -102 47.5, -100 47.5, -100 43.5, -102 43.5)) ]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a spatial contains Filter from a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="predefined-type">Filter</span>.contains(Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POLYGON ((-104 45, -95 45, -95 50, -104 50, -104 45))</span><span class="delimiter">&quot;</span></span>))
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[ the_geom contains POLYGON ((-104 45, -95 45, -95 50, -104 50, -104 45)) ]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a spatial distance within Filter from a Geometry and a distance</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="predefined-type">Filter</span>.dwithin(<span class="string"><span class="delimiter">&quot;</span><span class="content">the_geom</span><span class="delimiter">&quot;</span></span>, Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POINT (-100 47)</span><span class="delimiter">&quot;</span></span>), <span class="float">10.2</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">feet</span><span class="delimiter">&quot;</span></span>)
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[ the_geom dwithin POINT (-100 47), distance: 10.2 ]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a spatial crosses Filter from a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="predefined-type">Filter</span>.crosses(<span class="string"><span class="delimiter">&quot;</span><span class="content">the_geom</span><span class="delimiter">&quot;</span></span>, Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">LINESTRING (-104 45, -95 45)</span><span class="delimiter">&quot;</span></span>))
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[ the_geom crosses LINESTRING (-104 45, -95 45) ]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a spatial intersects Filter from a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="predefined-type">Filter</span>.intersects(Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POLYGON ((-104 45, -95 45, -95 50, -104 50, -104 45))</span><span class="delimiter">&quot;</span></span>))
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[ the_geom intersects POLYGON ((-104 45, -95 45, -95 50, -104 50, -104 45)) ]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a feature id Filter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="predefined-type">Filter</span>.id(<span class="string"><span class="delimiter">&quot;</span><span class="content">points.1</span><span class="delimiter">&quot;</span></span>)
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[ points.1 ]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a feature ids Filter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Filter</span> filter = <span class="predefined-type">Filter</span>.ids([<span class="string"><span class="delimiter">&quot;</span><span class="content">points.1</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">points.2</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">points.3</span><span class="delimiter">&quot;</span></span>])
+println filter.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[ points.1, points.2, points.3 ]</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="using-filters"><a class="anchor" href="#using-filters"></a>Using Filters</h3>
@@ -1395,7 +1503,7 @@ println expression</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-15 02:16:48 UTC
+Last updated 2017-02-16 01:47:54 UTC
 </div>
 </div>
 </body>
