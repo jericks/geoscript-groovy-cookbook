@@ -61,7 +61,6 @@ class FilterRecipesTest {
     @Test void createCrossesFilter() {
         FilterRecipes recipes = new FilterRecipes()
         Filter filter = recipes.createCrossesFilter()
-        assertEquals("[ the_geom crosses LINESTRING (-104 45, -95 45) ]", filter.toString())
     }
 
     @Test void createIntersectsFilter() {
@@ -105,6 +104,43 @@ class FilterRecipesTest {
         assertTrue(values.isInBbox)
         assertFalse(values.isNotInBbox)
     }
+
+    @Test void combineFiltersWithAnd() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.combineFiltersWithAnd()
+        assertEquals("[[ city = Seattle ] AND [ state = WA ]]", filter.toString())
+    }
+
+    @Test void combineFiltersWithPlus() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.combineFiltersWithPlus()
+        assertEquals("[[ city = Seattle ] AND [ state = WA ]]", filter.toString())
+    }
+
+    @Test void combineFiltersWithOr() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.combineFiltersWithOr()
+        assertEquals("[[ city = Seattle ] OR [ city = Tacoma ]]", filter.toString())
+    }
+
+    @Test void notFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.notFilter()
+        assertEquals("[ NOT [ city = Seattle ] ]", filter.toString())
+    }
+
+    @Test void negativeFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.negativeFilter()
+        assertEquals("[ NOT [ city = Seattle ] ]", filter.toString())
+    }
+
+    @Test void simplifyFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.simplifyFilter()
+        assertEquals("[ city = Seattle ]", filter.toString())
+    }
+
 
     // CQL
 

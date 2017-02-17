@@ -121,6 +121,60 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getCqlAndXmlFr
 include::output/filter_xml.txt[]
 ....
 
+[source,groovy]
+.Combine Filters with and
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=combineFiltersWithAnd,indent=0]
+----
+....
+include::output/filter_and.txt[]
+....
+
+[source,groovy]
+.Combine Filters with and using the plus operator
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=combineFiltersWithPlus,indent=0]
+----
+....
+include::output/filter_plus.txt[]
+....
+
+[source,groovy]
+.Combine Filters with or
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=combineFiltersWithOr,indent=0]
+----
+....
+include::output/filter_or.txt[]
+....
+
+[source,groovy]
+.Negate a Filter
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=notFilter,indent=0]
+----
+....
+include::output/filter_not.txt[]
+....
+
+[source,groovy]
+.Negate a Filter using the minus operator
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=negativeFilter,indent=0]
+----
+....
+include::output/filter_negative.txt[]
+....
+
+[source,groovy]
+.Simplify a Filter
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=simplifyFilter,indent=0]
+----
+....
+include::output/filter_simplify.txt[]
+....
+
 === Evaluating Filters
 
 [source,groovy]

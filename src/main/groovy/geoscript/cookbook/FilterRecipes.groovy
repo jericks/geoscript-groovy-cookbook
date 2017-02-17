@@ -198,6 +198,69 @@ class FilterRecipes extends Recipes {
         values
     }
 
+    Filter combineFiltersWithAnd() {
+        // tag::combineFiltersWithAnd[]
+        Filter cityFilter = new Filter("city = 'Seattle'")
+        Filter stateFilter = new Filter("state = 'WA'")
+        Filter andFilter = cityFilter.and(stateFilter)
+        println andFilter
+        // end::combineFiltersWithAnd[]
+        writeFile("filter_and", "${andFilter}")
+        andFilter
+    }
+
+    Filter combineFiltersWithPlus() {
+        // tag::combineFiltersWithPlus[]
+        Filter cityFilter = new Filter("city = 'Seattle'")
+        Filter stateFilter = new Filter("state = 'WA'")
+        Filter andFilter = cityFilter + stateFilter
+        println andFilter
+        // end::combineFiltersWithPlus[]
+        writeFile("filter_plus", "${andFilter}")
+        andFilter
+    }
+
+    Filter combineFiltersWithOr() {
+        // tag::combineFiltersWithOr[]
+        Filter seattleFilter = new Filter("city = 'Seattle'")
+        Filter tacomaFilter = new Filter("city = 'Tacoma'")
+        Filter orFilter = seattleFilter.or(tacomaFilter)
+        println orFilter
+        // end::combineFiltersWithOr[]
+        writeFile("filter_or", "${orFilter}")
+        orFilter
+    }
+
+    Filter notFilter() {
+        // tag::notFilter[]
+        Filter seattleFilter = new Filter("city = 'Seattle'")
+        Filter notSeattleFilter = seattleFilter.not
+        println notSeattleFilter
+        // end::notFilter[]
+        writeFile("filter_not", "${notSeattleFilter}")
+        notSeattleFilter
+    }
+
+    Filter negativeFilter() {
+        // tag::negativeFilter[]
+        Filter seattleFilter = new Filter("city = 'Seattle'")
+        Filter notSeattleFilter = -seattleFilter
+        println notSeattleFilter
+        // end::negativeFilter[]
+        writeFile("filter_negative", "${notSeattleFilter}")
+        notSeattleFilter
+    }
+
+    Filter simplifyFilter() {
+        // tag::simplifyFilter[]
+        Filter seattleFilter = new Filter("city = 'Seattle'")
+        Filter filter = (seattleFilter + Filter.PASS).simplify()
+        println filter
+        // end::simplifyFilter[]
+        writeFile("filter_simplify", "${filter}")
+        filter
+    }
+
     // CQL
 
     Expression getLiteralNumberFromCQL() {
