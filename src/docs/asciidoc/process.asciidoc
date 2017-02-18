@@ -1,0 +1,140 @@
+== Process Recipes
+
+=== Execute a built-in Process
+
+[source,groovy]
+.Create a Process from a built-in process by name
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createBuiltInProcess_name,indent=0]
+----
+....
+include::output/process_create_builtin_name.txt[]
+....
+
+[source,groovy]
+.Get the title
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createBuiltInProcess_title,indent=0]
+----
+....
+include::output/process_create_builtin_title.txt[]
+....
+
+[source,groovy]
+.Get the description
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createBuiltInProcess_description,indent=0]
+----
+....
+include::output/process_create_builtin_description.txt[]
+....
+
+[source,groovy]
+.Get the version
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createBuiltInProcess_version,indent=0]
+----
+....
+include::output/process_create_builtin_version.txt[]
+....
+
+[source,groovy]
+.Get the input parameters
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createBuiltInProcess_parameters,indent=0]
+----
+....
+include::output/process_create_builtin_parameters.txt[]
+....
+
+[source,groovy]
+.Get the output parameters
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createBuiltInProcess_results,indent=0]
+----
+....
+include::output/process_create_builtin_results.txt[]
+....
+
+[source,groovy]
+.Execute the Process to calculate the bounding box of all Features in a Layer
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createBuiltInProcess_execute,indent=0]
+----
+[.thumb]
+image::process_execute_bounds.png[]
+
+=== Listing built-in Processes
+
+[source,groovy]
+.Get the names of all built-in Processes
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=getProcessNames,indent=0]
+----
+....
+include::output/process_names.txt[]
+....
+
+=== Executing a new Process
+
+[source,groovy]
+.Create a Process using a Groovy Closure
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createClosureProcess_name,indent=0]
+----
+....
+include::output/process_closure_name.txt[]
+....
+
+[source,groovy]
+.Get the title
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createClosureProcess_title,indent=0]
+----
+....
+include::output/process_closure_title.txt[]
+....
+
+[source,groovy]
+.Get the description
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createClosureProcess_description,indent=0]
+----
+....
+include::output/process_closure_description.txt[]
+....
+
+[source,groovy]
+.Get the version
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createClosureProcess_version,indent=0]
+----
+....
+include::output/process_closure_version.txt[]
+....
+
+[source,groovy]
+.Get the input parameters
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createClosureProcess_parameters,indent=0]
+----
+....
+include::output/process_closure_parameters.txt[]
+....
+
+[source,groovy]
+.Get the output parameters
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=createClosureProcess_results,indent=0]
+----
+....
+include::output/process_closure_results.txt[]
+....
+
+[source,groovy]
+.Execute the Process created from a Groovy Closure
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=executeClosureProcess,indent=0]
+----
+[.thumb]
+image::process_execute_closure.png[]

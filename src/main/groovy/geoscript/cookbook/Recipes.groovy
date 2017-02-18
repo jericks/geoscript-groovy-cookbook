@@ -1,8 +1,17 @@
 package geoscript.cookbook
 
+import geoscript.geom.Bounds
 import geoscript.geom.Geometry
+import geoscript.layer.Cursor
+import geoscript.layer.Layer
 import geoscript.plot.Chart
+import geoscript.proj.Projection
+import geoscript.render.Map as GMap
+import geoscript.style.io.SLDReader
+import geoscript.style.io.SimpleStyleReader
 import geoscript.viewer.Viewer
+import geoscript.workspace.GeoPackage
+import geoscript.workspace.Workspace
 import org.apache.commons.io.FileUtils
 
 import javax.imageio.ImageIO
@@ -64,4 +73,45 @@ class Recipes {
         }
         chart.save(file, size: [300,300])
     }
+
+    protected Layer createLayerFromGeometry(String name, Geometry geometry, String styleStr) {
+        Layer layer = new Layer(name)
+        layer.proj = new Projection("EPSG:4326")
+        layer.add([geom: geometry])
+        layer.style = new SimpleStyleReader().read(styleStr)
+        layer
+    }
+
+    protected Layer createLayerFromCursor(Cursor cursor, String styleStr) {
+        Layer layer = new Layer(cursor.col)
+        layer.proj = new Projection("EPSG:4326")
+        layer.style = new SimpleStyleReader().read(styleStr)
+        layer
+    }
+
+    protected void drawOnBasemap(String name, List<Layer> layers) {
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        GMap map = new GMap(
+                width: 500,
+                height: 300,
+//                proj: new Projection("EPSG:4326"),
+//                bounds: new Bounds(-179, -89, 179, 89, "EPSG:4326"),
+                layers: [ocean, countries]
+        )
+        map.setAdvancedProjectionHandling(false)
+        map.setContinuousMapWrapping(false)
+        layers.each { Layer layer ->
+            map.addLayer(layer)
+        }
+        File file = new File("src/docs/asciidoc/images/${name}.png")
+        if(!file.parentFile.exists()) {
+            file.parentFile.mkdir()
+        }
+        map.render(file)
+    }
+
 }
