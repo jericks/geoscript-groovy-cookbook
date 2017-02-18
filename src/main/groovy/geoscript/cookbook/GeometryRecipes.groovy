@@ -681,6 +681,28 @@ class GeometryRecipes extends Recipes {
         bounds
     }
 
+    Geometry createRandomPoints() {
+      // tag::createRandomPoints[]
+      Geometry geometry = new Bounds(-180, -90, 180, 90).geometry
+      MultiPoint randomPoints = Geometry.createRandomPoints(geometry, 100)
+      // end::createRandomPoints[] 
+      drawOnBasemap("geometry_create_random_points", [
+        createLayerFromGeometry("points", randomPoints, "shape=#0066FF shape-size=6")
+      ])
+      randomPoints
+    }
+
+    Geometry createRandomPointsInGrid() {
+        // tag::createRandomPointsInGrid[]
+        Bounds bounds = new Bounds(-180, -90, 180, 90)
+        MultiPoint randomPoints = Geometry.createRandomPointsInGrid(bounds, 100, true, 0.5)
+        // end::createRandomPointsInGrid[]
+        drawOnBasemap("geometry_create_random_points_ingrid", [
+                createLayerFromGeometry("points", randomPoints, "shape=#0066FF shape-size=6")
+        ])
+        randomPoints
+    }
+
     Geometry createFromText() {
         // tag::createFromText[]
         Geometry geometry = Geometry.createFromText("Geo")
@@ -705,6 +727,8 @@ class GeometryRecipes extends Recipes {
         drawGeometry("geometry_kochsnowflake", geometry, drawCoords: false)
         geometry
     }
+
+    // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {
         // tag::getGeometryReaders[]

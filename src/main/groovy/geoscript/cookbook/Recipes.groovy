@@ -98,8 +98,6 @@ class Recipes {
         GMap map = new GMap(
                 width: 500,
                 height: 300,
-//                proj: new Projection("EPSG:4326"),
-//                bounds: new Bounds(-179, -89, 179, 89, "EPSG:4326"),
                 layers: [ocean, countries]
         )
         map.setAdvancedProjectionHandling(false)

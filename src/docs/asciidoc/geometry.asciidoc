@@ -142,6 +142,22 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createKochSn
 [.thumb]
 image::geometry_kochsnowflake.png[]
 
+[source,groovy]
+.Create a number of random points within a given Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createRandomPoints,indent=0]
+----
+[.thumb]
+image::geometry_create_random_points.png[]
+
+[source,groovy]
+.Create a number of random points within a given Geometry where the points are contrained to the cells of a grid
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createRandomPointsInGrid,indent=0]
+----
+[.thumb]
+image::geometry_create_random_points_ingrid.png[]
+
 === Reading and Writing Geometries
 
 The geoscript.geom.io package has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.

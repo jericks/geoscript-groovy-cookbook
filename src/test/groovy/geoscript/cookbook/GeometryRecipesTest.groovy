@@ -397,6 +397,20 @@ class GeometryRecipesTest {
         assertNotNull geometry
     }
 
+    @Test void createRandomPoints() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.createRandomPoints()
+        assertNotNull geometry
+        assertEquals(100, geometry.getNumGeometries())
+    }
+
+    @Test void createRandomPointsInGrid() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.createRandomPointsInGrid()
+        assertNotNull geometry
+        assertEquals(100, geometry.getNumGeometries())
+    }
+
     // IO
 
     @Test void getGeometryReaders() {
