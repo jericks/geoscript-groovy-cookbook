@@ -873,6 +873,71 @@ Geometry bufferedPoint = point.buffer(<span class="integer">2</span>)</code></pr
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Buffer a LineString with a butt cap</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString line = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.563</span>, <span class="float">47.576</span>],
+    [-<span class="float">112.0166</span>, <span class="float">46.589</span>],
+    [-<span class="float">101.337</span>, <span class="float">47.606</span>]
+])
+Geometry bufferedLine1 = line.buffer(<span class="float">2.1</span>, <span class="integer">10</span>, Geometry.CAP_BUTT)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_buffer_line1.png" alt="geometry buffer line1">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buffer a LineString with a round cap</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry bufferedLine2 = line.buffer(<span class="float">2.1</span>, <span class="integer">10</span>, Geometry.CAP_ROUND)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_buffer_line2.png" alt="geometry buffer line2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buffer a LineString with a square cap</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry bufferedLine3 = line.buffer(<span class="float">2.1</span>, <span class="integer">10</span>, Geometry.CAP_SQUARE)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_buffer_line3.png" alt="geometry buffer line3">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buffer a LineString on the right side only</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString line = <span class="keyword">new</span> LineString([
+        [-<span class="float">122.563</span>, <span class="float">47.576</span>],
+        [-<span class="float">112.0166</span>, <span class="float">46.589</span>],
+        [-<span class="float">101.337</span>, <span class="float">47.606</span>]
+])
+Geometry rightBufferedLine = line.singleSidedBuffer(<span class="float">1.5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_buffer_line_singlesided1.png" alt="geometry buffer line singlesided1">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buffer a LineString on the left side only</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry leftBufferedLine = line.singleSidedBuffer(-<span class="float">1.5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_buffer_line_singlesided2.png" alt="geometry buffer line singlesided2">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Get Bounds from a Geometry</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="integer">123</span>,<span class="integer">46</span>)
@@ -3767,7 +3832,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-3c0edf45_15a528a64cb_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-7560f95d_15a53861eda_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -4476,7 +4541,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 18 18:44:46 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 18 23:19:43 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4495,7 +4560,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-3c0edf45_15a528a64cb_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-7560f95d_15a53861eda_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4519,7 +4584,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 18 18:44:46 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 18 23:19:43 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4539,7 +4604,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-3c0edf45_15a528a64cb_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-7560f95d_15a53861eda_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -4701,7 +4766,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-3c0edf45_15a528a64cb_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-7560f95d_15a53861eda_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4739,7 +4804,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-3c0edf45_15a528a64cb_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-7560f95d_15a53861eda_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -5995,7 +6060,25 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>vec:Aggregate
+<pre>ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage
+vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -6025,10 +6108,10 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:isValid
+geo:buffer
 geo:union
 geo:intersection
-geo:buffer
+geo:isValid
 geo:difference
 geo:distance
 geo:area
@@ -6064,33 +6147,15 @@ geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
-geo:interiorRingN
 geo:pointN
 geo:equalsExactTolerance
+geo:interiorRingN
 geo:splitPolygon
 geo:length
 geo:isEmpty
 geo:contains
 geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage</pre>
+geo:intersects</pre>
 </div>
 </div>
 </div>
@@ -6199,7 +6264,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-18 18:40:26 UTC
+Last updated 2017-02-18 23:00:40 UTC
 </div>
 </div>
 </body>

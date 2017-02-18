@@ -795,6 +795,71 @@ Geometry bufferedPoint = point.buffer(<span class="integer">2</span>)</code></pr
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Buffer a LineString with a butt cap</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString line = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.563</span>, <span class="float">47.576</span>],
+    [-<span class="float">112.0166</span>, <span class="float">46.589</span>],
+    [-<span class="float">101.337</span>, <span class="float">47.606</span>]
+])
+Geometry bufferedLine1 = line.buffer(<span class="float">2.1</span>, <span class="integer">10</span>, Geometry.CAP_BUTT)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_buffer_line1.png" alt="geometry buffer line1">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buffer a LineString with a round cap</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry bufferedLine2 = line.buffer(<span class="float">2.1</span>, <span class="integer">10</span>, Geometry.CAP_ROUND)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_buffer_line2.png" alt="geometry buffer line2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buffer a LineString with a square cap</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry bufferedLine3 = line.buffer(<span class="float">2.1</span>, <span class="integer">10</span>, Geometry.CAP_SQUARE)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_buffer_line3.png" alt="geometry buffer line3">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buffer a LineString on the right side only</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString line = <span class="keyword">new</span> LineString([
+        [-<span class="float">122.563</span>, <span class="float">47.576</span>],
+        [-<span class="float">112.0166</span>, <span class="float">46.589</span>],
+        [-<span class="float">101.337</span>, <span class="float">47.606</span>]
+])
+Geometry rightBufferedLine = line.singleSidedBuffer(<span class="float">1.5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_buffer_line_singlesided1.png" alt="geometry buffer line singlesided1">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buffer a LineString on the left side only</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry leftBufferedLine = line.singleSidedBuffer(-<span class="float">1.5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_buffer_line_singlesided2.png" alt="geometry buffer line singlesided2">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Get Bounds from a Geometry</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="integer">123</span>,<span class="integer">46</span>)
@@ -1676,7 +1741,7 @@ LineString lineString = bounds.createArc(<span class="predefined-type">Math</spa
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-18 18:40:26 UTC
+Last updated 2017-02-18 23:00:40 UTC
 </div>
 </div>
 </body>
