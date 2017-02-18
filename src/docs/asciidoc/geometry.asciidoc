@@ -111,6 +111,46 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bufferPoint,
 image::geometry_buffer_point.png[]
 
 [source,groovy]
+.Buffer a LineString with a butt cap
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bufferLineString1,indent=0]
+----
+[.thumb]
+image::geometry_buffer_line1.png[]
+
+[source,groovy]
+.Buffer a LineString with a round cap
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bufferLineString2,indent=0]
+----
+[.thumb]
+image::geometry_buffer_line2.png[]
+
+[source,groovy]
+.Buffer a LineString with a square cap
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bufferLineString3,indent=0]
+----
+[.thumb]
+image::geometry_buffer_line3.png[]
+
+[source,groovy]
+.Buffer a LineString on the right side only
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bufferLineStringSingleSided1,indent=0]
+----
+[.thumb]
+image::geometry_buffer_line_singlesided1.png[]
+
+[source,groovy]
+.Buffer a LineString on the left side only
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bufferLineStringSingleSided2,indent=0]
+----
+[.thumb]
+image::geometry_buffer_line_singlesided2.png[]
+
+[source,groovy]
 .Get Bounds from a Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bounds,indent=0]

@@ -191,6 +191,20 @@ class GeometryRecipesTest {
         assertTrue(geom instanceof Polygon)
     }
 
+    @Test void bufferLineString() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.bufferLineString()
+        assertTrue(geometries.size() > 0)
+        geometries.each { Geometry g -> assertNotNull(g) }
+    }
+
+    @Test void bufferLineStringSingleSided() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.bufferLineStringSingleSided()
+        assertTrue(geometries.size() > 0)
+        geometries.each { Geometry g -> assertNotNull(g) }
+    }
+
     @Test void bounds() {
         GeometryRecipes recipes = new GeometryRecipes()
         Bounds bounds = recipes.bounds()

@@ -671,6 +671,57 @@ class GeometryRecipes extends Recipes {
         bufferedPoint
     }
 
+    List<Geometry> bufferLineString() {
+        List<Geometry> geometries = []
+        // tag::bufferLineString1[]
+        LineString line = new LineString([
+            [-122.563, 47.576],
+            [-112.0166, 46.589],
+            [-101.337, 47.606]
+        ])
+        Geometry bufferedLine1 = line.buffer(2.1, 10, Geometry.CAP_BUTT)
+        // end::bufferLineString1[]
+        drawGeometries("geometry_buffer_line1", [bufferedLine1, line])
+        geometries.add(bufferedLine1)
+
+        // tag::bufferLineString2[]
+        Geometry bufferedLine2 = line.buffer(2.1, 10, Geometry.CAP_ROUND)
+        // end::bufferLineString2[]
+        drawGeometries("geometry_buffer_line2", [bufferedLine2, line])
+        geometries.add(bufferedLine2)
+
+        // tag::bufferLineString3[]
+        Geometry bufferedLine3 = line.buffer(2.1, 10, Geometry.CAP_SQUARE)
+        // end::bufferLineString3[]
+        drawGeometries("geometry_buffer_line3", [bufferedLine3, line])
+        geometries.add(bufferedLine3)
+
+        geometries
+    }
+
+    List<Geometry> bufferLineStringSingleSided() {
+        List<Geometry> geometries = []
+
+        // tag::bufferLineStringSingleSided1[]
+        LineString line = new LineString([
+                [-122.563, 47.576],
+                [-112.0166, 46.589],
+                [-101.337, 47.606]
+        ])
+        Geometry rightBufferedLine = line.singleSidedBuffer(1.5)
+        // end::bufferLineStringSingleSided1[]
+        drawGeometries("geometry_buffer_line_singlesided1", [rightBufferedLine, line])
+        geometries.add(rightBufferedLine)
+
+        // tag::bufferLineStringSingleSided2[]
+        Geometry leftBufferedLine = line.singleSidedBuffer(-1.5)
+        // end::bufferLineStringSingleSided2[]
+        drawGeometries("geometry_buffer_line_singlesided2", [leftBufferedLine, line])
+        geometries.add(leftBufferedLine)
+
+        geometries
+    }
+
     Bounds bounds() {
         // tag::bounds[]
         Point point = new Point(-123,46)
