@@ -842,6 +842,30 @@ Geometry geometry = Geometry.createKochSnowflake(bounds, <span class="integer">5
 <img src="./images/geometry_kochsnowflake.png" alt="geometry kochsnowflake">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a number of random points within a given Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>).geometry
+MultiPoint randomPoints = Geometry.createRandomPoints(geometry, <span class="integer">100</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_create_random_points.png" alt="geometry create random points">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a number of random points within a given Geometry where the points are contrained to the cells of a grid</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>)
+MultiPoint randomPoints = Geometry.createRandomPointsInGrid(bounds, <span class="integer">100</span>, <span class="predefined-constant">true</span>, <span class="float">0.5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_create_random_points_ingrid.png" alt="geometry create random points ingrid">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -1652,7 +1676,7 @@ LineString lineString = bounds.createArc(<span class="predefined-type">Math</spa
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-18 00:09:14 UTC
+Last updated 2017-02-18 18:40:26 UTC
 </div>
 </div>
 </body>
