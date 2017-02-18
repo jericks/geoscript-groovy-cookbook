@@ -595,6 +595,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-expressions-from-cql">Creating Expressions from CQL</a></li>
 </ul>
 </li>
+<li><a href="#process-recipes">Process Recipes</a>
+<ul class="sectlevel2">
+<li><a href="#execute-a-built-in-process">Execute a built-in Process</a></li>
+<li><a href="#listing-built-in-processes">Listing built-in Processes</a></li>
+<li><a href="#executing-a-new-process">Executing a new Process</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -3736,7 +3743,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-cff49fd_15a4a423cf2_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-3accdbd3_15a4e9161c0_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -4445,7 +4452,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Feb 17 04:08:59 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 18 00:13:55 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4464,7 +4471,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-cff49fd_15a4a423cf2_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-3accdbd3_15a4e9161c0_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4488,7 +4495,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Feb 17 04:08:59 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 18 00:13:55 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4508,7 +4515,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-cff49fd_15a4a423cf2_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-3accdbd3_15a4e9161c0_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -4670,7 +4677,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-cff49fd_15a4a423cf2_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-3accdbd3_15a4e9161c0_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4708,7 +4715,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-cff49fd_15a4a423cf2_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-3accdbd3_15a4e9161c0_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -5858,10 +5865,317 @@ println function</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="process-recipes"><a class="anchor" href="#process-recipes"></a>Process Recipes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="execute-a-built-in-process"><a class="anchor" href="#execute-a-built-in-process"></a>Execute a built-in Process</h3>
+<div class="listingblock">
+<div class="title">Create a Process from a built-in process by name</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Process</span> process = <span class="keyword">new</span> <span class="predefined-type">Process</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">vec:Bounds</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> name = process.name
+println name</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>vec:Bounds</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the title</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> title = process.title
+println title</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Bounds</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the description</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> description = process.description
+println description</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Computes the bounding box of the input features.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the version</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> version = process.version
+println version</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>1.0.0</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the input parameters</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> parameters = process.parameters
+println parameters</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[features:class geoscript.layer.Cursor]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the output parameters</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> results = process.results
+println results</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[bounds:class geoscript.geom.Bounds]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Execute the Process to calculate the bounding box of all Features in a Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> executeResults = process.execute([<span class="key">features</span>: layer])
+Bounds bounds = executeResults.bounds</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/process_execute_bounds.png" alt="process execute bounds">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-built-in-processes"><a class="anchor" href="#listing-built-in-processes"></a>Listing built-in Processes</h3>
+<div class="listingblock">
+<div class="title">Get the names of all built-in Processes</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; processes = <span class="predefined-type">Process</span>.processNames
+processes.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage
+vec:Aggregate
+vec:BarnesSurface
+vec:Bounds
+vec:BufferFeatureCollection
+vec:Centroid
+vec:Clip
+vec:CollectGeometries
+vec:Count
+vec:Feature
+vec:FeatureClassStats
+vec:Grid
+vec:Heatmap
+vec:InclusionFeatureCollection
+vec:IntersectionFeatureCollection
+vec:LRSGeocode
+vec:LRSMeasure
+vec:LRSSegment
+vec:Nearest
+vec:PointBuffers
+vec:PointStacker
+vec:Query
+vec:RectangularClip
+vec:Reproject
+vec:Simplify
+vec:Snap
+vec:Transform
+vec:UnionFeatureCollection
+vec:Unique
+vec:VectorToRaster
+vec:VectorZonalStatistics
+geo:buffer
+geo:union
+geo:intersection
+geo:isValid
+geo:difference
+geo:distance
+geo:area
+geo:numGeometries
+geo:isClosed
+geo:crosses
+geo:getGeometryN
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:reproject
+geo:numPoints
+geo:convexHull
+geo:boundary
+geo:centroid
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:getX
+geo:getY
+geo:equalsExact
+geo:isRing
+geo:interiorPoint
+geo:polygonize
+geo:startPoint
+geo:endPoint
+geo:relatePattern
+geo:equalsExactTolerance
+geo:pointN
+geo:interiorRingN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="executing-a-new-process"><a class="anchor" href="#executing-a-new-process"></a>Executing a new Process</h3>
+<div class="listingblock">
+<div class="title">Create a Process using a Groovy Closure</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Process</span> process = <span class="keyword">new</span> <span class="predefined-type">Process</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">convexhull</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Create a convexhull around the features</span><span class="delimiter">&quot;</span></span>,
+        [<span class="key">features</span>: geoscript.layer.Cursor],
+        [<span class="key">result</span>: geoscript.layer.Cursor],
+        { inputs -&gt;
+            <span class="keyword">def</span> geoms = <span class="keyword">new</span> GeometryCollection(inputs.features.collect{f -&gt; f.geom})
+            <span class="keyword">def</span> output = <span class="keyword">new</span> Layer()
+            output.add([geoms.convexHull])
+            [<span class="key">result</span>: output]
+        }
+)
+<span class="predefined-type">String</span> name = process.name
+println name</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geoscript:convexhull</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the title</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> title = process.title
+println title</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>convexhull</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the description</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> description = process.description
+println description</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Create a convexhull around the features</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the version</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> version = process.version
+println version</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>1.0.0</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the input parameters</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> parameters = process.parameters
+println parameters</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[features:class geoscript.layer.Cursor]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the output parameters</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> results = process.results
+println results</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[result:class geoscript.layer.Cursor]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Execute the Process created from a Groovy Closure</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> executeResults = process.execute([<span class="key">features</span>: layer.cursor])
+<span class="predefined-type">Cursor</span> convexHullCursor = executeResults.result</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/process_execute_closure.png" alt="process execute closure">
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-17 04:04:42 UTC
+Last updated 2017-02-18 00:09:14 UTC
 </div>
 </div>
 </body>
