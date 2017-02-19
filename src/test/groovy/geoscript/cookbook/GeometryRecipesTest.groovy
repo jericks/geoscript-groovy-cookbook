@@ -205,6 +205,13 @@ class GeometryRecipesTest {
         geometries.each { Geometry g -> assertNotNull(g) }
     }
 
+    @Test void contains() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.contains()
+        assertTrue(results["1contains2"])
+        assertFalse(results["1contains3"])
+    }
+
     @Test void bounds() {
         GeometryRecipes recipes = new GeometryRecipes()
         Bounds bounds = recipes.bounds()

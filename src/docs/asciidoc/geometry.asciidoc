@@ -151,6 +151,26 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bufferLineSt
 image::geometry_buffer_line_singlesided2.png[]
 
 [source,groovy]
+.Check whether a Geometry contains another Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=contains1,indent=0]
+----
+[.thumb]
+image::geometry_contains_1.png[]
+....
+include::output/geoemtry_contains_1.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=contains2,indent=0]
+----
+[.thumb]
+image::geometry_contains_2.png[]
+....
+include::output/geoemtry_contains_2.txt[]
+....
+
+[source,groovy]
 .Get Bounds from a Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bounds,indent=0]

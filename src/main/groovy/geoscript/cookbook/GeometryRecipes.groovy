@@ -722,6 +722,57 @@ class GeometryRecipes extends Recipes {
         geometries
     }
 
+    Map<String, Boolean> contains() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::contains1[]
+        Polygon polygon1 = new Polygon([[
+            [-120.739, 48.151],
+            [-121.003, 47.070],
+            [-119.465, 47.137],
+            [-119.553, 46.581],
+            [-121.267, 46.513],
+            [-121.168, 45.706],
+            [-118.476, 45.951],
+            [-118.762, 48.195],
+            [-120.739, 48.151]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+            [-120.212, 47.591],
+            [-119.663, 47.591],
+            [-119.663, 47.872],
+            [-120.212, 47.872],
+            [-120.212, 47.591]
+        ]])
+
+        boolean contains = polygon1.contains(polygon2)
+        println contains
+        // end::contains1[]
+        drawGeometries("geometry_contains_1", [polygon1, polygon2])
+        writeFile("geoemtry_contains_1", "${contains}")
+        results["1contains2"] = contains
+
+        // tag::contains2[]
+        Polygon polygon3 = new Polygon([[
+            [-120.563, 46.739],
+            [-119.948, 46.739],
+            [-119.948, 46.965],
+            [-120.563, 46.965],
+            [-120.563, 46.739]
+        ]])
+
+        contains = polygon1.contains(polygon3)
+        println contains
+        // end::contains2[]
+        drawGeometries("geometry_contains_2", [polygon1, polygon3])
+        writeFile("geoemtry_contains_2", "${contains}")
+        results["1contains3"] = contains
+
+        results
+    }
+
     Bounds bounds() {
         // tag::bounds[]
         Point point = new Point(-123,46)
