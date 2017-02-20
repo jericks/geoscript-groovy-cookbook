@@ -751,7 +751,7 @@ class GeometryRecipes extends Recipes {
         println contains
         // end::contains1[]
         drawGeometries("geometry_contains_1", [polygon1, polygon2])
-        writeFile("geoemtry_contains_1", "${contains}")
+        writeFile("geometry_contains_1", "${contains}")
         results["1contains2"] = contains
 
         // tag::contains2[]
@@ -767,12 +767,128 @@ class GeometryRecipes extends Recipes {
         println contains
         // end::contains2[]
         drawGeometries("geometry_contains_2", [polygon1, polygon3])
-        writeFile("geoemtry_contains_2", "${contains}")
+        writeFile("geometry_contains_2", "${contains}")
         results["1contains3"] = contains
 
         results
     }
 
+    Geometry convexHull() {
+        // tag::convexHull[]
+        Geometry geometry = new MultiPoint(
+            new Point(-119.882, 47.279),
+            new Point(-100.195, 46.316),
+            new Point(-111.796, 42.553),
+            new Point(-90.7031, 34.016)
+        )
+        Geometry convexHull = geometry.convexHull
+        // end::convexHull[]
+        drawGeometries("geometry_convexhull", [convexHull, geometry])
+        convexHull
+    }
+
+    Map<String, Boolean> covers() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::covers1[]
+        Polygon polygon1 = new Polygon([[
+                [-120.739, 48.151],
+                [-121.003, 47.070],
+                [-119.465, 47.137],
+                [-119.553, 46.581],
+                [-121.267, 46.513],
+                [-121.168, 45.706],
+                [-118.476, 45.951],
+                [-118.762, 48.195],
+                [-120.739, 48.151]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.212, 47.591],
+                [-119.663, 47.591],
+                [-119.663, 47.872],
+                [-120.212, 47.872],
+                [-120.212, 47.591]
+        ]])
+
+        boolean isCovered = polygon1.covers(polygon2)
+        println isCovered
+        // end::covers1[]
+        drawGeometries("geometry_covers_1", [polygon1, polygon2])
+        writeFile("geometry_covers_1", "${isCovered}")
+        results["1covers2"] = isCovered
+
+        // tag::covers2[]
+        Polygon polygon3 = new Polygon([[
+                [-120.563, 46.739],
+                [-119.948, 46.739],
+                [-119.948, 46.965],
+                [-120.563, 46.965],
+                [-120.563, 46.739]
+        ]])
+
+        isCovered = polygon1.covers(polygon3)
+        println isCovered
+        // end::covers2[]
+        drawGeometries("geometry_covers_2", [polygon1, polygon3])
+        writeFile("geometry_covers_2", "${isCovered}")
+        results["1covers3"] = isCovered
+
+        results
+    }
+
+    Map<String, Boolean> coveredBy() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::coveredBy1[]
+        Polygon polygon1 = new Polygon([[
+                [-120.739, 48.151],
+                [-121.003, 47.070],
+                [-119.465, 47.137],
+                [-119.553, 46.581],
+                [-121.267, 46.513],
+                [-121.168, 45.706],
+                [-118.476, 45.951],
+                [-118.762, 48.195],
+                [-120.739, 48.151]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.212, 47.591],
+                [-119.663, 47.591],
+                [-119.663, 47.872],
+                [-120.212, 47.872],
+                [-120.212, 47.591]
+        ]])
+
+        boolean isCoveredBy = polygon2.coveredBy(polygon1)
+        println isCoveredBy
+        // end::coveredBy1[]
+        drawGeometries("geometry_coveredby_1", [polygon1, polygon2])
+        writeFile("geometry_coveredby_1", "${isCoveredBy}")
+        results["2coveredBy1"] = isCoveredBy
+
+        // tag::coveredBy2[]
+        Polygon polygon3 = new Polygon([[
+                [-120.563, 46.739],
+                [-119.948, 46.739],
+                [-119.948, 46.965],
+                [-120.563, 46.965],
+                [-120.563, 46.739]
+        ]])
+
+        isCoveredBy = polygon3.coveredBy(polygon1)
+        println isCoveredBy
+        // end::coveredBy2[]
+        drawGeometries("geometry_coveredby_2", [polygon1, polygon3])
+        writeFile("geometry_coveredby_2", "${isCoveredBy}")
+        results["3coveredBy1"] = isCoveredBy
+
+        results
+    }
+    
     Bounds bounds() {
         // tag::bounds[]
         Point point = new Point(-123,46)

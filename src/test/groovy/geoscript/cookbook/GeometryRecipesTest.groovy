@@ -212,6 +212,27 @@ class GeometryRecipesTest {
         assertFalse(results["1contains3"])
     }
 
+    @Test void convexHull() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.convexHull()
+        assertEquals("POLYGON ((-90.7031 34.016, -111.796 42.553, -119.882 47.279, -100.195 46.316, -90.7031 34.016))", geom.wkt)
+    }
+
+    @Test void covers() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.covers()
+        assertTrue(results["1covers2"])
+        assertFalse(results["1covers3"])
+    }
+
+    @Test void coveredBy() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.coveredBy()
+        assertTrue(results["2coveredBy1"])
+        assertFalse(results["3coveredBy1"])
+    }
+
+
     @Test void bounds() {
         GeometryRecipes recipes = new GeometryRecipes()
         Bounds bounds = recipes.bounds()

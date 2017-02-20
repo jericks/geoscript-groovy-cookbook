@@ -158,7 +158,7 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=contains1,in
 [.thumb]
 image::geometry_contains_1.png[]
 ....
-include::output/geoemtry_contains_1.txt[]
+include::output/geometry_contains_1.txt[]
 ....
 
 ----
@@ -167,7 +167,55 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=contains2,in
 [.thumb]
 image::geometry_contains_2.png[]
 ....
-include::output/geoemtry_contains_2.txt[]
+include::output/geometry_contains_2.txt[]
+....
+
+[source,groovy]
+.Create a convexhull Geometry around a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=convexHull,indent=0]
+----
+[.thumb]
+image::geometry_convexhull.png[]
+
+[source,groovy]
+.Check whether a Geometry covers another Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=covers1,indent=0]
+----
+[.thumb]
+image::geometry_covers_1.png[]
+....
+include::output/geometry_covers_1.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=covers2,indent=0]
+----
+[.thumb]
+image::geometry_covers_2.png[]
+....
+include::output/geometry_covers_2.txt[]
+....
+
+[source,groovy]
+.Check whether a Geometry is covered by another Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=coveredBy1,indent=0]
+----
+[.thumb]
+image::geometry_coveredBy_1.png[]
+....
+include::output/geometry_coveredby_1.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=coveredBy2,indent=0]
+----
+[.thumb]
+image::geometry_coveredby_2.png[]
+....
+include::output/geometry_coveredby_2.txt[]
 ....
 
 [source,groovy]
