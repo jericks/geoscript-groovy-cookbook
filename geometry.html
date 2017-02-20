@@ -921,6 +921,145 @@ println contains</pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a convexhull Geometry around a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> MultiPoint(
+    <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">119.882</span>, <span class="float">47.279</span>),
+    <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">100.195</span>, <span class="float">46.316</span>),
+    <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">111.796</span>, <span class="float">42.553</span>),
+    <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">90.7031</span>, <span class="float">34.016</span>)
+)
+Geometry convexHull = geometry.convexHull</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_convexhull.png" alt="geometry convexhull">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a Geometry covers another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>],
+        [-<span class="float">121.003</span>, <span class="float">47.070</span>],
+        [-<span class="float">119.465</span>, <span class="float">47.137</span>],
+        [-<span class="float">119.553</span>, <span class="float">46.581</span>],
+        [-<span class="float">121.267</span>, <span class="float">46.513</span>],
+        [-<span class="float">121.168</span>, <span class="float">45.706</span>],
+        [-<span class="float">118.476</span>, <span class="float">45.951</span>],
+        [-<span class="float">118.762</span>, <span class="float">48.195</span>],
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>]
+]])
+
+<span class="type">boolean</span> isCovered = polygon1.covers(polygon2)
+println isCovered</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_covers_1.png" alt="geometry covers 1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Polygon polygon3 = new Polygon([[
+        [-120.563, 46.739],
+        [-119.948, 46.739],
+        [-119.948, 46.965],
+        [-120.563, 46.965],
+        [-120.563, 46.739]
+]])
+
+isCovered = polygon1.covers(polygon3)
+println isCovered</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_covers_2.png" alt="geometry covers 2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a Geometry is covered by another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>],
+        [-<span class="float">121.003</span>, <span class="float">47.070</span>],
+        [-<span class="float">119.465</span>, <span class="float">47.137</span>],
+        [-<span class="float">119.553</span>, <span class="float">46.581</span>],
+        [-<span class="float">121.267</span>, <span class="float">46.513</span>],
+        [-<span class="float">121.168</span>, <span class="float">45.706</span>],
+        [-<span class="float">118.476</span>, <span class="float">45.951</span>],
+        [-<span class="float">118.762</span>, <span class="float">48.195</span>],
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>]
+]])
+
+<span class="type">boolean</span> isCoveredBy = polygon2.coveredBy(polygon1)
+println isCoveredBy</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_coveredBy_1.png" alt="geometry coveredBy 1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Polygon polygon3 = new Polygon([[
+        [-120.563, 46.739],
+        [-119.948, 46.739],
+        [-119.948, 46.965],
+        [-120.563, 46.965],
+        [-120.563, 46.739]
+]])
+
+isCoveredBy = polygon3.coveredBy(polygon1)
+println isCoveredBy</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_coveredby_2.png" alt="geometry coveredby 2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Get Bounds from a Geometry</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="integer">123</span>,<span class="integer">46</span>)
@@ -1802,7 +1941,7 @@ LineString lineString = bounds.createArc(<span class="predefined-type">Math</spa
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-19 21:34:40 UTC
+Last updated 2017-02-20 18:04:27 UTC
 </div>
 </div>
 </body>

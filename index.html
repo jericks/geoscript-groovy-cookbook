@@ -999,6 +999,145 @@ println contains</pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a convexhull Geometry around a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> MultiPoint(
+    <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">119.882</span>, <span class="float">47.279</span>),
+    <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">100.195</span>, <span class="float">46.316</span>),
+    <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">111.796</span>, <span class="float">42.553</span>),
+    <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">90.7031</span>, <span class="float">34.016</span>)
+)
+Geometry convexHull = geometry.convexHull</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_convexhull.png" alt="geometry convexhull">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a Geometry covers another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>],
+        [-<span class="float">121.003</span>, <span class="float">47.070</span>],
+        [-<span class="float">119.465</span>, <span class="float">47.137</span>],
+        [-<span class="float">119.553</span>, <span class="float">46.581</span>],
+        [-<span class="float">121.267</span>, <span class="float">46.513</span>],
+        [-<span class="float">121.168</span>, <span class="float">45.706</span>],
+        [-<span class="float">118.476</span>, <span class="float">45.951</span>],
+        [-<span class="float">118.762</span>, <span class="float">48.195</span>],
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>]
+]])
+
+<span class="type">boolean</span> isCovered = polygon1.covers(polygon2)
+println isCovered</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_covers_1.png" alt="geometry covers 1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Polygon polygon3 = new Polygon([[
+        [-120.563, 46.739],
+        [-119.948, 46.739],
+        [-119.948, 46.965],
+        [-120.563, 46.965],
+        [-120.563, 46.739]
+]])
+
+isCovered = polygon1.covers(polygon3)
+println isCovered</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_covers_2.png" alt="geometry covers 2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a Geometry is covered by another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>],
+        [-<span class="float">121.003</span>, <span class="float">47.070</span>],
+        [-<span class="float">119.465</span>, <span class="float">47.137</span>],
+        [-<span class="float">119.553</span>, <span class="float">46.581</span>],
+        [-<span class="float">121.267</span>, <span class="float">46.513</span>],
+        [-<span class="float">121.168</span>, <span class="float">45.706</span>],
+        [-<span class="float">118.476</span>, <span class="float">45.951</span>],
+        [-<span class="float">118.762</span>, <span class="float">48.195</span>],
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>]
+]])
+
+<span class="type">boolean</span> isCoveredBy = polygon2.coveredBy(polygon1)
+println isCoveredBy</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_coveredBy_1.png" alt="geometry coveredBy 1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Polygon polygon3 = new Polygon([[
+        [-120.563, 46.739],
+        [-119.948, 46.739],
+        [-119.948, 46.965],
+        [-120.563, 46.965],
+        [-120.563, 46.739]
+]])
+
+isCoveredBy = polygon3.coveredBy(polygon1)
+println isCoveredBy</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_coveredby_2.png" alt="geometry coveredby 2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Get Bounds from a Geometry</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="integer">123</span>,<span class="integer">46</span>)
@@ -3893,7 +4032,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-35092f89_15a584fe850_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-1de90bfd_15a5cc4c75b_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -4602,7 +4741,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 19 21:38:36 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Feb 20 18:24:44 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4621,7 +4760,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-35092f89_15a584fe850_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-1de90bfd_15a5cc4c75b_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4645,7 +4784,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 19 21:38:36 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Feb 20 18:24:44 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4665,7 +4804,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-35092f89_15a584fe850_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-1de90bfd_15a5cc4c75b_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -4827,7 +4966,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-35092f89_15a584fe850_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-1de90bfd_15a5cc4c75b_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4865,7 +5004,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-35092f89_15a584fe850_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-1de90bfd_15a5cc4c75b_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -6170,14 +6309,16 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:isValid
-geo:difference
 geo:union
 geo:intersection
+geo:isValid
+geo:difference
 geo:distance
+geo:convexHull
 geo:area
 geo:numGeometries
 geo:isClosed
+geo:crosses
 geo:getGeometryN
 geo:isSimple
 geo:isWithinDistance
@@ -6186,19 +6327,17 @@ geo:relate
 geo:symDifference
 geo:touches
 geo:within
+geo:simplify
 geo:densify
+geo:reproject
 geo:numPoints
-geo:convexHull
 geo:boundary
 geo:centroid
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:crosses
-geo:simplify
 geo:envelope
-geo:reproject
 geo:getX
 geo:getY
 geo:isRing
@@ -6325,7 +6464,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-19 21:34:40 UTC
+Last updated 2017-02-20 18:04:27 UTC
 </div>
 </div>
 </body>
