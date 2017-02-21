@@ -479,6 +479,34 @@ class GeometryRecipesTest {
         assertEquals('{"type":"Point","coordinates":[-122.45,43.21]}', str)
     }
 
+    // WKB
+
+    @Test void readGeometryFromWKBReader() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromWKBReader()
+        assertEquals("POINT (-123.15 46.237)", geom.wkt)
+    }
+
+    @Test void readGeometryFromWKB() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromWKB()
+        assertEquals("LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)", geom.wkt)
+    }
+
+    @Test void writeGeometryToWKB() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String wkb = recipes.writeGeometryToWKB()
+        assertEquals("0000000001C05EC9999999999A40471E5604189375", wkb)
+    }
+
+    @Test void writeGeometryToWKBUsingWriter() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String wkb = recipes.writeGeometryToWKBUsingWriter()
+        assertEquals("000000000200000004400995810624DD2F404594FDF3B645A2401ADA1CAC0831274048E0A3D70A3D714023676C8B43958" +
+                "140454BC6A7EF9DB2402EA3D70A3D70A4404AE624DD2F1AA0", wkb)
+
+    }
+
     // WKT
 
     @Test void readGeometryFromWKTReader() {
@@ -504,6 +532,8 @@ class GeometryRecipesTest {
         String wkt = recipes.writeGeometryToWKTUsingWriter()
         assertEquals("LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)", wkt)
     }
+
+    // GeoJSON
 
     @Test void readGeometryFromGeoJSONReader() {
         GeometryRecipes recipes = new GeometryRecipes()

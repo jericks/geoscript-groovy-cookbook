@@ -17,6 +17,8 @@ import geoscript.geom.io.GeoJSONReader
 import geoscript.geom.io.GeoJSONWriter
 import geoscript.geom.io.Reader
 import geoscript.geom.io.Readers
+import geoscript.geom.io.WkbReader
+import geoscript.geom.io.WkbWriter
 import geoscript.geom.io.WktReader
 import geoscript.geom.io.WktWriter
 import geoscript.geom.io.Writer
@@ -989,6 +991,53 @@ class GeometryRecipes extends Recipes {
         // end::findGeometryWriter[]
         writeFile("geometry_find_writer", "${geojson}")
         geojson
+    }
+
+    // WKB
+
+    Geometry readGeometryFromWKBReader() {
+        // tag::readGeometryFromWKBReader[]
+        String wkb = "0000000001C05EC9999999999A40471E5604189375"
+        WkbReader reader = new WkbReader()
+        Geometry geometry = reader.read(wkb)
+        // end::readGeometryFromWKBReader[]
+        drawGeometry("geometry_read_wkbreader", geometry)
+        geometry
+    }
+
+    Geometry readGeometryFromWKB() {
+        // tag::readGeometryFromWKB[]
+        String wkb = "000000000200000004400995810624DD2F404594FDF3B645A2401ADA1CAC0831274048E0A3D70A3D714023676C8B43958140454BC6A7EF9DB2402EA3D70A3D70A4404AE624DD2F1AA0"
+        Geometry geometry = Geometry.fromWKB(wkb)
+        // end::readGeometryFromWKB[]
+        drawGeometry("geometry_read_geometryfromwkb", geometry)
+        geometry
+    }
+
+    String writeGeometryToWKB() {
+        // tag::writeGeometryToWKB[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        String wkb = geometry.wkb
+        println wkb
+        // end::writeGeometryToWKB[]
+        writeFile("geometry_to_wkb", wkb)
+        wkb
+    }
+
+    String writeGeometryToWKBUsingWriter() {
+        // tag::writeGeometryToWKBUsingWriter[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        WkbWriter writer = new WkbWriter()
+        String wkb = writer.write(geometry)
+        println wkb
+        // end::writeGeometryToWKBUsingWriter[]
+        writeFile("geometry_to_wkb_using_writer", wkb)
+        wkb
     }
 
     // WKT

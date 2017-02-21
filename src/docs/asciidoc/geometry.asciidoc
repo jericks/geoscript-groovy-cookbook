@@ -307,6 +307,42 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=findGeometry
 include::output/geometry_find_writer.txt[]
 ....
 
+==== WKB
+
+[source,groovy]
+.Read a Geometry from WKB using the WkbReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromWKBReader,indent=0]
+----
+[.thumb]
+image::geometry_read_wkbreader.png[]
+
+[source,groovy]
+.Read a Geometry from WKB using the Geometry.fromWKB() static method
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromWKB,indent=0]
+----
+[.thumb]
+image::geometry_read_geometryfromwkb.png[]
+
+[source,groovy]
+.Get the WKB of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToWKB,indent=0]
+----
+....
+include::output/geometry_to_wkb.txt[]
+....
+
+[source,groovy]
+.Write a Geometry to  WKB using the WkbWriter
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToWKBUsingWriter,indent=0]
+----
+....
+include::output/geometry_to_wkb_using_writer.txt[]
+....
+
 ==== WKT
 
 [source,groovy]
