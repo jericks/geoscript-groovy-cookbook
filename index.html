@@ -1471,6 +1471,66 @@ println json</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="kml"><a class="anchor" href="#kml"></a>KML</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from KML using the KmlReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> kml = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;Point&gt;&lt;coordinates&gt;-123.15,46.237&lt;/coordinates&gt;&lt;/Point&gt;</span><span class="delimiter">&quot;</span></span>
+KmlReader reader = <span class="keyword">new</span> KmlReader()
+Geometry geometry = reader.read(kml)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_kmlreader.png" alt="geometry read kmlreader">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from KML using the Geometry.fromKml() static method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> kml = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;LineString&gt;&lt;coordinates&gt;3.198,43.164 6.713,49.755 9.702,42.592 15.32,53.798&lt;/coordinates&gt;&lt;/LineString&gt;</span><span class="delimiter">&quot;</span></span>
+Geometry geometry = Geometry.fromKml(kml)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_geometryfromkml.png" alt="geometry read geometryfromkml">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the KML of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+<span class="predefined-type">String</span> kml = geometry.kml
+println kml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;Point&gt;&lt;coordinates&gt;-123.15,46.237&lt;/coordinates&gt;&lt;/Point&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to KML using the KmlWriter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+KmlWriter writer = <span class="keyword">new</span> KmlWriter()
+<span class="predefined-type">String</span> kml = writer.write(geometry)
+println kml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;LineString&gt;&lt;coordinates&gt;3.198,43.164 6.713,49.755 9.702,42.592 15.32,53.798&lt;/coordinates&gt;&lt;/LineString&gt;</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="creating-bounds"><a class="anchor" href="#creating-bounds"></a>Creating Bounds</h3>
@@ -4092,7 +4152,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-6ba0c419_15a6179ced2_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-2765f317_15a68b53a34_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -4801,7 +4861,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Feb 21 16:20:57 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Feb 23 02:03:13 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4820,7 +4880,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-6ba0c419_15a6179ced2_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-2765f317_15a68b53a34_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4844,7 +4904,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Feb 21 16:20:57 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Feb 23 02:03:13 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4864,7 +4924,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-6ba0c419_15a6179ced2_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-2765f317_15a68b53a34_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5026,7 +5086,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-6ba0c419_15a6179ced2_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-2765f317_15a68b53a34_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5064,12 +5124,12 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-6ba0c419_15a6179ced2_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-2765f317_15a68b53a34_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="kml"><a class="anchor" href="#kml"></a>KML</h4>
+<h4 id="kml-2"><a class="anchor" href="#kml-2"></a>KML</h4>
 <div class="listingblock">
 <div class="title">Get a KML String from a Feature</div>
 <div class="content">
@@ -6369,9 +6429,9 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
+geo:isValid
 geo:union
 geo:intersection
-geo:isValid
 geo:difference
 geo:distance
 geo:convexHull
@@ -6384,7 +6444,12 @@ geo:isSimple
 geo:isWithinDistance
 geo:overlaps
 geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
 geo:densify
+geo:envelope
 geo:numPoints
 geo:boundary
 geo:centroid
@@ -6392,24 +6457,19 @@ geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:symDifference
-geo:touches
-geo:within
-geo:simplify
-geo:envelope
 geo:reproject
 geo:getX
 geo:getY
+geo:startPoint
+geo:endPoint
 geo:equalsExact
 geo:isRing
 geo:interiorPoint
 geo:polygonize
-geo:startPoint
-geo:endPoint
 geo:relatePattern
+geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
-geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -6524,7 +6584,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-21 16:10:39 UTC
+Last updated 2017-02-23 01:53:53 UTC
 </div>
 </div>
 </body>
