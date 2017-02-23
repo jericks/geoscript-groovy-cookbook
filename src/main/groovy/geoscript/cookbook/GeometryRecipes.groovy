@@ -15,6 +15,8 @@ import geoscript.geom.Point
 import geoscript.geom.Polygon
 import geoscript.geom.io.GeoJSONReader
 import geoscript.geom.io.GeoJSONWriter
+import geoscript.geom.io.KmlReader
+import geoscript.geom.io.KmlWriter
 import geoscript.geom.io.Reader
 import geoscript.geom.io.Readers
 import geoscript.geom.io.WkbReader
@@ -1134,4 +1136,50 @@ class GeometryRecipes extends Recipes {
         json
     }
 
+    // KML
+
+    Geometry readGeometryFromKMLReader() {
+        // tag::readGeometryFromKMLReader[]
+        String kml = "<Point><coordinates>-123.15,46.237</coordinates></Point>"
+        KmlReader reader = new KmlReader()
+        Geometry geometry = reader.read(kml)
+        // end::readGeometryFromKMLReader[]
+        drawGeometry("geometry_read_kmlreader", geometry)
+        geometry
+    }
+
+    Geometry readGeometryFromKML() {
+        // tag::readGeometryFromKML[]
+        String kml = "<LineString><coordinates>3.198,43.164 6.713,49.755 9.702,42.592 15.32,53.798</coordinates></LineString>"
+        Geometry geometry = Geometry.fromKml(kml)
+        // end::readGeometryFromKML[]
+        drawGeometry("geometry_read_geometryfromkml", geometry)
+        geometry
+    }
+
+    String writeGeometryToKML() {
+        // tag::writeGeometryToKML[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        String kml = geometry.kml
+        println kml
+        // end::writeGeometryToKML[]
+        writeFile("geometry_to_kml", kml)
+        kml
+    }
+
+    String writeGeometryToKMLUsingWriter() {
+        // tag::writeGeometryToKMLUsingWriter[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        KmlWriter writer = new KmlWriter()
+        String kml = writer.write(geometry)
+        println kml
+        // end::writeGeometryToKMLUsingWriter[]
+        writeFile("geometry_to_kml_using_writer", kml)
+        kml
+    }
 }

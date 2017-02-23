@@ -415,6 +415,42 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 include::output/geometry_to_geojson_using_writer.txt[]
 ....
 
+==== KML
+
+[source,groovy]
+.Read a Geometry from KML using the KmlReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromKMLReader,indent=0]
+----
+[.thumb]
+image::geometry_read_kmlreader.png[]
+
+[source,groovy]
+.Read a Geometry from KML using the Geometry.fromKml() static method
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromKML,indent=0]
+----
+[.thumb]
+image::geometry_read_geometryfromkml.png[]
+
+[source,groovy]
+.Get the KML of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToKML,indent=0]
+----
+....
+include::output/geometry_to_kml.txt[]
+....
+
+[source,groovy]
+.Write a Geometry to KML using the KmlWriter
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToKMLUsingWriter,indent=0]
+----
+....
+include::output/geometry_to_kml_using_writer.txt[]
+....
+
 === Creating Bounds
 
 [source,groovy]

@@ -7,6 +7,8 @@ import static org.junit.Assert.*
 
 class GeometryRecipesTest {
 
+    // Create Geometries
+
     @Test void createPoint() {
         GeometryRecipes recipes = new GeometryRecipes()
         Point point = recipes.createPoint()
@@ -75,6 +77,8 @@ class GeometryRecipesTest {
                 "(69.9609375 24.5271348225978, 27.0703125 23.885837699862005)" +
                 ")", compoundRing.curvedWkt)
     }
+
+    // Bounds
 
     @Test void createBounds() {
         GeometryRecipes recipes = new GeometryRecipes()
@@ -183,60 +187,6 @@ class GeometryRecipesTest {
         Map<String,Boolean> result = recipes.boundsIsEmpty()
         assertFalse(result.bounds)
         assertTrue(result.emptyBounds)
-    }
-
-    @Test void bufferPoint() {
-        GeometryRecipes recipes = new GeometryRecipes()
-        Geometry geom = recipes.bufferPoint()
-        assertTrue(geom instanceof Polygon)
-    }
-
-    @Test void bufferLineString() {
-        GeometryRecipes recipes = new GeometryRecipes()
-        List<Geometry> geometries = recipes.bufferLineString()
-        assertTrue(geometries.size() > 0)
-        geometries.each { Geometry g -> assertNotNull(g) }
-    }
-
-    @Test void bufferLineStringSingleSided() {
-        GeometryRecipes recipes = new GeometryRecipes()
-        List<Geometry> geometries = recipes.bufferLineStringSingleSided()
-        assertTrue(geometries.size() > 0)
-        geometries.each { Geometry g -> assertNotNull(g) }
-    }
-
-    @Test void contains() {
-        GeometryRecipes recipes = new GeometryRecipes()
-        Map<String,Boolean> results = recipes.contains()
-        assertTrue(results["1contains2"])
-        assertFalse(results["1contains3"])
-    }
-
-    @Test void convexHull() {
-        GeometryRecipes recipes = new GeometryRecipes()
-        Geometry geom = recipes.convexHull()
-        assertEquals("POLYGON ((-90.7031 34.016, -111.796 42.553, -119.882 47.279, -100.195 46.316, -90.7031 34.016))", geom.wkt)
-    }
-
-    @Test void covers() {
-        GeometryRecipes recipes = new GeometryRecipes()
-        Map<String,Boolean> results = recipes.covers()
-        assertTrue(results["1covers2"])
-        assertFalse(results["1covers3"])
-    }
-
-    @Test void coveredBy() {
-        GeometryRecipes recipes = new GeometryRecipes()
-        Map<String,Boolean> results = recipes.coveredBy()
-        assertTrue(results["2coveredBy1"])
-        assertFalse(results["3coveredBy1"])
-    }
-
-
-    @Test void bounds() {
-        GeometryRecipes recipes = new GeometryRecipes()
-        Bounds bounds = recipes.bounds()
-        assertNotNull(bounds)
     }
 
     @Test void getBoundsProperties() {
@@ -415,6 +365,62 @@ class GeometryRecipesTest {
         assertEquals("POLYGON ((5 0, 15 0, 20 10, 15 20, 5 20, 0 10, 5 0))", polygon.wkt)
     }
 
+    // Geometry Operations
+
+    @Test void bufferPoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.bufferPoint()
+        assertTrue(geom instanceof Polygon)
+    }
+
+    @Test void bufferLineString() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.bufferLineString()
+        assertTrue(geometries.size() > 0)
+        geometries.each { Geometry g -> assertNotNull(g) }
+    }
+
+    @Test void bufferLineStringSingleSided() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.bufferLineStringSingleSided()
+        assertTrue(geometries.size() > 0)
+        geometries.each { Geometry g -> assertNotNull(g) }
+    }
+
+    @Test void contains() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.contains()
+        assertTrue(results["1contains2"])
+        assertFalse(results["1contains3"])
+    }
+
+    @Test void convexHull() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.convexHull()
+        assertEquals("POLYGON ((-90.7031 34.016, -111.796 42.553, -119.882 47.279, -100.195 46.316, -90.7031 34.016))", geom.wkt)
+    }
+
+    @Test void covers() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.covers()
+        assertTrue(results["1covers2"])
+        assertFalse(results["1covers3"])
+    }
+
+    @Test void coveredBy() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.coveredBy()
+        assertTrue(results["2coveredBy1"])
+        assertFalse(results["3coveredBy1"])
+    }
+
+
+    @Test void bounds() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Bounds bounds = recipes.bounds()
+        assertNotNull(bounds)
+    }
+
     @Test void getArea() {
         GeometryRecipes recipes = new GeometryRecipes()
         double area = recipes.getArea()
@@ -453,7 +459,7 @@ class GeometryRecipesTest {
         assertEquals(100, geometry.getNumGeometries())
     }
 
-    // IO
+    // Geometry IO
 
     @Test void getGeometryReaders() {
         GeometryRecipes recipes = new GeometryRecipes()
@@ -557,5 +563,32 @@ class GeometryRecipesTest {
         GeometryRecipes recipes = new GeometryRecipes()
         String json = recipes.writeGeometryToGeoJSONUsingWriter()
         assertEquals('{"type":"LineString","coordinates":[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}', json)
+    }
+
+    // KML
+
+    @Test void readGeometryFromKMLReader() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromKMLReader()
+        assertEquals("POINT (-123.15 46.237)", geom.wkt)
+    }
+
+    @Test void readGeometryFromKML() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromKML()
+        assertEquals("LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)", geom.wkt)
+    }
+
+    @Test void writeGeometryToKML() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String kml = recipes.writeGeometryToKML()
+        assertEquals("<Point><coordinates>-123.15,46.237</coordinates></Point>", kml)
+    }
+
+    @Test void writeGeometryToKMLUsingWriter() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String kml = recipes.writeGeometryToKMLUsingWriter()
+        assertEquals("<LineString><coordinates>3.198,43.164 6.713,49.755 9.702,42.592 15.32,53.798</coordinates></LineString>", kml)
+
     }
 }
