@@ -1450,13 +1450,73 @@ println kml</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="geobuf"><a class="anchor" href="#geobuf"></a>Geobuf</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from Geobuf using the GeobufReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> geobuf = <span class="string"><span class="delimiter">&quot;</span><span class="content">10021806320c08001a08dffab87590958c2c</span><span class="delimiter">&quot;</span></span>
+GeobufReader reader = <span class="keyword">new</span> GeobufReader()
+Geometry geometry = reader.read(geobuf)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_geobufreader.png" alt="geometry read geobufreader">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from Geobuf using the Geometry.fromGeobuf() static method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> geobuf = <span class="string"><span class="delimiter">&quot;</span><span class="content">10021806322408021a20e0b08603c0859529f089ad03b0c8a40690efec02efb1ea06a0e5ad05e0f5d70a</span><span class="delimiter">&quot;</span></span>
+Geometry geometry = Geometry.fromGeobuf(geobuf)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_geometryfromgeobuf.png" alt="geometry read geometryfromgeobuf">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Geobuf of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+<span class="predefined-type">String</span> geobuf = geometry.geobuf
+println geobuf</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>10021806320c08001a08dffab87590958c2c</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to Geobuf using the GeobufWriter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+GeobufWriter writer = <span class="keyword">new</span> GeobufWriter()
+<span class="predefined-type">String</span> geobuf = writer.write(geometry)
+println geobuf</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>10021806322408021a20e0b08603c0859529f089ad03b0c8a40690efec02efb1ea06a0e5ad05e0f5d70a</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-25 00:46:33 UTC
+Last updated 2017-02-25 18:57:42 UTC
 </div>
 </div>
 </body>
