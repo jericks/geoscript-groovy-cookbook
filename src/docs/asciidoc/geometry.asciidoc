@@ -450,3 +450,39 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 ....
 include::output/geometry_to_kml_using_writer.txt[]
 ....
+
+==== Geobuf
+
+[source,groovy]
+.Read a Geometry from Geobuf using the GeobufReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGeobufReader,indent=0]
+----
+[.thumb]
+image::geometry_read_geobufreader.png[]
+
+[source,groovy]
+.Read a Geometry from Geobuf using the Geometry.fromGeobuf() static method
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGeobuf,indent=0]
+----
+[.thumb]
+image::geometry_read_geometryfromgeobuf.png[]
+
+[source,groovy]
+.Get the Geobuf of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGeobuf,indent=0]
+----
+....
+include::output/geometry_to_geobuf.txt[]
+....
+
+[source,groovy]
+.Write a Geometry to Geobuf using the GeobufWriter
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGeobufUsingWriter,indent=0]
+----
+....
+include::output/geometry_to_geobuf_using_writer.txt[]
+....

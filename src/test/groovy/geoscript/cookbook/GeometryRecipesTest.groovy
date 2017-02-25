@@ -304,4 +304,31 @@ class GeometryRecipesTest {
         assertEquals("<LineString><coordinates>3.198,43.164 6.713,49.755 9.702,42.592 15.32,53.798</coordinates></LineString>", kml)
 
     }
+
+    // Geobuf
+
+    @Test void readGeometryFromGeobufReader() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGeobufReader()
+        assertEquals("POINT (-123.15 46.237)", geom.wkt)
+    }
+
+    @Test void readGeometryFromGeobuf() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGeobuf()
+        assertEquals("LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)", geom.wkt)
+    }
+
+    @Test void writeGeometryToGeobuf() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String geobuf = recipes.writeGeometryToGeobuf()
+        assertEquals("10021806320c08001a08dffab87590958c2c", geobuf)
+    }
+
+    @Test void writeGeometryToGeobufUsingWriter() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String geobuf = recipes.writeGeometryToGeobufUsingWriter()
+        assertEquals("10021806322408021a20e0b08603c0859529f089ad03b0c8a40690efec02efb1ea06a0e5ad05e0f5d70a", geobuf)
+
+    }
 }

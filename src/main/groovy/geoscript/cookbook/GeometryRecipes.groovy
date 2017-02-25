@@ -15,6 +15,8 @@ import geoscript.geom.Point
 import geoscript.geom.Polygon
 import geoscript.geom.io.GeoJSONReader
 import geoscript.geom.io.GeoJSONWriter
+import geoscript.geom.io.GeobufReader
+import geoscript.geom.io.GeobufWriter
 import geoscript.geom.io.KmlReader
 import geoscript.geom.io.KmlWriter
 import geoscript.geom.io.Reader
@@ -757,5 +759,52 @@ class GeometryRecipes extends Recipes {
         // end::writeGeometryToKMLUsingWriter[]
         writeFile("geometry_to_kml_using_writer", kml)
         kml
+    }
+    
+    // Geobuf
+
+    Geometry readGeometryFromGeobufReader() {
+        // tag::readGeometryFromGeobufReader[]
+        String geobuf = "10021806320c08001a08dffab87590958c2c"
+        GeobufReader reader = new GeobufReader()
+        Geometry geometry = reader.read(geobuf)
+        // end::readGeometryFromGeobufReader[]
+        drawGeometry("geometry_read_geobufreader", geometry)
+        geometry
+    }
+
+    Geometry readGeometryFromGeobuf() {
+        // tag::readGeometryFromGeobuf[]
+        String geobuf = "10021806322408021a20e0b08603c0859529f089ad03b0c8a40690efec02efb1ea06a0e5ad05e0f5d70a"
+        Geometry geometry = Geometry.fromGeobuf(geobuf)
+        // end::readGeometryFromGeobuf[]
+        drawGeometry("geometry_read_geometryfromgeobuf", geometry)
+        geometry
+    }
+
+    String writeGeometryToGeobuf() {
+        // tag::writeGeometryToGeobuf[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        String geobuf = geometry.geobuf
+        println geobuf
+        // end::writeGeometryToGeobuf[]
+        writeFile("geometry_to_geobuf", geobuf)
+        geobuf
+    }
+
+    String writeGeometryToGeobufUsingWriter() {
+        // tag::writeGeometryToGeobufUsingWriter[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        GeobufWriter writer = new GeobufWriter()
+        String geobuf = writer.write(geometry)
+        println geobuf
+        // end::writeGeometryToGeobufUsingWriter[]
+        writeFile("geometry_to_geobuf_using_writer", geobuf)
+        geobuf
     }
 }
