@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<title>Projection Recipes</title>
+<title>Bounds Recipes</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -514,13 +514,11 @@ table.CodeRay td.code>pre{padding:0}
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#projection-recipes">Projection Recipes</a>
+<li><a href="#bounds-recipes">Bounds Recipes</a>
 <ul class="sectlevel2">
-<li><a href="#creating-projections">Creating Projections</a></li>
-<li><a href="#getting-projection-properties">Getting Projection Properties</a></li>
-<li><a href="#using-projections">Using Projections</a></li>
-<li><a href="#using-geodetic">Using Geodetic</a></li>
-<li><a href="#using-decimal-degrees">Using Decimal Degrees</a></li>
+<li><a href="#creating-bounds">Creating Bounds</a></li>
+<li><a href="#getting-bounds-properties">Getting Bounds Properties</a></li>
+<li><a href="#processing-bounds">Processing Bounds</a></li>
 </ul>
 </li>
 </ul>
@@ -528,106 +526,124 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="projection-recipes"><a class="anchor" href="#projection-recipes"></a>Projection Recipes</h2>
+<h2 id="bounds-recipes"><a class="anchor" href="#bounds-recipes"></a>Bounds Recipes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="creating-projections"><a class="anchor" href="#creating-projections"></a>Creating Projections</h3>
+<h3 id="creating-bounds"><a class="anchor" href="#creating-bounds"></a>Creating Bounds</h3>
 <div class="listingblock">
-<div class="title">Create a Projection from an EPSG Code</div>
+<div class="title">Create a Bounds from four coordinates (minx, miny, maxx, maxy) and a projection.</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-println proj.wkt</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="imageblock thumb">
 <div class="content">
-<pre>GEOGCS["WGS 84",
-  DATUM["World Geodetic System 1984",
-    SPHEROID["WGS 84", 6378137.0, 298.257223563, AUTHORITY["EPSG","7030"]],
-    AUTHORITY["EPSG","6326"]],
-  PRIMEM["Greenwich", 0.0, AUTHORITY["EPSG","8901"]],
-  UNIT["degree", 0.017453292519943295],
-  AXIS["Geodetic longitude", EAST],
-  AXIS["Geodetic latitude", NORTH],
-  AUTHORITY["EPSG","4326"]]</pre>
+<img src="./images/geometry_create_bounds.png" alt="geometry create bounds">
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Create a Projection from a WKT Projection String</div>
+<div class="title">Create a Bounds from four coordinates (minx, miny, maxx, maxy) without a projection.  The projection can be set later.</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">      Projection proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">GEOGCS[&quot;WGS 84&quot;,
-DATUM[&quot;World Geodetic System 1984&quot;,
-  SPHEROID[&quot;WGS 84&quot;, 6378137.0, 298.257223563, AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
-  AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
-PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
-UNIT[&quot;degree&quot;, 0.017453292519943295],
-AXIS[&quot;Geodetic longitude&quot;, EAST],
-AXIS[&quot;Geodetic latitude&quot;, NORTH],
-AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</span><span class="delimiter">&quot;&quot;&quot;</span></span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>)
+bounds.proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="imageblock thumb">
 <div class="content">
-<pre>GEOGCS["WGS 84",
-  DATUM["World Geodetic System 1984",
-    SPHEROID["WGS 84", 6378137.0, 298.257223563, AUTHORITY["EPSG","7030"]],
-    AUTHORITY["EPSG","6326"]],
-  PRIMEM["Greenwich", 0.0, AUTHORITY["EPSG","8901"]],
-  UNIT["degree", 0.017453292519943295],
-  AXIS["Geodetic longitude", EAST],
-  AXIS["Geodetic latitude", NORTH],
-  AUTHORITY["EPSG","4326"]]</pre>
+<img src="./images/geometry_create_bounds_no_proj.png" alt="geometry create bounds no proj">
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Create a Projection from well known name</div>
+<div class="title">Create a Bounds from a string with commas delimiting minx, miny, maxx, maxy and projection values.</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">Mollweide</span><span class="delimiter">&quot;</span></span>)
-println proj.wkt</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = Bounds.fromString(<span class="string"><span class="delimiter">&quot;</span><span class="content">-127.265,43.068,-113.554,50.289,EPSG:4326</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="imageblock thumb">
 <div class="content">
-<pre>PROJCS["Mollweide",
-  GEOGCS["WGS84",
-    DATUM["WGS84",
-      SPHEROID["WGS84", 6378137.0, 298.257223563]],
-    PRIMEM["Greenwich", 0.0],
-    UNIT["degree", 0.017453292519943295],
-    AXIS["Longitude", EAST],
-    AXIS["Latitude", NORTH]],
-  PROJECTION["Mollweide"],
-  PARAMETER["semi-minor axis", 6378137.0],
-  PARAMETER["Longitude of natural origin", 0.0],
-  UNIT["m", 1.0],
-  AXIS["Easting", EAST],
-  AXIS["Northing", NORTH]]</pre>
+<img src="./images/geometry_create_bounds_fromstring_withcommas.png" alt="geometry create bounds fromstring withcommas">
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Get a List of all supported Projections (this is really slow)</div>
+<div class="title">Create a Bounds from a string with spaces delimiting minx, miny, maxx, maxy and projection values.</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;Projection&gt; projections = Projection.projections()</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = Bounds.fromString(<span class="string"><span class="delimiter">&quot;</span><span class="content">12.919921874999998 40.84706035607122 15.99609375 41.77131167976407 EPSG:4326</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="imageblock thumb">
 <div class="content">
-<pre>EPSG:4326
-EPSG:4269
-EPSG:26918
-EPSG:2263
-EPSG:2927
-...</pre>
+<img src="./images/geometry_create_bounds_fromstring_withspaces.png" alt="geometry create bounds fromstring withspaces">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="getting-projection-properties"><a class="anchor" href="#getting-projection-properties"></a>Getting Projection Properties</h3>
+<h3 id="getting-bounds-properties"><a class="anchor" href="#getting-bounds-properties"></a>Getting Bounds Properties</h3>
 <div class="listingblock">
-<div class="title">Get the id</div>
+<div class="title">Create a Bounds and view it&#8217;s string representation</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">String</span> id = proj.id</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> boundsStr = bounds.toString()
+println boundsStr</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(-127.265,43.068,-113.554,50.289,EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the minimum x coordinate</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> minX = bounds.minX
+println minX</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-127.265</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the minimum y coordinate</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> minY = bounds.minY
+println minY</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>43.068</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the maximum x coordinate</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> maxX = bounds.maxX
+println maxX</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-113.554</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the maximum y coordinate</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> maxY = bounds.maxY
+println maxY</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>50.289</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Projection</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = bounds.proj
+println proj.id</code></pre>
 </div>
 </div>
 <div class="literalblock">
@@ -636,446 +652,481 @@ EPSG:2927
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Get the srs</div>
+<div class="title">Get the area</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> srs = proj.srs</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> area = bounds.area
+println area</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>EPSG:4326</pre>
+<pre>99.00713100000004</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Get the epsg code</div>
+<div class="title">Get the width</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> epsg = proj.epsg</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> width = bounds.width
+println width</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>4326</pre>
+<pre>13.710999999999999</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Get the WKT</div>
+<div class="title">Get the height</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> wkt = proj.wkt</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> height = bounds.height
+println height</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>GEOGCS["WGS 84",
-  DATUM["World Geodetic System 1984",
-    SPHEROID["WGS 84", 6378137.0, 298.257223563, AUTHORITY["EPSG","7030"]],
-    AUTHORITY["EPSG","6326"]],
-  PRIMEM["Greenwich", 0.0, AUTHORITY["EPSG","8901"]],
-  UNIT["degree", 0.017453292519943295],
-  AXIS["Geodetic longitude", EAST],
-  AXIS["Geodetic latitude", NORTH],
-  AUTHORITY["EPSG","4326"]]</pre>
+<pre>7.221000000000004</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Get the Bounds in the native Projection</div>
+<div class="title">Get the aspect ratio</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = proj.bounds</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> aspect = bounds.aspect
+println aspect</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>(-180.0,-90.0,180.0,90.0,EPSG:4326)</pre>
+<pre>1.8987674837280144</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Get the Bounds in the EPSG:4326</div>
+<div class="title">A Bounds is not a Geometry but you can get a Geometry from a Bounds</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Bounds geoBounds = proj.geoBounds</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">122.485</span>, <span class="float">47.246</span>, -<span class="float">122.452</span>, <span class="float">47.267</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = bounds.geometry</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="imageblock thumb">
 <div class="content">
-<pre>(-180.0,-90.0,180.0,90.0,EPSG:4326)</pre>
+<img src="./images/geometry_bounds_geometry.png" alt="geometry bounds geometry">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">You can also get a Polygon from a Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">122.485</span>, <span class="float">47.246</span>, -<span class="float">122.452</span>, <span class="float">47.267</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.polygon</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_polygon.png" alt="geometry bounds polygon">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the four corners from a Bounds as a List of Points</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">122.485</span>, <span class="float">47.246</span>, -<span class="float">122.452</span>, <span class="float">47.267</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">Point</span>&gt; points = bounds.corners</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_corners.png" alt="geometry bounds corners">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="using-projections"><a class="anchor" href="#using-projections"></a>Using Projections</h3>
+<h3 id="processing-bounds"><a class="anchor" href="#processing-bounds"></a>Processing Bounds</h3>
 <div class="listingblock">
-<div class="title">Transform a Geometry from one projection to another using the Projection static method with strings</div>
+<div class="title">Reproject a Bounds from one Projection to another.</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Geometry epsg4326Geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
-Geometry epsg2927Geom = Projection.transform(epsg4326Geom, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
-println epsg2927Geom</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">122.485</span>, <span class="float">47.246</span>, -<span class="float">122.452</span>, <span class="float">47.267</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+println bounds</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+<pre>(-122.485,47.246,-122.452,47.267,EPSG:4326)</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Transform a Geometry from one projection to another using the Projection static method with Projections</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection epsg4326 = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-Projection epsg2927 = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
-Geometry epsg4326Geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
-Geometry epsg2927Geom = Projection.transform(epsg4326Geom, epsg4326, epsg2927)
-println epsg2927Geom</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds reprojectedBounds = bounds.reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
+println reprojectedBounds</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+<pre>(1147444.7684517875,703506.223164177,1155828.120242509,711367.9403610165,EPSG:2927)</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Transform a Geometry from one projection to another using two Projections</div>
+<div class="title">Expand a Bounds by a given distance</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection fromProj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-Projection toProj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
-Geometry geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
-Geometry projectedGeom = fromProj.transform(geom, toProj)
-println projectedGeom</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Bounds bounds2 = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+bounds2.expandBy(<span class="float">10.1</span>)</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="imageblock thumb">
 <div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+<img src="./images/geometry_bounds_expandby.png" alt="geometry bounds expandby">
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Transform a Geometry from one projection to another using a Projections and a String</div>
+<div class="title">Expand a Bounds to include another Bounds</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Projection fromProj = <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
-Geometry geom = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.440</span>, <span class="float">47.245</span>)
-Geometry projectedGeom = fromProj.transform(geom, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:2927</span><span class="delimiter">&quot;</span></span>)
-println projectedGeom</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(<span class="float">8.4375</span>, <span class="float">37.996162679728116</span>, <span class="float">19.6875</span>, <span class="float">46.07323062540835</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Bounds bounds2 = <span class="keyword">new</span> Bounds(<span class="float">22.5</span>, <span class="float">31.952162238024975</span>, <span class="float">30.937499999999996</span>, <span class="float">37.43997405227057</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+bounds1.expand(bounds2)</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="imageblock thumb">
 <div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="using-geodetic"><a class="anchor" href="#using-geodetic"></a>Using Geodetic</h3>
-<div class="listingblock">
-<div class="title">Create a Geodetic object with an ellipsoid</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Geodetic geodetic = <span class="keyword">new</span> Geodetic(<span class="string"><span class="delimiter">&quot;</span><span class="content">wgs84</span><span class="delimiter">&quot;</span></span>)
-println geodetic</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Geodetic [SPHEROID["WGS 84", 6378137.0, 298.257223563]]</pre>
+<img src="./images/geometry_bounds_expand.png" alt="geometry bounds expand">
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Calculate the forward and back azimuth and distance between the given two Points.</div>
+<div class="title">Scale an existing Bounds some distance to create a new Bounds</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Geodetic geodetic = <span class="keyword">new</span> Geodetic(<span class="string"><span class="delimiter">&quot;</span><span class="content">clrk66</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Point</span> bostonPoint = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">71.117</span>, <span class="float">42.25</span>)
-<span class="predefined-type">Point</span> portlandPoint = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.683</span>, <span class="float">45.52</span>)
-<span class="predefined-type">Map</span> results = geodetic.inverse(bostonPoint, portlandPoint)
-<span class="type">double</span> forwardAzimuth =  results.forwardAzimuth
-println forwardAzimuth</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(-<span class="float">127.265</span>, <span class="float">43.068</span>, -<span class="float">113.554</span>, <span class="float">50.289</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Bounds bounds2 = bounds1.scale(<span class="integer">2</span>)</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="imageblock thumb">
 <div class="content">
-<pre>-66.52547810974724</pre>
+<img src="./images/geometry_bounds_scale.png" alt="geometry bounds scale">
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Divide a Bounds into smaller tiles or Bounds</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> backAzimuth = results.backAzimuth
-println backAzimuth</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">122.485</span>, <span class="float">47.246</span>, -<span class="float">122.452</span>, <span class="float">47.267</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span>&lt;Bounds&gt; subBounds = bounds.tile(<span class="float">0.25</span>)</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="imageblock thumb">
 <div class="content">
-<pre>75.65817457195088</pre>
+<img src="./images/geometry_bounds_tile.png" alt="geometry bounds tile">
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Calculate a quad tree for this Bounds between the start and stop levels. A Closure is called for each new Bounds generated.</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> distance = results.distance
-println distance</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>4164050.4598800642</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Calculate a new Point and back azimuth given the starting Point, azimuth, and distance.</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Geodetic geodetic = <span class="keyword">new</span> Geodetic(<span class="string"><span class="delimiter">&quot;</span><span class="content">clrk66</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Point</span> bostonPoint = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">71.117</span>, <span class="float">42.25</span>)
-<span class="predefined-type">Map</span> results = geodetic.forward(bostonPoint, -<span class="float">66.531</span>, <span class="float">4164192.708</span>)
-<span class="predefined-type">Point</span> point = results.point
-println point</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>POINT (-123.6835797667373 45.516427795897236)</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> azimuth = results.backAzimuth
-println azimuth</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>75.65337425050724</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Place the given number of points between starting and ending Points</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Geodetic geodetic = <span class="keyword">new</span> Geodetic(<span class="string"><span class="delimiter">&quot;</span><span class="content">clrk66</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Point</span> bostonPoint = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">71.117</span>, <span class="float">42.25</span>)
-<span class="predefined-type">Point</span> portlandPoint = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.683</span>, <span class="float">45.52</span>)
-<span class="predefined-type">List</span>&lt;<span class="predefined-type">Point</span>&gt; points = geodetic.placePoints(bostonPoint, portlandPoint, <span class="integer">10</span>)
-points.each { <span class="predefined-type">Point</span> point -&gt;
-    println point.wkt
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+bounds.quadTree(<span class="integer">0</span>,<span class="integer">2</span>) { Bounds b -&gt;
+    println b
 }</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>POINT (-75.41357382496236 43.52791689304304)
-POINT (-79.8828640042499 44.63747566950249)
-POINT (-84.51118758826816 45.565540142641005)
-POINT (-89.27793446221685 46.300124344169255)
-POINT (-94.15564606698499 46.83102721803566)
-POINT (-99.11079892605703 47.15045006457598)
-POINT (-104.10532353179985 47.25351783423774)
-POINT (-109.09873812691617 47.13862709798196)
-POINT (-114.05062990603696 46.80756425557422)
-POINT (-118.92312608779855 46.26537395700513)</pre>
+<pre>(-180.0,-90.0,180.0,90.0,EPSG:4326)
+(-180.0,-90.0,0.0,0.0,EPSG:4326)
+(-180.0,0.0,0.0,90.0,EPSG:4326)
+(0.0,-90.0,180.0,0.0,EPSG:4326)
+(0.0,0.0,180.0,90.0,EPSG:4326)</pre>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="using-decimal-degrees"><a class="anchor" href="#using-decimal-degrees"></a>Using Decimal Degrees</h3>
 <div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a longitude and latitude</div>
+<div class="title">Determine whether a Bounds is empty or not. A Bounds is empty if it is null or it&#8217;s area is 0.</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(-<span class="float">122.525619</span>, <span class="float">47.212023</span>)
-println decimalDegrees</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">10</span>,<span class="integer">10</span>,<span class="integer">20</span>)
+println bounds.isEmpty()</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>-122° 31' 32.2284" W, 47° 12' 43.2828" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a Point</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.525619</span>,<span class="float">47.212023</span>))
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>POINT (-122.52561944444444 47.212022222222224)</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a Longitude and Latitude string</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">-122.525619, 47.212023</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2284" W, 47° 12' 43.2828" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from two strings with glyphs</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122</span><span class="char">\u00B0</span><span class="content"> 31' 32.23</span><span class="char">\&quot;</span><span class="content"> W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47</span><span class="char">\u00B0</span><span class="content"> 12' 43.28</span><span class="char">\&quot;</span><span class="content"> N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2300" W, 47° 12' 43.2800" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from two strings</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2300" W, 47° 12' 43.2800" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a single Degrees Minutes Seconds formatted string</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W, 47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2300" W, 47° 12' 43.2800" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a single Decimal Degree Minutes formatted string with glyphs</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122</span><span class="char">\u00B0</span><span class="content"> 31.5372' W, 47</span><span class="char">\u00B0</span><span class="content"> 12.7213' N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2320" W, 47° 12' 43.2780" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Create a new DecimalDegrees from a single Decimal Degree Minutes formatted string</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31.5372m W, 47d 12.7213m N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122° 31' 32.2320" W, 47° 12' 43.2780" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get degrees minutes seconds from a DecimalDegrees object</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Map</span> dms = decimalDegrees.dms
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Degrees: </span><span class="inline"><span class="inline-delimiter">${</span>dms.longitude.degrees<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Minutes: </span><span class="inline"><span class="inline-delimiter">${</span>dms.longitude.minutes<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Seconds: </span><span class="inline"><span class="inline-delimiter">${</span>dms.longitude.seconds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Degrees: -122
-Minutes: 31
-Seconds: 32.22999999998388</pre>
+<pre>false</pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">println <span class="string"><span class="delimiter">&quot;</span><span class="content">Degrees: </span><span class="inline"><span class="inline-delimiter">${</span>dms.latitude.degrees<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Minutes: </span><span class="inline"><span class="inline-delimiter">${</span>dms.latitude.minutes<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Seconds: </span><span class="inline"><span class="inline-delimiter">${</span>dms.latitude.seconds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds emptyBounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">10</span>,<span class="integer">10</span>,<span class="integer">10</span>)
+println emptyBounds.isEmpty()</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Degrees: 47
-Minutes: 12
-Seconds: 43.280000000006396</pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Convert a DecimalDegrees object to a DMS String with glyphs</div>
+<div class="title">Determine if a Bounds contains another Bounds</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees.toDms(<span class="predefined-constant">true</span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(-<span class="float">107.226</span>, <span class="float">34.597</span>, -<span class="float">92.812</span>, <span class="float">43.068</span>)
+Bounds bounds2 = <span class="keyword">new</span> Bounds(-<span class="float">104.326</span>, <span class="float">37.857</span>, -<span class="float">98.349</span>, <span class="float">40.913</span>)
+println bounds1.contains(bounds2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_contains_bounds1.png" alt="geometry bounds contains bounds1">
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>-122° 31' 32.2300" W, 47° 12' 43.2800" N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Convert a DecimalDegrees object to a DMS String without glyphs</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">println decimalDegrees.toDms(<span class="predefined-constant">false</span>)</code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>-122d 31m 32.2300s W, 47d 12m 43.2800s N</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Get degrees minutes from a DecimalDegrees object</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Map</span> dms = decimalDegrees.ddm
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Degrees: </span><span class="inline"><span class="inline-delimiter">${</span>dms.longitude.degrees<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Minutes: </span><span class="inline"><span class="inline-delimiter">${</span>dms.longitude.minutes<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Degrees: -122
-Minutes: 31.537166666666398</pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">println <span class="string"><span class="delimiter">&quot;</span><span class="content">Degrees: </span><span class="inline"><span class="inline-delimiter">${</span>dms.latitude.degrees<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
-println <span class="string"><span class="delimiter">&quot;</span><span class="content">Minutes: </span><span class="inline"><span class="inline-delimiter">${</span>dms.latitude.minutes<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds3 = <span class="keyword">new</span> Bounds(-<span class="float">112.412</span>, <span class="float">36.809</span>, -<span class="float">99.316</span>, <span class="float">44.777</span>)
+println bounds1.contains(bounds3)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_contains_bounds2.png" alt="geometry bounds contains bounds2">
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Degrees: 47
-Minutes: 12.72133333333344</pre>
+<pre>false</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Convert a DecimalDegrees object to a DDM String with glyphs</div>
+<div class="title">Determine if a Bounds contains a Point</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-println decimalDegrees.toDdm(<span class="predefined-constant">true</span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">107.226</span>, <span class="float">34.597</span>, -<span class="float">92.812</span>, <span class="float">43.068</span>)
+<span class="predefined-type">Point</span> point1 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">95.976</span>, <span class="float">39.639</span>)
+println bounds.contains(point1)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_contains_point1.png" alt="geometry bounds contains point1">
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>-122° 31.5372' W, 47° 12.7213' N</pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Convert a DecimalDegrees object to a DDM String without glyphs</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">println decimalDegrees.toDdm(<span class="predefined-constant">false</span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point2 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">89.384</span>, <span class="float">38.959</span>)
+println bounds.contains(point2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_contains_point2.png" alt="geometry bounds contains point2">
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>-122d 31.5372m W, 47d 12.7213m N</pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Get a Point from a DecimalDegrees object</div>
+<div class="title">Determine if two Bounds intersect</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">DecimalDegrees decimalDegrees = <span class="keyword">new</span> DecimalDegrees(<span class="string"><span class="delimiter">&quot;</span><span class="content">122d 31m 32.23s W</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">47d 12m 43.28s N</span><span class="delimiter">&quot;</span></span>)
-<span class="predefined-type">Point</span> point = decimalDegrees.point</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(-<span class="float">95.885</span>, <span class="float">46.765</span>, -<span class="float">95.788</span>, <span class="float">46.811</span>)
+Bounds bounds2 = <span class="keyword">new</span> Bounds(-<span class="float">95.847</span>, <span class="float">46.818</span>, -<span class="float">95.810</span>, <span class="float">46.839</span>)
+println bounds1.intersects(bounds2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_intersects1.png" alt="geometry bounds intersects1">
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>POINT (-122.52561944444444 47.212022222222224)</pre>
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds3 = <span class="keyword">new</span> Bounds(-<span class="float">95.904</span>, <span class="float">46.747</span>, -<span class="float">95.839</span>, <span class="float">46.792</span>)
+println bounds1.intersects(bounds3)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_intersects2.png" alt="geometry bounds intersects2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the intersection between two Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds1 = <span class="keyword">new</span> Bounds(-<span class="float">95.885</span>, <span class="float">46.765</span>, -<span class="float">95.788</span>, <span class="float">46.811</span>)
+Bounds bounds2 = <span class="keyword">new</span> Bounds(-<span class="float">95.904</span>, <span class="float">46.747</span>, -<span class="float">95.839</span>, <span class="float">46.792</span>)
+Bounds bounds3 = bounds1.intersection(bounds2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_intersection.png" alt="geometry bounds intersection">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given number of columns and rows and the polygon shape.  Other shapes include: polygon, point, circle/ellipse, hexagon, hexagon-inv).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = bounds.getGrid(<span class="integer">5</span>,<span class="integer">4</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">polygon</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_polygon_colsrows.png" alt="geometry bounds grid polygon colsrows">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given number of columns and rows and a point shape.  A Closure that is called with a geometry, column, and row for each grid cell that is created.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span> geometries = <span class="type">[]</span>
+Geometry geometry = bounds.generateGrid(<span class="integer">10</span>,<span class="integer">8</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">point</span><span class="delimiter">&quot;</span></span>) { Geometry g, <span class="type">int</span> col, <span class="type">int</span> row -&gt;
+    geometries.add(g)
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_point_colsrows.png" alt="geometry bounds grid point colsrows">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given cell width and height and a circle/ellipse shape.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = bounds.getGrid(<span class="float">72.0</span>,<span class="float">72.0</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">circle</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_circle_cellwidthheight.png" alt="geometry bounds grid circle cellwidthheight">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given cell width and height and a hexagon shape.  A Closure is called with a geometry, column, and row for each grid cell generated.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span> geometries = <span class="type">[]</span>
+Geometry geometry = bounds.generateGrid(<span class="float">72.0</span>,<span class="float">72.0</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">hexagon</span><span class="delimiter">&quot;</span></span>) { Geometry g, <span class="type">int</span> col, <span class="type">int</span> row -&gt;
+    geometries.add(g)
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_hexagon_cellwidthheight.png" alt="geometry bounds grid hexagon cellwidthheight">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given cell width and height and an inverted hexagon shape.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = bounds.getGrid(<span class="integer">5</span>,<span class="integer">5</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">hexagon-inv</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_hexagoninv_colsrows.png" alt="geometry bounds grid hexagoninv colsrows">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a rectangle from a Bounds with a given number of Points and a rotation angle in radians.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createRectangle(<span class="integer">20</span>,<span class="predefined-type">Math</span>.toRadians(<span class="integer">45</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createrectangle.png" alt="geometry bounds createrectangle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create an ellipse from a Bounds. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createEllipse()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createreellipse.png" alt="geometry bounds createreellipse">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a squircle from a Bounds. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createSquircle()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createresquircle.png" alt="geometry bounds createresquircle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a super circle from a Bounds with a given power. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createSuperCircle(<span class="float">1.75</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createresupercircle.png" alt="geometry bounds createresupercircle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create an arc from a Bounds with a start angle and angle extent. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+LineString lineString = bounds.createArc(<span class="predefined-type">Math</span>.toRadians(<span class="integer">45</span>), <span class="predefined-type">Math</span>.toRadians(<span class="integer">90</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createrearc.png" alt="geometry bounds createrearc">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create an arc polygon from a Bounds with a start angle and angle extent. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createArcPolygon(<span class="predefined-type">Math</span>.toRadians(<span class="integer">45</span>), <span class="predefined-type">Math</span>.toRadians(<span class="integer">90</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createrearcpolygon.png" alt="geometry bounds createrearcpolygon">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a sine star from a Bounds with a number of arms and an arm length ratio. The default number of points is 20 and the default rotation angle in radians is 0.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createSineStar(<span class="integer">5</span>, <span class="float">2.3</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createsinestar.png" alt="geometry bounds createsinestar">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a hexagon from a Bounds that is either inverted (false) or not (true).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
+<span class="predefined-type">Polygon</span> polygon = bounds.createHexagon(<span class="predefined-constant">false</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_createhexagon.png" alt="geometry bounds createhexagon">
 </div>
 </div>
 </div>
