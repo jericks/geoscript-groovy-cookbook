@@ -215,7 +215,7 @@ class GeometryRecipes extends Recipes {
         compoundRing
     }
 
-
+    // Processing Geometries
 
     double getArea() {
         // tag::getArea[]
@@ -526,6 +526,124 @@ class GeometryRecipes extends Recipes {
         // end::createKochSnowflake[]
         drawGeometry("geometry_kochsnowflake", geometry, drawCoords: false)
         geometry
+    }
+
+    Map<String, Boolean> crosses() {
+        Map<String, Boolean> values = [:]
+
+        // tag::crosses[]
+        LineString line1 = new LineString([[-122.486, 47.256], [-121.695, 46.822]])
+        LineString line2 = new LineString([[-122.387, 47.613], [-121.750, 47.353]])
+        LineString line3 = new LineString([[-122.255, 47.368], [-121.882, 47.746]])
+
+        boolean doesCross12 = line1.crosses(line2)
+        println doesCross12
+
+        boolean doesCross13 = line1.crosses(line3)
+        println doesCross13
+
+        boolean doesCross23 = line2.crosses(line3)
+        println doesCross23
+        // end::crosses[]
+        drawGeometries("geometry_crosses", [line1, line2, line3])
+        writeFile("geometry_crosses", "${doesCross12}${NEW_LINE}${doesCross13}${NEW_LINE}${doesCross23}")
+        values["12"] = doesCross12
+        values["13"] = doesCross13
+        values["23"] = doesCross23
+
+        values
+    }
+
+    Geometry difference() {
+
+        // tag::difference[]
+        Polygon polygon1 = new Polygon([[
+                [-121.915, 47.390],
+                [-122.640, 46.995],
+                [-121.739, 46.308],
+                [-121.168, 46.777],
+                [-120.981, 47.316],
+                [-121.409, 47.413],
+                [-121.915, 47.390]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.794, 46.664],
+                [-121.541, 46.995],
+                [-122.200, 46.536],
+                [-121.937, 45.890],
+                [-120.959, 46.096],
+                [-120.794, 46.664]
+        ]])
+
+        Geometry difference = polygon1.difference(polygon2)
+        // end::difference[]
+        drawGeometries("geometry_difference", [difference, polygon1, polygon2])
+
+        difference
+    }
+
+    Map<String, Boolean> disjoint() {
+
+        Map<String, Boolean> values = [:]
+
+        // tag::disjoint[]
+        Polygon polygon1 = new Polygon([[
+                [-121.915, 47.390],
+                [-122.640, 46.995],
+                [-121.739, 46.308],
+                [-121.168, 46.777],
+                [-120.981, 47.316],
+                [-121.409, 47.413],
+                [-121.915, 47.390]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.794, 46.664],
+                [-121.541, 46.995],
+                [-122.200, 46.536],
+                [-121.937, 45.890],
+                [-120.959, 46.096],
+                [-120.794, 46.664]
+        ]])
+
+        Polygon polygon3 = new Polygon([[
+                [-120.541, 47.376],
+                [-120.695, 47.047],
+                [-119.794, 46.830],
+                [-119.586, 47.331],
+                [-120.102, 47.509],
+                [-120.541, 47.376]
+        ]])
+
+        boolean isDisjoint12 = polygon1.disjoint(polygon2)
+        println isDisjoint12
+
+        boolean isDisjoint13 = polygon1.disjoint(polygon3)
+        println isDisjoint13
+
+        boolean isDisjoint23 = polygon2.disjoint(polygon3)
+        println isDisjoint23
+        // end::disjoint[]
+        drawGeometries("geometry_distjoint", [polygon1, polygon2, polygon3])
+        writeFile("geometry_disjoint", "${isDisjoint12}${NEW_LINE}${isDisjoint13}${NEW_LINE}${isDisjoint23}")
+        values["12"] = isDisjoint12
+        values["13"] = isDisjoint13
+        values["23"] = isDisjoint23
+
+        values
+    }
+
+    double distance() {
+        // tag::distance[]
+        Point point1 = new Point(-122.442, 47.256)
+        Point point2 = new Point(-122.321, 47.613)
+        double distance = point1.distance(point2)
+        println distance
+        // end::distance[]
+        drawGeometries("geometry_distance", [point1, point2])
+        writeFile("geometry_distance", "${distance}")
+        distance
     }
 
     // Geometry Readers and Writers

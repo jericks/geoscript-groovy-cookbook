@@ -219,6 +219,47 @@ include::output/geometry_coveredby_2.txt[]
 ....
 
 [source,groovy]
+.Check whether one Geometry crosses another Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=crosses,indent=0]
+----
+[.thumb]
+image::geometry_crosses.png[]
+....
+include::output/geometry_crosses.txt[]
+....
+
+[source,groovy]
+.Calculate the difference between two Geometries
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=difference,indent=0]
+----
+[.thumb]
+image::geometry_difference.png[]
+
+[source,groovy]
+.Check whether one Geometry is disjoint from another Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=disjoint,indent=0]
+----
+[.thumb]
+image::geometry_distjoint.png[]
+....
+include::output/geometry_disjoint.txt[]
+....
+
+[source,groovy]
+.Calculate the distance bewteen two Geometries
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=distance,indent=0]
+----
+[.thumb]
+image::geometry_distance.png[]
+....
+include::output/geometry_distance.txt[]
+....
+
+[source,groovy]
 .Get Bounds from a Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bounds,indent=0]

@@ -172,6 +172,39 @@ class GeometryRecipesTest {
         assertEquals(100, geometry.getNumGeometries())
     }
 
+    @Test void crosses() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String, Boolean> results = recipes.crosses()
+        assertFalse(results["12"])
+        assertFalse(results["13"])
+        assertTrue(results["23"])
+    }
+
+    @Test void difference() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.difference()
+        assertEquals("POLYGON ((-122.11534856491807 46.59496055948802, " +
+                "-122.64 46.995, -121.915 47.39, " +
+                "-121.409 47.413, -120.981 47.316, " +
+                "-121.15214608098509 46.82269659010183, " +
+                "-121.541 46.995, " +
+                "-122.11534856491807 46.59496055948802))", geometry.wkt)
+    }
+
+    @Test void disjoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String, Boolean> results = recipes.disjoint()
+        assertFalse(results["12"])
+        assertTrue(results["13"])
+        assertTrue(results["23"])
+    }
+
+    @Test void distance() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        double distance = recipes.distance()
+        assertEquals(0.37694827231332195, distance, 0.001)
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {
