@@ -1142,6 +1142,137 @@ println isCoveredBy</pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Check whether one Geometry crosses another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString line1 = <span class="keyword">new</span> LineString([[-<span class="float">122.486</span>, <span class="float">47.256</span>], [-<span class="float">121.695</span>, <span class="float">46.822</span>]])
+LineString line2 = <span class="keyword">new</span> LineString([[-<span class="float">122.387</span>, <span class="float">47.613</span>], [-<span class="float">121.750</span>, <span class="float">47.353</span>]])
+LineString line3 = <span class="keyword">new</span> LineString([[-<span class="float">122.255</span>, <span class="float">47.368</span>], [-<span class="float">121.882</span>, <span class="float">47.746</span>]])
+
+<span class="type">boolean</span> doesCross12 = line1.crosses(line2)
+println doesCross12
+
+<span class="type">boolean</span> doesCross13 = line1.crosses(line3)
+println doesCross13
+
+<span class="type">boolean</span> doesCross23 = line2.crosses(line3)
+println doesCross23</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_crosses.png" alt="geometry crosses">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false
+false
+true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the difference between two Geometries</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+Geometry difference = polygon1.difference(polygon2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_difference.png" alt="geometry difference">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether one Geometry is disjoint from another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon3 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.541</span>, <span class="float">47.376</span>],
+        [-<span class="float">120.695</span>, <span class="float">47.047</span>],
+        [-<span class="float">119.794</span>, <span class="float">46.830</span>],
+        [-<span class="float">119.586</span>, <span class="float">47.331</span>],
+        [-<span class="float">120.102</span>, <span class="float">47.509</span>],
+        [-<span class="float">120.541</span>, <span class="float">47.376</span>]
+]])
+
+<span class="type">boolean</span> isDisjoint12 = polygon1.disjoint(polygon2)
+println isDisjoint12
+
+<span class="type">boolean</span> isDisjoint13 = polygon1.disjoint(polygon3)
+println isDisjoint13
+
+<span class="type">boolean</span> isDisjoint23 = polygon2.disjoint(polygon3)
+println isDisjoint23</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_distjoint.png" alt="geometry distjoint">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false
+true
+true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the distance bewteen two Geometries</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point1 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.442</span>, <span class="float">47.256</span>)
+<span class="predefined-type">Point</span> point2 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.321</span>, <span class="float">47.613</span>)
+<span class="type">double</span> distance = point1.distance(point2)
+println distance</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_distance.png" alt="geometry distance">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0.37694827231332195</pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Get Bounds from a Geometry</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="integer">123</span>,<span class="integer">46</span>)
@@ -2276,6 +2407,8 @@ println proj.wkt</code></pre>
     AXIS["Latitude", NORTH]],
   PROJECTION["Mollweide"],
   PARAMETER["semi-minor axis", 6378137.0],
+  PARAMETER["False easting", 0.0],
+  PARAMETER["False northing", 0.0],
   PARAMETER["Longitude of natural origin", 0.0],
   UNIT["m", 1.0],
   AXIS["Easting", EAST],
@@ -4221,7 +4354,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--27644d46_15a76a99811_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--3d944e14_15a7ccffdd4_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -4930,7 +5063,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 25 19:05:11 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 26 23:44:50 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4949,7 +5082,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--27644d46_15a76a99811_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--3d944e14_15a7ccffdd4_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4973,7 +5106,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 25 19:05:11 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 26 23:44:50 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4993,7 +5126,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--27644d46_15a76a99811_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--3d944e14_15a7ccffdd4_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5155,7 +5288,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--27644d46_15a76a99811_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--3d944e14_15a7ccffdd4_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5193,7 +5326,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--27644d46_15a76a99811_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--3d944e14_15a7ccffdd4_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -6498,15 +6631,15 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:isValid
 geo:union
 geo:intersection
+geo:isValid
 geo:difference
+geo:distance
+geo:numGeometries
+geo:isClosed
 geo:convexHull
 geo:area
-geo:numGeometries
-geo:distance
-geo:isClosed
 geo:crosses
 geo:getGeometryN
 geo:isSimple
@@ -6518,7 +6651,7 @@ geo:touches
 geo:within
 geo:simplify
 geo:densify
-geo:reproject
+geo:envelope
 geo:numPoints
 geo:boundary
 geo:centroid
@@ -6526,19 +6659,19 @@ geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:envelope
+geo:reproject
 geo:getX
 geo:getY
-geo:equalsExact
 geo:isRing
+geo:equalsExact
 geo:interiorPoint
 geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
 geo:interiorRingN
-geo:pointN
 geo:equalsExactTolerance
+geo:pointN
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -6653,7 +6786,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-25 18:57:42 UTC
+Last updated 2017-02-26 23:40:52 UTC
 </div>
 </div>
 </body>
