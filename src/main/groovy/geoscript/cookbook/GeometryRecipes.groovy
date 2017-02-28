@@ -646,6 +646,77 @@ class GeometryRecipes extends Recipes {
         distance
     }
 
+    Geometry boundary() {
+        // tag::boundary[]
+        Polygon polygon = new Polygon([
+            [
+                    [-121.915, 47.390],
+                    [-122.640, 46.995],
+                    [-121.739, 46.308],
+                    [-121.168, 46.777],
+                    [-120.981, 47.316],
+                    [-121.409, 47.413],
+                    [-121.915, 47.390]
+            ],
+            [
+                    [-122.255, 46.935],
+                    [-121.992, 46.935],
+                    [-121.992, 47.100],
+                    [-122.255, 47.100],
+                    [-122.255, 46.935]
+            ],
+            [
+                    [-121.717, 46.777],
+                    [-121.398, 46.777],
+                    [-121.398, 47.002],
+                    [-121.717, 47.002],
+                    [-121.717, 46.777]
+            ]
+        ])
+        Geometry boundary = polygon.boundary
+        // end::boundary[]
+        drawGeometries("geometry_boundary", [polygon, boundary])
+        boundary
+    }
+
+    Geometry centroid() {
+        // tag::centroid[]
+        Polygon polygon = new Polygon([[
+               [-118.937, 48.327],
+               [-121.157, 48.356],
+               [-121.684, 46.331],
+               [-119.355, 46.498],
+               [-119.355, 47.219],
+               [-120.629, 47.219],
+               [-120.607, 47.783],
+               [-119.201, 47.739],
+               [-118.937, 48.327]
+        ]])
+        Geometry centroid = polygon.centroid
+        // end::centroid[]
+        drawGeometries("geometry_centroid", [polygon, centroid])
+        centroid
+    }
+
+    Geometry interiorPoint() {
+        // tag::interiorPoint[]
+        Polygon polygon = new Polygon([[
+               [-118.937, 48.327],
+               [-121.157, 48.356],
+               [-121.684, 46.331],
+               [-119.355, 46.498],
+               [-119.355, 47.219],
+               [-120.629, 47.219],
+               [-120.607, 47.783],
+               [-119.201, 47.739],
+               [-118.937, 48.327]
+        ]])
+        Geometry interiorPoint = polygon.interiorPoint
+        // end::interiorPoint[]
+        drawGeometries("geometry_interiorPoint", [polygon, interiorPoint])
+        interiorPoint
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

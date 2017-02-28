@@ -205,6 +205,29 @@ class GeometryRecipesTest {
         assertEquals(0.37694827231332195, distance, 0.001)
     }
 
+    @Test void boundary() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.boundary()
+        assertEquals("MULTILINESTRING (" +
+                "(-121.915 47.39, -122.64 46.995, -121.739 46.308, -121.168 46.777, -120.981 47.316, " +
+                "-121.409 47.413, -121.915 47.39), " +
+                "(-122.255 46.935, -121.992 46.935, -121.992 47.1, -122.255 47.1, -122.255 46.935), " +
+                "(-121.717 46.777, -121.398 46.777, -121.398 47.002, -121.717 47.002, -121.717 46.777" +
+                "))", geometry.wkt)
+    }
+
+    @Test void centroid() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.centroid()
+        assertEquals("POINT (-120.43206854809475 47.34584003114768)", geometry.wkt)
+    }
+
+    @Test void interiorPoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.interiorPoint()
+        assertEquals("POINT (-121.02232180851064 47.343500000000006)", geometry.wkt)
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

@@ -268,6 +268,30 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bounds,inden
 image::geometry_bounds.png[]
 
 [source,groovy]
+.Get the Boundary from a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=boundary,indent=0]
+----
+[.thumb]
+image::geometry_boundary.png[]
+
+[source,groovy]
+.Get the Centroid from a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=centroid,indent=0]
+----
+[.thumb]
+image::geometry_centroid.png[]
+
+[source,groovy]
+.Get the Interior Point from a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=interiorPoint,indent=0]
+----
+[.thumb]
+image::geometry_interiorPoint.png[]
+
+[source,groovy]
 .Create a Geometry of a String
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createFromText,indent=0]
