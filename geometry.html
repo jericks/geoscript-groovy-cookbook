@@ -1201,6 +1201,86 @@ Bounds bounds = polygon.bounds</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Get the Boundary from a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([
+    [
+            [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+            [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+            [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+            [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+            [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+            [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+            [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+    ],
+    [
+            [-<span class="float">122.255</span>, <span class="float">46.935</span>],
+            [-<span class="float">121.992</span>, <span class="float">46.935</span>],
+            [-<span class="float">121.992</span>, <span class="float">47.100</span>],
+            [-<span class="float">122.255</span>, <span class="float">47.100</span>],
+            [-<span class="float">122.255</span>, <span class="float">46.935</span>]
+    ],
+    [
+            [-<span class="float">121.717</span>, <span class="float">46.777</span>],
+            [-<span class="float">121.398</span>, <span class="float">46.777</span>],
+            [-<span class="float">121.398</span>, <span class="float">47.002</span>],
+            [-<span class="float">121.717</span>, <span class="float">47.002</span>],
+            [-<span class="float">121.717</span>, <span class="float">46.777</span>]
+    ]
+])
+Geometry boundary = polygon.boundary</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_boundary.png" alt="geometry boundary">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Centroid from a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+       [-<span class="float">118.937</span>, <span class="float">48.327</span>],
+       [-<span class="float">121.157</span>, <span class="float">48.356</span>],
+       [-<span class="float">121.684</span>, <span class="float">46.331</span>],
+       [-<span class="float">119.355</span>, <span class="float">46.498</span>],
+       [-<span class="float">119.355</span>, <span class="float">47.219</span>],
+       [-<span class="float">120.629</span>, <span class="float">47.219</span>],
+       [-<span class="float">120.607</span>, <span class="float">47.783</span>],
+       [-<span class="float">119.201</span>, <span class="float">47.739</span>],
+       [-<span class="float">118.937</span>, <span class="float">48.327</span>]
+]])
+Geometry centroid = polygon.centroid</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_centroid.png" alt="geometry centroid">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Interior Point from a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+       [-<span class="float">118.937</span>, <span class="float">48.327</span>],
+       [-<span class="float">121.157</span>, <span class="float">48.356</span>],
+       [-<span class="float">121.684</span>, <span class="float">46.331</span>],
+       [-<span class="float">119.355</span>, <span class="float">46.498</span>],
+       [-<span class="float">119.355</span>, <span class="float">47.219</span>],
+       [-<span class="float">120.629</span>, <span class="float">47.219</span>],
+       [-<span class="float">120.607</span>, <span class="float">47.783</span>],
+       [-<span class="float">119.201</span>, <span class="float">47.739</span>],
+       [-<span class="float">118.937</span>, <span class="float">48.327</span>]
+]])
+Geometry interiorPoint = polygon.interiorPoint</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_interiorPoint.png" alt="geometry interiorPoint">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Create a Geometry of a String</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = Geometry.createFromText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Geo</span><span class="delimiter">&quot;</span></span>)</code></pre>
@@ -1647,7 +1727,7 @@ println geobuf</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-26 23:40:52 UTC
+Last updated 2017-02-28 03:07:11 UTC
 </div>
 </div>
 </body>

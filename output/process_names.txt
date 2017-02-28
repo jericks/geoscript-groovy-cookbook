@@ -57,6 +57,9 @@ geo:isClosed
 geo:convexHull
 geo:area
 geo:crosses
+geo:boundary
+geo:centroid
+geo:interiorPoint
 geo:getGeometryN
 geo:isSimple
 geo:isWithinDistance
@@ -69,8 +72,6 @@ geo:simplify
 geo:densify
 geo:envelope
 geo:numPoints
-geo:boundary
-geo:centroid
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
@@ -78,16 +79,15 @@ geo:geometryType
 geo:reproject
 geo:getX
 geo:getY
-geo:isRing
 geo:equalsExact
-geo:interiorPoint
+geo:isRing
 geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
 geo:interiorRingN
-geo:equalsExactTolerance
 geo:pointN
+geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
 geo:isEmpty
