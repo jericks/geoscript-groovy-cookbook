@@ -51,6 +51,14 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createMultiP
 image::geometry_create_multipolygon.png[]
 
 [source,groovy]
+.Create a GeometryCollection with a List of Geometries
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createGeometryCollection,indent=0]
+----
+[.thumb]
+image::geometry_create_geometrycollection.png[]
+
+[source,groovy]
 .Create a CircularString with a List of Points
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCircularString,indent=0]
@@ -290,6 +298,50 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=interiorPoin
 ----
 [.thumb]
 image::geometry_interiorPoint.png[]
+
+[source,groovy]
+.Get the number of Geometries
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getNumGeometries,indent=0]
+----
+[.thumb]
+image::geometry_getnumgeometries.png[]
+....
+include::output/geometry_getnumgeometries.txt[]
+....
+
+[source,groovy]
+.Get a Geometry by index
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getGeometryN,indent=0]
+----
+[.thumb]
+image::geometry_getgeometryn.png[]
+....
+include::output/geometry_getgeometryn.txt[]
+....
+
+[source,groovy]
+.Get a List of Geometries
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getGeometries,indent=0]
+----
+[.thumb]
+image::geometry_getgeometries.png[]
+....
+include::output/geometry_getgeometries.txt[]
+....
+
+[source,groovy]
+.Get the number of Points in a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getNumPoints,indent=0]
+----
+[.thumb]
+image::geometry_numpoints.png[]
+....
+include::output/geometry_numpoints.txt[]
+....
 
 [source,groovy]
 .Create a Geometry of a String

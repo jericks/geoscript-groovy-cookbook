@@ -45,6 +45,17 @@ class GeometryRecipesTest {
         assertEquals("MULTIPOLYGON (((-122.2723388671875 47.818687628247105, -122.37945556640624 47.66168780332917, -121.95373535156249 47.67093619422418, -122.2723388671875 47.818687628247105)), ((-122.76672363281249 47.42437092240516, -122.76672363281249 47.59505101193038, -122.52227783203125 47.59505101193038, -122.52227783203125 47.42437092240516, -122.76672363281249 47.42437092240516)), ((-122.20367431640624 47.543163654317304, -122.3712158203125 47.489368981370724, -122.33276367187499 47.35371061951363, -122.11029052734374 47.3704545156932, -122.08831787109375 47.286681888764214, -122.28332519531249 47.2270293988673, -122.2174072265625 47.154237057576594, -121.904296875 47.32579231609051, -122.06085205078125 47.47823216312885, -122.20367431640624 47.543163654317304)))", multiPolygon.wkt)
     }
 
+    @Test void createGeometryCollection() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        GeometryCollection geometryCollection = recipes.createGeometryCollection()
+        assertEquals("GEOMETRYCOLLECTION (" +
+                "LINESTRING (-157.044 58.722, -156.461 58.676), " +
+                "POINT (-156.648 58.739), " +
+                "POLYGON ((-156.395 58.7083, -156.412 58.6026, -155.874 58.5825, " +
+                "-155.313 58.4822, -155.385 58.6655, -156.203 58.7368, -156.395 58.7083)), " +
+                "POINT (-156.741 58.582))", geometryCollection.wkt)
+    }
+
     @Test void createCircularString() {
         GeometryRecipes recipes = new GeometryRecipes()
         CircularString circularString = recipes.createCircularString()
@@ -226,6 +237,30 @@ class GeometryRecipesTest {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geometry = recipes.interiorPoint()
         assertEquals("POINT (-121.02232180851064 47.343500000000006)", geometry.wkt)
+    }
+
+    @Test void getNumGeometries() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        int number = recipes.getNumGeometries()
+        assertEquals(3, number)
+    }
+
+    @Test void getGeometryN() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.getGeometryN()
+        assertEquals(3, geometries.size())
+    }
+
+    @Test void getGeometries() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.getGeometries()
+        assertEquals(3, geometries.size())
+    }
+
+    @Test void getNumPoints() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        int number = recipes.getNumPoints()
+        assertEquals(5, number)
     }
 
     // Geometry IO

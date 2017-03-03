@@ -135,6 +135,27 @@ class GeometryRecipes extends Recipes {
         multiPolygon
     }
 
+    GeometryCollection createGeometryCollection() {
+        // tag::createGeometryCollection[]
+        GeometryCollection geometryCollection = new GeometryCollection(
+            new LineString ([-157.044, 58.722], [-156.461, 58.676]),
+            new Point(-156.648, 58.739),
+            new Polygon([[
+                 [-156.395, 58.7083],
+                 [-156.412, 58.6026],
+                 [-155.874, 58.5825],
+                 [-155.313, 58.4822],
+                 [-155.385, 58.6655],
+                 [-156.203, 58.7368],
+                 [-156.395, 58.7083]
+            ]]),
+            new Point(-156.741, 58.582)
+        )
+        // end::createGeometryCollection[]
+        drawGeometry("geometry_create_geometrycollection", geometryCollection)
+        geometryCollection
+    }
+
     CircularString createCircularString() {
         // tag::createCircularString[]
         CircularString circularString = new CircularString([
@@ -715,6 +736,74 @@ class GeometryRecipes extends Recipes {
         // end::interiorPoint[]
         drawGeometries("geometry_interiorPoint", [polygon, interiorPoint])
         interiorPoint
+    }
+
+    int getNumGeometries() {
+        // tag::getNumGeometries[]
+        MultiPoint multiPoint = new MultiPoint([
+                new Point(-122.3876953125, 47.5820839916191),
+                new Point(-122.464599609375, 47.25686404408872),
+                new Point(-122.48382568359374, 47.431803338643334)
+        ])
+        int number = multiPoint.numGeometries
+        println number
+        // end::getNumGeometries[]
+        drawGeometry("geometry_getnumgeometries", multiPoint)
+        writeFile("geometry_getnumgeometries", "${number}")
+        number
+    }
+
+    List<Geometry> getGeometryN() {
+        // tag::getGeometryN[]
+        MultiPoint multiPoint = new MultiPoint([
+                new Point(-122.3876953125, 47.5820839916191),
+                new Point(-122.464599609375, 47.25686404408872),
+                new Point(-122.48382568359374, 47.431803338643334)
+        ])
+        (0..<multiPoint.getNumGeometries()).each { int i ->
+            Geometry geometry = multiPoint.getGeometryN(i)
+            println geometry.wkt
+        }
+        // end::getGeometryN[]
+        drawGeometry("geometry_getgeometryn", multiPoint)
+        writeFile("geometry_getgeometryn",  multiPoint.geometries.collect { it.wkt }.join(NEW_LINE))
+        (0..<multiPoint.getNumGeometries()).collect { int i ->
+            multiPoint.getGeometryN(i)
+        }
+    }
+
+    List<Geometry> getGeometries() {
+        // tag::getGeometries[]
+        MultiPoint multiPoint = new MultiPoint([
+                new Point(-122.3876953125, 47.5820839916191),
+                new Point(-122.464599609375, 47.25686404408872),
+                new Point(-122.48382568359374, 47.431803338643334)
+        ])
+        List<Geometry> geometries = multiPoint.geometries
+        geometries.each { Geometry geometry ->
+            println geometry.wkt
+        }
+        // end::getGeometries[]
+        drawGeometry("geometry_getgeometries", multiPoint)
+        writeFile("geometry_getgeometries",  "${geometries.collect{ it.wkt }.join(NEW_LINE)}")
+        geometries
+    }
+
+    int getNumPoints() {
+        // tag::getNumPoints[]
+        Polygon polygon = new Polygon([[
+            [-120.563, 46.739],
+            [-119.948, 46.739],
+            [-119.948, 46.965],
+            [-120.563, 46.965],
+            [-120.563, 46.739]
+        ]])
+        int number = polygon.numPoints
+        println number
+        // end::getNumPoints[]
+        drawGeometry("geometry_numpoints", polygon)
+        writeFile("geometry_numpoints",  "${number}")
+        number
     }
 
     // Geometry Readers and Writers
