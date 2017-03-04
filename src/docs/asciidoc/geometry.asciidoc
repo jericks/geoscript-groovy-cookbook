@@ -603,3 +603,75 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 ....
 include::output/geometry_to_geobuf_using_writer.txt[]
 ....
+
+==== GML 2
+
+[source,groovy]
+.Read a Geometry from GML2 using the Gml2Reader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGml2Reader,indent=0]
+----
+[.thumb]
+image::geometry_read_gml2reader.png[]
+
+[source,groovy]
+.Read a Geometry from GML2 using the Geometry.fromGML2() static method
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGml2,indent=0]
+----
+[.thumb]
+image::geometry_read_geometryfromgml2.png[]
+
+[source,groovy]
+.Get the GML2 of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGml2,indent=0]
+----
+....
+include::output/geometry_to_gml2.txt[]
+....
+
+[source,groovy]
+.Write a Geometry to GML2 using the Gml2Writer
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGml2UsingWriter,indent=0]
+----
+....
+include::output/geometry_to_gml2_using_writer.txt[]
+....
+
+==== GML 3
+
+[source,groovy]
+.Read a Geometry from GML3 using the Gml3Reader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGml3Reader,indent=0]
+----
+[.thumb]
+image::geometry_read_gml3reader.png[]
+
+[source,groovy]
+.Read a Geometry from GML3 using the Geometry.fromGML3() static method
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGml3,indent=0]
+----
+[.thumb]
+image::geometry_read_geometryfromgml3.png[]
+
+[source,groovy]
+.Get the GML3 of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGml3,indent=0]
+----
+....
+include::output/geometry_to_gml3.txt[]
+....
+
+[source,groovy]
+.Write a Geometry to GML3 using the Gml3Writer
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGml3UsingWriter,indent=0]
+----
+....
+include::output/geometry_to_gml3_using_writer.txt[]
+....

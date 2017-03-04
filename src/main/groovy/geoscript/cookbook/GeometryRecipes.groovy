@@ -17,6 +17,10 @@ import geoscript.geom.io.GeoJSONReader
 import geoscript.geom.io.GeoJSONWriter
 import geoscript.geom.io.GeobufReader
 import geoscript.geom.io.GeobufWriter
+import geoscript.geom.io.Gml2Reader
+import geoscript.geom.io.Gml2Writer
+import geoscript.geom.io.Gml3Reader
+import geoscript.geom.io.Gml3Writer
 import geoscript.geom.io.KmlReader
 import geoscript.geom.io.KmlWriter
 import geoscript.geom.io.Reader
@@ -1085,4 +1089,99 @@ class GeometryRecipes extends Recipes {
         writeFile("geometry_to_geobuf_using_writer", geobuf)
         geobuf
     }
+
+    // GML 2
+
+    Geometry readGeometryFromGml2Reader() {
+        // tag::readGeometryFromGml2Reader[]
+        String gml2 = "<gml:Point><gml:coordinates>-123.15,46.237</gml:coordinates></gml:Point>"
+        Gml2Reader reader = new Gml2Reader()
+        Geometry geometry = reader.read(gml2)
+        // end::readGeometryFromGml2Reader[]
+        drawGeometry("geometry_read_gml2reader", geometry)
+        geometry
+    }
+
+    Geometry readGeometryFromGml2() {
+        // tag::readGeometryFromGml2[]
+        String gml2 = "<gml:LineString><gml:coordinates>3.198,43.164 6.713,49.755 9.702,42.592 15.32,53.798</gml:coordinates></gml:LineString>"
+        Geometry geometry = Geometry.fromGML2(gml2)
+        // end::readGeometryFromGml2[]
+        drawGeometry("geometry_read_geometryfromgml2", geometry)
+        geometry
+    }
+
+    String writeGeometryToGml2() {
+        // tag::writeGeometryToGml2[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        String gml2 = geometry.gml2
+        println gml2
+        // end::writeGeometryToGml2[]
+        writeFile("geometry_to_gml2", gml2)
+        gml2
+    }
+
+    String writeGeometryToGml2UsingWriter() {
+        // tag::writeGeometryToGml2UsingWriter[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        Gml2Writer writer = new Gml2Writer()
+        String gml2 = writer.write(geometry)
+        println gml2
+        // end::writeGeometryToGml2UsingWriter[]
+        writeFile("geometry_to_gml2_using_writer", gml2)
+        gml2
+    }
+
+    // GML 3
+
+    Geometry readGeometryFromGml3Reader() {
+        // tag::readGeometryFromGml3Reader[]
+        String gml3 = "<gml:Point><gml:pos>-123.15 46.237</gml:pos></gml:Point>"
+        Gml3Reader reader = new Gml3Reader()
+        Geometry geometry = reader.read(gml3)
+        // end::readGeometryFromGml3Reader[]
+        drawGeometry("geometry_read_gml3reader", geometry)
+        geometry
+    }
+
+    Geometry readGeometryFromGml3() {
+        // tag::readGeometryFromGml3[]
+        String gml3 = "<gml:LineString><gml:posList>3.198 43.164 6.713 49.755 9.702 42.592 15.32 53.798</gml:posList></gml:LineString>"
+        Geometry geometry = Geometry.fromGML3(gml3)
+        // end::readGeometryFromGml3[]
+        drawGeometry("geometry_read_geometryfromgml3", geometry)
+        geometry
+    }
+
+    String writeGeometryToGml3() {
+        // tag::writeGeometryToGml3[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        String gml3 = geometry.gml3
+        println gml3
+        // end::writeGeometryToGml3[]
+        writeFile("geometry_to_gml3", gml3)
+        gml3
+    }
+
+    String writeGeometryToGml3UsingWriter() {
+        // tag::writeGeometryToGml3UsingWriter[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        Gml3Writer writer = new Gml3Writer()
+        String gml3 = writer.write(geometry)
+        println gml3
+        // end::writeGeometryToGml3UsingWriter[]
+        writeFile("geometry_to_gml3_using_writer", gml3)
+        gml3
+    }
+
 }

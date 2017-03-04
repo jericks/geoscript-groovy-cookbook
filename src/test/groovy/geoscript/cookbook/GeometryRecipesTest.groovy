@@ -393,7 +393,6 @@ class GeometryRecipesTest {
         GeometryRecipes recipes = new GeometryRecipes()
         String kml = recipes.writeGeometryToKMLUsingWriter()
         assertEquals("<LineString><coordinates>3.198,43.164 6.713,49.755 9.702,42.592 15.32,53.798</coordinates></LineString>", kml)
-
     }
 
     // Geobuf
@@ -420,6 +419,57 @@ class GeometryRecipesTest {
         GeometryRecipes recipes = new GeometryRecipes()
         String geobuf = recipes.writeGeometryToGeobufUsingWriter()
         assertEquals("10021806322408021a20e0b08603c0859529f089ad03b0c8a40690efec02efb1ea06a0e5ad05e0f5d70a", geobuf)
+    }
 
+    // GML 2
+
+    @Test void readGeometryFromGml2Reader() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGml2Reader()
+        assertEquals("POINT (-123.15 46.237)", geom.wkt)
+    }
+
+    @Test void readGeometryFromGml2() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGml2()
+        assertEquals("LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)", geom.wkt)
+    }
+
+    @Test void writeGeometryToGml2() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String gml = recipes.writeGeometryToGml2()
+        assertEquals("<gml:Point><gml:coordinates>-123.15,46.237</gml:coordinates></gml:Point>", gml)
+    }
+
+    @Test void writeGeometryToGml2UsingWriter() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String gml = recipes.writeGeometryToGml2UsingWriter()
+        assertEquals("<gml:LineString><gml:coordinates>3.198,43.164 6.713,49.755 9.702,42.592 15.32,53.798</gml:coordinates></gml:LineString>", gml)
+    }
+
+    // GML 3
+
+    @Test void readGeometryFromGml3Reader() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGml3Reader()
+        assertEquals("POINT (-123.15 46.237)", geom.wkt)
+    }
+
+    @Test void readGeometryFromGml3() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGml3()
+        assertEquals("LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)", geom.wkt)
+    }
+
+    @Test void writeGeometryToGml3() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String gml = recipes.writeGeometryToGml3()
+        assertEquals("<gml:Point><gml:pos>-123.15 46.237</gml:pos></gml:Point>", gml)
+    }
+
+    @Test void writeGeometryToGml3UsingWriter() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String gml = recipes.writeGeometryToGml3UsingWriter()
+        assertEquals("<gml:LineString><gml:posList>3.198 43.164 6.713 49.755 9.702 42.592 15.32 53.798</gml:posList></gml:LineString>", gml)
     }
 }
