@@ -1,0 +1,11 @@
+== Render Recipes
+
+=== Create a Map
+
+[source,groovy]
+.Create a Map with Layers
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMap,indent=0]
+----
+[.thumb]
+image::map_create.png[]
