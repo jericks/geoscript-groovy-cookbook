@@ -1928,6 +1928,126 @@ println geobuf</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="gml-2"><a class="anchor" href="#gml-2"></a>GML 2</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from GML2 using the Gml2Reader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> gml2 = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;gml:Point&gt;&lt;gml:coordinates&gt;-123.15,46.237&lt;/gml:coordinates&gt;&lt;/gml:Point&gt;</span><span class="delimiter">&quot;</span></span>
+Gml2Reader reader = <span class="keyword">new</span> Gml2Reader()
+Geometry geometry = reader.read(gml2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_gml2reader.png" alt="geometry read gml2reader">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from GML2 using the Geometry.fromGML2() static method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> gml2 = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;gml:LineString&gt;&lt;gml:coordinates&gt;3.198,43.164 6.713,49.755 9.702,42.592 15.32,53.798&lt;/gml:coordinates&gt;&lt;/gml:LineString&gt;</span><span class="delimiter">&quot;</span></span>
+Geometry geometry = Geometry.fromGML2(gml2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_geometryfromgml2.png" alt="geometry read geometryfromgml2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the GML2 of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+<span class="predefined-type">String</span> gml2 = geometry.gml2
+println gml2</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;gml:Point&gt;&lt;gml:coordinates&gt;-123.15,46.237&lt;/gml:coordinates&gt;&lt;/gml:Point&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to GML2 using the Gml2Writer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+Gml2Writer writer = <span class="keyword">new</span> Gml2Writer()
+<span class="predefined-type">String</span> gml2 = writer.write(geometry)
+println gml2</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;gml:LineString&gt;&lt;gml:coordinates&gt;3.198,43.164 6.713,49.755 9.702,42.592 15.32,53.798&lt;/gml:coordinates&gt;&lt;/gml:LineString&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gml-3"><a class="anchor" href="#gml-3"></a>GML 3</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from GML3 using the Gml3Reader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> gml3 = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;gml:Point&gt;&lt;gml:pos&gt;-123.15 46.237&lt;/gml:pos&gt;&lt;/gml:Point&gt;</span><span class="delimiter">&quot;</span></span>
+Gml3Reader reader = <span class="keyword">new</span> Gml3Reader()
+Geometry geometry = reader.read(gml3)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_gml3reader.png" alt="geometry read gml3reader">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from GML3 using the Geometry.fromGML3() static method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> gml3 = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;gml:LineString&gt;&lt;gml:posList&gt;3.198 43.164 6.713 49.755 9.702 42.592 15.32 53.798&lt;/gml:posList&gt;&lt;/gml:LineString&gt;</span><span class="delimiter">&quot;</span></span>
+Geometry geometry = Geometry.fromGML3(gml3)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_geometryfromgml3.png" alt="geometry read geometryfromgml3">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the GML3 of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+<span class="predefined-type">String</span> gml3 = geometry.gml3
+println gml3</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;gml:Point&gt;&lt;gml:pos&gt;-123.15 46.237&lt;/gml:pos&gt;&lt;/gml:Point&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to GML3 using the Gml3Writer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+Gml3Writer writer = <span class="keyword">new</span> Gml3Writer()
+<span class="predefined-type">String</span> gml3 = writer.write(geometry)
+println gml3</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;gml:LineString&gt;&lt;gml:posList&gt;3.198 43.164 6.713 49.755 9.702 42.592 15.32 53.798&lt;/gml:posList&gt;&lt;/gml:LineString&gt;</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -4556,7 +4676,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-6ea62c92_15a9228aa48_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-639e95e4_15a9bb74b0f_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5265,7 +5385,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 03 03:13:43 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 04 23:46:05 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5284,7 +5404,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-6ea62c92_15a9228aa48_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-639e95e4_15a9bb74b0f_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5308,7 +5428,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 03 03:13:43 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 04 23:46:05 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5328,7 +5448,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-6ea62c92_15a9228aa48_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-639e95e4_15a9bb74b0f_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5490,7 +5610,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-6ea62c92_15a9228aa48_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-639e95e4_15a9bb74b0f_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5528,7 +5648,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-6ea62c92_15a9228aa48_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-639e95e4_15a9bb74b0f_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -6833,20 +6953,20 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
+geo:isValid
 geo:union
 geo:intersection
-geo:isValid
 geo:difference
 geo:distance
+geo:numGeometries
+geo:isClosed
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
 geo:convexHull
 geo:area
 geo:crosses
 geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:numGeometries
-geo:isClosed
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -6856,24 +6976,24 @@ geo:touches
 geo:within
 geo:simplify
 geo:densify
-geo:envelope
 geo:numPoints
+geo:reproject
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:reproject
+geo:envelope
 geo:getX
 geo:getY
-geo:equalsExact
 geo:isRing
+geo:equalsExact
 geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
+geo:interiorRingN
 geo:pointN
 geo:equalsExactTolerance
-geo:interiorRingN
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -6988,7 +7108,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-03 03:09:34 UTC
+Last updated 2017-03-04 23:42:21 UTC
 </div>
 </div>
 </body>
