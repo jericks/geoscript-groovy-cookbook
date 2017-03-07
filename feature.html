@@ -523,11 +523,28 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#modifying-schemas">Modifying Schemas</a></li>
 <li><a href="#combining-schemas">Combining Schemas</a></li>
 <li><a href="#creating-features-from-a-schema">Creating Features from a Schema</a></li>
-<li><a href="#reading-and-writing-schemas">Reading and Writing Schemas</a></li>
+<li><a href="#reading-and-writing-schemas">Reading and Writing Schemas</a>
+<ul class="sectlevel3">
+<li><a href="#finding-schema-writer-and-readers">Finding Schema Writer and Readers</a></li>
+<li><a href="#string">String</a></li>
+<li><a href="#json">JSON</a></li>
+<li><a href="#xml">XML</a></li>
+</ul>
+</li>
 <li><a href="#creating-features">Creating Features</a></li>
 <li><a href="#getting-feature-properties">Getting Feature Properties</a></li>
 <li><a href="#getting-feature-attributes">Getting Feature Attributes</a></li>
-<li><a href="#reading-and-writing-features">Reading and Writing Features</a></li>
+<li><a href="#reading-and-writing-features">Reading and Writing Features</a>
+<ul class="sectlevel3">
+<li><a href="#finding-feature-writer-and-readers">Finding Feature Writer and Readers</a></li>
+<li><a href="#geojson">GeoJSON</a></li>
+<li><a href="#geobuf">GeoBuf</a></li>
+<li><a href="#georss">GeoRSS</a></li>
+<li><a href="#gml">GML</a></li>
+<li><a href="#gpx">GPX</a></li>
+<li><a href="#kml">KML</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1178,7 +1195,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-5441574a_15aa08e7df1_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-3d49d648_15aa67cf232_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -1887,7 +1904,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Mar 05 14:19:37 PST 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 07 01:58:12 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1906,7 +1923,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-5441574a_15aa08e7df1_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-3d49d648_15aa67cf232_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1930,7 +1947,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Mar 05 14:19:38 PST 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 07 01:58:12 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1950,7 +1967,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-5441574a_15aa08e7df1_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-3d49d648_15aa67cf232_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -2112,7 +2129,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-5441574a_15aa08e7df1_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-3d49d648_15aa67cf232_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2150,7 +2167,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-5441574a_15aa08e7df1_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-3d49d648_15aa67cf232_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -2257,7 +2274,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-03 18:17:30 PST
+Last updated 2017-03-07 01:51:00 UTC
 </div>
 </div>
 </body>
