@@ -1,6 +1,9 @@
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/groovy]
+
 == Render Recipes
 
-=== Create a Map
+=== Creating Maps
 
 [source,groovy]
 .Create a Map with Layers
@@ -9,3 +12,95 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMap,inde
 ----
 [.thumb]
 image::map_create.png[]
+
+=== Rendering Maps
+
+==== Image
+
+[source,groovy]
+.Render a Map to an image using an Image Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToImage,indent=0]
+----
+[.thumb]
+image::map_image_image.png[]
+
+[source,groovy]
+.Render a Map to an OutputStream using the Image Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToFile,indent=0]
+----
+[.thumb]
+image::map_image_file.jpeg[]
+
+==== PNG
+
+[source,groovy]
+.Render a Map to an Image using the PNG Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToPngImage,indent=0]
+----
+[.thumb]
+image::map_png_image.png[]
+
+[source,groovy]
+.Render a Map to an OutputStream using the PNG Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToPngFile,indent=0]
+----
+[.thumb]
+image::map_png_file.png[]
+
+==== JPEG
+
+[source,groovy]
+.Render a Map to an Image using the JPEG Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToJpegImage,indent=0]
+----
+[.thumb]
+image::map_jpeg_image.jpeg[]
+
+[source,groovy]
+.Render a Map to an OutputStream using the JPEG Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToJpegFile,indent=0]
+----
+[.thumb]
+image::map_jpeg_file.jpeg[]
+
+==== GIF
+
+[source,groovy]
+.Render a Map to an Image using the GIF Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToGifImage,indent=0]
+----
+[.thumb]
+image::map_gif_image.gif[]
+
+[source,groovy]
+.Render a Map to an OutputStream using the GIF Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToGifFile,indent=0]
+----
+[.thumb]
+image::map_gif_file.gif[]
+
+==== GeoTIFF
+
+[source,groovy]
+.Render a Map to an Image using the GeoTIFF Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToGeoTiffImage,indent=0]
+----
+[.thumb]
+image::map_geotiff_image.tif[]
+
+[source,groovy]
+.Render a Map to an OutputStream using the GeoTIFF Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToGeoTiffFile,indent=0]
+----
+[.thumb]
+image::map_geotiff_file.tif[]

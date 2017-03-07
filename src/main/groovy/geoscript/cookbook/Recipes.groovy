@@ -37,12 +37,16 @@ class Recipes {
         Viewer.drawToFile(geometries, file, size: options.get("size", [200,200]), drawCoords: options.get("drawCoords", true))
     }
 
-    protected void saveImage(String name, BufferedImage image) {
-        File file = new File("src/docs/asciidoc/images/${name}.png")
+    protected void saveImage(String name, BufferedImage image, String type) {
+        File file = new File("src/docs/asciidoc/images/${name}.${type}")
         if(!file.parentFile.exists()) {
             file.parentFile.mkdir()
         }
-        ImageIO.write(image, "png", file)
+        ImageIO.write(image, type, file)
+    }
+
+    protected void saveImage(String name, BufferedImage image) {
+        saveImage(name, image, "png")
     }
 
     protected File getImageFile(String name) {

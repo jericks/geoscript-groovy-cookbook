@@ -130,6 +130,7 @@
                                 <basedir>${project.basedir}/src/docs/asciidoc</basedir>
                                 <imagesdir>./images</imagesdir>
                                 <toc>left</toc>
+                                <toclevels>4</toclevels>
                                 <icons>font</icons>
                                 <sectanchors>true</sectanchors>
                                 <idprefix/>
