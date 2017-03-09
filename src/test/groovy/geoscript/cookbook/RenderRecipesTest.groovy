@@ -83,4 +83,17 @@ class RenderRecipesTest {
         assertNotNull(file)
     }
 
+    // ASCII
+
+    @Test void renderToAsciiString() {
+        RenderRecipes recipes = new RenderRecipes()
+        String str = recipes.renderToAsciiString()
+        assertNotNull(str)
+    }
+
+    @Test void renderToAsciiFile() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.renderToAsciiFile()
+        assertNotNull(file)
+    }
 }

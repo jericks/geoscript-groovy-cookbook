@@ -1,6 +1,7 @@
 package geoscript.cookbook
 
 import geoscript.layer.Layer
+import geoscript.render.ASCII
 import geoscript.render.GIF
 import geoscript.render.GeoTIFF
 import geoscript.render.Image
@@ -236,6 +237,49 @@ class RenderRecipes extends Recipes {
         geotiff.render(map, new FileOutputStream(file))
         // end::renderToGeoTiffFile[]
         moveFile(file, new File("src/docs/asciidoc/images/map_geotiff_file.tif"))
+        file
+    }
+
+
+    // ASCII
+
+    String renderToAsciiString() {
+        // tag::renderToAsciiString[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        ASCII ascii = new ASCII(width: 60)
+        String asciiStr = ascii.render(map)
+        println asciiStr
+        // end::renderToAsciiString[]
+        writeFile("render_ascii_string", "${asciiStr}")
+        ascii
+    }
+
+    File renderToAsciiFile() {
+        // tag::renderToAsciiFile[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        ASCII ascii = new ASCII(width: 60)
+        File file = new File("map.txt")
+        ascii.render(map, new FileOutputStream(file))
+        // end::renderToAsciiFile[]
+        moveFile(file, new File("src/docs/asciidoc/output/render_ascii_file.txt"))
         file
     }
 }
