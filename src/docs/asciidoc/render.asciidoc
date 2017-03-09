@@ -105,7 +105,7 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToGeoTif
 [.thumb]
 image::map_geotiff_file.tif[]
 
-=== ASCII
+==== ASCII
 
 [source,groovy]
 .Render a Map to an string using the ASCII Renderer
