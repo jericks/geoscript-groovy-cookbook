@@ -646,6 +646,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geotiff">GeoTIFF</a></li>
 </ul>
 </li>
+<li><a href="#ascii">ASCII</a></li>
 </ul>
 </li>
 </ul>
@@ -4718,7 +4719,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-3d49d648_15aa67cf232_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-5eca602b_15ab1117148_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5427,7 +5428,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 07 01:58:12 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Mar 09 03:16:36 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5446,7 +5447,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-3d49d648_15aa67cf232_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-5eca602b_15ab1117148_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5470,7 +5471,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 07 01:58:12 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Mar 09 03:16:36 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5490,7 +5491,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-3d49d648_15aa67cf232_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-5eca602b_15ab1117148_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5652,7 +5653,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-3d49d648_15aa67cf232_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-5eca602b_15ab1117148_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5690,7 +5691,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-3d49d648_15aa67cf232_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-5eca602b_15ab1117148_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -6952,6 +6953,8 @@ geo:union
 geo:intersection
 geo:difference
 geo:distance
+geo:isClosed
+geo:numGeometries
 geo:convexHull
 geo:area
 geo:crosses
@@ -6959,8 +6962,6 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
-geo:isClosed
-geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -6976,15 +6977,15 @@ geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:envelope
 geo:getX
 geo:getY
-geo:relatePattern
-geo:startPoint
-geo:endPoint
+geo:envelope
 geo:isRing
 geo:equalsExact
 geo:polygonize
+geo:startPoint
+geo:endPoint
+geo:relatePattern
 geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
@@ -7418,12 +7419,103 @@ geotiff.render(map, <span class="keyword">new</span> <span class="predefined-typ
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="ascii"><a class="anchor" href="#ascii"></a>ASCII</h3>
+<div class="listingblock">
+<div class="title">Render a Map to an string using the ASCII Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+ASCII ascii = <span class="keyword">new</span> ASCII(<span class="key">width</span>: <span class="integer">60</span>)
+<span class="predefined-type">String</span> asciiStr = ascii.render(map)
+println asciiStr</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+(((((((((((((((^(^(.(?......((((((((((((((^(((((((((((((((((
+.....:.^(^..??^^!^:..!(^...(((((^.^(((^...........:.^(^..??^
+.....(:((.........((.(((.((((((:(.................(:((......
+?..(^((((((((^.........((((((.(..............?..(^((((((((^.
+.^((((((((((((^.......^(((((((...:^.^?...^..:.^((((((((((((^
+((.((((((((((((.....:((((((((^^((^:!^^^^.....((.((((((((((((
+((((((((((((((((.!(((((((((((................(((((((((((((((
+((((((((((^((((((.((.(((((((....:....((..^^((((((((((((^((((
+^((((((((((((((((((.((((((((^:^...^((((.((^^(^((((((((((((((
+((((((((((((((((((((.!:((((((((.....((((((((((((((((((((((((
+((.(((((((((((((((((.....(((((((...(((((((((^((.((((((((((((
+(^((((((((((((((((((.....(((((((.^.(((((((((((^(((((((((((((
+....(^((((((((((((((((...(((((((.^(^(((((((((....(^(((((((((
+....(((((((((((((((((...((((((((^:((((((((((.....(((((((((((
+((^.(((((((((((((((((..((((((((((((((((((((((((^.(((((((((((
+(((((((((((((((((((((.((((((((((((((((((((((((((((((((((((((
+(((((((((((((((((((((^((((((((((((((((((((((((((((((((((((((
+((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+....^((((((((((((((((?((((((((((((?....(.........^((((((((((
+.....(((((...........(((((........................(((((.....
+............................................................</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Render a Map to an text file using the ASCII Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+ASCII ascii = <span class="keyword">new</span> ASCII(<span class="key">width</span>: <span class="integer">60</span>)
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.txt</span><span class="delimiter">&quot;</span></span>)
+ascii.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+(((((((((((((((^(^(.(?......((((((((((((((^(((((((((((((((((
+.....:.^(^..??^^!^:..!(^...(((((^.^(((^...........:.^(^..??^
+.....(:((.........((.(((.((((((:(.................(:((......
+?..(^((((((((^.........((((((.(..............?..(^((((((((^.
+.^((((((((((((^.......^(((((((...:^.^?...^..:.^((((((((((((^
+((.((((((((((((.....:((((((((^^((^:!^^^^.....((.((((((((((((
+((((((((((((((((.!(((((((((((................(((((((((((((((
+((((((((((^((((((.((.(((((((....:....((..^^((((((((((((^((((
+^((((((((((((((((((.((((((((^:^...^((((.((^^(^((((((((((((((
+((((((((((((((((((((.!:((((((((.....((((((((((((((((((((((((
+((.(((((((((((((((((.....(((((((...(((((((((^((.((((((((((((
+(^((((((((((((((((((.....(((((((.^.(((((((((((^(((((((((((((
+....(^((((((((((((((((...(((((((.^(^(((((((((....(^(((((((((
+....(((((((((((((((((...((((((((^:((((((((((.....(((((((((((
+((^.(((((((((((((((((..((((((((((((((((((((((((^.(((((((((((
+(((((((((((((((((((((.((((((((((((((((((((((((((((((((((((((
+(((((((((((((((((((((^((((((((((((((((((((((((((((((((((((((
+((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+....^((((((((((((((((?((((((((((((?....(.........^((((((((((
+.....(((((...........(((((........................(((((.....
+............................................................</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-07 01:51:00 UTC
+Last updated 2017-03-09 03:12:31 UTC
 </div>
 </div>
 </body>
