@@ -1,11 +1,10 @@
 geo:buffer
-geo:isValid
 geo:union
 geo:intersection
+geo:isValid
 geo:difference
 geo:distance
 geo:isClosed
-geo:numGeometries
 geo:convexHull
 geo:area
 geo:crosses
@@ -13,6 +12,7 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
+geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -31,12 +31,12 @@ geo:geometryType
 geo:getX
 geo:getY
 geo:envelope
-geo:isRing
+geo:relatePattern
 geo:equalsExact
+geo:isRing
 geo:polygonize
 geo:startPoint
 geo:endPoint
-geo:relatePattern
 geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
