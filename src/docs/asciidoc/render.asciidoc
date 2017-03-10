@@ -77,7 +77,7 @@ image::map_jpeg_file.jpeg[]
 include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToGifImage,indent=0]
 ----
 [.thumb]
-image::map_gif_image.gif[]
+image::map_gif_image.png[]
 
 [source,groovy]
 .Render a Map to an OutputStream using the GIF Renderer
@@ -85,7 +85,7 @@ image::map_gif_image.gif[]
 include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToGifFile,indent=0]
 ----
 [.thumb]
-image::map_gif_file.gif[]
+image::map_gif_file.png[]
 
 ==== GeoTIFF
 
@@ -95,7 +95,7 @@ image::map_gif_file.gif[]
 include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToGeoTiffImage,indent=0]
 ----
 [.thumb]
-image::map_geotiff_image.tif[]
+image::map_geotiff_image.png[]
 
 [source,groovy]
 .Render a Map to an OutputStream using the GeoTIFF Renderer
@@ -103,7 +103,7 @@ image::map_geotiff_image.tif[]
 include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToGeoTiffFile,indent=0]
 ----
 [.thumb]
-image::map_geotiff_file.tif[]
+image::map_geotiff_file.png[]
 
 ==== ASCII
 

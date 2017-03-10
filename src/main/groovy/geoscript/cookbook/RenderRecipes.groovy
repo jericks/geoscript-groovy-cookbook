@@ -12,6 +12,8 @@ import geoscript.style.Fill
 import geoscript.style.Stroke
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
+
+import javax.imageio.ImageIO
 import java.awt.image.BufferedImage
 
 class RenderRecipes extends Recipes {
@@ -175,7 +177,7 @@ class RenderRecipes extends Recipes {
         GIF gif = new GIF()
         BufferedImage image = gif.render(map)
         // end::renderToGifImage[]
-        saveImage("map_gif_image", image, "gif")
+        saveImage("map_gif_image", image, "png")
         image
     }
 
@@ -195,8 +197,11 @@ class RenderRecipes extends Recipes {
         File file = new File("map.gif")
         gif.render(map, new FileOutputStream(file))
         // end::renderToGifFile[]
-        moveFile(file, new File("src/docs/asciidoc/images/map_gif_file.gif"))
-        file
+        File file2 = new File("src/docs/asciidoc/images/map_gif_file.png")
+        BufferedImage img = ImageIO.read(file)
+        ImageIO.write(img, "png", file2)
+        file.delete()
+        file2
     }
 
     // GEOTIF
@@ -216,7 +221,7 @@ class RenderRecipes extends Recipes {
         GeoTIFF geotiff = new GeoTIFF()
         BufferedImage image = geotiff.render(map)
         // end::renderToGeoTiffImage[]
-        saveImage("map_geotiff_image", image, "tif")
+        saveImage("map_geotiff_image", image, "png")
         image
     }
 
@@ -236,8 +241,11 @@ class RenderRecipes extends Recipes {
         File file = new File("map.tif")
         geotiff.render(map, new FileOutputStream(file))
         // end::renderToGeoTiffFile[]
-        moveFile(file, new File("src/docs/asciidoc/images/map_geotiff_file.tif"))
-        file
+        File file2 = new File("src/docs/asciidoc/images/map_geotiff_file.png")
+        BufferedImage img = ImageIO.read(file)
+        ImageIO.write(img, "png", file2)
+        file.delete()
+        file2
     }
 
 
