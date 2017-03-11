@@ -96,4 +96,32 @@ class RenderRecipesTest {
         File file = recipes.renderToAsciiFile()
         assertNotNull(file)
     }
+
+    // Base64
+
+    @Test void renderToBase64String() {
+        RenderRecipes recipes = new RenderRecipes()
+        String str = recipes.renderToBase64String()
+        assertNotNull(str)
+    }
+
+    @Test void renderToBase64File() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.renderToBase64File()
+        assertNotNull(file)
+    }
+
+    // PDF
+
+    @Test void renderToPdfDocument() {
+        RenderRecipes recipes = new RenderRecipes()
+        com.lowagie.text.Document document = recipes.renderToPdfDocument()
+        assertNotNull(document)
+    }
+
+    @Test void renderToPdfFile() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.renderToPdfFile()
+        assertNotNull(file)
+    }
 }

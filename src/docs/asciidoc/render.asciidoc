@@ -124,3 +124,43 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToAsciiF
 ....
 include::output/render_ascii_file.txt[]
 ....
+
+==== Base64
+
+[source,groovy]
+.Render a Map to an string using the Base64 Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToBase64String,indent=0]
+----
+....
+include::output/render_base64_string.txt[]
+....
+
+[source,groovy]
+.Render a Map to an text file using the Base64 Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToBase64File,indent=0]
+----
+....
+include::output/render_base64_file.txt[]
+....
+
+==== PDF
+
+[source,groovy]
+.Render a Map to a PDF Document using the PDF Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToPdfDocument,indent=0]
+----
+
+[.thumb]
+image::render_pdf.png[]
+
+[source,groovy]
+.Render a Map to a PDF file using the PDF Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToPdfFile,indent=0]
+----
+
+[.thumb]
+image::render_pdf.png[]

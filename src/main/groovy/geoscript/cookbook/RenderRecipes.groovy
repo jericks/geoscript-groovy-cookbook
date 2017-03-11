@@ -1,13 +1,16 @@
 package geoscript.cookbook
 
+import com.lowagie.text.pdf.PdfWriter
 import geoscript.layer.Layer
 import geoscript.render.ASCII
+import geoscript.render.Base64
 import geoscript.render.GIF
 import geoscript.render.GeoTIFF
 import geoscript.render.Image
 import geoscript.render.JPEG
 import geoscript.render.Map
 import geoscript.render.PNG
+import geoscript.render.Pdf
 import geoscript.style.Fill
 import geoscript.style.Stroke
 import geoscript.workspace.GeoPackage
@@ -248,7 +251,6 @@ class RenderRecipes extends Recipes {
         file2
     }
 
-
     // ASCII
 
     String renderToAsciiString() {
@@ -288,6 +290,90 @@ class RenderRecipes extends Recipes {
         ascii.render(map, new FileOutputStream(file))
         // end::renderToAsciiFile[]
         moveFile(file, new File("src/docs/asciidoc/output/render_ascii_file.txt"))
+        file
+    }
+
+    // Base64
+
+    String renderToBase64String() {
+        // tag::renderToBase64String[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        Base64 base64 = new Base64()
+        String base64Str = base64.render(map)
+        println base64Str
+        // end::renderToBase64String[]
+        writeFile("render_base64_string", "${base64Str.substring(0,50)}...")
+        base64Str
+    }
+
+    File renderToBase64File() {
+        // tag::renderToBase64File[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        Base64 base64 = new Base64()
+        File file = new File("map.txt")
+        base64.render(map, new FileOutputStream(file))
+        // end::renderToBase64File[]
+        String base64Str = file.text
+        file.delete()
+        writeFile("render_base64_file", "${base64Str.substring(0,50)}...")
+        file
+    }
+
+    // PDF
+
+    com.lowagie.text.Document renderToPdfDocument() {
+        // tag::renderToPdfDocument[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        Pdf pdf = new Pdf()
+        com.lowagie.text.Document document = pdf.render(map)
+        // end::renderToPdfDocument[]
+        document
+    }
+
+    File renderToPdfFile() {
+        // tag::renderToPdfFile[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        Pdf pdf = new Pdf()
+        File file = new File("map.pdf")
+        pdf.render(map, new FileOutputStream(file))
+        // end::renderToPdfFile[]
+        moveFile(file, new File("src/docs/asciidoc/output/render_pdf_file.pdf"))
         file
     }
 }
