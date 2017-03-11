@@ -645,6 +645,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#gif">GIF</a></li>
 <li><a href="#geotiff">GeoTIFF</a></li>
 <li><a href="#ascii">ASCII</a></li>
+<li><a href="#base64">Base64</a></li>
+<li><a href="#pdf">PDF</a></li>
 </ul>
 </li>
 </ul>
@@ -4719,7 +4721,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-8da1822_15ab6700ab2_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-17339ba7_15abedcb7a2_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5428,7 +5430,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Mar 09 20:18:00 PST 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 11 19:33:41 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5447,7 +5449,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-8da1822_15ab6700ab2_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-17339ba7_15abedcb7a2_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5471,7 +5473,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Mar 09 20:18:01 PST 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 11 19:33:41 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5491,7 +5493,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-8da1822_15ab6700ab2_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-17339ba7_15abedcb7a2_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5653,7 +5655,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-8da1822_15ab6700ab2_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-17339ba7_15abedcb7a2_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5691,7 +5693,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-8da1822_15ab6700ab2_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-17339ba7_15abedcb7a2_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -6947,7 +6949,55 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>vec:Aggregate
+<pre>geo:buffer
+geo:union
+geo:intersection
+geo:isValid
+geo:difference
+geo:distance
+geo:isClosed
+geo:numGeometries
+geo:convexHull
+geo:area
+geo:crosses
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:envelope
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:reproject
+geo:getX
+geo:getY
+geo:isRing
+geo:equalsExact
+geo:polygonize
+geo:startPoint
+geo:endPoint
+geo:relatePattern
+geo:equalsExactTolerance
+geo:pointN
+geo:interiorRingN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -6994,55 +7044,7 @@ ras:RasterAsPointCollection
 ras:RasterZonalStatistics
 ras:RasterZonalStatistics2
 ras:ScaleCoverage
-ras:StyleCoverage
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-geo:isRing
-geo:getX
-geo:getY
-geo:endPoint
-geo:startPoint
-geo:area
-geo:numGeometries
-geo:buffer
-geo:convexHull
-geo:crosses
-geo:difference
-geo:distance
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:symDifference
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:reproject
-geo:envelope
-geo:polygonize
-geo:equalsExact
-geo:isValid
-geo:union
-geo:intersection
-geo:isClosed
-geo:relatePattern
-geo:equalsExactTolerance
-geo:pointN
-geo:interiorRingN
-geo:splitPolygon</pre>
+ras:StyleCoverage</pre>
 </div>
 </div>
 </div>
@@ -7509,13 +7511,110 @@ ascii.render(map, <span class="keyword">new</span> <span class="predefined-type"
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="base64"><a class="anchor" href="#base64"></a>Base64</h4>
+<div class="listingblock">
+<div class="title">Render a Map to an string using the Base64 Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+Base64 base64 = <span class="keyword">new</span> Base64()
+<span class="predefined-type">String</span> base64Str = base64.render(map)
+println base64Str</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAEsC...</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Render a Map to an text file using the Base64 Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+Base64 base64 = <span class="keyword">new</span> Base64()
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.txt</span><span class="delimiter">&quot;</span></span>)
+base64.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>iVBORw0KGgoAAAANSUhEUgAAAyAAAAEsCAYAAAA7Ldc6AACAAE...</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pdf"><a class="anchor" href="#pdf"></a>PDF</h4>
+<div class="listingblock">
+<div class="title">Render a Map to a PDF Document using the PDF Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+Pdf pdf = <span class="keyword">new</span> Pdf()
+com.lowagie.text.Document document = pdf.render(map)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_pdf.png" alt="render pdf">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Render a Map to a PDF file using the PDF Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+Pdf pdf = <span class="keyword">new</span> Pdf()
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.pdf</span><span class="delimiter">&quot;</span></span>)
+pdf.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_pdf.png" alt="render pdf">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-05 18:57:10 PST
+Last updated 2017-03-11 19:28:53 UTC
 </div>
 </div>
 </body>

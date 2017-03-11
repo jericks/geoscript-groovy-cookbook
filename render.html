@@ -525,6 +525,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#gif">GIF</a></li>
 <li><a href="#geotiff">GeoTIFF</a></li>
 <li><a href="#ascii">ASCII</a></li>
+<li><a href="#base64">Base64</a></li>
+<li><a href="#pdf">PDF</a></li>
 </ul>
 </li>
 </ul>
@@ -894,13 +896,110 @@ ascii.render(map, <span class="keyword">new</span> <span class="predefined-type"
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="base64"><a class="anchor" href="#base64"></a>Base64</h4>
+<div class="listingblock">
+<div class="title">Render a Map to an string using the Base64 Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+Base64 base64 = <span class="keyword">new</span> Base64()
+<span class="predefined-type">String</span> base64Str = base64.render(map)
+println base64Str</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAEsC...</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Render a Map to an text file using the Base64 Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+Base64 base64 = <span class="keyword">new</span> Base64()
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.txt</span><span class="delimiter">&quot;</span></span>)
+base64.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>iVBORw0KGgoAAAANSUhEUgAAAyAAAAEsCAYAAAA7Ldc6AACAAE...</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pdf"><a class="anchor" href="#pdf"></a>PDF</h4>
+<div class="listingblock">
+<div class="title">Render a Map to a PDF Document using the PDF Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+Pdf pdf = <span class="keyword">new</span> Pdf()
+com.lowagie.text.Document document = pdf.render(map)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_pdf.png" alt="render pdf">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Render a Map to a PDF file using the PDF Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+Pdf pdf = <span class="keyword">new</span> Pdf()
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.pdf</span><span class="delimiter">&quot;</span></span>)
+pdf.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_pdf.png" alt="render pdf">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-09 18:15:10 PST
+Last updated 2017-03-11 19:28:53 UTC
 </div>
 </div>
 </body>
