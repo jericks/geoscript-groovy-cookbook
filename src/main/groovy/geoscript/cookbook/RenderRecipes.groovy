@@ -1,6 +1,5 @@
 package geoscript.cookbook
 
-import com.lowagie.text.pdf.PdfWriter
 import geoscript.layer.Layer
 import geoscript.render.ASCII
 import geoscript.render.Base64
@@ -11,6 +10,9 @@ import geoscript.render.JPEG
 import geoscript.render.Map
 import geoscript.render.PNG
 import geoscript.render.Pdf
+import geoscript.render.Renderers
+import geoscript.render.Renderer
+import geoscript.render.Svg
 import geoscript.style.Fill
 import geoscript.style.Stroke
 import geoscript.workspace.GeoPackage
@@ -38,6 +40,27 @@ class RenderRecipes extends Recipes {
         // end::createMap[]
         moveFile(file, new File("src/docs/asciidoc/images/map_create.png"))
         map
+    }
+
+    // Renderers
+    List<Renderer> getRenderers() {
+        // tag::getRenderers[]
+        List<Renderer> renderers = Renderers.list()
+        renderers.each { Renderer renderer ->
+            println renderer.class.simpleName
+        }
+        // end::getRenderers[]
+        writeFile("renderer_list", "${renderers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        renderers
+    }
+
+    Renderer getRenderer() {
+        // tag::getRenderer[]
+        Renderer renderer = Renderers.find("png")
+        println renderer.class.simpleName
+        // end::getRenderer[]
+        writeFile("renderer_get", "${renderer.class.simpleName}")
+        renderer
     }
 
     // Image
@@ -374,6 +397,46 @@ class RenderRecipes extends Recipes {
         pdf.render(map, new FileOutputStream(file))
         // end::renderToPdfFile[]
         moveFile(file, new File("src/docs/asciidoc/output/render_pdf_file.pdf"))
+        file
+    }
+
+    // SVG
+
+    org.w3c.dom.Document renderToSvgDocument() {
+        // tag::renderToSvgDocument[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        Svg svg = new Svg()
+        org.w3c.dom.Document document = svg.render(map)
+        // end::renderToSvgDocument[]
+        document
+    }
+
+    File renderToSvgFile() {
+        // tag::renderToSvgFile[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        Svg svg = new Svg()
+        File file = new File("map.svg")
+        svg.render(map, new FileOutputStream(file))
+        // end::renderToSvgFile[]
+        moveFile(file, new File("src/docs/asciidoc/output/render_svg_file.svg"))
         file
     }
 }

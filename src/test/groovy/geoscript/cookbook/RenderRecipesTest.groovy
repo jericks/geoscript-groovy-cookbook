@@ -1,6 +1,8 @@
 package geoscript.cookbook
 
 import geoscript.render.Map
+import geoscript.render.Renderer
+
 import java.awt.image.BufferedImage
 import org.junit.Test
 import static org.junit.Assert.*
@@ -11,6 +13,20 @@ class RenderRecipesTest {
         RenderRecipes recipes = new RenderRecipes()
         Map map = recipes.createMap()
         assertNotNull(map)
+    }
+
+    // Renderer
+
+    @Test void getRenderers() {
+        RenderRecipes recipes = new RenderRecipes()
+        List<Renderer> renderers = recipes.getRenderers()
+        assertTrue(renderers.size() > 0)
+    }
+
+    @Test void getRenderer() {
+        RenderRecipes recipes = new RenderRecipes()
+        Renderer renderer = recipes.getRenderer()
+        assertNotNull(renderer)
     }
 
     // Image
@@ -122,6 +138,20 @@ class RenderRecipesTest {
     @Test void renderToPdfFile() {
         RenderRecipes recipes = new RenderRecipes()
         File file = recipes.renderToPdfFile()
+        assertNotNull(file)
+    }
+
+    // SVG
+
+    @Test void renderToSvgDocument() {
+        RenderRecipes recipes = new RenderRecipes()
+        org.w3c.dom.Document document = recipes.renderToSvgDocument()
+        assertNotNull(document)
+    }
+
+    @Test void renderToSvgFile() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.renderToSvgFile()
         assertNotNull(file)
     }
 }

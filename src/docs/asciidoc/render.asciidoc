@@ -15,6 +15,26 @@ image::map_create.png[]
 
 === Rendering Maps
 
+==== Finding Renderers
+
+[source,groovy]
+.Get all Renderers
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getRenderers,indent=0]
+----
+....
+include::output/renderer_list.txt[]
+....
+
+[source,groovy]
+.Get a Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getRenderer,indent=0]
+----
+....
+include::output/renderer_get.txt[]
+....
+
 ==== Image
 
 [source,groovy]
@@ -164,3 +184,23 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToPdfFil
 
 [.thumb]
 image::render_pdf.png[]
+
+==== SVG
+
+[source,groovy]
+.Render a Map to a SVG Document using the SVG Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToSvgDocument,indent=0]
+----
+
+[.thumb]
+image::render_svg.png[]
+
+[source,groovy]
+.Render a Map to a SVG file using the SVG Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToSvgFile,indent=0]
+----
+
+[.thumb]
+image::render_svg.png[]
