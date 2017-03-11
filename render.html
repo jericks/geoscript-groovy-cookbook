@@ -519,6 +519,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-maps">Creating Maps</a></li>
 <li><a href="#rendering-maps">Rendering Maps</a>
 <ul class="sectlevel3">
+<li><a href="#finding-renderers">Finding Renderers</a></li>
 <li><a href="#image">Image</a></li>
 <li><a href="#png">PNG</a></li>
 <li><a href="#jpeg">JPEG</a></li>
@@ -527,6 +528,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#ascii">ASCII</a></li>
 <li><a href="#base64">Base64</a></li>
 <li><a href="#pdf">PDF</a></li>
+<li><a href="#svg">SVG</a></li>
 </ul>
 </li>
 </ul>
@@ -565,6 +567,42 @@ map.render(file)</code></pre>
 </div>
 <div class="sect2">
 <h3 id="rendering-maps"><a class="anchor" href="#rendering-maps"></a>Rendering Maps</h3>
+<div class="sect3">
+<h4 id="finding-renderers"><a class="anchor" href="#finding-renderers"></a>Finding Renderers</h4>
+<div class="listingblock">
+<div class="title">Get all Renderers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Renderer</span>&gt; renderers = Renderers.list()
+renderers.each { <span class="predefined-type">Renderer</span> renderer -&gt;
+    println renderer.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ASCII
+Base64
+GeoTIFF
+GIF
+JPEG
+Pdf
+PNG
+Svg</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Renderer</span> renderer = Renderers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">png</span><span class="delimiter">&quot;</span></span>)
+println renderer.class.simpleName</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>PNG</pre>
+</div>
+</div>
+</div>
 <div class="sect3">
 <h4 id="image"><a class="anchor" href="#image"></a>Image</h4>
 <div class="listingblock">
@@ -993,13 +1031,61 @@ pdf.render(map, <span class="keyword">new</span> <span class="predefined-type">F
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="svg"><a class="anchor" href="#svg"></a>SVG</h4>
+<div class="listingblock">
+<div class="title">Render a Map to a SVG Document using the SVG Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+Svg svg = <span class="keyword">new</span> Svg()
+org.w3c.dom.Document document = svg.render(map)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_svg.png" alt="render svg">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Render a Map to a SVG file using the SVG Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+Svg svg = <span class="keyword">new</span> Svg()
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.svg</span><span class="delimiter">&quot;</span></span>)
+svg.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_svg.png" alt="render svg">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-11 19:28:53 UTC
+Last updated 2017-03-11 21:27:14 UTC
 </div>
 </div>
 </body>
