@@ -204,3 +204,45 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToSvgFil
 
 [.thumb]
 image::render_svg.png[]
+
+=== Displaying Maps
+
+==== Finding Displayers
+
+[source,groovy]
+.Get all Displayers
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getDisplayers,indent=0]
+----
+....
+include::output/displayer_list.txt[]
+....
+
+[source,groovy]
+.Get a Displayer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getDisplayer,indent=0]
+----
+....
+include::output/displayer_get.txt[]
+....
+
+==== Window
+
+[source,groovy]
+.Display a Map in a simple GUI
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=openDisplayerWindow,indent=0]
+----
+[.thumb]
+image::displayer_window.png[]
+
+==== MapWindow
+
+[source,groovy]
+.Display a Map in a interactive GUI
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=openDisplayerMapWindow,indent=0]
+----
+[.thumb]
+image::displayer_mapwindow.png[]

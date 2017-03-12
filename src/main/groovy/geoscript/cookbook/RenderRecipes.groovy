@@ -3,16 +3,20 @@ package geoscript.cookbook
 import geoscript.layer.Layer
 import geoscript.render.ASCII
 import geoscript.render.Base64
+import geoscript.render.Displayer
+import geoscript.render.Displayers
 import geoscript.render.GIF
 import geoscript.render.GeoTIFF
 import geoscript.render.Image
 import geoscript.render.JPEG
 import geoscript.render.Map
+import geoscript.render.MapWindow
 import geoscript.render.PNG
 import geoscript.render.Pdf
 import geoscript.render.Renderers
 import geoscript.render.Renderer
 import geoscript.render.Svg
+import geoscript.render.Window
 import geoscript.style.Fill
 import geoscript.style.Stroke
 import geoscript.workspace.GeoPackage
@@ -43,6 +47,7 @@ class RenderRecipes extends Recipes {
     }
 
     // Renderers
+
     List<Renderer> getRenderers() {
         // tag::getRenderers[]
         List<Renderer> renderers = Renderers.list()
@@ -439,4 +444,61 @@ class RenderRecipes extends Recipes {
         moveFile(file, new File("src/docs/asciidoc/output/render_svg_file.svg"))
         file
     }
+
+    // Displayers
+
+    List<Displayer> getDisplayers() {
+        // tag::getDisplayers[]
+        List<Displayer> displayers = Displayers.list()
+        displayers.each { Displayer displayer ->
+            println displayer.class.simpleName
+        }
+        // end::getDisplayers[]
+        writeFile("displayer_list", "${displayers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        displayers
+    }
+
+    Displayer getDisplayer() {
+        // tag::getDisplayer[]
+        Displayer displayer = Displayers.find("window")
+        println displayer.class.simpleName
+        // end::getDisplayer[]
+        writeFile("displayer_get", "${displayer.class.simpleName}")
+        displayer
+    }
+
+    void openDisplayerWindow() {
+        // tag::openDisplayerWindow[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        Window window = new Window()
+        window.display(map)
+        // end::openDisplayerWindow[]
+    }
+
+    void openDisplayerMapWindow() {
+        // tag::openDisplayerMapWindow[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        MapWindow window = new MapWindow()
+        window.display(map)
+        // end::openDisplayerMapWindow[]
+    }
+
 }

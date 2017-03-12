@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.render.Displayer
 import geoscript.render.Map
 import geoscript.render.Renderer
 
@@ -153,5 +154,19 @@ class RenderRecipesTest {
         RenderRecipes recipes = new RenderRecipes()
         File file = recipes.renderToSvgFile()
         assertNotNull(file)
+    }
+
+    // Displayer
+
+    @Test void getDisplayers() {
+        RenderRecipes recipes = new RenderRecipes()
+        List<Displayer> displayers = recipes.getDisplayers()
+        assertTrue(displayers.size() > 0)
+    }
+
+    @Test void getDisplayer() {
+        RenderRecipes recipes = new RenderRecipes()
+        Displayer displayer = recipes.getDisplayer()
+        assertNotNull(displayer)
     }
 }
