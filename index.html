@@ -651,6 +651,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#svg">SVG</a></li>
 </ul>
 </li>
+<li><a href="#displaying-maps">Displaying Maps</a>
+<ul class="sectlevel3">
+<li><a href="#finding-displayers">Finding Displayers</a></li>
+<li><a href="#window">Window</a></li>
+<li><a href="#mapwindow">MapWindow</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -4723,7 +4730,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-5bd9e87c_15abf4cdf13_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-4dd90f48_15ac3d9d5c1_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5432,7 +5439,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 11 21:36:11 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Mar 12 18:48:37 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5451,7 +5458,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-5bd9e87c_15abf4cdf13_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-4dd90f48_15ac3d9d5c1_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5475,7 +5482,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 11 21:36:11 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Mar 12 18:48:37 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5495,7 +5502,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-5bd9e87c_15abf4cdf13_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-4dd90f48_15ac3d9d5c1_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5657,7 +5664,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-5bd9e87c_15abf4cdf13_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-4dd90f48_15ac3d9d5c1_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5695,7 +5702,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-5bd9e87c_15abf4cdf13_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-4dd90f48_15ac3d9d5c1_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -6951,7 +6958,55 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>vec:Aggregate
+<pre>geo:buffer
+geo:union
+geo:intersection
+geo:isValid
+geo:difference
+geo:distance
+geo:convexHull
+geo:area
+geo:crosses
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isClosed
+geo:numGeometries
+geo:endPoint
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:envelope
+geo:reproject
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:getX
+geo:getY
+geo:isRing
+geo:equalsExact
+geo:polygonize
+geo:startPoint
+geo:relatePattern
+geo:equalsExactTolerance
+geo:pointN
+geo:interiorRingN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -6981,54 +7036,6 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:isValid
-geo:union
-geo:intersection
-geo:buffer
-geo:difference
-geo:distance
-geo:convexHull
-geo:area
-geo:crosses
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:isClosed
-geo:numGeometries
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:symDifference
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:reproject
-geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:envelope
-geo:getX
-geo:getY
-geo:equalsExact
-geo:isRing
-geo:polygonize
-geo:startPoint
-geo:endPoint
-geo:relatePattern
-geo:equalsExactTolerance
-geo:pointN
-geo:interiorRingN
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
 ras:AddCoverages
 ras:Affine
 ras:AreaGrid
@@ -7695,12 +7702,95 @@ svg.render(map, <span class="keyword">new</span> <span class="predefined-type">F
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="displaying-maps"><a class="anchor" href="#displaying-maps"></a>Displaying Maps</h3>
+<div class="sect3">
+<h4 id="finding-displayers"><a class="anchor" href="#finding-displayers"></a>Finding Displayers</h4>
+<div class="listingblock">
+<div class="title">Get all Displayers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;Displayer&gt; displayers = Displayers.list()
+displayers.each { Displayer displayer -&gt;
+    println displayer.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>MapWindow
+Window</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Displayer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Displayer displayer = Displayers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">window</span><span class="delimiter">&quot;</span></span>)
+println displayer.class.simpleName</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Window</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="window"><a class="anchor" href="#window"></a>Window</h4>
+<div class="listingblock">
+<div class="title">Display a Map in a simple GUI</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+<span class="predefined-type">Window</span> window = <span class="keyword">new</span> <span class="predefined-type">Window</span>()
+window.display(map)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/displayer_window.png" alt="displayer window">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mapwindow"><a class="anchor" href="#mapwindow"></a>MapWindow</h4>
+<div class="listingblock">
+<div class="title">Display a Map in a interactive GUI</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+MapWindow window = <span class="keyword">new</span> MapWindow()
+window.display(map)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/displayer_mapwindow.png" alt="displayer mapwindow">
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-11 21:27:13 UTC
+Last updated 2017-03-12 18:44:19 UTC
 </div>
 </div>
 </body>

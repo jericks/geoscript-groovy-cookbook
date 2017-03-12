@@ -531,6 +531,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#svg">SVG</a></li>
 </ul>
 </li>
+<li><a href="#displaying-maps">Displaying Maps</a>
+<ul class="sectlevel3">
+<li><a href="#finding-displayers">Finding Displayers</a></li>
+<li><a href="#window">Window</a></li>
+<li><a href="#mapwindow">MapWindow</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1080,12 +1087,95 @@ svg.render(map, <span class="keyword">new</span> <span class="predefined-type">F
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="displaying-maps"><a class="anchor" href="#displaying-maps"></a>Displaying Maps</h3>
+<div class="sect3">
+<h4 id="finding-displayers"><a class="anchor" href="#finding-displayers"></a>Finding Displayers</h4>
+<div class="listingblock">
+<div class="title">Get all Displayers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;Displayer&gt; displayers = Displayers.list()
+displayers.each { Displayer displayer -&gt;
+    println displayer.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>MapWindow
+Window</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Displayer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Displayer displayer = Displayers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">window</span><span class="delimiter">&quot;</span></span>)
+println displayer.class.simpleName</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Window</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="window"><a class="anchor" href="#window"></a>Window</h4>
+<div class="listingblock">
+<div class="title">Display a Map in a simple GUI</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+<span class="predefined-type">Window</span> window = <span class="keyword">new</span> <span class="predefined-type">Window</span>()
+window.display(map)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/displayer_window.png" alt="displayer window">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mapwindow"><a class="anchor" href="#mapwindow"></a>MapWindow</h4>
+<div class="listingblock">
+<div class="title">Display a Map in a interactive GUI</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+MapWindow window = <span class="keyword">new</span> MapWindow()
+window.display(map)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/displayer_mapwindow.png" alt="displayer mapwindow">
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-11 21:27:14 UTC
+Last updated 2017-03-12 18:44:19 UTC
 </div>
 </div>
 </body>
