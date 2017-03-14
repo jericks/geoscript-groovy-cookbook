@@ -540,6 +540,11 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </li>
+<li><a href="#drawing">Drawing</a>
+<ul class="sectlevel2">
+<li><a href="#drawing-to-an-image">Drawing to an Image</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1172,10 +1177,79 @@ window.display(map)</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="drawing"><a class="anchor" href="#drawing"></a>Drawing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Draw class is an easy way to quickly render a Geometry, a List of Geometries,
+a Feature, or a Layer to an Image.</p>
+</div>
+<div class="paragraph">
+<p>All of the drawToImage methods take a single required parameter but can also take
+the following optional parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>style = A Style</p>
+</li>
+<li>
+<p>bounds = The Bounds</p>
+</li>
+<li>
+<p>size = The size of the canvas ([400,350])</p>
+</li>
+<li>
+<p>imageType = The format ("jpeg", "png", "gif")</p>
+</li>
+<li>
+<p>proj = The Projection</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="drawing-to-an-image"><a class="anchor" href="#drawing-to-an-image"></a>Drawing to an Image</h3>
+<div class="listingblock">
+<div class="title">Draw a Geometry to an Image</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.376</span>, <span class="float">47.587</span>).buffer(<span class="float">0.5</span>)
+<span class="predefined-type">BufferedImage</span> image = Draw.drawToImage(geometry,
+        <span class="key">style</span>: <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>),
+        <span class="key">bounds</span>: <span class="keyword">new</span> Bounds(-<span class="float">122.876</span>,<span class="float">47.087</span>,-<span class="float">121.876</span>,<span class="float">48.087</span>),
+        <span class="key">size</span>: [<span class="integer">400</span>,<span class="integer">400</span>],
+        <span class="key">imageType</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">png</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">proj</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">backgroundColor</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>
+)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_drawtoimage_geometry.png" alt="render drawtoimage geometry">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Draw a List of Geometries to an Image</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.376</span>, <span class="float">47.587</span>)
+<span class="predefined-type">List</span> geometries = [<span class="float">1.5</span>, <span class="float">1.0</span>, <span class="float">0.5</span>].collect { <span class="type">double</span> distance -&gt;
+    point.buffer(distance)
+}
+<span class="predefined-type">BufferedImage</span> image = Draw.drawToImage(geometries)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_drawtoimage_geometries.png" alt="render drawtoimage geometries">
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-12 18:44:19 UTC
+Last updated 2017-03-14 02:51:50 UTC
 </div>
 </div>
 </body>
