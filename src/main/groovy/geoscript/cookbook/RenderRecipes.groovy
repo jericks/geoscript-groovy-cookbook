@@ -1,10 +1,15 @@
 package geoscript.cookbook
 
+import geoscript.geom.Bounds
+import geoscript.geom.Geometry
+import geoscript.geom.GeometryCollection
+import geoscript.geom.Point
 import geoscript.layer.Layer
 import geoscript.render.ASCII
 import geoscript.render.Base64
 import geoscript.render.Displayer
 import geoscript.render.Displayers
+import geoscript.render.Draw
 import geoscript.render.GIF
 import geoscript.render.GeoTIFF
 import geoscript.render.Image
@@ -499,6 +504,36 @@ class RenderRecipes extends Recipes {
         MapWindow window = new MapWindow()
         window.display(map)
         // end::openDisplayerMapWindow[]
+    }
+
+    // Draw
+
+    BufferedImage drawGeometryToImage() {
+        // tag::drawGeometryToImage[]
+        Geometry geometry = new Point(-122.376, 47.587).buffer(0.5)
+        BufferedImage image = Draw.drawToImage(geometry,
+                style: new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5),
+                bounds: new Bounds(-122.876,47.087,-121.876,48.087),
+                size: [400,400],
+                imageType: "png",
+                proj: "EPSG:4326",
+                backgroundColor: "#a5bfdd"
+        )
+        // end::drawGeometryToImage[]
+        saveImage("render_drawtoimage_geometry", image)
+        image
+    }
+
+    BufferedImage drawGeometriesToImage() {
+        // tag::drawGeometriesToImage[]
+        Point point = new Point(-122.376, 47.587)
+        List geometries = [1.5, 1.0, 0.5].collect { double distance ->
+            point.buffer(distance)
+        }
+        BufferedImage image = Draw.drawToImage(geometries)
+        // end::drawGeometriesToImage[]
+        saveImage("render_drawtoimage_geometries", image)
+        image
     }
 
 }

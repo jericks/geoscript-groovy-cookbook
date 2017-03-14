@@ -246,3 +246,36 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=openDisplayerM
 ----
 [.thumb]
 image::displayer_mapwindow.png[]
+
+== Drawing
+
+The Draw class is an easy way to quickly render a Geometry, a List of Geometries,
+a Feature, or a Layer to an Image.
+
+All of the drawToImage methods take a single required parameter but can also take
+the following optional parameters:
+
+* style = A Style
+* bounds = The Bounds
+* size = The size of the canvas ([400,350])
+* imageType = The format ("jpeg", "png", "gif")
+* proj = The Projection
+
+=== Drawing to an Image
+
+[source,groovy]
+.Draw a Geometry to an Image
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawGeometryToImage,indent=0]
+----
+[.thumb]
+image::render_drawtoimage_geometry.png[]
+
+[source,groovy]
+.Draw a List of Geometries to an Image
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawGeometriesToImage,indent=0]
+----
+[.thumb]
+image::render_drawtoimage_geometries.png[]
+

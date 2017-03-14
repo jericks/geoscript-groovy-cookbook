@@ -169,4 +169,19 @@ class RenderRecipesTest {
         Displayer displayer = recipes.getDisplayer()
         assertNotNull(displayer)
     }
+
+    // Draw
+
+    @Test void drawGeometryToImage() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.drawGeometryToImage()
+        assertNotNull(image)
+    }
+
+    @Test void drawGeometriesToImage() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.drawGeometriesToImage()
+        assertNotNull(image)
+    }
+
 }
