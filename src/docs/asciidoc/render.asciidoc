@@ -279,3 +279,18 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawGeometries
 [.thumb]
 image::render_drawtoimage_geometries.png[]
 
+[source,groovy]
+.Draw a Feature to an Image
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawFeatureToImage,indent=0]
+----
+[.thumb]
+image::render_drawtoimage_feature.png[]
+
+[source,groovy]
+.Draw a Layer to an Image
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawLayerToImage,indent=0]
+----
+[.thumb]
+image::render_drawtoimage_layer.png[]

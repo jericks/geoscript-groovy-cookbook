@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.feature.Feature
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.GeometryCollection
@@ -533,6 +534,28 @@ class RenderRecipes extends Recipes {
         BufferedImage image = Draw.drawToImage(geometries)
         // end::drawGeometriesToImage[]
         saveImage("render_drawtoimage_geometries", image)
+        image
+    }
+
+    BufferedImage drawFeatureToImage() {
+        // tag::drawFeatureToImage[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer layer = workspace.get("states")
+        Feature feature = layer.first(filter: "NAME_1='Washington'")
+        BufferedImage image = Draw.drawToImage(feature, bounds: feature.bounds)
+        // end::drawFeatureToImage[]
+        saveImage("render_drawtoimage_feature", image)
+        image
+    }
+
+    BufferedImage drawLayerToImage() {
+        // tag::drawLayerToImage[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer layer = workspace.get("states")
+        layer.style = new Fill("LightSteelBlue") + new Stroke("LightSlateGrey", 0.25)
+        BufferedImage image = Draw.drawToImage(layer, bounds: layer.bounds)
+        // end::drawLayerToImage[]
+        saveImage("render_drawtoimage_layer", image)
         image
     }
 

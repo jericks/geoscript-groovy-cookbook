@@ -184,4 +184,16 @@ class RenderRecipesTest {
         assertNotNull(image)
     }
 
+    @Test void drawFeatureToImage() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.drawFeatureToImage()
+        assertNotNull(image)
+    }
+
+    @Test void drawLayerToImage() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.drawLayerToImage()
+        assertNotNull(image)
+    }
+
 }
