@@ -1243,13 +1243,41 @@ the following optional parameters:</p>
 <img src="./images/render_drawtoimage_geometries.png" alt="render drawtoimage geometries">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Draw a Feature to an Image</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+Feature feature = layer.first(<span class="key">filter</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1='Washington'</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">BufferedImage</span> image = Draw.drawToImage(feature, <span class="key">bounds</span>: feature.bounds)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_drawtoimage_feature.png" alt="render drawtoimage feature">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Draw a Layer to an Image</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+layer.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">LightSteelBlue</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">LightSlateGrey</span><span class="delimiter">&quot;</span></span>, <span class="float">0.25</span>)
+<span class="predefined-type">BufferedImage</span> image = Draw.drawToImage(layer, <span class="key">bounds</span>: layer.bounds)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_drawtoimage_layer.png" alt="render drawtoimage layer">
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-14 02:51:50 UTC
+Last updated 2017-03-14 18:42:12 PDT
 </div>
 </div>
 </body>
