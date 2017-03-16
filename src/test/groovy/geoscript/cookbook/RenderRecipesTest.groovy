@@ -172,6 +172,20 @@ class RenderRecipesTest {
 
     // Draw
 
+    @Test void drawGeometryToFile() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.drawGeometryToFile()
+        assertNotNull(file)
+    }
+
+    @Test void drawGeometriesToOutputStream() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.drawGeometriesToOutputStream()
+        assertNotNull(file)
+    }
+
+    // Draw to image
+
     @Test void drawGeometryToImage() {
         RenderRecipes recipes = new RenderRecipes()
         BufferedImage image = recipes.drawGeometryToImage()

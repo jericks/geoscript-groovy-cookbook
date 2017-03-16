@@ -509,6 +509,44 @@ class RenderRecipes extends Recipes {
 
     // Draw
 
+    File drawGeometryToFile() {
+        // tag::drawGeometryToFile[]
+        File file = new File("geometry.png")
+        Geometry geometry = new Point(-122.376, 47.587).buffer(0.5)
+        Draw.draw(geometry,
+                style: new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5),
+                bounds: new Bounds(-122.876,47.087,-121.876,48.087),
+                size: [400,400],
+                format: "png",
+                proj: "EPSG:4326",
+                backgroundColor: "#a5bfdd",
+                out: file
+        )
+        // end::drawGeometryToFile[]
+        File movedFile = new File("src/docs/asciidoc/images/render_draw_geometry.png")
+        moveFile(file, movedFile)
+        movedFile
+    }
+
+    File drawGeometriesToOutputStream() {
+        // tag::drawGeometriesToOutputStream[]
+        Point point = new Point(-122.376, 47.587)
+        List geometries = [1.5, 1.0, 0.5].collect { double distance ->
+            point.buffer(distance)
+        }
+        File file = new File("geometries.png")
+        OutputStream outputStream = new FileOutputStream(file)
+        Draw.draw(geometries, out: outputStream, format: "png")
+        outputStream.flush()
+        outputStream.close()
+        // end::drawGeometriesToOutputStream[]
+        File movedFile = new File("src/docs/asciidoc/images/render_draw_geometries.png")
+        moveFile(file, movedFile)
+        movedFile
+    }
+
+    // Draw to Image
+
     BufferedImage drawGeometryToImage() {
         // tag::drawGeometryToImage[]
         Geometry geometry = new Point(-122.376, 47.587).buffer(0.5)
