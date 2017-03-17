@@ -297,6 +297,14 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawLayerToWin
 [.thumb]
 image::render_draw_feature_window.png[]
 
+[source,groovy]
+.Draw a Raster to a File
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawRasterToFile,indent=0]
+----
+[.thumb]
+image::render_draw_raster.png[]
+
 === Drawing to an Image
 
 All of the drawToImage methods take a single required parameter but can also take
@@ -339,3 +347,11 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawLayerToIma
 ----
 [.thumb]
 image::render_drawtoimage_layer.png[]
+
+[source,groovy]
+.Draw a Raster to an Image
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawRasterToImage,indent=0]
+----
+[.thumb]
+image::render_drawtoimage_raster.png[]

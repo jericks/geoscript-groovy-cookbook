@@ -21,6 +21,10 @@ class Recipes {
 
     protected static final String NEW_LINE = System.getProperty("line.separator")
 
+    static {
+        System.setProperty("org.geotools.referencing.forceXY", "true")
+    }
+
     protected void drawGeometry(Map options = [:], String name, Geometry g) {
         File file = new File("src/docs/asciidoc/images/${name}.png")
         if(!file.parentFile.exists()) {

@@ -6,6 +6,7 @@ import geoscript.geom.Geometry
 import geoscript.geom.GeometryCollection
 import geoscript.geom.Point
 import geoscript.layer.Layer
+import geoscript.layer.Raster
 import geoscript.render.ASCII
 import geoscript.render.Base64
 import geoscript.render.Displayer
@@ -567,6 +568,17 @@ class RenderRecipes extends Recipes {
         // end::drawLayerToWindow[]
     }
 
+    File drawRasterToFile() {
+        // tag::drawRasterToFile[]
+        File file = new File("earth.png")
+        Raster raster = new geoscript.layer.GeoTIFF(new File('src/main/resources/earth.tif')).read()
+        Draw.draw(raster, bounds: raster.bounds, size: [400,200], out: file)
+        // end::drawRasterToFile[]
+        File movedFile = new File("src/docs/asciidoc/images/render_draw_raster.png")
+        moveFile(file, movedFile)
+        movedFile
+    }
+
     // Draw to Image
 
     BufferedImage drawGeometryToImage() {
@@ -619,4 +631,12 @@ class RenderRecipes extends Recipes {
         image
     }
 
+    BufferedImage drawRasterToImage() {
+        // tag::drawRasterToImage[]
+        Raster raster = new geoscript.layer.GeoTIFF(new File('src/main/resources/earth.tif')).read()
+        BufferedImage image = Draw.drawToImage(raster, bounds: raster.bounds, size: [400,200])
+        // end::drawRasterToImage[]
+        saveImage("render_drawtoimage_raster", image)
+        image
+    }
 }

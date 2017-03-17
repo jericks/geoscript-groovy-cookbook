@@ -190,6 +190,12 @@ class RenderRecipesTest {
         assertNotNull(file)
     }
 
+    @Test void drawRasterToFile() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.drawRasterToFile()
+        assertNotNull(file)
+    }
+
     // Draw to image
 
     @Test void drawGeometryToImage() {
@@ -213,6 +219,12 @@ class RenderRecipesTest {
     @Test void drawLayerToImage() {
         RenderRecipes recipes = new RenderRecipes()
         BufferedImage image = recipes.drawLayerToImage()
+        assertNotNull(image)
+    }
+
+    @Test void drawRasterToImage() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.drawRasterToImage()
         assertNotNull(image)
     }
 
