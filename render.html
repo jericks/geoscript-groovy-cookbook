@@ -1281,6 +1281,19 @@ Draw.draw(layer, <span class="key">bounds</span>: layer.bounds)</code></pre>
 <img src="./images/render_draw_feature_window.png" alt="render draw feature window">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Draw a Raster to a File</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth.png</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> raster = <span class="keyword">new</span> geoscript.layer.GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/earth.tif</span><span class="delimiter">'</span></span>)).read()
+Draw.draw(raster, <span class="key">bounds</span>: raster.bounds, <span class="key">size</span>: [<span class="integer">400</span>,<span class="integer">200</span>], <span class="key">out</span>: file)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_draw_raster.png" alt="render draw raster">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="drawing-to-an-image"><a class="anchor" href="#drawing-to-an-image"></a>Drawing to an Image</h3>
@@ -1369,13 +1382,25 @@ layer.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 <img src="./images/render_drawtoimage_layer.png" alt="render drawtoimage layer">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Draw a Raster to an Image</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> raster = <span class="keyword">new</span> geoscript.layer.GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/earth.tif</span><span class="delimiter">'</span></span>)).read()
+<span class="predefined-type">BufferedImage</span> image = Draw.drawToImage(raster, <span class="key">bounds</span>: raster.bounds, <span class="key">size</span>: [<span class="integer">400</span>,<span class="integer">200</span>])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_drawtoimage_raster.png" alt="render drawtoimage raster">
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-17 00:34:09 UTC
+Last updated 2017-03-17 03:03:47 UTC
 </div>
 </div>
 </body>

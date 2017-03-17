@@ -4736,7 +4736,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-77de7205_15ad9b356fa_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--4a4141d5_15ada3c63fc_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5445,7 +5445,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 17 00:38:13 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 17 03:07:55 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5464,7 +5464,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-77de7205_15ad9b356fa_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--4a4141d5_15ada3c63fc_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5488,7 +5488,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 17 00:38:13 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 17 03:07:55 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5508,7 +5508,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-77de7205_15ad9b356fa_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--4a4141d5_15ada3c63fc_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5670,7 +5670,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-77de7205_15ad9b356fa_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--4a4141d5_15ada3c63fc_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5708,7 +5708,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-77de7205_15ad9b356fa_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--4a4141d5_15ada3c63fc_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -6970,7 +6970,6 @@ geo:intersection
 geo:isValid
 geo:difference
 geo:distance
-geo:isClosed
 geo:convexHull
 geo:area
 geo:crosses
@@ -6978,6 +6977,7 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
+geo:isClosed
 geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
@@ -6988,21 +6988,21 @@ geo:touches
 geo:within
 geo:simplify
 geo:densify
-geo:reproject
 geo:numPoints
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
+geo:reproject
 geo:envelope
 geo:getX
 geo:getY
+geo:isRing
+geo:equalsExact
+geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
-geo:equalsExact
-geo:isRing
-geo:polygonize
 geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
@@ -7896,6 +7896,19 @@ Draw.draw(layer, <span class="key">bounds</span>: layer.bounds)</code></pre>
 <img src="./images/render_draw_feature_window.png" alt="render draw feature window">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Draw a Raster to a File</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth.png</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> raster = <span class="keyword">new</span> geoscript.layer.GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/earth.tif</span><span class="delimiter">'</span></span>)).read()
+Draw.draw(raster, <span class="key">bounds</span>: raster.bounds, <span class="key">size</span>: [<span class="integer">400</span>,<span class="integer">200</span>], <span class="key">out</span>: file)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_draw_raster.png" alt="render draw raster">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="drawing-to-an-image"><a class="anchor" href="#drawing-to-an-image"></a>Drawing to an Image</h3>
@@ -7984,13 +7997,25 @@ layer.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 <img src="./images/render_drawtoimage_layer.png" alt="render drawtoimage layer">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Draw a Raster to an Image</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> raster = <span class="keyword">new</span> geoscript.layer.GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/earth.tif</span><span class="delimiter">'</span></span>)).read()
+<span class="predefined-type">BufferedImage</span> image = Draw.drawToImage(raster, <span class="key">bounds</span>: raster.bounds, <span class="key">size</span>: [<span class="integer">400</span>,<span class="integer">200</span>])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_drawtoimage_raster.png" alt="render drawtoimage raster">
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-17 00:34:09 UTC
+Last updated 2017-03-17 03:03:47 UTC
 </div>
 </div>
 </body>
