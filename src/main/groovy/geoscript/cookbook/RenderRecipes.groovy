@@ -545,6 +545,28 @@ class RenderRecipes extends Recipes {
         movedFile
     }
 
+    File drawFeatureToFileName() {
+        // tag::drawFeatureToFileName[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer layer = workspace.get("states")
+        Feature feature = layer.first(filter: "NAME_1='Washington'")
+        Draw.draw(feature, bounds: feature.bounds, out: "feature.png")
+        // end::drawFeatureToFileName[]
+        File file = new File("feature.png")
+        File movedFile = new File("src/docs/asciidoc/images/render_draw_feature_file.png")
+        moveFile(file, movedFile)
+        movedFile
+    }
+
+    void drawLayerToWindow() {
+        // tag::drawLayerToWindow[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer layer = workspace.get("states")
+        layer.style = new Fill("LightSteelBlue") + new Stroke("LightSlateGrey", 0.25)
+        Draw.draw(layer, bounds: layer.bounds)
+        // end::drawLayerToWindow[]
+    }
+
     // Draw to Image
 
     BufferedImage drawGeometryToImage() {

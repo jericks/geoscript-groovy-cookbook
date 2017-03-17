@@ -184,6 +184,12 @@ class RenderRecipesTest {
         assertNotNull(file)
     }
 
+    @Test void drawFeatureToFileName() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.drawFeatureToFileName()
+        assertNotNull(file)
+    }
+
     // Draw to image
 
     @Test void drawGeometryToImage() {
