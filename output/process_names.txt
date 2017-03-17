@@ -31,12 +31,12 @@ geo:geometryType
 geo:envelope
 geo:getX
 geo:getY
-geo:equalsExact
-geo:isRing
-geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
+geo:equalsExact
+geo:isRing
+geo:polygonize
 geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
