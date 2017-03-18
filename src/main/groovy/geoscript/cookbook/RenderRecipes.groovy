@@ -20,6 +20,7 @@ import geoscript.render.Map
 import geoscript.render.MapWindow
 import geoscript.render.PNG
 import geoscript.render.Pdf
+import geoscript.render.Plot
 import geoscript.render.Renderers
 import geoscript.render.Renderer
 import geoscript.render.Svg
@@ -637,6 +638,29 @@ class RenderRecipes extends Recipes {
         BufferedImage image = Draw.drawToImage(raster, bounds: raster.bounds, size: [400,200])
         // end::drawRasterToImage[]
         saveImage("render_drawtoimage_raster", image)
+        image
+    }
+
+    // Plot to Image
+
+    BufferedImage plotGeometryToImage() {
+        // tag::plotGeometryToImage[]
+        Geometry geometry = new Point(-122.376, 47.587).buffer(0.5)
+        BufferedImage image = Plot.plotToImage(geometry, size: [400,400],)
+        // end::plotGeometryToImage[]
+        saveImage("render_plottoimage_geometry", image)
+        image
+    }
+
+    BufferedImage plotGeometriesToImage() {
+        // tag::plotGeometriesToImage[]
+        Point point = new Point(-122.376, 47.587)
+        List geometries = [1.5, 1.0, 0.5].collect { double distance ->
+            point.buffer(distance)
+        }
+        BufferedImage image = Plot.plotToImage(geometries)
+        // end::plotGeometriesToImage[]
+        saveImage("render_plottoimage_geometries", image)
         image
     }
 }

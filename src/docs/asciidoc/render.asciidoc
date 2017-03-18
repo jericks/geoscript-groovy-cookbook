@@ -355,3 +355,25 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawRasterToIm
 ----
 [.thumb]
 image::render_drawtoimage_raster.png[]
+
+== Plotting
+
+=== Plotting to an Image
+
+The Plot module can draw a Geometry, a list of Geometries, a Feature, or a Layer to an image.
+
+[source,groovy]
+.Plot a Geometry to an Image
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=plotGeometryToImage,indent=0]
+----
+[.thumb]
+image::render_plottoimage_geometry.png[]
+
+[source,groovy]
+.Plot a List of Geometries to an Image
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=plotGeometriesToImage,indent=0]
+----
+[.thumb]
+image::render_plottoimage_geometries.png[]

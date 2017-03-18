@@ -228,4 +228,17 @@ class RenderRecipesTest {
         assertNotNull(image)
     }
 
+    // Plot to image
+
+    @Test void plotGeometryToImage() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.plotGeometryToImage()
+        assertNotNull(image)
+    }
+
+    @Test void plotGeometriesToImage() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.plotGeometriesToImage()
+        assertNotNull(image)
+    }
 }
