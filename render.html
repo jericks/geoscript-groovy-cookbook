@@ -546,6 +546,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#drawing-to-an-image">Drawing to an Image</a></li>
 </ul>
 </li>
+<li><a href="#plotting">Plotting</a>
+<ul class="sectlevel2">
+<li><a href="#plotting-to-an-image">Plotting to an Image</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1397,10 +1402,48 @@ layer.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="plotting"><a class="anchor" href="#plotting"></a>Plotting</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="plotting-to-an-image"><a class="anchor" href="#plotting-to-an-image"></a>Plotting to an Image</h3>
+<div class="paragraph">
+<p>The Plot module can draw a Geometry, a list of Geometries, a Feature, or a Layer to an image.</p>
+</div>
+<div class="listingblock">
+<div class="title">Plot a Geometry to an Image</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.376</span>, <span class="float">47.587</span>).buffer(<span class="float">0.5</span>)
+<span class="predefined-type">BufferedImage</span> image = Plot.plotToImage(geometry, <span class="key">size</span>: [<span class="integer">400</span>,<span class="integer">400</span>],)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_plottoimage_geometry.png" alt="render plottoimage geometry">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Plot a List of Geometries to an Image</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.376</span>, <span class="float">47.587</span>)
+<span class="predefined-type">List</span> geometries = [<span class="float">1.5</span>, <span class="float">1.0</span>, <span class="float">0.5</span>].collect { <span class="type">double</span> distance -&gt;
+    point.buffer(distance)
+}
+<span class="predefined-type">BufferedImage</span> image = Plot.plotToImage(geometries)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_plottoimage_geometries.png" alt="render plottoimage geometries">
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-17 03:03:47 UTC
+Last updated 2017-03-18 03:48:54 UTC
 </div>
 </div>
 </body>
