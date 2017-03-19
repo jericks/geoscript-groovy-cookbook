@@ -228,6 +228,26 @@ class RenderRecipesTest {
         assertNotNull(image)
     }
 
+    // Plot
+
+    @Test void plotGeometryToFile() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.plotGeometryToFile()
+        assertNotNull(file)
+    }
+
+    @Test void plotGeometriesToOutputStream() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.plotGeometriesToOutputStream()
+        assertNotNull(file)
+    }
+
+    @Test void plotFeatureToFileName() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.plotFeatureToFileName()
+        assertNotNull(file)
+    }
+
     // Plot to image
 
     @Test void plotGeometryToImage() {
@@ -239,6 +259,18 @@ class RenderRecipesTest {
     @Test void plotGeometriesToImage() {
         RenderRecipes recipes = new RenderRecipes()
         BufferedImage image = recipes.plotGeometriesToImage()
+        assertNotNull(image)
+    }
+
+    @Test void plotFeatureToImage() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.plotFeatureToImage()
+        assertNotNull(image)
+    }
+
+    @Test void plotLayerToImage() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.plotLayerToImage()
         assertNotNull(image)
     }
 }

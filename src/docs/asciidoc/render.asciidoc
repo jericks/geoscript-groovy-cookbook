@@ -247,13 +247,13 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=openDisplayerM
 [.thumb]
 image::displayer_mapwindow.png[]
 
-== Drawing
+=== Drawing
 
 The Draw class is an easy way to quickly render a Geometry, a List of Geometries,
 a Feature, or a Layer to an Image, a File, an OutputStream, or a GUI.
 
 
-=== Drawing to a File or GUI
+==== Drawing to a File or GUI
 
 All of the draw methods take a single required parameter but can also take
 the following optional parameters:
@@ -305,7 +305,7 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawRasterToFi
 [.thumb]
 image::render_draw_raster.png[]
 
-=== Drawing to an Image
+==== Drawing to an Image
 
 All of the drawToImage methods take a single required parameter but can also take
 the following optional parameters:
@@ -356,11 +356,48 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=drawRasterToIm
 [.thumb]
 image::render_drawtoimage_raster.png[]
 
-== Plotting
+=== Plotting
 
-=== Plotting to an Image
+==== Plotting to a File or GUI
 
-The Plot module can draw a Geometry, a list of Geometries, a Feature, or a Layer to an image.
+The Plot module can plot a Geometry, a list of Geometries, a Feature, or a Layer to a File, a File name, an OutputStream, or
+a simple GUI.
+
+[source,groovy]
+.Plot a Geometry to a File
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=plotGeometryToFile,indent=0]
+----
+[.thumb]
+image::render_plot_geometry.png[]
+
+[source,groovy]
+.Plot a List of Geometries to an OutputStream
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=plotGeometriesToOutputStream,indent=0]
+----
+[.thumb]
+image::render_plot_geometries.png[]
+
+[source,groovy]
+.Plot a Feature to a File name
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=plotFeatureToFileName,indent=0]
+----
+[.thumb]
+image::render_plot_feature_file.png[]
+
+[source,groovy]
+.Plot a Layer to a GUI
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=plotLayerToWindow,indent=0]
+----
+[.thumb]
+image::render_plot_layer.png[]
+
+==== Plotting to an Image
+
+The Plot module can plot a Geometry, a list of Geometries, a Feature, or a Layer to an image.
 
 [source,groovy]
 .Plot a Geometry to an Image
@@ -377,3 +414,19 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=plotGeometries
 ----
 [.thumb]
 image::render_plottoimage_geometries.png[]
+
+[source,groovy]
+.Plot a Feature to an Image
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=plotFeatureToImage,indent=0]
+----
+[.thumb]
+image::render_plottoimage_feature.png[]
+
+[source,groovy]
+.Plot a Layer to an Image
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=plotLayerToImage,indent=0]
+----
+[.thumb]
+image::render_plottoimage_layer.png[]

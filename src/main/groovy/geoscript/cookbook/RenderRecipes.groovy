@@ -641,6 +641,57 @@ class RenderRecipes extends Recipes {
         image
     }
 
+    // Plot
+
+    File plotGeometryToFile() {
+        // tag::plotGeometryToFile[]
+        File file = new File("geometry.png")
+        Geometry geometry = new Point(-122.376, 47.587).buffer(0.5)
+        Plot.plot(geometry, out: file)
+        // end::plotGeometryToFile[]
+        File movedFile = new File("src/docs/asciidoc/images/render_plot_geometry.png")
+        moveFile(file, movedFile)
+        movedFile
+    }
+
+    File plotGeometriesToOutputStream() {
+        // tag::plotGeometriesToOutputStream[]
+        Point point = new Point(-122.376, 47.587)
+        List geometries = [1.5, 1.0, 0.5].collect { double distance ->
+            point.buffer(distance)
+        }
+        File file = new File("geometries.png")
+        OutputStream outputStream = new FileOutputStream(file)
+        Plot.plot(geometries, out: outputStream)
+        outputStream.flush()
+        outputStream.close()
+        // end::plotGeometriesToOutputStream[]
+        File movedFile = new File("src/docs/asciidoc/images/render_plot_geometries.png")
+        moveFile(file, movedFile)
+        movedFile
+    }
+
+    File plotFeatureToFileName() {
+        // tag::plotFeatureToFileName[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer layer = workspace.get("states")
+        Feature feature = layer.first(filter: "NAME_1='Washington'")
+        Plot.plot(feature, out: "feature.png")
+        // end::plotFeatureToFileName[]
+        File file = new File("feature.png")
+        File movedFile = new File("src/docs/asciidoc/images/render_plot_feature_file.png")
+        moveFile(file, movedFile)
+        movedFile
+    }
+
+    void plotLayerToWindow() {
+        // tag::plotLayerToWindow[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer layer = workspace.get("states")
+        Plot.plot(layer)
+        // end::plotLayerToWindow[]
+    }
+
     // Plot to Image
 
     BufferedImage plotGeometryToImage() {
@@ -661,6 +712,27 @@ class RenderRecipes extends Recipes {
         BufferedImage image = Plot.plotToImage(geometries)
         // end::plotGeometriesToImage[]
         saveImage("render_plottoimage_geometries", image)
+        image
+    }
+
+    BufferedImage plotFeatureToImage() {
+        // tag::plotFeatureToImage[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer layer = workspace.get("states")
+        Feature feature = layer.first(filter: "NAME_1='Washington'")
+        BufferedImage image = Plot.plotToImage(feature, bounds: feature.bounds)
+        // end::plotFeatureToImage[]
+        saveImage("render_plottoimage_feature", image)
+        image
+    }
+
+    BufferedImage plotLayerToImage() {
+        // tag::plotLayerToImage[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer layer = workspace.get("states")
+        BufferedImage image = Plot.plotToImage(layer, bounds: layer.bounds)
+        // end::plotLayerToImage[]
+        saveImage("render_plottoimage_layer", image)
         image
     }
 }
