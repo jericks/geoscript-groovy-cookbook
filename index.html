@@ -672,6 +672,11 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </li>
+<li><a href="#style-recipes">Style Recipes</a>
+<ul class="sectlevel2">
+<li><a href="#creating-fills">Creating Fills</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -4742,7 +4747,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-613dea8e_15ae7daf674_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--ce3ba35_15aeeca28ba_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5451,7 +5456,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Mar 19 18:36:11 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 21 02:55:10 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5470,7 +5475,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-613dea8e_15ae7daf674_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--ce3ba35_15aeeca28ba_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5494,7 +5499,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Mar 19 18:36:11 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 21 02:55:10 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5514,7 +5519,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-613dea8e_15ae7daf674_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--ce3ba35_15aeeca28ba_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5676,7 +5681,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-613dea8e_15ae7daf674_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--ce3ba35_15aeeca28ba_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5714,7 +5719,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-613dea8e_15ae7daf674_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--ce3ba35_15aeeca28ba_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7000,21 +7005,25 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:isValid
 geo:buffer
-geo:difference
 geo:union
 geo:intersection
+geo:isValid
+geo:difference
 geo:distance
-geo:isClosed
-geo:numGeometries
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
 geo:convexHull
 geo:area
 geo:crosses
 geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isClosed
+geo:numGeometries
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7024,24 +7033,20 @@ geo:touches
 geo:within
 geo:simplify
 geo:densify
-geo:reproject
 geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
+geo:reproject
+geo:envelope
 geo:getX
 geo:getY
-geo:envelope
-geo:equalsExact
 geo:isRing
+geo:equalsExact
 geo:polygonize
+geo:relatePattern
 geo:startPoint
 geo:endPoint
-geo:relatePattern
-geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
+geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -8145,10 +8150,101 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="style-recipes"><a class="anchor" href="#style-recipes"></a>Style Recipes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="creating-fills"><a class="anchor" href="#creating-fills"></a>Creating Fills</h3>
+<div class="listingblock">
+<div class="title">Create a Fill Symbolizer with a Color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Fill fill = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#6B8E23</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_fill_color.png" alt="style fill color">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Fill Symbolizer with a Color and a Stroke</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#6B8E23</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.1</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_fill_stroke.png" alt="style fill stroke">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Fill Symbolizer with a Color and Opacity</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Fill fill = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#6B8E23</span><span class="delimiter">&quot;</span></span>, <span class="float">0.35</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_fill_color_opacity.png" alt="style fill color opacity">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Fill Symbolizer from named parameters</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Fill fill = <span class="keyword">new</span> Fill(<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">wheat</span><span class="delimiter">&quot;</span></span>, <span class="key">opacity</span>: <span class="float">0.75</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_fill_map.png" alt="style fill map">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Fill Symbolizer with an Icon</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Fill fill = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">green</span><span class="delimiter">&quot;</span></span>).icon(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/trees.png</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">image/png</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_fill_icon.png" alt="style fill icon">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Fill Symbolizer with a Hatch</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Fill fill = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">green</span><span class="delimiter">&quot;</span></span>).hatch(<span class="string"><span class="delimiter">&quot;</span><span class="content">slash</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">green</span><span class="delimiter">&quot;</span></span>, <span class="float">0.25</span>), <span class="integer">8</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_fill_hatch.png" alt="style fill hatch">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Fill Symbolizer with a random fill</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>).hatch(<span class="string"><span class="delimiter">&quot;</span><span class="content">circle</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>), <span class="integer">2</span>).random(
+    <span class="key">random</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">free</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">seed</span>: <span class="integer">0</span>,
+    <span class="key">symbolCount</span>: <span class="integer">50</span>,
+    <span class="key">tileSize</span>: <span class="integer">50</span>,
+    <span class="key">rotation</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">none</span><span class="delimiter">&quot;</span></span>
+) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.25</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_fill_random.png" alt="style fill random">
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-19 18:32:09 UTC
+Last updated 2017-03-21 02:50:53 UTC
 </div>
 </div>
 </body>
