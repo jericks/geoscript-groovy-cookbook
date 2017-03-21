@@ -97,6 +97,30 @@ class Recipes {
         layer
     }
 
+    protected void drawOnBasemap(String name, List<Layer> layers, Bounds bounds) {
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        GMap map = new GMap(
+                width: 500,
+                height: 300,
+                layers: [ocean, countries],
+                bounds: bounds
+        )
+        map.setAdvancedProjectionHandling(false)
+        map.setContinuousMapWrapping(false)
+        layers.each { Layer layer ->
+            map.addLayer(layer)
+        }
+        File file = new File("src/docs/asciidoc/images/${name}.png")
+        if(!file.parentFile.exists()) {
+            file.parentFile.mkdir()
+        }
+        map.render(file)
+    }
+
     protected void drawOnBasemap(String name, List<Layer> layers) {
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer countries = workspace.get("countries")

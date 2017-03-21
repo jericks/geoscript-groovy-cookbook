@@ -1,0 +1,63 @@
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/groovy]
+
+== Style Recipes
+
+=== Creating Fills
+
+[source,groovy]
+.Create a Fill Symbolizer with a Color
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createFillWithColor,indent=0]
+----
+[.thumb]
+image::style_fill_color.png[]
+
+[source,groovy]
+.Create a Fill Symbolizer with a Color and a Stroke
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createFillWithStroke,indent=0]
+----
+[.thumb]
+image::style_fill_stroke.png[]
+
+[source,groovy]
+.Create a Fill Symbolizer with a Color and Opacity
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createFillWithColorAndOpacity,indent=0]
+----
+[.thumb]
+image::style_fill_color_opacity.png[]
+
+[source,groovy]
+.Create a Fill Symbolizer from named parameters
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createFillWithMap,indent=0]
+----
+[.thumb]
+image::style_fill_map.png[]
+
+
+[source,groovy]
+.Create a Fill Symbolizer with an Icon
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createFillWithIcon,indent=0]
+----
+[.thumb]
+image::style_fill_icon.png[]
+
+[source,groovy]
+.Create a Fill Symbolizer with a Hatch
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createFillWithHatch,indent=0]
+----
+[.thumb]
+image::style_fill_hatch.png[]
+
+[source,groovy]
+.Create a Fill Symbolizer with a random fill
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createFillWithRandom,indent=0]
+----
+[.thumb]
+image::style_fill_random.png[]
