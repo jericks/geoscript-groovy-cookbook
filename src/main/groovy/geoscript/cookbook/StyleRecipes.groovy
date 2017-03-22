@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.layer.Layer
 import geoscript.style.Fill
+import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.Symbolizer
 import geoscript.workspace.GeoPackage
@@ -94,5 +95,50 @@ class StyleRecipes extends Recipes {
         symbolizer
     }
 
-    
+    // Shape
+
+    Shape createShapeWithColor() {
+        // tag::createShapeWithColor[]
+        Shape shape = new Shape("navy")
+        // end::createShapeWithColor[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = shape
+        drawOnBasemap("style_shape_color", [places])
+        shape
+    }
+
+    Shape createShape() {
+        // tag::createShape[]
+        Shape shape = new Shape("#9370DB", 8, "triangle", 0.75, 45)
+        // end::createShape[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = shape
+        drawOnBasemap("style_shape", [places])
+        shape
+    }
+
+    Shape createShapeWithNamedParams() {
+        // tag::createShapeWithNamedParams[]
+        Shape shape = new Shape(color: "#8B4513", size: 10, type: "star", opacity: 1.0, rotation: 0)
+        // end::createShapeWithNamedParams[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = shape
+        drawOnBasemap("style_shape_params", [places])
+        shape
+    }
+
+    Symbolizer createShapeWithStroke() {
+        // tag::createShapeWithStroke[]
+        Symbolizer symbolizer = new Shape("white", 10).stroke("navy", 0.5)
+        // end::createShapeWithStroke[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = symbolizer
+        drawOnBasemap("style_shape_stroke", [places])
+        symbolizer
+    }
+
 }

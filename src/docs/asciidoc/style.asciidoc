@@ -61,3 +61,37 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createFillWithR
 ----
 [.thumb]
 image::style_fill_random.png[]
+
+=== Creating Shapes
+
+[source,groovy]
+.Create a Shape Symbolizer with a Color
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createShapeWithColor,indent=0]
+----
+[.thumb]
+image::style_shape_color.png[]
+
+[source,groovy]
+.Create a Shape Symbolizer with a color, size, type, opacity and angle
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createShape,indent=0]
+----
+[.thumb]
+image::style_shape.png[]
+
+[source,groovy]
+.Create a Shape Symbolizer with named parameters
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createShapeWithNamedParams,indent=0]
+----
+[.thumb]
+image::style_shape_params.png[]
+
+[source,groovy]
+.Create a Shape Symbolizer with Stroke outline
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createShapeWithStroke,indent=0]
+----
+[.thumb]
+image::style_shape_stroke.png[]
