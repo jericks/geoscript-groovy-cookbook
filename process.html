@@ -661,10 +661,10 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:buffer
+geo:isValid
 geo:union
 geo:intersection
-geo:isValid
+geo:buffer
 geo:difference
 geo:distance
 geo:convexHull
@@ -674,12 +674,8 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
-geo:isClosed
 geo:numGeometries
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
+geo:isClosed
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -690,19 +686,23 @@ geo:within
 geo:simplify
 geo:densify
 geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
 geo:reproject
 geo:envelope
 geo:getX
 geo:getY
-geo:isRing
 geo:equalsExact
+geo:isRing
 geo:polygonize
-geo:relatePattern
 geo:startPoint
 geo:endPoint
+geo:relatePattern
+geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
-geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -835,7 +835,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-21 02:50:53 UTC
+Last updated 2017-03-22 03:37:41 UTC
 </div>
 </div>
 </body>

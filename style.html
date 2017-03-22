@@ -517,6 +517,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#style-recipes">Style Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#creating-fills">Creating Fills</a></li>
+<li><a href="#creating-shapes">Creating Shapes</a></li>
 </ul>
 </li>
 </ul>
@@ -612,12 +613,59 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="creating-shapes"><a class="anchor" href="#creating-shapes"></a>Creating Shapes</h3>
+<div class="listingblock">
+<div class="title">Create a Shape Symbolizer with a Color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Shape</span> shape = <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_shape_color.png" alt="style shape color">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Shape Symbolizer with a color, size, type, opacity and angle</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Shape</span> shape = <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#9370DB</span><span class="delimiter">&quot;</span></span>, <span class="integer">8</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">triangle</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>, <span class="integer">45</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_shape.png" alt="style shape">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Shape Symbolizer with named parameters</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Shape</span> shape = <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#8B4513</span><span class="delimiter">&quot;</span></span>, <span class="key">size</span>: <span class="integer">10</span>, <span class="key">type</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">star</span><span class="delimiter">&quot;</span></span>, <span class="key">opacity</span>: <span class="float">1.0</span>, <span class="key">rotation</span>: <span class="integer">0</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_shape_params.png" alt="style shape params">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Shape Symbolizer with Stroke outline</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>, <span class="integer">10</span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_shape_stroke.png" alt="style shape stroke">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-21 02:50:53 UTC
+Last updated 2017-03-22 03:37:41 UTC
 </div>
 </div>
 </body>
