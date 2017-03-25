@@ -3,6 +3,33 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Style Recipes
 
+=== Creating Strokes
+
+[source,groovy]
+.Create a Stroke Symbolizer with a Color
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createStrokeWithColor,indent=0]
+----
+[.thumb]
+image::style_stroke_color.png[]
+
+[source,groovy]
+.Create a Stroke Symbolizer with a Color and Width
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createStrokeWithColorAndWidth,indent=0]
+----
+[.thumb]
+image::style_stroke_color_width.png[]
+
+[source,groovy]
+.Create a Stroke Symbolizer with Dashes
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createStrokeWithDashes,indent=0]
+----
+[.thumb]
+image::style_stroke_dashes.png[]
+
+
 === Creating Fills
 
 [source,groovy]

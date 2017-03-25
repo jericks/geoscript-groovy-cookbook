@@ -2,11 +2,34 @@ package geoscript.cookbook
 
 import geoscript.style.Fill
 import geoscript.style.Shape
+import geoscript.style.Stroke
 import geoscript.style.Symbolizer
 import org.junit.Test
 import static org.junit.Assert.*
 
 class StyleRecipesTest {
+
+    // Stroke
+
+    @Test void createStrokeWithColor() {
+        StyleRecipes recipes = new StyleRecipes()
+        Stroke stroke = recipes.createStrokeWithColor()
+        assertNotNull(stroke)
+    }
+
+    @Test void createStrokeWithColorAndWidth() {
+        StyleRecipes recipes = new StyleRecipes()
+        Stroke stroke = recipes.createStrokeWithColorAndWidth()
+        assertNotNull(stroke)
+    }
+
+    @Test void createStrokeWithDashes() {
+        StyleRecipes recipes = new StyleRecipes()
+        Stroke stroke = recipes.createStrokeWithDashes()
+        assertNotNull(stroke)
+    }
+
+    // Fill
 
     @Test void createFillWithColor() {
         StyleRecipes recipes = new StyleRecipes()

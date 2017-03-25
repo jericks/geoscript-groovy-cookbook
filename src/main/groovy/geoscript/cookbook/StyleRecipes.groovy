@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.geom.Bounds
 import geoscript.layer.Layer
 import geoscript.style.Fill
 import geoscript.style.Shape
@@ -9,6 +10,41 @@ import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 
 class StyleRecipes extends Recipes {
+
+    // Stroke
+
+    Stroke createStrokeWithColor() {
+        // tag::createStrokeWithColor[]
+        Stroke stroke = new Stroke("#1E90FF")
+        // end::createStrokeWithColor[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer rivers = workspace.get("rivers")
+        rivers.style = stroke
+        drawOnBasemap("style_stroke_color", [rivers], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
+        stroke
+    }
+
+    Stroke createStrokeWithColorAndWidth() {
+        // tag::createStrokeWithColorAndWidth[]
+        Stroke stroke = new Stroke("#1E90FF", 0.5)
+        // end::createStrokeWithColorAndWidth[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer rivers = workspace.get("rivers")
+        rivers.style = stroke
+        drawOnBasemap("style_stroke_color_width", [rivers], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
+        stroke
+    }
+
+    Stroke createStrokeWithDashes() {
+        // tag::createStrokeWithDashes[]
+        Stroke stroke = new Stroke("#1E90FF", 0.75, [5,5], "round", "bevel")
+        // end::createStrokeWithDashes[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer rivers = workspace.get("rivers")
+        rivers.style = stroke
+        drawOnBasemap("style_stroke_dashes", [rivers], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
+        stroke
+    }
 
     // Fill
 
@@ -140,5 +176,7 @@ class StyleRecipes extends Recipes {
         drawOnBasemap("style_shape_stroke", [places])
         symbolizer
     }
+
+
 
 }
