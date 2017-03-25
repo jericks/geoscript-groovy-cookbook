@@ -674,6 +674,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#style-recipes">Style Recipes</a>
 <ul class="sectlevel2">
+<li><a href="#creating-strokes">Creating Strokes</a></li>
 <li><a href="#creating-fills">Creating Fills</a></li>
 <li><a href="#creating-shapes">Creating Shapes</a></li>
 </ul>
@@ -4748,7 +4749,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-11929576_15af41bdfad_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--5ea1a5fb_15b0397b178_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5457,7 +5458,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Mar 22 03:42:32 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 25 03:52:05 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5476,7 +5477,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-11929576_15af41bdfad_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--5ea1a5fb_15b0397b178_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5500,7 +5501,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Mar 22 03:42:32 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 25 03:52:05 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5520,7 +5521,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-11929576_15af41bdfad_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--5ea1a5fb_15b0397b178_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5682,7 +5683,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-11929576_15af41bdfad_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--5ea1a5fb_15b0397b178_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5720,7 +5721,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-11929576_15af41bdfad_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--5ea1a5fb_15b0397b178_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7006,12 +7007,13 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:buffer
 geo:isValid
+geo:difference
 geo:union
 geo:intersection
-geo:buffer
-geo:difference
 geo:distance
+geo:isClosed
 geo:convexHull
 geo:area
 geo:crosses
@@ -7020,7 +7022,9 @@ geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:numGeometries
-geo:isClosed
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7032,11 +7036,8 @@ geo:simplify
 geo:densify
 geo:numPoints
 geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:reproject
 geo:envelope
+geo:reproject
 geo:getX
 geo:getY
 geo:equalsExact
@@ -7045,9 +7046,9 @@ geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
-geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
+geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -8155,6 +8156,42 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 <h2 id="style-recipes"><a class="anchor" href="#style-recipes"></a>Style Recipes</h2>
 <div class="sectionbody">
 <div class="sect2">
+<h3 id="creating-strokes"><a class="anchor" href="#creating-strokes"></a>Creating Strokes</h3>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with a Color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Stroke</span> stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_color.png" alt="style stroke color">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with a Color and Width</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Stroke</span> stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_color_width.png" alt="style stroke color width">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with Dashes</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Stroke</span> stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>, [<span class="integer">5</span>,<span class="integer">5</span>], <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">bevel</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_dashes.png" alt="style stroke dashes">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="creating-fills"><a class="anchor" href="#creating-fills"></a>Creating Fills</h3>
 <div class="listingblock">
 <div class="title">Create a Fill Symbolizer with a Color</div>
@@ -8292,7 +8329,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-22 03:37:41 UTC
+Last updated 2017-03-25 03:48:06 UTC
 </div>
 </div>
 </body>

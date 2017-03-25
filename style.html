@@ -516,6 +516,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#style-recipes">Style Recipes</a>
 <ul class="sectlevel2">
+<li><a href="#creating-strokes">Creating Strokes</a></li>
 <li><a href="#creating-fills">Creating Fills</a></li>
 <li><a href="#creating-shapes">Creating Shapes</a></li>
 </ul>
@@ -527,6 +528,42 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect1">
 <h2 id="style-recipes"><a class="anchor" href="#style-recipes"></a>Style Recipes</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="creating-strokes"><a class="anchor" href="#creating-strokes"></a>Creating Strokes</h3>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with a Color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Stroke</span> stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_color.png" alt="style stroke color">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with a Color and Width</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Stroke</span> stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_color_width.png" alt="style stroke color width">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with Dashes</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Stroke</span> stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>, [<span class="integer">5</span>,<span class="integer">5</span>], <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">bevel</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_dashes.png" alt="style stroke dashes">
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="creating-fills"><a class="anchor" href="#creating-fills"></a>Creating Fills</h3>
 <div class="listingblock">
@@ -665,7 +702,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-22 03:37:41 UTC
+Last updated 2017-03-25 03:48:06 UTC
 </div>
 </div>
 </body>
