@@ -22,6 +22,14 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createStrokeWit
 image::style_stroke_color_width.png[]
 
 [source,groovy]
+.Create a Stroke Symbolizer with casing
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createStrokeWithCasing,indent=0]
+----
+[.thumb]
+image::style_stroke_casing.png[]
+
+[source,groovy]
 .Create a Stroke Symbolizer with Dashes
 ----
 include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createStrokeWithDashes,indent=0]
@@ -29,6 +37,29 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createStrokeWit
 [.thumb]
 image::style_stroke_dashes.png[]
 
+[source,groovy]
+.Create a Stroke Symbolizer with railroad Hatching
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createStrokeWithHatch,indent=0]
+----
+[.thumb]
+image::style_stroke_hatch.png[]
+
+[source,groovy]
+.Create a Stroke Symbolizer with spaced Shape symbols
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createStrokeWithSpacedSymbols,indent=0]
+----
+[.thumb]
+image::style_stroke_space_symbols.png[]
+
+[source,groovy]
+.Create a Stroke Symbolizer with alternating spaced Shape symbols
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createStrokeWithAlternatingSymbols,indent=0]
+----
+[.thumb]
+image::style_stroke_alternating_symbols.png[]
 
 === Creating Fills
 

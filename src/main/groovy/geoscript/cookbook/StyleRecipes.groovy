@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.geom.Bounds
 import geoscript.layer.Layer
 import geoscript.style.Fill
+import geoscript.style.Hatch
 import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.Symbolizer
@@ -35,6 +36,19 @@ class StyleRecipes extends Recipes {
         stroke
     }
 
+    Symbolizer createStrokeWithCasing() {
+        // tag::createStrokeWithCasing[]
+        Symbolizer stroke = new Stroke(color: "#333333", width: 5, cap: "round").zindex(0) +
+                new Stroke(color: "#6699FF", width: 3, cap: "round").zindex(1)
+        println stroke.sld
+        // end::createStrokeWithCasing[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer rivers = workspace.get("rivers")
+        rivers.style = stroke
+        drawOnBasemap("style_stroke_casing", [rivers], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
+        stroke
+    }
+
     Stroke createStrokeWithDashes() {
         // tag::createStrokeWithDashes[]
         Stroke stroke = new Stroke("#1E90FF", 0.75, [5,5], "round", "bevel")
@@ -43,6 +57,40 @@ class StyleRecipes extends Recipes {
         Layer rivers = workspace.get("rivers")
         rivers.style = stroke
         drawOnBasemap("style_stroke_dashes", [rivers], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
+        stroke
+    }
+
+    Symbolizer createStrokeWithHatch() {
+        // tag::createStrokeWithHatch[]
+        Symbolizer stroke = new Stroke("#1E90FF", 1) + new Hatch("vertline", new Stroke("#1E90FF", 0.5), 6).zindex(1)
+        // end::createStrokeWithHatch[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer rivers = workspace.get("rivers")
+        rivers.style = stroke
+        drawOnBasemap("style_stroke_hatch", [rivers], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
+        stroke
+    }
+
+    Symbolizer createStrokeWithSpacedSymbols() {
+        // tag::createStrokeWithSpacedSymbols[]
+        Symbolizer stroke = new Stroke(width: 0, dash: [4, 4]).shape(new Shape("#1E90FF", 6, "circle").stroke("navy", 0.75))
+        // end::createStrokeWithSpacedSymbols[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer rivers = workspace.get("rivers")
+        rivers.style = stroke
+        drawOnBasemap("style_stroke_space_symbols", [rivers], new Bounds(-107.402344,24.786735,-76.420898,38.307181))
+        stroke
+    }
+
+    Symbolizer createStrokeWithAlternatingSymbols() {
+        // tag::createStrokeWithAlternatingSymbols[]
+        Symbolizer stroke = new Stroke("#0000FF", 1, [10,10]).zindex(0) + new Stroke(null, 0, [[5,15],7.5])
+                .shape(new Shape(null, 5, "circle").stroke("#000033",1)).zindex(1)
+        // end::createStrokeWithAlternatingSymbols[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer rivers = workspace.get("rivers")
+        rivers.style = stroke
+        drawOnBasemap("style_stroke_alternating_symbols", [rivers], new Bounds(-171.123047,56.145550,-109.160156,70.199994))
         stroke
     }
 

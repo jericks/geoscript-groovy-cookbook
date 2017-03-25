@@ -23,9 +23,33 @@ class StyleRecipesTest {
         assertNotNull(stroke)
     }
 
+    @Test void createStrokeWithCasing() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer stroke = recipes.createStrokeWithCasing()
+        assertNotNull(stroke)
+    }
+
     @Test void createStrokeWithDashes() {
         StyleRecipes recipes = new StyleRecipes()
         Stroke stroke = recipes.createStrokeWithDashes()
+        assertNotNull(stroke)
+    }
+
+    @Test void createStrokeWithHatch() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer stroke = recipes.createStrokeWithHatch()
+        assertNotNull(stroke)
+    }
+
+    @Test void createStrokeWithSpacedSymbols() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer stroke = recipes.createStrokeWithSpacedSymbols()
+        assertNotNull(stroke)
+    }
+    
+    @Test void createStrokeWithAlternatingSymbols() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer stroke = recipes.createStrokeWithAlternatingSymbols()
         assertNotNull(stroke)
     }
 
