@@ -43,9 +43,6 @@ geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:numGeometries
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -55,9 +52,12 @@ geo:touches
 geo:within
 geo:simplify
 geo:densify
+geo:envelope
 geo:numPoints
 geo:dimension
-geo:envelope
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
 geo:reproject
 geo:getX
 geo:getY

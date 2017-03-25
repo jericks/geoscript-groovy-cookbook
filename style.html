@@ -553,6 +553,19 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with casing</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#333333</span><span class="delimiter">&quot;</span></span>, <span class="key">width</span>: <span class="integer">5</span>, <span class="key">cap</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>).zindex(<span class="integer">0</span>) +
+        <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#6699FF</span><span class="delimiter">&quot;</span></span>, <span class="key">width</span>: <span class="integer">3</span>, <span class="key">cap</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>).zindex(<span class="integer">1</span>)
+println stroke.sld</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_casing.png" alt="style stroke casing">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Create a Stroke Symbolizer with Dashes</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Stroke</span> stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>, [<span class="integer">5</span>,<span class="integer">5</span>], <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">bevel</span><span class="delimiter">&quot;</span></span>)</code></pre>
@@ -561,6 +574,40 @@ table.CodeRay td.code>pre{padding:0}
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/style_stroke_dashes.png" alt="style stroke dashes">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with railroad Hatching</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="integer">1</span>) + <span class="keyword">new</span> Hatch(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertline</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>), <span class="integer">6</span>).zindex(<span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_hatch.png" alt="style stroke hatch">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with spaced Shape symbols</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="key">width</span>: <span class="integer">0</span>, <span class="key">dash</span>: [<span class="integer">4</span>, <span class="integer">4</span>]).shape(<span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="integer">6</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">circle</span><span class="delimiter">&quot;</span></span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_space_symbols.png" alt="style stroke space symbols">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with alternating spaced Shape symbols</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#0000FF</span><span class="delimiter">&quot;</span></span>, <span class="integer">1</span>, [<span class="integer">10</span>,<span class="integer">10</span>]).zindex(<span class="integer">0</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="predefined-constant">null</span>, <span class="integer">0</span>, [[<span class="integer">5</span>,<span class="integer">15</span>],<span class="float">7.5</span>])
+        .shape(<span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="predefined-constant">null</span>, <span class="integer">5</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">circle</span><span class="delimiter">&quot;</span></span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">#000033</span><span class="delimiter">&quot;</span></span>,<span class="integer">1</span>)).zindex(<span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_alternating_symbols.png" alt="style stroke alternating symbols">
 </div>
 </div>
 </div>
@@ -702,7 +749,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-25 03:48:06 UTC
+Last updated 2017-03-25 20:02:58 UTC
 </div>
 </div>
 </body>

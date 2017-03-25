@@ -4749,7 +4749,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--5ea1a5fb_15b0397b178_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--7338ee5e_15b071368b3_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5458,7 +5458,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 25 03:52:05 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 25 20:06:04 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5477,7 +5477,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--5ea1a5fb_15b0397b178_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--7338ee5e_15b071368b3_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5501,7 +5501,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 25 03:52:05 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 25 20:06:04 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5521,7 +5521,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--5ea1a5fb_15b0397b178_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--7338ee5e_15b071368b3_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5683,7 +5683,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--5ea1a5fb_15b0397b178_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--7338ee5e_15b071368b3_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5721,7 +5721,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--5ea1a5fb_15b0397b178_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--7338ee5e_15b071368b3_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7022,9 +7022,6 @@ geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:numGeometries
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7034,9 +7031,12 @@ geo:touches
 geo:within
 geo:simplify
 geo:densify
+geo:envelope
 geo:numPoints
 geo:dimension
-geo:envelope
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
 geo:reproject
 geo:getX
 geo:getY
@@ -8180,6 +8180,19 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with casing</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#333333</span><span class="delimiter">&quot;</span></span>, <span class="key">width</span>: <span class="integer">5</span>, <span class="key">cap</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>).zindex(<span class="integer">0</span>) +
+        <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#6699FF</span><span class="delimiter">&quot;</span></span>, <span class="key">width</span>: <span class="integer">3</span>, <span class="key">cap</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>).zindex(<span class="integer">1</span>)
+println stroke.sld</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_casing.png" alt="style stroke casing">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Create a Stroke Symbolizer with Dashes</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Stroke</span> stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>, [<span class="integer">5</span>,<span class="integer">5</span>], <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">bevel</span><span class="delimiter">&quot;</span></span>)</code></pre>
@@ -8188,6 +8201,40 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/style_stroke_dashes.png" alt="style stroke dashes">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with railroad Hatching</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="integer">1</span>) + <span class="keyword">new</span> Hatch(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertline</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>), <span class="integer">6</span>).zindex(<span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_hatch.png" alt="style stroke hatch">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with spaced Shape symbols</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="key">width</span>: <span class="integer">0</span>, <span class="key">dash</span>: [<span class="integer">4</span>, <span class="integer">4</span>]).shape(<span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#1E90FF</span><span class="delimiter">&quot;</span></span>, <span class="integer">6</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">circle</span><span class="delimiter">&quot;</span></span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_space_symbols.png" alt="style stroke space symbols">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Stroke Symbolizer with alternating spaced Shape symbols</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#0000FF</span><span class="delimiter">&quot;</span></span>, <span class="integer">1</span>, [<span class="integer">10</span>,<span class="integer">10</span>]).zindex(<span class="integer">0</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="predefined-constant">null</span>, <span class="integer">0</span>, [[<span class="integer">5</span>,<span class="integer">15</span>],<span class="float">7.5</span>])
+        .shape(<span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="predefined-constant">null</span>, <span class="integer">5</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">circle</span><span class="delimiter">&quot;</span></span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">#000033</span><span class="delimiter">&quot;</span></span>,<span class="integer">1</span>)).zindex(<span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_stroke_alternating_symbols.png" alt="style stroke alternating symbols">
 </div>
 </div>
 </div>
@@ -8329,7 +8376,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-25 03:48:06 UTC
+Last updated 2017-03-25 20:02:58 UTC
 </div>
 </div>
 </body>
