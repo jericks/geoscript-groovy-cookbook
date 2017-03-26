@@ -677,6 +677,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-strokes">Creating Strokes</a></li>
 <li><a href="#creating-fills">Creating Fills</a></li>
 <li><a href="#creating-shapes">Creating Shapes</a></li>
+<li><a href="#creating-gradients">Creating Gradients</a></li>
 </ul>
 </li>
 </ul>
@@ -4749,7 +4750,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--7338ee5e_15b071368b3_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--597c096d_15b0c731221_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5458,7 +5459,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 25 20:06:04 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Mar 26 21:08:39 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5477,7 +5478,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--7338ee5e_15b071368b3_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--597c096d_15b0c731221_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5501,7 +5502,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 25 20:06:04 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Mar 26 21:08:40 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5521,7 +5522,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--7338ee5e_15b071368b3_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--597c096d_15b0c731221_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5683,7 +5684,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--7338ee5e_15b071368b3_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--597c096d_15b0c731221_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5721,7 +5722,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--7338ee5e_15b071368b3_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--597c096d_15b0c731221_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7008,10 +7009,10 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:isValid
-geo:difference
 geo:union
 geo:intersection
+geo:isValid
+geo:difference
 geo:distance
 geo:isClosed
 geo:convexHull
@@ -7040,14 +7041,14 @@ geo:geometryType
 geo:reproject
 geo:getX
 geo:getY
+geo:startPoint
+geo:endPoint
 geo:equalsExact
 geo:isRing
 geo:polygonize
-geo:startPoint
-geo:endPoint
 geo:relatePattern
-geo:pointN
 geo:interiorRingN
+geo:pointN
 geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
@@ -8183,8 +8184,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 <div class="title">Create a Stroke Symbolizer with casing</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer stroke = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#333333</span><span class="delimiter">&quot;</span></span>, <span class="key">width</span>: <span class="integer">5</span>, <span class="key">cap</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>).zindex(<span class="integer">0</span>) +
-        <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#6699FF</span><span class="delimiter">&quot;</span></span>, <span class="key">width</span>: <span class="integer">3</span>, <span class="key">cap</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>).zindex(<span class="integer">1</span>)
-println stroke.sld</code></pre>
+        <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#6699FF</span><span class="delimiter">&quot;</span></span>, <span class="key">width</span>: <span class="integer">3</span>, <span class="key">cap</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">round</span><span class="delimiter">&quot;</span></span>).zindex(<span class="integer">1</span>)</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -8371,12 +8371,65 @@ println stroke.sld</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="creating-gradients"><a class="anchor" href="#creating-gradients"></a>Creating Gradients</h3>
+<div class="listingblock">
+<div class="title">Create a Gradient Symbolizer from a Layer&#8217;s Field using quantile method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+Gradient gradient = <span class="keyword">new</span> Gradient(countries, <span class="string"><span class="delimiter">&quot;</span><span class="content">PEOPLE</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">quantile</span><span class="delimiter">&quot;</span></span>, <span class="integer">8</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Greens</span><span class="delimiter">&quot;</span></span>)
+countries.style = gradient</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_gradient_field_quantile.png" alt="style gradient field quantile">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Gradient Symbolizer from a Layer&#8217;s Field using equal interval method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+Gradient gradient = <span class="keyword">new</span> Gradient(countries, <span class="string"><span class="delimiter">&quot;</span><span class="content">PEOPLE</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">equalinterval</span><span class="delimiter">&quot;</span></span>, <span class="integer">3</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Reds</span><span class="delimiter">&quot;</span></span>)
+countries.style = gradient</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_gradient_field_equalinterval.png" alt="style gradient field equalinterval">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a custom Gradient Symbolizer between Symbolizers and values</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Gradient gradient = <span class="keyword">new</span> Gradient(
+        <span class="keyword">new</span> Property(<span class="string"><span class="delimiter">&quot;</span><span class="content">POP2020</span><span class="delimiter">&quot;</span></span>),
+        [<span class="integer">0</span>, <span class="integer">10000</span>, <span class="integer">20000</span>, <span class="integer">30000</span>],
+        [
+                <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>, <span class="integer">4</span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>),
+                <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b0d2e8</span><span class="delimiter">&quot;</span></span>, <span class="integer">8</span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>),
+                <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#3e8ec4</span><span class="delimiter">&quot;</span></span>, <span class="integer">16</span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>),
+                <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#08306b</span><span class="delimiter">&quot;</span></span>, <span class="integer">24</span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+        ],
+        <span class="integer">5</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">linear</span><span class="delimiter">&quot;</span></span>
+)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_gradient_custom.png" alt="style gradient custom">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-25 20:02:58 UTC
+Last updated 2017-03-26 21:04:23 UTC
 </div>
 </div>
 </body>
