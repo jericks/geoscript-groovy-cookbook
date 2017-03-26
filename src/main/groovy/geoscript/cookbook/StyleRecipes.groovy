@@ -1,8 +1,11 @@
 package geoscript.cookbook
 
+import geoscript.filter.Expression
+import geoscript.filter.Property
 import geoscript.geom.Bounds
 import geoscript.layer.Layer
 import geoscript.style.Fill
+import geoscript.style.Gradient
 import geoscript.style.Hatch
 import geoscript.style.Shape
 import geoscript.style.Stroke
@@ -40,7 +43,6 @@ class StyleRecipes extends Recipes {
         // tag::createStrokeWithCasing[]
         Symbolizer stroke = new Stroke(color: "#333333", width: 5, cap: "round").zindex(0) +
                 new Stroke(color: "#6699FF", width: 3, cap: "round").zindex(1)
-        println stroke.sld
         // end::createStrokeWithCasing[]
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer rivers = workspace.get("rivers")
@@ -225,6 +227,51 @@ class StyleRecipes extends Recipes {
         symbolizer
     }
 
+    // Gradient
 
+    Symbolizer createGradientOnFieldWithQuantile() {
+        // tag::createGradientOnFieldWithQuantile[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        Gradient gradient = new Gradient(countries, "PEOPLE", "quantile", 8, "Greens")
+        countries.style = gradient
+        // end::createGradientOnFieldWithQuantile[]
+        drawOnBasemap("style_gradient_field_quantile", [countries])
+        gradient
+    }
+
+    Symbolizer createGradientOnFieldWithEqualInterval() {
+        // tag::createGradientOnFieldWithEqualInterval[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        Gradient gradient = new Gradient(countries, "PEOPLE", "equalinterval", 3, "Reds")
+        countries.style = gradient
+        // end::createGradientOnFieldWithEqualInterval[]
+        drawOnBasemap("style_gradient_field_equalinterval", [countries])
+        gradient
+    }
+
+    Symbolizer createGradientCustom() {
+        // tag::createGradientCustom[]
+        Gradient gradient = new Gradient(
+                new Property("POP2020"),
+                [0, 10000, 20000, 30000],
+                [
+                        new Shape("white", 4).stroke("black", 0.5),
+                        new Shape("#b0d2e8", 8).stroke("black", 0.5),
+                        new Shape("#3e8ec4", 16).stroke("black", 0.5),
+                        new Shape("#08306b", 24).stroke("black", 0.5)
+                ],
+                5,
+                "linear"
+        )
+        // end::createGradientCustom[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = gradient
+        drawOnBasemap("style_gradient_custom", [places])
+        gradient
+
+    }
 
 }

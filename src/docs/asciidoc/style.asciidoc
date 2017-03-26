@@ -153,3 +153,29 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createShapeWith
 ----
 [.thumb]
 image::style_shape_stroke.png[]
+
+=== Creating Gradients
+
+[source,groovy]
+.Create a Gradient Symbolizer from a Layer's Field using quantile method
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createGradientOnFieldWithQuantile,indent=0]
+----
+[.thumb]
+image::style_gradient_field_quantile.png[]
+
+[source,groovy]
+.Create a Gradient Symbolizer from a Layer's Field using equal interval method
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createGradientOnFieldWithEqualInterval,indent=0]
+----
+[.thumb]
+image::style_gradient_field_equalinterval.png[]
+
+[source,groovy]
+.Create a custom Gradient Symbolizer between Symbolizers and values
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createGradientCustom,indent=0]
+----
+[.thumb]
+image::style_gradient_custom.png[]

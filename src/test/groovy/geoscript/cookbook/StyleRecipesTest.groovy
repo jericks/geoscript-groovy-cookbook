@@ -123,5 +123,23 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    // Gradient
 
+    @Test void createGradientOnFieldWithQuantile() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createGradientOnFieldWithQuantile()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createGradientOnFieldWithEqualInterval() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createGradientOnFieldWithEqualInterval()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createGradientCustom() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createGradientCustom()
+        assertNotNull(symbolizer)
+    }
 }
