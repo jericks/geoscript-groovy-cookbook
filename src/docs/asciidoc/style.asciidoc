@@ -179,3 +179,29 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createGradientC
 ----
 [.thumb]
 image::style_gradient_custom.png[]
+
+=== Creating Unique Values
+
+[source,groovy]
+.Create a Unique Values Symbolizer from a Layer's Field
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createUniqueValues,indent=0]
+----
+[.thumb]
+image::style_uniquevalues.png[]
+
+[source,groovy]
+.Create a Unique Values Symbolizer from a Layer's Field and a Closure
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createUniqueValuesWithClosure,indent=0]
+----
+[.thumb]
+image::style_uniquevalues_closure.png[]
+
+[source,groovy]
+.Create a Unique Values Symbolizer from a Layer's Field and a color palette
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createUniqueValuesWithPalette,indent=0]
+----
+[.thumb]
+image::style_uniquevalues_palette.png[]

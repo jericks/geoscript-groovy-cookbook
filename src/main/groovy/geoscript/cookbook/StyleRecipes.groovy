@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.filter.Color
 import geoscript.filter.Expression
 import geoscript.filter.Property
 import geoscript.geom.Bounds
@@ -10,6 +11,7 @@ import geoscript.style.Hatch
 import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.Symbolizer
+import geoscript.style.UniqueValues
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 
@@ -271,7 +273,41 @@ class StyleRecipes extends Recipes {
         places.style = gradient
         drawOnBasemap("style_gradient_custom", [places])
         gradient
+    }
 
+    // UniqueValues
+
+    Symbolizer createUniqueValues() {
+        // tag::createUniqueValues[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        UniqueValues uniqueValues = new UniqueValues(countries, "NAME")
+        countries.style = uniqueValues
+        // end::createUniqueValues[]
+        drawOnBasemap("style_uniquevalues", [countries])
+        uniqueValues
+    }
+
+    Symbolizer createUniqueValuesWithClosure() {
+        // tag::createUniqueValuesWithClosure[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        UniqueValues uniqueValues = new UniqueValues(countries, "NAME", {int index, String value -> Color.getRandom()})
+        countries.style = uniqueValues
+        // end::createUniqueValuesWithClosure[]
+        drawOnBasemap("style_uniquevalues_closure", [countries])
+        uniqueValues
+    }
+
+    Symbolizer createUniqueValuesWithPalette() {
+        // tag::createUniqueValuesWithPalette[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        UniqueValues uniqueValues = new UniqueValues(countries, "NAME", "LightPurpleToDarkPurpleHeatMap")
+        countries.style = uniqueValues
+        // end::createUniqueValuesWithPalette[]
+        drawOnBasemap("style_uniquevalues_palette", [countries])
+        uniqueValues
     }
 
 }

@@ -142,4 +142,25 @@ class StyleRecipesTest {
         Symbolizer symbolizer = recipes.createGradientCustom()
         assertNotNull(symbolizer)
     }
+
+    // Unique Values
+
+    @Test void createUniqueValues() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createUniqueValues()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createUniqueValuesWithClosure() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createUniqueValuesWithClosure()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createUniqueValuesWithPalette() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createUniqueValuesWithPalette()
+        assertNotNull(symbolizer)
+    }
+
 }
