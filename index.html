@@ -678,6 +678,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-fills">Creating Fills</a></li>
 <li><a href="#creating-shapes">Creating Shapes</a></li>
 <li><a href="#creating-gradients">Creating Gradients</a></li>
+<li><a href="#creating-unique-values">Creating Unique Values</a></li>
 </ul>
 </li>
 </ul>
@@ -4750,7 +4751,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--597c096d_15b0c731221_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-718b28fc_15b12bdf3b3_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5459,7 +5460,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Mar 26 21:08:39 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 28 02:28:10 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5478,7 +5479,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--597c096d_15b0c731221_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-718b28fc_15b12bdf3b3_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5502,7 +5503,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Mar 26 21:08:40 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 28 02:28:10 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5522,7 +5523,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--597c096d_15b0c731221_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-718b28fc_15b12bdf3b3_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5684,7 +5685,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--597c096d_15b0c731221_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-718b28fc_15b12bdf3b3_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5722,7 +5723,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--597c096d_15b0c731221_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-718b28fc_15b12bdf3b3_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7009,20 +7010,20 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:union
-geo:intersection
 geo:isValid
 geo:difference
+geo:union
+geo:intersection
 geo:distance
 geo:isClosed
+geo:numGeometries
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
 geo:convexHull
 geo:area
 geo:crosses
 geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7041,12 +7042,12 @@ geo:geometryType
 geo:reproject
 geo:getX
 geo:getY
-geo:startPoint
-geo:endPoint
 geo:equalsExact
 geo:isRing
 geo:polygonize
 geo:relatePattern
+geo:startPoint
+geo:endPoint
 geo:interiorRingN
 geo:pointN
 geo:equalsExactTolerance
@@ -8424,12 +8425,57 @@ countries.style = gradient</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="creating-unique-values"><a class="anchor" href="#creating-unique-values"></a>Creating Unique Values</h3>
+<div class="listingblock">
+<div class="title">Create a Unique Values Symbolizer from a Layer&#8217;s Field</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+UniqueValues uniqueValues = <span class="keyword">new</span> UniqueValues(countries, <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>)
+countries.style = uniqueValues</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_uniquevalues.png" alt="style uniquevalues">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Unique Values Symbolizer from a Layer&#8217;s Field and a Closure</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+UniqueValues uniqueValues = <span class="keyword">new</span> UniqueValues(countries, <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>, {<span class="type">int</span> index, <span class="predefined-type">String</span> value -&gt; <span class="predefined-type">Color</span>.getRandom()})
+countries.style = uniqueValues</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_uniquevalues_closure.png" alt="style uniquevalues closure">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Unique Values Symbolizer from a Layer&#8217;s Field and a color palette</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+UniqueValues uniqueValues = <span class="keyword">new</span> UniqueValues(countries, <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">LightPurpleToDarkPurpleHeatMap</span><span class="delimiter">&quot;</span></span>)
+countries.style = uniqueValues</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_uniquevalues_palette.png" alt="style uniquevalues palette">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-26 21:04:23 UTC
+Last updated 2017-03-28 02:25:18 UTC
 </div>
 </div>
 </body>

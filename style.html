@@ -520,6 +520,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-fills">Creating Fills</a></li>
 <li><a href="#creating-shapes">Creating Shapes</a></li>
 <li><a href="#creating-gradients">Creating Gradients</a></li>
+<li><a href="#creating-unique-values">Creating Unique Values</a></li>
 </ul>
 </li>
 </ul>
@@ -797,12 +798,57 @@ countries.style = gradient</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="creating-unique-values"><a class="anchor" href="#creating-unique-values"></a>Creating Unique Values</h3>
+<div class="listingblock">
+<div class="title">Create a Unique Values Symbolizer from a Layer&#8217;s Field</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+UniqueValues uniqueValues = <span class="keyword">new</span> UniqueValues(countries, <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>)
+countries.style = uniqueValues</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_uniquevalues.png" alt="style uniquevalues">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Unique Values Symbolizer from a Layer&#8217;s Field and a Closure</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+UniqueValues uniqueValues = <span class="keyword">new</span> UniqueValues(countries, <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>, {<span class="type">int</span> index, <span class="predefined-type">String</span> value -&gt; <span class="predefined-type">Color</span>.getRandom()})
+countries.style = uniqueValues</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_uniquevalues_closure.png" alt="style uniquevalues closure">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Unique Values Symbolizer from a Layer&#8217;s Field and a color palette</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+UniqueValues uniqueValues = <span class="keyword">new</span> UniqueValues(countries, <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">LightPurpleToDarkPurpleHeatMap</span><span class="delimiter">&quot;</span></span>)
+countries.style = uniqueValues</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_uniquevalues_palette.png" alt="style uniquevalues palette">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-26 21:04:23 UTC
+Last updated 2017-03-28 02:25:18 UTC
 </div>
 </div>
 </body>
