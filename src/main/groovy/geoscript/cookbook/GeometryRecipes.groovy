@@ -15,6 +15,8 @@ import geoscript.geom.Point
 import geoscript.geom.Polygon
 import geoscript.geom.io.GeoJSONReader
 import geoscript.geom.io.GeoJSONWriter
+import geoscript.geom.io.GeoRSSReader
+import geoscript.geom.io.GeoRSSWriter
 import geoscript.geom.io.GeobufReader
 import geoscript.geom.io.GeobufWriter
 import geoscript.geom.io.Gml2Reader
@@ -31,7 +33,6 @@ import geoscript.geom.io.WktReader
 import geoscript.geom.io.WktWriter
 import geoscript.geom.io.Writer
 import geoscript.geom.io.Writers
-import geoscript.proj.Projection
 import geoscript.viewer.Viewer
 
 class GeometryRecipes extends Recipes {
@@ -1182,6 +1183,34 @@ class GeometryRecipes extends Recipes {
         // end::writeGeometryToGml3UsingWriter[]
         writeFile("geometry_to_gml3_using_writer", gml3)
         gml3
+    }
+
+    // GeoRSS
+
+    Geometry readGeometryFromGeoRSSReader() {
+        // tag::readGeometryFromGeoRSSReader[]
+        String georss = "<georss:point>46.237 -123.15</georss:point>"
+        GeoRSSReader reader = new GeoRSSReader()
+        Geometry geometry = reader.read(georss)
+        // end::readGeometryFromGeoRSSReader[]
+        drawGeometry("geometry_read_georssreader", geometry)
+        geometry
+    }
+
+    String writeGeometryToGeoRSSUsingWriter() {
+        // tag::writeGeometryToGeoRSSUsingWriter[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        GeoRSSWriter writer = new GeoRSSWriter()
+        String georss = writer.write(geometry)
+        println georss
+        // end::writeGeometryToGeoRSSUsingWriter[]
+        writeFile("geometry_to_georss_using_writer", georss)
+        georss
     }
 
 }

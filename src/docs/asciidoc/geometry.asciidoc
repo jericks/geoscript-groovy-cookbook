@@ -678,3 +678,22 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 ....
 include::output/geometry_to_gml3_using_writer.txt[]
 ....
+
+==== GeoRSS
+
+[source,groovy]
+.Read a Geometry from GeoRSS using the GeoRSSReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGeoRSSReader,indent=0]
+----
+[.thumb]
+image::geometry_read_georssreader.png[]
+
+[source,groovy]
+.Write a Geometry to GeoRSS using the GeoRSSWriter
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGeoRSSUsingWriter,indent=0]
+----
+....
+include::output/geometry_to_georss_using_writer.txt[]
+....

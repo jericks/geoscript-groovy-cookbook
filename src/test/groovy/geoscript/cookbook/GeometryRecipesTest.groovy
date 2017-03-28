@@ -472,4 +472,18 @@ class GeometryRecipesTest {
         String gml = recipes.writeGeometryToGml3UsingWriter()
         assertEquals("<gml:LineString><gml:posList>3.198 43.164 6.713 49.755 9.702 42.592 15.32 53.798</gml:posList></gml:LineString>", gml)
     }
+
+    // GeoRSS
+
+    @Test void readGeometryFromGeoRSSReader() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGeoRSSReader()
+        assertEquals("POINT (-123.15 46.237)", geom.wkt)
+    }
+
+    @Test void writeGeometryToGeoRSSUsingWriter() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String georss = recipes.writeGeometryToGeoRSSUsingWriter()
+        assertEquals("<georss:line>43.164 3.198 49.755 6.713 42.592 9.702 53.798 15.32</georss:line>", georss)
+    }
 }
