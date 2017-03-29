@@ -528,6 +528,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geobuf">Geobuf</a></li>
 <li><a href="#gml-2">GML 2</a></li>
 <li><a href="#gml-3">GML 3</a></li>
+<li><a href="#georss">GeoRSS</a></li>
 </ul>
 </li>
 </ul>
@@ -1974,13 +1975,48 @@ println gml3</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="georss"><a class="anchor" href="#georss"></a>GeoRSS</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from GeoRSS using the GeoRSSReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> georss = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;georss:point&gt;46.237 -123.15&lt;/georss:point&gt;</span><span class="delimiter">&quot;</span></span>
+GeoRSSReader reader = <span class="keyword">new</span> GeoRSSReader()
+Geometry geometry = reader.read(georss)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_georssreader.png" alt="geometry read georssreader">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to GeoRSS using the GeoRSSWriter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+GeoRSSWriter writer = <span class="keyword">new</span> GeoRSSWriter()
+<span class="predefined-type">String</span> georss = writer.write(geometry)
+println georss</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;georss:line&gt;43.164 3.198 49.755 6.713 42.592 9.702 53.798 15.32&lt;/georss:line&gt;</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-28 02:25:18 UTC
+Last updated 2017-03-28 23:46:16 UTC
 </div>
 </div>
 </body>
