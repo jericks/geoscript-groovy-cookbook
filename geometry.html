@@ -528,6 +528,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geobuf">Geobuf</a></li>
 <li><a href="#gml-2">GML 2</a></li>
 <li><a href="#gml-3">GML 3</a></li>
+<li><a href="#gpx">GPX</a></li>
 <li><a href="#georss">GeoRSS</a></li>
 </ul>
 </li>
@@ -1976,6 +1977,66 @@ println gml3</code></pre>
 </div>
 </div>
 <div class="sect3">
+<h4 id="gpx"><a class="anchor" href="#gpx"></a>GPX</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from GPX using the GpxReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> gpx = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;wpt lat='46.237' lon='-123.15'/&gt;</span><span class="delimiter">&quot;</span></span>
+GpxReader reader = <span class="keyword">new</span> GpxReader()
+Geometry geometry = reader.read(gpx)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_gpxreader.png" alt="geometry read gpxreader">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from GPX using the Geometry.fromGPX() static method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> gpx = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;rte&gt;&lt;rtept lat='43.164' lon='3.198' /&gt;&lt;rtept lat='49.755' lon='6.713' /&gt;&lt;rtept lat='42.592' lon='9.702' /&gt;&lt;rtept lat='53.798' lon='15.32' /&gt;&lt;/rte&gt;</span><span class="delimiter">&quot;</span></span>
+Geometry geometry = Geometry.fromGpx(gpx)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_geometryfromgpx.png" alt="geometry read geometryfromgpx">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the GPX of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+<span class="predefined-type">String</span> gpx = geometry.gpx
+println gpx</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;wpt lat='46.237' lon='-123.15'/&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to GPX using the GpxWriter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+GpxWriter writer = <span class="keyword">new</span> GpxWriter()
+<span class="predefined-type">String</span> gpx = writer.write(geometry)
+println gpx</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;rte&gt;&lt;rtept lat='43.164' lon='3.198' /&gt;&lt;rtept lat='49.755' lon='6.713' /&gt;&lt;rtept lat='42.592' lon='9.702' /&gt;&lt;rtept lat='53.798' lon='15.32' /&gt;&lt;/rte&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="georss"><a class="anchor" href="#georss"></a>GeoRSS</h4>
 <div class="listingblock">
 <div class="title">Read a Geometry from GeoRSS using the GeoRSSReader</div>
@@ -2016,7 +2077,7 @@ println georss</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-28 23:46:16 UTC
+Last updated 2017-03-31 00:53:26 UTC
 </div>
 </div>
 </body>

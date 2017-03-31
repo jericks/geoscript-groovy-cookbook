@@ -533,6 +533,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geobuf">Geobuf</a></li>
 <li><a href="#gml-2">GML 2</a></li>
 <li><a href="#gml-3">GML 3</a></li>
+<li><a href="#gpx">GPX</a></li>
 <li><a href="#georss">GeoRSS</a></li>
 </ul>
 </li>
@@ -605,7 +606,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geobuf-2">GeoBuf</a></li>
 <li><a href="#georss-2">GeoRSS</a></li>
 <li><a href="#gml">GML</a></li>
-<li><a href="#gpx">GPX</a></li>
+<li><a href="#gpx-2">GPX</a></li>
 <li><a href="#kml-2">KML</a></li>
 </ul>
 </li>
@@ -2121,6 +2122,66 @@ println gml3</code></pre>
 <div class="literalblock">
 <div class="content">
 <pre>&lt;gml:LineString&gt;&lt;gml:posList&gt;3.198 43.164 6.713 49.755 9.702 42.592 15.32 53.798&lt;/gml:posList&gt;&lt;/gml:LineString&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gpx"><a class="anchor" href="#gpx"></a>GPX</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from GPX using the GpxReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> gpx = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;wpt lat='46.237' lon='-123.15'/&gt;</span><span class="delimiter">&quot;</span></span>
+GpxReader reader = <span class="keyword">new</span> GpxReader()
+Geometry geometry = reader.read(gpx)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_gpxreader.png" alt="geometry read gpxreader">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from GPX using the Geometry.fromGPX() static method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> gpx = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;rte&gt;&lt;rtept lat='43.164' lon='3.198' /&gt;&lt;rtept lat='49.755' lon='6.713' /&gt;&lt;rtept lat='42.592' lon='9.702' /&gt;&lt;rtept lat='53.798' lon='15.32' /&gt;&lt;/rte&gt;</span><span class="delimiter">&quot;</span></span>
+Geometry geometry = Geometry.fromGpx(gpx)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_geometryfromgpx.png" alt="geometry read geometryfromgpx">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the GPX of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+<span class="predefined-type">String</span> gpx = geometry.gpx
+println gpx</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;wpt lat='46.237' lon='-123.15'/&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to GPX using the GpxWriter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+GpxWriter writer = <span class="keyword">new</span> GpxWriter()
+<span class="predefined-type">String</span> gpx = writer.write(geometry)
+println gpx</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;rte&gt;&lt;rtept lat='43.164' lon='3.198' /&gt;&lt;rtept lat='49.755' lon='6.713' /&gt;&lt;rtept lat='42.592' lon='9.702' /&gt;&lt;rtept lat='53.798' lon='15.32' /&gt;&lt;/rte&gt;</pre>
 </div>
 </div>
 </div>
@@ -4787,7 +4848,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-5a2b6cf4_15b175331d8_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-14393c93_15b21dce4af_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5496,7 +5557,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 28 23:49:40 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 31 00:56:16 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5515,7 +5576,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-5a2b6cf4_15b175331d8_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-14393c93_15b21dce4af_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5539,7 +5600,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 28 23:49:40 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 31 00:56:16 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5559,7 +5620,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-5a2b6cf4_15b175331d8_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-14393c93_15b21dce4af_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5687,7 +5748,7 @@ println gml</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="gpx"><a class="anchor" href="#gpx"></a>GPX</h4>
+<h4 id="gpx-2"><a class="anchor" href="#gpx-2"></a>GPX</h4>
 <div class="listingblock">
 <div class="title">Get a GPX String from a Feature</div>
 <div class="content">
@@ -5721,7 +5782,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-5a2b6cf4_15b175331d8_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-14393c93_15b21dce4af_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5759,7 +5820,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-5a2b6cf4_15b175331d8_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-14393c93_15b21dce4af_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7048,18 +7109,20 @@ vec:VectorZonalStatistics
 geo:buffer
 geo:isValid
 geo:difference
+geo:startPoint
+geo:endPoint
 geo:union
 geo:intersection
 geo:distance
 geo:isClosed
+geo:numGeometries
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
 geo:convexHull
 geo:area
 geo:crosses
 geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7078,12 +7141,10 @@ geo:geometryType
 geo:reproject
 geo:getX
 geo:getY
-geo:startPoint
-geo:endPoint
-geo:relatePattern
 geo:equalsExact
 geo:isRing
 geo:polygonize
+geo:relatePattern
 geo:interiorRingN
 geo:pointN
 geo:equalsExactTolerance
@@ -8511,7 +8572,7 @@ countries.style = uniqueValues</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-28 23:46:16 UTC
+Last updated 2017-03-31 00:53:26 UTC
 </div>
 </div>
 </body>
