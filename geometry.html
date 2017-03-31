@@ -530,6 +530,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#gml-3">GML 3</a></li>
 <li><a href="#gpx">GPX</a></li>
 <li><a href="#georss">GeoRSS</a></li>
+<li><a href="#google-polyline">Google Polyline</a></li>
 </ul>
 </li>
 </ul>
@@ -2071,13 +2072,48 @@ println georss</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="google-polyline"><a class="anchor" href="#google-polyline"></a>Google Polyline</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from a Google Polyline Encoded String using the GeoRSSReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> str = <span class="string"><span class="delimiter">&quot;</span><span class="content">_p~iF~ps|U_ulLnnqC_mqNvxq`@</span><span class="delimiter">&quot;</span></span>
+GooglePolylineEncoder encoder = <span class="keyword">new</span> GooglePolylineEncoder()
+Geometry geometry = encoder.read(str)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_googlepolyline.png" alt="geometry read googlepolyline">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to a Google Polyline Encoded String using the GeoRSSWriter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+GooglePolylineEncoder encoder = <span class="keyword">new</span> GooglePolylineEncoder()
+<span class="predefined-type">String</span> str = encoder.write(geometry)
+println str</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>_nmfGoroRwhfg@womTv_vj@gxfQotkcAogha@</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-03-31 00:53:26 UTC
+Last updated 2017-03-31 01:11:54 UTC
 </div>
 </div>
 </body>
