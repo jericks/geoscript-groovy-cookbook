@@ -23,6 +23,7 @@ import geoscript.geom.io.Gml2Reader
 import geoscript.geom.io.Gml2Writer
 import geoscript.geom.io.Gml3Reader
 import geoscript.geom.io.Gml3Writer
+import geoscript.geom.io.GooglePolylineEncoder
 import geoscript.geom.io.GpxReader
 import geoscript.geom.io.GpxWriter
 import geoscript.geom.io.KmlReader
@@ -1262,4 +1263,31 @@ class GeometryRecipes extends Recipes {
         georss
     }
 
+    // Google Polyline
+
+    Geometry readGeometryFromGooglePolyline() {
+        // tag::readGeometryFromGooglePolyline[]
+        String str = "_p~iF~ps|U_ulLnnqC_mqNvxq`@"
+        GooglePolylineEncoder encoder = new GooglePolylineEncoder()
+        Geometry geometry = encoder.read(str)
+        // end::readGeometryFromGooglePolyline[]
+        drawGeometry("geometry_read_googlepolyline", geometry)
+        geometry
+    }
+
+    String writeGeometryToGooglePolyline() {
+        // tag::writeGeometryToGooglePolyline[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        GooglePolylineEncoder encoder = new GooglePolylineEncoder()
+        String str = encoder.write(geometry)
+        println str
+        // end::writeGeometryToGooglePolyline[]
+        writeFile("geometry_to_googlepolyline", str)
+        str
+    }
 }

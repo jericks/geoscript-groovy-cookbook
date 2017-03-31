@@ -512,4 +512,18 @@ class GeometryRecipesTest {
         String georss = recipes.writeGeometryToGeoRSSUsingWriter()
         assertEquals("<georss:line>43.164 3.198 49.755 6.713 42.592 9.702 53.798 15.32</georss:line>", georss)
     }
+
+    // Google Polyline
+
+    @Test void readGeometryFromGooglePolyline() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGooglePolyline()
+        assertEquals("LINESTRING (-120.2 38.5, -120.95 40.7, -126.453 43.252)", geom.wkt)
+    }
+
+    @Test void writeGeometryToGooglePolyline() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String georss = recipes.writeGeometryToGooglePolyline()
+        assertEquals("_nmfGoroRwhfg@womTv_vj@gxfQotkcAogha@", georss)
+    }
 }

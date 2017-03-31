@@ -733,3 +733,22 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 ....
 include::output/geometry_to_georss_using_writer.txt[]
 ....
+
+==== Google Polyline
+
+[source,groovy]
+.Read a Geometry from a Google Polyline Encoded String using the GeoRSSReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGooglePolyline,indent=0]
+----
+[.thumb]
+image::geometry_read_googlepolyline.png[]
+
+[source,groovy]
+.Write a Geometry to a Google Polyline Encoded String using the GeoRSSWriter
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGooglePolyline,indent=0]
+----
+....
+include::output/geometry_to_googlepolyline.txt[]
+....
