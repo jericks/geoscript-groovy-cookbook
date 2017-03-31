@@ -473,6 +473,32 @@ class GeometryRecipesTest {
         assertEquals("<gml:LineString><gml:posList>3.198 43.164 6.713 49.755 9.702 42.592 15.32 53.798</gml:posList></gml:LineString>", gml)
     }
 
+    // GPX
+
+    @Test void readGeometryFromGpxReader() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGpxReader()
+        assertEquals("POINT (-123.15 46.237)", geom.wkt)
+    }
+
+    @Test void readGeometryFromGpx() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromGpx()
+        assertEquals("LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)", geom.wkt)
+    }
+
+    @Test void writeGeometryToGpx() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String gpx = recipes.writeGeometryToGpx()
+        assertEquals("<wpt lat='46.237' lon='-123.15'/>", gpx)
+    }
+
+    @Test void writeGeometryToGpxUsingWriter() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String gpx = recipes.writeGeometryToGpxUsingWriter()
+        assertEquals("<rte><rtept lat='43.164' lon='3.198' /><rtept lat='49.755' lon='6.713' /><rtept lat='42.592' lon='9.702' /><rtept lat='53.798' lon='15.32' /></rte>", gpx)
+    }
+
     // GeoRSS
 
     @Test void readGeometryFromGeoRSSReader() {

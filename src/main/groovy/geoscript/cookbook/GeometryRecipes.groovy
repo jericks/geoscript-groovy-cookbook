@@ -23,6 +23,8 @@ import geoscript.geom.io.Gml2Reader
 import geoscript.geom.io.Gml2Writer
 import geoscript.geom.io.Gml3Reader
 import geoscript.geom.io.Gml3Writer
+import geoscript.geom.io.GpxReader
+import geoscript.geom.io.GpxWriter
 import geoscript.geom.io.KmlReader
 import geoscript.geom.io.KmlWriter
 import geoscript.geom.io.Reader
@@ -1185,6 +1187,53 @@ class GeometryRecipes extends Recipes {
         gml3
     }
 
+    // GPX
+
+    Geometry readGeometryFromGpxReader() {
+        // tag::readGeometryFromGpxReader[]
+        String gpx = "<wpt lat='46.237' lon='-123.15'/>"
+        GpxReader reader = new GpxReader()
+        Geometry geometry = reader.read(gpx)
+        // end::readGeometryFromGpxReader[]
+        drawGeometry("geometry_read_gpxreader", geometry)
+        geometry
+    }
+
+    Geometry readGeometryFromGpx() {
+        // tag::readGeometryFromGpx[]
+        String gpx = "<rte><rtept lat='43.164' lon='3.198' /><rtept lat='49.755' lon='6.713' /><rtept lat='42.592' lon='9.702' /><rtept lat='53.798' lon='15.32' /></rte>"
+        Geometry geometry = Geometry.fromGpx(gpx)
+        // end::readGeometryFromGpx[]
+        drawGeometry("geometry_read_geometryfromgpx", geometry)
+        geometry
+    }
+
+    String writeGeometryToGpx() {
+        // tag::writeGeometryToGpx[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        String gpx = geometry.gpx
+        println gpx
+        // end::writeGeometryToGpx[]
+        writeFile("geometry_to_gpx", gpx)
+        gpx
+    }
+
+    String writeGeometryToGpxUsingWriter() {
+        // tag::writeGeometryToGpxUsingWriter[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        GpxWriter writer = new GpxWriter()
+        String gpx = writer.write(geometry)
+        println gpx
+        // end::writeGeometryToGpxUsingWriter[]
+        writeFile("geometry_to_gpx_using_writer", gpx)
+        gpx
+    }
+    
     // GeoRSS
 
     Geometry readGeometryFromGeoRSSReader() {

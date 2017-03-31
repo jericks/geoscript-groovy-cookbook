@@ -679,6 +679,42 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 include::output/geometry_to_gml3_using_writer.txt[]
 ....
 
+==== GPX
+
+[source,groovy]
+.Read a Geometry from GPX using the GpxReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGpxReader,indent=0]
+----
+[.thumb]
+image::geometry_read_gpxreader.png[]
+
+[source,groovy]
+.Read a Geometry from GPX using the Geometry.fromGPX() static method
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGpx,indent=0]
+----
+[.thumb]
+image::geometry_read_geometryfromgpx.png[]
+
+[source,groovy]
+.Get the GPX of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGpx,indent=0]
+----
+....
+include::output/geometry_to_gpx.txt[]
+....
+
+[source,groovy]
+.Write a Geometry to GPX using the GpxWriter
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGpxUsingWriter,indent=0]
+----
+....
+include::output/geometry_to_gpx_using_writer.txt[]
+....
+
 ==== GeoRSS
 
 [source,groovy]
