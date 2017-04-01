@@ -8,6 +8,7 @@ import geoscript.layer.Layer
 import geoscript.style.Fill
 import geoscript.style.Gradient
 import geoscript.style.Hatch
+import geoscript.style.Icon
 import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.Symbolizer
@@ -226,6 +227,30 @@ class StyleRecipes extends Recipes {
         Layer places = workspace.get("places")
         places.style = symbolizer
         drawOnBasemap("style_shape_stroke", [places])
+        symbolizer
+    }
+
+    // Icon
+
+    Symbolizer createIcon() {
+        // tag::createIcon[]
+        Symbolizer symbolizer = new Icon("src/main/resources/place.png", "image/png", 12)
+        // end::createIcon[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = symbolizer
+        drawOnBasemap("style_icon", [places])
+        symbolizer
+    }
+
+    Symbolizer createIconWithParams() {
+        // tag::createIconWithParams[]
+        Symbolizer symbolizer = new Icon(url: "src/main/resources/place.png", format: "image/png", size: 10)
+        // end::createIconWithParams[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = symbolizer
+        drawOnBasemap("style_icon_params", [places])
         symbolizer
     }
 

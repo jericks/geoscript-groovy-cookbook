@@ -123,6 +123,20 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    // Icon
+
+    @Test void createIcon() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createIcon()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createIconWithParams() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createIconWithParams()
+        assertNotNull(symbolizer)
+    }
+
     // Gradient
 
     @Test void createGradientOnFieldWithQuantile() {

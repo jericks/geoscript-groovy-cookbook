@@ -154,6 +154,24 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createShapeWith
 [.thumb]
 image::style_shape_stroke.png[]
 
+=== Creating Icons
+
+[source,groovy]
+.Create an Icon Symbolizer
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createIcon,indent=0]
+----
+[.thumb]
+image::style_icon.png[]
+
+[source,groovy]
+.Create an Icon Symbolizer
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createIconWithParams,indent=0]
+----
+[.thumb]
+image::style_icon_params.png[]
+
 === Creating Gradients
 
 [source,groovy]
