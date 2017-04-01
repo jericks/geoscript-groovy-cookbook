@@ -9,6 +9,7 @@ import geoscript.style.Fill
 import geoscript.style.Gradient
 import geoscript.style.Hatch
 import geoscript.style.Icon
+import geoscript.style.Label
 import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.Symbolizer
@@ -251,6 +252,23 @@ class StyleRecipes extends Recipes {
         Layer places = workspace.get("places")
         places.style = symbolizer
         drawOnBasemap("style_icon_params", [places])
+        symbolizer
+    }
+
+    // Labels
+
+    Symbolizer createLabelForPoints() {
+        // tag::createLabelForPoints[]
+        Symbolizer symbolizer = new Shape("blue", 6).stroke("navy", 0.5) + new Label("NAME").point(
+                [0.5,0.5],  // <1>
+                [0, 5.0],   // <2>
+                0           // <3>
+        )
+        // end::createLabelForPoints[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = symbolizer
+        drawOnBasemap("style_label_points", [places], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
         symbolizer
     }
 

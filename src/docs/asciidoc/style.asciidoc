@@ -172,6 +172,20 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createIconWithP
 [.thumb]
 image::style_icon_params.png[]
 
+=== Creating Labels
+
+[source,groovy]
+.Create a Label for a Point Layer
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForPoints,indent=0]
+----
+<1> anchor
+<2> displacement
+<3> rotation
+
+[.thumb]
+image::style_label_points.png[]
+
 === Creating Gradients
 
 [source,groovy]
