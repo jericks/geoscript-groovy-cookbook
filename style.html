@@ -520,6 +520,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-fills">Creating Fills</a></li>
 <li><a href="#creating-shapes">Creating Shapes</a></li>
 <li><a href="#creating-icons">Creating Icons</a></li>
+<li><a href="#creating-labels">Creating Labels</a></li>
 <li><a href="#creating-gradients">Creating Gradients</a></li>
 <li><a href="#creating-unique-values">Creating Unique Values</a></li>
 </ul>
@@ -772,6 +773,40 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
+<h3 id="creating-labels"><a class="anchor" href="#creating-labels"></a>Creating Labels</h3>
+<div class="listingblock">
+<div class="title">Create a Label for a Point Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>, <span class="integer">6</span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>).point(
+        [<span class="float">0.5</span>,<span class="float">0.5</span>],  <i class="conum" data-value="1"></i><b>(1)</b>
+        [<span class="integer">0</span>, <span class="float">5.0</span>],   <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="integer">0</span>           <i class="conum" data-value="3"></i><b>(3)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>anchor</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>displacement</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>rotation</td>
+</tr>
+</table>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_label_points.png" alt="style label points">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="creating-gradients"><a class="anchor" href="#creating-gradients"></a>Creating Gradients</h3>
 <div class="listingblock">
 <div class="title">Create a Gradient Symbolizer from a Layer&#8217;s Field using quantile method</div>
@@ -874,7 +909,7 @@ countries.style = uniqueValues</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-01 04:41:52 UTC
+Last updated 2017-04-01 21:14:02 UTC
 </div>
 </div>
 </body>

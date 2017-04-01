@@ -681,6 +681,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-fills">Creating Fills</a></li>
 <li><a href="#creating-shapes">Creating Shapes</a></li>
 <li><a href="#creating-icons">Creating Icons</a></li>
+<li><a href="#creating-labels">Creating Labels</a></li>
 <li><a href="#creating-gradients">Creating Gradients</a></li>
 <li><a href="#creating-unique-values">Creating Unique Values</a></li>
 </ul>
@@ -4885,7 +4886,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--4e6a31cd_15b27d44a30_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-26798fd8_15b2b60c90c_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5594,7 +5595,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 01 04:44:36 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 01 21:16:55 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5613,7 +5614,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--4e6a31cd_15b27d44a30_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-26798fd8_15b2b60c90c_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5637,7 +5638,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 01 04:44:36 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 01 21:16:55 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5657,7 +5658,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--4e6a31cd_15b27d44a30_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-26798fd8_15b2b60c90c_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5819,7 +5820,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--4e6a31cd_15b27d44a30_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-26798fd8_15b2b60c90c_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5857,7 +5858,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--4e6a31cd_15b27d44a30_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-26798fd8_15b2b60c90c_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7119,6 +7120,8 @@ geo:difference
 geo:union
 geo:intersection
 geo:distance
+geo:isClosed
+geo:numGeometries
 geo:convexHull
 geo:area
 geo:crosses
@@ -7126,8 +7129,6 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
-geo:isClosed
-geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7149,9 +7150,9 @@ geo:getY
 geo:isRing
 geo:equalsExact
 geo:polygonize
-geo:relatePattern
 geo:startPoint
 geo:endPoint
+geo:relatePattern
 geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
@@ -8532,6 +8533,40 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 </div>
 <div class="sect2">
+<h3 id="creating-labels"><a class="anchor" href="#creating-labels"></a>Creating Labels</h3>
+<div class="listingblock">
+<div class="title">Create a Label for a Point Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>, <span class="integer">6</span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>).point(
+        [<span class="float">0.5</span>,<span class="float">0.5</span>],  <i class="conum" data-value="1"></i><b>(1)</b>
+        [<span class="integer">0</span>, <span class="float">5.0</span>],   <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="integer">0</span>           <i class="conum" data-value="3"></i><b>(3)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>anchor</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>displacement</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>rotation</td>
+</tr>
+</table>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_label_points.png" alt="style label points">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="creating-gradients"><a class="anchor" href="#creating-gradients"></a>Creating Gradients</h3>
 <div class="listingblock">
 <div class="title">Create a Gradient Symbolizer from a Layer&#8217;s Field using quantile method</div>
@@ -8634,7 +8669,7 @@ countries.style = uniqueValues</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-01 04:41:52 UTC
+Last updated 2017-04-01 21:14:02 UTC
 </div>
 </div>
 </body>

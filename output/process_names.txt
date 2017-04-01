@@ -4,6 +4,8 @@ geo:difference
 geo:union
 geo:intersection
 geo:distance
+geo:isClosed
+geo:numGeometries
 geo:convexHull
 geo:area
 geo:crosses
@@ -11,8 +13,6 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
-geo:isClosed
-geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -34,9 +34,9 @@ geo:getY
 geo:isRing
 geo:equalsExact
 geo:polygonize
-geo:relatePattern
 geo:startPoint
 geo:endPoint
+geo:relatePattern
 geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
