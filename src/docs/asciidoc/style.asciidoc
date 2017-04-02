@@ -186,6 +186,15 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForP
 [.thumb]
 image::style_label_points.png[]
 
+[source,groovy]
+.Create a Label for a Polygon Layer
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForPolygons,indent=0]
+----
+
+[.thumb]
+image::style_label_polygons.png[]
+
 === Creating Gradients
 
 [source,groovy]

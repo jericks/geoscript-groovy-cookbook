@@ -145,6 +145,12 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Test void createLabelForPolygons() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createLabelForPolygons()
+        assertNotNull(symbolizer)
+    }
+
     // Gradient
 
     @Test void createGradientOnFieldWithQuantile() {

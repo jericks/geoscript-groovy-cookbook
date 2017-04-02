@@ -272,6 +272,19 @@ class StyleRecipes extends Recipes {
         symbolizer
     }
 
+    Symbolizer createLabelForPolygons() {
+        // tag::createLabelForPolygons[]
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("NAME_1")
+            .point(anchor: [0.5,0.5])
+            .polygonAlign("mbr")
+        // end::createLabelForPolygons[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = symbolizer
+        drawOnBasemap("style_label_polygons", [states], new Bounds(-114.060,38.479,-82.485,49.453))
+        symbolizer
+    }
+
     // Gradient
 
     Symbolizer createGradientOnFieldWithQuantile() {
