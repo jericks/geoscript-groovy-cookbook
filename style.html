@@ -805,6 +805,19 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/style_label_points.png" alt="style label points">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a Label for a Polygon Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.1</span>) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>)
+    .point(<span class="key">anchor</span>: [<span class="float">0.5</span>,<span class="float">0.5</span>])
+    .polygonAlign(<span class="string"><span class="delimiter">&quot;</span><span class="content">mbr</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_label_polygons.png" alt="style label polygons">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="creating-gradients"><a class="anchor" href="#creating-gradients"></a>Creating Gradients</h3>
@@ -909,7 +922,7 @@ countries.style = uniqueValues</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-01 21:14:02 UTC
+Last updated 2017-04-02 15:19:03 UTC
 </div>
 </div>
 </body>
