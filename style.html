@@ -818,6 +818,21 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/style_label_polygons.png" alt="style label polygons">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a Label for a Line Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>)  + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>)
+        .fill(<span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>))
+        .linear(<span class="key">follow</span>: <span class="predefined-constant">true</span>, <span class="key">offset</span>: <span class="integer">50</span>, <span class="key">displacement</span>: <span class="integer">200</span>, <span class="key">repeat</span>: <span class="integer">150</span>).maxDisplacement(<span class="integer">400</span>).maxAngleDelta(<span class="integer">90</span>)
+        .halo(<span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>), <span class="float">2.5</span>)
+        .font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="key">size</span>: <span class="integer">10</span>, <span class="key">weight</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">bold</span><span class="delimiter">&quot;</span></span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_label_lines.png" alt="style label lines">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="creating-gradients"><a class="anchor" href="#creating-gradients"></a>Creating Gradients</h3>
@@ -922,7 +937,7 @@ countries.style = uniqueValues</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-02 15:19:03 UTC
+Last updated 2017-04-04 03:49:57 UTC
 </div>
 </div>
 </body>
