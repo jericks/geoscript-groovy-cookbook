@@ -151,6 +151,12 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Test void createLabelForLines() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createLabelForLines()
+        assertNotNull(symbolizer)
+    }
+
     // Gradient
 
     @Test void createGradientOnFieldWithQuantile() {

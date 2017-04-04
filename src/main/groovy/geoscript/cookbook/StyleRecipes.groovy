@@ -6,6 +6,7 @@ import geoscript.filter.Property
 import geoscript.geom.Bounds
 import geoscript.layer.Layer
 import geoscript.style.Fill
+import geoscript.style.Font
 import geoscript.style.Gradient
 import geoscript.style.Hatch
 import geoscript.style.Icon
@@ -281,7 +282,22 @@ class StyleRecipes extends Recipes {
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer states = workspace.get("states")
         states.style = symbolizer
-        drawOnBasemap("style_label_polygons", [states], new Bounds(-114.060,38.479,-82.485,49.453))
+        drawOnBasemap("style_label_polygons", [states], new Bounds(-137.416992,40.896906,-105.842285,51.835778))
+        symbolizer
+    }
+
+    Symbolizer createLabelForLines() {
+        // tag::createLabelForLines[]
+        Symbolizer symbolizer = new Stroke("blue", 0.75)  + new Label("name")
+                .fill(new Fill("navy"))
+                .linear(follow: true, offset: 50, displacement: 200, repeat: 150).maxDisplacement(400).maxAngleDelta(90)
+                .halo(new Fill("white"), 2.5)
+                .font(new Font(size: 10, weight: "bold"))
+        // end::createLabelForLines[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer rivers = workspace.get("rivers")
+        rivers.style = symbolizer
+        drawOnBasemap("style_label_lines", [rivers], new Bounds(-137.416,40.896,-105.842,51.835))
         symbolizer
     }
 
