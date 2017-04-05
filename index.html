@@ -684,6 +684,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-labels">Creating Labels</a></li>
 <li><a href="#creating-gradients">Creating Gradients</a></li>
 <li><a href="#creating-unique-values">Creating Unique Values</a></li>
+<li><a href="#reading-and-writing-styles">Reading and Writing Styles</a></li>
 </ul>
 </li>
 </ul>
@@ -4886,7 +4887,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--29528f79_15b3717da4c_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--61882a59_15b3bc1a884_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5595,7 +5596,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Apr 04 03:52:42 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Apr 05 01:36:39 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5614,7 +5615,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--29528f79_15b3717da4c_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--61882a59_15b3bc1a884_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5638,7 +5639,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Apr 04 03:52:42 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Apr 05 01:36:39 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5658,7 +5659,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--29528f79_15b3717da4c_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--61882a59_15b3bc1a884_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5820,7 +5821,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--29528f79_15b3717da4c_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--61882a59_15b3bc1a884_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5858,7 +5859,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--29528f79_15b3717da4c_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--61882a59_15b3bc1a884_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7114,55 +7115,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:buffer
-geo:isValid
-geo:difference
-geo:union
-geo:intersection
-geo:distance
-geo:numGeometries
-geo:isClosed
-geo:convexHull
-geo:area
-geo:crosses
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:symDifference
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:envelope
-geo:reproject
-geo:getX
-geo:getY
-geo:isRing
-geo:equalsExact
-geo:polygonize
-geo:relatePattern
-geo:startPoint
-geo:endPoint
-geo:equalsExactTolerance
-geo:pointN
-geo:interiorRingN
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7192,6 +7145,54 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:buffer
+geo:isValid
+geo:difference
+geo:union
+geo:intersection
+geo:distance
+geo:convexHull
+geo:area
+geo:crosses
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isClosed
+geo:numGeometries
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:reproject
+geo:getX
+geo:getY
+geo:equalsExact
+geo:isRing
+geo:polygonize
+geo:startPoint
+geo:endPoint
+geo:relatePattern
+geo:interiorRingN
+geo:pointN
+geo:equalsExactTolerance
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
 ras:AddCoverages
 ras:Affine
 ras:AreaGrid
@@ -8692,12 +8693,76 @@ countries.style = uniqueValues</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="reading-and-writing-styles"><a class="anchor" href="#reading-and-writing-styles"></a>Reading and Writing Styles</h3>
+<div class="paragraph">
+<p>Style Readers and Writers are found in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/style/io/package-summary.html">geoscript.style.io</a></strong> package.</p>
+</div>
+<div class="listingblock">
+<div class="title">List all Style Writers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Writer</span>&gt; writers = Writers.list()
+writers.each { <span class="predefined-type">Writer</span> writer -&gt;
+    println writer.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SLDWriter
+ColorTableWriter
+YSLDWriter</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Style Writer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Writer</span> writer = Writers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">sld</span><span class="delimiter">&quot;</span></span>)
+println writer.class.simpleName</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SLDWriter</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">List all Style Readers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Reader</span>&gt; readers = Readers.list()
+readers.each { <span class="predefined-type">Reader</span> reader -&gt;
+    println reader.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SLDReader
+CSSReader
+ColorTableReader
+YSLDReader
+SimpleStyleReader</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Style Reader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Reader</span> reader = Readers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">sld</span><span class="delimiter">&quot;</span></span>)
+println reader.class.simpleName</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SLDReader</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-04 03:49:57 UTC
+Last updated 2017-04-05 01:33:44 UTC
 </div>
 </div>
 </body>

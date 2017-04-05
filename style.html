@@ -523,6 +523,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-labels">Creating Labels</a></li>
 <li><a href="#creating-gradients">Creating Gradients</a></li>
 <li><a href="#creating-unique-values">Creating Unique Values</a></li>
+<li><a href="#reading-and-writing-styles">Reading and Writing Styles</a></li>
 </ul>
 </li>
 </ul>
@@ -932,12 +933,76 @@ countries.style = uniqueValues</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="reading-and-writing-styles"><a class="anchor" href="#reading-and-writing-styles"></a>Reading and Writing Styles</h3>
+<div class="paragraph">
+<p>Style Readers and Writers are found in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/style/io/package-summary.html">geoscript.style.io</a></strong> package.</p>
+</div>
+<div class="listingblock">
+<div class="title">List all Style Writers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Writer</span>&gt; writers = Writers.list()
+writers.each { <span class="predefined-type">Writer</span> writer -&gt;
+    println writer.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SLDWriter
+ColorTableWriter
+YSLDWriter</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Style Writer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Writer</span> writer = Writers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">sld</span><span class="delimiter">&quot;</span></span>)
+println writer.class.simpleName</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SLDWriter</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">List all Style Readers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Reader</span>&gt; readers = Readers.list()
+readers.each { <span class="predefined-type">Reader</span> reader -&gt;
+    println reader.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SLDReader
+CSSReader
+ColorTableReader
+YSLDReader
+SimpleStyleReader</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Style Reader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Reader</span> reader = Readers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">sld</span><span class="delimiter">&quot;</span></span>)
+println reader.class.simpleName</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>SLDReader</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-04 03:49:57 UTC
+Last updated 2017-04-05 01:33:44 UTC
 </div>
 </div>
 </body>
