@@ -4,6 +4,8 @@ import geoscript.style.Fill
 import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.Symbolizer
+import geoscript.style.io.Reader
+import geoscript.style.io.Writer
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -195,6 +197,32 @@ class StyleRecipesTest {
         StyleRecipes recipes = new StyleRecipes()
         Symbolizer symbolizer = recipes.createUniqueValuesWithPalette()
         assertNotNull(symbolizer)
+    }
+
+    // Style IO
+
+    @Test void listStyleReaders() {
+        StyleRecipes recipes = new StyleRecipes()
+        List<Reader> readers = recipes.listStyleReaders()
+        assertTrue(readers.size() > 0)
+    }
+
+    @Test void findStyleReader() {
+        StyleRecipes recipes = new StyleRecipes()
+        Reader reader = recipes.findStyleReader()
+        assertNotNull(reader)
+    }
+
+    @Test void listStyleWriters() {
+        StyleRecipes recipes = new StyleRecipes()
+        List<Writer> writers = recipes.listStyleWriters()
+        assertTrue(writers.size() > 0)
+    }
+
+    @Test void findStyleWriter() {
+        StyleRecipes recipes = new StyleRecipes()
+        Writer writer = recipes.findStyleWriter()
+        assertNotNull(writer)
     }
 
 }

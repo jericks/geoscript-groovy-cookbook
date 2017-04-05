@@ -1,7 +1,6 @@
 package geoscript.cookbook
 
 import geoscript.filter.Color
-import geoscript.filter.Expression
 import geoscript.filter.Property
 import geoscript.geom.Bounds
 import geoscript.layer.Layer
@@ -15,6 +14,10 @@ import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.Symbolizer
 import geoscript.style.UniqueValues
+import geoscript.style.io.Reader
+import geoscript.style.io.Readers
+import geoscript.style.io.Writer
+import geoscript.style.io.Writers
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 
@@ -380,6 +383,49 @@ class StyleRecipes extends Recipes {
         // end::createUniqueValuesWithPalette[]
         drawOnBasemap("style_uniquevalues_palette", [countries])
         uniqueValues
+    }
+
+    // Style IO
+
+    List<Reader> listStyleReaders() {
+        // tag::listStyleReaders[]
+        List<Reader> readers = Readers.list()
+        readers.each { Reader reader ->
+            println reader.class.simpleName
+        }
+        // end::listStyleReaders[]
+        writeFile("style_readers_list", "${readers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        readers
+    }
+
+    Reader findStyleReader() {
+        // tag::findStyleReader[]
+        Reader reader = Readers.find("sld")
+        println reader.class.simpleName
+        // end::findStyleReader[]
+        writeFile("style_readers_find", "${reader.class.simpleName}")
+        reader
+    }
+
+
+    List<Writer> listStyleWriters() {
+        // tag::listStyleWriters[]
+        List<Writer> writers = Writers.list()
+        writers.each { Writer writer ->
+            println writer.class.simpleName
+        }
+        // end::listStyleWriters[]
+        writeFile("style_writers_list", "${writers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        writers
+    }
+
+    Writer findStyleWriter() {
+        // tag::findStyleWriter[]
+        Writer writer = Writers.find("sld")
+        println writer.class.simpleName
+        // end::findStyleWriter[]
+        writeFile("style_writers_find", "${writer.class.simpleName}")
+        writer
     }
 
 }
