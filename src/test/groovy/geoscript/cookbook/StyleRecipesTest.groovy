@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.style.Fill
 import geoscript.style.Shape
 import geoscript.style.Stroke
+import geoscript.style.Style
 import geoscript.style.Symbolizer
 import geoscript.style.io.Reader
 import geoscript.style.io.Writer
@@ -223,6 +224,20 @@ class StyleRecipesTest {
         StyleRecipes recipes = new StyleRecipes()
         Writer writer = recipes.findStyleWriter()
         assertNotNull(writer)
+    }
+
+    // SLD
+
+    @Test void writeSld() {
+        StyleRecipes recipes = new StyleRecipes()
+        String sld = recipes.writeSld()
+        assertNotNull(sld)
+    }
+
+    @Test void readSld() {
+        StyleRecipes recipes = new StyleRecipes()
+        Style style = recipes.readSld()
+        assertNotNull(style)
     }
 
 }

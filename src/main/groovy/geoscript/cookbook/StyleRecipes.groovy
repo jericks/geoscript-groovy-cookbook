@@ -12,10 +12,13 @@ import geoscript.style.Icon
 import geoscript.style.Label
 import geoscript.style.Shape
 import geoscript.style.Stroke
+import geoscript.style.Style
 import geoscript.style.Symbolizer
 import geoscript.style.UniqueValues
 import geoscript.style.io.Reader
 import geoscript.style.io.Readers
+import geoscript.style.io.SLDReader
+import geoscript.style.io.SLDWriter
 import geoscript.style.io.Writer
 import geoscript.style.io.Writers
 import geoscript.workspace.GeoPackage
@@ -426,6 +429,60 @@ class StyleRecipes extends Recipes {
         // end::findStyleWriter[]
         writeFile("style_writers_find", "${writer.class.simpleName}")
         writer
+    }
+
+    // SLD
+
+    String writeSld() {
+        // tag::writeSld[]
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.5)
+        SLDWriter writer = new SLDWriter()
+        String sld = writer.write(symbolizer)
+        println sld
+        // end::writeSld[]
+        writeFile("style_write_sld", sld)
+        sld
+    }
+
+    Style readSld() {
+        // tag::readSld[]
+        String sld = """<?xml version="1.0" encoding="UTF-8"?>
+<sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml" version="1.0.0">
+  <sld:UserLayer>
+    <sld:LayerFeatureConstraints>
+      <sld:FeatureTypeConstraint/>
+    </sld:LayerFeatureConstraints>
+    <sld:UserStyle>
+      <sld:Name>Default Styler</sld:Name>
+      <sld:FeatureTypeStyle>
+        <sld:Name>name</sld:Name>
+        <sld:Rule>
+          <sld:PolygonSymbolizer>
+            <sld:Fill>
+              <sld:CssParameter name="fill">#ffffff</sld:CssParameter>
+            </sld:Fill>
+          </sld:PolygonSymbolizer>
+          <sld:LineSymbolizer>
+            <sld:Stroke>
+              <sld:CssParameter name="stroke">#000000</sld:CssParameter>
+              <sld:CssParameter name="stroke-width">0.5</sld:CssParameter>
+            </sld:Stroke>
+          </sld:LineSymbolizer>
+        </sld:Rule>
+      </sld:FeatureTypeStyle>
+    </sld:UserStyle>
+  </sld:UserLayer>
+</sld:StyledLayerDescriptor>
+"""
+        SLDReader reader = new SLDReader()
+        Style style = reader.read(sld)
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = style
+        // end::readSld[]
+        drawOnBasemap("style_read_sld", [countries])
+        style
     }
 
 }

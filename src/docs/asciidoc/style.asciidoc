@@ -3,6 +3,8 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Style Recipes
 
+Styles are found in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/style/package-summary.html[geoscript.style]* package.
+
 === Creating Strokes
 
 [source,groovy]
@@ -295,3 +297,20 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=findStyleReader
 ....
 include::output/style_readers_find.txt[]
 ....
+
+[source,groovy]
+.Write a Symbolizer to SLD
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=writeSld,indent=0]
+----
+....
+include::output/style_write_sld.txt[]
+....
+
+[source,groovy]
+.Write a Symbolizer to SLD
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSld,indent=0]
+----
+[.thumb]
+image::style_read_sld.png[]
