@@ -694,6 +694,9 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect1">
 <h2 id="geometry-recipes"><a class="anchor" href="#geometry-recipes"></a>Geometry Recipes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Geometry classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/package-summary.html">geoscript.geom</a></strong> package.</p>
+</div>
 <div class="sect2">
 <h3 id="creating-geometries"><a class="anchor" href="#creating-geometries"></a>Creating Geometries</h3>
 <div class="listingblock">
@@ -1631,7 +1634,8 @@ MultiPoint randomPoints = Geometry.createRandomPointsInGrid(bounds, <span class=
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
 <div class="paragraph">
-<p>The geoscript.geom.io package has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.</p>
+<p>The <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html">geoscript.geom.io</a></strong> package
+has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.</p>
 </div>
 <div class="sect3">
 <h4 id="readers-and-writers"><a class="anchor" href="#readers-and-writers"></a>Readers and Writers</h4>
@@ -2265,6 +2269,9 @@ println str</code></pre>
 <div class="sect1">
 <h2 id="bounds-recipes"><a class="anchor" href="#bounds-recipes"></a>Bounds Recipes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Bounds class is in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/package-summary.html">geoscript.geom</a></strong> package.</p>
+</div>
 <div class="sect2">
 <h3 id="creating-bounds"><a class="anchor" href="#creating-bounds"></a>Creating Bounds</h3>
 <div class="listingblock">
@@ -2872,6 +2879,9 @@ LineString lineString = bounds.createArc(<span class="predefined-type">Math</spa
 <div class="sect1">
 <h2 id="projection-recipes"><a class="anchor" href="#projection-recipes"></a>Projection Recipes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Projection classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/proj/package-summary.html">geoscript.proj</a></strong> package.</p>
+</div>
 <div class="sect2">
 <h3 id="creating-projections"><a class="anchor" href="#creating-projections"></a>Creating Projections</h3>
 <div class="listingblock">
@@ -3428,6 +3438,9 @@ println decimalDegrees.toDdm(<span class="predefined-constant">true</span>)</cod
 <div class="sect1">
 <h2 id="spatial-index-recipes"><a class="anchor" href="#spatial-index-recipes"></a>Spatial Index Recipes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Index classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/index/package-summary.html">geoscript.index</a></strong> package.</p>
+</div>
 <div class="sect2">
 <h3 id="using-strtree"><a class="anchor" href="#using-strtree"></a>Using STRtree</h3>
 <div class="listingblock">
@@ -3786,6 +3799,9 @@ bboxes.each { <span class="type">long</span> hash -&gt;
 <div class="sect1">
 <h2 id="viewer-recipes"><a class="anchor" href="#viewer-recipes"></a>Viewer Recipes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Viewer classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/viewer/package-summary.html">geoscript.viewer</a></strong> package.</p>
+</div>
 <div class="sect2">
 <h3 id="drawing-geometries"><a class="anchor" href="#drawing-geometries"></a>Drawing geometries</h3>
 <div class="listingblock">
@@ -3966,6 +3982,9 @@ Viewer.plotToFile([buffer, point], file, <span class="key">size</span>: [<span c
 <div class="sect1">
 <h2 id="plot-recipes"><a class="anchor" href="#plot-recipes"></a>Plot Recipes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Plot classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/plot/package-summary.html">geoscript.plot</a></strong> package.</p>
+</div>
 <div class="sect2">
 <h3 id="processing-charts"><a class="anchor" href="#processing-charts"></a>Processing Charts</h3>
 <div class="listingblock">
@@ -4246,6 +4265,9 @@ Chart chart = Scatter.scatterplot(data)</code></pre>
 <div class="sect1">
 <h2 id="feature-recipes"><a class="anchor" href="#feature-recipes"></a>Feature Recipes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Feature classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/feature/package-summary.html">geoscript.feature</a></strong> package.</p>
+</div>
 <div class="sect2">
 <h3 id="creating-fields"><a class="anchor" href="#creating-fields"></a>Creating Fields</h3>
 <div class="listingblock">
@@ -4887,12 +4909,15 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-64d12920_15b40c21dba_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-751bc600_15b4128411c_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-schemas"><a class="anchor" href="#reading-and-writing-schemas"></a>Reading and Writing Schemas</h3>
+<div class="paragraph">
+<p>The Schema IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/feature/io/package-summary.html">geoscript.feature.io</a></strong> package.</p>
+</div>
 <div class="sect3">
 <h4 id="finding-schema-writer-and-readers"><a class="anchor" href="#finding-schema-writer-and-readers"></a>Finding Schema Writer and Readers</h4>
 <div class="listingblock">
@@ -5355,6 +5380,9 @@ println feature.geom</code></pre>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-features"><a class="anchor" href="#reading-and-writing-features"></a>Reading and Writing Features</h3>
+<div class="paragraph">
+<p>The Feature IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/feature/io/package-summary.html">geoscript.feature.io</a></strong> package.</p>
+</div>
 <div class="sect3">
 <h4 id="finding-feature-writer-and-readers"><a class="anchor" href="#finding-feature-writer-and-readers"></a>Finding Feature Writer and Readers</h4>
 <div class="listingblock">
@@ -5596,7 +5624,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 06 00:55:15 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 06 02:46:49 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5615,7 +5643,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-64d12920_15b40c21dba_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-751bc600_15b4128411c_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5639,7 +5667,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 06 00:55:15 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 06 02:46:49 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5659,7 +5687,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-64d12920_15b40c21dba_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-751bc600_15b4128411c_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5821,7 +5849,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-64d12920_15b40c21dba_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-751bc600_15b4128411c_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5859,7 +5887,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-64d12920_15b40c21dba_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-751bc600_15b4128411c_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -5966,6 +5994,9 @@ println kml</code></pre>
 <div class="sect1">
 <h2 id="filter-recipes"><a class="anchor" href="#filter-recipes"></a>Filter Recipes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Filter classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/filter/package-summary.html">geoscript.filter</a></strong> package.</p>
+</div>
 <div class="sect2">
 <h3 id="creating-filters"><a class="anchor" href="#creating-filters"></a>Creating Filters</h3>
 <div class="listingblock">
@@ -7012,6 +7043,9 @@ println function</code></pre>
 <div class="sect1">
 <h2 id="process-recipes"><a class="anchor" href="#process-recipes"></a>Process Recipes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Process classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/process/package-summary.html">geoscript.process</a></strong> package.</p>
+</div>
 <div class="sect2">
 <h3 id="execute-a-built-in-process"><a class="anchor" href="#execute-a-built-in-process"></a>Execute a built-in Process</h3>
 <div class="listingblock">
@@ -7115,55 +7149,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:buffer
-geo:union
-geo:intersection
-geo:isValid
-geo:difference
-geo:distance
-geo:convexHull
-geo:area
-geo:crosses
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:isClosed
-geo:numGeometries
-geo:simplify
-geo:densify
-geo:numPoints
-geo:dimension
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:symDifference
-geo:touches
-geo:within
-geo:reproject
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:envelope
-geo:getX
-geo:getY
-geo:equalsExact
-geo:isRing
-geo:polygonize
-geo:startPoint
-geo:endPoint
-geo:relatePattern
-geo:equalsExactTolerance
-geo:pointN
-geo:interiorRingN
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7193,6 +7179,54 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:buffer
+geo:isValid
+geo:difference
+geo:union
+geo:intersection
+geo:distance
+geo:isClosed
+geo:convexHull
+geo:area
+geo:crosses
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:numGeometries
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:reproject
+geo:getX
+geo:getY
+geo:equalsExact
+geo:isRing
+geo:polygonize
+geo:startPoint
+geo:endPoint
+geo:relatePattern
+geo:pointN
+geo:interiorRingN
+geo:equalsExactTolerance
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
 ras:AddCoverages
 ras:Affine
 ras:AreaGrid
@@ -7319,6 +7353,9 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 <div class="sect1">
 <h2 id="render-recipes"><a class="anchor" href="#render-recipes"></a>Render Recipes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The Render classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/render/package-summary.html">geoscript.render</a></strong> package.</p>
+</div>
 <div class="sect2">
 <h3 id="creating-maps"><a class="anchor" href="#creating-maps"></a>Creating Maps</h3>
 <div class="listingblock">
@@ -8799,7 +8836,7 @@ println sld</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Write a Symbolizer to SLD</div>
+<div class="title">Read a Style from an SLD String</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> sld = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;sld:StyledLayerDescriptor xmlns=&quot;http://www.opengis.net/sld&quot; xmlns:sld=&quot;http://www.opengis.net/sld&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; version=&quot;1.0.0&quot;&gt;
@@ -8848,7 +8885,7 @@ println sld</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-06 00:51:20 UTC
+Last updated 2017-04-06 02:43:42 UTC
 </div>
 </div>
 </body>
