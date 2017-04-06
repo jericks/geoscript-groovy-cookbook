@@ -3,6 +3,8 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Bounds Recipes
 
+The Bounds class is in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/package-summary.html[geoscript.geom]* package.
+
 === Creating Bounds
 
 [source,groovy]

@@ -308,7 +308,7 @@ include::output/style_write_sld.txt[]
 ....
 
 [source,groovy]
-.Write a Symbolizer to SLD
+.Read a Style from an SLD String
 ----
 include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSld,indent=0]
 ----

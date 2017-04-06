@@ -3,6 +3,8 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Geometry Recipes
 
+The Geometry classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/package-summary.html[geoscript.geom]* package.
+
 === Creating Geometries
 
 [source,groovy]
@@ -388,7 +390,8 @@ image::geometry_create_random_points_ingrid.png[]
 
 === Reading and Writing Geometries
 
-The geoscript.geom.io package has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.
+The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
+has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.
 
 ==== Readers and Writers
 

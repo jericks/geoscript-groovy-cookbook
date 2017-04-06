@@ -3,6 +3,8 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Filter Recipes
 
+The Filter classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/filter/package-summary.html[geoscript.filter]* package.
+
 === Creating Filters
 
 [source,groovy]

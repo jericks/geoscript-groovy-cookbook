@@ -3,6 +3,8 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Viewer Recipes
 
+The Viewer classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/viewer/package-summary.html[geoscript.viewer]* package.
+
 === Drawing geometries
 
 [source,groovy]
