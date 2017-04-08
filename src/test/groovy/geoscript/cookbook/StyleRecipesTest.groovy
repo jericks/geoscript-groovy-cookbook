@@ -240,4 +240,11 @@ class StyleRecipesTest {
         assertNotNull(style)
     }
 
+    // CSS
+
+    @Test void readCss() {
+        StyleRecipes recipes = new StyleRecipes()
+        Style style = recipes.readCss()
+        assertNotNull(style)
+    }
 }

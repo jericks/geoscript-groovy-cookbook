@@ -15,6 +15,7 @@ import geoscript.style.Stroke
 import geoscript.style.Style
 import geoscript.style.Symbolizer
 import geoscript.style.UniqueValues
+import geoscript.style.io.CSSReader
 import geoscript.style.io.Reader
 import geoscript.style.io.Readers
 import geoscript.style.io.SLDReader
@@ -482,6 +483,29 @@ class StyleRecipes extends Recipes {
         countries.style = style
         // end::readSld[]
         drawOnBasemap("style_read_sld", [countries])
+        style
+    }
+
+    // CSS
+
+    Style readCss() {
+        // tag::readCss[]
+        String css = """
+* {
+   fill: #eeeeee;
+   fill-opacity: 1.0;
+   stroke: #000000;
+   stroke-width: 1.2;
+}
+"""
+        CSSReader reader = new CSSReader()
+        Style style = reader.read(css)
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = style
+        // end::readCss[]
+        drawOnBasemap("style_read_css", [countries])
         style
     }
 

@@ -262,6 +262,8 @@ image::style_uniquevalues_palette.png[]
 
 Style Readers and Writers are found in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/style/io/package-summary.html[geoscript.style.io]* package.
 
+==== Finding Style Readers and Writers
+
 [source,groovy]
 .List all Style Writers
 ----
@@ -298,6 +300,10 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=findStyleReader
 include::output/style_readers_find.txt[]
 ....
 
+==== SLD
+
+GeoScript Groovy can read and write Style Layer Descriptor (SLD) documents.
+
 [source,groovy]
 .Write a Symbolizer to SLD
 ----
@@ -314,3 +320,15 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSld,indent=
 ----
 [.thumb]
 image::style_read_sld.png[]
+
+==== CSS
+
+GeoScript Groovy can only read CSS documents.
+
+[source,groovy]
+.Read a Style from an CSS String
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readCss,indent=0]
+----
+[.thumb]
+image::style_read_css.png[]
