@@ -528,6 +528,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#finding-style-readers-and-writers">Finding Style Readers and Writers</a></li>
 <li><a href="#sld">SLD</a></li>
 <li><a href="#css">CSS</a></li>
+<li><a href="#ysld">YSLD</a></li>
 </ul>
 </li>
 </ul>
@@ -1127,13 +1128,72 @@ println sld</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="ysld"><a class="anchor" href="#ysld"></a>YSLD</h4>
+<div class="paragraph">
+<p>GeoScript Groovy can read and write YAML Style Layer Descriptors (YSLD) documents.</p>
+</div>
+<div class="listingblock">
+<div class="title">Write a Symbolizer to YSLD</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+YSLDWriter writer = <span class="keyword">new</span> YSLDWriter()
+<span class="predefined-type">String</span> ysld = writer.write(symbolizer)
+println ysld</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>name: Default Styler
+feature-styles:
+- name: name
+  rules:
+  - scale: [min, max]
+    symbolizers:
+    - polygon:
+        fill-color: '#FFFFFF'
+    - line:
+        stroke-color: '#000000'
+        stroke-width: 0.5</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Style from an YAML Style Layer Descriptors (YSLD) String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> ysld = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+name: Default Styler
+feature-styles:
+- name: name
+  rules:
+  - scale: [min, max]
+    symbolizers:
+    - polygon:
+        fill-color: '#FFFFFF'
+    - line:
+        stroke-color: '#000000'
+        stroke-width: 0.5
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        YSLDReader reader = <span class="keyword">new</span> YSLDReader()
+        <span class="predefined-type">Style</span> style = reader.read(ysld)
+
+        Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+        Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+        countries.style = style</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_read_ysld.png" alt="style read ysld">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-08 21:59:16 UTC
+Last updated 2017-04-11 02:45:12 UTC
 </div>
 </div>
 </body>
