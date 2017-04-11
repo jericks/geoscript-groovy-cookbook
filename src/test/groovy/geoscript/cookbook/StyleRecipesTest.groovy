@@ -247,4 +247,18 @@ class StyleRecipesTest {
         Style style = recipes.readCss()
         assertNotNull(style)
     }
+
+    // YSLD
+
+    @Test void writeYSld() {
+        StyleRecipes recipes = new StyleRecipes()
+        String ysld = recipes.writeYSLD()
+        assertNotNull(ysld)
+    }
+
+    @Test void readYSld() {
+        StyleRecipes recipes = new StyleRecipes()
+        Style style = recipes.readYSLD()
+        assertNotNull(style)
+    }
 }

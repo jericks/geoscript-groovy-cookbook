@@ -22,6 +22,8 @@ import geoscript.style.io.SLDReader
 import geoscript.style.io.SLDWriter
 import geoscript.style.io.Writer
 import geoscript.style.io.Writers
+import geoscript.style.io.YSLDReader
+import geoscript.style.io.YSLDWriter
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 
@@ -506,6 +508,45 @@ class StyleRecipes extends Recipes {
         countries.style = style
         // end::readCss[]
         drawOnBasemap("style_read_css", [countries])
+        style
+    }
+
+    // YSLD
+
+    String writeYSLD() {
+        // tag::writeYSLD[]
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.5)
+        YSLDWriter writer = new YSLDWriter()
+        String ysld = writer.write(symbolizer)
+        println ysld
+        // end::writeYSLD[]
+        writeFile("style_write_ysld", ysld)
+        ysld
+    }
+
+    Style readYSLD() {
+        // tag::readYSLD[]
+        String ysld = """
+name: Default Styler
+feature-styles:
+- name: name
+  rules:
+  - scale: [min, max]
+    symbolizers:
+    - polygon:
+        fill-color: '#FFFFFF'
+    - line:
+        stroke-color: '#000000'
+        stroke-width: 0.5
+"""
+        YSLDReader reader = new YSLDReader()
+        Style style = reader.read(ysld)
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = style
+        // end::readYSLD[]
+        drawOnBasemap("style_read_ysld", [countries])
         style
     }
 
