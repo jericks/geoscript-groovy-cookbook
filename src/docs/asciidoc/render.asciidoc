@@ -109,6 +109,27 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderToGifFil
 [.thumb]
 image::map_gif_file.png[]
 
+[source,groovy]
+.Render a Map to an animated GIF using the GIF Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderAnimatedGif,indent=0]
+----
+
+ifndef::backend-pdf[]
+[.thumb]
+image::render_animated_gif.gif[]
+endif::[]
+
+ifdef::backend-pdf[]
+[.thumb]
+image::render_animated_gif_0.png[]
+[.thumb]
+image::render_animated_gif_1.png[]
+[.thumb]
+image::render_animated_gif_2.png[]
+endif::[]
+
+
 ==== GeoTIFF
 
 [source,groovy]
