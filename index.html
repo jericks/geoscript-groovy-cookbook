@@ -4916,7 +4916,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-766ff6b_15b5ae92980_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-29f6c1a0_15b6a8aae44_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5631,7 +5631,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Apr 11 02:48:01 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Apr 14 03:38:46 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5650,7 +5650,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-766ff6b_15b5ae92980_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-29f6c1a0_15b6a8aae44_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5674,7 +5674,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Apr 11 02:48:02 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Apr 14 03:38:46 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5694,7 +5694,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-766ff6b_15b5ae92980_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-29f6c1a0_15b6a8aae44_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5856,7 +5856,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-766ff6b_15b5ae92980_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-29f6c1a0_15b6a8aae44_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5894,7 +5894,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-766ff6b_15b5ae92980_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-29f6c1a0_15b6a8aae44_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7156,7 +7156,25 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>vec:Aggregate
+<pre>ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage
+vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7187,19 +7205,19 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:isValid
-geo:difference
 geo:union
 geo:intersection
+geo:isValid
+geo:difference
 geo:distance
-geo:isClosed
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
 geo:convexHull
 geo:area
 geo:crosses
 geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isClosed
 geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
@@ -7209,49 +7227,31 @@ geo:symDifference
 geo:touches
 geo:within
 geo:simplify
-geo:densify
 geo:numPoints
 geo:dimension
+geo:densify
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:envelope
 geo:reproject
+geo:envelope
 geo:getX
 geo:getY
-geo:startPoint
-geo:endPoint
-geo:relatePattern
 geo:isRing
 geo:equalsExact
 geo:polygonize
+geo:startPoint
+geo:endPoint
+geo:relatePattern
 geo:pointN
-geo:interiorRingN
 geo:equalsExactTolerance
+geo:interiorRingN
 geo:splitPolygon
 geo:length
 geo:isEmpty
 geo:contains
 geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage</pre>
+geo:intersects</pre>
 </div>
 </div>
 </div>
@@ -7615,6 +7615,37 @@ gif.render(map, <span class="keyword">new</span> <span class="predefined-type">F
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/map_gif_file.png" alt="map gif file">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Render a Map to an animated GIF using the GIF Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer states = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+states.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">1.0</span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries, states]
+)
+
+GIF gif = <span class="keyword">new</span> GIF()
+<span class="predefined-type">List</span> images = [<span class="string"><span class="delimiter">&quot;</span><span class="content">Washington</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">Oregon</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">California</span><span class="delimiter">&quot;</span></span>].collect { <span class="predefined-type">String</span> state -&gt;
+    map.bounds = states.getFeatures(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1 = '</span><span class="inline"><span class="inline-delimiter">${</span>state<span class="inline-delimiter">}</span></span><span class="content">'</span><span class="delimiter">&quot;</span></span>)[<span class="integer">0</span>].bounds
+    <span class="keyword">def</span> image = gif.render(map)
+    image
+}
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">states.gif</span><span class="delimiter">&quot;</span></span>)
+gif.renderAnimated(images, file, <span class="integer">500</span>, <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_animated_gif.gif" alt="render animated gif">
 </div>
 </div>
 </div>
@@ -8990,7 +9021,7 @@ feature-styles:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-11 02:45:12 UTC
+Last updated 2017-04-14 03:32:18 UTC
 </div>
 </div>
 </body>

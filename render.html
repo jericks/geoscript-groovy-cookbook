@@ -816,6 +816,37 @@ gif.render(map, <span class="keyword">new</span> <span class="predefined-type">F
 <img src="./images/map_gif_file.png" alt="map gif file">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Render a Map to an animated GIF using the GIF Renderer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer states = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+states.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">1.0</span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries, states]
+)
+
+GIF gif = <span class="keyword">new</span> GIF()
+<span class="predefined-type">List</span> images = [<span class="string"><span class="delimiter">&quot;</span><span class="content">Washington</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">Oregon</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">California</span><span class="delimiter">&quot;</span></span>].collect { <span class="predefined-type">String</span> state -&gt;
+    map.bounds = states.getFeatures(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1 = '</span><span class="inline"><span class="inline-delimiter">${</span>state<span class="inline-delimiter">}</span></span><span class="content">'</span><span class="delimiter">&quot;</span></span>)[<span class="integer">0</span>].bounds
+    <span class="keyword">def</span> image = gif.render(map)
+    image
+}
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">states.gif</span><span class="delimiter">&quot;</span></span>)
+gif.renderAnimated(images, file, <span class="integer">500</span>, <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_animated_gif.gif" alt="render animated gif">
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="geotiff"><a class="anchor" href="#geotiff"></a>GeoTIFF</h4>
@@ -1536,7 +1567,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-11 02:45:12 UTC
+Last updated 2017-04-14 03:32:18 UTC
 </div>
 </div>
 </body>
