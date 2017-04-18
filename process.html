@@ -634,25 +634,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -688,6 +670,8 @@ geo:intersection
 geo:isValid
 geo:difference
 geo:distance
+geo:isClosed
+geo:numGeometries
 geo:convexHull
 geo:area
 geo:crosses
@@ -695,8 +679,6 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
-geo:isClosed
-geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -705,9 +687,9 @@ geo:symDifference
 geo:touches
 geo:within
 geo:simplify
+geo:densify
 geo:numPoints
 geo:dimension
-geo:densify
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
@@ -715,21 +697,39 @@ geo:reproject
 geo:envelope
 geo:getX
 geo:getY
-geo:isRing
 geo:equalsExact
+geo:isRing
 geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
 geo:pointN
-geo:equalsExactTolerance
 geo:interiorRingN
+geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
 geo:isEmpty
 geo:contains
 geo:disjoint
-geo:intersects</pre>
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage</pre>
 </div>
 </div>
 </div>
@@ -838,7 +838,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-14 03:32:18 UTC
+Last updated 2017-04-18 02:07:28 UTC
 </div>
 </div>
 </body>

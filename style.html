@@ -529,6 +529,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#sld">SLD</a></li>
 <li><a href="#css">CSS</a></li>
 <li><a href="#ysld">YSLD</a></li>
+<li><a href="#simple-style-reader">Simple Style Reader</a></li>
 </ul>
 </li>
 </ul>
@@ -1187,13 +1188,109 @@ feature-styles:
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="simple-style-reader"><a class="anchor" href="#simple-style-reader"></a>Simple Style Reader</h4>
+<div class="paragraph">
+<p>A SimpleStyleReader that can easily create simple Styles using Maps or Strings.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fill properties: fill and fill-opacity</p>
+</li>
+<li>
+<p>Stroke properties: stroke, stroke-width, stroke-opacity</p>
+</li>
+<li>
+<p>Shape properties: shape, shape-size, shape-type</p>
+</li>
+<li>
+<p>Label properties: label-size, label-style, label-weight, label-family</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Read a Style with fill and stroke properties from a Simple Style String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> str = <span class="string"><span class="delimiter">&quot;</span><span class="content">fill=#555555 fill-opacity=0.6 stroke=#555555 stroke-width=0.5</span><span class="delimiter">&quot;</span></span>
+SimpleStyleReader reader = <span class="keyword">new</span> SimpleStyleReader()
+<span class="predefined-type">Style</span> style = reader.read(str)
+
+Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = style</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_read_fill_stroke_str.png" alt="style read fill stroke str">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Style with fill, stroke, and label properties from a Simple Style String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> str = <span class="string"><span class="delimiter">&quot;</span><span class="content">fill=white stroke=navy label=NAME label-size=10</span><span class="delimiter">&quot;</span></span>
+SimpleStyleReader reader = <span class="keyword">new</span> SimpleStyleReader()
+<span class="predefined-type">Style</span> style = reader.read(str)
+
+Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = style</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_read_fill_stroke_label_str.png" alt="style read fill stroke label str">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Style with shape properties from a Simple Style String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> str = <span class="string"><span class="delimiter">&quot;</span><span class="content">shape-type=circle shape-size=8 shape=orange</span><span class="delimiter">&quot;</span></span>
+SimpleStyleReader reader = <span class="keyword">new</span> SimpleStyleReader()
+<span class="predefined-type">Style</span> style = reader.read(str)
+println style
+
+Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer places = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+places.style = style</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_read_shape_str.png" alt="style read shape str">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Style with fill and stroke properties from a Simple Style Map</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> map = [
+        <span class="string"><span class="delimiter">'</span><span class="content">fill</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">#555555</span><span class="delimiter">'</span></span>,
+        <span class="string"><span class="delimiter">'</span><span class="content">fill-opacity</span><span class="delimiter">'</span></span>: <span class="float">0.6</span>,
+        <span class="string"><span class="delimiter">'</span><span class="content">stroke</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">#555555</span><span class="delimiter">'</span></span>,
+        <span class="string"><span class="delimiter">'</span><span class="content">stroke-width</span><span class="delimiter">'</span></span>: <span class="float">0.5</span>
+]
+SimpleStyleReader reader = <span class="keyword">new</span> SimpleStyleReader()
+<span class="predefined-type">Style</span> style = reader.read(map)
+
+Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = style</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_read_fill_stroke_map.png" alt="style read fill stroke map">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-14 03:32:18 UTC
+Last updated 2017-04-18 02:07:28 UTC
 </div>
 </div>
 </body>
