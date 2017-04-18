@@ -353,3 +353,44 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readYSLD,indent
 ----
 [.thumb]
 image::style_read_ysld.png[]
+
+==== Simple Style Reader
+
+A SimpleStyleReader that can easily create simple Styles using Maps or Strings.
+
+* Fill properties: fill and fill-opacity
+* Stroke properties: stroke, stroke-width, stroke-opacity
+* Shape properties: shape, shape-size, shape-type
+* Label properties: label-size, label-style, label-weight, label-family
+
+[source,groovy]
+.Read a Style with fill and stroke properties from a Simple Style String
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSimpleStyleFillStrokeString,indent=0]
+----
+[.thumb]
+image::style_read_fill_stroke_str.png[]
+
+[source,groovy]
+.Read a Style with fill, stroke, and label properties from a Simple Style String
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSimpleStyleFillStrokeAndLabelString,indent=0]
+----
+[.thumb]
+image::style_read_fill_stroke_label_str.png[]
+
+[source,groovy]
+.Read a Style with shape properties from a Simple Style String
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSimpleStyleShapeString,indent=0]
+----
+[.thumb]
+image::style_read_shape_str.png[]
+
+[source,groovy]
+.Read a Style with fill and stroke properties from a Simple Style Map
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSimpleStyleFillStrokeMap,indent=0]
+----
+[.thumb]
+image::style_read_fill_stroke_map.png[]

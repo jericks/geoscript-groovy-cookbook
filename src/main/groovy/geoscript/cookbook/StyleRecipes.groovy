@@ -20,6 +20,7 @@ import geoscript.style.io.Reader
 import geoscript.style.io.Readers
 import geoscript.style.io.SLDReader
 import geoscript.style.io.SLDWriter
+import geoscript.style.io.SimpleStyleReader
 import geoscript.style.io.Writer
 import geoscript.style.io.Writers
 import geoscript.style.io.YSLDReader
@@ -547,6 +548,70 @@ feature-styles:
         countries.style = style
         // end::readYSLD[]
         drawOnBasemap("style_read_ysld", [countries])
+        style
+    }
+
+    // Simple
+
+    Style readSimpleStyleFillStrokeString() {
+        // tag::readSimpleStyleFillStrokeString[]
+        String str = "fill=#555555 fill-opacity=0.6 stroke=#555555 stroke-width=0.5"
+        SimpleStyleReader reader = new SimpleStyleReader()
+        Style style = reader.read(str)
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = style
+        // end::readSimpleStyleFillStrokeString[]
+        drawOnBasemap("style_read_fill_stroke_str", [countries])
+        style
+    }
+
+    Style readSimpleStyleFillStrokeAndLabelString() {
+        // tag::readSimpleStyleFillStrokeAndLabelString[]
+        String str = "fill=white stroke=navy label=NAME label-size=10"
+        SimpleStyleReader reader = new SimpleStyleReader()
+        Style style = reader.read(str)
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = style
+        // end::readSimpleStyleFillStrokeAndLabelString[]
+        drawOnBasemap("style_read_fill_stroke_label_str", [countries], new Bounds(-4.416504,39.215231,27.180176,50.764259,"EPSG:4326"))
+        style
+    }
+
+    Style readSimpleStyleShapeString() {
+        // tag::readSimpleStyleShapeString[]
+        String str = "shape-type=circle shape-size=8 shape=orange"
+        SimpleStyleReader reader = new SimpleStyleReader()
+        Style style = reader.read(str)
+        println style
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = style
+        // end::readSimpleStyleShapeString[]
+        drawOnBasemap("style_read_shape_str", [places])
+        style
+    }
+
+    Style readSimpleStyleFillStrokeMap() {
+        // tag::readSimpleStyleFillStrokeMap[]
+        Map map = [
+                'fill': '#555555',
+                'fill-opacity': 0.6,
+                'stroke': '#555555',
+                'stroke-width': 0.5
+        ]
+        SimpleStyleReader reader = new SimpleStyleReader()
+        Style style = reader.read(map)
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = style
+        // end::readSimpleStyleFillStrokeMap[]
+        drawOnBasemap("style_read_fill_stroke_map", [countries])
         style
     }
 

@@ -261,4 +261,33 @@ class StyleRecipesTest {
         Style style = recipes.readYSLD()
         assertNotNull(style)
     }
+
+    // Simple
+
+    @Test void readSimpleStyleFillStrokeString() {
+        StyleRecipes recipes = new StyleRecipes()
+        Style style = recipes.readSimpleStyleFillStrokeString()
+        assertNotNull(style)
+    }
+
+    @Test void readSimpleStyleFillStrokeAndLabelString() {
+        StyleRecipes recipes = new StyleRecipes()
+        Style style = recipes.readSimpleStyleFillStrokeAndLabelString()
+        assertNotNull(style)
+    }
+
+    @Test void readSimpleStyleShapeString() {
+        StyleRecipes recipes = new StyleRecipes()
+        Style style = recipes.readSimpleStyleShapeString()
+        assertNotNull(style)
+    }
+
+    @Test void readSimpleStyleFillStrokeMap() {
+        StyleRecipes recipes = new StyleRecipes()
+        Style style = recipes.readSimpleStyleFillStrokeMap()
+        assertNotNull(style)
+    }
+
+
+
 }
