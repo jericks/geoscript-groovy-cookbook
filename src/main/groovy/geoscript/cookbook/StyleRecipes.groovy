@@ -3,7 +3,11 @@ package geoscript.cookbook
 import geoscript.filter.Color
 import geoscript.filter.Property
 import geoscript.geom.Bounds
+import geoscript.layer.Format
+import geoscript.layer.GeoTIFF
 import geoscript.layer.Layer
+import geoscript.layer.Raster
+import geoscript.style.ColorMap
 import geoscript.style.Fill
 import geoscript.style.Font
 import geoscript.style.Gradient
@@ -390,6 +394,24 @@ class StyleRecipes extends Recipes {
         // end::createUniqueValuesWithPalette[]
         drawOnBasemap("style_uniquevalues_palette", [countries])
         uniqueValues
+    }
+
+    // Raster
+    Symbolizer createRasterColorMap() {
+        // tag::createRasterColorMap[]
+        Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
+        Raster raster = format.read()
+        ColorMap colorMap = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ])
+        raster.style = colorMap
+        // end::createRasterColorMap[]
+        draw("style_raster_colormap_colors", [raster], raster.bounds)
+        colorMap
     }
 
     // Style IO

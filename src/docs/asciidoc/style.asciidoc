@@ -258,6 +258,16 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createUniqueVal
 [.thumb]
 image::style_uniquevalues_palette.png[]
 
+=== Styling Rasters
+
+[source,groovy]
+.Create a ColorMap Symbolizer for a Raster using a list of Colors
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterColorMap,indent=0]
+----
+[.thumb]
+image::style_raster_colormap_colors.png[]
+
 === Reading and Writing Styles
 
 Style Readers and Writers are found in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/style/io/package-summary.html[geoscript.style.io]* package.

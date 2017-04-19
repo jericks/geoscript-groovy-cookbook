@@ -4,6 +4,7 @@ import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.layer.Cursor
 import geoscript.layer.Layer
+import geoscript.layer.Renderable
 import geoscript.plot.Chart
 import geoscript.proj.Projection
 import geoscript.render.Map as GMap
@@ -97,7 +98,7 @@ class Recipes {
         layer
     }
 
-    protected void drawOnBasemap(String name, List<Layer> layers, Bounds bounds) {
+    protected void drawOnBasemap(String name, List<Renderable> layers, Bounds bounds) {
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer countries = workspace.get("countries")
         countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
@@ -111,7 +112,7 @@ class Recipes {
         )
         map.setAdvancedProjectionHandling(false)
         map.setContinuousMapWrapping(false)
-        layers.each { Layer layer ->
+        layers.each { Renderable layer ->
             map.addLayer(layer)
         }
         File file = new File("src/docs/asciidoc/images/${name}.png")
@@ -121,7 +122,7 @@ class Recipes {
         map.render(file)
     }
 
-    protected void drawOnBasemap(String name, List<Layer> layers) {
+    protected void drawOnBasemap(String name, List<Renderable> layers) {
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer countries = workspace.get("countries")
         countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
@@ -134,9 +135,40 @@ class Recipes {
         )
         map.setAdvancedProjectionHandling(false)
         map.setContinuousMapWrapping(false)
-        layers.each { Layer layer ->
+        layers.each { Renderable layer ->
             map.addLayer(layer)
         }
+        File file = new File("src/docs/asciidoc/images/${name}.png")
+        if(!file.parentFile.exists()) {
+            file.parentFile.mkdir()
+        }
+        map.render(file)
+    }
+
+    protected void draw(String name, List<Renderable> layers) {
+        GMap map = new GMap(
+                width: 500,
+                height: 300,
+                layers: layers
+        )
+        map.setAdvancedProjectionHandling(false)
+        map.setContinuousMapWrapping(false)
+        File file = new File("src/docs/asciidoc/images/${name}.png")
+        if(!file.parentFile.exists()) {
+            file.parentFile.mkdir()
+        }
+        map.render(file)
+    }
+
+    protected void draw(String name, List<Renderable> layers, Bounds bounds) {
+        GMap map = new GMap(
+                width: 500,
+                height: 300,
+                layers: layers,
+                bounds: bounds
+        )
+        map.setAdvancedProjectionHandling(false)
+        map.setContinuousMapWrapping(false)
         File file = new File("src/docs/asciidoc/images/${name}.png")
         if(!file.parentFile.exists()) {
             file.parentFile.mkdir()
