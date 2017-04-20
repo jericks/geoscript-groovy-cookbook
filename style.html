@@ -523,7 +523,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-labels">Creating Labels</a></li>
 <li><a href="#creating-gradients">Creating Gradients</a></li>
 <li><a href="#creating-unique-values">Creating Unique Values</a></li>
-<li><a href="#styling-rasters">Styling Rasters</a></li>
+<li><a href="#creating-color-maps">Creating Color Maps</a></li>
 <li><a href="#reading-and-writing-styles">Reading and Writing Styles</a>
 <ul class="sectlevel3">
 <li><a href="#finding-style-readers-and-writers">Finding Style Readers and Writers</a></li>
@@ -946,7 +946,7 @@ countries.style = uniqueValues</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="styling-rasters"><a class="anchor" href="#styling-rasters"></a>Styling Rasters</h3>
+<h3 id="creating-color-maps"><a class="anchor" href="#creating-color-maps"></a>Creating Color Maps</h3>
 <div class="listingblock">
 <div class="title">Create a ColorMap Symbolizer for a Raster using a list of Colors</div>
 <div class="content">
@@ -965,6 +965,46 @@ raster.style = colorMap</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/style_raster_colormap_colors.png" alt="style raster colormap colors">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a ColorMap Symbolizer for a Raster using a color palette</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Format</span> format = <span class="keyword">new</span> GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">'</span></span>))
+<span class="predefined-type">Raster</span> raster = format.read()
+ColorMap colorMap = <span class="keyword">new</span> ColorMap(
+        <span class="integer">25</span>,             <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="integer">1820</span>,           <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">MutedTerrain</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="integer">5</span>               <i class="conum" data-value="4"></i><b>(4)</b>
+)
+println colorMap
+raster.style = colorMap</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>min value</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>max value</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>color palette name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>number of categories</td>
+</tr>
+</table>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_raster_colormap_palette.png" alt="style raster colormap palette">
 </div>
 </div>
 </div>
@@ -1314,7 +1354,7 @@ countries.style = style</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-19 02:13:24 UTC
+Last updated 2017-04-20 04:00:40 UTC
 </div>
 </div>
 </body>
