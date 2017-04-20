@@ -397,6 +397,7 @@ class StyleRecipes extends Recipes {
     }
 
     // Raster
+
     Symbolizer createRasterColorMap() {
         // tag::createRasterColorMap[]
         Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
@@ -413,6 +414,24 @@ class StyleRecipes extends Recipes {
         draw("style_raster_colormap_colors", [raster], raster.bounds)
         colorMap
     }
+
+    Symbolizer createRasterColorMapWithPalette() {
+        // tag::createRasterColorMapWithPalette[]
+        Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
+        Raster raster = format.read()
+        ColorMap colorMap = new ColorMap(
+                25,             // <1>
+                1820,           // <2>
+                "MutedTerrain", // <3>
+                5               // <4>
+        )
+        println colorMap
+        raster.style = colorMap
+        // end::createRasterColorMapWithPalette[]
+        draw("style_raster_colormap_palette", [raster], raster.bounds)
+        colorMap
+    }
+
 
     // Style IO
 

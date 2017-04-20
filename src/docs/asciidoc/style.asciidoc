@@ -258,7 +258,7 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createUniqueVal
 [.thumb]
 image::style_uniquevalues_palette.png[]
 
-=== Styling Rasters
+=== Creating Color Maps
 
 [source,groovy]
 .Create a ColorMap Symbolizer for a Raster using a list of Colors
@@ -267,6 +267,20 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterCol
 ----
 [.thumb]
 image::style_raster_colormap_colors.png[]
+
+[source,groovy]
+.Create a ColorMap Symbolizer for a Raster using a color palette
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterColorMapWithPalette,indent=0]
+----
+<1> min value
+<2> max value
+<3> color palette name
+<4> number of categories
+
+[.thumb]
+image::style_raster_colormap_palette.png[]
+
 
 === Reading and Writing Styles
 
