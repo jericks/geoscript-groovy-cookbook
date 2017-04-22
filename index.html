@@ -4919,7 +4919,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-3899df59_15b9752788f_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-75412eae_15b9752e212_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5634,7 +5634,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 22 20:20:16 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 22 20:20:44 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5653,7 +5653,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-3899df59_15b9752788f_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-75412eae_15b9752e212_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5677,7 +5677,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 22 20:20:16 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 22 20:20:44 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5697,7 +5697,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-3899df59_15b9752788f_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-75412eae_15b9752e212_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5859,7 +5859,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-3899df59_15b9752788f_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-75412eae_15b9752e212_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5897,7 +5897,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-3899df59_15b9752788f_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-75412eae_15b9752e212_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7208,9 +7208,9 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
+geo:isValid
 geo:union
 geo:intersection
-geo:isValid
 geo:difference
 geo:distance
 geo:isClosed
@@ -7233,21 +7233,21 @@ geo:simplify
 geo:densify
 geo:numPoints
 geo:dimension
+geo:reproject
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:reproject
 geo:envelope
 geo:getX
 geo:getY
-geo:isRing
 geo:equalsExact
+geo:isRing
 geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
-geo:pointN
 geo:interiorRingN
+geo:pointN
 geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
@@ -8836,27 +8836,54 @@ raster.style = colorMap</code></pre>
 <img src="./images/style_raster_colormap_palette.png" alt="style raster colormap palette">
 </div>
 </div>
-<div class="paragraph">
-<p>source,groovy]
-.Create a ColorMap Symbolizer with intervals for a Raster using a list of Colors</p>
-</div>
 <div class="listingblock">
+<div class="title">Create a ColorMap Symbolizer with intervals for a Raster using a list of Colors</div>
 <div class="content">
-<pre>Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
-Raster raster = format.read()
-ColorMap colorMap = new ColorMap([
-        [color: "#9fd182", quantity:25],
-        [color: "#3e7f3c", quantity:470],
-        [color: "#133912", quantity:920],
-        [color: "#08306b", quantity:1370],
-        [color: "#fffff5", quantity:1820],
-], "intervals", true)
-raster.style = colorMap</pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Format</span> format = <span class="keyword">new</span> GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">'</span></span>))
+<span class="predefined-type">Raster</span> raster = format.read()
+ColorMap colorMap = <span class="keyword">new</span> ColorMap([
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#9fd182</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">25</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#3e7f3c</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">470</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#133912</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">920</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#08306b</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">1370</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#fffff5</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">1820</span>],
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">intervals</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>)
+raster.style = colorMap</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/style_raster_colormap_intervals.png" alt="style raster colormap intervals">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Raster Symbolizer using ChannelSelection and ContrastEnhancement using the normalize method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Format</span> format = <span class="keyword">new</span> GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">'</span></span>))
+<span class="predefined-type">Raster</span> raster = format.read()
+Symbolizer symbolizer = <span class="keyword">new</span> ChannelSelection()
+        .gray(<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> ContrastEnhancement(<span class="string"><span class="delimiter">&quot;</span><span class="content">normalize</span><span class="delimiter">&quot;</span></span>))
+raster.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_raster_channel_constrast_normalize.png" alt="style raster channel constrast normalize">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Raster Symbolizer using ChannelSelection and ContrastEnhancement using the histogram method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Format</span> format = <span class="keyword">new</span> GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">'</span></span>))
+<span class="predefined-type">Raster</span> raster = format.read()
+Symbolizer symbolizer = <span class="keyword">new</span> ChannelSelection()
+        .gray(<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> ContrastEnhancement(<span class="string"><span class="delimiter">&quot;</span><span class="content">histogram</span><span class="delimiter">&quot;</span></span>, <span class="float">0.65</span>))
+raster.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_raster_channel_constrast_histogram.png" alt="style raster channel constrast histogram">
 </div>
 </div>
 </div>
@@ -9251,7 +9278,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-22 20:16:48 UTC
+Last updated 2017-04-22 20:17:15 UTC
 </div>
 </div>
 </body>

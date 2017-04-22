@@ -1008,27 +1008,54 @@ raster.style = colorMap</code></pre>
 <img src="./images/style_raster_colormap_palette.png" alt="style raster colormap palette">
 </div>
 </div>
-<div class="paragraph">
-<p>source,groovy]
-.Create a ColorMap Symbolizer with intervals for a Raster using a list of Colors</p>
-</div>
 <div class="listingblock">
+<div class="title">Create a ColorMap Symbolizer with intervals for a Raster using a list of Colors</div>
 <div class="content">
-<pre>Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
-Raster raster = format.read()
-ColorMap colorMap = new ColorMap([
-        [color: "#9fd182", quantity:25],
-        [color: "#3e7f3c", quantity:470],
-        [color: "#133912", quantity:920],
-        [color: "#08306b", quantity:1370],
-        [color: "#fffff5", quantity:1820],
-], "intervals", true)
-raster.style = colorMap</pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Format</span> format = <span class="keyword">new</span> GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">'</span></span>))
+<span class="predefined-type">Raster</span> raster = format.read()
+ColorMap colorMap = <span class="keyword">new</span> ColorMap([
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#9fd182</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">25</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#3e7f3c</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">470</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#133912</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">920</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#08306b</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">1370</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#fffff5</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">1820</span>],
+], <span class="string"><span class="delimiter">&quot;</span><span class="content">intervals</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>)
+raster.style = colorMap</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/style_raster_colormap_intervals.png" alt="style raster colormap intervals">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Raster Symbolizer using ChannelSelection and ContrastEnhancement using the normalize method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Format</span> format = <span class="keyword">new</span> GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">'</span></span>))
+<span class="predefined-type">Raster</span> raster = format.read()
+Symbolizer symbolizer = <span class="keyword">new</span> ChannelSelection()
+        .gray(<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> ContrastEnhancement(<span class="string"><span class="delimiter">&quot;</span><span class="content">normalize</span><span class="delimiter">&quot;</span></span>))
+raster.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_raster_channel_constrast_normalize.png" alt="style raster channel constrast normalize">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Raster Symbolizer using ChannelSelection and ContrastEnhancement using the histogram method</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Format</span> format = <span class="keyword">new</span> GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">'</span></span>))
+<span class="predefined-type">Raster</span> raster = format.read()
+Symbolizer symbolizer = <span class="keyword">new</span> ChannelSelection()
+        .gray(<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> ContrastEnhancement(<span class="string"><span class="delimiter">&quot;</span><span class="content">histogram</span><span class="delimiter">&quot;</span></span>, <span class="float">0.65</span>))
+raster.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_raster_channel_constrast_histogram.png" alt="style raster channel constrast histogram">
 </div>
 </div>
 </div>
@@ -1423,7 +1450,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-22 20:16:48 UTC
+Last updated 2017-04-22 20:17:15 UTC
 </div>
 </div>
 </body>
