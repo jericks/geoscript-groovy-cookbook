@@ -281,13 +281,31 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterCol
 [.thumb]
 image::style_raster_colormap_palette.png[]
 
-source,groovy]
+[source,groovy]
 .Create a ColorMap Symbolizer with intervals for a Raster using a list of Colors
 ----
 include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterColorMapWithIntervals,indent=0]
 ----
 [.thumb]
 image::style_raster_colormap_intervals.png[]
+
+[source,groovy]
+.Create a Raster Symbolizer using ChannelSelection and ContrastEnhancement using the normalize method
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterChannelContrastEnhancementNormalize,indent=0]
+----
+[.thumb]
+image::style_raster_channel_constrast_normalize.png[]
+
+
+[source,groovy]
+.Create a Raster Symbolizer using ChannelSelection and ContrastEnhancement using the histogram method
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterChannelContrastEnhancementHistogram,indent=0]
+----
+[.thumb]
+image::style_raster_channel_constrast_histogram.png[]
+
 
 
 === Reading and Writing Styles

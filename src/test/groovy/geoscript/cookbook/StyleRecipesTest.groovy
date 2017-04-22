@@ -220,6 +220,17 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Test void createRasterChannelContrastEnhancementNormalize() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createRasterChannelContrastEnhancementNormalize()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createRasterChannelContrastEnhancementHistogram() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createRasterChannelContrastEnhancementHistogram()
+        assertNotNull(symbolizer)
+    }
 
     // Style IO
 

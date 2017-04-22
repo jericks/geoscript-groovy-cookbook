@@ -7,7 +7,9 @@ import geoscript.layer.Format
 import geoscript.layer.GeoTIFF
 import geoscript.layer.Layer
 import geoscript.layer.Raster
+import geoscript.style.ChannelSelection
 import geoscript.style.ColorMap
+import geoscript.style.ContrastEnhancement
 import geoscript.style.Fill
 import geoscript.style.Font
 import geoscript.style.Gradient
@@ -449,6 +451,30 @@ class StyleRecipes extends Recipes {
         // end::createRasterColorMapWithIntervals[]
         draw("style_raster_colormap_intervals", [raster], raster.bounds)
         colorMap
+    }
+
+    Symbolizer createRasterChannelContrastEnhancementNormalize() {
+        // tag::createRasterChannelContrastEnhancementNormalize[]
+        Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
+        Raster raster = format.read()
+        Symbolizer symbolizer = new ChannelSelection()
+                .gray("1", new ContrastEnhancement("normalize"))
+        raster.style = symbolizer
+        // end::createRasterChannelContrastEnhancementNormalize[]
+        draw("style_raster_channel_constrast_normalize", [raster], raster.bounds)
+        symbolizer
+    }
+
+    Symbolizer createRasterChannelContrastEnhancementHistogram() {
+        // tag::createRasterChannelContrastEnhancementHistogram[]
+        Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
+        Raster raster = format.read()
+        Symbolizer symbolizer = new ChannelSelection()
+                .gray("1", new ContrastEnhancement("histogram", 0.65))
+        raster.style = symbolizer
+        // end::createRasterChannelContrastEnhancementHistogram[]
+        draw("style_raster_channel_constrast_histogram", [raster], raster.bounds)
+        symbolizer
     }
 
     // Style IO
