@@ -1008,6 +1008,29 @@ raster.style = colorMap</code></pre>
 <img src="./images/style_raster_colormap_palette.png" alt="style raster colormap palette">
 </div>
 </div>
+<div class="paragraph">
+<p>source,groovy]
+.Create a ColorMap Symbolizer with intervals for a Raster using a list of Colors</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
+Raster raster = format.read()
+ColorMap colorMap = new ColorMap([
+        [color: "#9fd182", quantity:25],
+        [color: "#3e7f3c", quantity:470],
+        [color: "#133912", quantity:920],
+        [color: "#08306b", quantity:1370],
+        [color: "#fffff5", quantity:1820],
+], "intervals", true)
+raster.style = colorMap</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_raster_colormap_intervals.png" alt="style raster colormap intervals">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-styles"><a class="anchor" href="#reading-and-writing-styles"></a>Reading and Writing Styles</h3>
@@ -1400,7 +1423,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-22 17:28:01 UTC
+Last updated 2017-04-22 20:16:48 UTC
 </div>
 </div>
 </body>
