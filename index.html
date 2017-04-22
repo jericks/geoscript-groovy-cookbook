@@ -692,6 +692,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#css">CSS</a></li>
 <li><a href="#ysld">YSLD</a></li>
 <li><a href="#simple-style-reader">Simple Style Reader</a></li>
+<li><a href="#color-table">Color Table</a></li>
 </ul>
 </li>
 </ul>
@@ -4918,7 +4919,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-9dd9c17_15b8987c176_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-50c5c232_15b96b7b152_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5633,7 +5634,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 20 04:03:47 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 22 17:31:13 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5652,7 +5653,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-9dd9c17_15b8987c176_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-50c5c232_15b96b7b152_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5676,7 +5677,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 20 04:03:47 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 22 17:31:13 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5696,7 +5697,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-9dd9c17_15b8987c176_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-50c5c232_15b96b7b152_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5858,7 +5859,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-9dd9c17_15b8987c176_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-50c5c232_15b96b7b152_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5896,7 +5897,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-9dd9c17_15b8987c176_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-50c5c232_15b96b7b152_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7207,10 +7208,12 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:isValid
 geo:union
 geo:intersection
+geo:isValid
 geo:difference
+geo:startPoint
+geo:endPoint
 geo:distance
 geo:isClosed
 geo:numGeometries
@@ -7221,10 +7224,6 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
-geo:simplify
-geo:densify
-geo:numPoints
-geo:dimension
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7232,22 +7231,24 @@ geo:relate
 geo:symDifference
 geo:touches
 geo:within
-geo:reproject
+geo:numPoints
+geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
+geo:simplify
+geo:densify
 geo:geometryType
+geo:reproject
 geo:envelope
 geo:getX
 geo:getY
 geo:relatePattern
-geo:startPoint
-geo:endPoint
 geo:isRing
 geo:equalsExact
 geo:polygonize
+geo:pointN
 geo:interiorRingN
 geo:equalsExactTolerance
-geo:pointN
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -9176,13 +9177,58 @@ countries.style = style</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="color-table"><a class="anchor" href="#color-table"></a>Color Table</h4>
+<div class="paragraph">
+<p>GeoScript Groovy can read and write color table strings and files. This format can be used with ColorMaps to style
+Rasters.</p>
+</div>
+<div class="listingblock">
+<div class="title">Write a ColorMap to a color table string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">ColorMap colorMap = <span class="keyword">new</span> ColorMap(<span class="integer">25</span>, <span class="integer">1820</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">BoldLandUse</span><span class="delimiter">&quot;</span></span>, <span class="integer">5</span>)
+ColorTableWriter writer = <span class="keyword">new</span> ColorTableWriter()
+<span class="predefined-type">String</span> str = writer.write(colorMap)
+println str</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>25.0 178 156 195
+473.75 79 142 187
+922.5 143 146 56
+1371.25 193 132 55
+1820.0 181 214 177</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a ColorMap from a color table string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">Format</span> format = <span class="keyword">new</span> GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">'</span></span>))
+        <span class="predefined-type">Raster</span> raster = format.read()
+        ColorTableReader reader = <span class="keyword">new</span> ColorTableReader()
+        ColorMap colorMap = reader.read(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">25.0 178 156 195
+473.75 79 142 187
+922.5 143 146 56
+1371.25 193 132 55
+1820.0 181 214 177
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>)
+        raster.style = colorMap</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_colortable_read_str.png" alt="style colortable read str">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-20 04:00:40 UTC
+Last updated 2017-04-22 17:28:01 UTC
 </div>
 </div>
 </body>
