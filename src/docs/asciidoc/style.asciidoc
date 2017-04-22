@@ -281,6 +281,14 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterCol
 [.thumb]
 image::style_raster_colormap_palette.png[]
 
+source,groovy]
+.Create a ColorMap Symbolizer with intervals for a Raster using a list of Colors
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterColorMapWithIntervals,indent=0]
+----
+[.thumb]
+image::style_raster_colormap_intervals.png[]
+
 
 === Reading and Writing Styles
 

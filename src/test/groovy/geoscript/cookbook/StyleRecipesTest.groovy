@@ -214,6 +214,13 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Test void createRasterColorMapWithIntervals() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createRasterColorMapWithIntervals()
+        assertNotNull(symbolizer)
+    }
+
+
     // Style IO
 
     @Test void listStyleReaders() {

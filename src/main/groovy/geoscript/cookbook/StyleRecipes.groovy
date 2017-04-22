@@ -434,6 +434,23 @@ class StyleRecipes extends Recipes {
         colorMap
     }
 
+    Symbolizer createRasterColorMapWithIntervals() {
+        // tag::createRasterColorMapWithIntervals[]
+        Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
+        Raster raster = format.read()
+        ColorMap colorMap = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ], "intervals", true)
+        raster.style = colorMap
+        // end::createRasterColorMapWithIntervals[]
+        draw("style_raster_colormap_intervals", [raster], raster.bounds)
+        colorMap
+    }
+
     // Style IO
 
     List<Reader> listStyleReaders() {
