@@ -302,6 +302,22 @@ class StyleRecipesTest {
         assertNotNull(style)
     }
 
+    // ColorTable
 
+    @Test void writeColorTable() {
+        StyleRecipes recipes = new StyleRecipes()
+        String str = recipes.writeColorTable()
+        assertEquals("""25.0 178 156 195
+473.75 79 142 187
+922.5 143 146 56
+1371.25 193 132 55
+1820.0 181 214 177""", str)
+    }
+
+    @Test void readColorTable() {
+        StyleRecipes recipes = new StyleRecipes()
+        Style style = recipes.readColorTable()
+        assertNotNull(style)
+    }
 
 }

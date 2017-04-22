@@ -20,6 +20,8 @@ import geoscript.style.Style
 import geoscript.style.Symbolizer
 import geoscript.style.UniqueValues
 import geoscript.style.io.CSSReader
+import geoscript.style.io.ColorTableReader
+import geoscript.style.io.ColorTableWriter
 import geoscript.style.io.Reader
 import geoscript.style.io.Readers
 import geoscript.style.io.SLDReader
@@ -432,7 +434,6 @@ class StyleRecipes extends Recipes {
         colorMap
     }
 
-
     // Style IO
 
     List<Reader> listStyleReaders() {
@@ -454,7 +455,6 @@ class StyleRecipes extends Recipes {
         writeFile("style_readers_find", "${reader.class.simpleName}")
         reader
     }
-
 
     List<Writer> listStyleWriters() {
         // tag::listStyleWriters[]
@@ -655,5 +655,36 @@ feature-styles:
         drawOnBasemap("style_read_fill_stroke_map", [countries])
         style
     }
+
+    // ColorTable
+
+    String writeColorTable() {
+        // tag::writeColorTable[]
+        ColorMap colorMap = new ColorMap(25, 1820, "BoldLandUse", 5)
+        ColorTableWriter writer = new ColorTableWriter()
+        String str = writer.write(colorMap)
+        println str
+        // end::writeColorTable[]
+        writeFile("style_colortable_writer_str", str)
+        str
+    }
+
+    Symbolizer readColorTable() {
+        // tag::readColorTable[]
+        Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
+        Raster raster = format.read()
+        ColorTableReader reader = new ColorTableReader()
+        ColorMap colorMap = reader.read("""25.0 178 156 195
+473.75 79 142 187
+922.5 143 146 56
+1371.25 193 132 55
+1820.0 181 214 177
+""")
+        raster.style = colorMap
+        // end::readColorTable[]
+        draw("style_colortable_read_str", [raster], raster.bounds)
+        colorMap
+    }
+
 
 }

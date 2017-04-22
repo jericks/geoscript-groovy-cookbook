@@ -418,3 +418,25 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSimpleStyle
 ----
 [.thumb]
 image::style_read_fill_stroke_map.png[]
+
+==== Color Table
+
+GeoScript Groovy can read and write color table strings and files. This format can be used with ColorMaps to style
+Rasters.
+
+[source,groovy]
+.Write a ColorMap to a color table string
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=writeColorTable,indent=0]
+----
+....
+include::output/style_colortable_writer_str.txt[]
+....
+
+[source,groovy]
+.Read a ColorMap from a color table string
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readColorTable,indent=0]
+----
+[.thumb]
+image::style_colortable_read_str.png[]
