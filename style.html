@@ -524,6 +524,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-gradients">Creating Gradients</a></li>
 <li><a href="#creating-unique-values">Creating Unique Values</a></li>
 <li><a href="#creating-color-maps">Creating Color Maps</a></li>
+<li><a href="#creating-channel-selection-and-contrast-enhancement">Creating Channel Selection and Contrast Enhancement</a></li>
 <li><a href="#reading-and-writing-styles">Reading and Writing Styles</a>
 <ul class="sectlevel3">
 <li><a href="#finding-style-readers-and-writers">Finding Style Readers and Writers</a></li>
@@ -969,6 +970,26 @@ raster.style = colorMap</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a ColorMap Symbolizer for a Raster using a list of Colors with opacity</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Format</span> format = <span class="keyword">new</span> GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">'</span></span>))
+<span class="predefined-type">Raster</span> raster = format.read()
+ColorMap colorMap = <span class="keyword">new</span> ColorMap([
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#9fd182</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">25</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#3e7f3c</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">470</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#133912</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">920</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#08306b</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">1370</span>],
+        [<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#fffff5</span><span class="delimiter">&quot;</span></span>, <span class="key">quantity</span>:<span class="integer">1820</span>],
+]).opacity(<span class="float">0.25</span>)
+raster.style = colorMap</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_raster_colormap_colors_opacity.png" alt="style raster colormap colors opacity">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Create a ColorMap Symbolizer for a Raster using a color palette</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Format</span> format = <span class="keyword">new</span> GeoTIFF(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">'</span></span>))
@@ -1028,6 +1049,9 @@ raster.style = colorMap</code></pre>
 <img src="./images/style_raster_colormap_intervals.png" alt="style raster colormap intervals">
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="creating-channel-selection-and-contrast-enhancement"><a class="anchor" href="#creating-channel-selection-and-contrast-enhancement"></a>Creating Channel Selection and Contrast Enhancement</h3>
 <div class="listingblock">
 <div class="title">Create a Raster Symbolizer using ChannelSelection and ContrastEnhancement using the normalize method</div>
 <div class="content">
@@ -1450,7 +1474,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-22 20:17:15 UTC
+Last updated 2017-04-27 03:03:34 UTC
 </div>
 </div>
 </body>
