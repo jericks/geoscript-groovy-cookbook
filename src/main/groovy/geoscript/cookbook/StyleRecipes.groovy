@@ -15,6 +15,7 @@ import geoscript.style.Font
 import geoscript.style.Gradient
 import geoscript.style.Hatch
 import geoscript.style.Icon
+import geoscript.style.ImageOutline
 import geoscript.style.Label
 import geoscript.style.Shape
 import geoscript.style.Stroke
@@ -416,6 +417,23 @@ class StyleRecipes extends Recipes {
         raster.style = colorMap
         // end::createRasterColorMap[]
         draw("style_raster_colormap_colors", [raster], raster.bounds)
+        colorMap
+    }
+
+    Symbolizer createRasterColorMapWithOpacity() {
+        // tag::createRasterColorMapWithOpacity[]
+        Format format = new GeoTIFF(new File('src/main/resources/pc.tif'))
+        Raster raster = format.read()
+        ColorMap colorMap = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ]).opacity(0.25)
+        raster.style = colorMap
+        // end::createRasterColorMapWithOpacity[]
+        draw("style_raster_colormap_colors_opacity", [raster], raster.bounds)
         colorMap
     }
 

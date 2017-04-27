@@ -269,6 +269,15 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterCol
 image::style_raster_colormap_colors.png[]
 
 [source,groovy]
+.Create a ColorMap Symbolizer for a Raster using a list of Colors with opacity
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterColorMapWithOpacity,indent=0]
+----
+[.thumb]
+image::style_raster_colormap_colors_opacity.png[]
+
+
+[source,groovy]
 .Create a ColorMap Symbolizer for a Raster using a color palette
 ----
 include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterColorMapWithPalette,indent=0]
@@ -288,6 +297,8 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterCol
 ----
 [.thumb]
 image::style_raster_colormap_intervals.png[]
+
+=== Creating Channel Selection and Contrast Enhancement
 
 [source,groovy]
 .Create a Raster Symbolizer using ChannelSelection and ContrastEnhancement using the normalize method

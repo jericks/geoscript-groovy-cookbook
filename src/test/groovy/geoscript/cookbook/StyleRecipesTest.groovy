@@ -208,6 +208,12 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Test void createRasterColorMapWithOpacity() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createRasterColorMapWithOpacity()
+        assertNotNull(symbolizer)
+    }
+
     @Test void createRasterColorMapWithPalette() {
         StyleRecipes recipes = new StyleRecipes()
         Symbolizer symbolizer = recipes.createRasterColorMapWithPalette()
