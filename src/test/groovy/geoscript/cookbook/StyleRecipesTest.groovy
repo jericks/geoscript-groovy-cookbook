@@ -148,6 +148,18 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Test void createLabelForPointsWithFont() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createLabelForPointsWithFont()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createLabelForPointsWithHalo() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createLabelForPointsWithHalo()
+        assertNotNull(symbolizer)
+    }
+
     @Test void createLabelForPolygons() {
         StyleRecipes recipes = new StyleRecipes()
         Symbolizer symbolizer = recipes.createLabelForPolygons()

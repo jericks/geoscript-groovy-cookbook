@@ -189,6 +189,28 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForP
 image::style_label_points.png[]
 
 [source,groovy]
+.Create a Label for a Point Layer with a Font
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForPointsWithFont,indent=0]
+----
+<1> style (normal, italic, oblique)
+<2> weight (normal, bold)
+<3> size (8,12,16,ect..)
+<4> family (serif, arial, verdana)
+
+[.thumb]
+image::style_label_points_font.png[]
+
+[source,groovy]
+.Create a Label for a Point Layer with Halo
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForPointsWithHalo,indent=0]
+----
+
+[.thumb]
+image::style_label_points_halo.png[]
+
+[source,groovy]
 .Create a Label for a Polygon Layer
 ----
 include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForPolygons,indent=0]

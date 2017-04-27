@@ -13,6 +13,7 @@ import geoscript.style.ContrastEnhancement
 import geoscript.style.Fill
 import geoscript.style.Font
 import geoscript.style.Gradient
+import geoscript.style.Halo
 import geoscript.style.Hatch
 import geoscript.style.Icon
 import geoscript.style.ImageOutline
@@ -289,6 +290,41 @@ class StyleRecipes extends Recipes {
         Layer places = workspace.get("places")
         places.style = symbolizer
         drawOnBasemap("style_label_points", [places], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
+        symbolizer
+    }
+
+    Symbolizer createLabelForPointsWithFont() {
+        // tag::createLabelForPointsWithFont[]
+        Symbolizer symbolizer = new Shape("blue", 6).stroke("navy", 0.5) + new Label("NAME").point(
+                [0.5,0.5],
+                [0, 5.0],
+                0
+        ) + new Font(
+                "normal",   // <1>
+                "bold",     // <2>
+                12,         // <3>
+                "Arial"     // <4>
+        )
+        // end::createLabelForPointsWithFont[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = symbolizer
+        drawOnBasemap("style_label_points_font", [places], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
+        symbolizer
+    }
+
+    Symbolizer createLabelForPointsWithHalo() {
+        // tag::createLabelForPointsWithHalo[]
+        Symbolizer symbolizer = new Shape("blue", 6).stroke("navy", 0.5) + new Label("NAME").point(
+                [0.5,0.5],
+                [0, 5.0],
+                0
+        ).fill(new Fill("white")) + new Halo(new Fill("navy"), 2.5)
+        // end::createLabelForPointsWithHalo[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = symbolizer
+        drawOnBasemap("style_label_points_halo", [places], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
         symbolizer
     }
 
