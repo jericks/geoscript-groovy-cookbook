@@ -821,6 +821,61 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a Label for a Point Layer with a Font</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>, <span class="integer">6</span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>).point(
+        [<span class="float">0.5</span>,<span class="float">0.5</span>],
+        [<span class="integer">0</span>, <span class="float">5.0</span>],
+        <span class="integer">0</span>
+) + <span class="keyword">new</span> <span class="predefined-type">Font</span>(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">normal</span><span class="delimiter">&quot;</span></span>,   <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">bold</span><span class="delimiter">&quot;</span></span>,     <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="integer">12</span>,         <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>     <i class="conum" data-value="4"></i><b>(4)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>style (normal, italic, oblique)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>weight (normal, bold)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>size (8,12,16,ect..)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>family (serif, arial, verdana)</td>
+</tr>
+</table>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_label_points_font.png" alt="style label points font">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Label for a Point Layer with Halo</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>, <span class="integer">6</span>).stroke(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>).point(
+        [<span class="float">0.5</span>,<span class="float">0.5</span>],
+        [<span class="integer">0</span>, <span class="float">5.0</span>],
+        <span class="integer">0</span>
+).fill(<span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>)) + <span class="keyword">new</span> Halo(<span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>), <span class="float">2.5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_label_points_halo.png" alt="style label points halo">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.1</span>) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>)
@@ -1474,7 +1529,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-27 03:03:34 UTC
+Last updated 2017-04-27 03:19:14 UTC
 </div>
 </div>
 </body>
