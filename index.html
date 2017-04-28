@@ -682,6 +682,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-shapes">Creating Shapes</a></li>
 <li><a href="#creating-icons">Creating Icons</a></li>
 <li><a href="#creating-labels">Creating Labels</a></li>
+<li><a href="#creating-transforms">Creating Transforms</a></li>
 <li><a href="#creating-gradients">Creating Gradients</a></li>
 <li><a href="#creating-unique-values">Creating Unique Values</a></li>
 <li><a href="#creating-color-maps">Creating Color Maps</a></li>
@@ -4920,7 +4921,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--30aa5233_15bad6e1f8a_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-2e2fed70_15bb29b27d5_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5635,7 +5636,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 27 03:22:07 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Apr 28 03:29:24 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5654,7 +5655,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--30aa5233_15bad6e1f8a_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-2e2fed70_15bb29b27d5_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5678,7 +5679,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 27 03:22:07 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Apr 28 03:29:24 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5698,7 +5699,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--30aa5233_15bad6e1f8a_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-2e2fed70_15bb29b27d5_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5860,7 +5861,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--30aa5233_15bad6e1f8a_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-2e2fed70_15bb29b27d5_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5898,7 +5899,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--30aa5233_15bad6e1f8a_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-2e2fed70_15bb29b27d5_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7209,9 +7210,9 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
+geo:isValid
 geo:union
 geo:intersection
-geo:isValid
 geo:difference
 geo:distance
 geo:isClosed
@@ -7230,14 +7231,14 @@ geo:relate
 geo:symDifference
 geo:touches
 geo:within
-geo:numPoints
-geo:dimension
 geo:simplify
 geo:densify
+geo:numPoints
+geo:reproject
+geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:reproject
 geo:envelope
 geo:getX
 geo:getY
@@ -7247,9 +7248,9 @@ geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
-geo:interiorRingN
-geo:pointN
 geo:equalsExactTolerance
+geo:pointN
+geo:interiorRingN
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -8733,6 +8734,50 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 </div>
 <div class="sect2">
+<h3 id="creating-transforms"><a class="anchor" href="#creating-transforms"></a>Creating Transforms</h3>
+<div class="listingblock">
+<div class="title">Create a normal Transform symbolizer that styles a polygon as a point by calculating it&#8217;s centroid</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+Symbolizer symbolizer = <span class="keyword">new</span> Transform(<span class="string"><span class="delimiter">&quot;</span><span class="content">centroid(the_geom)</span><span class="delimiter">&quot;</span></span>) +
+        <span class="keyword">new</span> <span class="predefined-type">Shape</span>(<span class="key">color</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">red</span><span class="delimiter">&quot;</span></span>, <span class="key">size</span>: <span class="integer">10</span>, <span class="key">type</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">star</span><span class="delimiter">&quot;</span></span>)
+countries.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_transform_normal.png" alt="style transform normal">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a rendering Transform symbolizer that styles a point layer by calculating the convex hull</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer places = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Process</span> process = <span class="keyword">new</span> <span class="predefined-type">Process</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">convexhull</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Create a convexhull around the features</span><span class="delimiter">&quot;</span></span>,
+        [<span class="key">features</span>: geoscript.layer.Cursor],
+        [<span class="key">result</span>: geoscript.layer.Cursor],
+        { inputs -&gt;
+            <span class="keyword">def</span> geoms = <span class="keyword">new</span> GeometryCollection(inputs.features.collect{ f -&gt; f.geom})
+            <span class="keyword">def</span> output = <span class="keyword">new</span> Layer()
+            output.add([geoms.convexHull])
+            [<span class="key">result</span>: output]
+        }
+)
+Function function = <span class="keyword">new</span> Function(process, <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">parameter</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Expression</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">features</span><span class="delimiter">&quot;</span></span>)))
+Symbolizer symbolizer =  <span class="keyword">new</span> Transform(function, Transform.RENDERING) + <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">aqua</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+places.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_transform_rendering.png" alt="style transform rendering">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="creating-gradients"><a class="anchor" href="#creating-gradients"></a>Creating Gradients</h3>
 <div class="listingblock">
 <div class="title">Create a Gradient Symbolizer from a Layer&#8217;s Field using quantile method</div>
@@ -9357,7 +9402,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-27 03:19:14 UTC
+Last updated 2017-04-28 03:26:28 UTC
 </div>
 </div>
 </body>
