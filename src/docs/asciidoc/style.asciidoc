@@ -228,6 +228,24 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForL
 [.thumb]
 image::style_label_lines.png[]
 
+=== Creating Transforms
+
+[source,groovy]
+.Create a normal Transform symbolizer that styles a polygon as a point by calculating it's centroid
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createNormalTransform,indent=0]
+----
+[.thumb]
+image::style_transform_normal.png[]
+
+[source,groovy]
+.Create a rendering Transform symbolizer that styles a point layer by calculating the convex hull
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRenderingTransform,indent=0]
+----
+[.thumb]
+image::style_transform_rendering.png[]
+
 === Creating Gradients
 
 [source,groovy]
@@ -338,8 +356,6 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createRasterCha
 ----
 [.thumb]
 image::style_raster_channel_constrast_histogram.png[]
-
-
 
 === Reading and Writing Styles
 

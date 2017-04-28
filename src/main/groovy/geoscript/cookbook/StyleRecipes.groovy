@@ -1,12 +1,16 @@
 package geoscript.cookbook
 
 import geoscript.filter.Color
+import geoscript.filter.Expression
+import geoscript.filter.Function
 import geoscript.filter.Property
 import geoscript.geom.Bounds
+import geoscript.geom.GeometryCollection
 import geoscript.layer.Format
 import geoscript.layer.GeoTIFF
 import geoscript.layer.Layer
 import geoscript.layer.Raster
+import geoscript.process.Process
 import geoscript.style.ChannelSelection
 import geoscript.style.ColorMap
 import geoscript.style.ContrastEnhancement
@@ -22,6 +26,7 @@ import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.Style
 import geoscript.style.Symbolizer
+import geoscript.style.Transform
 import geoscript.style.UniqueValues
 import geoscript.style.io.CSSReader
 import geoscript.style.io.ColorTableReader
@@ -436,6 +441,44 @@ class StyleRecipes extends Recipes {
         drawOnBasemap("style_uniquevalues_palette", [countries])
         uniqueValues
     }
+
+    // Transform
+
+    Symbolizer createNormalTransform() {
+        // tag::createNormalTransform[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        Symbolizer symbolizer = new Transform("centroid(the_geom)") +
+                new Shape(color: "red", size: 10, type: "star")
+        countries.style = symbolizer
+        // end::createNormalTransform[]
+        drawOnBasemap("style_transform_normal", [countries])
+        symbolizer
+    }
+
+    Symbolizer createRenderingTransform() {
+        // tag::createRenderingTransform[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        Process process = new Process("convexhull",
+                "Create a convexhull around the features",
+                [features: geoscript.layer.Cursor],
+                [result: geoscript.layer.Cursor],
+                { inputs ->
+                    def geoms = new GeometryCollection(inputs.features.collect{ f -> f.geom})
+                    def output = new Layer()
+                    output.add([geoms.convexHull])
+                    [result: output]
+                }
+        )
+        Function function = new Function(process, new Function("parameter", new Expression("features")))
+        Symbolizer symbolizer =  new Transform(function, Transform.RENDERING) + new Fill("aqua", 0.75) + new Stroke("navy", 0.5)
+        places.style = symbolizer
+        // end::createRenderingTransform[]
+        drawOnBasemap("style_transform_rendering", [places])
+        symbolizer
+    }
+
 
     // Raster
 

@@ -172,6 +172,20 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    // Transform
+
+    @Test void createNormalTransform() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createNormalTransform()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createRenderingTransform() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createRenderingTransform()
+        assertNotNull(symbolizer)
+    }
+
     // Gradient
 
     @Test void createGradientOnFieldWithQuantile() {
