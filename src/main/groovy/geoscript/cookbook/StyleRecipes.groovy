@@ -13,6 +13,7 @@ import geoscript.layer.Raster
 import geoscript.process.Process
 import geoscript.style.ChannelSelection
 import geoscript.style.ColorMap
+import geoscript.style.Composite
 import geoscript.style.ContrastEnhancement
 import geoscript.style.Fill
 import geoscript.style.Font
@@ -44,6 +45,75 @@ import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 
 class StyleRecipes extends Recipes {
+
+    // Basics
+
+    Symbolizer createBasicSymbolizer() {
+        // tag::createBasicSymbolizer[]
+        Fill fill = new Fill("#6B8E23")
+        // end::createBasicSymbolizer[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = fill
+        drawOnBasemap("style_basic_symbolizer", [states], states.bounds.expandBy(3.0))
+        fill
+    }
+
+    Composite createBasicComposite() {
+        // tag::createBasicComposite[]
+        Composite composite = new Fill("#6B8E23") + new Stroke("black", 0.75)
+        // end::createBasicComposite[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = composite
+        drawOnBasemap("style_basic_composite", [states], states.bounds.expandBy(3.0))
+        composite
+    }
+
+    // Where
+
+    Symbolizer createBasicSymbolizerWithWhere() {
+        // tag::createBasicSymbolizerWithWhere[]
+        Symbolizer symbolizer = new Fill("#ffffcc").where("PEOPLE < 4504128.33") +
+                new Fill("#41b6c4").where("PEOPLE BETWEEN 4504128.33 AND 16639804.33") +
+                new Fill("#253494").where("PEOPLE > 16639804.33")
+        // end::createBasicSymbolizerWithWhere[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = symbolizer
+        drawOnBasemap("style_basic_symbolizer_where", [countries])
+        symbolizer
+    }
+
+    // Zindex
+
+    Symbolizer createBasicSymbolizerWithZindex() {
+        // tag::createBasicSymbolizerWithZindex[]
+        Symbolizer symbolizer = new Stroke("black", 2.0).zindex(0) + new Stroke("white", 0.1).zindex(1)
+        // end::createBasicSymbolizerWithZindex[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = symbolizer
+        drawOnBasemap("style_basic_symbolizer_zindex", [states], states.bounds.expandBy(2.0))
+        symbolizer
+    }
+
+    // Scale
+    
+    Symbolizer createBasicSymbolizerWithScale() {
+        // tag::createBasicSymbolizerWithScale[]
+        Symbolizer symbolizer = (new Fill("white") + new Stroke("black", 0.1)) + new Label("NAME_1")
+                .point(anchor: [0.5,0.5])
+                .polygonAlign("mbr")
+                .range(max: 16000000)
+        // end::createBasicSymbolizerWithScale[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = symbolizer
+        drawOnBasemap("style_basic_symbolizer_scale1", [states], states.bounds.expandBy(3.0))
+        drawOnBasemap("style_basic_symbolizer_scale2", [states], new Bounds(-105, 35, -95, 45))
+        symbolizer
+    }
 
     // Stroke
 

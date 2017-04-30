@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.style.Composite
 import geoscript.style.Fill
 import geoscript.style.Shape
 import geoscript.style.Stroke
@@ -11,6 +12,38 @@ import org.junit.Test
 import static org.junit.Assert.*
 
 class StyleRecipesTest {
+
+    // Basic
+
+    @Test void createBasicSymbolizer() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createBasicSymbolizer()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createBasicComposite() {
+        StyleRecipes recipes = new StyleRecipes()
+        Composite composite = recipes.createBasicComposite()
+        assertNotNull(composite)
+    }
+
+    @Test void createBasicSymbolizerWithScale() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createBasicSymbolizerWithScale()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createBasicSymbolizerWithZindex() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createBasicSymbolizerWithZindex()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createBasicSymbolizerWithWhere() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createBasicSymbolizerWithWhere()
+        assertNotNull(symbolizer)
+    }
 
     // Stroke
 

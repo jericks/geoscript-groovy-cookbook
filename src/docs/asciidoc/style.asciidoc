@@ -5,6 +5,53 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 Styles are found in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/style/package-summary.html[geoscript.style]* package.
 
+Styles are made up Symbolizers and Composites.  A Symbolizer is a particular style like Stroke or Fill.  Symbolizers also have methods for controlling the drawing order (zindex), the min and max scale (range), and filtering (where).
+
+=== Creating Basic Styles
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createBasicSymbolizer,indent=0]
+----
+[.thumb]
+image::style_basic_symbolizer.png[]
+
+A Composite is simply two or more Symbolizers.  So, a Composite would be a combination of a Stroke symbolizer (to style the boundary) and a Fill Symbolizer (to style the interior).
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createBasicComposite,indent=0]
+----
+[.thumb]
+image::style_basic_composite.png[]
+
+[source,groovy]
+.A Symbolizer can use the where method to restrict which features are styled.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createBasicSymbolizerWithWhere,indent=0]
+----
+[.thumb]
+image::style_basic_symbolizer_where.png[]
+
+[source,groovy]
+.The zindex method is used to order Symbolizers on top of each other. In this recipe we use it to create line casings.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createBasicSymbolizerWithZindex,indent=0]
+----
+[.thumb]
+image::style_basic_symbolizer_zindex.png[]
+
+[source,groovy]
+.The scale method is used to create Symbolizers that are dependent on map scale.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createBasicSymbolizerWithScale,indent=0]
+----
+[.thumb]
+image::style_basic_symbolizer_scale1.png[]
+
+[.thumb]
+image::style_basic_symbolizer_scale2.png[]
+
 === Creating Strokes
 
 [source,groovy]
