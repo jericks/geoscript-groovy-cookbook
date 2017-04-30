@@ -677,6 +677,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#style-recipes">Style Recipes</a>
 <ul class="sectlevel2">
+<li><a href="#creating-basic-styles">Creating Basic Styles</a></li>
 <li><a href="#creating-strokes">Creating Strokes</a></li>
 <li><a href="#creating-fills">Creating Fills</a></li>
 <li><a href="#creating-shapes">Creating Shapes</a></li>
@@ -4921,7 +4922,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-2e2fed70_15bb29b27d5_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--4c86fafe_15bc0d53519_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5636,7 +5637,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Apr 28 03:29:24 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Apr 30 21:47:30 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5655,7 +5656,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-2e2fed70_15bb29b27d5_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--4c86fafe_15bc0d53519_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5679,7 +5680,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Apr 28 03:29:24 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Apr 30 21:47:30 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5699,7 +5700,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-2e2fed70_15bb29b27d5_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--4c86fafe_15bc0d53519_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5861,7 +5862,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-2e2fed70_15bb29b27d5_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--4c86fafe_15bc0d53519_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5899,7 +5900,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-2e2fed70_15bb29b27d5_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--4c86fafe_15bc0d53519_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7161,25 +7162,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7210,13 +7193,11 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:isValid
 geo:union
 geo:intersection
+geo:isValid
 geo:difference
 geo:distance
-geo:isClosed
-geo:numGeometries
 geo:convexHull
 geo:area
 geo:crosses
@@ -7224,6 +7205,8 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
+geo:isClosed
+geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7233,30 +7216,48 @@ geo:touches
 geo:within
 geo:simplify
 geo:densify
+geo:envelope
 geo:numPoints
-geo:reproject
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:envelope
+geo:reproject
 geo:getX
 geo:getY
-geo:equalsExact
 geo:isRing
+geo:equalsExact
 geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
-geo:equalsExactTolerance
 geo:pointN
 geo:interiorRingN
+geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
 geo:isEmpty
 geo:contains
 geo:disjoint
-geo:intersects</pre>
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage</pre>
 </div>
 </div>
 </div>
@@ -8376,6 +8377,78 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 <div class="paragraph">
 <p>Styles are found in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/style/package-summary.html">geoscript.style</a></strong> package.</p>
 </div>
+<div class="paragraph">
+<p>Styles are made up Symbolizers and Composites.  A Symbolizer is a particular style like Stroke or Fill.  Symbolizers also have methods for controlling the drawing order (zindex), the min and max scale (range), and filtering (where).</p>
+</div>
+<div class="sect2">
+<h3 id="creating-basic-styles"><a class="anchor" href="#creating-basic-styles"></a>Creating Basic Styles</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Fill fill = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#6B8E23</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_symbolizer.png" alt="style basic symbolizer">
+</div>
+</div>
+<div class="paragraph">
+<p>A Composite is simply two or more Symbolizers.  So, a Composite would be a combination of a Stroke symbolizer (to style the boundary) and a Fill Symbolizer (to style the interior).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Composite</span> composite = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#6B8E23</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_composite.png" alt="style basic composite">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">A Symbolizer can use the where method to restrict which features are styled.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffcc</span><span class="delimiter">&quot;</span></span>).where(<span class="string"><span class="delimiter">&quot;</span><span class="content">PEOPLE &lt; 4504128.33</span><span class="delimiter">&quot;</span></span>) +
+        <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#41b6c4</span><span class="delimiter">&quot;</span></span>).where(<span class="string"><span class="delimiter">&quot;</span><span class="content">PEOPLE BETWEEN 4504128.33 AND 16639804.33</span><span class="delimiter">&quot;</span></span>) +
+        <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#253494</span><span class="delimiter">&quot;</span></span>).where(<span class="string"><span class="delimiter">&quot;</span><span class="content">PEOPLE &gt; 16639804.33</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_symbolizer_where.png" alt="style basic symbolizer where">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">The zindex method is used to order Symbolizers on top of each other. In this recipe we use it to create line casings.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">2.0</span>).zindex(<span class="integer">0</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>, <span class="float">0.1</span>).zindex(<span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_symbolizer_zindex.png" alt="style basic symbolizer zindex">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">The scale method is used to create Symbolizers that are dependent on map scale.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = (<span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.1</span>)) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>)
+        .point(<span class="key">anchor</span>: [<span class="float">0.5</span>,<span class="float">0.5</span>])
+        .polygonAlign(<span class="string"><span class="delimiter">&quot;</span><span class="content">mbr</span><span class="delimiter">&quot;</span></span>)
+        .range(<span class="key">max</span>: <span class="integer">16000000</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_symbolizer_scale1.png" alt="style basic symbolizer scale1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_symbolizer_scale2.png" alt="style basic symbolizer scale2">
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="creating-strokes"><a class="anchor" href="#creating-strokes"></a>Creating Strokes</h3>
 <div class="listingblock">
@@ -9402,7 +9475,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-28 03:26:28 UTC
+Last updated 2017-04-30 21:43:58 UTC
 </div>
 </div>
 </body>

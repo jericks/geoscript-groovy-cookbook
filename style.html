@@ -516,6 +516,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#style-recipes">Style Recipes</a>
 <ul class="sectlevel2">
+<li><a href="#creating-basic-styles">Creating Basic Styles</a></li>
 <li><a href="#creating-strokes">Creating Strokes</a></li>
 <li><a href="#creating-fills">Creating Fills</a></li>
 <li><a href="#creating-shapes">Creating Shapes</a></li>
@@ -547,6 +548,78 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sectionbody">
 <div class="paragraph">
 <p>Styles are found in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/style/package-summary.html">geoscript.style</a></strong> package.</p>
+</div>
+<div class="paragraph">
+<p>Styles are made up Symbolizers and Composites.  A Symbolizer is a particular style like Stroke or Fill.  Symbolizers also have methods for controlling the drawing order (zindex), the min and max scale (range), and filtering (where).</p>
+</div>
+<div class="sect2">
+<h3 id="creating-basic-styles"><a class="anchor" href="#creating-basic-styles"></a>Creating Basic Styles</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Fill fill = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#6B8E23</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_symbolizer.png" alt="style basic symbolizer">
+</div>
+</div>
+<div class="paragraph">
+<p>A Composite is simply two or more Symbolizers.  So, a Composite would be a combination of a Stroke symbolizer (to style the boundary) and a Fill Symbolizer (to style the interior).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Composite</span> composite = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#6B8E23</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_composite.png" alt="style basic composite">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">A Symbolizer can use the where method to restrict which features are styled.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffcc</span><span class="delimiter">&quot;</span></span>).where(<span class="string"><span class="delimiter">&quot;</span><span class="content">PEOPLE &lt; 4504128.33</span><span class="delimiter">&quot;</span></span>) +
+        <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#41b6c4</span><span class="delimiter">&quot;</span></span>).where(<span class="string"><span class="delimiter">&quot;</span><span class="content">PEOPLE BETWEEN 4504128.33 AND 16639804.33</span><span class="delimiter">&quot;</span></span>) +
+        <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#253494</span><span class="delimiter">&quot;</span></span>).where(<span class="string"><span class="delimiter">&quot;</span><span class="content">PEOPLE &gt; 16639804.33</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_symbolizer_where.png" alt="style basic symbolizer where">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">The zindex method is used to order Symbolizers on top of each other. In this recipe we use it to create line casings.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">2.0</span>).zindex(<span class="integer">0</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>, <span class="float">0.1</span>).zindex(<span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_symbolizer_zindex.png" alt="style basic symbolizer zindex">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">The scale method is used to create Symbolizers that are dependent on map scale.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = (<span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.1</span>)) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>)
+        .point(<span class="key">anchor</span>: [<span class="float">0.5</span>,<span class="float">0.5</span>])
+        .polygonAlign(<span class="string"><span class="delimiter">&quot;</span><span class="content">mbr</span><span class="delimiter">&quot;</span></span>)
+        .range(<span class="key">max</span>: <span class="integer">16000000</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_symbolizer_scale1.png" alt="style basic symbolizer scale1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_basic_symbolizer_scale2.png" alt="style basic symbolizer scale2">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="creating-strokes"><a class="anchor" href="#creating-strokes"></a>Creating Strokes</h3>
@@ -1574,7 +1647,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-28 03:26:28 UTC
+Last updated 2017-04-30 21:43:58 UTC
 </div>
 </div>
 </body>
