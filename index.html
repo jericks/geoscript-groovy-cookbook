@@ -4922,7 +4922,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--4c86fafe_15bc0d53519_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-3172a44d_15bd63124d8_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5637,7 +5637,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Apr 30 21:47:30 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri May 05 01:19:56 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5656,7 +5656,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--4c86fafe_15bc0d53519_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-3172a44d_15bd63124d8_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5680,7 +5680,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Apr 30 21:47:30 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri May 05 01:19:56 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5700,7 +5700,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--4c86fafe_15bc0d53519_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-3172a44d_15bd63124d8_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5862,7 +5862,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--4c86fafe_15bc0d53519_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-3172a44d_15bd63124d8_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5900,7 +5900,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--4c86fafe_15bc0d53519_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-3172a44d_15bd63124d8_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7162,7 +7162,73 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>vec:Aggregate
+<pre>geo:buffer
+geo:union
+geo:intersection
+geo:isValid
+geo:difference
+geo:distance
+geo:isClosed
+geo:numGeometries
+geo:convexHull
+geo:area
+geo:crosses
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:reproject
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:getX
+geo:getY
+geo:equalsExact
+geo:isRing
+geo:polygonize
+geo:relatePattern
+geo:startPoint
+geo:endPoint
+geo:interiorRingN
+geo:equalsExactTolerance
+geo:pointN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage
+vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7191,73 +7257,7 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics
-geo:buffer
-geo:union
-geo:intersection
-geo:isValid
-geo:difference
-geo:distance
-geo:convexHull
-geo:area
-geo:crosses
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:isClosed
-geo:numGeometries
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:symDifference
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:envelope
-geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:reproject
-geo:getX
-geo:getY
-geo:isRing
-geo:equalsExact
-geo:polygonize
-geo:startPoint
-geo:endPoint
-geo:relatePattern
-geo:pointN
-geo:interiorRingN
-geo:equalsExactTolerance
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage</pre>
+vec:VectorZonalStatistics</pre>
 </div>
 </div>
 </div>
@@ -7471,7 +7471,9 @@ ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 )
 <span class="predefined-type">Image</span> jpeg = <span class="keyword">new</span> <span class="predefined-type">Image</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">jpeg</span><span class="delimiter">&quot;</span></span>)
 <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.jpeg</span><span class="delimiter">&quot;</span></span>)
-jpeg.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+<span class="predefined-type">FileOutputStream</span> out = <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file)
+jpeg.render(map, out)
+out.close()</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -7519,7 +7521,9 @@ ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 )
 PNG png = <span class="keyword">new</span> PNG()
 <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.png</span><span class="delimiter">&quot;</span></span>)
-png.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+<span class="predefined-type">FileOutputStream</span> out = <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file)
+png.render(map, out)
+out.close()</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -7567,7 +7571,9 @@ ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 )
 JPEG jpeg = <span class="keyword">new</span> JPEG()
 <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.jpeg</span><span class="delimiter">&quot;</span></span>)
-jpeg.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+<span class="predefined-type">FileOutputStream</span> out = <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file)
+jpeg.render(map, out)
+out.close()</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -7764,7 +7770,9 @@ ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 )
 ASCII ascii = <span class="keyword">new</span> ASCII(<span class="key">width</span>: <span class="integer">60</span>)
 <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.txt</span><span class="delimiter">&quot;</span></span>)
-ascii.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+<span class="predefined-type">FileOutputStream</span> out = <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file)
+ascii.render(map, out)
+out.close()</code></pre>
 </div>
 </div>
 <div class="literalblock">
@@ -9475,7 +9483,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-30 21:43:58 UTC
+Last updated 2017-05-05 01:17:03 UTC
 </div>
 </div>
 </body>

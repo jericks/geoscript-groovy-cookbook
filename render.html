@@ -664,7 +664,9 @@ ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 )
 <span class="predefined-type">Image</span> jpeg = <span class="keyword">new</span> <span class="predefined-type">Image</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">jpeg</span><span class="delimiter">&quot;</span></span>)
 <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.jpeg</span><span class="delimiter">&quot;</span></span>)
-jpeg.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+<span class="predefined-type">FileOutputStream</span> out = <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file)
+jpeg.render(map, out)
+out.close()</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -712,7 +714,9 @@ ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 )
 PNG png = <span class="keyword">new</span> PNG()
 <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.png</span><span class="delimiter">&quot;</span></span>)
-png.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+<span class="predefined-type">FileOutputStream</span> out = <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file)
+png.render(map, out)
+out.close()</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -760,7 +764,9 @@ ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 )
 JPEG jpeg = <span class="keyword">new</span> JPEG()
 <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.jpeg</span><span class="delimiter">&quot;</span></span>)
-jpeg.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+<span class="predefined-type">FileOutputStream</span> out = <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file)
+jpeg.render(map, out)
+out.close()</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -957,7 +963,9 @@ ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 )
 ASCII ascii = <span class="keyword">new</span> ASCII(<span class="key">width</span>: <span class="integer">60</span>)
 <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.txt</span><span class="delimiter">&quot;</span></span>)
-ascii.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+<span class="predefined-type">FileOutputStream</span> out = <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file)
+ascii.render(map, out)
+out.close()</code></pre>
 </div>
 </div>
 <div class="literalblock">
@@ -1567,7 +1575,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-30 21:43:58 UTC
+Last updated 2017-05-05 01:17:03 UTC
 </div>
 </div>
 </body>
