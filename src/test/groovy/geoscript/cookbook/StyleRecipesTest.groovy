@@ -394,7 +394,7 @@ class StyleRecipesTest {
 473.75 79 142 187
 922.5 143 146 56
 1371.25 193 132 55
-1820.0 181 214 177""", str)
+1820.0 181 214 177""".normalize(), str.normalize())
     }
 
     @Test void readColorTable() {

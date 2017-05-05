@@ -91,7 +91,7 @@ class FilterRecipesTest {
 <ogc:Literal>Seattle</ogc:Literal>
 </ogc:PropertyIsEqualTo>
 </ogc:Filter>
-""", values.xml)
+""".normalize(), values.xml.normalize())
     }
 
     @Test void evaluateFilters() {

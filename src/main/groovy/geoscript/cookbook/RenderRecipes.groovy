@@ -111,7 +111,9 @@ class RenderRecipes extends Recipes {
         )
         Image jpeg = new Image("jpeg")
         File file = new File("map.jpeg")
-        jpeg.render(map, new FileOutputStream(file))
+        FileOutputStream out = new FileOutputStream(file)
+        jpeg.render(map, out)
+        out.close()
         // end::renderToFile[]
         moveFile(file, new File("src/docs/asciidoc/images/map_image_file.jpeg"))
         file
@@ -152,7 +154,9 @@ class RenderRecipes extends Recipes {
         )
         PNG png = new PNG()
         File file = new File("map.png")
-        png.render(map, new FileOutputStream(file))
+        FileOutputStream out = new FileOutputStream(file)
+        png.render(map, out)
+        out.close()
         // end::renderToPngFile[]
         moveFile(file, new File("src/docs/asciidoc/images/map_png_file.png"))
         file
@@ -193,7 +197,9 @@ class RenderRecipes extends Recipes {
         )
         JPEG jpeg = new JPEG()
         File file = new File("map.jpeg")
-        jpeg.render(map, new FileOutputStream(file))
+        FileOutputStream out = new FileOutputStream(file)
+        jpeg.render(map, out)
+        out.close()
         // end::renderToJpegFile[]
         moveFile(file, new File("src/docs/asciidoc/images/map_jpeg_file.jpeg"))
         file
@@ -355,7 +361,9 @@ class RenderRecipes extends Recipes {
         )
         ASCII ascii = new ASCII(width: 60)
         File file = new File("map.txt")
-        ascii.render(map, new FileOutputStream(file))
+        FileOutputStream out = new FileOutputStream(file)
+        ascii.render(map, out)
+        out.close()
         // end::renderToAsciiFile[]
         moveFile(file, new File("src/docs/asciidoc/output/render_ascii_file.txt"))
         file

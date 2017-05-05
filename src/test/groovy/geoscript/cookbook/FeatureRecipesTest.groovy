@@ -240,7 +240,7 @@ class FeatureRecipesTest {
             "type": "String"
         }
     ]
-}""", schemaStr)
+}""".normalize(), schemaStr.normalize())
     }
 
     @Test void readSchemaFromXml() {
@@ -271,7 +271,7 @@ class FeatureRecipesTest {
       <type>String</type>
     </field>
   </fields>
-</schema>""", schemaStr)
+</schema>""".normalize(), schemaStr.normalize())
     }
 
     @Test void createFeatureFromMap() {
@@ -407,7 +407,7 @@ class FeatureRecipesTest {
 </gsf:geom>
 <gsf:id>1</gsf:id>
 </gsf:cities>
-""", str)
+""".normalize(), str.normalize())
     }
 
     @Test void featureFromGml() {
@@ -431,7 +431,7 @@ class FeatureRecipesTest {
 </gsf:geom>
 <gsf:id>1</gsf:id>
 </gsf:cities>
-""", str)
+""".normalize(), str.normalize())
     }
 
     @Test void readFeatureFromGml() {
@@ -479,7 +479,7 @@ class FeatureRecipesTest {
 <kml:coordinates>-122.3204,47.6024</kml:coordinates>
 </kml:Point>
 </kml:Placemark>
-""", str)
+""".normalize(), str.normalize())
     }
 
     @Test void featureFromKml() {
@@ -497,7 +497,7 @@ class FeatureRecipesTest {
 <kml:coordinates>-122.3204,47.6024</kml:coordinates>
 </kml:Point>
 </kml:Placemark>
-""", str)
+""".normalize(), str.normalize())
     }
 
     @Test void readFeatureFromKml() {
