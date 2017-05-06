@@ -487,7 +487,9 @@ class RenderRecipes extends Recipes {
         )
         Svg svg = new Svg()
         File file = new File("map.svg")
-        svg.render(map, new FileOutputStream(file))
+        FileOutputStream out = new FileOutputStream(file)
+        svg.render(map, out)
+        out.close()
         // end::renderToSvgFile[]
         moveFile(file, new File("src/docs/asciidoc/output/render_svg_file.svg"))
         file
