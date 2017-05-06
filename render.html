@@ -1131,7 +1131,9 @@ ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span c
 )
 Svg svg = <span class="keyword">new</span> Svg()
 <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.svg</span><span class="delimiter">&quot;</span></span>)
-svg.render(map, <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file))</code></pre>
+<span class="predefined-type">FileOutputStream</span> out = <span class="keyword">new</span> <span class="predefined-type">FileOutputStream</span>(file)
+svg.render(map, out)
+out.close()</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -1575,7 +1577,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-05 01:17:03 UTC
+Last updated 2017-05-06 00:56:55 UTC
 </div>
 </div>
 </body>
