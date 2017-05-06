@@ -700,6 +700,11 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </li>
+<li><a href="#workspace-recipes">Workspace Recipes</a>
+<ul class="sectlevel2">
+<li><a href="#creating-workspaces">Creating Workspaces</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -4922,7 +4927,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--406e5a4f_15bdb453440_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--6df2142f_15bdfe3ad44_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5637,7 +5642,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat May 06 00:59:57 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat May 06 22:31:32 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5656,7 +5661,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--406e5a4f_15bdb453440_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--6df2142f_15bdfe3ad44_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5680,7 +5685,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat May 06 00:59:57 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat May 06 22:31:32 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5700,7 +5705,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--406e5a4f_15bdb453440_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--6df2142f_15bdfe3ad44_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5862,7 +5867,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--406e5a4f_15bdb453440_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--6df2142f_15bdfe3ad44_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5900,7 +5905,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--406e5a4f_15bdb453440_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--6df2142f_15bdfe3ad44_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7162,7 +7167,55 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>ras:AddCoverages
+<pre>geo:buffer
+geo:union
+geo:intersection
+geo:isValid
+geo:difference
+geo:distance
+geo:numGeometries
+geo:isClosed
+geo:convexHull
+geo:area
+geo:crosses
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:reproject
+geo:getX
+geo:getY
+geo:isRing
+geo:equalsExact
+geo:polygonize
+geo:startPoint
+geo:endPoint
+geo:relatePattern
+geo:pointN
+geo:equalsExactTolerance
+geo:interiorRingN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
 ras:Affine
 ras:AreaGrid
 ras:BandMerge
@@ -7209,55 +7262,7 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics
-geo:buffer
-geo:isValid
-geo:union
-geo:intersection
-geo:difference
-geo:distance
-geo:isClosed
-geo:numGeometries
-geo:convexHull
-geo:area
-geo:crosses
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:symDifference
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:envelope
-geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:reproject
-geo:getX
-geo:getY
-geo:isRing
-geo:equalsExact
-geo:polygonize
-geo:startPoint
-geo:endPoint
-geo:relatePattern
-geo:pointN
-geo:equalsExactTolerance
-geo:interiorRingN
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects</pre>
+vec:VectorZonalStatistics</pre>
 </div>
 </div>
 </div>
@@ -9482,10 +9487,124 @@ println str</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="workspace-recipes"><a class="anchor" href="#workspace-recipes"></a>Workspace Recipes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Workspace classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/workspace/package-summary.html">geoscript.workspace</a></strong> package.</p>
+</div>
+<div class="paragraph">
+<p>A Workspace is a collection of Layer.  You can create, add, remove, and get Layers.  There are many
+different kinds of Workspace in GeoScript including Memory, PostGIS, Directory (for Shapefiles), GeoPackage,
+and many more.</p>
+</div>
+<div class="sect2">
+<h3 id="creating-workspaces"><a class="anchor" href="#creating-workspaces"></a>Creating Workspaces</h3>
+<div class="listingblock">
+<div class="title">Create a Workspace</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Workspace()</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+println layer</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a Workspace has a Layer by name</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">boolean</span> hasCities = workspace.has(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>)
+println hasCities</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Layer from a Workspace</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Layer citiesLayer = workspace.get(<span class="string"><span class="delimiter">'</span><span class="content">cities</span><span class="delimiter">'</span></span>)
+println citiesLayer</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Add a Layer to a Workspace</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Schema</span> statesSchema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer statesLayer = <span class="keyword">new</span> Layer(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>, statesSchema)
+workspace.add(statesLayer)
+println workspace.has(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the names of all Layers in a Workspace</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; names = workspace.names
+names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities
+states</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Remove a Layer from a Workspace</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">workspace.remove(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>)
+println workspace.has(<span class="string"><span class="delimiter">'</span><span class="content">cities</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Close the Workspace when you are done</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">workspace.close()</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-06 00:56:55 UTC
+Last updated 2017-05-06 22:27:50 UTC
 </div>
 </div>
 </body>
