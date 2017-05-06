@@ -1,0 +1,78 @@
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/groovy]
+
+== Workspace Recipes
+
+The Workspace classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/workspace/package-summary.html[geoscript.workspace]* package.
+
+A Workspace is a collection of Layer.  You can create, add, remove, and get Layers.  There are many
+different kinds of Workspace in GeoScript including Memory, PostGIS, Directory (for Shapefiles), GeoPackage,
+and many more.
+
+=== Creating Workspaces
+
+[source,groovy]
+.Create a Workspace
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createWorkspace,indent=0]
+----
+
+[source,groovy]
+.Create a Layer
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createLayer,indent=0]
+----
+....
+include::output/workspace_create_layer.txt[]
+....
+
+[source,groovy]
+.Check whether a Workspace has a Layer by name
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=hasLayer,indent=0]
+----
+....
+include::output/workspace_has_layer.txt[]
+....
+
+[source,groovy]
+.Get a Layer from a Workspace
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getLayer,indent=0]
+----
+....
+include::output/workspace_get_layer.txt[]
+....
+
+[source,groovy]
+.Add a Layer to a Workspace
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=addLayer,indent=0]
+----
+....
+include::output/workspace_add_layer.txt[]
+....
+
+[source,groovy]
+.Get the names of all Layers in a Workspace
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getNames,indent=0]
+----
+....
+include::output/workspace_get_names.txt[]
+....
+
+[source,groovy]
+.Remove a Layer from a Workspace
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=removeLayer,indent=0]
+----
+....
+include::output/workspace_remove_layer.txt[]
+....
+
+[source,groovy]
+.Close the Workspace when you are done
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=closeWorkspace,indent=0]
+----
