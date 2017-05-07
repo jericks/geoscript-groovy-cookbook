@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.feature.Field
 import geoscript.feature.Schema
 import geoscript.layer.Layer
+import geoscript.workspace.Directory
 import geoscript.workspace.Workspace
 
 class WorkspaceRecipes extends Recipes {
@@ -74,6 +75,55 @@ class WorkspaceRecipes extends Recipes {
         // tag::closeWorkspace[]
         workspace.close()
         // end::closeWorkspace[]
+
+        values
+    }
+
+    Map<String,Object> createDirectoryWorkspace() {
+
+        Map<String,Object> values = [:]
+
+        // tag::createDirectoryWorkspace_1[]
+        Directory directory = new Directory("src/main/resources/data")
+        println directory.toString()
+        // end::createDirectoryWorkspace_1[]
+        writeFile("workspace_directory_1", "${directory.toString()}")
+        values["directoryToString"] = directory.toString()
+
+        // tag::createDirectoryWorkspace_2[]
+        String format = directory.format
+        println format
+        // end::createDirectoryWorkspace_2[]
+        writeFile("workspace_directory_2", "${format}")
+        values["format"] = format
+
+        // tag::createDirectoryWorkspace_3[]
+        File file = directory.file
+        println file
+        // end::createDirectoryWorkspace_3[]
+        writeFile("workspace_directory_3", "${file}")
+        values["file"] = file
+
+        // tag::createDirectoryWorkspace_4[]
+        List names = directory.names
+        names.each { String name ->
+            println name
+        }
+        // end::createDirectoryWorkspace_4[]
+        writeFile("workspace_directory_4", "${names.collect { it }.join(NEW_LINE)}")
+        values["names"] = names
+
+        // tag::createDirectoryWorkspace_5[]
+        Layer layer = directory.get("states")
+        int count = layer.count
+        println "Layer ${layer.name} has ${count} Features."
+        // end::createDirectoryWorkspace_5[]
+        writeFile("workspace_directory_5", "Layer ${layer.name} has ${count} Features.")
+        values["count"] = count
+
+        // tag::createDirectoryWorkspace_6[]
+        directory.close()
+        // end::createDirectoryWorkspace_6[]
 
         values
     }

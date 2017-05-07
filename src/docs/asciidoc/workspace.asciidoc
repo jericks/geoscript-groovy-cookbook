@@ -76,3 +76,58 @@ include::output/workspace_remove_layer.txt[]
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=closeWorkspace,indent=0]
 ----
+
+=== Creating a Directory Workspace
+
+A Directory Workspace is a directory of Shapefiles.
+
+[source,groovy]
+.Create a Directory Workspace
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirectoryWorkspace_1,indent=0]
+----
+....
+include::output/workspace_directory_1.txt[]
+....
+
+[source,groovy]
+.View the Workspace's format
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirectoryWorkspace_2,indent=0]
+----
+....
+include::output/workspace_directory_2.txt[]
+....
+
+[source,groovy]
+.View the Workspace's File
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirectoryWorkspace_3,indent=0]
+----
+....
+include::output/workspace_directory_3.txt[]
+....
+
+[source,groovy]
+.View the Workspace's list of Layer names
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirectoryWorkspace_4,indent=0]
+----
+....
+include::output/workspace_directory_4.txt[]
+....
+
+[source,groovy]
+.Get a Layer by name
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirectoryWorkspace_5,indent=0]
+----
+....
+include::output/workspace_directory_5.txt[]
+....
+
+[source,groovy]
+.Close the Directory when done.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirectoryWorkspace_6,indent=0]
+----
