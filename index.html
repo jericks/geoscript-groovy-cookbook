@@ -703,6 +703,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#workspace-recipes">Workspace Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#creating-workspaces">Creating Workspaces</a></li>
+<li><a href="#creating-a-directory-workspace">Creating a Directory Workspace</a></li>
 </ul>
 </li>
 </ul>
@@ -4927,7 +4928,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--6df2142f_15bdfe3ad44_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--2adda068_15be495468b_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5642,7 +5643,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat May 06 22:31:32 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun May 07 20:24:00 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5661,7 +5662,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--6df2142f_15bdfe3ad44_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--2adda068_15be495468b_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5685,7 +5686,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat May 06 22:31:32 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun May 07 20:24:00 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5705,7 +5706,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--6df2142f_15bdfe3ad44_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--2adda068_15be495468b_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5867,7 +5868,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--6df2142f_15bdfe3ad44_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--2adda068_15be495468b_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5905,7 +5906,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--6df2142f_15bdfe3ad44_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--2adda068_15be495468b_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7173,8 +7174,8 @@ geo:intersection
 geo:isValid
 geo:difference
 geo:distance
-geo:numGeometries
 geo:isClosed
+geo:numGeometries
 geo:convexHull
 geo:area
 geo:crosses
@@ -7191,24 +7192,24 @@ geo:touches
 geo:within
 geo:simplify
 geo:densify
+geo:reproject
 geo:numPoints
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
 geo:envelope
-geo:reproject
 geo:getX
 geo:getY
-geo:isRing
 geo:equalsExact
+geo:isRing
 geo:polygonize
 geo:startPoint
 geo:endPoint
 geo:relatePattern
+geo:interiorRingN
 geo:pointN
 geo:equalsExactTolerance
-geo:interiorRingN
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -9599,12 +9600,87 @@ println workspace.has(<span class="string"><span class="delimiter">'</span><span
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="creating-a-directory-workspace"><a class="anchor" href="#creating-a-directory-workspace"></a>Creating a Directory Workspace</h3>
+<div class="paragraph">
+<p>A Directory Workspace is a directory of Shapefiles.</p>
+</div>
+<div class="listingblock">
+<div class="title">Create a Directory Workspace</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Directory directory = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data</span><span class="delimiter">&quot;</span></span>)
+println directory.toString()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Directory[/home/travis/build/jericks/geoscript-groovy-cookbook/src/main/resources/data]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">View the Workspace&#8217;s format</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> format = directory.format
+println format</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Directory</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">View the Workspace&#8217;s File</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = directory.file
+println file</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>/home/travis/build/jericks/geoscript-groovy-cookbook/src/main/resources/data</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">View the Workspace&#8217;s list of Layer names</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> names = directory.names
+names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>states</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Layer by name</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Layer layer = directory.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+<span class="type">int</span> count = layer.count
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Layer </span><span class="inline"><span class="inline-delimiter">${</span>layer.name<span class="inline-delimiter">}</span></span><span class="content"> has </span><span class="inline"><span class="inline-delimiter">${</span>count<span class="inline-delimiter">}</span></span><span class="content"> Features.</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Layer states has 49 Features.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Close the Directory when done.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">directory.close()</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-06 22:27:50 UTC
+Last updated 2017-05-07 20:20:40 UTC
 </div>
 </div>
 </body>
