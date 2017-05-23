@@ -7,6 +7,3 @@ after_success:
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then 
     travis_wait 40 mvn package -Ppublish -DskipTests; 
   fi
-env:
-  global:
-    secure: TGdOVMYQ09MKHdwTeTJWXw1nPVyXBrhwGLCdOmCHAooCZ6gbl3SF0Sfb5lTJq3NopI7QLIAb3WzqWnwQmw1dFganjeVRTfF9jCtfSSDelw6BpPGkilRJXPVXQLREYZcShx62z6IpGSCkqHtOHlNvFEAbYft/fntqLoRYqduZd2atMBqi5nCi5X3pfp4HdNQuTRIih2QXVr/1ppC3YAMQf7F8q6STWLNFUaIridBrnryDhhAL1fLSl4bqq8m5Zl/wJzN1MsBSsmT/ZBv5X+rLmkM6eWddd/vkJg4qVc+BuVCap+jAsFOpgbesE6kOHvSOcFGn6Iirogu5YnTRRILYtA4w0QEa1qGAII4auJq/tmPSGGyV5mAVOCQd9uRQCEPIf+E4AgUjelSqSOCd18nLFyBjikzpyI+ajJZRXxqUX2fmKkTgDuCk0oZuYVcFjB+ee7LGRgaBBd6etuZxySDAcyiRW8zpaTM3PXGmy5R5R/PbXFvH5NMuuZNYBT7HOtdO5jkw3KS9Qyw79TFBp2Jm5ZD9rueWasaPBwO7gANuNirdiFpnJvjIh4wVWHtw+M2gF0B4RUxwt6RwZTe49edB6jgAKhNIm5HEZf0VazHOauywX7VZKcKegscrXmTEn9gptXEIDSIHJcg/lm1H/XgC14pSJvEovzBwCyd0naQYkjg=
