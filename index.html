@@ -4928,7 +4928,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-68344243_15c3308878d_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--485c4233_15c330ee5ed_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5643,7 +5643,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon May 22 19:00:16 PDT 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue May 23 02:07:14 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5662,7 +5662,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-68344243_15c3308878d_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--485c4233_15c330ee5ed_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5686,7 +5686,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon May 22 19:00:16 PDT 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue May 23 02:07:14 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5706,7 +5706,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-68344243_15c3308878d_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--485c4233_15c330ee5ed_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5868,7 +5868,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-68344243_15c3308878d_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--485c4233_15c330ee5ed_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5906,7 +5906,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-68344243_15c3308878d_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--485c4233_15c330ee5ed_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7168,7 +7168,55 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>ras:AddCoverages
+<pre>geo:buffer
+geo:union
+geo:intersection
+geo:isValid
+geo:difference
+geo:distance
+geo:isClosed
+geo:numGeometries
+geo:convexHull
+geo:area
+geo:crosses
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:envelope
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:reproject
+geo:getX
+geo:getY
+geo:isRing
+geo:equalsExact
+geo:polygonize
+geo:startPoint
+geo:endPoint
+geo:relatePattern
+geo:interiorRingN
+geo:equalsExactTolerance
+geo:pointN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
 ras:Affine
 ras:AreaGrid
 ras:BandMerge
@@ -7215,55 +7263,7 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-geo:area
-geo:numGeometries
-geo:convexHull
-geo:crosses
-geo:distance
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:reproject
-geo:getX
-geo:getY
-geo:buffer
-geo:difference
-geo:isClosed
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:symDifference
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:envelope
-geo:polygonize
-geo:isRing
-geo:startPoint
-geo:endPoint
-geo:equalsExact
-geo:isValid
-geo:union
-geo:intersection
-geo:pointN
-geo:interiorRingN
-geo:splitPolygon
-geo:relatePattern
-geo:equalsExactTolerance</pre>
+vec:VectorZonalStatistics</pre>
 </div>
 </div>
 </div>
@@ -9614,7 +9614,7 @@ println directory.toString()</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory[/Users/jericks/Projects/geoscript-cookbook/src/main/resources/data]</pre>
+<pre>Directory[/home/travis/build/jericks/geoscript-groovy-cookbook/src/main/resources/data]</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9638,7 +9638,7 @@ println file</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>/Users/jericks/Projects/geoscript-cookbook/src/main/resources/data</pre>
+<pre>/home/travis/build/jericks/geoscript-groovy-cookbook/src/main/resources/data</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9680,7 +9680,7 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-05 19:47:48 PDT
+Last updated 2017-05-23 02:03:53 UTC
 </div>
 </div>
 </body>
