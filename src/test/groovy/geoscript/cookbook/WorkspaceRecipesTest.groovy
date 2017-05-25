@@ -5,6 +5,14 @@ import static org.junit.Assert.*
 
 class WorkspaceRecipesTest {
 
+    @Test void getWorkspaceNames() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        List<String> names = recipes.getWorkspaceNames()
+        assertTrue(names.size() > 0)
+        assertTrue(names.contains("PostGIS"))
+        assertTrue(names.contains("H2"))
+    }
+
     @Test void createWorkspace() {
         WorkspaceRecipes recipes = new WorkspaceRecipes()
         Map<String,Object> values = recipes.createWorkspace()

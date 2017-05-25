@@ -8,6 +8,17 @@ import geoscript.workspace.Workspace
 
 class WorkspaceRecipes extends Recipes {
 
+    List<String> getWorkspaceNames() {
+        // tag::getWorkspaceNames[]
+        List<String> names = Workspace.getWorkspaceNames()
+        names.each { String name ->
+            println name
+        }
+        // end::getWorkspaceNames[]
+        writeFile("workspace_get_names", "${names.collect { it }.join(NEW_LINE)}")
+        names
+    }
+
     Map<String,Object> createWorkspace() {
 
         Map<String,Object> values = [:]
