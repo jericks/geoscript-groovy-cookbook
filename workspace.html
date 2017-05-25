@@ -518,6 +518,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#creating-workspaces">Creating Workspaces</a></li>
 <li><a href="#creating-a-directory-workspace">Creating a Directory Workspace</a></li>
+<li><a href="#investigating-workspaces">Investigating Workspaces</a></li>
 </ul>
 </li>
 </ul>
@@ -531,8 +532,8 @@ table.CodeRay td.code>pre{padding:0}
 <p>The Workspace classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/workspace/package-summary.html">geoscript.workspace</a></strong> package.</p>
 </div>
 <div class="paragraph">
-<p>A Workspace is a collection of Layer.  You can create, add, remove, and get Layers.  There are many
-different kinds of Workspace in GeoScript including Memory, PostGIS, Directory (for Shapefiles), GeoPackage,
+<p>A Workspace is a collection of Layers.  You can create, add, remove, and get Layers.  There are many
+different kinds of Workspaces in GeoScript including Memory, PostGIS, Directory (for Shapefiles), GeoPackage,
 and many more.</p>
 </div>
 <div class="sect2">
@@ -613,8 +614,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities
-states</pre>
+<pre>Shapefile
+H2 (JNDI)
+PostGIS
+H2
+SpatiaLite
+GeoPackage
+MySQL (JNDI)
+Geobuf
+Web Feature Server (NG)
+Properties
+Directory of spatial files (shapefiles)
+PostGIS (JNDI)
+SpatiaLite (JNDI)
+MySQL</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -711,12 +724,42 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="investigating-workspaces"><a class="anchor" href="#investigating-workspaces"></a>Investigating Workspaces</h3>
+<div class="listingblock">
+<div class="title">Get available Workspace names</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; names = Workspace.getWorkspaceNames()
+names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Shapefile
+H2 (JNDI)
+PostGIS
+H2
+SpatiaLite
+GeoPackage
+MySQL (JNDI)
+Geobuf
+Web Feature Server (NG)
+Properties
+Directory of spatial files (shapefiles)
+PostGIS (JNDI)
+SpatiaLite (JNDI)
+MySQL</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-23 02:03:53 UTC
+Last updated 2017-05-25 02:56:22 UTC
 </div>
 </div>
 </body>
