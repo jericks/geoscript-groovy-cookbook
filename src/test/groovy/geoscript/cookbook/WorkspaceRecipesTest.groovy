@@ -13,6 +13,14 @@ class WorkspaceRecipesTest {
         assertTrue(names.contains("H2"))
     }
 
+    @Test void getWorkspaceParameters() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        List<Map> params = recipes.getWorkspaceParameters()
+        assertTrue(params.size() > 0)
+        assertNotNull(params.find { it.key == "dbtype"} )
+        assertNotNull(params.find { it.key == "database"} )
+    }
+
     @Test void createWorkspace() {
         WorkspaceRecipes recipes = new WorkspaceRecipes()
         Map<String,Object> values = recipes.createWorkspace()

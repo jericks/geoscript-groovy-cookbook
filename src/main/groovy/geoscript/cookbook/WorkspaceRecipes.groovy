@@ -19,6 +19,17 @@ class WorkspaceRecipes extends Recipes {
         names
     }
 
+    List<String> getWorkspaceParameters() {
+        // tag::getWorkspaceParameters[]
+        List<Map> parameters = Workspace.getWorkspaceParameters("GeoPackage")
+        parameters.each { Map param ->
+            println "Parameter = ${param.key} Type = ${param.type} Required? ${param.required}"
+        }
+        // end::getWorkspaceParameters[]
+        writeFile("workspace_get_parameters", "${parameters.collect { Map param -> "Parameter = ${param.key} Type = ${param.type} Required? ${param.required}" }.join(NEW_LINE)}")
+        parameters 
+    }
+
     Map<String,Object> createWorkspace() {
 
         Map<String,Object> values = [:]
