@@ -615,19 +615,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Shapefile
-H2 (JNDI)
-PostGIS
-H2
-SpatiaLite
-GeoPackage
+<pre>H2
 MySQL (JNDI)
-Geobuf
-Web Feature Server (NG)
-Properties
-Directory of spatial files (shapefiles)
+PostGIS
 PostGIS (JNDI)
 SpatiaLite (JNDI)
+Properties
+H2 (JNDI)
+Shapefile
+Geobuf
+SpatiaLite
+GeoPackage
+Web Feature Server (NG)
+Directory of spatial files (shapefiles)
 MySQL</pre>
 </div>
 </div>
@@ -738,20 +738,53 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Shapefile
-H2 (JNDI)
-PostGIS
-H2
-SpatiaLite
-GeoPackage
+<pre>H2
 MySQL (JNDI)
-Geobuf
-Web Feature Server (NG)
-Properties
-Directory of spatial files (shapefiles)
+PostGIS
 PostGIS (JNDI)
 SpatiaLite (JNDI)
+Properties
+H2 (JNDI)
+Shapefile
+Geobuf
+SpatiaLite
+GeoPackage
+Web Feature Server (NG)
+Directory of spatial files (shapefiles)
 MySQL</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get parameters for a Workspace</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Map</span>&gt; parameters = Workspace.getWorkspaceParameters(<span class="string"><span class="delimiter">&quot;</span><span class="content">GeoPackage</span><span class="delimiter">&quot;</span></span>)
+parameters.each { <span class="predefined-type">Map</span> param -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">Parameter = </span><span class="inline"><span class="inline-delimiter">${</span>param.key<span class="inline-delimiter">}</span></span><span class="content"> Type = </span><span class="inline"><span class="inline-delimiter">${</span>param.type<span class="inline-delimiter">}</span></span><span class="content"> Required? </span><span class="inline"><span class="inline-delimiter">${</span>param.required<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Parameter = dbtype Type = java.lang.String Required? true
+Parameter = database Type = java.io.File Required? true
+Parameter = user Type = java.lang.String Required? false
+Parameter = passwd Type = java.lang.String Required? false
+Parameter = namespace Type = java.lang.String Required? false
+Parameter = Expose primary keys Type = java.lang.Boolean Required? false
+Parameter = max connections Type = java.lang.Integer Required? false
+Parameter = min connections Type = java.lang.Integer Required? false
+Parameter = fetch size Type = java.lang.Integer Required? false
+Parameter = Batch insert size Type = java.lang.Integer Required? false
+Parameter = Connection timeout Type = java.lang.Integer Required? false
+Parameter = validate connections Type = java.lang.Boolean Required? false
+Parameter = Test while idle Type = java.lang.Boolean Required? false
+Parameter = Evictor run periodicity Type = java.lang.Integer Required? false
+Parameter = Max connection idle time Type = java.lang.Integer Required? false
+Parameter = Evictor tests per run Type = java.lang.Integer Required? false
+Parameter = Primary key metadata table Type = java.lang.String Required? false
+Parameter = Session startup SQL Type = java.lang.String Required? false
+Parameter = Session close-up SQL Type = java.lang.String Required? false
+Parameter = Callback factory Type = java.lang.String Required? false</pre>
 </div>
 </div>
 </div>
@@ -760,7 +793,7 @@ MySQL</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-02 03:44:50 UTC
+Last updated 2017-06-03 21:51:54 UTC
 </div>
 </div>
 </body>
