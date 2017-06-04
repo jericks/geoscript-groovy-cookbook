@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.workspace.Workspace
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -45,4 +46,11 @@ class WorkspaceRecipesTest {
         assertEquals(49, values["count"])
     }
 
+    @Test void getWorkspaceFromString() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Map<String, Workspace> values = recipes.getWorkspaceFromString()
+        values.each { String connectionString, Workspace workspace ->
+            assertNotNull(workspace)
+        }
+    }
 }

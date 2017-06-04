@@ -150,4 +150,27 @@ class WorkspaceRecipes extends Recipes {
         values
     }
 
+    Map<String, Workspace> getWorkspaceFromString() {
+        Map<String, Workspace> values = [:]
+        // tag::getWorkspaceFromString_Shapefile[]
+        String connectionString = "url='states.shp' 'create spatial index'=true"
+        Workspace workspace = Workspace.getWorkspace(connectionString)
+        // end::getWorkspaceFromString_Shapefile[]
+        values.put(connectionString, workspace)
+
+        // tag::getWorkspaceFromString_GeoPackage[]
+        connectionString = "dbtype=geopkg database=layers.gpkg"
+        workspace = Workspace.getWorkspace(connectionString)
+        // end::getWorkspaceFromString_GeoPackage[]
+        values.put(connectionString, workspace)
+
+        // tag::getWorkspaceFromString_Spatialite[]
+        connectionString = "dbtype=spatialite database=layers.sqlite"
+        workspace = Workspace.getWorkspace(connectionString)
+        // end::getWorkspaceFromString_Spatialite[]
+        values.put(connectionString, workspace)
+
+        values
+    }
+
 }
