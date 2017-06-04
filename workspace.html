@@ -517,9 +517,14 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#workspace-recipes">Workspace Recipes</a>
 <ul class="sectlevel2">
-<li><a href="#creating-workspaces">Creating Workspaces</a></li>
+<li><a href="#using-workspaces">Using Workspaces</a></li>
 <li><a href="#creating-a-directory-workspace">Creating a Directory Workspace</a></li>
 <li><a href="#investigating-workspaces">Investigating Workspaces</a></li>
+<li><a href="#creating-workspaces">Creating Workspaces</a>
+<ul class="sectlevel3">
+<li><a href="#creating-a-workspace-from-a-connection-string">Creating a Workspace from a connection string</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -538,7 +543,7 @@ different kinds of Workspaces in GeoScript including Memory, PostGIS, Directory 
 and many more.</p>
 </div>
 <div class="sect2">
-<h3 id="creating-workspaces"><a class="anchor" href="#creating-workspaces"></a>Creating Workspaces</h3>
+<h3 id="using-workspaces"><a class="anchor" href="#using-workspaces"></a>Using Workspaces</h3>
 <div class="listingblock">
 <div class="title">Create a Workspace</div>
 <div class="content">
@@ -615,20 +620,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>H2
-MySQL (JNDI)
-PostGIS
+<pre>MySQL
+Geobuf
 PostGIS (JNDI)
 SpatiaLite (JNDI)
-Properties
-H2 (JNDI)
-Shapefile
-Geobuf
-SpatiaLite
-GeoPackage
 Web Feature Server (NG)
+PostGIS
 Directory of spatial files (shapefiles)
-MySQL</pre>
+GeoPackage
+MySQL (JNDI)
+H2 (JNDI)
+Properties
+Shapefile
+SpatiaLite
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -738,20 +743,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>H2
-MySQL (JNDI)
-PostGIS
+<pre>MySQL
+Geobuf
 PostGIS (JNDI)
 SpatiaLite (JNDI)
-Properties
-H2 (JNDI)
-Shapefile
-Geobuf
-SpatiaLite
-GeoPackage
 Web Feature Server (NG)
+PostGIS
 Directory of spatial files (shapefiles)
-MySQL</pre>
+GeoPackage
+MySQL (JNDI)
+H2 (JNDI)
+Properties
+Shapefile
+SpatiaLite
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -788,12 +793,42 @@ Parameter = Callback factory Type = java.lang.String Required? false</pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="creating-workspaces"><a class="anchor" href="#creating-workspaces"></a>Creating Workspaces</h3>
+<div class="sect3">
+<h4 id="creating-a-workspace-from-a-connection-string"><a class="anchor" href="#creating-a-workspace-from-a-connection-string"></a>Creating a Workspace from a connection string</h4>
+<div class="paragraph">
+<p>You can create a Workspace from a connection string that contains paramters in key=value format with optional single quotes.</p>
+</div>
+<div class="listingblock">
+<div class="title">Create a Shapefile Workspace</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> connectionString = <span class="string"><span class="delimiter">&quot;</span><span class="content">url='states.shp' 'create spatial index'=true</span><span class="delimiter">&quot;</span></span>
+Workspace workspace = Workspace.getWorkspace(connectionString)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a GeoPackage Workspace</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">connectionString = <span class="string"><span class="delimiter">&quot;</span><span class="content">dbtype=geopkg database=layers.gpkg</span><span class="delimiter">&quot;</span></span>
+workspace = Workspace.getWorkspace(connectionString)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Spatialite Workspace</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">connectionString = <span class="string"><span class="delimiter">&quot;</span><span class="content">dbtype=spatialite database=layers.sqlite</span><span class="delimiter">&quot;</span></span>
+workspace = Workspace.getWorkspace(connectionString)</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-03 21:51:54 UTC
+Last updated 2017-06-04 17:30:48 UTC
 </div>
 </div>
 </body>
