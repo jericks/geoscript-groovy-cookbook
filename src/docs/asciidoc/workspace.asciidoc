@@ -77,7 +77,7 @@ include::output/workspace_remove_layer.txt[]
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=closeWorkspace,indent=0]
 ----
 
-=== Creating a Directory Workspace
+=== Using a Directory Workspace
 
 A Directory Workspace is a directory of Shapefiles.
 
@@ -174,4 +174,26 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspac
 .Create a Spatialite Workspace
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspaceFromString_Spatialite,indent=0]
+----
+
+==== Creating a Workspace from a connection map
+
+You can create a Workspace from a connection map that contains paramters.
+
+[source,groovy]
+.Create a H2 Workspace
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspaceFromMap_H2,indent=0]
+----
+
+[source,groovy]
+.Create a PostGIS Workspace
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspaceFromMap_PostGIS,indent=0]
+----
+
+[source,groovy]
+.Create a GeoBuf Workspace
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspaceFromMap_Geobuf,indent=0]
 ----

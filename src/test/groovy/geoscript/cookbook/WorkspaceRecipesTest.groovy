@@ -53,4 +53,12 @@ class WorkspaceRecipesTest {
             assertNotNull(workspace)
         }
     }
+
+    @Test void getWorkspaceFromMap() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Map<String, Workspace> values = recipes.getWorkspaceFromMap()
+        values.each { String name, Workspace workspace ->
+            assertNotNull(workspace)
+        }
+    }
 }

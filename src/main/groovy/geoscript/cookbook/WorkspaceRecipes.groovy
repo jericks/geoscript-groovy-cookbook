@@ -173,4 +173,34 @@ class WorkspaceRecipes extends Recipes {
         values
     }
 
+    Map<String, Workspace> getWorkspaceFromMap() {
+        Map<String, Workspace> values = [:]
+        // tag::getWorkspaceFromMap_H2[]
+        Map params = [dbtype: 'h2', database: 'test.db']
+        Workspace workspace = Workspace.getWorkspace(params)
+        // end::getWorkspaceFromMap_H2[]
+        values.put('h2', workspace)
+
+        // tag::getWorkspaceFromMap_PostGIS[]
+        params = [
+            dbtype: 'postgis',
+            database: 'postgres',
+            host: 'localhost',
+            port: 5432,
+            user: 'postgres',
+            passwd: 'postgres'
+        ]
+        workspace = Workspace.getWorkspace(params)
+        // end::getWorkspaceFromMap_PostGIS[]
+        values.put('postgis', workspace)
+
+        // tag::getWorkspaceFromMap_Geobuf[]
+        params = [file: 'layers.pbf', precision: 6, dimension:2]
+        workspace = Workspace.getWorkspace(params)
+        // end::getWorkspaceFromMap_Geobuf[]
+        values.put('geobuf', workspace)
+
+        values
+    }
+
 }
