@@ -34,12 +34,12 @@ geo:getY
 geo:equalsExact
 geo:isRing
 geo:polygonize
+geo:relatePattern
 geo:startPoint
 geo:endPoint
-geo:relatePattern
-geo:interiorRingN
 geo:pointN
 geo:equalsExactTolerance
+geo:interiorRingN
 geo:splitPolygon
 geo:length
 geo:isEmpty
