@@ -524,6 +524,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel3">
 <li><a href="#creating-a-workspace-from-a-connection-string">Creating a Workspace from a connection string</a></li>
 <li><a href="#creating-a-workspace-from-a-connection-map">Creating a Workspace from a connection map</a></li>
+<li><a href="#creating-directory-workspaces">Creating Directory Workspaces</a></li>
 </ul>
 </li>
 </ul>
@@ -621,20 +622,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory of spatial files (shapefiles)
-Properties
-MySQL (JNDI)
+<pre>MySQL
 Geobuf
-Web Feature Server (NG)
-SpatiaLite
-H2
-SpatiaLite (JNDI)
-PostGIS
 PostGIS (JNDI)
+SpatiaLite (JNDI)
+Web Feature Server (NG)
+PostGIS
+Directory of spatial files (shapefiles)
 GeoPackage
-Shapefile
+MySQL (JNDI)
 H2 (JNDI)
-MySQL</pre>
+Properties
+Shapefile
+SpatiaLite
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -744,20 +745,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory of spatial files (shapefiles)
-Properties
-MySQL (JNDI)
+<pre>MySQL
 Geobuf
-Web Feature Server (NG)
-SpatiaLite
-H2
-SpatiaLite (JNDI)
-PostGIS
 PostGIS (JNDI)
+SpatiaLite (JNDI)
+Web Feature Server (NG)
+PostGIS
+Directory of spatial files (shapefiles)
 GeoPackage
-Shapefile
+MySQL (JNDI)
 H2 (JNDI)
-MySQL</pre>
+Properties
+Shapefile
+SpatiaLite
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -857,13 +858,50 @@ workspace = Workspace.getWorkspace(params)</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="creating-directory-workspaces"><a class="anchor" href="#creating-directory-workspaces"></a>Creating Directory Workspaces</h4>
+<div class="listingblock">
+<div class="title">Create a Directory Workspace from a directory name</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/shapefiles</span><span class="delimiter">&quot;</span></span>)
+println workspace.format
+workspace.names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Directory
+ocean
+countries</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Directory Workspace from a File directory</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Directory(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/shapefiles</span><span class="delimiter">&quot;</span></span>))
+println workspace.format
+workspace.names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Directory
+ocean
+countries</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-10 19:56:15 UTC
+Last updated 2017-06-29 02:47:34 UTC
 </div>
 </div>
 </body>
