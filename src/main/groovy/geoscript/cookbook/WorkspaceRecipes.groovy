@@ -203,4 +203,28 @@ class WorkspaceRecipes extends Recipes {
         values
     }
 
+    Workspace createDirectoryWorkspaceFromName() {
+        // tag::createDirectoryWorkspaceFromName[]
+        Workspace workspace = new Directory("src/main/resources/shapefiles")
+        println workspace.format
+        workspace.names.each { String name ->
+            println name
+        }
+        // end::createDirectoryWorkspaceFromName[]
+        writeFile("workspace_directory_name", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        workspace
+    }
+
+    Workspace createDirectoryWorkspaceFromFile() {
+        // tag::createDirectoryWorkspaceFromFile[]
+        Workspace workspace = new Directory(new File("src/main/resources/shapefiles"))
+        println workspace.format
+        workspace.names.each { String name ->
+            println name
+        }
+        // end::createDirectoryWorkspaceFromFile[]
+        writeFile("workspace_directory_file", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        workspace
+    }
+
 }

@@ -61,4 +61,16 @@ class WorkspaceRecipesTest {
             assertNotNull(workspace)
         }
     }
+
+    @Test void createDirectoryWorkspaceFromName() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createDirectoryWorkspaceFromName()
+        assertNotNull workspace
+    }
+
+    @Test void createDirectoryWorkspaceFromFile() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createDirectoryWorkspaceFromFile()
+        assertNotNull workspace
+    }
 }

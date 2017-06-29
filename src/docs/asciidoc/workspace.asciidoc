@@ -197,3 +197,25 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspac
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspaceFromMap_Geobuf,indent=0]
 ----
+
+==== Creating Directory Workspaces
+
+[source,groovy]
+.Create a Directory Workspace from a directory name
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirectoryWorkspaceFromName,indent=0]
+----
+
+....
+include::output/workspace_directory_name.txt[]
+....
+
+[source,groovy]
+.Create a Directory Workspace from a File directory
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirectoryWorkspaceFromFile,indent=0]
+----
+
+....
+include::output/workspace_directory_file.txt[]
+....
