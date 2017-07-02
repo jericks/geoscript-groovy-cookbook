@@ -229,3 +229,25 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirec
 ....
 include::output/workspace_directory_url.txt[]
 ....
+
+==== Creating GeoPackage Workspaces
+
+[source,groovy]
+.Create a GeoPackage Workspace from a file name
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createGeoPackageWorkspaceFromName,indent=0]
+----
+
+....
+include::output/workspace_geopackage_name.txt[]
+....
+
+[source,groovy]
+.Create a GeoPackage Workspace from a File
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createGeoPackageWorkspaceFromFile,indent=0]
+----
+
+....
+include::output/workspace_geopackage_file.txt[]
+....

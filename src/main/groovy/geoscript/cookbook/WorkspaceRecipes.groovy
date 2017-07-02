@@ -4,6 +4,7 @@ import geoscript.feature.Field
 import geoscript.feature.Schema
 import geoscript.layer.Layer
 import geoscript.workspace.Directory
+import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 
 class WorkspaceRecipes extends Recipes {
@@ -227,7 +228,6 @@ class WorkspaceRecipes extends Recipes {
         workspace
     }
 
-
     Workspace createDirectoryWorkspaceFromUrl() {
         // tag::createDirectoryWorkspaceFromUrl[]
         Directory directory = Directory.fromURL(
@@ -241,6 +241,30 @@ class WorkspaceRecipes extends Recipes {
         // end::createDirectoryWorkspaceFromUrl[]
         writeFile("workspace_directory_url", "${directory.format}${NEW_LINE}${directory.names.collect { it }.join(NEW_LINE)}")
         directory
+    }
+
+    Workspace createGeoPackageWorkspaceFromFile() {
+        // tag::createGeoPackageWorkspaceFromFile[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/data.gpkg"))
+        println workspace.format
+        workspace.names.each { String name ->
+            println name
+        }
+        // end::createGeoPackageWorkspaceFromFile[]
+        writeFile("workspace_geopackage_file", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        workspace
+    }
+
+    Workspace createGeoPackageWorkspaceFromName() {
+        // tag::createGeoPackageWorkspaceFromName[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        println workspace.format
+        workspace.names.each { String name ->
+            println name
+        }
+        // end::createGeoPackageWorkspaceFromName[]
+        writeFile("workspace_geopackage_name", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        workspace
     }
 
 }

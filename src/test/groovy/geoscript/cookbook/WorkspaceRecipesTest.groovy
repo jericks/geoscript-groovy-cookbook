@@ -73,4 +73,16 @@ class WorkspaceRecipesTest {
         Workspace workspace = recipes.createDirectoryWorkspaceFromFile()
         assertNotNull workspace
     }
+
+    @Test void createGeoPackageWorkspaceFromName() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createGeoPackageWorkspaceFromName()
+        assertNotNull workspace
+    }
+
+    @Test void createGeoPackageWorkspaceFromFile() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createGeoPackageWorkspaceFromFile()
+        assertNotNull workspace
+    }
 }
