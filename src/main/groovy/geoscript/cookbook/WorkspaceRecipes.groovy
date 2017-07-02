@@ -227,4 +227,20 @@ class WorkspaceRecipes extends Recipes {
         workspace
     }
 
+
+    Workspace createDirectoryWorkspaceFromUrl() {
+        // tag::createDirectoryWorkspaceFromUrl[]
+        Directory directory = Directory.fromURL(
+            new URL("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip"),
+            new File("naturalearth")
+        )
+        println directory.format
+        directory.names.each { String name ->
+            println name
+        }
+        // end::createDirectoryWorkspaceFromUrl[]
+        writeFile("workspace_directory_url", "${directory.format}${NEW_LINE}${directory.names.collect { it }.join(NEW_LINE)}")
+        directory
+    }
+
 }

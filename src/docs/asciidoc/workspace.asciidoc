@@ -219,3 +219,13 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirec
 ....
 include::output/workspace_directory_file.txt[]
 ....
+
+[source,groovy]
+.Create a Directory Workspace from a URL
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createDirectoryWorkspaceFromUrl,indent=0]
+----
+
+....
+include::output/workspace_directory_url.txt[]
+....

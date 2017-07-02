@@ -81,6 +81,7 @@
                                     <directory>src/main/resources/docs</directory>
                                     <includes>
                                         <include>**/*.png</include>
+                                        <include>**/*.txt</include>
                                     </includes>
                                 </resource>
                             </resources>
