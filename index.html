@@ -711,6 +711,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-a-workspace-from-a-connection-string">Creating a Workspace from a connection string</a></li>
 <li><a href="#creating-a-workspace-from-a-connection-map">Creating a Workspace from a connection map</a></li>
 <li><a href="#creating-directory-workspaces">Creating Directory Workspaces</a></li>
+<li><a href="#creating-geopackage-workspaces">Creating GeoPackage Workspaces</a></li>
 </ul>
 </li>
 </ul>
@@ -4937,7 +4938,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--4b8dd84f_15cf1c6d923_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--6e40e6a5_15d09abafcb_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5652,7 +5653,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Jun 29 02:56:00 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Jul 03 11:17:13 PDT 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5671,7 +5672,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--4b8dd84f_15cf1c6d923_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--6e40e6a5_15d09abafcb_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5695,7 +5696,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Jun 29 02:56:01 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Jul 03 11:17:13 PDT 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5715,7 +5716,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--4b8dd84f_15cf1c6d923_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--6e40e6a5_15d09abafcb_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5877,7 +5878,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--4b8dd84f_15cf1c6d923_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--6e40e6a5_15d09abafcb_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5915,7 +5916,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--4b8dd84f_15cf1c6d923_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--6e40e6a5_15d09abafcb_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7177,73 +7178,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:buffer
-geo:union
-geo:intersection
-geo:isValid
-geo:difference
-geo:distance
-geo:convexHull
-geo:area
-geo:crosses
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:numGeometries
-geo:isClosed
-geo:isRing
-geo:equalsExact
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:symDifference
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:envelope
-geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:reproject
-geo:getX
-geo:getY
-geo:polygonize
-geo:startPoint
-geo:endPoint
-geo:relatePattern
-geo:interiorRingN
-geo:pointN
-geo:equalsExactTolerance
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7272,7 +7207,73 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics</pre>
+vec:VectorZonalStatistics
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+geo:difference
+geo:convexHull
+geo:crosses
+geo:distance
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isClosed
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:getX
+geo:getY
+geo:polygonize
+geo:isRing
+geo:startPoint
+geo:endPoint
+geo:buffer
+geo:area
+geo:numGeometries
+geo:reproject
+geo:equalsExact
+geo:isValid
+geo:union
+geo:intersection
+geo:relatePattern
+geo:equalsExactTolerance
+geo:pointN
+geo:interiorRingN
+geo:splitPolygon
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage</pre>
 </div>
 </div>
 </div>
@@ -9586,20 +9587,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL
-Geobuf
-PostGIS (JNDI)
-SpatiaLite (JNDI)
-Web Feature Server (NG)
-PostGIS
-Directory of spatial files (shapefiles)
+<pre>PostGIS
+MySQL
 GeoPackage
+Geobuf
+Shapefile
+PostGIS (JNDI)
 MySQL (JNDI)
+Directory of spatial files (shapefiles)
 H2 (JNDI)
 Properties
-Shapefile
 SpatiaLite
-H2</pre>
+H2
+Web Feature Server (NG)
+SpatiaLite (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9635,7 +9636,7 @@ println directory.toString()</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory[/home/travis/build/jericks/geoscript-groovy-cookbook/src/main/resources/data]</pre>
+<pre>Directory[/Users/jericks/Projects/geoscript-cookbook/src/main/resources/data]</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9659,7 +9660,7 @@ println file</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>/home/travis/build/jericks/geoscript-groovy-cookbook/src/main/resources/data</pre>
+<pre>/Users/jericks/Projects/geoscript-cookbook/src/main/resources/data</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9709,20 +9710,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL
-Geobuf
-PostGIS (JNDI)
-SpatiaLite (JNDI)
-Web Feature Server (NG)
-PostGIS
-Directory of spatial files (shapefiles)
+<pre>PostGIS
+MySQL
 GeoPackage
+Geobuf
+Shapefile
+PostGIS (JNDI)
 MySQL (JNDI)
+Directory of spatial files (shapefiles)
 H2 (JNDI)
 Properties
-Shapefile
 SpatiaLite
-H2</pre>
+H2
+Web Feature Server (NG)
+SpatiaLite (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9858,6 +9859,68 @@ ocean
 countries</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a Directory Workspace from a URL</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Directory directory = Directory.fromURL(
+    <span class="keyword">new</span> <span class="predefined-type">URL</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip</span><span class="delimiter">&quot;</span></span>),
+    <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">naturalearth</span><span class="delimiter">&quot;</span></span>)
+)
+println directory.format
+directory.names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Directory
+ne_110m_admin_0_countries</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-geopackage-workspaces"><a class="anchor" href="#creating-geopackage-workspaces"></a>Creating GeoPackage Workspaces</h4>
+<div class="listingblock">
+<div class="title">Create a GeoPackage Workspace from a file name</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+println workspace.format
+workspace.names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>GeoPackage
+countries
+ocean
+places
+rivers
+states</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a GeoPackage Workspace from a File</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>))
+println workspace.format
+workspace.names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>GeoPackage
+countries
+ocean
+places
+rivers
+states</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -9865,7 +9928,7 @@ countries</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-29 02:47:34 UTC
+Last updated 2017-05-05 19:47:48 PDT
 </div>
 </div>
 </body>
