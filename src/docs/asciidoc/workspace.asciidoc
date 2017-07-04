@@ -251,3 +251,15 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createGeoPa
 ....
 include::output/workspace_geopackage_file.txt[]
 ....
+
+==== Creating H2 Workspaces
+
+[source,groovy]
+.Create a H2 Workspace from a File
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createH2WorkspaceFromFile,indent=0]
+----
+
+....
+include::output/workspace_h2_file.txt[]
+....

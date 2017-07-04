@@ -85,4 +85,10 @@ class WorkspaceRecipesTest {
         Workspace workspace = recipes.createGeoPackageWorkspaceFromFile()
         assertNotNull workspace
     }
+
+    @Test void createH2WorkspaceFromFile() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createH2WorkspaceFromFile()
+        assertNotNull workspace
+    }
 }
