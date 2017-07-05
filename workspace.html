@@ -526,6 +526,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-a-workspace-from-a-connection-map">Creating a Workspace from a connection map</a></li>
 <li><a href="#creating-directory-workspaces">Creating Directory Workspaces</a></li>
 <li><a href="#creating-geopackage-workspaces">Creating GeoPackage Workspaces</a></li>
+<li><a href="#creating-h2-workspaces">Creating H2 Workspaces</a></li>
 </ul>
 </li>
 </ul>
@@ -623,20 +624,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS
+<pre>PostGIS (JNDI)
 MySQL
-GeoPackage
-Geobuf
-Shapefile
-PostGIS (JNDI)
-MySQL (JNDI)
-Directory of spatial files (shapefiles)
-H2 (JNDI)
-Properties
-SpatiaLite
-H2
 Web Feature Server (NG)
-SpatiaLite (JNDI)</pre>
+Properties
+MySQL (JNDI)
+SpatiaLite
+H2 (JNDI)
+Geobuf
+H2
+Directory of spatial files (shapefiles)
+Shapefile
+PostGIS
+SpatiaLite (JNDI)
+GeoPackage</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -746,20 +747,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS
+<pre>PostGIS (JNDI)
 MySQL
-GeoPackage
-Geobuf
-Shapefile
-PostGIS (JNDI)
-MySQL (JNDI)
-Directory of spatial files (shapefiles)
-H2 (JNDI)
-Properties
-SpatiaLite
-H2
 Web Feature Server (NG)
-SpatiaLite (JNDI)</pre>
+Properties
+MySQL (JNDI)
+SpatiaLite
+H2 (JNDI)
+Geobuf
+H2
+Directory of spatial files (shapefiles)
+Shapefile
+PostGIS
+SpatiaLite (JNDI)
+GeoPackage</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -958,13 +959,35 @@ states</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="creating-h2-workspaces"><a class="anchor" href="#creating-h2-workspaces"></a>Creating H2 Workspaces</h4>
+<div class="listingblock">
+<div class="title">Create a H2 Workspace from a File</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> H2(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/h2/data.db</span><span class="delimiter">&quot;</span></span>))
+println workspace.format
+workspace.names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>H2
+countries
+ocean
+places
+states</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-07-02 16:47:11 PDT
+Last updated 2017-07-04 14:00:26 PDT
 </div>
 </div>
 </body>
