@@ -5,6 +5,7 @@ import geoscript.feature.Schema
 import geoscript.layer.Layer
 import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
+import geoscript.workspace.Geobuf
 import geoscript.workspace.H2
 import geoscript.workspace.Workspace
 
@@ -279,6 +280,20 @@ class WorkspaceRecipes extends Recipes {
         }
         // end::createH2WorkspaceFromFile[]
         writeFile("workspace_h2_file", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        workspace
+    }
+
+    // Geobuf
+
+    Workspace createGeobufWorkspaceFromFile() {
+        // tag::createGeobufWorkspaceFromFile[]
+        Workspace workspace = new Geobuf(new File("src/main/resources/geobuf"))
+        println workspace.format
+        workspace.names.each { String name ->
+            println name
+        }
+        // end::createGeobufWorkspaceFromFile[]
+        writeFile("workspace_geobuf_file", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
         workspace
     }
 

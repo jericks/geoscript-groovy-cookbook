@@ -91,4 +91,10 @@ class WorkspaceRecipesTest {
         Workspace workspace = recipes.createH2WorkspaceFromFile()
         assertNotNull workspace
     }
+
+    @Test void createGeobufWorkspaceFromFile() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createGeobufWorkspaceFromFile()
+        assertNotNull workspace
+    }
 }
