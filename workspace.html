@@ -527,6 +527,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-directory-workspaces">Creating Directory Workspaces</a></li>
 <li><a href="#creating-geopackage-workspaces">Creating GeoPackage Workspaces</a></li>
 <li><a href="#creating-h2-workspaces">Creating H2 Workspaces</a></li>
+<li><a href="#creating-geobuf-workspaces">Creating Geobuf Workspaces</a></li>
 </ul>
 </li>
 </ul>
@@ -624,20 +625,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS (JNDI)
-MySQL
-Web Feature Server (NG)
-Properties
-MySQL (JNDI)
-SpatiaLite
-H2 (JNDI)
+<pre>MySQL
 Geobuf
-H2
-Directory of spatial files (shapefiles)
-Shapefile
-PostGIS
+PostGIS (JNDI)
 SpatiaLite (JNDI)
-GeoPackage</pre>
+Web Feature Server (NG)
+PostGIS
+Directory of spatial files (shapefiles)
+GeoPackage
+MySQL (JNDI)
+H2 (JNDI)
+Properties
+Shapefile
+SpatiaLite
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -673,7 +674,7 @@ println directory.toString()</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory[/Users/jericks/Projects/geoscript-cookbook/src/main/resources/data]</pre>
+<pre>Directory[/home/travis/build/jericks/geoscript-groovy-cookbook/src/main/resources/data]</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -697,7 +698,7 @@ println file</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>/Users/jericks/Projects/geoscript-cookbook/src/main/resources/data</pre>
+<pre>/home/travis/build/jericks/geoscript-groovy-cookbook/src/main/resources/data</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -747,20 +748,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS (JNDI)
-MySQL
-Web Feature Server (NG)
-Properties
-MySQL (JNDI)
-SpatiaLite
-H2 (JNDI)
+<pre>MySQL
 Geobuf
-H2
-Directory of spatial files (shapefiles)
-Shapefile
-PostGIS
+PostGIS (JNDI)
 SpatiaLite (JNDI)
-GeoPackage</pre>
+Web Feature Server (NG)
+PostGIS
+Directory of spatial files (shapefiles)
+GeoPackage
+MySQL (JNDI)
+H2 (JNDI)
+Properties
+Shapefile
+SpatiaLite
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -981,13 +982,34 @@ states</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="creating-geobuf-workspaces"><a class="anchor" href="#creating-geobuf-workspaces"></a>Creating Geobuf Workspaces</h4>
+<div class="listingblock">
+<div class="title">Create a Geobuf Workspace from a File</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Geobuf(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/geobuf</span><span class="delimiter">&quot;</span></span>))
+println workspace.format
+workspace.names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Geobuf
+countries
+ocean
+places</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-07-04 14:00:26 PDT
+Last updated 2017-07-17 00:24:57 UTC
 </div>
 </div>
 </body>
