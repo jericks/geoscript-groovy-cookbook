@@ -210,11 +210,12 @@ class WorkspaceRecipes extends Recipes {
         // tag::createDirectoryWorkspaceFromName[]
         Workspace workspace = new Directory("src/main/resources/shapefiles")
         println workspace.format
+        println "---------"
         workspace.names.each { String name ->
-            println name
+            println "${name} (${workspace.get(name).count})"
         }
         // end::createDirectoryWorkspaceFromName[]
-        writeFile("workspace_directory_name", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        writeFile("workspace_directory_name", "${workspace.format}${NEW_LINE}---------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
         workspace
     }
 
@@ -222,11 +223,12 @@ class WorkspaceRecipes extends Recipes {
         // tag::createDirectoryWorkspaceFromFile[]
         Workspace workspace = new Directory(new File("src/main/resources/shapefiles"))
         println workspace.format
+        println "---------"
         workspace.names.each { String name ->
-            println name
+            println "${name} (${workspace.get(name).count})"
         }
         // end::createDirectoryWorkspaceFromFile[]
-        writeFile("workspace_directory_file", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        writeFile("workspace_directory_file", "${workspace.format}${NEW_LINE}---------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
         workspace
     }
 
@@ -237,11 +239,12 @@ class WorkspaceRecipes extends Recipes {
             new File("naturalearth")
         )
         println directory.format
+        println "---------"
         directory.names.each { String name ->
-            println name
+            println "${name} (${directory.get(name).count})"
         }
         // end::createDirectoryWorkspaceFromUrl[]
-        writeFile("workspace_directory_url", "${directory.format}${NEW_LINE}${directory.names.collect { it }.join(NEW_LINE)}")
+        writeFile("workspace_directory_url", "${directory.format}${NEW_LINE}---------${NEW_LINE}${directory.names.collect { "${it} (${directory.get(it).count})" }.join(NEW_LINE)}")
         directory
     }
 
@@ -249,11 +252,12 @@ class WorkspaceRecipes extends Recipes {
         // tag::createGeoPackageWorkspaceFromFile[]
         Workspace workspace = new GeoPackage(new File("src/main/resources/data.gpkg"))
         println workspace.format
+        println "----------"
         workspace.names.each { String name ->
-            println name
+            println "${name} (${workspace.get(name).count})"
         }
         // end::createGeoPackageWorkspaceFromFile[]
-        writeFile("workspace_geopackage_file", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        writeFile("workspace_geopackage_file", "${workspace.format}${NEW_LINE}----------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
         workspace
     }
 
@@ -261,11 +265,12 @@ class WorkspaceRecipes extends Recipes {
         // tag::createGeoPackageWorkspaceFromName[]
         Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
         println workspace.format
+        println "----------"
         workspace.names.each { String name ->
-            println name
+            println "${name} (${workspace.get(name).count})"
         }
         // end::createGeoPackageWorkspaceFromName[]
-        writeFile("workspace_geopackage_name", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        writeFile("workspace_geopackage_name", "${workspace.format}${NEW_LINE}----------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
         workspace
     }
 
@@ -275,11 +280,12 @@ class WorkspaceRecipes extends Recipes {
         // tag::createH2WorkspaceFromFile[]
         Workspace workspace = new H2(new File("src/main/resources/h2/data.db"))
         println workspace.format
+        println "--"
         workspace.names.each { String name ->
-            println name
+            println "${name} (${workspace.get(name).count})"
         }
         // end::createH2WorkspaceFromFile[]
-        writeFile("workspace_h2_file", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        writeFile("workspace_h2_file", "${workspace.format}${NEW_LINE}--${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
         workspace
     }
 
@@ -289,11 +295,12 @@ class WorkspaceRecipes extends Recipes {
         // tag::createGeobufWorkspaceFromFile[]
         Workspace workspace = new Geobuf(new File("src/main/resources/geobuf"))
         println workspace.format
+        println "------"
         workspace.names.each { String name ->
-            println name
+            println "${name} (${workspace.get(name).count})"
         }
         // end::createGeobufWorkspaceFromFile[]
-        writeFile("workspace_geobuf_file", "${workspace.format}${NEW_LINE}${workspace.names.collect { it }.join(NEW_LINE)}")
+        writeFile("workspace_geobuf_file", "${workspace.format}${NEW_LINE}------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
         workspace
     }
 
