@@ -625,20 +625,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL
-Geobuf
-PostGIS (JNDI)
-SpatiaLite (JNDI)
-Web Feature Server (NG)
-PostGIS
-Directory of spatial files (shapefiles)
-GeoPackage
-MySQL (JNDI)
-H2 (JNDI)
+<pre>Shapefile
+MySQL
 Properties
-Shapefile
+Geobuf
+Directory of spatial files (shapefiles)
+H2
 SpatiaLite
-H2</pre>
+SpatiaLite (JNDI)
+H2 (JNDI)
+MySQL (JNDI)
+PostGIS
+PostGIS (JNDI)
+GeoPackage
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -674,7 +674,7 @@ println directory.toString()</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory[/home/travis/build/jericks/geoscript-groovy-cookbook/src/main/resources/data]</pre>
+<pre>Directory[/Users/jericks/Projects/geoscript-cookbook/src/main/resources/data]</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -698,7 +698,7 @@ println file</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>/home/travis/build/jericks/geoscript-groovy-cookbook/src/main/resources/data</pre>
+<pre>/Users/jericks/Projects/geoscript-cookbook/src/main/resources/data</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -748,20 +748,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL
-Geobuf
-PostGIS (JNDI)
-SpatiaLite (JNDI)
-Web Feature Server (NG)
-PostGIS
-Directory of spatial files (shapefiles)
-GeoPackage
-MySQL (JNDI)
-H2 (JNDI)
+<pre>Shapefile
+MySQL
 Properties
-Shapefile
+Geobuf
+Directory of spatial files (shapefiles)
+H2
 SpatiaLite
-H2</pre>
+SpatiaLite (JNDI)
+H2 (JNDI)
+MySQL (JNDI)
+PostGIS
+PostGIS (JNDI)
+GeoPackage
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -868,16 +868,18 @@ workspace = Workspace.getWorkspace(params)</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/shapefiles</span><span class="delimiter">&quot;</span></span>)
 println workspace.format
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">---------</span><span class="delimiter">&quot;</span></span>
 workspace.names.each { <span class="predefined-type">String</span> name -&gt;
-    println name
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>name<span class="inline-delimiter">}</span></span><span class="content"> (</span><span class="inline"><span class="inline-delimiter">${</span>workspace.get(name).count<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>Directory
-ocean
-countries</pre>
+---------
+ocean (2)
+countries (177)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -885,16 +887,18 @@ countries</pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Directory(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/shapefiles</span><span class="delimiter">&quot;</span></span>))
 println workspace.format
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">---------</span><span class="delimiter">&quot;</span></span>
 workspace.names.each { <span class="predefined-type">String</span> name -&gt;
-    println name
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>name<span class="inline-delimiter">}</span></span><span class="content"> (</span><span class="inline"><span class="inline-delimiter">${</span>workspace.get(name).count<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>Directory
-ocean
-countries</pre>
+---------
+ocean (2)
+countries (177)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -905,15 +909,17 @@ countries</pre>
     <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">naturalearth</span><span class="delimiter">&quot;</span></span>)
 )
 println directory.format
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">---------</span><span class="delimiter">&quot;</span></span>
 directory.names.each { <span class="predefined-type">String</span> name -&gt;
-    println name
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>name<span class="inline-delimiter">}</span></span><span class="content"> (</span><span class="inline"><span class="inline-delimiter">${</span>directory.get(name).count<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>Directory
-ne_110m_admin_0_countries</pre>
+---------
+ne_110m_admin_0_countries (177)</pre>
 </div>
 </div>
 </div>
@@ -924,19 +930,21 @@ ne_110m_admin_0_countries</pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
 println workspace.format
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">----------</span><span class="delimiter">&quot;</span></span>
 workspace.names.each { <span class="predefined-type">String</span> name -&gt;
-    println name
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>name<span class="inline-delimiter">}</span></span><span class="content"> (</span><span class="inline"><span class="inline-delimiter">${</span>workspace.get(name).count<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>GeoPackage
-countries
-ocean
-places
-rivers
-states</pre>
+----------
+countries (177)
+ocean (2)
+places (326)
+rivers (460)
+states (52)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -944,19 +952,21 @@ states</pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>))
 println workspace.format
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">----------</span><span class="delimiter">&quot;</span></span>
 workspace.names.each { <span class="predefined-type">String</span> name -&gt;
-    println name
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>name<span class="inline-delimiter">}</span></span><span class="content"> (</span><span class="inline"><span class="inline-delimiter">${</span>workspace.get(name).count<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>GeoPackage
-countries
-ocean
-places
-rivers
-states</pre>
+----------
+countries (177)
+ocean (2)
+places (326)
+rivers (460)
+states (52)</pre>
 </div>
 </div>
 </div>
@@ -967,18 +977,20 @@ states</pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> H2(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/h2/data.db</span><span class="delimiter">&quot;</span></span>))
 println workspace.format
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">--</span><span class="delimiter">&quot;</span></span>
 workspace.names.each { <span class="predefined-type">String</span> name -&gt;
-    println name
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>name<span class="inline-delimiter">}</span></span><span class="content"> (</span><span class="inline"><span class="inline-delimiter">${</span>workspace.get(name).count<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>H2
-countries
-ocean
-places
-states</pre>
+--
+countries (177)
+ocean (2)
+places (326)
+states (52)</pre>
 </div>
 </div>
 </div>
@@ -989,17 +1001,19 @@ states</pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Geobuf(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/geobuf</span><span class="delimiter">&quot;</span></span>))
 println workspace.format
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">------</span><span class="delimiter">&quot;</span></span>
 workspace.names.each { <span class="predefined-type">String</span> name -&gt;
-    println name
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>name<span class="inline-delimiter">}</span></span><span class="content"> (</span><span class="inline"><span class="inline-delimiter">${</span>workspace.get(name).count<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>Geobuf
-countries
-ocean
-places</pre>
+------
+countries (177)
+ocean (2)
+places (326)</pre>
 </div>
 </div>
 </div>
@@ -1009,7 +1023,7 @@ places</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-07-17 00:24:57 UTC
+Last updated 2017-07-16 13:24:16 PDT
 </div>
 </div>
 </body>
