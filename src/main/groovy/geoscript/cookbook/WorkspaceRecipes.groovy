@@ -7,6 +7,7 @@ import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Geobuf
 import geoscript.workspace.H2
+import geoscript.workspace.Property
 import geoscript.workspace.Workspace
 
 class WorkspaceRecipes extends Recipes {
@@ -301,6 +302,21 @@ class WorkspaceRecipes extends Recipes {
         }
         // end::createGeobufWorkspaceFromFile[]
         writeFile("workspace_geobuf_file", "${workspace.format}${NEW_LINE}------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
+        workspace
+    }
+
+    // Property
+
+    Workspace createPropertyWorkspaceFromFile() {
+        // tag::createPropertyWorkspaceFromFile[]
+        Workspace workspace = new Property(new File("src/main/resources/property"))
+        println workspace.format
+        println "--------"
+        workspace.names.each { String name ->
+            println "${name} (${workspace.get(name).count})"
+        }
+        // end::createPropertyWorkspaceFromFile[]
+        writeFile("workspace_property_file", "${workspace.format}${NEW_LINE}------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
         workspace
     }
 

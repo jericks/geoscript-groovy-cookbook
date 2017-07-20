@@ -97,4 +97,10 @@ class WorkspaceRecipesTest {
         Workspace workspace = recipes.createGeobufWorkspaceFromFile()
         assertNotNull workspace
     }
+
+    @Test void createPropertyWorkspaceFromFile() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createPropertyWorkspaceFromFile()
+        assertNotNull workspace
+    }
 }
