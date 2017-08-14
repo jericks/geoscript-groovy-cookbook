@@ -720,6 +720,9 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </li>
 <li><a href="#layer-recipes">Layer Recipes</a></li>
+<li><a href="#format-recipes">Format Recipes</a></li>
+<li><a href="#raster-recipes">Raster Recipes</a></li>
+<li><a href="#tile-recipes">Tile Recipes</a></li>
 </ul>
 </div>
 </div>
@@ -4942,7 +4945,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-35dce5dc_15ddc875467_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--65d644a3_15ddec7f0cf_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5657,7 +5660,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Aug 13 16:57:23 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Aug 14 03:27:11 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5676,7 +5679,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-35dce5dc_15ddc875467_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--65d644a3_15ddec7f0cf_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5700,7 +5703,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Aug 13 16:57:23 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Aug 14 03:27:11 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5720,7 +5723,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-35dce5dc_15ddc875467_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--65d644a3_15ddec7f0cf_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5882,7 +5885,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-35dce5dc_15ddc875467_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--65d644a3_15ddec7f0cf_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5920,7 +5923,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-35dce5dc_15ddc875467_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--65d644a3_15ddec7f0cf_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7182,24 +7185,54 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage
+<pre>geo:buffer
+geo:isValid
+geo:union
+geo:intersection
+geo:difference
+geo:area
+geo:numGeometries
+geo:crosses
+geo:distance
+geo:convexHull
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isClosed
+geo:numPoints
+geo:dimension
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:symDifference
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:reproject
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:getX
+geo:getY
+geo:equalsExact
+geo:isRing
+geo:polygonize
+geo:startPoint
+geo:endPoint
+geo:relatePattern
+geo:equalsExactTolerance
+geo:pointN
+geo:interiorRingN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
 vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
@@ -7230,54 +7263,24 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:buffer
-geo:union
-geo:intersection
-geo:isValid
-geo:difference
-geo:convexHull
-geo:distance
-geo:crosses
-geo:area
-geo:numGeometries
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:isClosed
-geo:simplify
-geo:densify
-geo:numPoints
-geo:reproject
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:symDifference
-geo:touches
-geo:within
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:envelope
-geo:getX
-geo:getY
-geo:equalsExact
-geo:isRing
-geo:polygonize
-geo:startPoint
-geo:endPoint
-geo:relatePattern
-geo:interiorRingN
-geo:equalsExactTolerance
-geo:pointN
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects</pre>
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage</pre>
 </div>
 </div>
 </div>
@@ -9591,20 +9594,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Geobuf
-GeoPackage
+<pre>GeoPackage
+Properties
 PostGIS
 Web Feature Server (NG)
-MySQL (JNDI)
-MySQL
-Shapefile
 SpatiaLite
-Directory of spatial files (shapefiles)
 PostGIS (JNDI)
-H2
+Shapefile
 SpatiaLite (JNDI)
-Properties
-H2 (JNDI)</pre>
+H2
+H2 (JNDI)
+Directory of spatial files (shapefiles)
+MySQL
+MySQL (JNDI)
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9714,20 +9717,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Geobuf
-GeoPackage
+<pre>GeoPackage
+Properties
 PostGIS
 Web Feature Server (NG)
-MySQL (JNDI)
-MySQL
-Shapefile
 SpatiaLite
-Directory of spatial files (shapefiles)
 PostGIS (JNDI)
-H2
+Shapefile
 SpatiaLite (JNDI)
-Properties
-H2 (JNDI)</pre>
+H2
+H2 (JNDI)
+Directory of spatial files (shapefiles)
+MySQL
+MySQL (JNDI)
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10019,10 +10022,37 @@ places (10)</pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="format-recipes"><a class="anchor" href="#format-recipes"></a>Format Recipes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Format classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
+</div>
+<div class="paragraph">
+<p>A Format is a collection of Rasters.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="raster-recipes"><a class="anchor" href="#raster-recipes"></a>Raster Recipes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Raster classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tile-recipes"><a class="anchor" href="#tile-recipes"></a>Tile Recipes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Tile classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-13 16:53:07 UTC
+Last updated 2017-08-14 03:22:24 UTC
 </div>
 </div>
 </body>
