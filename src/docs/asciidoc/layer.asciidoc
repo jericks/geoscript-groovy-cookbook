@@ -7,5 +7,23 @@ The Layer classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.
 
 A Layer is a collection of Features.
 
+=== Getting a Layer's Properties
 
+[source,groovy]
+.Get a Layer from a Workspace and it's name
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerProperties_name,indent=0]
+----
+....
+include::output/layer_properties_name.txt[]
+....
+
+[source,groovy]
+.Count the number of Features
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerProperties_count,indent=0]
+----
+....
+include::output/layer_properties_count.txt[]
+....
 
