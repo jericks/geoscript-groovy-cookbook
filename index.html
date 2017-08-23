@@ -4949,7 +4949,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--474334e7_15e07d8b11c_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-71c4e1ec_15e0d308ae9_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5664,7 +5664,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Aug 22 02:49:55 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Aug 23 03:43:59 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5683,7 +5683,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--474334e7_15e07d8b11c_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-71c4e1ec_15e0d308ae9_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5707,7 +5707,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Aug 22 02:49:55 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Aug 23 03:43:59 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5727,7 +5727,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--474334e7_15e07d8b11c_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-71c4e1ec_15e0d308ae9_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5889,7 +5889,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--474334e7_15e07d8b11c_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-71c4e1ec_15e0d308ae9_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5927,7 +5927,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--474334e7_15e07d8b11c_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-71c4e1ec_15e0d308ae9_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7190,35 +7190,35 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 <div class="literalblock">
 <div class="content">
 <pre>geo:buffer
-geo:isValid
 geo:union
 geo:intersection
+geo:isValid
 geo:difference
 geo:distance
-geo:area
-geo:numGeometries
-geo:isClosed
-geo:getGeometryN
 geo:convexHull
 geo:crosses
 geo:boundary
+geo:area
+geo:numGeometries
 geo:centroid
 geo:interiorPoint
-geo:numPoints
-geo:dimension
+geo:getGeometryN
+geo:isClosed
+geo:isSimple
 geo:isWithinDistance
 geo:overlaps
 geo:relate
 geo:symDifference
 geo:touches
 geo:within
-geo:simplify
-geo:densify
-geo:isSimple
-geo:reproject
+geo:numPoints
+geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
+geo:simplify
+geo:densify
+geo:reproject
 geo:envelope
 geo:getX
 geo:getY
@@ -9598,20 +9598,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS (JNDI)
-Properties
-MySQL (JNDI)
-SpatiaLite (JNDI)
-Web Feature Server (NG)
+<pre>Properties
 Directory of spatial files (shapefiles)
+Web Feature Server (NG)
 H2
-MySQL
-GeoPackage
-Geobuf
-PostGIS
 H2 (JNDI)
+PostGIS (JNDI)
 Shapefile
-SpatiaLite</pre>
+MySQL
+MySQL (JNDI)
+GeoPackage
+SpatiaLite
+Geobuf
+SpatiaLite (JNDI)
+PostGIS</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9721,20 +9721,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS (JNDI)
-Properties
-MySQL (JNDI)
-SpatiaLite (JNDI)
-Web Feature Server (NG)
+<pre>Properties
 Directory of spatial files (shapefiles)
+Web Feature Server (NG)
 H2
-MySQL
-GeoPackage
-Geobuf
-PostGIS
 H2 (JNDI)
+PostGIS (JNDI)
 Shapefile
-SpatiaLite</pre>
+MySQL
+MySQL (JNDI)
+GeoPackage
+SpatiaLite
+Geobuf
+SpatiaLite (JNDI)
+PostGIS</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10052,6 +10052,30 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 <pre># of Features: 177</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Get the Layer&#8217;s Projection</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = layer.proj
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Projection: </span><span class="inline"><span class="inline-delimiter">${</span>proj<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Projection: EPSG:4326</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Bounds of the Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = layer.bounds
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Bounds: </span><span class="inline"><span class="inline-delimiter">${</span>bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Bounds: (-179.99999999999997,-90.00000000000003,180.00000000000014,83.64513000000002,EPSG:4326)</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -10085,7 +10109,7 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-22 02:46:26 UTC
+Last updated 2017-08-23 03:40:04 UTC
 </div>
 </div>
 </body>
