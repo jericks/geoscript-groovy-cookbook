@@ -1,6 +1,8 @@
 package geoscript.cookbook
 
+import geoscript.geom.Bounds
 import geoscript.layer.Layer
+import geoscript.proj.Projection
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 
@@ -25,6 +27,20 @@ class LayerRecipes extends Recipes {
         // end::getLayerProperties_count[]
         values.put("count", count)
         writeFile("layer_properties_count", "# of Features: ${count}")
+
+        // tag::getLayerProperties_proj[]
+        Projection proj = layer.proj
+        println "Projection: ${proj}"
+        // end::getLayerProperties_proj[]
+        values.put("proj", proj)
+        writeFile("layer_properties_proj", "Projection: ${proj}")
+
+        // tag::getLayerProperties_bounds[]
+        Bounds bounds = layer.bounds
+        println "Bounds: ${bounds}"
+        // end::getLayerProperties_bounds[]
+        values.put("bounds", bounds)
+        writeFile("layer_properties_bounds", "Bounds: ${bounds}")
 
         values
     }

@@ -10,6 +10,8 @@ class LayerRecipesTest {
         Map<String, Object> values = recipes.getLayerProperties()
         assertEquals("countries", values.name)
         assertEquals(177, values.count)
+        assertEquals("EPSG:4326", values.proj.id)
+        assertEquals("(-179.99999999999997,-90.00000000000003,180.00000000000014,83.64513000000002,EPSG:4326)", values.bounds.toString())
     }
 
 }

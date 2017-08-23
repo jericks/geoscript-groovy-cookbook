@@ -27,3 +27,20 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerPropert
 include::output/layer_properties_count.txt[]
 ....
 
+[source,groovy]
+.Get the Layer's Projection
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerProperties_proj,indent=0]
+----
+....
+include::output/layer_properties_proj.txt[]
+....
+
+[source,groovy]
+.Get the Bounds of the Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerProperties_bounds,indent=0]
+----
+....
+include::output/layer_properties_bounds.txt[]
+....
