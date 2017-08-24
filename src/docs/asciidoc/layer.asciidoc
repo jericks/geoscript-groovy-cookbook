@@ -19,6 +19,15 @@ include::output/layer_properties_name.txt[]
 ....
 
 [source,groovy]
+.The Layer's Format
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerProperties_format,indent=0]
+----
+....
+include::output/layer_properties_format.txt[]
+....
+
+[source,groovy]
 .Count the number of Features
 ----
 include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerProperties_count,indent=0]
@@ -43,4 +52,15 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerPropert
 ----
 ....
 include::output/layer_properties_bounds.txt[]
+....
+
+=== Getting a Layer's Features
+
+[source,groovy]
+.Iterate over a Layer's Features
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerFeatures,indent=0]
+----
+....
+include::output/layer_features.txt[]
 ....
