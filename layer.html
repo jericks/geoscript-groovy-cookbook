@@ -518,6 +518,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#layer-recipes">Layer Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#getting-a-layer-s-properties">Getting a Layer&#8217;s Properties</a></li>
+<li><a href="#getting-a-layer-s-features">Getting a Layer&#8217;s Features</a></li>
 </ul>
 </li>
 </ul>
@@ -547,6 +548,18 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 <div class="literalblock">
 <div class="content">
 <pre>Name: countries</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">The Layer&#8217;s Format</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> format = layer.format
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Format: </span><span class="inline"><span class="inline-delimiter">${</span>format<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Format: GeoPackage</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -586,12 +599,40 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="getting-a-layer-s-features"><a class="anchor" href="#getting-a-layer-s-features"></a>Getting a Layer&#8217;s Features</h3>
+<div class="listingblock">
+<div class="title">Iterate over a Layer&#8217;s Features</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+layer.eachFeature { Feature feature -&gt;
+    println feature[<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Minnesota
+Montana
+North Dakota
+Hawaii
+Idaho
+Washington
+Arizona
+California
+Colorado
+Nevada
+...</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-23 03:40:04 UTC
+Last updated 2017-08-24 03:19:55 UTC
 </div>
 </div>
 </body>
