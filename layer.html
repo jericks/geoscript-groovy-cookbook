@@ -626,13 +626,35 @@ Nevada
 ...</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Iterate over a subset of a Layer&#8217;s Features</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+layer.eachFeature(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1 LIKE 'M%'</span><span class="delimiter">&quot;</span></span>) { Feature feature -&gt;
+    println feature[<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Minnesota
+Montana
+Missouri
+Massachusetts
+Mississippi
+Maryland
+Maine
+Michigan</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-24 03:19:55 UTC
+Last updated 2017-08-27 01:54:25 UTC
 </div>
 </div>
 </body>
