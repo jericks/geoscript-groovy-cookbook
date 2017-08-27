@@ -74,4 +74,22 @@ class LayerRecipes extends Recipes {
         count
     }
 
+    int getLayerFeaturesFiltered() {
+        // tag::getLayerFeaturesFiltered[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("states")
+        layer.eachFeature("NAME_1 LIKE 'M%'") { Feature feature ->
+            println feature["NAME_1"]
+        }
+        // end::getLayerFeaturesFiltered[]
+        int count = 0
+        String str = ""
+        layer.eachFeature("NAME_1 LIKE 'M%'") { Feature feature ->
+            str += feature["NAME_1"] + NEW_LINE
+            count++
+        }
+        writeFile("layer_features_filtered", "${str}")
+        count
+    }
+
 }

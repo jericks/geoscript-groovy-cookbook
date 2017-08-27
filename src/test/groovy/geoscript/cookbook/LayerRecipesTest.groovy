@@ -20,4 +20,9 @@ class LayerRecipesTest {
         assertEquals(52, recipes.getLayerFeatures())
     }
 
+    @Test void getLayerFeaturesFiltered() {
+        LayerRecipes recipes = new LayerRecipes()
+        assertEquals(8, recipes.getLayerFeaturesFiltered())
+    }
+
 }
