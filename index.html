@@ -4950,7 +4950,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-24a8bcb3_15e21696e15_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-17803f33_15e3116a274_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5665,7 +5665,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Aug 27 01:58:31 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Aug 30 03:02:00 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5684,7 +5684,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-24a8bcb3_15e21696e15_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-17803f33_15e3116a274_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5708,7 +5708,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Aug 27 01:58:31 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Aug 30 03:02:00 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5728,7 +5728,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-24a8bcb3_15e21696e15_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-17803f33_15e3116a274_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5890,7 +5890,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-24a8bcb3_15e21696e15_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-17803f33_15e3116a274_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5928,7 +5928,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-24a8bcb3_15e21696e15_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-17803f33_15e3116a274_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7191,9 +7191,9 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 <div class="literalblock">
 <div class="content">
 <pre>geo:buffer
-geo:isValid
 geo:union
 geo:intersection
+geo:isValid
 geo:difference
 geo:distance
 geo:area
@@ -7212,14 +7212,14 @@ geo:relate
 geo:symDifference
 geo:touches
 geo:within
-geo:simplify
-geo:densify
-geo:reproject
 geo:numPoints
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
+geo:simplify
+geo:densify
+geo:reproject
 geo:envelope
 geo:getX
 geo:getY
@@ -9599,20 +9599,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL (JNDI)
-H2
-MySQL
-SpatiaLite (JNDI)
-H2 (JNDI)
-GeoPackage
-Properties
+<pre>Properties
 SpatiaLite
-PostGIS (JNDI)
-Directory of spatial files (shapefiles)
-Web Feature Server (NG)
-Shapefile
 PostGIS
-Geobuf</pre>
+SpatiaLite (JNDI)
+MySQL (JNDI)
+Web Feature Server (NG)
+H2
+Directory of spatial files (shapefiles)
+PostGIS (JNDI)
+GeoPackage
+Shapefile
+H2 (JNDI)
+Geobuf
+MySQL</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9722,20 +9722,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL (JNDI)
-H2
-MySQL
-SpatiaLite (JNDI)
-H2 (JNDI)
-GeoPackage
-Properties
+<pre>Properties
 SpatiaLite
-PostGIS (JNDI)
-Directory of spatial files (shapefiles)
-Web Feature Server (NG)
-Shapefile
 PostGIS
-Geobuf</pre>
+SpatiaLite (JNDI)
+MySQL (JNDI)
+Web Feature Server (NG)
+H2
+Directory of spatial files (shapefiles)
+PostGIS (JNDI)
+GeoPackage
+Shapefile
+H2 (JNDI)
+Geobuf
+MySQL</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10139,6 +10139,47 @@ Maine
 Michigan</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Iterate over a Layer&#8217;s Features with parameters.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+layer.eachFeature(<span class="key">sort</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>], <span class="key">start</span>: <span class="integer">0</span>, <span class="key">max</span>: <span class="integer">5</span>, <span class="key">fields</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>], <span class="key">filter</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1 LIKE 'M%'</span><span class="delimiter">&quot;</span></span>) { Feature feature -&gt;
+    println feature[<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Parameters</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>filter: The Filter or Filter String to limit the Features. Defaults to null.</p>
+</li>
+<li>
+<p>sort:  A List of Lists that define the sort order [[Field or Field name, "ASC" or "DESC"],&#8230;&#8203;]. Not all Layers support sorting!</p>
+</li>
+<li>
+<p>max:  The maximum number of Features to include</p>
+</li>
+<li>
+<p>start: The index of the record to start the cursor at.  Together with maxFeatures this simulates paging. Not all Layers support the start index and paging!</p>
+</li>
+<li>
+<p>fields: A List of Fields or Field names to include.  Used to select only a subset of Fields.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -10172,7 +10213,7 @@ Michigan</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-27 01:54:25 UTC
+Last updated 2017-08-30 02:57:02 UTC
 </div>
 </div>
 </body>

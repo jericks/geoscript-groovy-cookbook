@@ -648,13 +648,54 @@ Maine
 Michigan</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Iterate over a Layer&#8217;s Features with parameters.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+layer.eachFeature(<span class="key">sort</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>], <span class="key">start</span>: <span class="integer">0</span>, <span class="key">max</span>: <span class="integer">5</span>, <span class="key">fields</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>], <span class="key">filter</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1 LIKE 'M%'</span><span class="delimiter">&quot;</span></span>) { Feature feature -&gt;
+    println feature[<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Parameters</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>filter: The Filter or Filter String to limit the Features. Defaults to null.</p>
+</li>
+<li>
+<p>sort:  A List of Lists that define the sort order [[Field or Field name, "ASC" or "DESC"],&#8230;&#8203;]. Not all Layers support sorting!</p>
+</li>
+<li>
+<p>max:  The maximum number of Features to include</p>
+</li>
+<li>
+<p>start: The index of the record to start the cursor at.  Together with maxFeatures this simulates paging. Not all Layers support the start index and paging!</p>
+</li>
+<li>
+<p>fields: A List of Fields or Field names to include.  Used to select only a subset of Fields.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-27 01:54:25 UTC
+Last updated 2017-08-30 02:57:02 UTC
 </div>
 </div>
 </body>
