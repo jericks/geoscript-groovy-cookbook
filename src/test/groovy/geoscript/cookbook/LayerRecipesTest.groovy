@@ -25,4 +25,9 @@ class LayerRecipesTest {
         assertEquals(8, recipes.getLayerFeaturesFiltered())
     }
 
+    @Test void getLayerFeaturesWithParameters() {
+        LayerRecipes recipes = new LayerRecipes()
+        assertEquals(5, recipes.getLayerFeaturesWithParameters())
+    }
+
 }

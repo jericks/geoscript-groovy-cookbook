@@ -73,3 +73,21 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerFeature
 ....
 include::output/layer_features_filtered.txt[]
 ....
+
+[source,groovy]
+.Iterate over a Layer's Features with parameters.
+
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerFeaturesWithParameters,indent=0]
+----
+....
+include::output/layer_features_params.txt[]
+....
+
+Parameters
+
+* filter: The Filter or Filter String to limit the Features. Defaults to null.
+* sort:  A List of Lists that define the sort order [[Field or Field name, "ASC" or "DESC"],...]. Not all Layers support sorting!
+* max:  The maximum number of Features to include
+* start: The index of the record to start the cursor at.  Together with maxFeatures this simulates paging. Not all Layers support the start index and paging!
+* fields: A List of Fields or Field names to include.  Used to select only a subset of Fields.
