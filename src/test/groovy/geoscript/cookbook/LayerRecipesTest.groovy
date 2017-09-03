@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.feature.Feature
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -28,6 +29,12 @@ class LayerRecipesTest {
     @Test void getLayerFeaturesWithParameters() {
         LayerRecipes recipes = new LayerRecipes()
         assertEquals(5, recipes.getLayerFeaturesWithParameters())
+    }
+
+    @Test void getLayerFeaturesInAList() {
+        LayerRecipes recipes = new LayerRecipes()
+        List<Feature> features = recipes.getLayerFeaturesInAList()
+        assertEquals(52, features.size())
     }
 
 }

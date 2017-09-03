@@ -110,4 +110,27 @@ class LayerRecipes extends Recipes {
         count
     }
 
+    List<Feature> getLayerFeaturesInAList() {
+        // tag::getLayerFeaturesInAList[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("states")
+        List<Feature> features = layer.features
+        
+        println "# Features = ${features.size()}"
+        features.each { Feature feature ->
+            println feature["NAME_1"]
+        }
+        // end::getLayerFeaturesInAList[]
+        int count = 0
+        int max = 10
+        String str = "# Features = ${features.size()}${NEW_LINE}"
+        features.each { Feature feature ->
+            if (count < max) {
+                str += feature["NAME_1"] + NEW_LINE
+            }
+            count++
+        }
+        writeFile("layer_list_features", "${str}...")
+        features
+    }
 }
