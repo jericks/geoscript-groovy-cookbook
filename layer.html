@@ -689,13 +689,42 @@ Minnesota</pre>
 </li>
 </ul>
 </div>
+<div class="listingblock">
+<div class="title">Read all Feature into a List</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span>&lt;Feature&gt; features = layer.features
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># Features = </span><span class="inline"><span class="inline-delimiter">${</span>features.size()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+features.each { Feature feature -&gt;
+    println feature[<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># Features = 52
+Minnesota
+Montana
+North Dakota
+Hawaii
+Idaho
+Washington
+Arizona
+California
+Colorado
+Nevada
+...</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-08-30 02:57:02 UTC
+Last updated 2017-09-03 08:29:57 PDT
 </div>
 </div>
 </body>
