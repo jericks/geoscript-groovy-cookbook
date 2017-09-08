@@ -168,10 +168,10 @@ class WorkspaceRecipes extends Recipes {
         // end::getWorkspaceFromString_GeoPackage[]
         values.put(connectionString, workspace)
 
-        // tag::getWorkspaceFromString_Spatialite[]
-        connectionString = "dbtype=spatialite database=layers.sqlite"
+        // tag::getWorkspaceFromString_H2[]
+        connectionString = "dbtype=h2 database=layers.db"
         workspace = Workspace.getWorkspace(connectionString)
-        // end::getWorkspaceFromString_Spatialite[]
+        // end::getWorkspaceFromString_H2[]
         values.put(connectionString, workspace)
 
         values

@@ -171,9 +171,9 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspac
 ----
 
 [source,groovy]
-.Create a Spatialite Workspace
+.Create a H2 Workspace
 ----
-include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspaceFromString_Spatialite,indent=0]
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspaceFromString_H2,indent=0]
 ----
 
 ==== Creating a Workspace from a connection map
