@@ -37,4 +37,12 @@ class LayerRecipesTest {
         assertEquals(52, features.size())
     }
 
+    // IO
+
+    @Test void layerToGeoJSONString() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.layerToGeoJSONString()
+        assertNotNull(str)
+    }
+
 }

@@ -1,11 +1,16 @@
 package geoscript.cookbook
 
 import geoscript.feature.Feature
+import geoscript.feature.Field
+import geoscript.feature.Schema
 import geoscript.geom.Bounds
+import geoscript.geom.Point
 import geoscript.layer.Layer
 import geoscript.proj.Projection
 import geoscript.workspace.GeoPackage
+import geoscript.workspace.Memory
 import geoscript.workspace.Workspace
+import groovy.json.JsonOutput
 
 class LayerRecipes extends Recipes {
 
@@ -133,4 +138,35 @@ class LayerRecipes extends Recipes {
         writeFile("layer_list_features", "${str}...")
         features
     }
+
+    // IO
+
+    String layerToGeoJSONString() {
+        // tag::layerToGeoJSONString[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+            geom: new Point(-122.3204, 47.6024),
+            id: 1,
+            name: "Seattle"
+        ])
+        layer.add([
+            geom: new Point(-122.48416, 47.2619),
+            id: 2,
+            name: "Tacoma"
+        ])
+
+        String geojson = layer.toJSONString()
+        println geojson
+        // end::layerToGeoJSONString[]
+        writeFile("layer_to_geojson_string", JsonOutput.prettyPrint(geojson))
+        geojson
+    }
+
+
 }
