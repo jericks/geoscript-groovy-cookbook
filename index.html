@@ -723,6 +723,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#getting-a-layer-s-properties">Getting a Layer&#8217;s Properties</a></li>
 <li><a href="#getting-a-layer-s-features">Getting a Layer&#8217;s Features</a></li>
+<li><a href="#reading-and-writing-features-2">Reading and Writing Features</a></li>
 </ul>
 </li>
 <li><a href="#format-recipes">Format Recipes</a></li>
@@ -4950,7 +4951,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-8a26035_15e63b77e75_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-30e429b1_15e9cda07d8_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5665,7 +5666,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Sep 08 22:58:43 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Sep 20 01:14:48 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5684,7 +5685,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-8a26035_15e63b77e75_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-30e429b1_15e9cda07d8_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5708,7 +5709,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Sep 08 22:58:43 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Sep 20 01:14:48 UTC 2017&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5728,7 +5729,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-8a26035_15e63b77e75_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-30e429b1_15e9cda07d8_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5890,7 +5891,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-8a26035_15e63b77e75_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-30e429b1_15e9cda07d8_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5928,7 +5929,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-8a26035_15e63b77e75_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-30e429b1_15e9cda07d8_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7190,7 +7191,25 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:isValid
+<pre>ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage
+geo:isValid
 geo:buffer
 geo:union
 geo:intersection
@@ -7198,23 +7217,13 @@ geo:difference
 geo:distance
 geo:area
 geo:numGeometries
-geo:getGeometryN
-geo:isClosed
 geo:convexHull
 geo:crosses
 geo:boundary
 geo:centroid
 geo:interiorPoint
-geo:pointN
-geo:interiorRingN
-geo:equalsExactTolerance
-geo:reproject
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:getX
-geo:getY
-geo:envelope
+geo:getGeometryN
+geo:isClosed
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7226,13 +7235,23 @@ geo:simplify
 geo:densify
 geo:numPoints
 geo:dimension
-geo:equalsExact
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:reproject
+geo:getX
+geo:getY
 geo:isRing
-geo:splitPolygon
-geo:relatePattern
+geo:equalsExact
 geo:polygonize
-geo:endPoint
+geo:interiorRingN
+geo:pointN
+geo:equalsExactTolerance
+geo:relatePattern
+geo:splitPolygon
 geo:startPoint
+geo:endPoint
 geo:length
 geo:isEmpty
 geo:contains
@@ -7267,25 +7286,7 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage</pre>
+vec:VectorZonalStatistics</pre>
 </div>
 </div>
 </div>
@@ -9599,19 +9600,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>SpatiaLite (JNDI)
-Shapefile
-Web Feature Server (NG)
-Directory of spatial files (shapefiles)
-PostGIS (JNDI)
-GeoPackage
-H2
-MySQL (JNDI)
-MySQL
-Geobuf
+<pre>PostGIS (JNDI)
+SpatiaLite (JNDI)
 Properties
+PostGIS
+MySQL (JNDI)
+Geobuf
 H2 (JNDI)
-PostGIS</pre>
+Directory of spatial files (shapefiles)
+GeoPackage
+Shapefile
+MySQL
+Web Feature Server (NG)
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9721,19 +9722,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>SpatiaLite (JNDI)
-Shapefile
-Web Feature Server (NG)
-Directory of spatial files (shapefiles)
-PostGIS (JNDI)
-GeoPackage
-H2
-MySQL (JNDI)
-MySQL
-Geobuf
+<pre>PostGIS (JNDI)
+SpatiaLite (JNDI)
 Properties
+PostGIS
+MySQL (JNDI)
+Geobuf
 H2 (JNDI)
-PostGIS</pre>
+Directory of spatial files (shapefiles)
+GeoPackage
+Shapefile
+MySQL
+Web Feature Server (NG)
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10208,6 +10209,76 @@ Nevada
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="reading-and-writing-features-2"><a class="anchor" href="#reading-and-writing-features-2"></a>Reading and Writing Features</h3>
+<div class="paragraph">
+<p>The Layer IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
+</div>
+<div class="listingblock">
+<div class="title">Get GeoJSON String from a Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+layer.add([
+    <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+    <span class="key">id</span>: <span class="integer">1</span>,
+    <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+])
+layer.add([
+    <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.48416</span>, <span class="float">47.2619</span>),
+    <span class="key">id</span>: <span class="integer">2</span>,
+    <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tacoma</span><span class="delimiter">&quot;</span></span>
+])
+
+<span class="predefined-type">String</span> geojson = layer.toJSONString()
+println geojson</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3204,
+                    47.6024
+                ]
+            },
+            "properties": {
+                "id": 1,
+                "name": "Seattle"
+            },
+            "id": "fid-30e429b1_15e9cda07d8_-7fe4"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4842,
+                    47.2619
+                ]
+            },
+            "properties": {
+                "id": 2,
+                "name": "Tacoma"
+            },
+            "id": "fid-30e429b1_15e9cda07d8_-7fe2"
+        }
+    ]
+}</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -10240,7 +10311,7 @@ Nevada
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-08 22:52:23 UTC
+Last updated 2017-09-20 01:11:05 UTC
 </div>
 </div>
 </body>
