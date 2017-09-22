@@ -768,7 +768,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-30e429b1_15e9cda07d8_-7fe4"
+            "id": "fid-7aaff1f6_15ea79b3ece_-7fe0"
         },
         {
             "type": "Feature",
@@ -783,10 +783,106 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-30e429b1_15e9cda07d8_-7fe2"
+            "id": "fid-7aaff1f6_15ea79b3ece_-7fde"
         }
     ]
 }</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get KML String from a Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+layer.add([
+    <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+    <span class="key">id</span>: <span class="integer">1</span>,
+    <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+])
+layer.add([
+    <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.48416</span>, <span class="float">47.2619</span>),
+    <span class="key">id</span>: <span class="integer">2</span>,
+    <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tacoma</span><span class="delimiter">&quot;</span></span>
+])
+
+<span class="predefined-type">String</span> kml = layer.toKMLString()
+println kml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;kml:kml xmlns:kml="http://www.opengis.net/kml/2.2"&gt;
+  &lt;kml:Document&gt;
+    &lt;kml:Folder&gt;
+      &lt;kml:name&gt;
+        cities
+      &lt;/kml:name&gt;
+      &lt;kml:Schema kml:name="cities" kml:id="cities"&gt;
+        &lt;kml:SimpleField kml:name="id" kml:type="Integer"/&gt;
+        &lt;kml:SimpleField kml:name="name" kml:type="String"/&gt;
+      &lt;/kml:Schema&gt;
+      &lt;kml:Placemark&gt;
+        &lt;kml:name&gt;
+          fid-7aaff1f6_15ea79b3ece_-7fe4
+        &lt;/kml:name&gt;
+        &lt;kml:Style&gt;
+          &lt;kml:IconStyle&gt;
+            &lt;kml:color&gt;
+              ff0000ff
+            &lt;/kml:color&gt;
+          &lt;/kml:IconStyle&gt;
+        &lt;/kml:Style&gt;
+        &lt;kml:ExtendedData&gt;
+          &lt;kml:SchemaData kml:schemaUrl="#cities"&gt;
+            &lt;kml:SimpleData kml:name="id"&gt;
+              1
+            &lt;/kml:SimpleData&gt;
+            &lt;kml:SimpleData kml:name="name"&gt;
+              Seattle
+            &lt;/kml:SimpleData&gt;
+          &lt;/kml:SchemaData&gt;
+        &lt;/kml:ExtendedData&gt;
+        &lt;kml:Point&gt;
+          &lt;kml:coordinates&gt;
+            -122.3204,47.6024
+          &lt;/kml:coordinates&gt;
+        &lt;/kml:Point&gt;
+      &lt;/kml:Placemark&gt;
+      &lt;kml:Placemark&gt;
+        &lt;kml:name&gt;
+          fid-7aaff1f6_15ea79b3ece_-7fe2
+        &lt;/kml:name&gt;
+        &lt;kml:Style&gt;
+          &lt;kml:IconStyle&gt;
+            &lt;kml:color&gt;
+              ff0000ff
+            &lt;/kml:color&gt;
+          &lt;/kml:IconStyle&gt;
+        &lt;/kml:Style&gt;
+        &lt;kml:ExtendedData&gt;
+          &lt;kml:SchemaData kml:schemaUrl="#cities"&gt;
+            &lt;kml:SimpleData kml:name="id"&gt;
+              2
+            &lt;/kml:SimpleData&gt;
+            &lt;kml:SimpleData kml:name="name"&gt;
+              Tacoma
+            &lt;/kml:SimpleData&gt;
+          &lt;/kml:SchemaData&gt;
+        &lt;/kml:ExtendedData&gt;
+        &lt;kml:Point&gt;
+          &lt;kml:coordinates&gt;
+            -122.48416,47.2619
+          &lt;/kml:coordinates&gt;
+        &lt;/kml:Point&gt;
+      &lt;/kml:Placemark&gt;
+    &lt;/kml:Folder&gt;
+  &lt;/kml:Document&gt;
+&lt;/kml:kml&gt;</pre>
 </div>
 </div>
 </div>
@@ -795,7 +891,7 @@ println geojson</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-20 01:11:05 UTC
+Last updated 2017-09-22 03:18:34 UTC
 </div>
 </div>
 </body>
