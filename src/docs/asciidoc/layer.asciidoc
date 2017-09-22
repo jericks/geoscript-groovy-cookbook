@@ -114,6 +114,13 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=layerToGeoJSONS
 include::output/layer_to_geojson_string.txt[]
 ....
 
-
+[source,groovy]
+.Get KML String from a Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=layerToKMLString,indent=0]
+----
+....
+include::output/layer_to_kml_string.txt[]
+....
 
 

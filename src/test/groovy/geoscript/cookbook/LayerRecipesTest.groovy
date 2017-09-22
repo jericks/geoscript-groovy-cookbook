@@ -45,4 +45,10 @@ class LayerRecipesTest {
         assertNotNull(str)
     }
 
+    @Test void layerToKMLString() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.layerToKMLString()
+        assertNotNull(str)
+    }
+
 }
