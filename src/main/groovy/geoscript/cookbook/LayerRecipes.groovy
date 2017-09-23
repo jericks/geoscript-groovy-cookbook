@@ -196,6 +196,33 @@ class LayerRecipes extends Recipes {
         kml
     }
 
+    String layerToGMLString() {
+        // tag::layerToGMLString[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        String gml = layer.toGMLString()
+        println gml
+        // end::layerToGMLString[]
+        writeFile("layer_to_gml_string", prettyPrintXml(gml))
+        gml
+    }
+
     private String prettyPrintXml(String xml) {
         StringWriter writer = new StringWriter()
         XmlNodePrinter nodePrinter = new XmlNodePrinter(new PrintWriter(writer))

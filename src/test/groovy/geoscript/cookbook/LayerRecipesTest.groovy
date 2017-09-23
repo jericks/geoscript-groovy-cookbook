@@ -51,4 +51,10 @@ class LayerRecipesTest {
         assertNotNull(str)
     }
 
+    @Test void layerToGMLString() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.layerToGMLString()
+        assertNotNull(str)
+    }
+
 }

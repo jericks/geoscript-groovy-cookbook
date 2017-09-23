@@ -105,6 +105,8 @@ include::output/layer_list_features.txt[]
 
 The Layer IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
 
+==== GeoJSON
+
 [source,groovy]
 .Get GeoJSON String from a Layer
 ----
@@ -113,6 +115,19 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=layerToGeoJSONS
 ....
 include::output/layer_to_geojson_string.txt[]
 ....
+
+==== GML
+
+[source,groovy]
+.Get GML String from a Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=layerToGMLString,indent=0]
+----
+....
+include::output/layer_to_gml_string.txt[]
+....
+
+==== KML
 
 [source,groovy]
 .Get KML String from a Layer
