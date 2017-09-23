@@ -56,5 +56,11 @@ class LayerRecipesTest {
         String str = recipes.layerToGMLString()
         assertNotNull(str)
     }
+    
+    @Test void layerToGeobufString() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.layerToGeobufString()
+        assertNotNull(str)
+    }
 
 }

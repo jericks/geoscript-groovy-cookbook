@@ -223,6 +223,33 @@ class LayerRecipes extends Recipes {
         gml
     }
 
+    String layerToGeobufString() {
+        // tag::layerToGeobufString[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        String geobuf = layer.toGeobufString()
+        println geobuf
+        // end::layerToGeobufString[]
+        writeFile("layer_to_geobuf_string", geobuf)
+        geobuf
+    }
+
     private String prettyPrintXml(String xml) {
         StringWriter writer = new StringWriter()
         XmlNodePrinter nodePrinter = new XmlNodePrinter(new PrintWriter(writer))

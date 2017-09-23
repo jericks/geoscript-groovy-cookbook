@@ -116,6 +116,17 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=layerToGeoJSONS
 include::output/layer_to_geojson_string.txt[]
 ....
 
+==== GeoBuf
+
+[source,groovy]
+.Get GeoBuf String from a Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=layerToGeobufString,indent=0]
+----
+....
+include::output/layer_to_geobuf_string.txt[]
+....
+
 ==== GML
 
 [source,groovy]
