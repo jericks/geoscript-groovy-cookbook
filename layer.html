@@ -521,6 +521,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#getting-a-layer-s-features">Getting a Layer&#8217;s Features</a></li>
 <li><a href="#reading-and-writing-features">Reading and Writing Features</a>
 <ul class="sectlevel3">
+<li><a href="#finding-layer-writer-and-readers">Finding Layer Writer and Readers</a></li>
 <li><a href="#geojson">GeoJSON</a></li>
 <li><a href="#geobuf">GeoBuf</a></li>
 <li><a href="#gml">GML</a></li>
@@ -733,6 +734,100 @@ Nevada
 <p>The Layer IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
 </div>
 <div class="sect3">
+<h4 id="finding-layer-writer-and-readers"><a class="anchor" href="#finding-layer-writer-and-readers"></a>Finding Layer Writer and Readers</h4>
+<div class="listingblock">
+<div class="title">List all Layer Writers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Writer</span>&gt; writers = Writers.list()
+writers.each { <span class="predefined-type">Writer</span> writer -&gt;
+    println writer.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CsvWriter
+GeobufWriter
+GeoJSONWriter
+GeoRSSWriter
+GmlWriter
+GpxWriter
+KmlWriter
+MvtWriter</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Layer Writer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+])
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.48416</span>, <span class="float">47.2619</span>),
+        <span class="key">id</span>: <span class="integer">2</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tacoma</span><span class="delimiter">&quot;</span></span>
+])
+
+<span class="predefined-type">Writer</span> writer = Writers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">csv</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> csv = writer.write(layer)
+println csv</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>"geom:Point:EPSG:4326","id:Integer","name:String"
+"POINT (-122.3204 47.6024)","1","Seattle"
+"POINT (-122.48416 47.2619)","2","Tacoma"</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">List all Layer Readers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Reader</span>&gt; readers = Readers.list()
+readers.each { <span class="predefined-type">Reader</span> reader -&gt;
+    println reader.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CsvReader
+GeobufReader
+GeoJSONReader
+GeoRSSReader
+GmlReader
+GpxReader
+KmlReader
+MvtReader</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Layer Reader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">Reader</span> reader = Readers.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">csv</span><span class="delimiter">&quot;</span></span>)
+        Layer layer = reader.read(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">&quot;geom:Point:EPSG:4326&quot;,&quot;id:Integer&quot;,&quot;name:String&quot;
+&quot;POINT (-122.3204 47.6024)&quot;,&quot;1&quot;,&quot;Seattle&quot;
+&quot;POINT (-122.48416 47.2619)&quot;,&quot;2&quot;,&quot;Tacoma&quot;
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>)
+        println <span class="string"><span class="delimiter">&quot;</span><span class="content"># features = </span><span class="inline"><span class="inline-delimiter">${</span>layer.count<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># features = 2</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="geojson"><a class="anchor" href="#geojson"></a>GeoJSON</h4>
 <div class="listingblock">
 <div class="title">Get GeoJSON String from a Layer</div>
@@ -777,7 +872,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--5c34851f_15eb4b511a6_-7fd8"
+            "id": "fid-66891162_15ec664257a_-7fd0"
         },
         {
             "type": "Feature",
@@ -792,7 +887,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--5c34851f_15eb4b511a6_-7fd6"
+            "id": "fid-66891162_15ec664257a_-7fce"
         }
     ]
 }</pre>
@@ -883,7 +978,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--5c34851f_15eb4b511a6_-7fe0"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-66891162_15ec664257a_-7fdc"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -905,7 +1000,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--5c34851f_15eb4b511a6_-7fde"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-66891162_15ec664257a_-7fda"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -971,7 +1066,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--5c34851f_15eb4b511a6_-7fdc
+          fid-66891162_15ec664257a_-7fd4
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -998,7 +1093,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--5c34851f_15eb4b511a6_-7fda
+          fid-66891162_15ec664257a_-7fd2
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1035,7 +1130,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-24 16:21:11 UTC
+Last updated 2017-09-28 02:46:29 UTC
 </div>
 </div>
 </body>
