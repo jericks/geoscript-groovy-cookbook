@@ -105,6 +105,44 @@ include::output/layer_list_features.txt[]
 
 The Layer IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
 
+==== Finding Layer Writer and Readers
+
+[source,groovy]
+.List all Layer Writers
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=listLayerWriters,indent=0]
+----
+....
+include::output/layer_list_writers.txt[]
+....
+
+[source,groovy]
+.Find a Layer Writer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=findLayerWriter,indent=0]
+----
+....
+include::output/layer_find_writer.txt[]
+....
+
+[source,groovy]
+.List all Layer Readers
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=listLayerReaders,indent=0]
+----
+....
+include::output/layer_list_readers.txt[]
+....
+
+[source,groovy]
+.Find a Layer Reader
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=findLayerReader,indent=0]
+----
+....
+include::output/layer_find_reader.txt[]
+....
+
 ==== GeoJSON
 
 [source,groovy]

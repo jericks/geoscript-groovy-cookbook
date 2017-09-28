@@ -6,12 +6,15 @@ import geoscript.feature.Schema
 import geoscript.geom.Bounds
 import geoscript.geom.Point
 import geoscript.layer.Layer
+import geoscript.layer.io.Writer
+import geoscript.layer.io.Reader
+import geoscript.layer.io.Readers
+import geoscript.layer.io.Writers
 import geoscript.proj.Projection
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Memory
 import geoscript.workspace.Workspace
 import groovy.json.JsonOutput
-import groovy.xml.XmlUtil
 
 class LayerRecipes extends Recipes {
 
@@ -141,6 +144,69 @@ class LayerRecipes extends Recipes {
     }
 
     // IO
+
+    List<Reader> listLayerReaders() {
+        // tag::listLayerReaders[]
+        List<Reader> readers = Readers.list()
+        readers.each { Reader reader ->
+            println reader.class.simpleName
+        }
+        // end::listLayerReaders[]
+        writeFile("layer_list_readers", "${readers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        readers
+    }
+
+    Layer findLayerReader() {
+        // tag::findLayerReader[]
+        Reader reader = Readers.find("csv")
+        Layer layer = reader.read(""""geom:Point:EPSG:4326","id:Integer","name:String"
+"POINT (-122.3204 47.6024)","1","Seattle"
+"POINT (-122.48416 47.2619)","2","Tacoma"
+""")
+        println "# features = ${layer.count}"
+        // end::findLayerReader[]
+        writeFile("layer_find_reader", "# features = ${layer.count}")
+        layer
+    }
+
+    List<Writer> listLayerWriters() {
+        // tag::listLayerWriters[]
+        List<Writer> writers = Writers.list()
+        writers.each { Writer writer ->
+            println writer.class.simpleName
+        }
+        // end::listLayerWriters[]
+        writeFile("layer_list_writers", "${writers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        writers
+    }
+
+    String findLayerWriter() {
+        // tag::findLayerWriter[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        Writer writer = Writers.find("csv")
+        String csv = writer.write(layer)
+        println csv
+        // end::findLayerWriter[]
+        writeFile("layer_find_writer", "${csv}")
+        csv
+    }
 
     String layerToGeoJSONString() {
         // tag::layerToGeoJSONString[]

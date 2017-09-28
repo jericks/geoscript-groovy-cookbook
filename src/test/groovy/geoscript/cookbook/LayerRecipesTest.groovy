@@ -1,6 +1,7 @@
 package geoscript.cookbook
 
 import geoscript.feature.Feature
+import geoscript.layer.Layer
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -38,6 +39,30 @@ class LayerRecipesTest {
     }
 
     // IO
+
+    @Test void listLayerReaders() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.listLayerReaders()
+        assertNotNull(str)
+    }
+
+    @Test void findLayerReader() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.findLayerReader()
+        assertNotNull(layer)
+    }
+
+    @Test void listLayerWriters() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.listLayerWriters()
+        assertNotNull(str)
+    }
+
+    @Test void findLayerWriter() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.findLayerWriter()
+        assertNotNull(str)
+    }
 
     @Test void layerToGeoJSONString() {
         LayerRecipes recipes = new LayerRecipes()
