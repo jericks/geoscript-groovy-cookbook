@@ -38,6 +38,18 @@ class LayerRecipesTest {
         assertEquals(52, features.size())
     }
 
+    @Test void collectFromFeature() {
+        LayerRecipes recipes = new LayerRecipes()
+        List<String> values = recipes.collectFromFeature()
+        assertEquals(52, values.size())
+    }
+
+    @Test void collectFromFeatureWithOptions() {
+        LayerRecipes recipes = new LayerRecipes()
+        List<String> values = recipes.collectFromFeatureWithOptions()
+        assertEquals(5, values.size())
+    }
+
     // IO
 
     @Test void listLayerReaders() {

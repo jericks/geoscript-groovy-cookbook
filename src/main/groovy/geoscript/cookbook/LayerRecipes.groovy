@@ -143,6 +143,58 @@ class LayerRecipes extends Recipes {
         features
     }
 
+    List<String> collectFromFeature() {
+        // tag::collectFromFeature[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("states")
+        List<String> names = layer.collectFromFeature { Feature f ->
+            f["NAME_1"]
+        }.sort()
+
+        println "# Names = ${names.size()}"
+        names.each { String name ->
+            println name
+        }
+        // end::collectFromFeature[]
+        int count = 0
+        int max = 10
+        String str = "# Names = ${names.size()}${NEW_LINE}"
+        names.each { String name ->
+            if (count < max) {
+                str += name + NEW_LINE
+            }
+            count++
+        }
+        writeFile("layer_collect_from_feature", "${str}...")
+        names
+    }
+
+    List<String> collectFromFeatureWithOptions() {
+        // tag::collectFromFeatureWithOptions[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("states")
+        List<String> names = layer.collectFromFeature(
+            sort: ["NAME_1"],
+            start: 0,
+            max: 5,
+            fields: ["NAME_1"],
+            filter: "NAME_1 LIKE 'M%'") { Feature f ->
+                f["NAME_1"]
+            }
+
+        println "# Names = ${names.size()}"
+        names.each { String name ->
+            println name
+        }
+        // end::collectFromFeatureWithOptions[]
+        String str = "# Names = ${names.size()}${NEW_LINE}"
+        names.each { String name ->
+            str += name + NEW_LINE
+        }
+        writeFile("layer_collect_from_feature_options", "${str}")
+        names
+    }
+
     // IO
 
     List<Reader> listLayerReaders() {

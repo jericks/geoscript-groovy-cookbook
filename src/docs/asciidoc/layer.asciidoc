@@ -101,6 +101,25 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerFeature
 include::output/layer_list_features.txt[]
 ....
 
+[source,groovy]
+.Collect values from a Layer's Features
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=collectFromFeature,indent=0]
+----
+....
+include::output/layer_collect_from_feature.txt[]
+....
+
+[source,groovy]
+.Collect values from a Layer's Features with parameters.
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=collectFromFeatureWithOptions,indent=0]
+----
+....
+include::output/layer_collect_from_feature_options.txt[]
+....
+
+
 === Reading and Writing Features
 
 The Layer IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
