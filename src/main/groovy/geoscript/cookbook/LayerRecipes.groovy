@@ -11,6 +11,7 @@ import geoscript.layer.io.Reader
 import geoscript.layer.io.Readers
 import geoscript.layer.io.Writers
 import geoscript.proj.Projection
+import geoscript.style.io.SimpleStyleReader
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Memory
 import geoscript.workspace.Workspace
@@ -193,6 +194,31 @@ class LayerRecipes extends Recipes {
         }
         writeFile("layer_collect_from_feature_options", "${str}")
         names
+    }
+
+    // Layer Algebra
+
+    void algebra() {
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        draw("layer_ab", [layerA, layerB])
+    }
+
+    Layer clip() {
+        // tag::clip[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Layer layerC = layerA.clip(layerB)
+        // end::clip[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_clip", [layerA, layerB, layerC])
+        layerC
     }
 
     // IO

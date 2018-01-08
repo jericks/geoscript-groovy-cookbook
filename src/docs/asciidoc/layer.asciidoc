@@ -119,6 +119,26 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=collectFromFeat
 include::output/layer_collect_from_feature_options.txt[]
 ....
 
+=== Layer Algebra
+
+GeoScript can do basic layer layer algebra.  All of the examples below use Layer A (red) and Layer B (green).
+
+[.thumb]
+image::layer_ab.png[]
+
+
+==== Clip
+
+[source,groovy]
+.Clip a Layer with another Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=clip,indent=0]
+----
+[.thumb]
+image::layer_clip.png[]
+
+
+
 
 === Reading and Writing Features
 

@@ -50,6 +50,31 @@ class LayerRecipesTest {
         assertEquals(5, values.size())
     }
 
+    // Layer Algebra
+
+    @Test void algebra() {
+        LayerRecipes recipes = new LayerRecipes()
+        recipes.algebra()
+    }
+
+    @Test void clip() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.clip()
+        // Check schema
+        assertEquals "a_b_clipped", layer.name
+        assertTrue layer.schema.has("A")
+        assertFalse layer.schema.has("B")
+        assertEquals "Polygon", layer.schema.geom.typ
+        // Check features
+        assertEquals 3, layer.count
+        assertEquals 2, layer.count("A = 1")
+        assertEquals 1, layer.count("A = 2")
+        assertEquals "POLYGON ((90 100, 90 105, 95 105, 95 100, 90 100))", layer.getFeatures("A = 1")[0].geom.wkt
+        assertEquals "POLYGON ((100 105, 100 100, 97 100, 97 105, 100 105))", layer.getFeatures("A = 1")[1].geom.wkt
+        assertEquals "POLYGON ((120 100, 120 105, 125 105, 125 100, 120 100))", layer.getFeatures("A = 2")[0].geom.wkt
+    }
+
+
     // IO
 
     @Test void listLayerReaders() {
