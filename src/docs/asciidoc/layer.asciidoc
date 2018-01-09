@@ -138,7 +138,7 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=clip,indent=0]
 image::layer_clip.png[]
 
 [source,groovy]
-.Clip B Layer with Layer B
+.Clip Layer B with Layer A
 ----
 include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=clipToWorkspace,indent=0]
 ----
