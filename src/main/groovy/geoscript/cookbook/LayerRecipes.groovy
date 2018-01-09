@@ -12,6 +12,7 @@ import geoscript.layer.io.Readers
 import geoscript.layer.io.Writers
 import geoscript.proj.Projection
 import geoscript.style.io.SimpleStyleReader
+import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Memory
 import geoscript.workspace.Workspace
@@ -218,6 +219,21 @@ class LayerRecipes extends Recipes {
         layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
         layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
         draw("layer_clip", [layerA, layerB, layerC])
+        layerC
+    }
+
+    Layer clipToWorkspace() {
+        // tag::clipToWorkspace[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Workspace outWorkspace = new Directory("target")
+        Layer layerC = layerB.clip(layerA, outWorkspace: outWorkspace, outLayer: "ba_clip")
+        // end::clipToWorkspace[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_clip_to_workspace", [layerA, layerB, layerC])
         layerC
     }
 

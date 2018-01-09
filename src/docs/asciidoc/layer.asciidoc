@@ -130,14 +130,20 @@ image::layer_ab.png[]
 ==== Clip
 
 [source,groovy]
-.Clip a Layer with another Layer
+.Clip Layer A with Layer B
 ----
 include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=clip,indent=0]
 ----
 [.thumb]
 image::layer_clip.png[]
 
-
+[source,groovy]
+.Clip B Layer with Layer B
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=clipToWorkspace,indent=0]
+----
+[.thumb]
+image::layer_clip_to_workspace.png[]
 
 
 === Reading and Writing Features

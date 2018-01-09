@@ -74,6 +74,23 @@ class LayerRecipesTest {
         assertEquals "POLYGON ((120 100, 120 105, 125 105, 125 100, 120 100))", layer.getFeatures("A = 2")[0].geom.wkt
     }
 
+    @Test void clipToWorkspace() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.clipToWorkspace()
+        // Check schema
+        assertEquals "ba_clip", layer.name
+        assertTrue layer.schema.has("B")
+        assertFalse layer.schema.has("A")
+        assertEquals "MultiPolygon", layer.schema.geom.typ
+        // Check features
+        assertEquals 3, layer.count
+        assertEquals 2, layer.count("B = 4")
+        assertEquals 1, layer.count("B = 3")
+        assertEquals "MULTIPOLYGON (((97 100, 97 105, 100 105, 100 100, 97 100)))", layer.getFeatures("B = 4")[0].geom.wkt
+        assertEquals "MULTIPOLYGON (((120 105, 125 105, 125 100, 120 100, 120 105)))", layer.getFeatures("B = 4")[1].geom.wkt
+        assertEquals "MULTIPOLYGON (((90 105, 95 105, 95 100, 90 100, 90 105)))", layer.getFeatures("B = 3")[0].geom.wkt
+    }
+
 
     // IO
 
