@@ -807,7 +807,7 @@ Minnesota</pre>
 <div class="sect3">
 <h4 id="clip"><a class="anchor" href="#clip"></a>Clip</h4>
 <div class="listingblock">
-<div class="title">Clip a Layer with another Layer</div>
+<div class="title">Clip Layer A with Layer B</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
 Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
@@ -818,6 +818,21 @@ Layer layerC = layerA.clip(layerB)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/layer_clip.png" alt="layer clip">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Clip B Layer with Layer B</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Workspace outWorkspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerB.clip(layerA, <span class="key">outWorkspace</span>: outWorkspace, <span class="key">outLayer</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ba_clip</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_clip_to_workspace.png" alt="layer clip to workspace">
 </div>
 </div>
 </div>
@@ -966,7 +981,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-4db5c4e_160d389de60_-7fca"
+            "id": "fid-20a2275f_160d88dbd78_-7fc7"
         },
         {
             "type": "Feature",
@@ -981,7 +996,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-4db5c4e_160d389de60_-7fc8"
+            "id": "fid-20a2275f_160d88dbd78_-7fc5"
         }
     ]
 }</pre>
@@ -1072,7 +1087,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4db5c4e_160d389de60_-7fdc"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-20a2275f_160d88dbd78_-7fd9"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1094,7 +1109,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4db5c4e_160d389de60_-7fda"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-20a2275f_160d88dbd78_-7fd7"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1160,7 +1175,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-4db5c4e_160d389de60_-7fce
+          fid-20a2275f_160d88dbd78_-7fcb
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1187,7 +1202,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-4db5c4e_160d389de60_-7fcc
+          fid-20a2275f_160d88dbd78_-7fc9
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1224,7 +1239,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-08 02:07:53 UTC
+Last updated 2018-01-09 01:29:51 UTC
 </div>
 </div>
 </body>
