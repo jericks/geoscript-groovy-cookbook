@@ -266,6 +266,35 @@ class LayerRecipes extends Recipes {
         layerC
     }
 
+    Layer intersection() {
+        // tag::intersection[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Layer layerC = layerA.intersection(layerB)
+        // end::intersection[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_intersection", [layerA, layerB, layerC])
+        layerC
+    }
+
+    Layer intersectionToWorkspace() {
+        // tag::intersectionToWorkspace[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Workspace outWorkspace = new Directory("target")
+        Layer layerC = layerB.intersection(layerA, outWorkspace: outWorkspace, outLayer: "ba_intersection")
+        // end::intersectionToWorkspace[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_intersection_to_workspace", [layerA, layerB, layerC])
+        layerC
+    }
+
     // IO
 
     List<Reader> listLayerReaders() {
