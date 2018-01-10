@@ -237,6 +237,35 @@ class LayerRecipes extends Recipes {
         layerC
     }
 
+    Layer union() {
+        // tag::union[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Layer layerC = layerA.union(layerB)
+        // end::union[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_union", [layerA, layerB, layerC])
+        layerC
+    }
+
+    Layer unionToWorkspace() {
+        // tag::unionToWorkspace[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Workspace outWorkspace = new Directory("target")
+        Layer layerC = layerB.union(layerA, outWorkspace: outWorkspace, outLayer: "ba_union")
+        // end::unionToWorkspace[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_union_to_workspace", [layerA, layerB, layerC])
+        layerC
+    }
+
     // IO
 
     List<Reader> listLayerReaders() {

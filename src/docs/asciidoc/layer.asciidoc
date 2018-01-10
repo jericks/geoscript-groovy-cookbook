@@ -145,6 +145,23 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=clipToWorkspace
 [.thumb]
 image::layer_clip_to_workspace.png[]
 
+==== Union
+
+[source,groovy]
+.Union Layer A with Layer B
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=union,indent=0]
+----
+[.thumb]
+image::layer_union.png[]
+
+[source,groovy]
+.Union Layer B with Layer A
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=unionToWorkspace,indent=0]
+----
+[.thumb]
+image::layer_union_to_workspace.png[]
 
 === Reading and Writing Features
 
