@@ -726,6 +726,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#layer-algebra">Layer Algebra</a>
 <ul class="sectlevel3">
 <li><a href="#clip">Clip</a></li>
+<li><a href="#intersection">Intersection</a></li>
+<li><a href="#union">Union</a></li>
 </ul>
 </li>
 <li><a href="#reading-and-writing-features-2">Reading and Writing Features</a>
@@ -4964,7 +4966,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--6ed92a4_160d8dad4e2_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-32f527ee_160de8ab506_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5679,7 +5681,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Jan 09 02:58:28 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Jan 10 05:28:40 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5698,7 +5700,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--6ed92a4_160d8dad4e2_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-32f527ee_160de8ab506_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5722,7 +5724,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Jan 09 02:58:28 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Jan 10 05:28:40 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5742,7 +5744,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--6ed92a4_160d8dad4e2_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-32f527ee_160de8ab506_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5904,7 +5906,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--6ed92a4_160d8dad4e2_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-32f527ee_160de8ab506_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5942,7 +5944,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--6ed92a4_160d8dad4e2_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-32f527ee_160de8ab506_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7236,19 +7238,20 @@ vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:isValid
 geo:buffer
+geo:isRing
 geo:union
 geo:intersection
 geo:difference
+geo:area
+geo:numGeometries
+geo:isClosed
 geo:convexHull
 geo:crosses
+geo:distance
 geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
-geo:isClosed
-geo:distance
-geo:area
-geo:numGeometries
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7258,25 +7261,24 @@ geo:touches
 geo:within
 geo:simplify
 geo:densify
+geo:envelope
 geo:numPoints
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
 geo:reproject
-geo:envelope
 geo:getX
 geo:getY
 geo:equalsExact
-geo:isRing
-geo:startPoint
-geo:endPoint
 geo:polygonize
-geo:relatePattern
 geo:pointN
 geo:interiorRingN
 geo:equalsExactTolerance
 geo:splitPolygon
+geo:startPoint
+geo:endPoint
+geo:relatePattern
 geo:length
 geo:isEmpty
 geo:contains
@@ -9613,19 +9615,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>H2 (JNDI)
-GeoPackage
-MySQL (JNDI)
-PostGIS (JNDI)
-Properties
-SpatiaLite (JNDI)
-MySQL
-PostGIS
-Shapefile
+<pre>SpatiaLite (JNDI)
 Geobuf
-Directory of spatial files (shapefiles)
+Shapefile
+PostGIS
+Properties
 H2
-Web Feature Server (NG)</pre>
+H2 (JNDI)
+MySQL (JNDI)
+Directory of spatial files (shapefiles)
+MySQL
+Web Feature Server (NG)
+GeoPackage
+PostGIS (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9735,19 +9737,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>H2 (JNDI)
-GeoPackage
-MySQL (JNDI)
-PostGIS (JNDI)
-Properties
-SpatiaLite (JNDI)
-MySQL
-PostGIS
-Shapefile
+<pre>SpatiaLite (JNDI)
 Geobuf
-Directory of spatial files (shapefiles)
+Shapefile
+PostGIS
+Properties
 H2
-Web Feature Server (NG)</pre>
+H2 (JNDI)
+MySQL (JNDI)
+Directory of spatial files (shapefiles)
+MySQL
+Web Feature Server (NG)
+GeoPackage
+PostGIS (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10325,6 +10327,70 @@ Layer layerC = layerB.clip(layerA, <span class="key">outWorkspace</span>: outWor
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="intersection"><a class="anchor" href="#intersection"></a>Intersection</h4>
+<div class="listingblock">
+<div class="title">Intersection Layer A with Layer B</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerA.intersection(layerB)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_intersection.png" alt="layer intersection">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Intersection Layer B with Layer A</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Workspace outWorkspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerB.intersection(layerA, <span class="key">outWorkspace</span>: outWorkspace, <span class="key">outLayer</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ba_intersection</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_intersection_to_workspace.png" alt="layer intersection to workspace">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="union"><a class="anchor" href="#union"></a>Union</h4>
+<div class="listingblock">
+<div class="title">Union Layer A with Layer B</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerA.union(layerB)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_union.png" alt="layer union">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Union Layer B with Layer A</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Workspace outWorkspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerB.union(layerA, <span class="key">outWorkspace</span>: outWorkspace, <span class="key">outLayer</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ba_union</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_union_to_workspace.png" alt="layer union to workspace">
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-features-2"><a class="anchor" href="#reading-and-writing-features-2"></a>Reading and Writing Features</h3>
@@ -10470,7 +10536,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--6ed92a4_160d8dad4e2_-7fc7"
+            "id": "fid-32f527ee_160de8ab506_-7fa9"
         },
         {
             "type": "Feature",
@@ -10485,7 +10551,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--6ed92a4_160d8dad4e2_-7fc5"
+            "id": "fid-32f527ee_160de8ab506_-7fa7"
         }
     ]
 }</pre>
@@ -10576,7 +10642,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--6ed92a4_160d8dad4e2_-7fd9"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-32f527ee_160de8ab506_-7fcf"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -10598,7 +10664,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--6ed92a4_160d8dad4e2_-7fd7"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-32f527ee_160de8ab506_-7fcd"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -10664,7 +10730,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--6ed92a4_160d8dad4e2_-7fcb
+          fid-32f527ee_160de8ab506_-7fad
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -10691,7 +10757,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--6ed92a4_160d8dad4e2_-7fc9
+          fid-32f527ee_160de8ab506_-7fab
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -10755,7 +10821,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-09 02:54:17 UTC
+Last updated 2018-01-10 05:20:23 UTC
 </div>
 </div>
 </body>
