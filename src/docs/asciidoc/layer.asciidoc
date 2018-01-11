@@ -145,6 +145,24 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=clipToWorkspace
 [.thumb]
 image::layer_clip_to_workspace.png[]
 
+==== Erase
+
+[source,groovy]
+.Erase Layer A with Layer B
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=erase,indent=0]
+----
+[.thumb]
+image::layer_erase.png[]
+
+[source,groovy]
+.Erase Layer B with Layer A
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=eraseToWorkspace,indent=0]
+----
+[.thumb]
+image::layer_erase_to_workspace.png[]
+
 ==== Intersection
 
 [source,groovy]

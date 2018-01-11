@@ -179,6 +179,38 @@ class LayerRecipesTest {
         assertEquals "MULTIPOLYGON (((120 105, 125 105, 125 100, 120 100, 120 105)))", layer.getFeatures("A = 2 AND B = 4")[0].geom.wkt
     }
 
+    @Test void erase() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.erase()
+        // Check schema
+        assertEquals "a_b_erase", layer.name
+        assertTrue layer.schema.has("A")
+        assertFalse layer.schema.has("B")
+        assertEquals "Polygon", layer.schema.geom.typ
+        // Check features
+        assertEquals 2, layer.count
+        assertEquals 1, layer.count("A = 1")
+        assertEquals 1, layer.count("A = 2")
+        assertEquals "POLYGON ((90 105, 90 110, 100 110, 100 105, 97 105, 97 100, 95 100, 95 105, 90 105))", layer.getFeatures("A = 1")[0].geom.wkt
+        assertEquals "POLYGON ((120 105, 120 110, 130 110, 130 100, 125 100, 125 105, 120 105))", layer.getFeatures("A = 2")[0].geom.wkt
+    }
+
+    @Test void eraseToWorkspace() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.eraseToWorkspace()
+        // Check schema
+        assertEquals "ba_erase", layer.name
+        assertTrue layer.schema.has("B")
+        assertFalse layer.schema.has("A")
+        assertEquals "MultiPolygon", layer.schema.geom.typ
+        // Check features
+        assertEquals 2, layer.count
+        assertEquals 1, layer.count("B = 3")
+        assertEquals 1, layer.count("B = 4")
+        assertEquals "MULTIPOLYGON (((85 95, 85 105, 90 105, 90 100, 95 100, 95 95, 85 95)))", layer.getFeatures("B = 3")[0].geom.wkt
+        assertEquals "MULTIPOLYGON (((97 95, 97 100, 100 100, 100 105, 120 105, 120 100, 125 100, 125 95, 97 95)))", layer.getFeatures("B = 4")[0].geom.wkt
+    }
+
     // IO
 
     @Test void listLayerReaders() {

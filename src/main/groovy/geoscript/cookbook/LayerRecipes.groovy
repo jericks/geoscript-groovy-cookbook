@@ -295,6 +295,35 @@ class LayerRecipes extends Recipes {
         layerC
     }
 
+    Layer erase() {
+        // tag::erase[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Layer layerC = layerA.erase(layerB)
+        // end::erase[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_erase", [layerA, layerB, layerC])
+        layerC
+    }
+
+    Layer eraseToWorkspace() {
+        // tag::eraseToWorkspace[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Workspace outWorkspace = new Directory("target")
+        Layer layerC = layerB.erase(layerA, outWorkspace: outWorkspace, outLayer: "ba_erase")
+        // end::eraseToWorkspace[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_erase_to_workspace", [layerA, layerB, layerC])
+        layerC
+    }
+
     // IO
 
     List<Reader> listLayerReaders() {
