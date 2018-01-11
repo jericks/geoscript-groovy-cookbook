@@ -163,6 +163,24 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=eraseToWorkspac
 [.thumb]
 image::layer_erase_to_workspace.png[]
 
+==== Identity
+
+[source,groovy]
+.Identity Layer A with Layer B
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=identity,indent=0]
+----
+[.thumb]
+image::layer_identity.png[]
+
+[source,groovy]
+.Identity Layer B with Layer A
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=identityToWorkspace,indent=0]
+----
+[.thumb]
+image::layer_identity_to_workspace.png[]
+
 ==== Intersection
 
 [source,groovy]

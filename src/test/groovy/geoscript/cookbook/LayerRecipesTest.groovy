@@ -179,6 +179,50 @@ class LayerRecipesTest {
         assertEquals "MULTIPOLYGON (((120 105, 125 105, 125 100, 120 100, 120 105)))", layer.getFeatures("A = 2 AND B = 4")[0].geom.wkt
     }
 
+    @Test void identity() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.identity()
+        // Check schema
+        assertEquals "a_b_identity", layer.name
+        assertTrue layer.schema.has("A")
+        assertTrue layer.schema.has("B")
+        assertEquals "Polygon", layer.schema.geom.typ
+        // Check features
+        assertEquals 5, layer.count
+        assertEquals 1, layer.count("A = 1 AND B = 3")
+        assertEquals 1, layer.count("A = 1 AND B = 4")
+        assertEquals 1, layer.count("A = 1 AND B IS NULL")
+        assertEquals 1, layer.count("A = 2 AND B = 4")
+        assertEquals 1, layer.count("A = 2 AND B IS NULL")
+        assertEquals "POLYGON ((90 100, 90 105, 95 105, 95 100, 90 100))", layer.getFeatures("A = 1 AND B = 3")[0].geom.wkt
+        assertEquals "POLYGON ((100 105, 100 100, 97 100, 97 105, 100 105))", layer.getFeatures("A = 1 AND B = 4")[0].geom.wkt
+        assertEquals "POLYGON ((90 105, 90 110, 100 110, 100 105, 97 105, 97 100, 95 100, 95 105, 90 105))", layer.getFeatures("A = 1 AND B IS NULL")[0].geom.wkt
+        assertEquals "POLYGON ((120 100, 120 105, 125 105, 125 100, 120 100))", layer.getFeatures("A = 2 AND B = 4")[0].geom.wkt
+        assertEquals "POLYGON ((120 105, 120 110, 130 110, 130 100, 125 100, 125 105, 120 105))", layer.getFeatures("A = 2 AND B IS NULL")[0].geom.wkt
+    }
+
+    @Test void identityToWorkspace() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.identityToWorkspace()
+        // Check schema
+        assertEquals "ba_identity", layer.name
+        assertTrue layer.schema.has("A")
+        assertTrue layer.schema.has("B")
+        assertEquals "MultiPolygon", layer.schema.geom.typ
+        // Check features
+        assertEquals 5, layer.count
+        assertEquals 1, layer.count("B = 3 AND A IS NULL")
+        assertEquals 1, layer.count("B = 4 AND A IS NULL")
+        assertEquals 1, layer.count("B = 3 AND A = 1")
+        assertEquals 1, layer.count("B = 4 AND A = 1")
+        assertEquals 1, layer.count("B = 4 AND A = 2")
+        assertEquals "MULTIPOLYGON (((85 95, 85 105, 90 105, 90 100, 95 100, 95 95, 85 95)))", layer.getFeatures("B = 3 AND A IS NULL")[0].geom.wkt
+        assertEquals "MULTIPOLYGON (((97 95, 97 100, 100 100, 100 105, 120 105, 120 100, 125 100, 125 95, 97 95)))", layer.getFeatures("B = 4 AND A IS NULL")[0].geom.wkt
+        assertEquals "MULTIPOLYGON (((90 105, 95 105, 95 100, 90 100, 90 105)))", layer.getFeatures("B = 3 AND A = 1")[0].geom.wkt
+        assertEquals "MULTIPOLYGON (((97 100, 97 105, 100 105, 100 100, 97 100)))", layer.getFeatures("B = 4 AND A = 1")[0].geom.wkt
+        assertEquals "MULTIPOLYGON (((120 105, 125 105, 125 100, 120 100, 120 105)))", layer.getFeatures("B = 4 AND A = 2")[0].geom.wkt
+    }
+
     @Test void erase() {
         LayerRecipes recipes = new LayerRecipes()
         Layer layer = recipes.erase()

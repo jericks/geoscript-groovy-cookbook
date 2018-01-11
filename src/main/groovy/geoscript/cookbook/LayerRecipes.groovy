@@ -295,6 +295,35 @@ class LayerRecipes extends Recipes {
         layerC
     }
 
+    Layer identity() {
+        // tag::identity[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Layer layerC = layerA.identity(layerB)
+        // end::identity[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_identity", [layerA, layerB, layerC])
+        layerC
+    }
+
+    Layer identityToWorkspace() {
+        // tag::identityToWorkspace[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Workspace outWorkspace = new Directory("target")
+        Layer layerC = layerB.identity(layerA, outWorkspace: outWorkspace, outLayer: "ba_identity")
+        // end::identityToWorkspace[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_identity_to_workspace", [layerA, layerB, layerC])
+        layerC
+    }
+
     Layer erase() {
         // tag::erase[]
         Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
