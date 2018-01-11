@@ -522,6 +522,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#layer-algebra">Layer Algebra</a>
 <ul class="sectlevel3">
 <li><a href="#clip">Clip</a></li>
+<li><a href="#erase">Erase</a></li>
+<li><a href="#intersection">Intersection</a></li>
 <li><a href="#union">Union</a></li>
 </ul>
 </li>
@@ -838,6 +840,70 @@ Layer layerC = layerB.clip(layerA, <span class="key">outWorkspace</span>: outWor
 </div>
 </div>
 <div class="sect3">
+<h4 id="erase"><a class="anchor" href="#erase"></a>Erase</h4>
+<div class="listingblock">
+<div class="title">Erase Layer A with Layer B</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerA.erase(layerB)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_erase.png" alt="layer erase">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Erase Layer B with Layer A</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Workspace outWorkspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerB.erase(layerA, <span class="key">outWorkspace</span>: outWorkspace, <span class="key">outLayer</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ba_erase</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_erase_to_workspace.png" alt="layer erase to workspace">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="intersection"><a class="anchor" href="#intersection"></a>Intersection</h4>
+<div class="listingblock">
+<div class="title">Intersection Layer A with Layer B</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerA.intersection(layerB)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_intersection.png" alt="layer intersection">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Intersection Layer B with Layer A</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Workspace outWorkspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerB.intersection(layerA, <span class="key">outWorkspace</span>: outWorkspace, <span class="key">outLayer</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ba_intersection</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_intersection_to_workspace.png" alt="layer intersection to workspace">
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="union"><a class="anchor" href="#union"></a>Union</h4>
 <div class="listingblock">
 <div class="title">Union Layer A with Layer B</div>
@@ -1014,7 +1080,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--47fb627a_160de8aa777_-7fb2"
+            "id": "fid-13fa5098_160e2a7a312_-7fa7"
         },
         {
             "type": "Feature",
@@ -1029,7 +1095,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--47fb627a_160de8aa777_-7fb0"
+            "id": "fid-13fa5098_160e2a7a312_-7fa5"
         }
     ]
 }</pre>
@@ -1120,7 +1186,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--47fb627a_160de8aa777_-7fd2"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-13fa5098_160e2a7a312_-7fcf"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1142,7 +1208,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--47fb627a_160de8aa777_-7fd0"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-13fa5098_160e2a7a312_-7fcd"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1208,7 +1274,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--47fb627a_160de8aa777_-7fb6
+          fid-13fa5098_160e2a7a312_-7fab
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1235,7 +1301,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--47fb627a_160de8aa777_-7fb4
+          fid-13fa5098_160e2a7a312_-7fa9
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1272,7 +1338,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-10 05:23:04 UTC
+Last updated 2018-01-11 00:34:28 UTC
 </div>
 </div>
 </body>
