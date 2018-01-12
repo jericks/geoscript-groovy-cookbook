@@ -525,6 +525,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#erase">Erase</a></li>
 <li><a href="#identity">Identity</a></li>
 <li><a href="#intersection">Intersection</a></li>
+<li><a href="#symmetric-difference">Symmetric Difference</a></li>
 <li><a href="#update">Update</a></li>
 <li><a href="#union">Union</a></li>
 </ul>
@@ -938,6 +939,38 @@ Layer layerC = layerB.intersection(layerA, <span class="key">outWorkspace</span>
 </div>
 </div>
 <div class="sect3">
+<h4 id="symmetric-difference"><a class="anchor" href="#symmetric-difference"></a>Symmetric Difference</h4>
+<div class="listingblock">
+<div class="title">Symmetric Difference Layer A with Layer B</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerA.symDifference(layerB)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_symDifference.png" alt="layer symDifference">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Symmetric Difference Layer B with Layer A</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/layeralgebra.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer layerA = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>)
+Layer layerB = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>)
+Workspace outWorkspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>)
+Layer layerC = layerB.symDifference(layerA, <span class="key">outWorkspace</span>: outWorkspace, <span class="key">outLayer</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ba_symdifference</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_symDifference_to_workspace.png" alt="layer symDifference to workspace">
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="update"><a class="anchor" href="#update"></a>Update</h4>
 <div class="listingblock">
 <div class="title">Update Layer A with Layer B</div>
@@ -1146,7 +1179,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-3ddfe829_160e7c7b14c_-7f91"
+            "id": "fid-6c826521_160e839e46d_-7f85"
         },
         {
             "type": "Feature",
@@ -1161,7 +1194,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-3ddfe829_160e7c7b14c_-7f8f"
+            "id": "fid-6c826521_160e839e46d_-7f83"
         }
     ]
 }</pre>
@@ -1252,7 +1285,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-3ddfe829_160e7c7b14c_-7fc3"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-6c826521_160e839e46d_-7fbf"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1274,7 +1307,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-3ddfe829_160e7c7b14c_-7fc1"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-6c826521_160e839e46d_-7fbd"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1340,7 +1373,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-3ddfe829_160e7c7b14c_-7f95
+          fid-6c826521_160e839e46d_-7f89
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1367,7 +1400,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-3ddfe829_160e7c7b14c_-7f93
+          fid-6c826521_160e839e46d_-7f87
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1404,7 +1437,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-12 00:27:25 UTC
+Last updated 2018-01-12 02:32:01 UTC
 </div>
 </div>
 </body>
