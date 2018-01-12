@@ -353,6 +353,35 @@ class LayerRecipes extends Recipes {
         layerC
     }
 
+    Layer update() {
+        // tag::update[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Layer layerC = layerA.update(layerB)
+        // end::update[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_update", [layerA, layerB, layerC])
+        layerC
+    }
+
+    Layer updateToWorkspace() {
+        // tag::updateToWorkspace[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Workspace outWorkspace = new Directory("target")
+        Layer layerC = layerB.update(layerA, outWorkspace: outWorkspace, outLayer: "ba_update")
+        // end::updateToWorkspace[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_update_to_workspace", [layerA, layerB, layerC])
+        layerC
+    }
+
     // IO
 
     List<Reader> listLayerReaders() {

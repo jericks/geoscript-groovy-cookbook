@@ -121,11 +121,10 @@ include::output/layer_collect_from_feature_options.txt[]
 
 === Layer Algebra
 
-GeoScript can do basic layer layer algebra.  All of the examples below use Layer A (red) and Layer B (green).
+GeoScript can do layer algebra.  All of the examples below use Layer A (red) and Layer B (green).
 
 [.thumb]
 image::layer_ab.png[]
-
 
 ==== Clip
 
@@ -198,6 +197,24 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=intersectionToW
 ----
 [.thumb]
 image::layer_intersection_to_workspace.png[]
+
+==== Update
+
+[source,groovy]
+.Update Layer A with Layer B
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=update,indent=0]
+----
+[.thumb]
+image::layer_update.png[]
+
+[source,groovy]
+.Update Layer B with Layer A
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=updateToWorkspace,indent=0]
+----
+[.thumb]
+image::layer_update_to_workspace.png[]
 
 ==== Union
 

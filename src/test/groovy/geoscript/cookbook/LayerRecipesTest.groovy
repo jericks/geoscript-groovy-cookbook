@@ -255,6 +255,44 @@ class LayerRecipesTest {
         assertEquals "MULTIPOLYGON (((97 95, 97 100, 100 100, 100 105, 120 105, 120 100, 125 100, 125 95, 97 95)))", layer.getFeatures("B = 4")[0].geom.wkt
     }
 
+    @Test void update() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.update()
+        // Check schema
+        assertEquals "a_b_update", layer.name
+        assertTrue layer.schema.has("A")
+        assertFalse layer.schema.has("B")
+        assertEquals "Polygon", layer.schema.geom.typ
+        // Check features
+        assertEquals 4, layer.count
+        assertEquals 1, layer.count("A = 1")
+        assertEquals 1, layer.count("A = 2")
+        assertEquals 2, layer.count("A IS NULL")
+        assertEquals "POLYGON ((90 105, 90 110, 100 110, 100 105, 97 105, 97 100, 95 100, 95 105, 90 105))", layer.getFeatures("A = 1")[0].geom.wkt
+        assertEquals "POLYGON ((120 105, 120 110, 130 110, 130 100, 125 100, 125 105, 120 105))", layer.getFeatures("A = 2")[0].geom.wkt
+        assertEquals "POLYGON ((85 95, 85 105, 95 105, 95 95, 85 95))", layer.getFeatures("A IS NULL")[0].geom.wkt
+        assertEquals "POLYGON ((97 95, 97 105, 125 105, 125 95, 97 95))", layer.getFeatures("A IS NULL")[1].geom.wkt
+    }
+
+    @Test void updateToWorkspace() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.updateToWorkspace()
+        // Check schema
+        assertEquals "ba_update", layer.name
+        assertTrue layer.schema.has("B")
+        assertFalse layer.schema.has("A")
+        assertEquals "MultiPolygon", layer.schema.geom.typ
+        // Check features
+        assertEquals 4, layer.count
+        assertEquals 1, layer.count("B = 3")
+        assertEquals 1, layer.count("B = 4")
+        assertEquals 2, layer.count("B IS NULL")
+        assertEquals "MULTIPOLYGON (((85 95, 85 105, 90 105, 90 100, 95 100, 95 95, 85 95)))", layer.getFeatures("B = 3")[0].geom.wkt
+        assertEquals "MULTIPOLYGON (((97 95, 97 100, 100 100, 100 105, 120 105, 120 100, 125 100, 125 95, 97 95)))", layer.getFeatures("B = 4")[0].geom.wkt
+        assertEquals "MULTIPOLYGON (((120 100, 120 110, 130 110, 130 100, 120 100)))", layer.getFeatures("B IS NULL")[0].geom.wkt
+        assertEquals "MULTIPOLYGON (((90 100, 90 110, 100 110, 100 100, 90 100)))", layer.getFeatures("B IS NULL")[1].geom.wkt
+    }
+
     // IO
 
     @Test void listLayerReaders() {
