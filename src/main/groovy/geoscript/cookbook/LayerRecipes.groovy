@@ -382,6 +382,35 @@ class LayerRecipes extends Recipes {
         layerC
     }
 
+    Layer symDifference() {
+        // tag::symDifference[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Layer layerC = layerA.symDifference(layerB)
+        // end::symDifference[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_symDifference", [layerA, layerB, layerC])
+        layerC
+    }
+
+    Layer symDifferenceToWorkspace() {
+        // tag::symDifferenceToWorkspace[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/layeralgebra.gpkg"))
+        Layer layerA = workspace.get("a")
+        Layer layerB = workspace.get("b")
+        Workspace outWorkspace = new Directory("target")
+        Layer layerC = layerB.symDifference(layerA, outWorkspace: outWorkspace, outLayer: "ba_symdifference")
+        // end::symDifferenceToWorkspace[]
+        layerA.style = new SimpleStyleReader().read("fill=red fill-opacity=0.75")
+        layerB.style = new SimpleStyleReader().read("fill=green fill-opacity=0.75")
+        layerC.style = new SimpleStyleReader().read("fill=blue fill-opacity=0.75")
+        draw("layer_symDifference_to_workspace", [layerA, layerB, layerC])
+        layerC
+    }
+
     // IO
 
     List<Reader> listLayerReaders() {

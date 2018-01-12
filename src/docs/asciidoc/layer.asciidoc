@@ -198,6 +198,24 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=intersectionToW
 [.thumb]
 image::layer_intersection_to_workspace.png[]
 
+==== Symmetric Difference
+
+[source,groovy]
+.Symmetric Difference Layer A with Layer B
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=symDifference,indent=0]
+----
+[.thumb]
+image::layer_symDifference.png[]
+
+[source,groovy]
+.Symmetric Difference Layer B with Layer A
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=symDifferenceToWorkspace,indent=0]
+----
+[.thumb]
+image::layer_symDifference_to_workspace.png[]
+
 ==== Update
 
 [source,groovy]
