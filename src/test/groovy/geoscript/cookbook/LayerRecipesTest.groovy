@@ -50,6 +50,15 @@ class LayerRecipesTest {
         assertEquals(5, values.size())
     }
 
+    // Geoprocessing
+
+    @Test void buffer() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.buffer()
+        assertEquals("Polygon", layer.schema.geom.typ)
+        assertEquals(326, layer.count)
+    }
+
     // Layer Algebra
 
     @Test void algebra() {

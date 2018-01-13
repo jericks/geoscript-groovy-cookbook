@@ -119,6 +119,19 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=collectFromFeat
 include::output/layer_collect_from_feature_options.txt[]
 ....
 
+=== Geoprocessing
+
+==== Buffer
+
+[source,groovy]
+.Buffer a Layer of populated places
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=buffer,indent=0]
+----
+[.thumb]
+image::layer_buffer.png[]
+
+
 === Layer Algebra
 
 GeoScript can do layer algebra.  All of the examples below use Layer A (red) and Layer B (green).

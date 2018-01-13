@@ -11,6 +11,7 @@ import geoscript.layer.io.Reader
 import geoscript.layer.io.Readers
 import geoscript.layer.io.Writers
 import geoscript.proj.Projection
+import geoscript.style.Shape
 import geoscript.style.io.SimpleStyleReader
 import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
@@ -195,6 +196,20 @@ class LayerRecipes extends Recipes {
         }
         writeFile("layer_collect_from_feature_options", "${str}")
         names
+    }
+
+    // Geoprocessing
+
+    Layer buffer() {
+        // tag::buffer[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/data.gpkg"))
+        Layer places = workspace.get("places")
+        Layer buffer = places.buffer(5)
+        // end::buffer[]
+        places.style = new Shape("navy")
+        buffer.style = new SimpleStyleReader().read("fill=deepskyblue fill-opacity=0.75 stroke=black stroke-width=0.2")
+        drawOnBasemap("layer_buffer", [buffer, places])
+        buffer
     }
 
     // Layer Algebra
