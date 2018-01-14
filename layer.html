@@ -522,6 +522,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geoprocessing">Geoprocessing</a>
 <ul class="sectlevel3">
 <li><a href="#buffer">Buffer</a></li>
+<li><a href="#split">Split</a></li>
 </ul>
 </li>
 <li><a href="#layer-algebra">Layer Algebra</a>
@@ -820,6 +821,38 @@ Layer buffer = places.buffer(<span class="integer">5</span>)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/layer_buffer.png" alt="layer buffer">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="split"><a class="anchor" href="#split"></a>Split</h4>
+<div class="listingblock">
+<div class="title">Split a Layer into Layers based on the value from a Field</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>))
+Layer rivers = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">rivers</span><span class="delimiter">&quot;</span></span>)
+Workspace outWorkspace = <span class="keyword">new</span> Memory()
+rivers.split(rivers.schema.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">scalerank</span><span class="delimiter">&quot;</span></span>), outWorkspace)
+
+outWorkspace.layers.each { Layer layer -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>layer.name<span class="inline-delimiter">}</span></span><span class="content"> has </span><span class="inline"><span class="inline-delimiter">${</span>layer.count<span class="inline-delimiter">}</span></span><span class="content"> features</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>rivers_0 has 1 features
+rivers_1 has 27 features
+rivers_2 has 35 features
+rivers_3 has 53 features
+rivers_4 has 71 features
+rivers_5 has 67 features
+rivers_6 has 206 features</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_splitbyfield.png" alt="layer splitbyfield">
 </div>
 </div>
 </div>
@@ -1203,7 +1236,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--755504a7_160ed083fb5_-7cf9"
+            "id": "fid-7c1b3ddd_160f6ec65e0_-7961"
         },
         {
             "type": "Feature",
@@ -1218,7 +1251,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--755504a7_160ed083fb5_-7cf7"
+            "id": "fid-7c1b3ddd_160f6ec65e0_-795f"
         }
     ]
 }</pre>
@@ -1309,7 +1342,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--755504a7_160ed083fb5_-7d33"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-7c1b3ddd_160f6ec65e0_-7d33"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1331,7 +1364,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--755504a7_160ed083fb5_-7d31"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-7c1b3ddd_160f6ec65e0_-7d31"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1397,7 +1430,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--755504a7_160ed083fb5_-7cfd
+          fid-7c1b3ddd_160f6ec65e0_-7965
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1424,7 +1457,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--755504a7_160ed083fb5_-7cfb
+          fid-7c1b3ddd_160f6ec65e0_-7963
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1461,7 +1494,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-13 00:56:02 UTC
+Last updated 2018-01-14 23:01:11 UTC
 </div>
 </div>
 </body>
