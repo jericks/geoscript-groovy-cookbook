@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.feature.Feature
 import geoscript.feature.Field
 import geoscript.feature.Schema
+import geoscript.filter.Color
 import geoscript.geom.Bounds
 import geoscript.geom.Point
 import geoscript.layer.Layer
@@ -12,6 +13,7 @@ import geoscript.layer.io.Readers
 import geoscript.layer.io.Writers
 import geoscript.proj.Projection
 import geoscript.style.Shape
+import geoscript.style.Stroke
 import geoscript.style.io.SimpleStyleReader
 import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
@@ -210,6 +212,27 @@ class LayerRecipes extends Recipes {
         buffer.style = new SimpleStyleReader().read("fill=deepskyblue fill-opacity=0.75 stroke=black stroke-width=0.2")
         drawOnBasemap("layer_buffer", [buffer, places])
         buffer
+    }
+
+    Workspace splitByField() {
+        // tag::splitByField[]
+        Workspace workspace = new GeoPackage(new File("src/main/resources/data.gpkg"))
+        Layer rivers = workspace.get("rivers")
+        Workspace outWorkspace = new Memory()
+        rivers.split(rivers.schema.get("scalerank"), outWorkspace)
+        
+        outWorkspace.layers.each { Layer layer ->
+            println "${layer.name} has ${layer.count} features"
+        }
+        // end::splitByField[]
+        List<Layer> layers = outWorkspace.layers
+        List<Color> colors = Color.getPaletteColors("BlueToYellowToRedHeatMap")
+        layers.eachWithIndex { Layer layer, int index ->
+            layer.style = new Stroke(colors[index], 1)
+        }
+        drawOnBasemap("layer_splitbyfield", layers)
+        writeFile("layer_splitbyfield", outWorkspace.layers.collect { Layer layer -> "${layer.name} has ${layer.count} features" }.join(NEW_LINE))
+        outWorkspace
     }
 
     // Layer Algebra

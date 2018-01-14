@@ -131,6 +131,20 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=buffer,indent=0
 [.thumb]
 image::layer_buffer.png[]
 
+==== Split
+
+[source,groovy]
+.Split a Layer into Layers based on the value from a Field
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=splitByField,indent=0]
+----
+
+....
+include::output/layer_splitbyfield.txt[]
+....
+
+[.thumb]
+image::layer_splitbyfield.png[]
 
 === Layer Algebra
 

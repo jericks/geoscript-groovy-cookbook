@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.feature.Feature
 import geoscript.layer.Layer
+import geoscript.workspace.Workspace
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -57,6 +58,12 @@ class LayerRecipesTest {
         Layer layer = recipes.buffer()
         assertEquals("Polygon", layer.schema.geom.typ)
         assertEquals(326, layer.count)
+    }
+
+    @Test void splitByField() {
+        LayerRecipes recipes = new LayerRecipes()
+        Workspace workspace = recipes.splitByField()
+        assertEquals(7, workspace.layers.size())
     }
 
     // Layer Algebra
