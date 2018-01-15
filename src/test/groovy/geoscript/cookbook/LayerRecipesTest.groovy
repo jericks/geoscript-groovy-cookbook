@@ -66,6 +66,12 @@ class LayerRecipesTest {
         assertEquals(7, workspace.layers.size())
     }
 
+    @Test void splitByLayer() {
+        LayerRecipes recipes = new LayerRecipes()
+        Workspace workspace = recipes.splitByLayer()
+        assertEquals(6, workspace.layers.size())
+    }
+
     // Layer Algebra
 
     @Test void algebra() {

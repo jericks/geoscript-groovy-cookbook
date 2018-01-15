@@ -146,6 +146,19 @@ include::output/layer_splitbyfield.txt[]
 [.thumb]
 image::layer_splitbyfield.png[]
 
+[source,groovy]
+.Split a Layer into Layers based on another Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=splitByLayer,indent=0]
+----
+
+....
+include::output/layer_splitbylayer.txt[]
+....
+
+[.thumb]
+image::layer_splitbylayer.png[]
+
 === Layer Algebra
 
 GeoScript can do layer algebra.  All of the examples below use Layer A (red) and Layer B (green).

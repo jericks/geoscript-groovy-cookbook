@@ -214,13 +214,53 @@ class LayerRecipes extends Recipes {
         buffer
     }
 
+    Workspace splitByLayer() {
+        // tag::splitByLayer[]
+        Schema schema = new Schema("grid",[
+                new Field("geom","Polygon","EPSG:4326"),
+                new Field("col","int"),
+                new Field("row","int"),
+                new Field("row_col","string")
+        ])
+        Workspace gridWorkspace = new Directory("target")
+        Layer gridLayer = gridWorkspace.create(schema)
+        new Bounds(-180,-90,180,90,"EPSG:4326").generateGrid(2, 3, "polygon", {cell, col, row ->
+            gridLayer.add([
+                    "geom": cell,
+                    "col": col,
+                    "row": row,
+                    "row_col": "${row} ${col}"
+            ])
+        })
+
+        Workspace workspace = new GeoPackage(new File("src/main/resources/data.gpkg"))
+        Layer countries = workspace.get("countries")
+
+        Workspace outWorkspace = new Memory()
+        countries.split(gridLayer,gridLayer.schema.get("row_col"),outWorkspace)
+        
+        outWorkspace.layers.each { Layer layer ->
+            println "${layer.name} has ${layer.count} features"
+        }
+        // end::splitByLayer[]
+        List<Layer> layers = outWorkspace.layers
+        List<Color> colors = Color.getPaletteColors("Dark2")
+        layers.eachWithIndex { Layer layer, int index ->
+            layer.style = new Stroke(colors[index], 1)
+        }
+        gridLayer.style = new Stroke("black", 1.0, [5,2])
+        drawOnBasemap("layer_splitbylayer", [layers, gridLayer].flatten())
+        writeFile("layer_splitbylayer", outWorkspace.layers.collect { Layer layer -> "${layer.name} has ${layer.count} features" }.join(NEW_LINE))
+        outWorkspace
+    }
+
     Workspace splitByField() {
         // tag::splitByField[]
         Workspace workspace = new GeoPackage(new File("src/main/resources/data.gpkg"))
         Layer rivers = workspace.get("rivers")
         Workspace outWorkspace = new Memory()
         rivers.split(rivers.schema.get("scalerank"), outWorkspace)
-        
+
         outWorkspace.layers.each { Layer layer ->
             println "${layer.name} has ${layer.count} features"
         }
