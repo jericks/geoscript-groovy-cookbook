@@ -131,6 +131,16 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=buffer,indent=0
 [.thumb]
 image::layer_buffer.png[]
 
+==== Dissolve
+
+[source,groovy]
+.Dissolve a Layer by a Field
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=dissolve,indent=0]
+----
+[.thumb]
+image::layer_dissolve.png[]
+
 ==== Split
 
 [source,groovy]

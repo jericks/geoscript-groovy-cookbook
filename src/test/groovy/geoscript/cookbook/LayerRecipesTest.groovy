@@ -53,6 +53,13 @@ class LayerRecipesTest {
 
     // Geoprocessing
 
+    @Test void dissolve() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.dissolve()
+        assertEquals("MultiPolygon", layer.schema.geom.typ)
+        assertEquals(9, layer.count)
+    }
+
     @Test void buffer() {
         LayerRecipes recipes = new LayerRecipes()
         Layer layer = recipes.buffer()

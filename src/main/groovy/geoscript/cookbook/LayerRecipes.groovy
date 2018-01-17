@@ -14,6 +14,7 @@ import geoscript.layer.io.Writers
 import geoscript.proj.Projection
 import geoscript.style.Shape
 import geoscript.style.Stroke
+import geoscript.style.UniqueValues
 import geoscript.style.io.SimpleStyleReader
 import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
@@ -201,6 +202,18 @@ class LayerRecipes extends Recipes {
     }
 
     // Geoprocessing
+
+    Layer dissolve() {
+        // tag::dissolve[]
+        Workspace workspace = new Directory(new File("src/main/resources/data"))
+        Layer states = workspace.get("states")
+        Layer regions = states.dissolve(states.schema.get("SUB_REGION"))
+        // end::dissolve[]
+        states.style = new Stroke("black", 0.5)
+        regions.style = new UniqueValues(regions, regions.schema.get("SUB_REGION"), Color.getPaletteColors("MutedTerrain"))
+        drawOnBasemap("layer_dissolve", [states, regions], states.bounds)
+        regions
+    }
 
     Layer buffer() {
         // tag::buffer[]
