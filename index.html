@@ -726,6 +726,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geoprocessing">Geoprocessing</a>
 <ul class="sectlevel3">
 <li><a href="#buffer">Buffer</a></li>
+<li><a href="#dissolve">Dissolve</a></li>
 <li><a href="#split">Split</a></li>
 </ul>
 </li>
@@ -4976,7 +4977,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--616fc73c_160fa83492e_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--11ba180a_16102598fb3_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5691,7 +5692,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Jan 15 15:49:56 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Jan 17 04:21:19 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5710,7 +5711,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--616fc73c_160fa83492e_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--11ba180a_16102598fb3_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5734,7 +5735,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Jan 15 15:49:56 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Jan 17 04:21:19 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5754,7 +5755,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--616fc73c_160fa83492e_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--11ba180a_16102598fb3_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5916,7 +5917,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--616fc73c_160fa83492e_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--11ba180a_16102598fb3_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5954,7 +5955,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--616fc73c_160fa83492e_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--11ba180a_16102598fb3_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7216,55 +7217,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:isValid
-geo:buffer
-geo:union
-geo:intersection
-geo:difference
-geo:area
-geo:numGeometries
-geo:distance
-geo:symDifference
-geo:isClosed
-geo:convexHull
-geo:crosses
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:simplify
-geo:densify
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:touches
-geo:within
-geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:reproject
-geo:envelope
-geo:getX
-geo:getY
-geo:equalsExact
-geo:isRing
-geo:polygonize
-geo:startPoint
-geo:endPoint
-geo:relatePattern
-geo:equalsExactTolerance
-geo:pointN
-geo:interiorRingN
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7294,6 +7247,54 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:isValid
+geo:buffer
+geo:union
+geo:intersection
+geo:difference
+geo:startPoint
+geo:endPoint
+geo:area
+geo:numGeometries
+geo:symDifference
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isClosed
+geo:distance
+geo:convexHull
+geo:crosses
+geo:boundary
+geo:relatePattern
+geo:numPoints
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:reproject
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:getX
+geo:getY
+geo:envelope
+geo:isRing
+geo:polygonize
+geo:equalsExact
+geo:pointN
+geo:equalsExactTolerance
+geo:interiorRingN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
 ras:AddCoverages
 ras:Affine
 ras:AreaGrid
@@ -9625,19 +9626,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Web Feature Server (NG)
-MySQL
-PostGIS (JNDI)
-H2 (JNDI)
-GeoPackage
-SpatiaLite (JNDI)
-Geobuf
-H2
-MySQL (JNDI)
-Directory of spatial files (shapefiles)
-PostGIS
+<pre>PostGIS
 Properties
-Shapefile</pre>
+Web Feature Server (NG)
+PostGIS (JNDI)
+Shapefile
+MySQL (JNDI)
+H2
+MySQL
+Directory of spatial files (shapefiles)
+H2 (JNDI)
+Geobuf
+SpatiaLite (JNDI)
+GeoPackage</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9747,19 +9748,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Web Feature Server (NG)
-MySQL
-PostGIS (JNDI)
-H2 (JNDI)
-GeoPackage
-SpatiaLite (JNDI)
-Geobuf
-H2
-MySQL (JNDI)
-Directory of spatial files (shapefiles)
-PostGIS
+<pre>PostGIS
 Properties
-Shapefile</pre>
+Web Feature Server (NG)
+PostGIS (JNDI)
+Shapefile
+MySQL (JNDI)
+H2
+MySQL
+Directory of spatial files (shapefiles)
+H2 (JNDI)
+Geobuf
+SpatiaLite (JNDI)
+GeoPackage</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10314,6 +10315,22 @@ Layer buffer = places.buffer(<span class="integer">5</span>)</code></pre>
 </div>
 </div>
 <div class="sect3">
+<h4 id="dissolve"><a class="anchor" href="#dissolve"></a>Dissolve</h4>
+<div class="listingblock">
+<div class="title">Dissolve a Layer by a Field</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Directory(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data</span><span class="delimiter">&quot;</span></span>))
+Layer states = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+Layer regions = states.dissolve(states.schema.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">SUB_REGION</span><span class="delimiter">&quot;</span></span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_dissolve.png" alt="layer dissolve">
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="split"><a class="anchor" href="#split"></a>Split</h4>
 <div class="listingblock">
 <div class="title">Split a Layer into Layers based on the value from a Field</div>
@@ -10771,7 +10788,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--616fc73c_160fa83492e_-77b1"
+            "id": "fid--11ba180a_16102598fb3_-779f"
         },
         {
             "type": "Feature",
@@ -10786,7 +10803,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--616fc73c_160fa83492e_-77af"
+            "id": "fid--11ba180a_16102598fb3_-779d"
         }
     ]
 }</pre>
@@ -10877,7 +10894,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--616fc73c_160fa83492e_-7d33"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--11ba180a_16102598fb3_-7d33"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -10899,7 +10916,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--616fc73c_160fa83492e_-7d31"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--11ba180a_16102598fb3_-7d31"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -10965,7 +10982,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--616fc73c_160fa83492e_-77b5
+          fid--11ba180a_16102598fb3_-77a3
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -10992,7 +11009,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--616fc73c_160fa83492e_-77b3
+          fid--11ba180a_16102598fb3_-77a1
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -11056,7 +11073,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-15 15:44:06 UTC
+Last updated 2018-01-17 04:12:41 UTC
 </div>
 </div>
 </body>

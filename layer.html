@@ -522,6 +522,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geoprocessing">Geoprocessing</a>
 <ul class="sectlevel3">
 <li><a href="#buffer">Buffer</a></li>
+<li><a href="#dissolve">Dissolve</a></li>
 <li><a href="#split">Split</a></li>
 </ul>
 </li>
@@ -821,6 +822,22 @@ Layer buffer = places.buffer(<span class="integer">5</span>)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/layer_buffer.png" alt="layer buffer">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="dissolve"><a class="anchor" href="#dissolve"></a>Dissolve</h4>
+<div class="listingblock">
+<div class="title">Dissolve a Layer by a Field</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Directory(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data</span><span class="delimiter">&quot;</span></span>))
+Layer states = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+Layer regions = states.dissolve(states.schema.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">SUB_REGION</span><span class="delimiter">&quot;</span></span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_dissolve.png" alt="layer dissolve">
 </div>
 </div>
 </div>
@@ -1282,7 +1299,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--616fc73c_160fa83492e_-77b1"
+            "id": "fid--11ba180a_16102598fb3_-779f"
         },
         {
             "type": "Feature",
@@ -1297,7 +1314,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--616fc73c_160fa83492e_-77af"
+            "id": "fid--11ba180a_16102598fb3_-779d"
         }
     ]
 }</pre>
@@ -1388,7 +1405,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--616fc73c_160fa83492e_-7d33"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--11ba180a_16102598fb3_-7d33"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1410,7 +1427,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--616fc73c_160fa83492e_-7d31"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--11ba180a_16102598fb3_-7d31"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1476,7 +1493,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--616fc73c_160fa83492e_-77b5
+          fid--11ba180a_16102598fb3_-77a3
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1503,7 +1520,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--616fc73c_160fa83492e_-77b3
+          fid--11ba180a_16102598fb3_-77a1
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1540,7 +1557,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-15 15:44:06 UTC
+Last updated 2018-01-17 04:12:41 UTC
 </div>
 </div>
 </body>
