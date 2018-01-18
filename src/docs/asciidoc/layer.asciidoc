@@ -141,6 +141,21 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=dissolve,indent
 [.thumb]
 image::layer_dissolve.png[]
 
+==== Merge
+
+[source,groovy]
+.Merge two Layer together
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=merge,indent=0]
+----
+
+....
+include::output/layer_merge.txt[]
+....
+
+[.thumb]
+image::layer_merge.png[]
+
 ==== Split
 
 [source,groovy]

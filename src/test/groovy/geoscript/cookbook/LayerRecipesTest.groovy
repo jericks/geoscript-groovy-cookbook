@@ -67,6 +67,13 @@ class LayerRecipesTest {
         assertEquals(326, layer.count)
     }
 
+    @Test void merge() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.merge()
+        assertEquals("Point", layer.schema.geom.typ)
+        assertEquals(100, layer.count)
+    }
+
     @Test void splitByField() {
         LayerRecipes recipes = new LayerRecipes()
         Workspace workspace = recipes.splitByField()

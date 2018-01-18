@@ -5,6 +5,8 @@ import geoscript.feature.Field
 import geoscript.feature.Schema
 import geoscript.filter.Color
 import geoscript.geom.Bounds
+import geoscript.geom.Geometry
+import geoscript.geom.MultiPoint
 import geoscript.geom.Point
 import geoscript.layer.Layer
 import geoscript.layer.io.Writer
@@ -203,6 +205,51 @@ class LayerRecipes extends Recipes {
 
     // Geoprocessing
 
+    Layer merge() {
+        // tag::merge[]
+        Workspace workspace = new Directory(new File("src/main/resources/data"))
+        Layer states = workspace.get("states")
+        Feature washington = states.first(filter: "STATE_NAME='Washington'")
+        Feature oregon = states.first(filter: "STATE_NAME='Oregon'")
+
+        Schema waSchema = new Schema("washington",[
+                new Field("geom","Point","EPSG:4326"),
+                new Field("id","int")
+        ])
+        Layer waLayer = new Memory().create(waSchema)
+        waLayer.withWriter { geoscript.layer.Writer writer ->
+            Geometry.createRandomPoints(washington.geom, 50).points.eachWithIndex { Point pt, int index ->
+                writer.add(waSchema.feature([geom: pt, id: index]))
+            }
+        }
+        println "The Washington Layer  has ${waLayer.count} features"
+
+        Schema orSchema = new Schema("oregon",[
+                new Field("geom","Point","EPSG:4326"),
+                new Field("id","int")
+        ])
+        Layer orLayer = new Memory().create(orSchema)
+        orLayer.withWriter { geoscript.layer.Writer writer ->
+            Geometry.createRandomPoints(oregon.geom, 50).points.eachWithIndex { Point pt, int index ->
+                writer.add(orSchema.feature([geom: pt, id: index]))
+            }
+        }
+        println "The Oregon Layer  has ${orLayer.count} features"
+
+        Layer mergedLayer = orLayer.merge(waLayer)
+        println "The merged Layer has ${mergedLayer.count} features"
+        // end::merge[]
+        states.style = new Stroke("black", 0.5)
+        mergedLayer.style = new Shape("#ADD8E6", 8) + new Stroke("blue", 0.5)
+        drawOnBasemap("layer_merge", [mergedLayer, states], washington.bounds.expand(oregon.bounds))
+        writeFile("layer_merge","""
+The Washington Layer  has ${waLayer.count} features 
+The Oregon Layer  has ${orLayer.count} features
+The merged Layer has ${mergedLayer.count} features
+""")
+        mergedLayer
+    }
+
     Layer dissolve() {
         // tag::dissolve[]
         Workspace workspace = new Directory(new File("src/main/resources/data"))
@@ -211,7 +258,7 @@ class LayerRecipes extends Recipes {
         // end::dissolve[]
         states.style = new Stroke("black", 0.5)
         regions.style = new UniqueValues(regions, regions.schema.get("SUB_REGION"), Color.getPaletteColors("MutedTerrain"))
-        drawOnBasemap("layer_dissolve", [states, regions], states.bounds)
+        drawOnBasemap("layer_dissolve", [regions, states], states.bounds)
         regions
     }
 
