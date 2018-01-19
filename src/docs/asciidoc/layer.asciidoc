@@ -184,6 +184,23 @@ include::output/layer_splitbylayer.txt[]
 [.thumb]
 image::layer_splitbylayer.png[]
 
+==== Transform
+
+[source,groovy]
+.Transform one Layer into another Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=transform,indent=0]
+----
+
+....
+include::output/layer_transform.txt[]
+....
+
+[.thumb]
+image::layer_transform.png[]
+
+
+
 === Layer Algebra
 
 GeoScript can do layer algebra.  All of the examples below use Layer A (red) and Layer B (green).

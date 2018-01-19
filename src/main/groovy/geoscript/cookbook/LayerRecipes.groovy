@@ -335,6 +335,30 @@ The merged Layer has ${mergedLayer.count} features
         outWorkspace
     }
 
+    Layer transform() {
+        // tag::transform[]
+        Workspace workspace = new Directory(new File("src/main/resources/data"))
+        Layer states = workspace.get("states")
+        Layer centroids = states.transform("centroids", [
+            geom: "centroid(the_geom)",
+            name: "strToUpperCase(STATE_NAME)",
+            ratio: "FEMALE / MALE"
+        ])
+        centroids.eachFeature(max: 5) {Feature f ->
+            println "${f.geom} ${f['name']} = ${f['ratio']}"
+        }
+        // end::transform[]
+        states.style = new Stroke("black", 0.5)
+        Workspace outWorkspace = new Directory("target")
+        Layer layer = outWorkspace.add(centroids)
+        layer.style = new Shape("#ADD8E6", 8) + new Stroke("blue", 0.5)
+        drawOnBasemap("layer_transform", [layer, states], states.bounds)
+        writeFile("layer_transform", centroids.collectFromFeature(max: 5) {Feature f ->
+            "${f['name']} = ${f['ratio']}"
+        }.join(NEW_LINE))
+        centroids
+    }
+
     // Layer Algebra
 
     void algebra() {

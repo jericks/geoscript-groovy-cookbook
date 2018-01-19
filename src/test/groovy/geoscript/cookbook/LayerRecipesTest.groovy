@@ -86,6 +86,13 @@ class LayerRecipesTest {
         assertEquals(6, workspace.layers.size())
     }
 
+    @Test void transform() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.transform()
+        assertEquals("Point", layer.schema.geom.typ)
+        assertEquals(49, layer.count)
+    }
+
     // Layer Algebra
 
     @Test void algebra() {
