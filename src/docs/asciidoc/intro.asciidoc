@@ -1,0 +1,9 @@
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/groovy]
+
+== Introduction
+
+GeoScript is a geospatial library written in Groovy. It provides modules
+for working with geometry, projections, features, layers, rasters, styles, rendering, and tiles.
+It is built on top of the Java Topology Suite (JTS) and GeoTools libraries.
+

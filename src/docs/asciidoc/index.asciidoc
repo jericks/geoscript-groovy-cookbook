@@ -3,6 +3,8 @@ Jared Erickson
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
+include::intro.asciidoc[]
+
 include::geometry.asciidoc[]
 
 include::bounds.asciidoc[]
