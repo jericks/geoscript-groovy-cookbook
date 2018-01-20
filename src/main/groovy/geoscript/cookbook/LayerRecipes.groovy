@@ -8,6 +8,7 @@ import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.MultiPoint
 import geoscript.geom.Point
+import geoscript.layer.Graticule
 import geoscript.layer.Layer
 import geoscript.layer.io.Writer
 import geoscript.layer.io.Reader
@@ -752,5 +753,32 @@ The merged Layer has ${mergedLayer.count} features
         Node node = new XmlParser().parseText(xml)
         nodePrinter.print(node)
         writer.toString()
+    }
+
+    // Graticule
+
+    Layer createSquareGraticule() {
+        // tag::createSquareGraticule[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        double length = 20
+        double spacing = 5
+        Layer layer = Graticule.createSquares(bounds, length, spacing)
+        // end::createSquareGraticule[]
+        layer.style = new Stroke("black", 0.5)
+        drawOnBasemap("layer_graticule_square", [layer])
+        layer
+    }
+
+    Layer createSquareGraticuleToShapefile() {
+        // tag::createSquareGraticuleToShapefile[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        double length = 30
+        double spacing = -1
+        Workspace workspace = new Directory("target")
+        Layer layer = Graticule.createSquares(bounds, length, spacing, workspace: workspace, layer: "squares")
+        // end::createSquareGraticuleToShapefile[]
+        layer.style = new Stroke("black", 0.5)
+        drawOnBasemap("layer_graticule_square_shp", [layer])
+        layer
     }
 }

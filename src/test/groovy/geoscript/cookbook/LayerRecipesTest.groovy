@@ -426,4 +426,19 @@ class LayerRecipesTest {
         assertNotNull(str)
     }
 
+    // Graticule
+
+    @Test void createSquareGraticule() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createSquareGraticule()
+        assertEquals("Polygon", layer.schema.geom.typ)
+        assertEquals(162, layer.count)
+    }
+
+    @Test void createSquareGraticuleToShapefile() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createSquareGraticuleToShapefile()
+        assertEquals("MultiPolygon", layer.schema.geom.typ)
+        assertEquals(72, layer.count)
+    }
 }

@@ -199,8 +199,6 @@ include::output/layer_transform.txt[]
 [.thumb]
 image::layer_transform.png[]
 
-
-
 === Layer Algebra
 
 GeoScript can do layer algebra.  All of the examples below use Layer A (red) and Layer B (green).
@@ -421,3 +419,22 @@ include::output/layer_to_kml_string.txt[]
 ....
 
 
+=== Graticules
+
+==== Square
+
+[source,groovy]
+.Create a square graticules Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createSquareGraticule,indent=0]
+----
+[.thumb]
+image::layer_graticule_square.png[]
+
+[source,groovy]
+.Create a square graticules Shapefile Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createSquareGraticuleToShapefile,indent=0]
+----
+[.thumb]
+image::layer_graticule_square_shp.png[]
