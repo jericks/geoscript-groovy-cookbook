@@ -441,4 +441,18 @@ class LayerRecipesTest {
         assertEquals("MultiPolygon", layer.schema.geom.typ)
         assertEquals(72, layer.count)
     }
+
+    @Test void createHexagonGraticule() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createHexagonGraticule()
+        assertEquals("Polygon", layer.schema.geom.typ)
+        assertEquals(50, layer.count)
+    }
+
+    @Test void createAngledHexagonGraticule() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createAngledHexagonGraticule()
+        assertEquals("Polygon", layer.schema.geom.typ)
+        assertEquals(220, layer.count)
+    }
 }

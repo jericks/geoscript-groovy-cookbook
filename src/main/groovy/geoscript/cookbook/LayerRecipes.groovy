@@ -781,4 +781,30 @@ The merged Layer has ${mergedLayer.count} features
         drawOnBasemap("layer_graticule_square_shp", [layer])
         layer
     }
+
+    Layer createHexagonGraticule() {
+        // tag::createHexagonGraticule[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        double length = 20
+        double spacing = 5
+        String orientation = "flat"
+        Layer layer = Graticule.createHexagons(bounds, length, spacing, orientation)
+        // end::createHexagonGraticule[]
+        layer.style = new Stroke("black", 0.5)
+        drawOnBasemap("layer_graticule_hexagon", [layer])
+        layer
+    }
+
+    Layer createAngledHexagonGraticule() {
+        // tag::createAngledHexagonGraticule[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        double length = 10
+        double spacing = 5
+        String orientation = "angled"
+        Layer layer = Graticule.createHexagons(bounds, length, spacing, orientation)
+        // end::createAngledHexagonGraticule[]
+        layer.style = new Stroke("black", 0.5)
+        drawOnBasemap("layer_graticule_hexagon_angled", [layer])
+        layer
+    }
 }

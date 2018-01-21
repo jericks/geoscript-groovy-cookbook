@@ -438,3 +438,21 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createSquareGra
 ----
 [.thumb]
 image::layer_graticule_square_shp.png[]
+
+==== Hexagon
+
+[source,groovy]
+.Create a flat hexagon graticules Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createHexagonGraticule,indent=0]
+----
+[.thumb]
+image::layer_graticule_hexagon.png[]
+
+[source,groovy]
+.Create a angled hexagon graticules Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createAngledHexagonGraticule,indent=0]
+----
+[.thumb]
+image::layer_graticule_hexagon_angled.png[]
