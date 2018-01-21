@@ -753,6 +753,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#kml-3">KML</a></li>
 </ul>
 </li>
+<li><a href="#graticules">Graticules</a>
+<ul class="sectlevel3">
+<li><a href="#square">Square</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#format-recipes">Format Recipes</a></li>
@@ -4990,7 +4995,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--715f528_1610c3d48d7_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-4ca190b0_16115e8899e_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5705,7 +5710,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Jan 19 02:26:38 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Jan 20 23:30:16 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5724,7 +5729,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--715f528_1610c3d48d7_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-4ca190b0_16115e8899e_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5748,7 +5753,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Jan 19 02:26:38 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Jan 20 23:30:16 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5768,7 +5773,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--715f528_1610c3d48d7_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-4ca190b0_16115e8899e_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5930,7 +5935,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--715f528_1610c3d48d7_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-4ca190b0_16115e8899e_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5968,7 +5973,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--715f528_1610c3d48d7_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-4ca190b0_16115e8899e_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7265,44 +7270,44 @@ geo:buffer
 geo:union
 geo:intersection
 geo:difference
-geo:pointN
 geo:area
 geo:numGeometries
 geo:symDifference
-geo:distance
+geo:convexHull
+geo:crosses
 geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
-geo:convexHull
-geo:crosses
+geo:distance
 geo:isClosed
-geo:equalsExactTolerance
-geo:reproject
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
 geo:relate
 geo:touches
 geo:within
 geo:simplify
 geo:densify
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
+geo:reproject
 geo:numPoints
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
+geo:envelope
 geo:getX
 geo:getY
-geo:envelope
-geo:interiorRingN
-geo:isRing
 geo:equalsExact
+geo:isRing
 geo:polygonize
-geo:splitPolygon
 geo:startPoint
 geo:endPoint
 geo:relatePattern
+geo:pointN
+geo:interiorRingN
+geo:equalsExactTolerance
+geo:splitPolygon
 geo:length
 geo:isEmpty
 geo:contains
@@ -9639,19 +9644,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Geobuf
-MySQL
-MySQL (JNDI)
+<pre>SpatiaLite (JNDI)
+Geobuf
+Shapefile
 PostGIS
+Properties
 H2
 H2 (JNDI)
-Web Feature Server (NG)
-PostGIS (JNDI)
-SpatiaLite (JNDI)
-Shapefile
+MySQL (JNDI)
 Directory of spatial files (shapefiles)
+MySQL
+Web Feature Server (NG)
 GeoPackage
-Properties</pre>
+PostGIS (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9761,19 +9766,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Geobuf
-MySQL
-MySQL (JNDI)
+<pre>SpatiaLite (JNDI)
+Geobuf
+Shapefile
 PostGIS
+Properties
 H2
 H2 (JNDI)
-Web Feature Server (NG)
-PostGIS (JNDI)
-SpatiaLite (JNDI)
-Shapefile
+MySQL (JNDI)
 Directory of spatial files (shapefiles)
+MySQL
+Web Feature Server (NG)
 GeoPackage
-Properties</pre>
+PostGIS (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10884,7 +10889,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--715f528_1610c3d48d7_-75de"
+            "id": "fid-4ca190b0_16115e8899e_-740a"
         },
         {
             "type": "Feature",
@@ -10899,7 +10904,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--715f528_1610c3d48d7_-75dc"
+            "id": "fid-4ca190b0_16115e8899e_-7408"
         }
     ]
 }</pre>
@@ -10990,7 +10995,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--715f528_1610c3d48d7_-7d33"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4ca190b0_16115e8899e_-7b5f"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -11012,7 +11017,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--715f528_1610c3d48d7_-7d31"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4ca190b0_16115e8899e_-7b5d"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -11078,7 +11083,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--715f528_1610c3d48d7_-7613
+          fid-4ca190b0_16115e8899e_-743f
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -11105,7 +11110,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--715f528_1610c3d48d7_-7611
+          fid-4ca190b0_16115e8899e_-743d
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -11133,6 +11138,41 @@ println kml</code></pre>
     &lt;/kml:Folder&gt;
   &lt;/kml:Document&gt;
 &lt;/kml:kml&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="graticules"><a class="anchor" href="#graticules"></a>Graticules</h3>
+<div class="sect3">
+<h4 id="square"><a class="anchor" href="#square"></a>Square</h4>
+<div class="listingblock">
+<div class="title">Create a square graticules Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="type">double</span> length = <span class="integer">20</span>
+<span class="type">double</span> spacing = <span class="integer">5</span>
+Layer layer = Graticule.createSquares(bounds, length, spacing)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_graticule_square.png" alt="layer graticule square">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a square graticules Shapefile Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="type">double</span> length = <span class="integer">30</span>
+<span class="type">double</span> spacing = -<span class="integer">1</span>
+Workspace workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>)
+Layer layer = Graticule.createSquares(bounds, length, spacing, <span class="key">workspace</span>: workspace, <span class="key">layer</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">squares</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_graticule_square_shp.png" alt="layer graticule square shp">
 </div>
 </div>
 </div>
@@ -11169,7 +11209,7 @@ println kml</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-19 02:21:09 UTC
+Last updated 2018-01-20 23:25:10 UTC
 </div>
 </div>
 </body>

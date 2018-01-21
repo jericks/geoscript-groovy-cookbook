@@ -548,6 +548,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#kml">KML</a></li>
 </ul>
 </li>
+<li><a href="#graticules">Graticules</a>
+<ul class="sectlevel3">
+<li><a href="#square">Square</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1384,7 +1389,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--715f528_1610c3d48d7_-75de"
+            "id": "fid-4ca190b0_16115e8899e_-740a"
         },
         {
             "type": "Feature",
@@ -1399,7 +1404,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--715f528_1610c3d48d7_-75dc"
+            "id": "fid-4ca190b0_16115e8899e_-7408"
         }
     ]
 }</pre>
@@ -1490,7 +1495,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--715f528_1610c3d48d7_-7d33"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4ca190b0_16115e8899e_-7b5f"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1512,7 +1517,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--715f528_1610c3d48d7_-7d31"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4ca190b0_16115e8899e_-7b5d"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1578,7 +1583,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--715f528_1610c3d48d7_-7613
+          fid-4ca190b0_16115e8899e_-743f
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1605,7 +1610,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--715f528_1610c3d48d7_-7611
+          fid-4ca190b0_16115e8899e_-743d
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1637,12 +1642,47 @@ println kml</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="graticules"><a class="anchor" href="#graticules"></a>Graticules</h3>
+<div class="sect3">
+<h4 id="square"><a class="anchor" href="#square"></a>Square</h4>
+<div class="listingblock">
+<div class="title">Create a square graticules Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="type">double</span> length = <span class="integer">20</span>
+<span class="type">double</span> spacing = <span class="integer">5</span>
+Layer layer = Graticule.createSquares(bounds, length, spacing)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_graticule_square.png" alt="layer graticule square">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a square graticules Shapefile Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+<span class="type">double</span> length = <span class="integer">30</span>
+<span class="type">double</span> spacing = -<span class="integer">1</span>
+Workspace workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>)
+Layer layer = Graticule.createSquares(bounds, length, spacing, <span class="key">workspace</span>: workspace, <span class="key">layer</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">squares</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_graticule_square_shp.png" alt="layer graticule square shp">
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-19 02:21:09 UTC
+Last updated 2018-01-20 23:25:10 UTC
 </div>
 </div>
 </body>
