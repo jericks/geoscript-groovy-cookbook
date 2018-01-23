@@ -456,3 +456,11 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createAngledHex
 ----
 [.thumb]
 image::layer_graticule_hexagon_angled.png[]
+
+[source,groovy]
+.Create a hexagon graticules Layer intersecting Washington States
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createIntersectingOnlyHexagonGraticule,indent=0]
+----
+[.thumb]
+image::layer_graticule_hexagon_intersecting.png[]

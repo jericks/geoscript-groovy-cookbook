@@ -10,6 +10,7 @@ import geoscript.geom.MultiPoint
 import geoscript.geom.Point
 import geoscript.layer.Graticule
 import geoscript.layer.Layer
+import geoscript.layer.Shapefile
 import geoscript.layer.io.Writer
 import geoscript.layer.io.Reader
 import geoscript.layer.io.Readers
@@ -24,6 +25,7 @@ import geoscript.workspace.GeoPackage
 import geoscript.workspace.Memory
 import geoscript.workspace.Workspace
 import groovy.json.JsonOutput
+import org.geotools.grid.GridElement
 
 class LayerRecipes extends Recipes {
 
@@ -807,4 +809,20 @@ The merged Layer has ${mergedLayer.count} features
         drawOnBasemap("layer_graticule_hexagon_angled", [layer])
         layer
     }
+
+    Layer createIntersectingOnlyHexagonGraticule() {
+        // tag::createIntersectingOnlyHexagonGraticule[]
+        Layer states = new Shapefile("src/main/resources/data/states.shp")
+        Feature feature = states.first(filter: "STATE_NAME = 'Washington'")
+        Layer layer = Graticule.createHexagons(feature.bounds.expandBy(1.0), 0.2, -1.0, "flat", createFeature: { GridElement e ->
+            new Point(e.center.x, e.center.y).buffer(0.2).intersects(feature.geom)
+        })
+        // end::createIntersectingOnlyHexagonGraticule[]
+        layer.style = new Stroke("black", 0.5)
+        states.style = new Stroke("black", 0.5)
+        drawOnBasemap("layer_graticule_hexagon_intersecting", [states, layer], layer.bounds.expandBy(1))
+        layer
+    }
+
+
 }

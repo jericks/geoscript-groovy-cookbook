@@ -455,4 +455,11 @@ class LayerRecipesTest {
         assertEquals("Polygon", layer.schema.geom.typ)
         assertEquals(220, layer.count)
     }
+
+    @Test void createIntersectingOnlyHexagonGraticule() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createIntersectingOnlyHexagonGraticule()
+        assertEquals("Polygon", layer.schema.geom.typ)
+        assertEquals(239, layer.count)
+    }
 }
