@@ -4996,7 +4996,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-617cb598_1611ad61f33_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--cbe8774_1612060a32d_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5711,7 +5711,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Jan 21 22:28:15 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Jan 23 00:17:39 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5730,7 +5730,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-617cb598_1611ad61f33_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--cbe8774_1612060a32d_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5754,7 +5754,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Jan 21 22:28:16 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Jan 23 00:17:39 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5774,7 +5774,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-617cb598_1611ad61f33_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--cbe8774_1612060a32d_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5936,7 +5936,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-617cb598_1611ad61f33_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--cbe8774_1612060a32d_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5974,7 +5974,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-617cb598_1611ad61f33_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--cbe8774_1612060a32d_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7236,7 +7236,73 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>vec:Aggregate
+<pre>ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage
+geo:isValid
+geo:buffer
+geo:union
+geo:intersection
+geo:difference
+geo:area
+geo:numGeometries
+geo:symDifference
+geo:convexHull
+geo:crosses
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:isClosed
+geo:distance
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:reproject
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:getX
+geo:getY
+geo:isRing
+geo:equalsExact
+geo:polygonize
+geo:interiorRingN
+geo:startPoint
+geo:endPoint
+geo:relatePattern
+geo:pointN
+geo:equalsExactTolerance
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7265,73 +7331,7 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics
-geo:union
-geo:intersection
-geo:isValid
-geo:buffer
-geo:difference
-geo:area
-geo:numGeometries
-geo:isClosed
-geo:symDifference
-geo:distance
-geo:convexHull
-geo:crosses
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:numPoints
-geo:reproject
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:envelope
-geo:getX
-geo:getY
-geo:isRing
-geo:equalsExact
-geo:polygonize
-geo:startPoint
-geo:endPoint
-geo:relatePattern
-geo:pointN
-geo:equalsExactTolerance
-geo:interiorRingN
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage</pre>
+vec:VectorZonalStatistics</pre>
 </div>
 </div>
 </div>
@@ -9645,19 +9645,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Properties
+<pre>SpatiaLite (JNDI)
 GeoPackage
-MySQL
-SpatiaLite (JNDI)
-Web Feature Server (NG)
-Geobuf
-MySQL (JNDI)
-PostGIS (JNDI)
-Shapefile
-H2
+Properties
 H2 (JNDI)
+MySQL
 PostGIS
-Directory of spatial files (shapefiles)</pre>
+PostGIS (JNDI)
+Web Feature Server (NG)
+H2
+Directory of spatial files (shapefiles)
+MySQL (JNDI)
+Geobuf
+Shapefile</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9767,19 +9767,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Properties
+<pre>SpatiaLite (JNDI)
 GeoPackage
-MySQL
-SpatiaLite (JNDI)
-Web Feature Server (NG)
-Geobuf
-MySQL (JNDI)
-PostGIS (JNDI)
-Shapefile
-H2
+Properties
 H2 (JNDI)
+MySQL
 PostGIS
-Directory of spatial files (shapefiles)</pre>
+PostGIS (JNDI)
+Web Feature Server (NG)
+H2
+Directory of spatial files (shapefiles)
+MySQL (JNDI)
+Geobuf
+Shapefile</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10890,7 +10890,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-617cb598_1611ad61f33_-71ee"
+            "id": "fid--cbe8774_1612060a32d_-7010"
         },
         {
             "type": "Feature",
@@ -10905,7 +10905,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-617cb598_1611ad61f33_-71ec"
+            "id": "fid--cbe8774_1612060a32d_-700e"
         }
     ]
 }</pre>
@@ -10996,7 +10996,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-617cb598_1611ad61f33_-7943"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--cbe8774_1612060a32d_-7943"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -11018,7 +11018,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-617cb598_1611ad61f33_-7941"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--cbe8774_1612060a32d_-7941"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -11084,7 +11084,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-617cb598_1611ad61f33_-7223
+          fid--cbe8774_1612060a32d_-7045
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -11111,7 +11111,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-617cb598_1611ad61f33_-7221
+          fid--cbe8774_1612060a32d_-7043
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -11209,6 +11209,21 @@ Layer layer = Graticule.createHexagons(bounds, length, spacing, orientation)</co
 <img src="./images/layer_graticule_hexagon_angled.png" alt="layer graticule hexagon angled">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a hexagon graticules Layer intersecting Washington States</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Layer states = <span class="keyword">new</span> Shapefile(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data/states.shp</span><span class="delimiter">&quot;</span></span>)
+Feature feature = states.first(<span class="key">filter</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">STATE_NAME = 'Washington'</span><span class="delimiter">&quot;</span></span>)
+Layer layer = Graticule.createHexagons(feature.bounds.expandBy(<span class="float">1.0</span>), <span class="float">0.2</span>, -<span class="float">1.0</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">flat</span><span class="delimiter">&quot;</span></span>, <span class="key">createFeature</span>: { GridElement e -&gt;
+    <span class="keyword">new</span> <span class="predefined-type">Point</span>(e.center.x, e.center.y).buffer(<span class="float">0.2</span>).intersects(feature.geom)
+})</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_graticule_hexagon_intersecting.png" alt="layer graticule hexagon intersecting">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -11243,7 +11258,7 @@ Layer layer = Graticule.createHexagons(bounds, length, spacing, orientation)</co
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-21 22:22:58 UTC
+Last updated 2018-01-23 00:12:27 UTC
 </div>
 </div>
 </body>

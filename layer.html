@@ -1390,7 +1390,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-617cb598_1611ad61f33_-71ee"
+            "id": "fid--cbe8774_1612060a32d_-7010"
         },
         {
             "type": "Feature",
@@ -1405,7 +1405,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-617cb598_1611ad61f33_-71ec"
+            "id": "fid--cbe8774_1612060a32d_-700e"
         }
     ]
 }</pre>
@@ -1496,7 +1496,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-617cb598_1611ad61f33_-7943"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--cbe8774_1612060a32d_-7943"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1518,7 +1518,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-617cb598_1611ad61f33_-7941"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--cbe8774_1612060a32d_-7941"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1584,7 +1584,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-617cb598_1611ad61f33_-7223
+          fid--cbe8774_1612060a32d_-7045
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1611,7 +1611,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-617cb598_1611ad61f33_-7221
+          fid--cbe8774_1612060a32d_-7043
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1709,6 +1709,21 @@ Layer layer = Graticule.createHexagons(bounds, length, spacing, orientation)</co
 <img src="./images/layer_graticule_hexagon_angled.png" alt="layer graticule hexagon angled">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a hexagon graticules Layer intersecting Washington States</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Layer states = <span class="keyword">new</span> Shapefile(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data/states.shp</span><span class="delimiter">&quot;</span></span>)
+Feature feature = states.first(<span class="key">filter</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">STATE_NAME = 'Washington'</span><span class="delimiter">&quot;</span></span>)
+Layer layer = Graticule.createHexagons(feature.bounds.expandBy(<span class="float">1.0</span>), <span class="float">0.2</span>, -<span class="float">1.0</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">flat</span><span class="delimiter">&quot;</span></span>, <span class="key">createFeature</span>: { GridElement e -&gt;
+    <span class="keyword">new</span> <span class="predefined-type">Point</span>(e.center.x, e.center.y).buffer(<span class="float">0.2</span>).intersects(feature.geom)
+})</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_graticule_hexagon_intersecting.png" alt="layer graticule hexagon intersecting">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1716,7 +1731,7 @@ Layer layer = Graticule.createHexagons(bounds, length, spacing, orientation)</co
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-21 22:22:58 UTC
+Last updated 2018-01-23 00:12:27 UTC
 </div>
 </div>
 </body>
