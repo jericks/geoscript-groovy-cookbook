@@ -462,4 +462,11 @@ class LayerRecipesTest {
         assertEquals("Polygon", layer.schema.geom.typ)
         assertEquals(239, layer.count)
     }
+
+    @Test void createCustomSchemaHexagonGraticule() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createCustomSchemaHexagonGraticule()
+        assertEquals("Polygon", layer.schema.geom.typ)
+        assertEquals(117, layer.count)
+    }
 }

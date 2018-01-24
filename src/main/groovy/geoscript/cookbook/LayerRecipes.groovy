@@ -4,6 +4,7 @@ import geoscript.feature.Feature
 import geoscript.feature.Field
 import geoscript.feature.Schema
 import geoscript.filter.Color
+import geoscript.filter.Property
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.MultiPoint
@@ -16,6 +17,7 @@ import geoscript.layer.io.Reader
 import geoscript.layer.io.Readers
 import geoscript.layer.io.Writers
 import geoscript.proj.Projection
+import geoscript.style.Fill
 import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.UniqueValues
@@ -824,5 +826,21 @@ The merged Layer has ${mergedLayer.count} features
         layer
     }
 
+    Layer createCustomSchemaHexagonGraticule() {
+        // tag::createCustomSchemaHexagonGraticule[]
+        Layer states = new Shapefile("src/main/resources/data/states.shp")
+        Schema schema = new Schema("hexagon", [
+                new Field("geom", "Polygon"),
+                new Field("color", "java.awt.Color")
+        ])
+        Bounds b = states.bounds.expandBy(1)
+        Layer layer = Graticule.createHexagons(b, 2.0, -1.0, "flat", schema: schema, setAttributes: { GridElement e, Map attributes ->
+            attributes["color"] = Color.randomPastel.asColor()
+        })
+        layer.style = new Fill(new Property("color"), 0.5)
+        // end::createCustomSchemaHexagonGraticule[]
+        drawOnBasemap("layer_graticule_hexagon_customschema", [layer], layer.bounds.expandBy(1))
+        layer
+    }
 
 }

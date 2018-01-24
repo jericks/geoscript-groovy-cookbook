@@ -464,3 +464,11 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createIntersect
 ----
 [.thumb]
 image::layer_graticule_hexagon_intersecting.png[]
+
+[source,groovy]
+.Create a hexagon graticules Layer with a custom schema
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createCustomSchemaHexagonGraticule,indent=0]
+----
+[.thumb]
+image::layer_graticule_hexagon_customschema.png[]
