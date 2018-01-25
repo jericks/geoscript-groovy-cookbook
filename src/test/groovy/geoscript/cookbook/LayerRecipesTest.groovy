@@ -469,4 +469,18 @@ class LayerRecipesTest {
         assertEquals("Polygon", layer.schema.geom.typ)
         assertEquals(133, layer.count)
     }
+
+    @Test void createLineGraticule() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createLineGraticule()
+        assertEquals("LineString", layer.schema.geom.typ)
+        assertEquals(56, layer.count)
+    }
+
+    @Test void createRectangularGraticule() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createRectangularGraticule()
+        assertEquals("Polygon", layer.schema.geom.typ)
+        assertEquals(324, layer.count)
+    }
 }

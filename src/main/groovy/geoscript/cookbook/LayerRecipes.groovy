@@ -843,4 +843,31 @@ The merged Layer has ${mergedLayer.count} features
         layer
     }
 
+    Layer createLineGraticule() {
+        // tag::createLineGraticule[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        Layer layer = Graticule.createLines(bounds, [
+                [orientation: 'vertical',   level: 2, spacing: 20],
+                [orientation: 'vertical',   level: 1, spacing: 10 ],
+                [orientation: 'horizontal', level: 2, spacing: 20],
+                [orientation: 'horizontal', level: 1, spacing: 10 ]
+        ], 2.0)
+        // end::createLineGraticule[]
+        layer.style = new Stroke("black", 0.2)
+        drawOnBasemap("layer_graticule_lines", [layer], bounds)
+        layer
+    }
+
+    Layer createRectangularGraticule() {
+        // tag::createRectangularGraticule[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        double width = 20
+        double height = 10
+        Layer layer = Graticule.createRectangles(bounds, width, height, -1)
+        // end::createRectangularGraticule[]
+        layer.style = new Stroke("black", 0.2)
+        drawOnBasemap("layer_graticule_rect", [layer], bounds)
+        layer
+    }
+
 }
