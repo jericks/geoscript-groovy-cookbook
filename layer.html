@@ -1390,7 +1390,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-31956c30_16120ee44a0_-7010"
+            "id": "fid--6c32a5a6_1612ad65c16_-6f06"
         },
         {
             "type": "Feature",
@@ -1405,7 +1405,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-31956c30_16120ee44a0_-700e"
+            "id": "fid--6c32a5a6_1612ad65c16_-6f04"
         }
     ]
 }</pre>
@@ -1496,7 +1496,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-31956c30_16120ee44a0_-7943"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--6c32a5a6_1612ad65c16_-7839"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1518,7 +1518,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-31956c30_16120ee44a0_-7941"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--6c32a5a6_1612ad65c16_-7837"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1584,7 +1584,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-31956c30_16120ee44a0_-7045
+          fid--6c32a5a6_1612ad65c16_-6f3b
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1611,7 +1611,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-31956c30_16120ee44a0_-7043
+          fid--6c32a5a6_1612ad65c16_-6f39
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1724,6 +1724,26 @@ Layer layer = Graticule.createHexagons(feature.bounds.expandBy(<span class="floa
 <img src="./images/layer_graticule_hexagon_intersecting.png" alt="layer graticule hexagon intersecting">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a hexagon graticules Layer with a custom schema</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Layer states = <span class="keyword">new</span> Shapefile(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data/states.shp</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">hexagon</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">color</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">java.awt.Color</span><span class="delimiter">&quot;</span></span>)
+])
+Bounds b = states.bounds.expandBy(<span class="integer">1</span>)
+Layer layer = Graticule.createHexagons(b, <span class="float">2.0</span>, -<span class="float">1.0</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">flat</span><span class="delimiter">&quot;</span></span>, <span class="key">schema</span>: schema, <span class="key">setAttributes</span>: { GridElement e, <span class="predefined-type">Map</span> attributes -&gt;
+    attributes[<span class="string"><span class="delimiter">&quot;</span><span class="content">color</span><span class="delimiter">&quot;</span></span>] = <span class="predefined-type">Color</span>.randomPastel.asColor()
+})
+layer.style = <span class="keyword">new</span> Fill(<span class="keyword">new</span> Property(<span class="string"><span class="delimiter">&quot;</span><span class="content">color</span><span class="delimiter">&quot;</span></span>), <span class="float">0.5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_graticule_hexagon_customschema.png" alt="layer graticule hexagon customschema">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1731,7 +1751,7 @@ Layer layer = Graticule.createHexagons(feature.bounds.expandBy(<span class="floa
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-23 02:47:20 UTC
+Last updated 2018-01-25 00:58:01 UTC
 </div>
 </div>
 </body>
