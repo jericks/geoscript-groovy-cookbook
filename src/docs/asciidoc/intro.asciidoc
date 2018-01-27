@@ -3,8 +3,8 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Introduction
 
+The GeoScript Groovy Cookbook contains short recipes on how to use the GeoScript Groovy library.
+
 GeoScript is a geospatial library written in Groovy. It provides modules
 for working with geometries, projections, features, layers, rasters, styles, rendering, and tiles.
 It is built on top of the Java Topology Suite (JTS) and GeoTools libraries.
-
-The GeoScript Groovy Cookbook contains short recipes showing how to use the GeoScript Groovy.

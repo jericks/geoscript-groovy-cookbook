@@ -51,6 +51,15 @@ class LayerRecipesTest {
         assertEquals(5, values.size())
     }
 
+    // Add, Update, Delete
+
+    @Test void addToLayer() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.addToLayer()
+        assertEquals("Point", layer.schema.geom.typ)
+        assertEquals(5, layer.count)
+    }
+
     // Geoprocessing
 
     @Test void dissolve() {

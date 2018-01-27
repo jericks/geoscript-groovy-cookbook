@@ -119,6 +119,14 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=collectFromFeat
 include::output/layer_collect_from_feature_options.txt[]
 ....
 
+[source,groovy]
+.Add Features to a Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=addToLayer,indent=0]
+----
+[.thumb]
+image::layer_add.png[]
+
 === Geoprocessing
 
 ==== Buffer

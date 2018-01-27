@@ -7,7 +7,6 @@ import geoscript.filter.Color
 import geoscript.filter.Property
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
-import geoscript.geom.MultiPoint
 import geoscript.geom.Point
 import geoscript.layer.Graticule
 import geoscript.layer.Layer
@@ -18,6 +17,7 @@ import geoscript.layer.io.Readers
 import geoscript.layer.io.Writers
 import geoscript.proj.Projection
 import geoscript.style.Fill
+import geoscript.style.Label
 import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.UniqueValues
@@ -206,6 +206,69 @@ class LayerRecipes extends Recipes {
         }
         writeFile("layer_collect_from_feature_options", "${str}")
         names
+    }
+
+    // Add, Update, Delete
+
+    Layer addToLayer() {
+        // tag::addToLayer[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String"),
+                new Field("state", "String")
+        ])
+        Layer layer = workspace.create(schema)
+
+        // Add a Feature with a Map
+        Map attributes = [
+                geom: new Point(-122.333056, 47.609722),
+                id: 1,
+                name: "Seattle",
+                state: "WA"
+        ]
+        layer.add(attributes)
+
+        // Add a Feature with a List
+        List values = [
+                new Point(-122.459444, 47.241389),
+                2,
+                "Tacoma",
+                "WA"
+        ]
+        layer.add(values)
+
+        // Add a Feature
+        Feature feature = schema.feature([
+                id:3,
+                name: "Fargo",
+                state: "ND",
+                geom: new Point(-96.789444, 46.877222)
+        ])
+        layer.add(feature)
+
+        // Add Features from a List of Maps
+        List<Map> features = [
+                [
+                        geom: new Point(-96.789444, 46.877222),
+                        id:4,
+                        name: "Bismarck",
+                        state: "ND"
+                ],
+                [
+                        geom: new Point(-100.891111, 46.828889),
+                        id: 5,
+                        name: "Mandan",
+                        state: "ND"
+                ]
+        ]
+        layer.add(features)
+        // end::addToLayer[]
+        layer.style = new Shape("white", 10).stroke("navy", 0.5)
+        Layer states = new Shapefile("src/main/resources/data/states.shp")
+        drawOnBasemap("layer_add", [states, layer], layer.bounds.expandBy(2))
+        layer
     }
 
     // Geoprocessing
