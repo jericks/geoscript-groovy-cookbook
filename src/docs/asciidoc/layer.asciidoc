@@ -119,6 +119,8 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=collectFromFeat
 include::output/layer_collect_from_feature_options.txt[]
 ....
 
+=== Adding, Updating, and Deleting
+
 [source,groovy]
 .Add Features to a Layer
 ----
