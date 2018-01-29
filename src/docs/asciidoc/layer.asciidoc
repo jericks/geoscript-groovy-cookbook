@@ -126,6 +126,9 @@ include::output/layer_collect_from_feature_options.txt[]
 ----
 include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=addToLayer,indent=0]
 ----
+
+include::output/layer_add.asciidoc[]
+
 [.thumb]
 image::layer_add.png[]
 

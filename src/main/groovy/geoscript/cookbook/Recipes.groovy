@@ -1,5 +1,7 @@
 package geoscript.cookbook
 
+import geoscript.feature.Feature
+import geoscript.feature.Field
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.layer.Cursor
@@ -174,6 +176,31 @@ class Recipes {
             file.parentFile.mkdir()
         }
         map.render(file)
+    }
+
+    protected void createTable(String name, Layer layer, boolean includeGeom) {
+
+        List fields = layer.schema.fields
+        if (!includeGeom) {
+            fields.remove(layer.schema.geom)
+        }
+
+        String text = "|===" + NEW_LINE
+        text += "|" + fields.collect { Field fld -> fld.name }.join(" | ")
+        text += NEW_LINE + NEW_LINE
+        layer.eachFeature { Feature feature ->
+            text += fields.collect { Field fld -> "|" + feature.get(fld) }.join(NEW_LINE)
+            text += NEW_LINE
+            text += NEW_LINE
+        }
+        text += "|==="
+
+        File dir = new File("src/docs/asciidoc/output")
+        if (!dir.exists()) {
+            dir.mkdir()
+        }
+        File file = new File(dir, "${name}.asciidoc")
+        file.text = text
     }
 
 }

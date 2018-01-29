@@ -268,6 +268,7 @@ class LayerRecipes extends Recipes {
         layer.style = new Shape("white", 10).stroke("navy", 0.5)
         Layer states = new Shapefile("src/main/resources/data/states.shp")
         drawOnBasemap("layer_add", [states, layer], layer.bounds.expandBy(2))
+        createTable("layer_add", layer, false)
         layer
     }
 
