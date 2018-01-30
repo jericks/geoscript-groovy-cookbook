@@ -60,6 +60,13 @@ class LayerRecipesTest {
         assertEquals(5, layer.count)
     }
 
+    @Test void deleteFromLayer() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.deleteFromLayer()
+        assertEquals("Point", layer.schema.geom.typ)
+        assertEquals(2, layer.count)
+    }
+
     // Geoprocessing
 
     @Test void dissolve() {

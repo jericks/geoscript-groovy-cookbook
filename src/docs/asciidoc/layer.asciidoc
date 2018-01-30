@@ -132,6 +132,18 @@ include::output/layer_add.asciidoc[]
 [.thumb]
 image::layer_add.png[]
 
+[source,groovy]
+.Delete Features from a Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=deleteFromLayer,indent=0]
+----
+
+include::output/layer_delete.asciidoc[]
+
+[.thumb]
+image::layer_delete.png[]
+
+
 === Geoprocessing
 
 ==== Buffer
