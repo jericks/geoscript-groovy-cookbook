@@ -923,6 +923,85 @@ layer.add(features)</code></pre>
 <img src="./images/layer_add.png" alt="layer add">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Delete Features from a Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">state</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">Map</span>&gt; features = [
+        [
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.333056</span>, <span class="float">47.609722</span>),
+                <span class="key">id</span>: <span class="integer">1</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">WA</span><span class="delimiter">&quot;</span></span>
+        ],
+        [
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.459444</span>, <span class="float">47.241389</span>),
+                <span class="key">id</span>: <span class="integer">2</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tacoma</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">WA</span><span class="delimiter">&quot;</span></span>
+        ],
+        [
+                <span class="key">id</span>:<span class="integer">3</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Fargo</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ND</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">96.789444</span>, <span class="float">46.877222</span>)
+        ],
+        [
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">96.789444</span>, <span class="float">46.877222</span>),
+                <span class="key">id</span>:<span class="integer">4</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Bismarck</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ND</span><span class="delimiter">&quot;</span></span>
+        ],
+        [
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">100.891111</span>, <span class="float">46.828889</span>),
+                <span class="key">id</span>: <span class="integer">5</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Mandan</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ND</span><span class="delimiter">&quot;</span></span>
+        ]
+]
+layer.add(features)
+
+layer.delete(<span class="string"><span class="delimiter">&quot;</span><span class="content">state='ND'</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">id</th>
+<th class="tableblock halign-left valign-top">name</th>
+<th class="tableblock halign-left valign-top">state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seattle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tacoma</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WA</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_delete.png" alt="layer delete">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="geoprocessing"><a class="anchor" href="#geoprocessing"></a>Geoprocessing</h3>
@@ -1499,7 +1578,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--10845ab_16144b160fc_-6c16"
+            "id": "fid-57458d4b_161453d5d05_-6c0c"
         },
         {
             "type": "Feature",
@@ -1514,7 +1593,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--10845ab_16144b160fc_-6c14"
+            "id": "fid-57458d4b_161453d5d05_-6c0a"
         }
     ]
 }</pre>
@@ -1605,7 +1684,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--10845ab_16144b160fc_-7553"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-57458d4b_161453d5d05_-7553"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1627,7 +1706,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--10845ab_16144b160fc_-7551"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-57458d4b_161453d5d05_-7551"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1693,7 +1772,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--10845ab_16144b160fc_-6c4b
+          fid-57458d4b_161453d5d05_-6c41
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1720,7 +1799,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--10845ab_16144b160fc_-6c49
+          fid-57458d4b_161453d5d05_-6c3f
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1897,7 +1976,7 @@ Layer layer = Graticule.createRectangles(bounds, width, height, -<span class="in
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-01-28 16:33:41 PST
+Last updated 2018-01-29 19:22:01 PST
 </div>
 </div>
 </body>
