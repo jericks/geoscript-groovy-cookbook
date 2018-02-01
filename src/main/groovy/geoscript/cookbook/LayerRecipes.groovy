@@ -375,8 +375,8 @@ class LayerRecipes extends Recipes {
         // end::updateLayer[]
         layer.style = new Shape("white", 10).stroke("navy", 0.5)
         Layer states = new Shapefile("src/main/resources/data/states.shp")
-        drawOnBasemap("layer_update", [states, layer], layer.bounds.expandBy(2))
-        createTable("layer_update", layer, false)
+        drawOnBasemap("layer_update_features", [states, layer], layer.bounds.expandBy(2))
+        createTable("layer_update_features", layer, false)
         layer
     }
 
