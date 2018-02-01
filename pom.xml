@@ -217,21 +217,15 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>com.github.github</groupId>
-                        <artifactId>site-maven-plugin</artifactId>
-                        <version>0.12</version>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-scm-publish-plugin</artifactId>
+                        <version>3.0.0</version>
                         <configuration>
-                            <message>Creating site for ${project.version}</message>
-                            <outputDirectory>${project.build.directory}/generated-docs</outputDirectory>
+                            <pubScmUrl>scm:git:git@github.com:jericks/geoscript-groovy-cookbook.git</pubScmUrl>
+                            <tryUpdate>false</tryUpdate>
+                            <scmBranch>gh-pages</scmBranch>
+                            <content>${project.build.directory}/generated-docs</content>
                         </configuration>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>site</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>
