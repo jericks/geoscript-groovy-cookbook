@@ -325,6 +325,61 @@ class LayerRecipes extends Recipes {
         layer
     }
 
+    Layer updateLayer() {
+        // tag::updateLayer[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String"),
+                new Field("state", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        List<Map> features = [
+                [
+                        geom: new Point(-122.333056, 47.609722),
+                        id: 1,
+                        name: "Seattle",
+                        state: "WA"
+                ],
+                [
+                        geom: new Point(-122.459444, 47.241389),
+                        id: 2,
+                        name: "Tacoma",
+                        state: "WA"
+                ],
+                [
+                        id:3,
+                        name: "Fargo",
+                        state: "ND",
+                        geom: new Point(-96.789444, 46.877222)
+                ],
+                [
+                        geom: new Point(-96.789444, 46.877222),
+                        id:4,
+                        name: "Bismarck",
+                        state: "ND"
+                ],
+                [
+                        geom: new Point(-100.891111, 46.828889),
+                        id: 5,
+                        name: "Mandan",
+                        state: "ND"
+                ]
+        ]
+        layer.add(features)
+
+        layer.update(layer.schema.state, "North Dakota", "state='ND'")
+        layer.update(layer.schema.state, "Washington", "state='WA'")
+
+        // end::updateLayer[]
+        layer.style = new Shape("white", 10).stroke("navy", 0.5)
+        Layer states = new Shapefile("src/main/resources/data/states.shp")
+        drawOnBasemap("layer_update", [states, layer], layer.bounds.expandBy(2))
+        createTable("layer_update", layer, false)
+        layer
+    }
+
     // Geoprocessing
 
     Layer merge() {

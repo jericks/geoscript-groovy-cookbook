@@ -133,6 +133,17 @@ include::output/layer_add.asciidoc[]
 image::layer_add.png[]
 
 [source,groovy]
+.Update Features in a Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=updateLayer,indent=0]
+----
+
+include::output/layer_update.asciidoc[]
+
+[.thumb]
+image::layer_update.png[]
+
+[source,groovy]
 .Delete Features from a Layer
 ----
 include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=deleteFromLayer,indent=0]
