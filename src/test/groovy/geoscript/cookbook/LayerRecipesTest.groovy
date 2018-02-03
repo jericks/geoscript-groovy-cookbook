@@ -76,6 +76,12 @@ class LayerRecipesTest {
 
     // Geoprocessing
 
+    @Test void reproject() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.reproject()
+        assertEquals("EPSG:3857", layer.proj.id)
+    }
+
     @Test void dissolve() {
         LayerRecipes recipes = new LayerRecipes()
         Layer layer = recipes.dissolve()

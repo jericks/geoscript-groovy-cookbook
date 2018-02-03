@@ -10,17 +10,20 @@ import geoscript.geom.Geometry
 import geoscript.geom.Point
 import geoscript.layer.Graticule
 import geoscript.layer.Layer
+import geoscript.layer.Renderable
 import geoscript.layer.Shapefile
 import geoscript.layer.io.Writer
 import geoscript.layer.io.Reader
 import geoscript.layer.io.Readers
 import geoscript.layer.io.Writers
 import geoscript.proj.Projection
+import geoscript.render.Map as GMap
 import geoscript.style.Fill
 import geoscript.style.Label
 import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.UniqueValues
+import geoscript.style.io.SLDReader
 import geoscript.style.io.SimpleStyleReader
 import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
@@ -381,6 +384,26 @@ class LayerRecipes extends Recipes {
     }
 
     // Geoprocessing
+
+    Layer reproject() {
+        // tag::reproject[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        println "States = ${states.proj}"
+
+        Projection projection = new Projection("EPSG:3857")
+        Workspace outputWorkspace = new Memory()
+        Layer statesInWebMercator = states.reproject(projection, outputWorkspace, "states_3857")
+        println "Reprojected States = ${statesInWebMercator.proj}"
+        // end::reproject[]
+        statesInWebMercator.style = new Fill("#6B8E23") + new Stroke("black", 0.5)
+        Bounds bounds = new Bounds(-179.99, -85.0511, 179.99, 85.0511, "EPSG:4326")
+        drawOnBasemapInWebMercator("layer_reproject", [statesInWebMercator], bounds.reproject(projection))
+        writeFile("layer_reproject", """States = ${states.proj}
+Reprojected States = ${statesInWebMercator.proj}
+""")
+        statesInWebMercator
+    }
 
     Layer merge() {
         // tag::merge[]

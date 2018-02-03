@@ -157,6 +157,21 @@ image::layer_delete.png[]
 
 === Geoprocessing
 
+==== Reproject
+
+[source,groovy]
+.Reproject a Layer from it's source projection to a target projection
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=reproject,indent=0]
+----
+
+....
+include::output/layer_reproject.txt[]
+....
+
+[.thumb]
+image::layer_reproject.png[]
+
 ==== Buffer
 
 [source,groovy]
