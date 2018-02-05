@@ -211,6 +211,21 @@ class LayerRecipes extends Recipes {
         names
     }
 
+    Feature first() {
+        // tag::first[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("states")
+        Feature feature = layer.first(filter: "NAME_1='Washington'")
+        println feature.get("NAME_1")
+        // end::first[]
+        Memory featureWorkspace = new Memory()
+        Layer featureLayer = featureWorkspace.create(feature.schema)
+        featureLayer.add(feature)
+        drawOnBasemap("layer_first", [featureLayer], feature.bounds.expandBy(4))
+        writeFile("layer_first", "${feature.get('NAME_1')}")
+        feature
+    }
+
     // Add, Update, Delete
 
     Layer addToLayer() {

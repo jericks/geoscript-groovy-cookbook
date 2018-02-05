@@ -119,6 +119,18 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=collectFromFeat
 include::output/layer_collect_from_feature_options.txt[]
 ....
 
+[source,groovy]
+.Get the first Feature that matches the Filter.
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=first,indent=0]
+----
+....
+include::output/layer_first.txt[]
+....
+
+[.thumb]
+image::layer_first.png[]
+
 === Adding, Updating, and Deleting
 
 [source,groovy]

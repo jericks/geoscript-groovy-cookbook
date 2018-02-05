@@ -51,6 +51,12 @@ class LayerRecipesTest {
         assertEquals(5, values.size())
     }
 
+    @Test void first() {
+        LayerRecipes recipes = new LayerRecipes()
+        Feature feature = recipes.first()
+        assertEquals("Washington", feature.get("NAME_1"))
+    }
+
     // Add, Update, Delete
 
     @Test void addToLayer() {
