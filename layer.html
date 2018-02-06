@@ -856,6 +856,11 @@ println featureDesc.get(<span class="string"><span class="delimiter">&quot;</spa
 Wyoming</pre>
 </div>
 </div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_first_sort.png" alt="layer first sort">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="adding-updating-and-deleting"><a class="anchor" href="#adding-updating-and-deleting"></a>Adding, Updating, and Deleting</h3>
@@ -901,7 +906,7 @@ layer.add(feature)
 <span class="comment">// Add Features from a List of Maps</span>
 <span class="predefined-type">List</span>&lt;<span class="predefined-type">Map</span>&gt; features = [
         [
-                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">96.789444</span>, <span class="float">46.877222</span>),
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">100.778889</span>, <span class="float">46.813333</span>),
                 <span class="key">id</span>:<span class="integer">4</span>,
                 <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Bismarck</span><span class="delimiter">&quot;</span></span>,
                 <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ND</span><span class="delimiter">&quot;</span></span>
@@ -993,7 +998,7 @@ Layer layer = workspace.create(schema)
                 <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">96.789444</span>, <span class="float">46.877222</span>)
         ],
         [
-                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">96.789444</span>, <span class="float">46.877222</span>),
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">100.778889</span>, <span class="float">46.813333</span>),
                 <span class="key">id</span>:<span class="integer">4</span>,
                 <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Bismarck</span><span class="delimiter">&quot;</span></span>,
                 <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ND</span><span class="delimiter">&quot;</span></span>
@@ -1088,7 +1093,7 @@ Layer layer = workspace.create(schema)
                 <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">96.789444</span>, <span class="float">46.877222</span>)
         ],
         [
-                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">96.789444</span>, <span class="float">46.877222</span>),
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">100.778889</span>, <span class="float">46.813333</span>),
                 <span class="key">id</span>:<span class="integer">4</span>,
                 <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Bismarck</span><span class="delimiter">&quot;</span></span>,
                 <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ND</span><span class="delimiter">&quot;</span></span>
@@ -1739,7 +1744,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--417a3126_16168d8dc39_-6b99"
+            "id": "fid-93d0886_161691a7032_-6b97"
         },
         {
             "type": "Feature",
@@ -1754,7 +1759,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--417a3126_16168d8dc39_-6b97"
+            "id": "fid-93d0886_161691a7032_-6b95"
         }
     ]
 }</pre>
@@ -1845,7 +1850,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--417a3126_16168d8dc39_-7549"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-93d0886_161691a7032_-7549"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1867,7 +1872,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--417a3126_16168d8dc39_-7547"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-93d0886_161691a7032_-7547"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1933,7 +1938,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--417a3126_16168d8dc39_-6bce
+          fid-93d0886_161691a7032_-6bcc
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1960,7 +1965,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--417a3126_16168d8dc39_-6bcc
+          fid-93d0886_161691a7032_-6bca
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2137,7 +2142,7 @@ Layer layer = Graticule.createRectangles(bounds, width, height, -<span class="in
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-06 01:55:35 UTC
+Last updated 2018-02-06 03:07:27 UTC
 </div>
 </div>
 </body>
