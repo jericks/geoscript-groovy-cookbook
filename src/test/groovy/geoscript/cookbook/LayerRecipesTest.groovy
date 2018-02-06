@@ -57,6 +57,13 @@ class LayerRecipesTest {
         assertEquals("Washington", feature.get("NAME_1"))
     }
 
+    @Test void firstSort() {
+        LayerRecipes recipes = new LayerRecipes()
+        Map<String,Feature> features = recipes.firstSort()
+        assertEquals("Alabama", features.asc.get("NAME_1"))
+        assertEquals("Wyoming", features.desc.get("NAME_1"))
+    }
+
     // Add, Update, Delete
 
     @Test void addToLayer() {

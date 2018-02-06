@@ -226,6 +226,22 @@ class LayerRecipes extends Recipes {
         feature
     }
 
+    Map<String, Feature> firstSort() {
+        // tag::firstSort[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("states")
+
+        Feature featureAsc = layer.first(sort: "NAME_1 ASC")
+        println featureAsc.get("NAME_1")
+
+        Feature featureDesc = layer.first(sort: "NAME_1 DESC")
+        println featureDesc.get("NAME_1")
+
+        // end::firstSort[]
+        writeFile("layer_first_sort", "${featureAsc.get('NAME_1')}${NEW_LINE}${featureDesc.get('NAME_1')}")
+        [asc: featureAsc, desc: featureDesc]
+    }
+
     // Add, Update, Delete
 
     Layer addToLayer() {

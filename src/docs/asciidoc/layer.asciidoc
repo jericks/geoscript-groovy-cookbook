@@ -131,6 +131,15 @@ include::output/layer_first.txt[]
 [.thumb]
 image::layer_first.png[]
 
+[source,groovy]
+.Get the first Feature sorted by name ascending and descending.
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=firstSort,indent=0]
+----
+....
+include::output/layer_first_sort.txt[]
+....
+
 === Adding, Updating, and Deleting
 
 [source,groovy]
