@@ -60,9 +60,10 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
-geo:isClosed
 geo:reproject
 geo:symDifference
+geo:isClosed
+geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
@@ -75,7 +76,6 @@ geo:within
 geo:simplify
 geo:densify
 geo:numPoints
-geo:dimension
 geo:envelope
 geo:getX
 geo:getY
