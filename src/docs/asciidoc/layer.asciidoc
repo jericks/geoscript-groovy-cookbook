@@ -140,6 +140,9 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=firstSort,inden
 include::output/layer_first_sort.txt[]
 ....
 
+[.thumb]
+image::layer_first_sort.png[]
+
 === Adding, Updating, and Deleting
 
 [source,groovy]

@@ -238,6 +238,11 @@ class LayerRecipes extends Recipes {
         println featureDesc.get("NAME_1")
 
         // end::firstSort[]
+        Memory featureWorkspace = new Memory()
+        Layer featureLayer = featureWorkspace.create(featureAsc.schema)
+        featureLayer.add(featureAsc)
+        featureLayer.add(featureDesc)
+        drawOnBasemap("layer_first_sort", [featureLayer], featureLayer.bounds.expandBy(4))
         writeFile("layer_first_sort", "${featureAsc.get('NAME_1')}${NEW_LINE}${featureDesc.get('NAME_1')}")
         [asc: featureAsc, desc: featureDesc]
     }
@@ -285,7 +290,7 @@ class LayerRecipes extends Recipes {
         // Add Features from a List of Maps
         List<Map> features = [
                 [
-                        geom: new Point(-96.789444, 46.877222),
+                        geom: new Point(-100.778889, 46.813333),
                         id:4,
                         name: "Bismarck",
                         state: "ND"
@@ -336,7 +341,7 @@ class LayerRecipes extends Recipes {
                         geom: new Point(-96.789444, 46.877222)
                 ],
                 [
-                        geom: new Point(-96.789444, 46.877222),
+                        geom: new Point(-100.778889, 46.813333),
                         id:4,
                         name: "Bismarck",
                         state: "ND"
@@ -389,7 +394,7 @@ class LayerRecipes extends Recipes {
                         geom: new Point(-96.789444, 46.877222)
                 ],
                 [
-                        geom: new Point(-96.789444, 46.877222),
+                        geom: new Point(-100.778889, 46.813333),
                         id:4,
                         name: "Bismarck",
                         state: "ND"
