@@ -861,6 +861,19 @@ Wyoming</pre>
 <img src="./images/layer_first_sort.png" alt="layer first sort">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a new Layer from an existing Layer with just the Features that match a Filter.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+Layer disputedLayer = layer.filter(<span class="string"><span class="delimiter">&quot;</span><span class="content">TYPE='Disputed'</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_filter.png" alt="layer filter">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="adding-updating-and-deleting"><a class="anchor" href="#adding-updating-and-deleting"></a>Adding, Updating, and Deleting</h3>
@@ -1744,7 +1757,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-93d0886_161691a7032_-6b97"
+            "id": "fid-430b0c34_16178a44081_-6ae3"
         },
         {
             "type": "Feature",
@@ -1759,7 +1772,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-93d0886_161691a7032_-6b95"
+            "id": "fid-430b0c34_16178a44081_-6ae1"
         }
     ]
 }</pre>
@@ -1850,7 +1863,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-93d0886_161691a7032_-7549"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-430b0c34_16178a44081_-7495"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -1872,7 +1885,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-93d0886_161691a7032_-7547"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-430b0c34_16178a44081_-7493"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -1938,7 +1951,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-93d0886_161691a7032_-6bcc
+          fid-430b0c34_16178a44081_-6b18
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -1965,7 +1978,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-93d0886_161691a7032_-6bca
+          fid-430b0c34_16178a44081_-6b16
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2142,7 +2155,7 @@ Layer layer = Graticule.createRectangles(bounds, width, height, -<span class="in
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-06 03:07:27 UTC
+Last updated 2018-02-09 03:32:26 UTC
 </div>
 </div>
 </body>
