@@ -143,6 +143,15 @@ include::output/layer_first_sort.txt[]
 [.thumb]
 image::layer_first_sort.png[]
 
+[source,groovy]
+.Create a new Layer from an existing Layer with just the Features that match a Filter.
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=filter,indent=0]
+----
+
+[.thumb]
+image::layer_filter.png[]
+
 === Adding, Updating, and Deleting
 
 [source,groovy]

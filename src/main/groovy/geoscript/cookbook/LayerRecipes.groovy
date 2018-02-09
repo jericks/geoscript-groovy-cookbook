@@ -247,6 +247,22 @@ class LayerRecipes extends Recipes {
         [asc: featureAsc, desc: featureDesc]
     }
 
+
+    Layer filter() {
+        Workspace geopackage = new GeoPackage("src/main/resources/data.gpkg")
+        Layer countries = geopackage.get("countries")
+        Directory directory = new Directory("target")
+        directory.add(countries)
+        // tag::filter[]
+        Workspace workspace = new Directory("target")
+        Layer layer = workspace.get("countries")
+        Layer disputedLayer = layer.filter("TYPE='Disputed'")
+        // end::filter[]
+        disputedLayer.style = new Fill("red") + new Stroke("black")
+        drawOnBasemap("layer_filter", [disputedLayer], disputedLayer.bounds.expandBy(4))
+        disputedLayer
+    }
+
     // Add, Update, Delete
 
     Layer addToLayer() {

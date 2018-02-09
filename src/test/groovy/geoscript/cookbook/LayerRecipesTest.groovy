@@ -64,6 +64,12 @@ class LayerRecipesTest {
         assertEquals("Wyoming", features.desc.get("NAME_1"))
     }
 
+    @Test void filter() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.filter()
+        assertEquals(3, layer.count)
+    }
+
     // Add, Update, Delete
 
     @Test void addToLayer() {
