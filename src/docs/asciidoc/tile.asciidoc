@@ -4,3 +4,42 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 == Tile Recipes
 
 The Tile classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html[geoscript.layer]* package.
+
+=== MBTiles
+
+Create an MBTiles TileLayer from a File.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles,indent=0]
+----
+
+Get the TileLayer's name.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_name,indent=0]
+----
+....
+include::output/tiles_get_mbtiles_name.txt[]
+....
+
+Get the TileLayer's Bounds.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_bounds,indent=0]
+----
+....
+include::output/tiles_get_mbtiles_bounds.txt[]
+....
+
+Get the TileLayer's Projection.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_proj,indent=0]
+----
+....
+include::output/tiles_get_mbtiles_proj.txt[]
+....
