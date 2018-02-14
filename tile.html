@@ -583,13 +583,46 @@ println proj</code></pre>
 <pre>EPSG:3857</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Get the TileLayer&#8217;s Pyramid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = mbtiles.pyramid
+println pyramid</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geoscript.layer.Pyramid(proj:EPSG:3857, bounds:(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857), origin:BOTTOM_LEFT, tileWidth:256, tileHeight:256)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get a Tile from a  TileLayer.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Tile tile = mbtiles.get(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">0</span>)
+println tile</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Tile(x:0, y:0, z:0)</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tiles_get_mbtiles_tile.png" alt="tiles get mbtiles tile">
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-13 03:03:36 UTC
+Last updated 2018-02-14 04:10:48 UTC
 </div>
 </div>
 </body>
