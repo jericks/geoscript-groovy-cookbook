@@ -43,3 +43,26 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_proj,
 ....
 include::output/tiles_get_mbtiles_proj.txt[]
 ....
+
+Get the TileLayer's Pyramid.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_pyramid,indent=0]
+----
+....
+include::output/tiles_get_mbtiles_pyramid.txt[]
+....
+
+Get a Tile from a  TileLayer.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_tile,indent=0]
+----
+....
+include::output/tiles_get_mbtiles_tile.txt[]
+....
+
+[.thumb]
+image::tiles_get_mbtiles_tile.png[]
