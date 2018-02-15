@@ -517,7 +517,16 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#tile-recipes">Tile Recipes</a>
 <ul class="sectlevel2">
-<li><a href="#mbtiles">MBTiles</a></li>
+<li><a href="#pyramid">Pyramid</a>
+<ul class="sectlevel3">
+<li><a href="#pyramid-properties">Pyramid Properties</a></li>
+</ul>
+</li>
+<li><a href="#tile-layer">Tile Layer</a>
+<ul class="sectlevel3">
+<li><a href="#tile-layer-properties">Tile Layer Properties</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -531,9 +540,76 @@ table.CodeRay td.code>pre{padding:0}
 <p>The Tile classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
 </div>
 <div class="sect2">
-<h3 id="mbtiles"><a class="anchor" href="#mbtiles"></a>MBTiles</h3>
+<h3 id="pyramid"><a class="anchor" href="#pyramid"></a>Pyramid</h3>
+<div class="sect3">
+<h4 id="pyramid-properties"><a class="anchor" href="#pyramid-properties"></a>Pyramid Properties</h4>
 <div class="paragraph">
-<p>Create an MBTiles TileLayer from a File.</p>
+<p>Get the Pyramid&#8217;s Bounds.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+
+Bounds bounds = pyramid.bounds
+println bounds</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the Pyramid&#8217;s projection.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection proj = pyramid.proj
+println proj</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>EPSG:3857</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the Pyramid&#8217;s Origin.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid.Origin origin = pyramid.origin
+println origin</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>BOTTOM_LEFT</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the Pyramid&#8217;s Tile Width and Height.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> tileWidth = pyramid.tileWidth
+<span class="type">int</span> tileHeight = pyramid.tileHeight
+println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>tileWidth<span class="inline-delimiter">}</span></span><span class="content"> x </span><span class="inline"><span class="inline-delimiter">${</span>tileHeight<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>256 x 256</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tile-layer"><a class="anchor" href="#tile-layer"></a>Tile Layer</h3>
+<div class="sect3">
+<h4 id="tile-layer-properties"><a class="anchor" href="#tile-layer-properties"></a>Tile Layer Properties</h4>
+<div class="paragraph">
+<p>Create a TileLayer from an MBTiles File.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -602,7 +678,7 @@ println pyramid</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Tile tile = mbtiles.get(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">0</span>)
+<pre class="CodeRay highlight"><code data-lang="groovy">Tile tile = mbtiles.get(<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>)
 println tile</code></pre>
 </div>
 </div>
@@ -620,9 +696,10 @@ println tile</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-14 04:10:48 UTC
+Last updated 2018-02-15 03:05:45 UTC
 </div>
 </div>
 </body>
