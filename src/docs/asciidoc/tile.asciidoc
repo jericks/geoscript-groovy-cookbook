@@ -5,9 +5,56 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 The Tile classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html[geoscript.layer]* package.
 
-=== MBTiles
+=== Pyramid
 
-Create an MBTiles TileLayer from a File.
+==== Pyramid Properties
+
+Get the Pyramid's Bounds.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidPropertiesBounds,indent=0]
+----
+....
+include::output/tiles_pyramid_properties_bounds.txt[]
+....
+
+Get the Pyramid's projection.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidPropertiesProj,indent=0]
+----
+....
+include::output/tiles_pyramid_properties_proj.txt[]
+....
+
+Get the Pyramid's Origin.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidPropertiesOrigin,indent=0]
+----
+....
+include::output/tiles_pyramid_properties_origin.txt[]
+....
+
+Get the Pyramid's Tile Width and Height.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidPropertiesWidthHeight,indent=0]
+----
+....
+include::output/tiles_pyramid_properties_wh.txt[]
+....
+
+
+=== Tile Layer
+
+==== Tile Layer Properties
+
+Create a TileLayer from an MBTiles File.
 
 [source,groovy]
 ----

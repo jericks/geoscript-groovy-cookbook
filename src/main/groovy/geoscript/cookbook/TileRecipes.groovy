@@ -5,7 +5,6 @@ import geoscript.layer.ImageTile
 import geoscript.layer.MBTiles
 import geoscript.layer.Pyramid
 import geoscript.layer.Tile
-import geoscript.layer.TileLayer
 import geoscript.proj.Projection
 
 class TileRecipes extends Recipes {
@@ -41,7 +40,7 @@ class TileRecipes extends Recipes {
         writeFile("tiles_get_mbtiles_pyramid", "${pyramid}")
 
         // tag::getMBTiles_tile[]
-        Tile tile = mbtiles.get(0,0,0)
+        Tile tile = mbtiles.get(0, 0, 0)
         println tile
         // end::getMBTiles_tile[]
         writeFile("tiles_get_mbtiles_tile", "${tile}")
@@ -50,4 +49,34 @@ class TileRecipes extends Recipes {
         mbtiles
     }
 
+    Pyramid pyramidProperties() {
+        // tag::pyramidPropertiesBounds[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+
+        Bounds bounds = pyramid.bounds
+        println bounds
+        // end::pyramidPropertiesBounds[]
+        writeFile("tiles_pyramid_properties_bounds", "${bounds}")
+
+        // tag::pyramidPropertiesProj[]
+        Projection proj = pyramid.proj
+        println proj
+        // end::pyramidPropertiesProj[]
+        writeFile("tiles_pyramid_properties_proj", "${proj}")
+
+        // tag::pyramidPropertiesOrigin[]
+        Pyramid.Origin origin = pyramid.origin
+        println origin
+        // end::pyramidPropertiesOrigin[]
+        writeFile("tiles_pyramid_properties_origin", "${origin}")
+
+        // tag::pyramidPropertiesWidthHeight[]
+        int tileWidth = pyramid.tileWidth
+        int tileHeight = pyramid.tileHeight
+        println "${tileWidth} x ${tileHeight}"
+        // end::pyramidPropertiesWidthHeight[]
+        writeFile("tiles_pyramid_properties_wh", "${tileWidth} x ${tileHeight}")
+
+        pyramid
+    }
 }
