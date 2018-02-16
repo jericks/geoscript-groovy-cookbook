@@ -1,6 +1,7 @@
 package geoscript.cookbook
 
 import geoscript.geom.Bounds
+import geoscript.layer.Grid
 import geoscript.layer.ImageTile
 import geoscript.layer.MBTiles
 import geoscript.layer.Pyramid
@@ -45,6 +46,28 @@ Data as base64 encoded string = ${tile.base64String.substring(0,50)}...
         tile
     }
 
+    // Grid
+
+    Grid gridProperties() {
+        // tag::gridProperties[]
+        Grid grid = new Grid(1, 2, 2, 78206.0, 78206.0)
+        println "Zoom Level: ${grid.z}"
+        println "Width / # Columns: ${grid.width}"
+        println "Height / # Rows: ${grid.height}"
+        println "Size / # Tiles: ${grid.size}"
+        println "X Resolution: ${grid.xResolution}"
+        println "Y Resolution: ${grid.yResolution}"
+        // end::gridProperties[]
+        writeFile("tile_grid_properties", """Zoom Level: ${grid.z}
+Width / # Columns: ${grid.width}
+Height / # Rows: ${grid.height}
+Size / # Tiles: ${grid.size}
+X Resolution: ${grid.xResolution}
+Y Resolution: ${grid.yResolution}
+""")
+        grid
+    }
+
     // Pyramid
 
     Pyramid pyramidProperties() {
@@ -76,6 +99,27 @@ Data as base64 encoded string = ${tile.base64String.substring(0,50)}...
         writeFile("tiles_pyramid_properties_wh", "${tileWidth} x ${tileHeight}")
 
         pyramid
+    }
+
+    Grid gridFromPyramidByZoomLevel() {
+        // tag::gridFromPyramidByZoomLevel[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        Grid grid = pyramid.grid(1)
+        println "Zoom Level: ${grid.z}"
+        println "Width / # Columns: ${grid.width}"
+        println "Height / # Rows: ${grid.height}"
+        println "Size / # Tiles: ${grid.size}"
+        println "X Resolution: ${grid.xResolution}"
+        println "Y Resolution: ${grid.yResolution}"
+        // end::gridFromPyramidByZoomLevel[]
+        writeFile("tile_pyramid_grid_zoomlevel", """Zoom Level: ${grid.z}
+Width / # Columns: ${grid.width}
+Height / # Rows: ${grid.height}
+Size / # Tiles: ${grid.size}
+X Resolution: ${grid.xResolution}
+Y Resolution: ${grid.yResolution}
+""")
+        grid
     }
 
     // Pyramid

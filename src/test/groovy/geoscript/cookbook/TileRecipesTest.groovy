@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.layer.Grid
 import geoscript.layer.ImageTile
 import geoscript.layer.MBTiles
 import geoscript.layer.Pyramid
@@ -28,6 +29,19 @@ class TileRecipesTest {
         assertEquals(0, tile.x)
         assertEquals(0, tile.y)
         assertNotNull(tile.image)
+    }
+
+    // Grid
+
+    @Test void gridProperties() {
+        TileRecipes recipes = new TileRecipes()
+        Grid grid = recipes.gridProperties()
+        assertEquals(1, grid.z)
+        assertEquals(2, grid.width)
+        assertEquals(2, grid.height)
+        assertEquals(4, grid.size)
+        assertEquals(78206.0, grid.xResolution, 0.1)
+        assertEquals(78206.0, grid.yResolution, 0.1)
     }
 
     // Pyramid
@@ -62,6 +76,17 @@ class TileRecipesTest {
         assertEquals(19, pyramid.maxGrid.z)
         assertEquals(256, pyramid.tileWidth)
         assertEquals(256, pyramid.tileHeight)
+    }
+
+    @Test void gridFromPyramidByZoomLevel() {
+        TileRecipes recipes = new TileRecipes()
+        Grid grid = recipes.gridFromPyramidByZoomLevel()
+        assertEquals(1, grid.z)
+        assertEquals(2, grid.width)
+        assertEquals(2, grid.height)
+        assertEquals(4, grid.size)
+        assertEquals(78206.0, grid.xResolution, 0.1)
+        assertEquals(78206.0, grid.yResolution, 0.1)
     }
 
     // TileLayer

@@ -31,6 +31,20 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=imageTile,indent
 [.thumb]
 image::tile_image_tile.png[]
 
+=== Grid
+
+A Grid describes a level in a Pyramid of Tiles.
+
+==== Grid Properties
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=gridProperties,indent=0]
+----
+....
+include::output/tile_grid_properties.txt[]
+....
+
 === Pyramid
 
 ==== Pyramid Properties
@@ -95,6 +109,18 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidGlobalGeo
 ----
 ....
 include::output/tile_pyramid_global_geodetic.txt[]
+....
+
+==== Get a Grid from a Pyramid
+
+Get a Grid from a Pyramid by Zoom Level.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=gridFromPyramidByZoomLevel,indent=0]
+----
+....
+include::output/tile_pyramid_grid_zoomlevel.txt[]
 ....
 
 === Tile Layer
