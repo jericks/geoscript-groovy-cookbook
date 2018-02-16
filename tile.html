@@ -520,11 +520,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#tile">Tile</a>
 <ul class="sectlevel3">
 <li><a href="#tile-properties">Tile Properties</a></li>
+<li><a href="#imagetile-properties">ImageTile Properties</a></li>
 </ul>
 </li>
 <li><a href="#pyramid">Pyramid</a>
 <ul class="sectlevel3">
 <li><a href="#pyramid-properties">Pyramid Properties</a></li>
+<li><a href="#create-pyramids">Create Pyramids</a></li>
 </ul>
 </li>
 <li><a href="#tile-layer">Tile Layer</a>
@@ -571,6 +573,24 @@ Y = 3
 Tile = Tile(x:1, y:3, z:2)
 # bytes = 11738
 Data as base64 encoded string = iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAtoU...</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="imagetile-properties"><a class="anchor" href="#imagetile-properties"></a>ImageTile Properties</h4>
+<div class="paragraph">
+<p>Some Tiles contain an Image. ImageTile&#8217;s have an image property.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">byte</span><span class="type">[]</span> data = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/tile.png</span><span class="delimiter">&quot;</span></span>).bytes
+ImageTile tile = <span class="keyword">new</span> ImageTile(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">0</span>,data)
+<span class="predefined-type">BufferedImage</span> image = tile.image</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_image_tile.png" alt="tile image tile">
 </div>
 </div>
 </div>
@@ -636,6 +656,49 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="i
 <div class="literalblock">
 <div class="content">
 <pre>256 x 256</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="create-pyramids"><a class="anchor" href="#create-pyramids"></a>Create Pyramids</h4>
+<div class="paragraph">
+<p>Create a Global Mercator Pyramid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Projection: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.proj<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Origin: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.origin<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Bounds: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Max Zoom: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.maxGrid.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Projection: EPSG:3857
+Origin: BOTTOM_LEFT
+Bounds: (-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)
+Max Zoom: 19</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a Global Geodetic Pyramid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalGeodeticPyramid()
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Projection: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.proj<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Origin: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.origin<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Bounds: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Max Zoom: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.maxGrid.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Projection: EPSG:4326
+Origin: BOTTOM_LEFT
+Bounds: (-179.99,-89.99,179.99,89.99,EPSG:4326)
+Max Zoom: 19</pre>
 </div>
 </div>
 </div>
@@ -725,7 +788,7 @@ println tile</code></pre>
 </div>
 <div class="imageblock thumb">
 <div class="content">
-<img src="./images/tiles_get_mbtiles_tile.png" alt="tiles get mbtiles tile">
+<img src="./images/tilelayer_properties_tile.png" alt="tilelayer properties tile">
 </div>
 </div>
 </div>
@@ -735,7 +798,7 @@ println tile</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-16 02:25:32 UTC
+Last updated 2018-02-16 17:55:15 UTC
 </div>
 </div>
 </body>
