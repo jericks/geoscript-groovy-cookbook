@@ -523,10 +523,16 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#imagetile-properties">ImageTile Properties</a></li>
 </ul>
 </li>
+<li><a href="#grid">Grid</a>
+<ul class="sectlevel3">
+<li><a href="#grid-properties">Grid Properties</a></li>
+</ul>
+</li>
 <li><a href="#pyramid">Pyramid</a>
 <ul class="sectlevel3">
 <li><a href="#pyramid-properties">Pyramid Properties</a></li>
 <li><a href="#create-pyramids">Create Pyramids</a></li>
+<li><a href="#get-a-grid-from-a-pyramid">Get a Grid from a Pyramid</a></li>
 </ul>
 </li>
 <li><a href="#tile-layer">Tile Layer</a>
@@ -591,6 +597,36 @@ ImageTile tile = <span class="keyword">new</span> ImageTile(<span class="integer
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/tile_image_tile.png" alt="tile image tile">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="grid"><a class="anchor" href="#grid"></a>Grid</h3>
+<div class="paragraph">
+<p>A Grid describes a level in a Pyramid of Tiles.</p>
+</div>
+<div class="sect3">
+<h4 id="grid-properties"><a class="anchor" href="#grid-properties"></a>Grid Properties</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Grid grid = <span class="keyword">new</span> Grid(<span class="integer">1</span>, <span class="integer">2</span>, <span class="integer">2</span>, <span class="float">78206.0</span>, <span class="float">78206.0</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Zoom Level: </span><span class="inline"><span class="inline-delimiter">${</span>grid.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Width / # Columns: </span><span class="inline"><span class="inline-delimiter">${</span>grid.width<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Height / # Rows: </span><span class="inline"><span class="inline-delimiter">${</span>grid.height<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Size / # Tiles: </span><span class="inline"><span class="inline-delimiter">${</span>grid.size<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">X Resolution: </span><span class="inline"><span class="inline-delimiter">${</span>grid.xResolution<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Y Resolution: </span><span class="inline"><span class="inline-delimiter">${</span>grid.yResolution<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Zoom Level: 1
+Width / # Columns: 2
+Height / # Rows: 2
+Size / # Tiles: 4
+X Resolution: 78206.0
+Y Resolution: 78206.0</pre>
 </div>
 </div>
 </div>
@@ -702,6 +738,34 @@ Max Zoom: 19</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="get-a-grid-from-a-pyramid"><a class="anchor" href="#get-a-grid-from-a-pyramid"></a>Get a Grid from a Pyramid</h4>
+<div class="paragraph">
+<p>Get a Grid from a Pyramid by Zoom Level.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+Grid grid = pyramid.grid(<span class="integer">1</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Zoom Level: </span><span class="inline"><span class="inline-delimiter">${</span>grid.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Width / # Columns: </span><span class="inline"><span class="inline-delimiter">${</span>grid.width<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Height / # Rows: </span><span class="inline"><span class="inline-delimiter">${</span>grid.height<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Size / # Tiles: </span><span class="inline"><span class="inline-delimiter">${</span>grid.size<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">X Resolution: </span><span class="inline"><span class="inline-delimiter">${</span>grid.xResolution<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Y Resolution: </span><span class="inline"><span class="inline-delimiter">${</span>grid.yResolution<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Zoom Level: 1
+Width / # Columns: 2
+Height / # Rows: 2
+Size / # Tiles: 4
+X Resolution: 78206.0
+Y Resolution: 78206.0</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="tile-layer"><a class="anchor" href="#tile-layer"></a>Tile Layer</h3>
@@ -798,7 +862,7 @@ println tile</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-16 17:55:15 UTC
+Last updated 2018-02-16 21:23:57 UTC
 </div>
 </div>
 </body>
