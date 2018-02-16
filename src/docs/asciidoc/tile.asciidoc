@@ -19,6 +19,18 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileProperties,i
 include::output/tile_properties.txt[]
 ....
 
+==== ImageTile Properties
+
+Some Tiles contain an Image. ImageTile's have an image property.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=imageTile,indent=0]
+----
+
+[.thumb]
+image::tile_image_tile.png[]
+
 === Pyramid
 
 ==== Pyramid Properties
@@ -63,6 +75,27 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidPropertie
 include::output/tiles_pyramid_properties_wh.txt[]
 ....
 
+==== Create Pyramids
+
+Create a Global Mercator Pyramid.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidGlobalMercatorPyramid,indent=0]
+----
+....
+include::output/tile_pyramid_global_mercator.txt[]
+....
+
+Create a Global Geodetic Pyramid.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidGlobalGeodeticPyramid,indent=0]
+----
+....
+include::output/tile_pyramid_global_geodetic.txt[]
+....
 
 === Tile Layer
 
@@ -72,58 +105,58 @@ Create a TileLayer from an MBTiles File.
 
 [source,groovy]
 ----
-include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles,indent=0]
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerProperties,indent=0]
 ----
 
 Get the TileLayer's name.
 
 [source,groovy]
 ----
-include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_name,indent=0]
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerProperties_name,indent=0]
 ----
 ....
-include::output/tiles_get_mbtiles_name.txt[]
+include::output/tilelayer_properties_name.txt[]
 ....
 
 Get the TileLayer's Bounds.
 
 [source,groovy]
 ----
-include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_bounds,indent=0]
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerProperties_bounds,indent=0]
 ----
 ....
-include::output/tiles_get_mbtiles_bounds.txt[]
+include::output/tilelayer_properties_bounds.txt[]
 ....
 
 Get the TileLayer's Projection.
 
 [source,groovy]
 ----
-include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_proj,indent=0]
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerProperties_proj,indent=0]
 ----
 ....
-include::output/tiles_get_mbtiles_proj.txt[]
+include::output/tilelayer_properties_proj.txt[]
 ....
 
 Get the TileLayer's Pyramid.
 
 [source,groovy]
 ----
-include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_pyramid,indent=0]
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerProperties_pyramid,indent=0]
 ----
 ....
-include::output/tiles_get_mbtiles_pyramid.txt[]
+include::output/tilelayer_properties_pyramid.txt[]
 ....
 
 Get a Tile from a  TileLayer.
 
 [source,groovy]
 ----
-include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getMBTiles_tile,indent=0]
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerProperties_tile,indent=0]
 ----
 ....
-include::output/tiles_get_mbtiles_tile.txt[]
+include::output/tilelayer_properties_tile.txt[]
 ....
 
 [.thumb]
-image::tiles_get_mbtiles_tile.png[]
+image::tilelayer_properties_tile.png[]
