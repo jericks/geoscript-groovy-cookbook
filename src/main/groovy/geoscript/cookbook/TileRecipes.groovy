@@ -65,7 +65,7 @@ X = ${tile.x}
 Y = ${tile.y}
 Tile = ${tile.toString()}
 # bytes = ${tile.data.length}
-Data as base64 encoded string = ${tile.base64String}
+Data as base64 encoded string = ${tile.base64String.substring(0,50)}...
 """)
         tile
     }
