@@ -49,6 +49,27 @@ class TileRecipes extends Recipes {
         mbtiles
     }
 
+    Tile tileProperties() {
+        // tag::tileProperties[]
+        byte[] data = new File("src/main/resources/tile.png").bytes
+        Tile tile = new Tile(2,1,3,data)
+        println "Z = ${tile.z}"
+        println "X = ${tile.x}"
+        println "Y = ${tile.y}"
+        println "Tile = ${tile.toString()}"
+        println "# bytes = ${tile.data.length}"
+        println "Data as base64 encoded string = ${tile.base64String}"
+        // end::tileProperties[]
+        writeFile("tile_properties","""Z = ${tile.z}
+X = ${tile.x}
+Y = ${tile.y}
+Tile = ${tile.toString()}
+# bytes = ${tile.data.length}
+Data as base64 encoded string = ${tile.base64String}
+""")
+        tile
+    }
+
     Pyramid pyramidProperties() {
         // tag::pyramidPropertiesBounds[]
         Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()

@@ -5,6 +5,20 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 The Tile classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html[geoscript.layer]* package.
 
+=== Tile
+
+==== Tile Properties
+
+Get a Tile's Properties.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileProperties,indent=0]
+----
+....
+include::output/tile_properties.txt[]
+....
+
 === Pyramid
 
 ==== Pyramid Properties

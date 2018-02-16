@@ -2,10 +2,21 @@ package geoscript.cookbook
 
 import geoscript.layer.MBTiles
 import geoscript.layer.Pyramid
+import geoscript.layer.Tile
 import org.junit.Test
 import static org.junit.Assert.*
 
 class TileRecipesTest {
+
+    @Test void tileProperties() {
+        TileRecipes recipes = new TileRecipes()
+        Tile tile = recipes.tileProperties()
+        assertEquals(2, tile.z)
+        assertEquals(1, tile.x)
+        assertEquals(3, tile.y)
+        assertEquals("Tile(x:1, y:3, z:2)", tile.toString())
+        assertTrue(tile.base64String.startsWith("iVBORw0KGgoAAAANSUhEUgA"))
+    }
 
     @Test void pyramidProperties() {
         TileRecipes recipes = new TileRecipes()
