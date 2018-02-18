@@ -737,9 +737,104 @@ Bounds: (-179.99,-89.99,179.99,89.99,EPSG:4326)
 Max Zoom: 19</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Create a Global Mercator Pyramid from a well known name.</p>
+</div>
+<div class="paragraph">
+<p>Well known names include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GlobalMercator</p>
+</li>
+<li>
+<p>Mercator</p>
+</li>
+<li>
+<p>GlobalMercatorBottomLeft</p>
+</li>
+<li>
+<p>GlobalMercatorTopLeft</p>
+</li>
+<li>
+<p>GlobalGeodetic</p>
+</li>
+<li>
+<p>Geodetic</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.fromString(<span class="string"><span class="delimiter">&quot;</span><span class="content">mercator</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Projection: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.proj<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Origin: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.origin<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Bounds: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Max Zoom: </span><span class="inline"><span class="inline-delimiter">${</span>pyramid.maxGrid.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Projection: EPSG:3857
+Origin: BOTTOM_LEFT
+Bounds: (-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)
+Max Zoom: 19</pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="get-a-grid-from-a-pyramid"><a class="anchor" href="#get-a-grid-from-a-pyramid"></a>Get a Grid from a Pyramid</h4>
+<div class="paragraph">
+<p>Get a the min Grid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+Grid grid = pyramid.minGrid
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Zoom Level: </span><span class="inline"><span class="inline-delimiter">${</span>grid.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Width / # Columns: </span><span class="inline"><span class="inline-delimiter">${</span>grid.width<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Height / # Rows: </span><span class="inline"><span class="inline-delimiter">${</span>grid.height<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Size / # Tiles: </span><span class="inline"><span class="inline-delimiter">${</span>grid.size<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">X Resolution: </span><span class="inline"><span class="inline-delimiter">${</span>grid.xResolution<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Y Resolution: </span><span class="inline"><span class="inline-delimiter">${</span>grid.yResolution<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Zoom Level: 0
+Width / # Columns: 1
+Height / # Rows: 1
+Size / # Tiles: 1
+X Resolution: 156412.0
+Y Resolution: 156412.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get a the max Grid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+Grid grid = pyramid.maxGrid
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Zoom Level: </span><span class="inline"><span class="inline-delimiter">${</span>grid.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Width / # Columns: </span><span class="inline"><span class="inline-delimiter">${</span>grid.width<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Height / # Rows: </span><span class="inline"><span class="inline-delimiter">${</span>grid.height<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Size / # Tiles: </span><span class="inline"><span class="inline-delimiter">${</span>grid.size<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">X Resolution: </span><span class="inline"><span class="inline-delimiter">${</span>grid.xResolution<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Y Resolution: </span><span class="inline"><span class="inline-delimiter">${</span>grid.yResolution<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Zoom Level: 19
+Width / # Columns: 524288
+Height / # Rows: 524288
+Size / # Tiles: 274877906944
+X Resolution: 0.29833221435546875
+Y Resolution: 0.29833221435546875</pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Get a Grid from a Pyramid by Zoom Level.</p>
 </div>
@@ -862,7 +957,7 @@ println tile</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-16 21:23:57 UTC
+Last updated 2018-02-18 23:46:29 UTC
 </div>
 </div>
 </body>
