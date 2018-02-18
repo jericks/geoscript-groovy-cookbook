@@ -89,6 +89,39 @@ class TileRecipesTest {
         assertEquals(78206.0, grid.yResolution, 0.1)
     }
 
+    @Test void minGrid() {
+        TileRecipes recipes = new TileRecipes()
+        Grid grid = recipes.minGrid()
+        assertEquals(0, grid.z)
+        assertEquals(1, grid.width)
+        assertEquals(1, grid.height)
+        assertEquals(1, grid.size)
+        assertEquals(156412.0, grid.xResolution, 0.1)
+        assertEquals(156412.0, grid.yResolution, 0.1)
+    }
+
+    @Test void maxGrid() {
+        TileRecipes recipes = new TileRecipes()
+        Grid grid = recipes.maxGrid()
+        assertEquals(19, grid.z)
+        assertEquals(524288, grid.width)
+        assertEquals(524288, grid.height)
+        assertEquals(274877906944, grid.size)
+        assertEquals(0.29833221435546875, grid.xResolution, 0.0001)
+        assertEquals(0.29833221435546875, grid.yResolution, 0.0001)
+    }
+
+    @Test void createPyramidFromString() {
+        TileRecipes recipes = new TileRecipes()
+        Pyramid pyramid = recipes.createPyramidFromString()
+        assertEquals("EPSG:3857", pyramid.proj.id)
+        assertEquals("(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)", pyramid.bounds.toString())
+        assertEquals("BOTTOM_LEFT", pyramid.origin.toString())
+        assertEquals(19, pyramid.maxGrid.z)
+        assertEquals(256, pyramid.tileWidth)
+        assertEquals(256, pyramid.tileHeight)
+    }
+
     // TileLayer
 
     @Test void tileLayerProperties() {

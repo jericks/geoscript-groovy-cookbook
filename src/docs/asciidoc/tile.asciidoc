@@ -111,7 +111,46 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidGlobalGeo
 include::output/tile_pyramid_global_geodetic.txt[]
 ....
 
+Create a Global Mercator Pyramid from a well known name.
+
+Well known names include:
+
+* GlobalMercator
+* Mercator
+* GlobalMercatorBottomLeft
+* GlobalMercatorTopLeft
+* GlobalGeodetic
+* Geodetic
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createPyramidFromString_GlobalMercator,indent=0]
+----
+....
+include::output/tile_pyramid_fromstring_globalmercator.txt[]
+....
+
 ==== Get a Grid from a Pyramid
+
+Get a the min Grid.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=minGrid,indent=0]
+----
+....
+include::output/tile_pyramid_mingrid.txt[]
+....
+
+Get a the max Grid.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=maxGrid,indent=0]
+----
+....
+include::output/tile_pyramid_maxgrid.txt[]
+....
 
 Get a Grid from a Pyramid by Zoom Level.
 

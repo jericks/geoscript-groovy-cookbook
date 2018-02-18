@@ -122,7 +122,47 @@ Y Resolution: ${grid.yResolution}
         grid
     }
 
-    // Pyramid
+    Grid maxGrid() {
+        // tag::maxGrid[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        Grid grid = pyramid.maxGrid
+        println "Zoom Level: ${grid.z}"
+        println "Width / # Columns: ${grid.width}"
+        println "Height / # Rows: ${grid.height}"
+        println "Size / # Tiles: ${grid.size}"
+        println "X Resolution: ${grid.xResolution}"
+        println "Y Resolution: ${grid.yResolution}"
+        // end::maxGrid[]
+        writeFile("tile_pyramid_maxgrid", """Zoom Level: ${grid.z}
+Width / # Columns: ${grid.width}
+Height / # Rows: ${grid.height}
+Size / # Tiles: ${grid.size}
+X Resolution: ${grid.xResolution}
+Y Resolution: ${grid.yResolution}
+""")
+        grid
+    }
+
+    Grid minGrid() {
+        // tag::minGrid[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        Grid grid = pyramid.minGrid
+        println "Zoom Level: ${grid.z}"
+        println "Width / # Columns: ${grid.width}"
+        println "Height / # Rows: ${grid.height}"
+        println "Size / # Tiles: ${grid.size}"
+        println "X Resolution: ${grid.xResolution}"
+        println "Y Resolution: ${grid.yResolution}"
+        // end::minGrid[]
+        writeFile("tile_pyramid_mingrid", """Zoom Level: ${grid.z}
+Width / # Columns: ${grid.width}
+Height / # Rows: ${grid.height}
+Size / # Tiles: ${grid.size}
+X Resolution: ${grid.xResolution}
+Y Resolution: ${grid.yResolution}
+""")
+        grid
+    }
 
     Pyramid createGlobalMercatorPyramid() {
         // tag::pyramidGlobalMercatorPyramid[]
@@ -196,6 +236,22 @@ Max Zoom: ${pyramid.maxGrid.z}
         saveImage("tilelayer_properties_tile", (tile as ImageTile).image)
 
         mbtiles
+    }
+
+    Pyramid createPyramidFromString() {
+        // tag::createPyramidFromString_GlobalMercator[]
+        Pyramid pyramid = Pyramid.fromString("mercator")
+        println "Projection: ${pyramid.proj}"
+        println "Origin: ${pyramid.origin}"
+        println "Bounds: ${pyramid.bounds}"
+        println "Max Zoom: ${pyramid.maxGrid.z}"
+        // end::createPyramidFromString_GlobalMercator[]
+        writeFile("tile_pyramid_fromstring_globalmercator", """Projection: ${pyramid.proj}
+Origin: ${pyramid.origin}
+Bounds: ${pyramid.bounds}
+Max Zoom: ${pyramid.maxGrid.z}
+""")
+        pyramid
     }
 
 
