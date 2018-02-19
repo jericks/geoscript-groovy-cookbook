@@ -225,3 +225,17 @@ include::output/tilelayer_properties_tile.txt[]
 
 [.thumb]
 image::tilelayer_properties_tile.png[]
+
+=== TileCursor
+
+A TileCursor is a way to get a collection of Tiles from a TileLayer.
+
+Get a TileCursor with all of the Tiles form a TileLayer in a zoom level.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByZoomLevel,indent=0]
+----
+....
+include::output/tile_cursor_zoomlevel.txt[]
+....

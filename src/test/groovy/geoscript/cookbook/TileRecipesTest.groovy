@@ -5,6 +5,7 @@ import geoscript.layer.ImageTile
 import geoscript.layer.MBTiles
 import geoscript.layer.Pyramid
 import geoscript.layer.Tile
+import geoscript.layer.TileCursor
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -130,6 +131,20 @@ class TileRecipesTest {
         assertEquals("countries", mbtiles.name)
         assertEquals("(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)", mbtiles.bounds.toString())
         assertEquals("EPSG:3857", mbtiles.proj.id)
+    }
+
+    // TileCursor
+
+    @Test void tileCursorByZoomLevel() {
+        TileRecipes recipes = new TileRecipes()
+        TileCursor tileCursor = recipes.tileCursorByZoomLevel()
+        assertEquals(4, tileCursor.size)
+        assertEquals(2, tileCursor.width)
+        assertEquals(2, tileCursor.height)
+        assertEquals(0, tileCursor.minX)
+        assertEquals(0, tileCursor.minY)
+        assertEquals(1, tileCursor.maxX)
+        assertEquals(1, tileCursor.maxY)
     }
 
 }

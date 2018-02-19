@@ -6,6 +6,7 @@ import geoscript.layer.ImageTile
 import geoscript.layer.MBTiles
 import geoscript.layer.Pyramid
 import geoscript.layer.Tile
+import geoscript.layer.TileCursor
 import geoscript.layer.TileLayer
 import geoscript.proj.Projection
 
@@ -254,5 +255,38 @@ Max Zoom: ${pyramid.maxGrid.z}
         pyramid
     }
 
+    // TileCursor
+
+    TileCursor tileCursorByZoomLevel() {
+        // tag::tileCursorByZoomLevel[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+        TileCursor tileCursor = new TileCursor(mbtiles, 1)
+
+        println "Zoom Level: ${tileCursor.z}"
+        println "# of tiles: ${tileCursor.size}"
+        println "Bounds: ${tileCursor.bounds}"
+        println "Width / # Columns: ${tileCursor.width}"
+        println "Height / # Rows: ${tileCursor.height}"
+        println "MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}"
+
+        println "Tiles:"
+        tileCursor.each { Tile t ->
+            println t
+        }
+        // end::tileCursorByZoomLevel[]
+        writeFile("tile_cursor_zoomlevel", """
+Zoom Level: ${tileCursor.z}
+# of tiles: ${tileCursor.size}
+Bounds: ${tileCursor.bounds}
+Width / # Columns: ${tileCursor.width}
+Height / # Rows: ${tileCursor.height}
+MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}
+
+Tiles:
+${tileCursor.collect { it.toString() }.join(NEW_LINE)}
+""")
+        tileCursor
+    }
 
 }
