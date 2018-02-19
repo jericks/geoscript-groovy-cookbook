@@ -289,4 +289,36 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         tileCursor
     }
 
+    TileCursor tileCursorByZoomLevelAndMinMax() {
+        // tag::tileCursorByZoomLevelAndMinMax[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+        TileCursor tileCursor = new TileCursor(mbtiles, 4, 2, 4, 5, 8)
+
+        println "Zoom Level: ${tileCursor.z}"
+        println "# of tiles: ${tileCursor.size}"
+        println "Bounds: ${tileCursor.bounds}"
+        println "Width / # Columns: ${tileCursor.width}"
+        println "Height / # Rows: ${tileCursor.height}"
+        println "MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}"
+
+        println "Tiles:"
+        tileCursor.each { Tile t ->
+            println t
+        }
+        // end::tileCursorByZoomLevelAndMinMax[]
+        writeFile("tile_cursor_zoomlevelminmax", """
+Zoom Level: ${tileCursor.z}
+# of tiles: ${tileCursor.size}
+Bounds: ${tileCursor.bounds}
+Width / # Columns: ${tileCursor.width}
+Height / # Rows: ${tileCursor.height}
+MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}
+
+Tiles:
+${tileCursor.collect { it.toString() }.join(NEW_LINE)}
+""")
+        tileCursor
+    }
+
 }

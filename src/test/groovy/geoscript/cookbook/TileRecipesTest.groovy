@@ -147,4 +147,17 @@ class TileRecipesTest {
         assertEquals(1, tileCursor.maxY)
     }
 
+    @Test void tileCursorByZoomLevelAndMinMax() {
+        TileRecipes recipes = new TileRecipes()
+        TileCursor tileCursor = recipes.tileCursorByZoomLevelAndMinMax()
+        assertEquals(4, tileCursor.z)
+        assertEquals(20, tileCursor.size)
+        assertEquals(4, tileCursor.width)
+        assertEquals(5, tileCursor.height)
+        assertEquals(2, tileCursor.minX)
+        assertEquals(4, tileCursor.minY)
+        assertEquals(5, tileCursor.maxX)
+        assertEquals(8, tileCursor.maxY)
+    }
+
 }
