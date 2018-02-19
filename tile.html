@@ -540,6 +540,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#tile-layer-properties">Tile Layer Properties</a></li>
 </ul>
 </li>
+<li><a href="#tilecursor">TileCursor</a></li>
 </ul>
 </li>
 </ul>
@@ -952,12 +953,56 @@ println tile</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="tilecursor"><a class="anchor" href="#tilecursor"></a>TileCursor</h3>
+<div class="paragraph">
+<p>A TileCursor is a way to get a collection of Tiles from a TileLayer.</p>
+</div>
+<div class="paragraph">
+<p>Get a TileCursor with all of the Tiles form a TileLayer in a zoom level.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/tiles.mbtiles</span><span class="delimiter">&quot;</span></span>)
+MBTiles mbtiles = <span class="keyword">new</span> MBTiles(file)
+TileCursor tileCursor = <span class="keyword">new</span> TileCursor(mbtiles, <span class="integer">1</span>)
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Zoom Level: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of tiles: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.size<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Bounds: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Width / # Columns: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.width<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Height / # Rows: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.height<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">MinX: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.minX<span class="inline-delimiter">}</span></span><span class="content">, MinY: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.minY<span class="inline-delimiter">}</span></span><span class="content">, MaxX: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.maxX<span class="inline-delimiter">}</span></span><span class="content">, MaxY: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.maxY<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Tiles:</span><span class="delimiter">&quot;</span></span>
+tileCursor.each { Tile t -&gt;
+    println t
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Zoom Level: 1
+# of tiles: 4
+Bounds: (-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)
+Width / # Columns: 2
+Height / # Rows: 2
+MinX: 0, MinY: 0, MaxX: 1, MaxY: 1
+
+Tiles:
+Tile(x:0, y:0, z:1)
+Tile(x:1, y:0, z:1)
+Tile(x:0, y:1, z:1)
+Tile(x:1, y:1, z:1)</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-18 23:46:29 UTC
+Last updated 2018-02-19 21:32:51 UTC
 </div>
 </div>
 </body>
