@@ -785,6 +785,12 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#pyramid-properties">Pyramid Properties</a></li>
 <li><a href="#create-pyramids">Create Pyramids</a></li>
 <li><a href="#get-a-grid-from-a-pyramid">Get a Grid from a Pyramid</a></li>
+<li><a href="#reading-and-writing-pyramids">Reading and Writing Pyramids</a>
+<ul class="sectlevel4">
+<li><a href="#json-2">JSON</a></li>
+<li><a href="#xml-2">XML</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#tile-layer">Tile Layer</a>
@@ -5031,7 +5037,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--5b10da7f_161b04ad749_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-2f46b90_161b6a93acb_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5746,7 +5752,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Feb 19 22:59:10 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Feb 21 04:39:59 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5765,7 +5771,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--5b10da7f_161b04ad749_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-2f46b90_161b6a93acb_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5789,7 +5795,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Feb 19 22:59:10 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Feb 21 04:39:59 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5809,7 +5815,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--5b10da7f_161b04ad749_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-2f46b90_161b6a93acb_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5971,7 +5977,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--5b10da7f_161b04ad749_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-2f46b90_161b6a93acb_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6009,7 +6015,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--5b10da7f_161b04ad749_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-2f46b90_161b6a93acb_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7294,6 +7300,7 @@ geo:buffer
 geo:union
 geo:intersection
 geo:difference
+geo:pointN
 geo:area
 geo:numGeometries
 geo:convexHull
@@ -7303,9 +7310,9 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
+geo:reproject
 geo:symDifference
 geo:isClosed
-geo:reproject
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -7327,10 +7334,9 @@ geo:isRing
 geo:startPoint
 geo:endPoint
 geo:equalsExact
-geo:pointN
-geo:relatePattern
-geo:equalsExactTolerance
 geo:interiorRingN
+geo:equalsExactTolerance
+geo:relatePattern
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -11288,7 +11294,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--5b10da7f_161b04ad749_-6ae3"
+            "id": "fid-2f46b90_161b6a93acb_-6ae3"
         },
         {
             "type": "Feature",
@@ -11303,7 +11309,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--5b10da7f_161b04ad749_-6ae1"
+            "id": "fid-2f46b90_161b6a93acb_-6ae1"
         }
     ]
 }</pre>
@@ -11394,7 +11400,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--5b10da7f_161b04ad749_-7495"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-2f46b90_161b6a93acb_-7495"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -11416,7 +11422,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--5b10da7f_161b04ad749_-7493"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-2f46b90_161b6a93acb_-7493"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -11482,7 +11488,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--5b10da7f_161b04ad749_-6b18
+          fid-2f46b90_161b6a93acb_-6b18
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -11509,7 +11515,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--5b10da7f_161b04ad749_-6b16
+          fid-2f46b90_161b6a93acb_-6b16
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -12017,6 +12023,148 @@ Y Resolution: 78206.0</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="reading-and-writing-pyramids"><a class="anchor" href="#reading-and-writing-pyramids"></a>Reading and Writing Pyramids</h4>
+<div class="paragraph">
+<p>The Pyramid IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
+</div>
+<div class="sect4">
+<h5 id="json-2"><a class="anchor" href="#json-2"></a>JSON</h5>
+<div class="paragraph">
+<p>Get a JSON String from a Pyramid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(<span class="key">maxZoom</span>: <span class="integer">4</span>)
+<span class="predefined-type">String</span> json = pyramid.json
+println json</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+    "proj": "EPSG:3857",
+    "bounds": {
+        "minX": -2.0036395147881314E7,
+        "minY": -2.0037471205137067E7,
+        "maxX": 2.0036395147881314E7,
+        "maxY": 2.003747120513706E7
+    },
+    "origin": "BOTTOM_LEFT",
+    "tileSize": {
+        "width": 256,
+        "height": 256
+    },
+    "grids": [
+        {
+            "z": 0,
+            "width": 1,
+            "height": 1,
+            "xres": 156412.0,
+            "yres": 156412.0
+        },
+        {
+            "z": 1,
+            "width": 2,
+            "height": 2,
+            "xres": 78206.0,
+            "yres": 78206.0
+        },
+        {
+            "z": 2,
+            "width": 4,
+            "height": 4,
+            "xres": 39103.0,
+            "yres": 39103.0
+        },
+        {
+            "z": 3,
+            "width": 8,
+            "height": 8,
+            "xres": 19551.5,
+            "yres": 19551.5
+        },
+        {
+            "z": 4,
+            "width": 16,
+            "height": 16,
+            "xres": 9775.75,
+            "yres": 9775.75
+        }
+    ]
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="xml-2"><a class="anchor" href="#xml-2"></a>XML</h5>
+<div class="paragraph">
+<p>Get a XML String from a Pyramid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(<span class="key">maxZoom</span>: <span class="integer">4</span>)
+<span class="predefined-type">String</span> xml = pyramid.xml
+println xml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;pyramid&gt;
+  &lt;proj&gt;EPSG:3857&lt;/proj&gt;
+  &lt;bounds&gt;
+    &lt;minX&gt;-2.0036395147881314E7&lt;/minX&gt;
+    &lt;minY&gt;-2.0037471205137067E7&lt;/minY&gt;
+    &lt;maxX&gt;2.0036395147881314E7&lt;/maxX&gt;
+    &lt;maxY&gt;2.003747120513706E7&lt;/maxY&gt;
+  &lt;/bounds&gt;
+  &lt;origin&gt;BOTTOM_LEFT&lt;/origin&gt;
+  &lt;tileSize&gt;
+    &lt;width&gt;256&lt;/width&gt;
+    &lt;height&gt;256&lt;/height&gt;
+  &lt;/tileSize&gt;
+  &lt;grids&gt;
+    &lt;grid&gt;
+      &lt;z&gt;0&lt;/z&gt;
+      &lt;width&gt;1&lt;/width&gt;
+      &lt;height&gt;1&lt;/height&gt;
+      &lt;xres&gt;156412.0&lt;/xres&gt;
+      &lt;yres&gt;156412.0&lt;/yres&gt;
+    &lt;/grid&gt;
+    &lt;grid&gt;
+      &lt;z&gt;1&lt;/z&gt;
+      &lt;width&gt;2&lt;/width&gt;
+      &lt;height&gt;2&lt;/height&gt;
+      &lt;xres&gt;78206.0&lt;/xres&gt;
+      &lt;yres&gt;78206.0&lt;/yres&gt;
+    &lt;/grid&gt;
+    &lt;grid&gt;
+      &lt;z&gt;2&lt;/z&gt;
+      &lt;width&gt;4&lt;/width&gt;
+      &lt;height&gt;4&lt;/height&gt;
+      &lt;xres&gt;39103.0&lt;/xres&gt;
+      &lt;yres&gt;39103.0&lt;/yres&gt;
+    &lt;/grid&gt;
+    &lt;grid&gt;
+      &lt;z&gt;3&lt;/z&gt;
+      &lt;width&gt;8&lt;/width&gt;
+      &lt;height&gt;8&lt;/height&gt;
+      &lt;xres&gt;19551.5&lt;/xres&gt;
+      &lt;yres&gt;19551.5&lt;/yres&gt;
+    &lt;/grid&gt;
+    &lt;grid&gt;
+      &lt;z&gt;4&lt;/z&gt;
+      &lt;width&gt;16&lt;/width&gt;
+      &lt;height&gt;16&lt;/height&gt;
+      &lt;xres&gt;9775.75&lt;/xres&gt;
+      &lt;yres&gt;9775.75&lt;/yres&gt;
+    &lt;/grid&gt;
+  &lt;/grids&gt;
+&lt;/pyramid&gt;</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="tile-layer"><a class="anchor" href="#tile-layer"></a>Tile Layer</h3>
@@ -12211,7 +12359,7 @@ Tile(x:5, y:8, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-19 22:52:12 UTC
+Last updated 2018-02-21 04:33:15 UTC
 </div>
 </div>
 </body>

@@ -533,6 +533,12 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#pyramid-properties">Pyramid Properties</a></li>
 <li><a href="#create-pyramids">Create Pyramids</a></li>
 <li><a href="#get-a-grid-from-a-pyramid">Get a Grid from a Pyramid</a></li>
+<li><a href="#reading-and-writing-pyramids">Reading and Writing Pyramids</a>
+<ul class="sectlevel4">
+<li><a href="#json">JSON</a></li>
+<li><a href="#xml">XML</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#tile-layer">Tile Layer</a>
@@ -862,6 +868,148 @@ Y Resolution: 78206.0</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="reading-and-writing-pyramids"><a class="anchor" href="#reading-and-writing-pyramids"></a>Reading and Writing Pyramids</h4>
+<div class="paragraph">
+<p>The Pyramid IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
+</div>
+<div class="sect4">
+<h5 id="json"><a class="anchor" href="#json"></a>JSON</h5>
+<div class="paragraph">
+<p>Get a JSON String from a Pyramid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(<span class="key">maxZoom</span>: <span class="integer">4</span>)
+<span class="predefined-type">String</span> json = pyramid.json
+println json</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+    "proj": "EPSG:3857",
+    "bounds": {
+        "minX": -2.0036395147881314E7,
+        "minY": -2.0037471205137067E7,
+        "maxX": 2.0036395147881314E7,
+        "maxY": 2.003747120513706E7
+    },
+    "origin": "BOTTOM_LEFT",
+    "tileSize": {
+        "width": 256,
+        "height": 256
+    },
+    "grids": [
+        {
+            "z": 0,
+            "width": 1,
+            "height": 1,
+            "xres": 156412.0,
+            "yres": 156412.0
+        },
+        {
+            "z": 1,
+            "width": 2,
+            "height": 2,
+            "xres": 78206.0,
+            "yres": 78206.0
+        },
+        {
+            "z": 2,
+            "width": 4,
+            "height": 4,
+            "xres": 39103.0,
+            "yres": 39103.0
+        },
+        {
+            "z": 3,
+            "width": 8,
+            "height": 8,
+            "xres": 19551.5,
+            "yres": 19551.5
+        },
+        {
+            "z": 4,
+            "width": 16,
+            "height": 16,
+            "xres": 9775.75,
+            "yres": 9775.75
+        }
+    ]
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="xml"><a class="anchor" href="#xml"></a>XML</h5>
+<div class="paragraph">
+<p>Get a XML String from a Pyramid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(<span class="key">maxZoom</span>: <span class="integer">4</span>)
+<span class="predefined-type">String</span> xml = pyramid.xml
+println xml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;pyramid&gt;
+  &lt;proj&gt;EPSG:3857&lt;/proj&gt;
+  &lt;bounds&gt;
+    &lt;minX&gt;-2.0036395147881314E7&lt;/minX&gt;
+    &lt;minY&gt;-2.0037471205137067E7&lt;/minY&gt;
+    &lt;maxX&gt;2.0036395147881314E7&lt;/maxX&gt;
+    &lt;maxY&gt;2.003747120513706E7&lt;/maxY&gt;
+  &lt;/bounds&gt;
+  &lt;origin&gt;BOTTOM_LEFT&lt;/origin&gt;
+  &lt;tileSize&gt;
+    &lt;width&gt;256&lt;/width&gt;
+    &lt;height&gt;256&lt;/height&gt;
+  &lt;/tileSize&gt;
+  &lt;grids&gt;
+    &lt;grid&gt;
+      &lt;z&gt;0&lt;/z&gt;
+      &lt;width&gt;1&lt;/width&gt;
+      &lt;height&gt;1&lt;/height&gt;
+      &lt;xres&gt;156412.0&lt;/xres&gt;
+      &lt;yres&gt;156412.0&lt;/yres&gt;
+    &lt;/grid&gt;
+    &lt;grid&gt;
+      &lt;z&gt;1&lt;/z&gt;
+      &lt;width&gt;2&lt;/width&gt;
+      &lt;height&gt;2&lt;/height&gt;
+      &lt;xres&gt;78206.0&lt;/xres&gt;
+      &lt;yres&gt;78206.0&lt;/yres&gt;
+    &lt;/grid&gt;
+    &lt;grid&gt;
+      &lt;z&gt;2&lt;/z&gt;
+      &lt;width&gt;4&lt;/width&gt;
+      &lt;height&gt;4&lt;/height&gt;
+      &lt;xres&gt;39103.0&lt;/xres&gt;
+      &lt;yres&gt;39103.0&lt;/yres&gt;
+    &lt;/grid&gt;
+    &lt;grid&gt;
+      &lt;z&gt;3&lt;/z&gt;
+      &lt;width&gt;8&lt;/width&gt;
+      &lt;height&gt;8&lt;/height&gt;
+      &lt;xres&gt;19551.5&lt;/xres&gt;
+      &lt;yres&gt;19551.5&lt;/yres&gt;
+    &lt;/grid&gt;
+    &lt;grid&gt;
+      &lt;z&gt;4&lt;/z&gt;
+      &lt;width&gt;16&lt;/width&gt;
+      &lt;height&gt;16&lt;/height&gt;
+      &lt;xres&gt;9775.75&lt;/xres&gt;
+      &lt;yres&gt;9775.75&lt;/yres&gt;
+    &lt;/grid&gt;
+  &lt;/grids&gt;
+&lt;/pyramid&gt;</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="tile-layer"><a class="anchor" href="#tile-layer"></a>Tile Layer</h3>
@@ -1056,7 +1204,7 @@ Tile(x:5, y:8, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-19 22:52:12 UTC
+Last updated 2018-02-21 04:33:15 UTC
 </div>
 </div>
 </body>
