@@ -9,6 +9,7 @@ import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import geoscript.layer.TileLayer
 import geoscript.proj.Projection
+import groovy.json.JsonOutput
 
 import java.awt.image.BufferedImage
 
@@ -253,6 +254,26 @@ Bounds: ${pyramid.bounds}
 Max Zoom: ${pyramid.maxGrid.z}
 """)
         pyramid
+    }
+
+    String pyramidToJson() {
+        // tag::pyramidToJson[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(maxZoom: 4)
+        String json = pyramid.json
+        println json
+        // end::pyramidToJson[]
+        writeFile("tile_pyramid_to_json", JsonOutput.prettyPrint(json))
+        json
+    }
+
+    String pyramidToXml() {
+        // tag::pyramidToXml[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(maxZoom: 4)
+        String xml = pyramid.xml
+        println xml
+        // end::pyramidToXml[]
+        writeFile("tile_pyramid_to_xml", xml)
+        xml
     }
 
     // TileCursor

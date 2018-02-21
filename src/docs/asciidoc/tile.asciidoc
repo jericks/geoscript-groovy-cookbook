@@ -162,6 +162,35 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=gridFromPyramidB
 include::output/tile_pyramid_grid_zoomlevel.txt[]
 ....
 
+==== Reading and Writing Pyramids
+
+The Pyramid IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
+
+===== JSON
+
+Get a JSON String from a Pyramid.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidToJson,indent=0]
+----
+....
+include::output/tile_pyramid_to_json.txt[]
+....
+
+===== XML
+
+Get a XML String from a Pyramid.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidToXml,indent=0]
+----
+....
+include::output/tile_pyramid_to_xml.txt[]
+....
+
+
 === Tile Layer
 
 ==== Tile Layer Properties

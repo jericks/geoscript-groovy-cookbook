@@ -123,6 +123,118 @@ class TileRecipesTest {
         assertEquals(256, pyramid.tileHeight)
     }
 
+    @Test void pyramidToJson() {
+        TileRecipes recipes = new TileRecipes()
+        String json = recipes.pyramidToJson()
+        assertEquals("""{
+    "proj": "EPSG:3857",
+    "bounds": {
+        "minX": -2.0036395147881314E7,
+        "minY": -2.0037471205137067E7,
+        "maxX": 2.0036395147881314E7,
+        "maxY": 2.003747120513706E7
+    },
+    "origin": "BOTTOM_LEFT",
+    "tileSize": {
+        "width": 256,
+        "height": 256
+    },
+    "grids": [
+        {
+            "z": 0,
+            "width": 1,
+            "height": 1,
+            "xres": 156412.0,
+            "yres": 156412.0
+        },
+        {
+            "z": 1,
+            "width": 2,
+            "height": 2,
+            "xres": 78206.0,
+            "yres": 78206.0
+        },
+        {
+            "z": 2,
+            "width": 4,
+            "height": 4,
+            "xres": 39103.0,
+            "yres": 39103.0
+        },
+        {
+            "z": 3,
+            "width": 8,
+            "height": 8,
+            "xres": 19551.5,
+            "yres": 19551.5
+        },
+        {
+            "z": 4,
+            "width": 16,
+            "height": 16,
+            "xres": 9775.75,
+            "yres": 9775.75
+        }
+    ]
+}""", json)
+    }
+
+    @Test void pyramidToXml() {
+        TileRecipes recipes = new TileRecipes()
+        String xml = recipes.pyramidToXml()
+        assertEquals("""<pyramid>
+  <proj>EPSG:3857</proj>
+  <bounds>
+    <minX>-2.0036395147881314E7</minX>
+    <minY>-2.0037471205137067E7</minY>
+    <maxX>2.0036395147881314E7</maxX>
+    <maxY>2.003747120513706E7</maxY>
+  </bounds>
+  <origin>BOTTOM_LEFT</origin>
+  <tileSize>
+    <width>256</width>
+    <height>256</height>
+  </tileSize>
+  <grids>
+    <grid>
+      <z>0</z>
+      <width>1</width>
+      <height>1</height>
+      <xres>156412.0</xres>
+      <yres>156412.0</yres>
+    </grid>
+    <grid>
+      <z>1</z>
+      <width>2</width>
+      <height>2</height>
+      <xres>78206.0</xres>
+      <yres>78206.0</yres>
+    </grid>
+    <grid>
+      <z>2</z>
+      <width>4</width>
+      <height>4</height>
+      <xres>39103.0</xres>
+      <yres>39103.0</yres>
+    </grid>
+    <grid>
+      <z>3</z>
+      <width>8</width>
+      <height>8</height>
+      <xres>19551.5</xres>
+      <yres>19551.5</yres>
+    </grid>
+    <grid>
+      <z>4</z>
+      <width>16</width>
+      <height>16</height>
+      <xres>9775.75</xres>
+      <yres>9775.75</yres>
+    </grid>
+  </grids>
+</pyramid>""", xml)
+    }
+
     // TileLayer
 
     @Test void tileLayerProperties() {

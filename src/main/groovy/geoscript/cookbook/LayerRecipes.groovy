@@ -998,14 +998,6 @@ The merged Layer has ${mergedLayer.count} features
         geobuf
     }
 
-    private String prettyPrintXml(String xml) {
-        StringWriter writer = new StringWriter()
-        XmlNodePrinter nodePrinter = new XmlNodePrinter(new PrintWriter(writer))
-        Node node = new XmlParser().parseText(xml)
-        nodePrinter.print(node)
-        writer.toString()
-    }
-
     // Graticule
 
     Layer createSquareGraticule() {

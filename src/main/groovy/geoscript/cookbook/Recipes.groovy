@@ -201,6 +201,14 @@ class Recipes {
         map.render(file)
     }
 
+    protected String prettyPrintXml(String xml) {
+        StringWriter writer = new StringWriter()
+        XmlNodePrinter nodePrinter = new XmlNodePrinter(new PrintWriter(writer))
+        Node node = new XmlParser().parseText(xml)
+        nodePrinter.print(node)
+        writer.toString()
+    }
+
     protected void createTable(String name, Layer layer, boolean includeGeom) {
 
         List fields = layer.schema.fields
