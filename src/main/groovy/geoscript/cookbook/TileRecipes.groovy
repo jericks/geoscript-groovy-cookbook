@@ -276,6 +276,16 @@ Max Zoom: ${pyramid.maxGrid.z}
         xml
     }
 
+    String pyramidToCsv() {
+        // tag::pyramidToCsv[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(maxZoom: 4)
+        String csv = pyramid.csv
+        println csv
+        // end::pyramidToCsv[]
+        writeFile("tile_pyramid_to_csv", csv)
+        csv
+    }
+    
     // TileCursor
 
     TileCursor tileCursorByZoomLevel() {

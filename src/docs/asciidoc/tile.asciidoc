@@ -190,6 +190,17 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidToXml,ind
 include::output/tile_pyramid_to_xml.txt[]
 ....
 
+===== CSV
+
+Get a CSV String from a Pyramid.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidToCsv,indent=0]
+----
+....
+include::output/tile_pyramid_to_csv.txt[]
+....
 
 === Tile Layer
 
