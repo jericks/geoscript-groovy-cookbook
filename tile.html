@@ -537,6 +537,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel4">
 <li><a href="#json">JSON</a></li>
 <li><a href="#xml">XML</a></li>
+<li><a href="#csv">CSV</a></li>
 </ul>
 </li>
 </ul>
@@ -1009,6 +1010,32 @@ println xml</code></pre>
 </div>
 </div>
 </div>
+<div class="sect4">
+<h5 id="csv"><a class="anchor" href="#csv"></a>CSV</h5>
+<div class="paragraph">
+<p>Get a CSV String from a Pyramid.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(<span class="key">maxZoom</span>: <span class="integer">4</span>)
+<span class="predefined-type">String</span> csv = pyramid.csv
+println csv</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>EPSG:3857
+-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857
+BOTTOM_LEFT
+256,256
+0,1,1,156412.0,156412.0
+1,2,2,78206.0,78206.0
+2,4,4,39103.0,39103.0
+3,8,8,19551.5,19551.5
+4,16,16,9775.75,9775.75</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1204,7 +1231,7 @@ Tile(x:5, y:8, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-21 04:33:15 UTC
+Last updated 2018-02-22 01:17:07 UTC
 </div>
 </div>
 </body>
