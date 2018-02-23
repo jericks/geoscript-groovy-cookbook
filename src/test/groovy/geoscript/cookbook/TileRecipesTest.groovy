@@ -123,6 +123,32 @@ class TileRecipesTest {
         assertEquals(256, pyramid.tileHeight)
     }
 
+    // Pyramid IO
+
+    @Test void listPyramidWriters() {
+        TileRecipes recipes = new TileRecipes()
+        List<Writer> writers = recipes.listPyramidWriters()
+        assertTrue(writers.size() > 0)
+    }
+
+    @Test void findPyramidWriter() {
+        TileRecipes recipes = new TileRecipes()
+        String str = recipes.findPyramidWriter()
+        assertNotNull(str)
+    }
+
+    @Test void listPyramidReaders() {
+        TileRecipes recipes = new TileRecipes()
+        List<Reader> readers = recipes.listPyramidReaders()
+        assertTrue(readers.size() > 0)
+    }
+
+    @Test void findPyramidReader() {
+        TileRecipes recipes = new TileRecipes()
+        Pyramid pyramid = recipes.findPyramidReader()
+        assertNotNull(pyramid)
+    }
+
     @Test void pyramidToJson() {
         TileRecipes recipes = new TileRecipes()
         String json = recipes.pyramidToJson()

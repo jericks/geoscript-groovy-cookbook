@@ -166,6 +166,45 @@ include::output/tile_pyramid_grid_zoomlevel.txt[]
 
 The Pyramid IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
 
+==== Finding Pyramid Writer and Readers
+
+[source,groovy]
+.List all Pyramid Writers
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=listPyramidWriters,indent=0]
+----
+....
+include::output/pyramid_list_writers.txt[]
+....
+
+[source,groovy]
+.Find a Pyramid Writer
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=findPyramidWriter,indent=0]
+----
+....
+include::output/pyramid_find_writer.txt[]
+....
+
+[source,groovy]
+.List all Pyramid Readers
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=listPyramidReaders,indent=0]
+----
+....
+include::output/pyramid_list_readers.txt[]
+....
+
+[source,groovy]
+.Find a Pyramid Reader
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=findPyramidReader,indent=0]
+----
+....
+include::output/pyramid_find_reader.txt[]
+....
+
+
 ===== JSON
 
 Get a JSON String from a Pyramid.

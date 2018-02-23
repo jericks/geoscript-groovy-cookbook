@@ -8,6 +8,10 @@ import geoscript.layer.Pyramid
 import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import geoscript.layer.TileLayer
+import geoscript.layer.io.PyramidReader
+import geoscript.layer.io.PyramidReaders
+import geoscript.layer.io.PyramidWriter
+import geoscript.layer.io.PyramidWriters
 import geoscript.proj.Projection
 import groovy.json.JsonOutput
 
@@ -254,6 +258,60 @@ Bounds: ${pyramid.bounds}
 Max Zoom: ${pyramid.maxGrid.z}
 """)
         pyramid
+    }
+
+    // Pyramid IO
+
+    List<PyramidReader> listPyramidReaders() {
+        // tag::listPyramidReaders[]
+        List<PyramidReader> readers = PyramidReaders.list()
+        readers.each { PyramidReader reader ->
+            println reader.class.simpleName
+        }
+        // end::listPyramidReaders[]
+        writeFile("pyramid_list_readers", "${readers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        readers
+    }
+
+    Pyramid findPyramidReader() {
+        // tag::findPyramidReader[]
+        PyramidReader reader = PyramidReaders.find("csv")
+        Pyramid pyramid = reader.read("""EPSG:3857
+-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857
+BOTTOM_LEFT
+256,256
+0,1,1,156412.0,156412.0
+1,2,2,78206.0,78206.0
+2,4,4,39103.0,39103.0
+3,8,8,19551.5,19551.5
+4,16,16,9775.75,9775.75
+""")
+        println pyramid
+        // end::findPyramidReader[]
+        writeFile("pyramid_find_reader", "${pyramid}")
+        pyramid
+    }
+
+    List<PyramidWriter> listPyramidWriters() {
+        // tag::listPyramidWriters[]
+        List<PyramidWriter> writers = PyramidWriters.list()
+        writers.each { PyramidWriter writer ->
+            println writer.class.simpleName
+        }
+        // end::listPyramidWriters[]
+        writeFile("pyramid_list_writers", "${writers.collect{it.class.simpleName}.join(NEW_LINE)}")
+        writers
+    }
+
+    String findPyramidWriter() {
+        // tag::findPyramidWriter[]
+        Pyramid pyramid = Pyramid.createGlobalGeodeticPyramid(maxZoom: 2)
+        PyramidWriter writer = PyramidWriters.find("csv")
+        String pyramidStr = writer.write(pyramid)
+        println pyramidStr
+        // end::findPyramidWriter[]
+        writeFile("pyramid_find_writer", "${pyramidStr}")
+        pyramidStr
     }
 
     String pyramidToJson() {
