@@ -533,7 +533,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#pyramid-properties">Pyramid Properties</a></li>
 <li><a href="#create-pyramids">Create Pyramids</a></li>
 <li><a href="#get-a-grid-from-a-pyramid">Get a Grid from a Pyramid</a></li>
-<li><a href="#reading-and-writing-pyramids">Reading and Writing Pyramids</a>
+<li><a href="#reading-and-writing-pyramids">Reading and Writing Pyramids</a></li>
+<li><a href="#finding-pyramid-writer-and-readers">Finding Pyramid Writer and Readers</a>
 <ul class="sectlevel4">
 <li><a href="#json">JSON</a></li>
 <li><a href="#xml">XML</a></li>
@@ -873,6 +874,85 @@ Y Resolution: 78206.0</pre>
 <h4 id="reading-and-writing-pyramids"><a class="anchor" href="#reading-and-writing-pyramids"></a>Reading and Writing Pyramids</h4>
 <div class="paragraph">
 <p>The Pyramid IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-pyramid-writer-and-readers"><a class="anchor" href="#finding-pyramid-writer-and-readers"></a>Finding Pyramid Writer and Readers</h4>
+<div class="listingblock">
+<div class="title">List all Pyramid Writers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;PyramidWriter&gt; writers = PyramidWriters.list()
+writers.each { PyramidWriter writer -&gt;
+    println writer.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CsvPyramidWriter
+GdalTmsPyramidWriter
+JsonPyramidWriter
+XmlPyramidWriter</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Pyramid Writer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalGeodeticPyramid(<span class="key">maxZoom</span>: <span class="integer">2</span>)
+PyramidWriter writer = PyramidWriters.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">csv</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> pyramidStr = writer.write(pyramid)
+println pyramidStr</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>EPSG:4326
+-179.99,-89.99,179.99,89.99,EPSG:4326
+BOTTOM_LEFT
+256,256
+0,2,1,0.703125,0.703125
+1,4,2,0.3515625,0.3515625
+2,8,4,0.17578125,0.17578125</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">List all Pyramid Readers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;PyramidReader&gt; readers = PyramidReaders.list()
+readers.each { PyramidReader reader -&gt;
+    println reader.class.simpleName
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CsvPyramidReader
+GdalTmsPyramidReader
+JsonPyramidReader
+XmlPyramidReader</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Pyramid Reader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        PyramidReader reader = PyramidReaders.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">csv</span><span class="delimiter">&quot;</span></span>)
+        Pyramid pyramid = reader.read(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">EPSG:3857
+-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857
+BOTTOM_LEFT
+256,256
+0,1,1,156412.0,156412.0
+1,2,2,78206.0,78206.0
+2,4,4,39103.0,39103.0
+3,8,8,19551.5,19551.5
+4,16,16,9775.75,9775.75
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>)
+        println pyramid</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geoscript.layer.Pyramid(proj:EPSG:3857, bounds:(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857), origin:BOTTOM_LEFT, tileWidth:256, tileHeight:256)</pre>
+</div>
 </div>
 <div class="sect4">
 <h5 id="json"><a class="anchor" href="#json"></a>JSON</h5>
@@ -1231,7 +1311,7 @@ Tile(x:5, y:8, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-22 01:17:07 UTC
+Last updated 2018-02-23 02:04:09 UTC
 </div>
 </div>
 </body>
