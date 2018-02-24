@@ -533,12 +533,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#pyramid-properties">Pyramid Properties</a></li>
 <li><a href="#create-pyramids">Create Pyramids</a></li>
 <li><a href="#get-a-grid-from-a-pyramid">Get a Grid from a Pyramid</a></li>
-<li><a href="#reading-and-writing-pyramids">Reading and Writing Pyramids</a></li>
-<li><a href="#finding-pyramid-writer-and-readers">Finding Pyramid Writer and Readers</a>
+<li><a href="#reading-and-writing-pyramids">Reading and Writing Pyramids</a>
 <ul class="sectlevel4">
+<li><a href="#finding-pyramid-writer-and-readers">Finding Pyramid Writer and Readers</a></li>
 <li><a href="#json">JSON</a></li>
 <li><a href="#xml">XML</a></li>
 <li><a href="#csv">CSV</a></li>
+<li><a href="#gdal-xml">GDAL XML</a></li>
 </ul>
 </li>
 </ul>
@@ -875,9 +876,8 @@ Y Resolution: 78206.0</pre>
 <div class="paragraph">
 <p>The Pyramid IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="finding-pyramid-writer-and-readers"><a class="anchor" href="#finding-pyramid-writer-and-readers"></a>Finding Pyramid Writer and Readers</h4>
+<div class="sect4">
+<h5 id="finding-pyramid-writer-and-readers"><a class="anchor" href="#finding-pyramid-writer-and-readers"></a>Finding Pyramid Writer and Readers</h5>
 <div class="listingblock">
 <div class="title">List all Pyramid Writers</div>
 <div class="content">
@@ -952,6 +952,7 @@ BOTTOM_LEFT
 <div class="literalblock">
 <div class="content">
 <pre>geoscript.layer.Pyramid(proj:EPSG:3857, bounds:(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857), origin:BOTTOM_LEFT, tileWidth:256, tileHeight:256)</pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -1113,6 +1114,80 @@ BOTTOM_LEFT
 2,4,4,39103.0,39103.0
 3,8,8,19551.5,19551.5
 4,16,16,9775.75,9775.75</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="gdal-xml"><a class="anchor" href="#gdal-xml"></a>GDAL XML</h5>
+<div class="paragraph">
+<p>Write a Pyramid to a GDAL XML File</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(<span class="key">maxZoom</span>: <span class="integer">4</span>)
+GdalTmsPyramidWriter writer = <span class="keyword">new</span> GdalTmsPyramidWriter()
+<span class="predefined-type">String</span> xml = writer.write(pyramid, <span class="key">serverUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://myserver.com/${z}/${x}/${y}</span><span class="delimiter">'</span></span>, <span class="key">imageFormat</span>: <span class="string"><span class="delimiter">'</span><span class="content">png</span><span class="delimiter">'</span></span>)
+println xml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;GDAL_WMS&gt;
+  &lt;Service name='TMS'&gt;
+    &lt;ServerURL&gt;https://myserver.com/${z}/${x}/${y}&lt;/ServerURL&gt;
+    &lt;SRS&gt;EPSG:3857&lt;/SRS&gt;
+    &lt;ImageFormat&gt;png&lt;/ImageFormat&gt;
+  &lt;/Service&gt;
+  &lt;DataWindow&gt;
+    &lt;UpperLeftX&gt;-2.0036395147881314E7&lt;/UpperLeftX&gt;
+    &lt;UpperLeftY&gt;2.003747120513706E7&lt;/UpperLeftY&gt;
+    &lt;LowerRightX&gt;2.0036395147881314E7&lt;/LowerRightX&gt;
+    &lt;LowerRightY&gt;-2.0037471205137067E7&lt;/LowerRightY&gt;
+    &lt;TileLevel&gt;4&lt;/TileLevel&gt;
+    &lt;TileCountX&gt;1&lt;/TileCountX&gt;
+    &lt;TileCountY&gt;1&lt;/TileCountY&gt;
+    &lt;YOrigin&gt;bottom&lt;/YOrigin&gt;
+  &lt;/DataWindow&gt;
+  &lt;Projection&gt;EPSG:3857&lt;/Projection&gt;
+  &lt;BlockSizeX&gt;256&lt;/BlockSizeX&gt;
+  &lt;BlockSizeY&gt;256&lt;/BlockSizeY&gt;
+  &lt;BandsCount&gt;3&lt;/BandsCount&gt;
+&lt;/GDAL_WMS&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Read a Pyramid from a GDAL XML File</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> xml = <span class="string"><span class="delimiter">'''</span><span class="content">&lt;GDAL_WMS&gt;
+  &lt;Service name='TMS'&gt;
+    &lt;ServerURL&gt;https://myserver.com/${z}/${x}/${y}&lt;/ServerURL&gt;
+    &lt;SRS&gt;EPSG:3857&lt;/SRS&gt;
+    &lt;ImageFormat&gt;png&lt;/ImageFormat&gt;
+  &lt;/Service&gt;
+  &lt;DataWindow&gt;
+    &lt;UpperLeftX&gt;-2.0036395147881314E7&lt;/UpperLeftX&gt;
+    &lt;UpperLeftY&gt;2.003747120513706E7&lt;/UpperLeftY&gt;
+    &lt;LowerRightX&gt;2.0036395147881314E7&lt;/LowerRightX&gt;
+    &lt;LowerRightY&gt;-2.0037471205137067E7&lt;/LowerRightY&gt;
+    &lt;TileLevel&gt;4&lt;/TileLevel&gt;
+    &lt;TileCountX&gt;1&lt;/TileCountX&gt;
+    &lt;TileCountY&gt;1&lt;/TileCountY&gt;
+    &lt;YOrigin&gt;bottom&lt;/YOrigin&gt;
+  &lt;/DataWindow&gt;
+  &lt;Projection&gt;EPSG:3857&lt;/Projection&gt;
+  &lt;BlockSizeX&gt;256&lt;/BlockSizeX&gt;
+  &lt;BlockSizeY&gt;256&lt;/BlockSizeY&gt;
+  &lt;BandsCount&gt;3&lt;/BandsCount&gt;
+&lt;/GDAL_WMS&gt;</span><span class="delimiter">'''</span></span>
+        GdalTmsPyramidReader reader = <span class="keyword">new</span> GdalTmsPyramidReader()
+        Pyramid pyramid = reader.read(xml)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geoscript.layer.Pyramid(proj:EPSG:3857, bounds:(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857), origin:BOTTOM_LEFT, tileWidth:256, tileHeight:256)</pre>
 </div>
 </div>
 </div>
@@ -1311,7 +1386,7 @@ Tile(x:5, y:8, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-23 02:04:09 UTC
+Last updated 2018-02-24 21:28:04 UTC
 </div>
 </div>
 </body>

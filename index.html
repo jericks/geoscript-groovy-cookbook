@@ -785,12 +785,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#pyramid-properties">Pyramid Properties</a></li>
 <li><a href="#create-pyramids">Create Pyramids</a></li>
 <li><a href="#get-a-grid-from-a-pyramid">Get a Grid from a Pyramid</a></li>
-<li><a href="#reading-and-writing-pyramids">Reading and Writing Pyramids</a></li>
-<li><a href="#finding-pyramid-writer-and-readers">Finding Pyramid Writer and Readers</a>
+<li><a href="#reading-and-writing-pyramids">Reading and Writing Pyramids</a>
 <ul class="sectlevel4">
+<li><a href="#finding-pyramid-writer-and-readers">Finding Pyramid Writer and Readers</a></li>
 <li><a href="#json-2">JSON</a></li>
 <li><a href="#xml-2">XML</a></li>
 <li><a href="#csv">CSV</a></li>
+<li><a href="#gdal-xml">GDAL XML</a></li>
 </ul>
 </li>
 </ul>
@@ -5039,7 +5040,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-10f250c_161c06d38bb_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-b495a46_161c9bd6952_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5754,7 +5755,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Feb 23 02:10:39 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 24 21:34:49 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5773,7 +5774,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-10f250c_161c06d38bb_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-b495a46_161c9bd6952_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5797,7 +5798,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Feb 23 02:10:39 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 24 21:34:49 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5817,7 +5818,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-10f250c_161c06d38bb_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-b495a46_161c9bd6952_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -5979,7 +5980,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-10f250c_161c06d38bb_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-b495a46_161c9bd6952_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6017,7 +6018,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-10f250c_161c06d38bb_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-b495a46_161c9bd6952_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7279,7 +7280,55 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>vec:Aggregate
+<pre>geo:isValid
+geo:buffer
+geo:union
+geo:intersection
+geo:difference
+geo:area
+geo:numGeometries
+geo:convexHull
+geo:crosses
+geo:distance
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:reproject
+geo:symDifference
+geo:isClosed
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:numPoints
+geo:envelope
+geo:getX
+geo:getY
+geo:isRing
+geo:startPoint
+geo:endPoint
+geo:polygonize
+geo:equalsExact
+geo:relatePattern
+geo:equalsExactTolerance
+geo:pointN
+geo:interiorRingN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7309,54 +7358,6 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:isValid
-geo:buffer
-geo:union
-geo:intersection
-geo:difference
-geo:area
-geo:numGeometries
-geo:convexHull
-geo:crosses
-geo:distance
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:reproject
-geo:symDifference
-geo:isClosed
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:numPoints
-geo:envelope
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:getX
-geo:getY
-geo:isRing
-geo:startPoint
-geo:endPoint
-geo:polygonize
-geo:equalsExact
-geo:interiorRingN
-geo:relatePattern
-geo:pointN
-geo:equalsExactTolerance
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
 ras:AddCoverages
 ras:Affine
 ras:AreaGrid
@@ -9688,19 +9689,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL (JNDI)
-PostGIS
-MySQL
+<pre>GeoPackage
+MySQL (JNDI)
 Properties
-Directory of spatial files (shapefiles)
-H2 (JNDI)
+PostGIS
 Shapefile
-PostGIS (JNDI)
-SpatiaLite (JNDI)
 Web Feature Server (NG)
-GeoPackage
 H2
-Geobuf</pre>
+MySQL
+Geobuf
+Directory of spatial files (shapefiles)
+SpatiaLite (JNDI)
+PostGIS (JNDI)
+H2 (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9810,19 +9811,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL (JNDI)
-PostGIS
-MySQL
+<pre>GeoPackage
+MySQL (JNDI)
 Properties
-Directory of spatial files (shapefiles)
-H2 (JNDI)
+PostGIS
 Shapefile
-PostGIS (JNDI)
-SpatiaLite (JNDI)
 Web Feature Server (NG)
-GeoPackage
 H2
-Geobuf</pre>
+MySQL
+Geobuf
+Directory of spatial files (shapefiles)
+SpatiaLite (JNDI)
+PostGIS (JNDI)
+H2 (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11296,7 +11297,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-10f250c_161c06d38bb_-6ae3"
+            "id": "fid-b495a46_161c9bd6952_-6ae3"
         },
         {
             "type": "Feature",
@@ -11311,7 +11312,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-10f250c_161c06d38bb_-6ae1"
+            "id": "fid-b495a46_161c9bd6952_-6ae1"
         }
     ]
 }</pre>
@@ -11402,7 +11403,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-10f250c_161c06d38bb_-7495"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-b495a46_161c9bd6952_-7495"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -11424,7 +11425,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-10f250c_161c06d38bb_-7493"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-b495a46_161c9bd6952_-7493"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -11490,7 +11491,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-10f250c_161c06d38bb_-6b18
+          fid-b495a46_161c9bd6952_-6b18
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -11517,7 +11518,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-10f250c_161c06d38bb_-6b16
+          fid-b495a46_161c9bd6952_-6b16
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -12030,9 +12031,8 @@ Y Resolution: 78206.0</pre>
 <div class="paragraph">
 <p>The Pyramid IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="finding-pyramid-writer-and-readers"><a class="anchor" href="#finding-pyramid-writer-and-readers"></a>Finding Pyramid Writer and Readers</h4>
+<div class="sect4">
+<h5 id="finding-pyramid-writer-and-readers"><a class="anchor" href="#finding-pyramid-writer-and-readers"></a>Finding Pyramid Writer and Readers</h5>
 <div class="listingblock">
 <div class="title">List all Pyramid Writers</div>
 <div class="content">
@@ -12107,6 +12107,7 @@ BOTTOM_LEFT
 <div class="literalblock">
 <div class="content">
 <pre>geoscript.layer.Pyramid(proj:EPSG:3857, bounds:(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857), origin:BOTTOM_LEFT, tileWidth:256, tileHeight:256)</pre>
+</div>
 </div>
 </div>
 <div class="sect4">
@@ -12268,6 +12269,80 @@ BOTTOM_LEFT
 2,4,4,39103.0,39103.0
 3,8,8,19551.5,19551.5
 4,16,16,9775.75,9775.75</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="gdal-xml"><a class="anchor" href="#gdal-xml"></a>GDAL XML</h5>
+<div class="paragraph">
+<p>Write a Pyramid to a GDAL XML File</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(<span class="key">maxZoom</span>: <span class="integer">4</span>)
+GdalTmsPyramidWriter writer = <span class="keyword">new</span> GdalTmsPyramidWriter()
+<span class="predefined-type">String</span> xml = writer.write(pyramid, <span class="key">serverUrl</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://myserver.com/${z}/${x}/${y}</span><span class="delimiter">'</span></span>, <span class="key">imageFormat</span>: <span class="string"><span class="delimiter">'</span><span class="content">png</span><span class="delimiter">'</span></span>)
+println xml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;GDAL_WMS&gt;
+  &lt;Service name='TMS'&gt;
+    &lt;ServerURL&gt;https://myserver.com/${z}/${x}/${y}&lt;/ServerURL&gt;
+    &lt;SRS&gt;EPSG:3857&lt;/SRS&gt;
+    &lt;ImageFormat&gt;png&lt;/ImageFormat&gt;
+  &lt;/Service&gt;
+  &lt;DataWindow&gt;
+    &lt;UpperLeftX&gt;-2.0036395147881314E7&lt;/UpperLeftX&gt;
+    &lt;UpperLeftY&gt;2.003747120513706E7&lt;/UpperLeftY&gt;
+    &lt;LowerRightX&gt;2.0036395147881314E7&lt;/LowerRightX&gt;
+    &lt;LowerRightY&gt;-2.0037471205137067E7&lt;/LowerRightY&gt;
+    &lt;TileLevel&gt;4&lt;/TileLevel&gt;
+    &lt;TileCountX&gt;1&lt;/TileCountX&gt;
+    &lt;TileCountY&gt;1&lt;/TileCountY&gt;
+    &lt;YOrigin&gt;bottom&lt;/YOrigin&gt;
+  &lt;/DataWindow&gt;
+  &lt;Projection&gt;EPSG:3857&lt;/Projection&gt;
+  &lt;BlockSizeX&gt;256&lt;/BlockSizeX&gt;
+  &lt;BlockSizeY&gt;256&lt;/BlockSizeY&gt;
+  &lt;BandsCount&gt;3&lt;/BandsCount&gt;
+&lt;/GDAL_WMS&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Read a Pyramid from a GDAL XML File</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> xml = <span class="string"><span class="delimiter">'''</span><span class="content">&lt;GDAL_WMS&gt;
+  &lt;Service name='TMS'&gt;
+    &lt;ServerURL&gt;https://myserver.com/${z}/${x}/${y}&lt;/ServerURL&gt;
+    &lt;SRS&gt;EPSG:3857&lt;/SRS&gt;
+    &lt;ImageFormat&gt;png&lt;/ImageFormat&gt;
+  &lt;/Service&gt;
+  &lt;DataWindow&gt;
+    &lt;UpperLeftX&gt;-2.0036395147881314E7&lt;/UpperLeftX&gt;
+    &lt;UpperLeftY&gt;2.003747120513706E7&lt;/UpperLeftY&gt;
+    &lt;LowerRightX&gt;2.0036395147881314E7&lt;/LowerRightX&gt;
+    &lt;LowerRightY&gt;-2.0037471205137067E7&lt;/LowerRightY&gt;
+    &lt;TileLevel&gt;4&lt;/TileLevel&gt;
+    &lt;TileCountX&gt;1&lt;/TileCountX&gt;
+    &lt;TileCountY&gt;1&lt;/TileCountY&gt;
+    &lt;YOrigin&gt;bottom&lt;/YOrigin&gt;
+  &lt;/DataWindow&gt;
+  &lt;Projection&gt;EPSG:3857&lt;/Projection&gt;
+  &lt;BlockSizeX&gt;256&lt;/BlockSizeX&gt;
+  &lt;BlockSizeY&gt;256&lt;/BlockSizeY&gt;
+  &lt;BandsCount&gt;3&lt;/BandsCount&gt;
+&lt;/GDAL_WMS&gt;</span><span class="delimiter">'''</span></span>
+        GdalTmsPyramidReader reader = <span class="keyword">new</span> GdalTmsPyramidReader()
+        Pyramid pyramid = reader.read(xml)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>geoscript.layer.Pyramid(proj:EPSG:3857, bounds:(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857), origin:BOTTOM_LEFT, tileWidth:256, tileHeight:256)</pre>
 </div>
 </div>
 </div>
@@ -12466,7 +12541,7 @@ Tile(x:5, y:8, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-23 02:04:09 UTC
+Last updated 2018-02-24 21:28:04 UTC
 </div>
 </div>
 </body>
