@@ -166,7 +166,7 @@ include::output/tile_pyramid_grid_zoomlevel.txt[]
 
 The Pyramid IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
 
-==== Finding Pyramid Writer and Readers
+===== Finding Pyramid Writer and Readers
 
 [source,groovy]
 .List all Pyramid Writers
@@ -239,6 +239,28 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidToCsv,ind
 ----
 ....
 include::output/tile_pyramid_to_csv.txt[]
+....
+
+===== GDAL XML
+
+Write a Pyramid to a GDAL XML File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=writePyramidToGdalTms,indent=0]
+----
+....
+include::output/tile_pyramid_write_gdaltms.txt[]
+....
+
+Read a Pyramid from a GDAL XML File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=readPyramidFromGdalTms,indent=0]
+----
+....
+include::output/tile_pyramid_read_gdaltms.txt[]
 ....
 
 === Tile Layer

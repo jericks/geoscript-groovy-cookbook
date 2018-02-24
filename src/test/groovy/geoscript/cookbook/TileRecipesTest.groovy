@@ -276,6 +276,38 @@ BOTTOM_LEFT
 """, csv)
     }
 
+    @Test void writePyramidToGdalTms() {
+        TileRecipes recipes = new TileRecipes()
+        String xml = recipes.writePyramidToGdalTms()
+        assertEquals('''<GDAL_WMS>
+  <Service name='TMS'>
+    <ServerURL>https://myserver.com/${z}/${x}/${y}</ServerURL>
+    <SRS>EPSG:3857</SRS>
+    <ImageFormat>png</ImageFormat>
+  </Service>
+  <DataWindow>
+    <UpperLeftX>-2.0036395147881314E7</UpperLeftX>
+    <UpperLeftY>2.003747120513706E7</UpperLeftY>
+    <LowerRightX>2.0036395147881314E7</LowerRightX>
+    <LowerRightY>-2.0037471205137067E7</LowerRightY>
+    <TileLevel>4</TileLevel>
+    <TileCountX>1</TileCountX>
+    <TileCountY>1</TileCountY>
+    <YOrigin>bottom</YOrigin>
+  </DataWindow>
+  <Projection>EPSG:3857</Projection>
+  <BlockSizeX>256</BlockSizeX>
+  <BlockSizeY>256</BlockSizeY>
+  <BandsCount>3</BandsCount>
+</GDAL_WMS>''', xml)
+    }
+
+    @Test void readPyramidFromGdalTms() {
+        TileRecipes recipes = new TileRecipes()
+        Pyramid pyramid = recipes.readPyramidFromGdalTms()
+        assertEquals('geoscript.layer.Pyramid(proj:EPSG:3857, bounds:(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857), origin:BOTTOM_LEFT, tileWidth:256, tileHeight:256)', pyramid.toString())
+    }
+
     // TileLayer
 
     @Test void tileLayerProperties() {

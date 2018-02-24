@@ -8,6 +8,8 @@ import geoscript.layer.Pyramid
 import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import geoscript.layer.TileLayer
+import geoscript.layer.io.GdalTmsPyramidReader
+import geoscript.layer.io.GdalTmsPyramidWriter
 import geoscript.layer.io.PyramidReader
 import geoscript.layer.io.PyramidReaders
 import geoscript.layer.io.PyramidWriter
@@ -343,7 +345,48 @@ BOTTOM_LEFT
         writeFile("tile_pyramid_to_csv", csv)
         csv
     }
-    
+
+    String writePyramidToGdalTms() {
+        // tag::writePyramidToGdalTms[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(maxZoom: 4)
+        GdalTmsPyramidWriter writer = new GdalTmsPyramidWriter()
+        String xml = writer.write(pyramid, serverUrl: 'https://myserver.com/${z}/${x}/${y}', imageFormat: 'png')
+        println xml
+        // end::writePyramidToGdalTms[]
+        writeFile("tile_pyramid_write_gdaltms", xml)
+        xml
+    }
+
+    Pyramid readPyramidFromGdalTms() {
+        // tag::readPyramidFromGdalTms[]
+        String xml = '''<GDAL_WMS>
+  <Service name='TMS'>
+    <ServerURL>https://myserver.com/${z}/${x}/${y}</ServerURL>
+    <SRS>EPSG:3857</SRS>
+    <ImageFormat>png</ImageFormat>
+  </Service>
+  <DataWindow>
+    <UpperLeftX>-2.0036395147881314E7</UpperLeftX>
+    <UpperLeftY>2.003747120513706E7</UpperLeftY>
+    <LowerRightX>2.0036395147881314E7</LowerRightX>
+    <LowerRightY>-2.0037471205137067E7</LowerRightY>
+    <TileLevel>4</TileLevel>
+    <TileCountX>1</TileCountX>
+    <TileCountY>1</TileCountY>
+    <YOrigin>bottom</YOrigin>
+  </DataWindow>
+  <Projection>EPSG:3857</Projection>
+  <BlockSizeX>256</BlockSizeX>
+  <BlockSizeY>256</BlockSizeY>
+  <BandsCount>3</BandsCount>
+</GDAL_WMS>'''
+        GdalTmsPyramidReader reader = new GdalTmsPyramidReader()
+        Pyramid pyramid = reader.read(xml)
+        // end::readPyramidFromGdalTms[]
+        writeFile("tile_pyramid_read_gdaltms", pyramid.toString())
+        pyramid
+    }
+
     // TileCursor
 
     TileCursor tileCursorByZoomLevel() {
