@@ -345,4 +345,13 @@ BOTTOM_LEFT
         assertEquals(8, tileCursor.maxY)
     }
 
+    // TileGenerator
+
+    @Test void generateTilesToMBTiles() {
+        TileRecipes recipes = new TileRecipes()
+        MBTiles mbtiles = recipes.generateTilesToMBTiles()
+        assertEquals(0, mbtiles.minZoom)
+        assertEquals(2, mbtiles.maxZoom)
+    }
+
 }

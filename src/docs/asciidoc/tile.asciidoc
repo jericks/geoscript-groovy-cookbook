@@ -263,6 +263,19 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=readPyramidFromG
 include::output/tile_pyramid_read_gdaltms.txt[]
 ....
 
+=== Generating Tiles
+
+==== Generating Image Tiles
+
+Generate Image Tiles to a MBTiles file
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=generateTilesToMBTiles,indent=0]
+----
+[.thumb]
+image::tile_generate_mbtiles.png[]
+
 === Tile Layer
 
 ==== Tile Layer Properties

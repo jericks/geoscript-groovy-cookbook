@@ -3,10 +3,13 @@ package geoscript.cookbook
 import geoscript.geom.Bounds
 import geoscript.layer.Grid
 import geoscript.layer.ImageTile
+import geoscript.layer.ImageTileRenderer
+import geoscript.layer.Layer
 import geoscript.layer.MBTiles
 import geoscript.layer.Pyramid
 import geoscript.layer.Tile
 import geoscript.layer.TileCursor
+import geoscript.layer.TileGenerator
 import geoscript.layer.TileLayer
 import geoscript.layer.io.GdalTmsPyramidReader
 import geoscript.layer.io.GdalTmsPyramidWriter
@@ -15,9 +18,15 @@ import geoscript.layer.io.PyramidReaders
 import geoscript.layer.io.PyramidWriter
 import geoscript.layer.io.PyramidWriters
 import geoscript.proj.Projection
+import geoscript.style.Fill
+import geoscript.style.Stroke
+import geoscript.workspace.GeoPackage
+import geoscript.workspace.Workspace
 import groovy.json.JsonOutput
 
+import javax.media.jai.PlanarImage
 import java.awt.image.BufferedImage
+import java.awt.image.RenderedImage
 
 class TileRecipes extends Recipes {
 
@@ -451,6 +460,28 @@ Tiles:
 ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
 """)
         tileCursor
+    }
+
+    // TileGenerator
+
+    MBTiles generateTilesToMBTiles() {
+        // tag::generateTilesToMBTiles[]
+        File file = new File("target/world.mbtiles")
+        MBTiles mbtiles = new MBTiles(file, "World", "World Tiles")
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+
+        ImageTileRenderer renderer = new ImageTileRenderer(mbtiles, [ocean, countries])
+        TileGenerator generator = new TileGenerator()
+        generator.generate(mbtiles, renderer, 0, 2)
+        // end::generateTilesToMBTiles[]
+        RenderedImage image = mbtiles.getRaster(mbtiles.tiles(1)).image
+        saveImage("tile_generate_mbtiles", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        mbtiles
     }
 
 }
