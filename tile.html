@@ -1330,7 +1330,9 @@ println tile</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/tiles.mbtiles</span><span class="delimiter">&quot;</span></span>)
 MBTiles mbtiles = <span class="keyword">new</span> MBTiles(file)
-TileCursor tileCursor = <span class="keyword">new</span> TileCursor(mbtiles, <span class="integer">1</span>)
+
+<span class="type">long</span> zoomLevel = <span class="integer">1</span>
+TileCursor tileCursor = <span class="keyword">new</span> TileCursor(mbtiles, zoomLevel)
 
 println <span class="string"><span class="delimiter">&quot;</span><span class="content">Zoom Level: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
 println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of tiles: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.size<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
@@ -1368,7 +1370,13 @@ Tile(x:1, y:1, z:1)</pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/tiles.mbtiles</span><span class="delimiter">&quot;</span></span>)
 MBTiles mbtiles = <span class="keyword">new</span> MBTiles(file)
-TileCursor tileCursor = <span class="keyword">new</span> TileCursor(mbtiles, <span class="integer">4</span>, <span class="integer">2</span>, <span class="integer">4</span>, <span class="integer">5</span>, <span class="integer">8</span>)
+
+<span class="type">long</span> zoomLevel = <span class="integer">4</span>
+<span class="type">long</span> minX = <span class="integer">2</span>
+<span class="type">long</span> minY = <span class="integer">4</span>
+<span class="type">long</span> maxX = <span class="integer">5</span>
+<span class="type">long</span> maxY = <span class="integer">8</span>
+TileCursor tileCursor = <span class="keyword">new</span> TileCursor(mbtiles, zoomLevel, minX, minY, maxX, maxY)
 
 println <span class="string"><span class="delimiter">&quot;</span><span class="content">Zoom Level: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
 println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of tiles: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.size<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
@@ -1415,13 +1423,74 @@ Tile(x:4, y:8, z:4)
 Tile(x:5, y:8, z:4)</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Get a TileCursor with Tiles form a TileLayer in a zoom level for a given Bounds.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/tiles.mbtiles</span><span class="delimiter">&quot;</span></span>)
+MBTiles mbtiles = <span class="keyword">new</span> MBTiles(file)
+
+Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">102.875977</span>, <span class="float">45.433154</span>, -<span class="float">96.481934</span>, <span class="float">48.118434</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>).reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>)
+<span class="type">int</span> zoomLevel = <span class="integer">8</span>
+TileCursor tileCursor = <span class="keyword">new</span> TileCursor(mbtiles, bounds, zoomLevel)
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Zoom Level: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of tiles: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.size<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Bounds: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Width / # Columns: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.width<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Height / # Rows: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.height<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">MinX: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.minX<span class="inline-delimiter">}</span></span><span class="content">, MinY: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.minY<span class="inline-delimiter">}</span></span><span class="content">, MaxX: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.maxX<span class="inline-delimiter">}</span></span><span class="content">, MaxY: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.maxY<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Tiles:</span><span class="delimiter">&quot;</span></span>
+tileCursor.each { Tile t -&gt;
+    println t
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Zoom Level: 8
+# of tiles: 24
+Bounds: (-1.1583540944868885E7,5635538.7764447965,-1.0644334922311949E7,6261709.751605326,EPSG:3857)
+Width / # Columns: 6
+Height / # Rows: 4
+MinX: 54, MinY: 164, MaxX: 59, MaxY: 167
+
+Tiles:
+Tile(x:54, y:164, z:8)
+Tile(x:55, y:164, z:8)
+Tile(x:56, y:164, z:8)
+Tile(x:57, y:164, z:8)
+Tile(x:58, y:164, z:8)
+Tile(x:59, y:164, z:8)
+Tile(x:54, y:165, z:8)
+Tile(x:55, y:165, z:8)
+Tile(x:56, y:165, z:8)
+Tile(x:57, y:165, z:8)
+Tile(x:58, y:165, z:8)
+Tile(x:59, y:165, z:8)
+Tile(x:54, y:166, z:8)
+Tile(x:55, y:166, z:8)
+Tile(x:56, y:166, z:8)
+Tile(x:57, y:166, z:8)
+Tile(x:58, y:166, z:8)
+Tile(x:59, y:166, z:8)
+Tile(x:54, y:167, z:8)
+Tile(x:55, y:167, z:8)
+Tile(x:56, y:167, z:8)
+Tile(x:57, y:167, z:8)
+Tile(x:58, y:167, z:8)
+Tile(x:59, y:167, z:8)</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-25 19:31:00 UTC
+Last updated 2018-02-27 03:17:17 UTC
 </div>
 </div>
 </body>
