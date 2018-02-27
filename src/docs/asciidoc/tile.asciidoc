@@ -363,3 +363,13 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByZoom
 ....
 include::output/tile_cursor_zoomlevelminmax.txt[]
 ....
+
+Get a TileCursor with Tiles form a TileLayer in a zoom level for a given Bounds.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByZoomLevelAndBounds,indent=0]
+----
+....
+include::output/tile_cursor_zoomlevelbounds.txt[]
+....
