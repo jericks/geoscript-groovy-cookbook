@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.layer.GeoPackage
 import geoscript.layer.Grid
 import geoscript.layer.ImageTile
 import geoscript.layer.MBTiles
@@ -378,6 +379,13 @@ BOTTOM_LEFT
         MBTiles mbtiles = recipes.generateTilesToMBTiles()
         assertEquals(0, mbtiles.minZoom)
         assertEquals(2, mbtiles.maxZoom)
+    }
+
+    @Test void generateTilesToGeoPackage() {
+        TileRecipes recipes = new TileRecipes()
+        GeoPackage geopackage = recipes.generateTilesToGeoPackage()
+        assertEquals(0, geopackage.minZoom)
+        assertEquals(2, geopackage.maxZoom)
     }
 
 }

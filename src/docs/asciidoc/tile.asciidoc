@@ -276,6 +276,15 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=generateTilesToM
 [.thumb]
 image::tile_generate_mbtiles.png[]
 
+Generate Image Tiles to a GeoPackage file
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=generateTilesToGeoPackage,indent=0]
+----
+[.thumb]
+image::tile_generate_geopackage.png[]
+
 === Tile Layer
 
 ==== Tile Layer Properties

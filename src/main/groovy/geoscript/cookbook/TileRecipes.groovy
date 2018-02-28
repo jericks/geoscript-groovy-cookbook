@@ -563,4 +563,24 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         mbtiles
     }
 
+    geoscript.layer.GeoPackage generateTilesToGeoPackage() {
+        // tag::generateTilesToGeoPackage[]
+        File file = new File("target/world.gpkg")
+        geoscript.layer.GeoPackage geopackage = new geoscript.layer.GeoPackage(file, "World", Pyramid.createGlobalGeodeticPyramid())
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+
+        ImageTileRenderer renderer = new ImageTileRenderer(geopackage, [ocean, countries])
+        TileGenerator generator = new TileGenerator()
+        generator.generate(geopackage, renderer, 0, 2)
+        // end::generateTilesToGeoPackage[]
+        RenderedImage image = geopackage.getRaster(geopackage.tiles(1)).image
+        saveImage("tile_generate_geopackage", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        geopackage
+    }
+
 }
