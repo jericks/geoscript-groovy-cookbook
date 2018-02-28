@@ -1484,13 +1484,59 @@ Tile(x:58, y:167, z:8)
 Tile(x:59, y:167, z:8)</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Get a TileCursor with Tiles form a TileLayer in a zoom level for a given x and y resolution.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/tiles.mbtiles</span><span class="delimiter">&quot;</span></span>)
+MBTiles mbtiles = <span class="keyword">new</span> MBTiles(file)
+
+Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="float">124.73142200000001</span>, <span class="float">24.955967</span>, -<span class="float">66.969849</span>, <span class="float">49.371735</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>).reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>)
+<span class="type">double</span> resolutionX = bounds.width / <span class="integer">400</span>
+<span class="type">double</span> resolutionY = bounds.height / <span class="integer">300</span>
+TileCursor tileCursor = <span class="keyword">new</span> TileCursor(mbtiles, bounds, resolutionX, resolutionY)
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Zoom Level: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of tiles: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.size<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Bounds: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Width / # Columns: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.width<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Height / # Rows: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.height<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">MinX: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.minX<span class="inline-delimiter">}</span></span><span class="content">, MinY: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.minY<span class="inline-delimiter">}</span></span><span class="content">, MaxX: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.maxX<span class="inline-delimiter">}</span></span><span class="content">, MaxY: </span><span class="inline"><span class="inline-delimiter">${</span>tileCursor.maxY<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Tiles:</span><span class="delimiter">&quot;</span></span>
+tileCursor.each { Tile t -&gt;
+    println t
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Zoom Level: 4
+# of tiles: 8
+Bounds: (-1.5027296360910986E7,2504683.9006421305,-5009098.786970329,7514051.701926393,EPSG:3857)
+Width / # Columns: 4
+Height / # Rows: 2
+MinX: 2, MinY: 9, MaxX: 5, MaxY: 10
+
+Tiles:
+Tile(x:2, y:9, z:4)
+Tile(x:3, y:9, z:4)
+Tile(x:4, y:9, z:4)
+Tile(x:5, y:9, z:4)
+Tile(x:2, y:10, z:4)
+Tile(x:3, y:10, z:4)
+Tile(x:4, y:10, z:4)
+Tile(x:5, y:10, z:4)</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-27 03:17:17 UTC
+Last updated 2018-02-28 04:04:05 UTC
 </div>
 </div>
 </body>
