@@ -358,6 +358,19 @@ BOTTOM_LEFT
         assertEquals(167, tileCursor.maxY)
     }
 
+    @Test void tileCursorByZoomLevelAndResXY() {
+        TileRecipes recipes = new TileRecipes()
+        TileCursor tileCursor = recipes.tileCursorByZoomLevelAndResXY()
+        assertEquals(4, tileCursor.z)
+        assertEquals(8, tileCursor.size)
+        assertEquals(4, tileCursor.width)
+        assertEquals(2, tileCursor.height)
+        assertEquals(2, tileCursor.minX)
+        assertEquals(9, tileCursor.minY)
+        assertEquals(5, tileCursor.maxX)
+        assertEquals(10, tileCursor.maxY)
+    }
+
     // TileGenerator
 
     @Test void generateTilesToMBTiles() {
