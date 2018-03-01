@@ -515,7 +515,11 @@ table.CodeRay td.code>pre{padding:0}
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#raster-recipes">Raster Recipes</a></li>
+<li><a href="#raster-recipes">Raster Recipes</a>
+<ul class="sectlevel2">
+<li><a href="#raster-properties">Raster Properties</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -526,12 +530,135 @@ table.CodeRay td.code>pre{padding:0}
 <div class="paragraph">
 <p>The Raster classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
 </div>
+<div class="sect2">
+<h3 id="raster-properties"><a class="anchor" href="#raster-properties"></a>Raster Properties</h3>
+<div class="paragraph">
+<p>Read a Raster from a File</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/earth.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_properties.png" alt="raster properties">
+</div>
+</div>
+<div class="paragraph">
+<p>Get the Raster&#8217;s Bounds.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = raster.bounds
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Bounds: </span><span class="inline"><span class="inline-delimiter">${</span>bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Bounds: (-179.99999999999997,-89.99999999998205,179.99999999996405,90.0,EPSG:4326)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the Raster&#8217;s Projection.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection projection = raster.proj
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Projection: </span><span class="inline"><span class="inline-delimiter">${</span>projection<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Projection: EPSG:4326</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the Raster&#8217;s Size.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> size = raster.size
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Size: </span><span class="inline"><span class="inline-delimiter">${</span>size[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="content">x</span><span class="inline"><span class="inline-delimiter">${</span>size[<span class="integer">1</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Size: 800x400</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the Raster&#8217;s number of columns and rows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> cols = raster.cols
+<span class="type">int</span> rows = raster.rows
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Columns: </span><span class="inline"><span class="inline-delimiter">${</span>cols<span class="inline-delimiter">}</span></span><span class="content"> Rows: </span><span class="inline"><span class="inline-delimiter">${</span>rows<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Columns: 800 Rows: 400</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the Raster&#8217;s Bands.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;Band&gt; bands = raster.bands
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Bands:</span><span class="delimiter">&quot;</span></span>
+bands.each { Band band -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  </span><span class="inline"><span class="inline-delimiter">${</span>band<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Band:
+  RED_BAND
+  GREEN_BAND
+  BLUE_BAND</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the Raster&#8217;s block size.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> blockSize = raster.blockSize
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Block size: </span><span class="inline"><span class="inline-delimiter">${</span>blockSize[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="content">x</span><span class="inline"><span class="inline-delimiter">${</span>blockSize[<span class="integer">1</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Block size: 800x8</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the Raster&#8217;s pixel size.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> pixelSize = raster.pixelSize
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Pixel size: </span><span class="inline"><span class="inline-delimiter">${</span>pixelSize[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="content">x</span><span class="inline"><span class="inline-delimiter">${</span>pixelSize[<span class="integer">1</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Pixel size: 0.44999999999995505x0.4499999999999551</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-01 02:39:06 UTC
+Last updated 2018-03-01 03:44:23 UTC
 </div>
 </div>
 </body>
