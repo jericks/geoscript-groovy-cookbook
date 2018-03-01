@@ -5,6 +5,84 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 The Raster classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html[geoscript.layer]* package.
 
+=== Raster Properties
 
+Read a Raster from a File
 
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties,indent=0]
+----
+[.thumb]
+image::raster_properties.png[]
+
+Get the Raster's Bounds.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_bounds,indent=0]
+----
+....
+include::output/raster_properties_bounds.txt[]
+....
+
+Get the Raster's Projection.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_projection,indent=0]
+----
+....
+include::output/raster_properties_projection.txt[]
+....
+
+Get the Raster's Size.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_size,indent=0]
+----
+....
+include::output/raster_properties_size.txt[]
+....
+
+Get the Raster's number of columns and rows.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_colsrows,indent=0]
+----
+....
+include::output/raster_properties_colsrows.txt[]
+....
+
+Get the Raster's Bands.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_bands,indent=0]
+----
+....
+include::output/raster_properties_bands.txt[]
+....
+
+Get the Raster's block size.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_blocksize,indent=0]
+----
+....
+include::output/raster_properties_blocksize.txt[]
+....
+
+Get the Raster's pixel size.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_pixelsize,indent=0]
+----
+....
+include::output/raster_properties_pixelsize.txt[]
+....
 
