@@ -7,5 +7,15 @@ The Format classes are in the *http://geoscript.github.io/geoscript-groovy/api/1
 
 A Format is a collection of Rasters.
 
+=== Read a Raster
+
+Read a Raster from a File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=read,indent=0]
+----
+[.thumb]
+image::format_read.png[]
 
 
