@@ -12,4 +12,10 @@ class FormatRecipesTest {
         assertNotNull(raster)
     }
 
+    @Test void write() {
+        FormatRecipes recipes = new FormatRecipes()
+        Raster raster = recipes.write()
+        assertNotNull(raster)
+    }
+
 }

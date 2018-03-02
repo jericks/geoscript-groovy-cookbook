@@ -18,4 +18,15 @@ include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=read,indent=0]
 [.thumb]
 image::format_read.png[]
 
+=== Write a Raster
+
+Write a Raster to a File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=write,indent=0]
+----
+[.thumb]
+image::format_write.png[]
+
 

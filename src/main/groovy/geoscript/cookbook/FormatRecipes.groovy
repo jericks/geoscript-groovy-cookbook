@@ -15,4 +15,20 @@ class FormatRecipes extends Recipes {
         raster
     }
 
+    Raster write() {
+        // tag::write[]
+        File file = new File("src/main/resources/earth.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("earth")
+
+        File outFile = new File("target/earth.png")
+        Format outFormat = Format.getFormat(outFile)
+        outFormat.write(raster)
+        Raster outRaster = outFormat.read("earth")
+
+        // end::write[]
+        draw("format_write", [outRaster])
+        outRaster
+    }
+
 }
