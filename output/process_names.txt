@@ -61,15 +61,15 @@ geo:dimension
 geo:envelope
 geo:getX
 geo:getY
-geo:isRing
 geo:startPoint
 geo:endPoint
 geo:polygonize
+geo:isRing
 geo:equalsExact
 geo:relatePattern
-geo:interiorRingN
 geo:pointN
 geo:equalsExactTolerance
+geo:interiorRingN
 geo:splitPolygon
 geo:length
 geo:isEmpty

@@ -652,13 +652,68 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 <pre>Pixel size: 0.44999999999995505x0.4499999999999551</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Get more information about a Raster&#8217;s Bounds.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/earth.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span>&lt;Band&gt; bands = raster.bands
+bands.each { Band band -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>band<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  Min = </span><span class="inline"><span class="inline-delimiter">${</span>band.min<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  Max = </span><span class="inline"><span class="inline-delimiter">${</span>band.max<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  No Data = </span><span class="inline"><span class="inline-delimiter">${</span>band.noData<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  Is No Data = </span><span class="inline"><span class="inline-delimiter">${</span>band.isNoData(<span class="float">12.45</span>)<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  Unit = </span><span class="inline"><span class="inline-delimiter">${</span>band.unit<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  Scale = </span><span class="inline"><span class="inline-delimiter">${</span>band.scale<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  Offset = </span><span class="inline"><span class="inline-delimiter">${</span>band.offset<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  Type = </span><span class="inline"><span class="inline-delimiter">${</span>band.type<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>RED_BAND
+  Min = 0.0
+  Max = 0.0
+  No Data = [0.0]
+  Is No Data = false
+  Unit = null
+  Scale = 1.0
+  Offset = 0.0
+  Type = byte
+
+GREEN_BAND
+  Min = 0.0
+  Max = 0.0
+  No Data = [0.0]
+  Is No Data = false
+  Unit = null
+  Scale = 1.0
+  Offset = 0.0
+  Type = byte
+
+BLUE_BAND
+  Min = 0.0
+  Max = 0.0
+  No Data = [0.0]
+  Is No Data = false
+  Unit = null
+  Scale = 1.0
+  Offset = 0.0
+  Type = byte</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-03 01:52:20 UTC
+Last updated 2018-03-03 16:31:59 UTC
 </div>
 </div>
 </body>
