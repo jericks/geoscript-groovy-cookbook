@@ -45,6 +45,9 @@ geo:getGeometryN
 geo:reproject
 geo:symDifference
 geo:isClosed
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
 geo:isSimple
 geo:isWithinDistance
 geo:overlaps
@@ -55,9 +58,6 @@ geo:simplify
 geo:densify
 geo:numPoints
 geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
 geo:envelope
 geo:getX
 geo:getY
