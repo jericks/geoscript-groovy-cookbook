@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.layer.Band
 import geoscript.layer.Raster
 import org.junit.Test
 import static org.junit.Assert.*
@@ -21,4 +22,9 @@ class RasterRecipesTest {
         assertEquals(0.4499999999999551, raster.pixelSize[1], 0.00001)
     }
 
+    @Test void band() {
+        RasterRecipes recipes = new RasterRecipes()
+        List<Band> bands = recipes.band()
+        assertEquals(3, bands.size())
+    }
 }

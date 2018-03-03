@@ -86,3 +86,13 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_pix
 include::output/raster_properties_pixelsize.txt[]
 ....
 
+Get more information about a Raster's Bounds.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=band,indent=0]
+----
+....
+include::output/raster_band.txt[]
+....
+

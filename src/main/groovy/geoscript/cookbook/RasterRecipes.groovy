@@ -64,4 +64,38 @@ class RasterRecipes extends Recipes {
 
         raster
     }
+
+    // Band
+
+    List<Band> band() {
+        // tag::band[]
+        File file = new File("src/main/resources/earth.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("earth")
+        List<Band> bands = raster.bands
+        bands.each { Band band ->
+            println "${band}"
+            println "  Min = ${band.min}"
+            println "  Max = ${band.max}"
+            println "  No Data = ${band.noData}"
+            println "  Is No Data = ${band.isNoData(12.45)}"
+            println "  Unit = ${band.unit}"
+            println "  Scale = ${band.scale}"
+            println "  Offset = ${band.offset}"
+            println "  Type = ${band.type}"
+        }
+        // end::band[]
+        writeFile("raster_band",  bands.collect { Band band ->
+"""${band}
+  Min = ${band.min}
+  Max = ${band.max}
+  No Data = ${band.noData}
+  Is No Data = ${band.isNoData(12.45)}
+  Unit = ${band.unit}
+  Scale = ${band.scale}
+  Offset = ${band.offset}
+  Type = ${band.type}
+""" }.join(NEW_LINE))
+        bands
+    }
 }
