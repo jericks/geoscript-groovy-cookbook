@@ -13,6 +13,13 @@ class FormatRecipesTest {
         assertEquals("GeoTIFF", format.name)
     }
 
+    @Test void getNames() {
+        FormatRecipes recipes = new FormatRecipes()
+        List<String> names = recipes.getNames()
+        assertEquals(1, names.size())
+        assertEquals("earth", names[0])
+    }
+
     @Test void hasRaster() {
         FormatRecipes recipes = new FormatRecipes()
         Format format = recipes.hasRaster()

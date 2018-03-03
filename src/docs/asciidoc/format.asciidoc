@@ -19,6 +19,18 @@ include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=getFormat,inde
 include::output/format_get.txt[]
 ....
 
+=== Get Names
+
+Get names of the Rasters in a Format.  Some Formats can contain more than one Raster.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=getNames,indent=0]
+----
+....
+include::output/format_names.txt[]
+....
+
 === Read a Raster
 
 Read a Raster from a File

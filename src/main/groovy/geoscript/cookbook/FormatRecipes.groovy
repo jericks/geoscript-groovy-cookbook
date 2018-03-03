@@ -15,6 +15,19 @@ class FormatRecipes extends Recipes {
         format
     }
 
+    List<String> getNames() {
+        // tag::getNames[]
+        File file = new File("src/main/resources/earth.tif")
+        Format format = Format.getFormat(file)
+        List<String> names = format.names
+        names.each { String name ->
+            println name
+        }
+        // end::getNames[]
+        writeFile("format_names", "${names.collect { it }.join(NEW_LINE)}")
+        names
+    }
+
     Format hasRaster() {
         // tag::hasRaster[]
         File file = new File("src/main/resources/earth.tif")
