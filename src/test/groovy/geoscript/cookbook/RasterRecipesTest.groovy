@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.geom.Point
 import geoscript.layer.Band
 import geoscript.layer.Raster
 import org.junit.Test
@@ -26,5 +27,11 @@ class RasterRecipesTest {
         RasterRecipes recipes = new RasterRecipes()
         List<Band> bands = recipes.band()
         assertEquals(3, bands.size())
+    }
+
+    @Test void values() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.values()
+        assertEquals(3069.0, raster.getValue(new Point(-121.799927,46.867703)), 0.01)
     }
 }

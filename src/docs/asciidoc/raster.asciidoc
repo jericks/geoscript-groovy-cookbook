@@ -96,3 +96,23 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=band,indent=0]
 include::output/raster_band.txt[]
 ....
 
+=== Raster Values
+
+Get values from a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=values,indent=0]
+----
+[.thumb]
+image::raster_values.png[]
+
+Get values from a Raster with a Point.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=values_1,indent=0]
+----
+....
+include::output/raster_values_1.txt[]
+....
