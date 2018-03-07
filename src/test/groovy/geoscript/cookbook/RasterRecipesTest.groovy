@@ -33,5 +33,6 @@ class RasterRecipesTest {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.values()
         assertEquals(3069.0, raster.getValue(new Point(-121.799927,46.867703)), 0.01)
+        assertEquals(288.0, raster.getValue([100,200]), 0.01)
     }
 }

@@ -88,6 +88,14 @@ class RasterRecipes extends Recipes {
         // end::values_1[]
         writeFile("raster_values_1", "${elevation}")
 
+        // tag::values_2[]
+        List pixel = [100,200]
+        elevation = raster.getValue(pixel)
+        println elevation
+        // end::values_2[]
+        writeFile("raster_values_2", "${elevation}")
+
+
         raster
     }
 
