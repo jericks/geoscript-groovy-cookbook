@@ -35,4 +35,11 @@ class RasterRecipesTest {
         assertEquals(3069.0, raster.getValue(new Point(-121.799927,46.867703)), 0.01)
         assertEquals(288.0, raster.getValue([100,200]), 0.01)
     }
+
+    @Test void crop() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.crop()
+        assertEquals("(-161.10000000000187,6.750000000008299,-34.6500000000145,57.60000000000323,EPSG:4326)", raster.bounds.toString())
+    }
+
 }

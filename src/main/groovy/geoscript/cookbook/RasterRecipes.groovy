@@ -99,6 +99,17 @@ class RasterRecipes extends Recipes {
         raster
     }
 
+    Raster crop() {
+        // tag::crop[]
+        File file = new File("src/main/resources/earth.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("earth")
+        Raster croppedRaster = raster.crop(new Bounds(-160.927734,6.751896,-34.716797,57.279043, "EPSG:4326"))
+        // end::crop[]
+        draw("raster_crop", [croppedRaster])
+        croppedRaster
+    }
+
     // Band
 
     List<Band> band() {

@@ -126,3 +126,16 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=values_2,inden
 ....
 include::output/raster_values_2.txt[]
 ....
+
+=== Raster Processing
+
+==== Crop
+
+Crop a Raster with a Bounds
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=crop,indent=0]
+----
+[.thumb]
+image::raster_crop.png[]
