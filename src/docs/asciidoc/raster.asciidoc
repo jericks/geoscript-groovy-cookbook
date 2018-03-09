@@ -139,3 +139,14 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=crop,indent=0]
 ----
 [.thumb]
 image::raster_crop.png[]
+
+==== Project
+
+Reproject a Raster to another Projection
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=reproject,indent=0]
+----
+[.thumb]
+image::raster_reproject.png[]

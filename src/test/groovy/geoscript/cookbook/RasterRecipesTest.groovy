@@ -42,4 +42,10 @@ class RasterRecipesTest {
         assertEquals("(-161.10000000000187,6.750000000008299,-34.6500000000145,57.60000000000323,EPSG:4326)", raster.bounds.toString())
     }
 
+    @Test void reproject() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.reproject()
+        assertEquals("EPSG:3857", raster.proj.id)
+    }
+
 }

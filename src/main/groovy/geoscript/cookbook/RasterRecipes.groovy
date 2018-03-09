@@ -99,6 +99,8 @@ class RasterRecipes extends Recipes {
         raster
     }
 
+    // Processing
+
     Raster crop() {
         // tag::crop[]
         File file = new File("src/main/resources/earth.tif")
@@ -108,6 +110,18 @@ class RasterRecipes extends Recipes {
         // end::crop[]
         draw("raster_crop", [croppedRaster])
         croppedRaster
+    }
+
+    Raster reproject() {
+        // tag::reproject[]
+        File file = new File("src/main/resources/earth.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("earth")
+        Projection projection = new Projection("EPSG:3857")
+        Raster projectedRaster = raster.crop(projection.geoBounds).reproject(projection)
+        // end::reproject[]
+        draw("raster_reproject", [projectedRaster])
+        projectedRaster
     }
 
     // Band
