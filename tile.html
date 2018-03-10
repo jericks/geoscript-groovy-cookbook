@@ -1250,6 +1250,31 @@ generator.generate(geopackage, renderer, <span class="integer">0</span>, <span c
 <img src="./images/tile_generate_geopackage.png" alt="tile generate geopackage">
 </div>
 </div>
+<div class="paragraph">
+<p>Generate Image Tiles to a TMS directory</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> directory = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/tiles</span><span class="delimiter">&quot;</span></span>)
+directory.mkdir()
+TMS tms = <span class="keyword">new</span> TMS(<span class="string"><span class="delimiter">&quot;</span><span class="content">world</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">png</span><span class="delimiter">&quot;</span></span>, directory, Pyramid.createGlobalMercatorPyramid())
+
+Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+
+ImageTileRenderer renderer = <span class="keyword">new</span> ImageTileRenderer(tms, [ocean, countries])
+TileGenerator generator = <span class="keyword">new</span> TileGenerator()
+generator.generate(tms, renderer, <span class="integer">0</span>, <span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_generate_tms.png" alt="tile generate tms">
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1560,7 +1585,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-10 05:46:59 UTC
+Last updated 2018-03-10 23:05:11 UTC
 </div>
 </div>
 </body>
