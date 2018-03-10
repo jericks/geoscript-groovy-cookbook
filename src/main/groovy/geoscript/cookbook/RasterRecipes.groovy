@@ -4,9 +4,11 @@ import geoscript.geom.Bounds
 import geoscript.geom.Point
 import geoscript.layer.Band
 import geoscript.layer.Format
+import geoscript.layer.Layer
 import geoscript.layer.Raster
 import geoscript.proj.Projection
 import geoscript.style.ColorMap
+import geoscript.style.Stroke
 
 class RasterRecipes extends Recipes {
 
@@ -122,6 +124,29 @@ class RasterRecipes extends Recipes {
         // end::reproject[]
         draw("raster_reproject", [projectedRaster])
         projectedRaster
+    }
+
+    Layer contours() {
+        // tag::contours[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        int band = 0
+        int interval = 300
+        boolean simplify = true
+        boolean smooth = true
+        Layer contours = raster.contours(band, interval, simplify, smooth)
+        // end::contours[]
+        contours.style = new Stroke("black", 0.1)
+        raster.style = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ])
+        draw("raster_contours", [raster, contours])
+        contours
     }
 
     // Band

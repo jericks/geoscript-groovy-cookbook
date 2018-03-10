@@ -150,3 +150,14 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=reproject,inde
 ----
 [.thumb]
 image::raster_reproject.png[]
+
+==== Contours
+
+Create vector contours from a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=contours,indent=0]
+----
+[.thumb]
+image::raster_contours.png[]

@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.geom.Point
 import geoscript.layer.Band
+import geoscript.layer.Layer
 import geoscript.layer.Raster
 import org.junit.Test
 import static org.junit.Assert.*
@@ -46,6 +47,12 @@ class RasterRecipesTest {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.reproject()
         assertEquals("EPSG:3857", raster.proj.id)
+    }
+
+    @Test void contours() {
+        RasterRecipes recipes = new RasterRecipes()
+        Layer layer = recipes.contours()
+        assertTrue(layer.count > 100)
     }
 
 }
