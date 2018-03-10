@@ -546,7 +546,13 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#generating-tiles">Generating Tiles</a>
 <ul class="sectlevel3">
-<li><a href="#generating-image-tiles">Generating Image Tiles</a></li>
+<li><a href="#generating-image-tiles">Generating Image Tiles</a>
+<ul class="sectlevel4">
+<li><a href="#mbtiles">MBTiles</a></li>
+<li><a href="#geopackage">GeoPackage</a></li>
+<li><a href="#tms">TMS</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#tile-layer">Tile Layer</a>
@@ -1202,6 +1208,8 @@ println xml</code></pre>
 <h3 id="generating-tiles"><a class="anchor" href="#generating-tiles"></a>Generating Tiles</h3>
 <div class="sect3">
 <h4 id="generating-image-tiles"><a class="anchor" href="#generating-image-tiles"></a>Generating Image Tiles</h4>
+<div class="sect4">
+<h5 id="mbtiles"><a class="anchor" href="#mbtiles"></a>MBTiles</h5>
 <div class="paragraph">
 <p>Generate Image Tiles to a MBTiles file</p>
 </div>
@@ -1229,6 +1237,9 @@ generator.generate(mbtiles, renderer, <span class="integer">0</span>, <span clas
 <div class="paragraph">
 <p>Generate Image Tiles to a GeoPackage file</p>
 </div>
+</div>
+<div class="sect4">
+<h5 id="geopackage"><a class="anchor" href="#geopackage"></a>GeoPackage</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/world.gpkg</span><span class="delimiter">&quot;</span></span>)
@@ -1253,6 +1264,9 @@ generator.generate(geopackage, renderer, <span class="integer">0</span>, <span c
 <div class="paragraph">
 <p>Generate Image Tiles to a TMS directory</p>
 </div>
+</div>
+<div class="sect4">
+<h5 id="tms"><a class="anchor" href="#tms"></a>TMS</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> directory = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/tiles</span><span class="delimiter">&quot;</span></span>)
@@ -1273,6 +1287,7 @@ generator.generate(tms, renderer, <span class="integer">0</span>, <span class="i
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/tile_generate_tms.png" alt="tile generate tms">
+</div>
 </div>
 </div>
 </div>
@@ -1585,7 +1600,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-10 23:05:11 UTC
+Last updated 2018-03-10 23:20:34 UTC
 </div>
 </div>
 </body>
