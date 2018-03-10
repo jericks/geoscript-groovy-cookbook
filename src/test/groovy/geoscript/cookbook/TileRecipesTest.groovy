@@ -5,6 +5,7 @@ import geoscript.layer.Grid
 import geoscript.layer.ImageTile
 import geoscript.layer.MBTiles
 import geoscript.layer.Pyramid
+import geoscript.layer.TMS
 import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import org.junit.Test
@@ -386,6 +387,15 @@ BOTTOM_LEFT
         GeoPackage geopackage = recipes.generateTilesToGeoPackage()
         assertEquals(0, geopackage.minZoom)
         assertEquals(2, geopackage.maxZoom)
+    }
+
+    @Test void generateTilesToTMS() {
+        TileRecipes recipes = new TileRecipes()
+        TMS tms = recipes.generateTilesToTMS()
+        assertNotNull(tms)
+        assertNotNull(tms.get(0,0,0).data)
+        assertNotNull(tms.get(1,1,1).data)
+        assertNotNull(tms.get(2,2,2).data)
     }
 
 }

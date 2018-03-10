@@ -7,6 +7,7 @@ import geoscript.layer.ImageTileRenderer
 import geoscript.layer.Layer
 import geoscript.layer.MBTiles
 import geoscript.layer.Pyramid
+import geoscript.layer.TMS
 import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import geoscript.layer.TileGenerator
@@ -583,4 +584,24 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         geopackage
     }
 
+    TMS generateTilesToTMS() {
+        // tag::generateTilesToTMS[]
+        File directory = new File("target/tiles")
+        directory.mkdir()
+        TMS tms = new TMS("world", "png", directory, Pyramid.createGlobalMercatorPyramid())
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+
+        ImageTileRenderer renderer = new ImageTileRenderer(tms, [ocean, countries])
+        TileGenerator generator = new TileGenerator()
+        generator.generate(tms, renderer, 0, 2)
+        // end::generateTilesToTMS[]
+        RenderedImage image = tms.getRaster(tms.tiles(1)).image
+        saveImage("tile_generate_tms", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        tms
+    }
 }
