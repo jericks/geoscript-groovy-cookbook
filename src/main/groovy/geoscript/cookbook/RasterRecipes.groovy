@@ -149,6 +149,23 @@ class RasterRecipes extends Recipes {
         contours
     }
 
+    Raster stylize() {
+        // tag::stylize[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        Raster stylizedRaster = raster.stylize(new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ]))
+        // end::stylize[]
+        draw("raster_stylize", [stylizedRaster])
+        stylizedRaster
+    }
+
     // Band
 
     List<Band> band() {

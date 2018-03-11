@@ -161,3 +161,14 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=contours,inden
 ----
 [.thumb]
 image::raster_contours.png[]
+
+==== Stylize
+
+Stylize a Raster by baking in a style to create a new Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=stylize,indent=0]
+----
+[.thumb]
+image::raster_stylize.png[]

@@ -55,4 +55,11 @@ class RasterRecipesTest {
         assertTrue(layer.count > 100)
     }
 
+    @Test void stylize() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.stylize()
+        assertEquals(1, raster.bands.size())
+    }
+
+
 }
