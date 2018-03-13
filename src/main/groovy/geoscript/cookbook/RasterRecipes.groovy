@@ -166,6 +166,32 @@ class RasterRecipes extends Recipes {
         stylizedRaster
     }
 
+    Raster reclassify() {
+        // tag::reclassify[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        Raster reclassifiedRaster = raster.reclassify([
+                [min:0,    max:0,    value: 1],
+                [min:0,    max:50,   value: 2],
+                [min:50,   max:200,  value: 3],
+                [min:200,  max:1000, value: 4],
+                [min:1000, max:1500, value: 5],
+                [min:1500, max:4000, value: 6]
+        ])
+        // end::reclassify[]
+        reclassifiedRaster.style = new ColorMap([
+                [color: "#9fd182", quantity:1],
+                [color: "#3e7f3c", quantity:2],
+                [color: "#133912", quantity:3],
+                [color: "#08306b", quantity:4],
+                [color: "#FFF8DC", quantity:5],
+                [color: "#ffffff", quantity:6],
+        ])
+        draw("raster_reclassify", [reclassifiedRaster])
+        reclassifiedRaster
+    }
+
     // Band
 
     List<Band> band() {

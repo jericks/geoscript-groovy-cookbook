@@ -172,3 +172,14 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=stylize,indent
 ----
 [.thumb]
 image::raster_stylize.png[]
+
+==== Reclassify
+
+Reclassify a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=reclassify,indent=0]
+----
+[.thumb]
+image::raster_reclassify.png[]
