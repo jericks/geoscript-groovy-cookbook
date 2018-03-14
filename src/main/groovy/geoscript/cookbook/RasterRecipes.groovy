@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.filter.Color
 import geoscript.geom.Bounds
 import geoscript.geom.Point
 import geoscript.layer.Band
@@ -9,6 +10,7 @@ import geoscript.layer.Raster
 import geoscript.proj.Projection
 import geoscript.style.ColorMap
 import geoscript.style.Stroke
+import geoscript.style.UniqueValues
 
 class RasterRecipes extends Recipes {
 
@@ -190,6 +192,26 @@ class RasterRecipes extends Recipes {
         ])
         draw("raster_reclassify", [reclassifiedRaster])
         reclassifiedRaster
+    }
+
+    Layer polygonLayer() {
+        // tag::polygonLayer[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        Raster reclassifiedRaster = raster.reclassify([
+                [min:0,    max:0,    value: 1],
+                [min:0,    max:50,   value: 2],
+                [min:50,   max:200,  value: 3],
+                [min:200,  max:1000, value: 4],
+                [min:1000, max:1500, value: 5],
+                [min:1500, max:4000, value: 6]
+        ])
+        Layer layer = reclassifiedRaster.polygonLayer
+        // end::polygonLayer[]
+        layer.style = new UniqueValues(layer, "value" , {int index, double value -> Color.getRandom()})
+        draw("raster_polygonLayer", [layer])
+        layer
     }
 
     // Band
