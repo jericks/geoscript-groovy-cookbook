@@ -785,6 +785,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#contours">Contours</a></li>
 <li><a href="#stylize">Stylize</a></li>
 <li><a href="#reclassify">Reclassify</a></li>
+<li><a href="#vectorize">Vectorize</a></li>
 </ul>
 </li>
 </ul>
@@ -5073,7 +5074,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--52fc616a_1621d396934_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-3b8e959a_162223301cb_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5788,7 +5789,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 13 02:38:44 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Mar 14 01:49:51 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5807,7 +5808,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--52fc616a_1621d396934_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-3b8e959a_162223301cb_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5831,7 +5832,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Mar 13 02:38:44 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Mar 14 01:49:51 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5851,7 +5852,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--52fc616a_1621d396934_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-3b8e959a_162223301cb_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -6013,7 +6014,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--52fc616a_1621d396934_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-3b8e959a_162223301cb_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6051,7 +6052,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--52fc616a_1621d396934_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-3b8e959a_162223301cb_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7313,73 +7314,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:isValid
-geo:buffer
-geo:union
-geo:intersection
-geo:difference
-geo:area
-geo:numGeometries
-geo:crosses
-geo:distance
-geo:boundary
-geo:reproject
-geo:symDifference
-geo:isClosed
-geo:convexHull
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:numPoints
-geo:envelope
-geo:getX
-geo:getY
-geo:polygonize
-geo:isRing
-geo:startPoint
-geo:endPoint
-geo:equalsExact
-geo:interiorRingN
-geo:relatePattern
-geo:pointN
-geo:equalsExactTolerance
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7408,7 +7343,73 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics</pre>
+vec:VectorZonalStatistics
+geo:isValid
+geo:buffer
+geo:union
+geo:intersection
+geo:difference
+geo:area
+geo:numGeometries
+geo:convexHull
+geo:crosses
+geo:distance
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:reproject
+geo:symDifference
+geo:isClosed
+geo:numPoints
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:getX
+geo:getY
+geo:polygonize
+geo:isRing
+geo:startPoint
+geo:endPoint
+geo:equalsExact
+geo:splitPolygon
+geo:relatePattern
+geo:interiorRingN
+geo:pointN
+geo:equalsExactTolerance
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage</pre>
 </div>
 </div>
 </div>
@@ -9722,19 +9723,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Shapefile
-MySQL (JNDI)
-GeoPackage
+<pre>PostGIS (JNDI)
 SpatiaLite (JNDI)
-H2
-MySQL
-H2 (JNDI)
-Directory of spatial files (shapefiles)
-PostGIS (JNDI)
-Properties
+Shapefile
+MySQL (JNDI)
 PostGIS
+H2 (JNDI)
+H2
+Properties
+MySQL
 Geobuf
-Web Feature Server (NG)</pre>
+Web Feature Server (NG)
+GeoPackage
+Directory of spatial files (shapefiles)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9844,19 +9845,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Shapefile
-MySQL (JNDI)
-GeoPackage
+<pre>PostGIS (JNDI)
 SpatiaLite (JNDI)
-H2
-MySQL
-H2 (JNDI)
-Directory of spatial files (shapefiles)
-PostGIS (JNDI)
-Properties
+Shapefile
+MySQL (JNDI)
 PostGIS
+H2 (JNDI)
+H2
+Properties
+MySQL
 Geobuf
-Web Feature Server (NG)</pre>
+Web Feature Server (NG)
+GeoPackage
+Directory of spatial files (shapefiles)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11330,7 +11331,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--52fc616a_1621d396934_-6adf"
+            "id": "fid-3b8e959a_162223301cb_-6adf"
         },
         {
             "type": "Feature",
@@ -11345,7 +11346,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--52fc616a_1621d396934_-6add"
+            "id": "fid-3b8e959a_162223301cb_-6add"
         }
     ]
 }</pre>
@@ -11436,7 +11437,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--52fc616a_1621d396934_-7491"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-3b8e959a_162223301cb_-7491"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -11458,7 +11459,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--52fc616a_1621d396934_-748f"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-3b8e959a_162223301cb_-748f"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -11524,7 +11525,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--52fc616a_1621d396934_-6b14
+          fid-3b8e959a_162223301cb_-6b14
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -11551,7 +11552,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--52fc616a_1621d396934_-6b12
+          fid-3b8e959a_162223301cb_-6b12
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -12183,6 +12184,33 @@ Layer contours = raster.contours(band, interval, simplify, smooth)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/raster_reclassify.png" alt="raster reclassify">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="vectorize"><a class="anchor" href="#vectorize"></a>Vectorize</h4>
+<div class="paragraph">
+<p>Create a Polygon Layer from a Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">pc</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> reclassifiedRaster = raster.reclassify([
+        [<span class="key">min</span>:<span class="integer">0</span>,    <span class="key">max</span>:<span class="integer">0</span>,    <span class="key">value</span>: <span class="integer">1</span>],
+        [<span class="key">min</span>:<span class="integer">0</span>,    <span class="key">max</span>:<span class="integer">50</span>,   <span class="key">value</span>: <span class="integer">2</span>],
+        [<span class="key">min</span>:<span class="integer">50</span>,   <span class="key">max</span>:<span class="integer">200</span>,  <span class="key">value</span>: <span class="integer">3</span>],
+        [<span class="key">min</span>:<span class="integer">200</span>,  <span class="key">max</span>:<span class="integer">1000</span>, <span class="key">value</span>: <span class="integer">4</span>],
+        [<span class="key">min</span>:<span class="integer">1000</span>, <span class="key">max</span>:<span class="integer">1500</span>, <span class="key">value</span>: <span class="integer">5</span>],
+        [<span class="key">min</span>:<span class="integer">1500</span>, <span class="key">max</span>:<span class="integer">4000</span>, <span class="key">value</span>: <span class="integer">6</span>]
+])
+Layer layer = reclassifiedRaster.polygonLayer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_polygonLayer.png" alt="raster polygonLayer">
 </div>
 </div>
 </div>
@@ -13222,7 +13250,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-13 02:31:51 UTC
+Last updated 2018-03-14 01:42:39 UTC
 </div>
 </div>
 </body>
