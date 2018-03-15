@@ -184,6 +184,20 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=reclassify,ind
 [.thumb]
 image::raster_reclassify.png[]
 
+==== Scale
+
+Scale a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=scale,indent=0]
+----
+....
+include::output/raster_scaled.txt[]
+....
+[.thumb]
+image::raster_scaled.png[]
+
 ==== Vectorize
 
 Create a Polygon Layer from a Raster

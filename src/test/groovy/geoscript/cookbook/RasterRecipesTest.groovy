@@ -69,6 +69,13 @@ class RasterRecipesTest {
         assertEquals(6, raster.extrema.max[0], 0.1)
     }
 
+    @Test void scale() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.scale()
+        assertEquals(400, raster.size[0], 0.1)
+        assertEquals(200, raster.size[1], 0.1)
+    }
+
     @Test void polygonLayer() {
         RasterRecipes recipes = new RasterRecipes()
         Layer layer = recipes.polygonLayer()

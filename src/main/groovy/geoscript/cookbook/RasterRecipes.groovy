@@ -195,6 +195,28 @@ class RasterRecipes extends Recipes {
         reclassifiedRaster
     }
 
+    Raster scale() {
+        // tag::scale[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        println "Original Raster Size = ${raster.size[0]}x${raster.size[1]}"
+
+        Raster scaledRaster = raster.scale(0.5, 0.5)
+        println "Scaled Raster Size = ${scaledRaster.size[0]}x${scaledRaster.size[1]}"
+        // end::scale[]
+        scaledRaster.style = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ])
+        draw("raster_scaled", [scaledRaster])
+        writeFile("raster_scaled","Original Raster Size = ${raster.size[0]}x${raster.size[1]}${NEW_LINE}Scaled Raster Size = ${scaledRaster.size[0]}x${scaledRaster.size[1]}")
+        scaledRaster
+    }
+
     Layer polygonLayer() {
         // tag::polygonLayer[]
         File file = new File("src/main/resources/pc.tif")
