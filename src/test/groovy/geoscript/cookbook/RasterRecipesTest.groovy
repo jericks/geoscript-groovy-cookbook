@@ -74,4 +74,10 @@ class RasterRecipesTest {
         Layer layer = recipes.polygonLayer()
         assertTrue(layer.count > 6)
     }
+
+    @Test void pointLayer() {
+        RasterRecipes recipes = new RasterRecipes()
+        Layer layer = recipes.pointLayer()
+        assertTrue(layer.count > 1000)
+    }
 }

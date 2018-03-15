@@ -194,3 +194,12 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=polygonLayer,i
 ----
 [.thumb]
 image::raster_polygonLayer.png[]
+
+Create a Point Layer from a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=pointLayer,indent=0]
+----
+[.thumb]
+image::raster_pointLayer.png[]

@@ -9,6 +9,7 @@ import geoscript.layer.Layer
 import geoscript.layer.Raster
 import geoscript.proj.Projection
 import geoscript.style.ColorMap
+import geoscript.style.Gradient
 import geoscript.style.Stroke
 import geoscript.style.UniqueValues
 
@@ -211,6 +212,18 @@ class RasterRecipes extends Recipes {
         // end::polygonLayer[]
         layer.style = new UniqueValues(layer, "value" , {int index, double value -> Color.getRandom()})
         draw("raster_polygonLayer", [layer])
+        layer
+    }
+
+    Layer pointLayer() {
+        // tag::pointLayer[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc").crop(new Bounds(-121.878548,46.808402,-121.636505,46.896097, "EPSG:4326"))
+        Layer layer = raster.pointLayer
+        // end::pointLayer[]
+        layer.style = new Gradient(layer, "GRAY_INDEX", "quantile", 8, "MutedTerrain")
+        draw("raster_pointLayer", [layer])
         layer
     }
 
