@@ -388,6 +388,26 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createRandom
 [.thumb]
 image::geometry_create_random_points_ingrid.png[]
 
+[source,groovy]
+.Calculate the intersection between two Geometries
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=intersection,indent=0]
+----
+[.thumb]
+image::geometry_intersection.png[]
+
+[source,groovy]
+.Check whether one Geometry intersects from another Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=intersects,indent=0]
+----
+[.thumb]
+image::geometry_intersects.png[]
+....
+include::output/geometry_intersects.txt[]
+....
+
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package

@@ -814,6 +814,86 @@ class GeometryRecipes extends Recipes {
         number
     }
 
+    Geometry intersection() {
+
+        // tag::intersection[]
+        Polygon polygon1 = new Polygon([[
+                [-121.915, 47.390],
+                [-122.640, 46.995],
+                [-121.739, 46.308],
+                [-121.168, 46.777],
+                [-120.981, 47.316],
+                [-121.409, 47.413],
+                [-121.915, 47.390]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.794, 46.664],
+                [-121.541, 46.995],
+                [-122.200, 46.536],
+                [-121.937, 45.890],
+                [-120.959, 46.096],
+                [-120.794, 46.664]
+        ]])
+
+        Geometry intersection = polygon1.intersection(polygon2)
+        // end::intersection[]
+        drawGeometries("geometry_intersection", [polygon1, polygon2, intersection])
+
+        intersection
+    }
+
+    Map<String, Boolean> intersects() {
+
+        Map<String, Boolean> values = [:]
+
+        // tag::intersects[]
+        Polygon polygon1 = new Polygon([[
+                [-121.915, 47.390],
+                [-122.640, 46.995],
+                [-121.739, 46.308],
+                [-121.168, 46.777],
+                [-120.981, 47.316],
+                [-121.409, 47.413],
+                [-121.915, 47.390]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.794, 46.664],
+                [-121.541, 46.995],
+                [-122.200, 46.536],
+                [-121.937, 45.890],
+                [-120.959, 46.096],
+                [-120.794, 46.664]
+        ]])
+
+        Polygon polygon3 = new Polygon([[
+                [-120.541, 47.376],
+                [-120.695, 47.047],
+                [-119.794, 46.830],
+                [-119.586, 47.331],
+                [-120.102, 47.509],
+                [-120.541, 47.376]
+        ]])
+
+        boolean does1intersect2 = polygon1.intersects(polygon2)
+        println does1intersect2
+
+        boolean does1intersect3 = polygon1.intersects(polygon3)
+        println does1intersect3
+
+        boolean does2intersect3 = polygon2.intersects(polygon3)
+        println does2intersect3
+        // end::intersects[]
+        drawGeometries("geometry_intersects", [polygon1, polygon2, polygon3])
+        writeFile("geometry_intersects", "${does1intersect2}${NEW_LINE}${does1intersect3}${NEW_LINE}${does2intersect3}")
+        values["12"] = does1intersect2
+        values["13"] = does1intersect3
+        values["23"] = does2intersect3
+
+        values
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

@@ -263,6 +263,20 @@ class GeometryRecipesTest {
         assertEquals(5, number)
     }
 
+    @Test void intersection() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.intersection()
+        assertEquals("POLYGON ((-121.15214608098509 46.82269659010183, -121.168 46.777, -121.739 46.308, -122.11534856491807 46.59496055948802, -121.541 46.995, -121.15214608098509 46.82269659010183))", geom.wkt)
+    }
+
+    @Test void intersects() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String, Boolean> results = recipes.intersects()
+        assertTrue(results["12"])
+        assertFalse(results["13"])
+        assertFalse(results["23"])
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {
