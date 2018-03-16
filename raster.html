@@ -526,6 +526,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#contours">Contours</a></li>
 <li><a href="#stylize">Stylize</a></li>
 <li><a href="#reclassify">Reclassify</a></li>
+<li><a href="#scale">Scale</a></li>
 <li><a href="#vectorize">Vectorize</a></li>
 </ul>
 </li>
@@ -882,6 +883,34 @@ Layer contours = raster.contours(band, interval, simplify, smooth)</code></pre>
 </div>
 </div>
 <div class="sect3">
+<h4 id="scale"><a class="anchor" href="#scale"></a>Scale</h4>
+<div class="paragraph">
+<p>Scale a Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">pc</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Original Raster Size = </span><span class="inline"><span class="inline-delimiter">${</span>raster.size[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="content">x</span><span class="inline"><span class="inline-delimiter">${</span>raster.size[<span class="integer">1</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="predefined-type">Raster</span> scaledRaster = raster.scale(<span class="float">0.5</span>, <span class="float">0.5</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Scaled Raster Size = </span><span class="inline"><span class="inline-delimiter">${</span>scaledRaster.size[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="content">x</span><span class="inline"><span class="inline-delimiter">${</span>scaledRaster.size[<span class="integer">1</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Original Raster Size = 800x400
+Scaled Raster Size = 400x200</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_scaled.png" alt="raster scaled">
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="vectorize"><a class="anchor" href="#vectorize"></a>Vectorize</h4>
 <div class="paragraph">
 <p>Create a Polygon Layer from a Raster</p>
@@ -930,7 +959,7 @@ Layer layer = raster.pointLayer</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-15 00:46:08 UTC
+Last updated 2018-03-16 00:47:50 UTC
 </div>
 </div>
 </body>
