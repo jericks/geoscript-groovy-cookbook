@@ -1479,6 +1479,89 @@ MultiPoint randomPoints = Geometry.createRandomPointsInGrid(bounds, <span class=
 <img src="./images/geometry_create_random_points_ingrid.png" alt="geometry create random points ingrid">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Calculate the intersection between two Geometries</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+Geometry intersection = polygon1.intersection(polygon2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_intersection.png" alt="geometry intersection">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether one Geometry intersects from another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon3 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.541</span>, <span class="float">47.376</span>],
+        [-<span class="float">120.695</span>, <span class="float">47.047</span>],
+        [-<span class="float">119.794</span>, <span class="float">46.830</span>],
+        [-<span class="float">119.586</span>, <span class="float">47.331</span>],
+        [-<span class="float">120.102</span>, <span class="float">47.509</span>],
+        [-<span class="float">120.541</span>, <span class="float">47.376</span>]
+]])
+
+<span class="type">boolean</span> does1intersect2 = polygon1.intersects(polygon2)
+println does1intersect2
+
+<span class="type">boolean</span> does1intersect3 = polygon1.intersects(polygon3)
+println does1intersect3
+
+<span class="type">boolean</span> does2intersect3 = polygon2.intersects(polygon3)
+println does2intersect3</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_intersects.png" alt="geometry intersects">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true
+false
+false</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -2118,7 +2201,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-16 00:47:50 UTC
+Last updated 2018-03-16 04:40:01 UTC
 </div>
 </div>
 </body>
