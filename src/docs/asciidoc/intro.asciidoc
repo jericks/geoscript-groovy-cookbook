@@ -32,3 +32,44 @@ image::geoscript-groovysh.png[]
 
 [.thumb]
 image::geoscript-groovyConsole.png[]
+
+=== geoscript-groovy
+
+The geoscript-groovy command can run scripts file but it can also run inline scripts.
+
+[source,bash]
+.Convert a shapefile to geojson
+----
+geoscript-groovy -e "println new geoscript.layer.Shapefile('states.shp').toJSONString()"
+----
+
+[source,bash]
+.Get the Bounds of a Shapefile as a Geometry
+----
+geoscript-groovy -e "println new geoscript.layer.Shapefile('states.shp').bounds.geometry"
+----
+
+[source,bash]
+.Count the number of Features in a Shapefile
+----
+geoscript-groovy -e "println new geoscript.layer.Shapefile('states.shp').count"
+----
+
+[source,bash]
+.Render a Shapefile to an image
+----
+geoscript-groovy -e "geoscript.render.Draw.draw(new geoscript.layer.Shapefile('states.shp'), out: 'image.png')"
+----
+
+[source,bash]
+.Pipe a Shapefile's geometry to another command line application that buffers each feature
+----
+geoscript-groovy -e "new geoscript.layer.Shapefile('states.shp').eachFeature{ println it.geom.centroid}" | geom combine | geom buffer -d 1.5
+----
+
+[source,bash]
+.Pipe the results of buffering a point to convert it to KML
+----
+echo "POINT (1 1)" | geom buffer -d 10 | geoscript-groovy -e "println geoscript.geom.Geometry.fromWKT(System.in.text).kml"
+----
+
