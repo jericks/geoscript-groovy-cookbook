@@ -516,7 +516,11 @@ table.CodeRay td.code>pre{padding:0}
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#using-geoscript">Using GeoScript</a></li>
+<li><a href="#using-geoscript">Using GeoScript</a>
+<ul class="sectlevel2">
+<li><a href="#geoscript-groovy">geoscript-groovy</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -582,12 +586,54 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geoscript-groovyConsole.png" alt="geoscript groovyConsole">
 </div>
 </div>
+<div class="sect2">
+<h3 id="geoscript-groovy"><a class="anchor" href="#geoscript-groovy"></a>geoscript-groovy</h3>
+<div class="paragraph">
+<p>The geoscript-groovy command can run scripts file but it can also run inline scripts.</p>
+</div>
+<div class="listingblock">
+<div class="title">Convert a shapefile to geojson</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">geoscript-groovy -e &quot;println new geoscript.layer.Shapefile('states.shp').toJSONString()&quot;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Bounds of a Shapefile as a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">geoscript-groovy -e &quot;println new geoscript.layer.Shapefile('states.shp').bounds.geometry&quot;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Count the number of Features in a Shapefile</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">geoscript-groovy -e &quot;println new geoscript.layer.Shapefile('states.shp').count&quot;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Render a Shapefile to an image</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">geoscript-groovy -e &quot;geoscript.render.Draw.draw(new geoscript.layer.Shapefile('states.shp'), out: 'image.png')&quot;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Pipe a Shapefile&#8217;s geometry to another command line application that buffers each feature</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">geoscript-groovy -e &quot;new geoscript.layer.Shapefile('states.shp').eachFeature{ println it.geom.centroid}&quot; | geom combine | geom buffer -d 1.5</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Pipe the results of buffering a point to convert it to KML</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">echo &quot;POINT (1 1)&quot; | geom buffer -d 10 | geoscript-groovy -e &quot;println geoscript.geom.Geometry.fromWKT(System.in.text).kml&quot;</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-17 03:26:16 UTC
+Last updated 2018-03-17 17:58:48 UTC
 </div>
 </div>
 </body>
