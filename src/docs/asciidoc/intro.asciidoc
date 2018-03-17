@@ -9,3 +9,26 @@ GeoScript is a geospatial library written in Groovy. It provides modules
 for working with geometries, projections, features, layers, rasters, styles, rendering, and tiles.
 It is built on top of the Java Topology Suite (JTS) and GeoTools libraries. 
 GeoScript Groovy is open source and licensed under the MIT license.
+
+== Using GeoScript
+
+To use GeoScript Groovy you need Java and Groovy installed and on your PATH. Next, download the latest stable release,
+the latest in development build, or build the code yourself. Then put the GeoScript Groovy bin directory on your PATH.
+You are now ready to use GeoScript Groovy!
+
+GeoScript Groovy has three commands:
+
+1. geoscript-groovy (which can run Groovy files)
+
+[.thumb]
+image::geoscript-groovy.png[]
+
+2. geoscript-groovysh (which starts a REPL shell)
+
+[.thumb]
+image::geoscript-groovysh.png[]
+
+3. geoscript-groovyConsole (which starts a graphical editor/mini IDE)
+
+[.thumb]
+image::geoscript-groovyConsole.png[]
