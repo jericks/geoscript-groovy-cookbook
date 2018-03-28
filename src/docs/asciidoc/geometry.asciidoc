@@ -407,6 +407,37 @@ image::geometry_intersects.png[]
 include::output/geometry_intersects.txt[]
 ....
 
+[source,groovy]
+.Calculate the minimum rectangle of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getMinimumRectangle,indent=0]
+----
+[.thumb]
+image::geometry_minimumrectangle.png[]
+
+[source,groovy]
+.Calculate the minimum circle of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getMinimumBoundingCircle,indent=0]
+----
+[.thumb]
+image::geometry_minimumBoundingCircle.png[]
+
+[source,groovy]
+.Calculate the minimum diameter of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getMinimumDiameter,indent=0]
+----
+[.thumb]
+image::geometry_minimumDiameter.png[]
+
+[source,groovy]
+.Calculate the minimum clearance of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getMinimumClearance,indent=0]
+----
+[.thumb]
+image::geometry_minimumClearance.png[]
 
 === Reading and Writing Geometries
 

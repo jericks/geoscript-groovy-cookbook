@@ -894,6 +894,86 @@ class GeometryRecipes extends Recipes {
         values
     }
 
+    Geometry getMinimumRectangle() {
+        // tag::getMinimumRectangle[]
+        Geometry geometry = new Polygon ([[
+          [-122.20367431640624, 47.543163654317304],
+          [-122.3712158203125,  47.489368981370724],
+          [-122.33276367187499, 47.35371061951363],
+          [-122.11029052734374, 47.3704545156932],
+          [-122.08831787109375, 47.286681888764214],
+          [-122.28332519531249, 47.2270293988673],
+          [-122.2174072265625,  47.154237057576594],
+          [-121.904296875,      47.32579231609051],
+          [-122.06085205078125, 47.47823216312885],
+          [-122.20367431640624, 47.543163654317304]
+        ]])
+        Geometry minimumRectangle = geometry.minimumRectangle
+        // end::getMinimumRectangle[]
+        drawGeometries("geometry_minimumrectangle", [geometry, minimumRectangle])
+        minimumRectangle
+    }
+
+    Geometry getMinimumBoundingCircle() {
+        // tag::getMinimumBoundingCircle[]
+        Geometry geometry = new Polygon ([[
+          [-122.20367431640624, 47.543163654317304],
+          [-122.3712158203125,  47.489368981370724],
+          [-122.33276367187499, 47.35371061951363],
+          [-122.11029052734374, 47.3704545156932],
+          [-122.08831787109375, 47.286681888764214],
+          [-122.28332519531249, 47.2270293988673],
+          [-122.2174072265625,  47.154237057576594],
+          [-121.904296875,      47.32579231609051],
+          [-122.06085205078125, 47.47823216312885],
+          [-122.20367431640624, 47.543163654317304]
+        ]])
+        Geometry minimumBoundingCircle = geometry.minimumBoundingCircle
+        // end::getMinimumBoundingCircle[]
+        drawGeometries("geometry_minimumBoundingCircle", [geometry, minimumBoundingCircle])
+        minimumBoundingCircle
+    }
+
+    Geometry getMinimumDiameter() {
+        // tag::getMinimumDiameter[]
+        Geometry geometry = new Polygon ([[
+            [-122.20367431640624, 47.543163654317304],
+            [-122.3712158203125,  47.489368981370724],
+            [-122.33276367187499, 47.35371061951363],
+            [-122.11029052734374, 47.3704545156932],
+            [-122.08831787109375, 47.286681888764214],
+            [-122.28332519531249, 47.2270293988673],
+            [-122.2174072265625,  47.154237057576594],
+            [-121.904296875,      47.32579231609051],
+            [-122.06085205078125, 47.47823216312885],
+            [-122.20367431640624, 47.543163654317304]
+        ]])
+        Geometry minimumDiameter = geometry.minimumDiameter
+        // end::getMinimumDiameter[]
+        drawGeometries("geometry_minimumDiameter", [geometry, minimumDiameter])
+        minimumDiameter
+    }
+
+    Geometry getMinimumClearance() {
+        // tag::getMinimumClearance[]
+        Geometry geometry = new Polygon ([[
+            [-122.20367431640624, 47.543163654317304],
+            [-122.3712158203125,  47.489368981370724],
+            [-122.33276367187499, 47.35371061951363],
+            [-122.11029052734374, 47.3704545156932],
+            [-122.08831787109375, 47.286681888764214],
+            [-122.28332519531249, 47.2270293988673],
+            [-122.2174072265625,  47.154237057576594],
+            [-121.904296875,      47.32579231609051],
+            [-122.06085205078125, 47.47823216312885],
+            [-122.20367431640624, 47.543163654317304]
+        ]])
+        Geometry minimumClearance = geometry.minimumClearance
+        // end::getMinimumClearance[]
+        drawGeometries("geometry_minimumClearance", [geometry, minimumClearance])
+        minimumClearance
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {
