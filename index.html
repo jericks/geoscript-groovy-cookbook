@@ -1975,6 +1975,98 @@ false
 false</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Calculate the minimum rectangle of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+  [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>],
+  [-<span class="float">122.3712158203125</span>,  <span class="float">47.489368981370724</span>],
+  [-<span class="float">122.33276367187499</span>, <span class="float">47.35371061951363</span>],
+  [-<span class="float">122.11029052734374</span>, <span class="float">47.3704545156932</span>],
+  [-<span class="float">122.08831787109375</span>, <span class="float">47.286681888764214</span>],
+  [-<span class="float">122.28332519531249</span>, <span class="float">47.2270293988673</span>],
+  [-<span class="float">122.2174072265625</span>,  <span class="float">47.154237057576594</span>],
+  [-<span class="float">121.904296875</span>,      <span class="float">47.32579231609051</span>],
+  [-<span class="float">122.06085205078125</span>, <span class="float">47.47823216312885</span>],
+  [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>]
+]])
+Geometry minimumRectangle = geometry.minimumRectangle</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_minimumrectangle.png" alt="geometry minimumrectangle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the minimum circle of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+  [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>],
+  [-<span class="float">122.3712158203125</span>,  <span class="float">47.489368981370724</span>],
+  [-<span class="float">122.33276367187499</span>, <span class="float">47.35371061951363</span>],
+  [-<span class="float">122.11029052734374</span>, <span class="float">47.3704545156932</span>],
+  [-<span class="float">122.08831787109375</span>, <span class="float">47.286681888764214</span>],
+  [-<span class="float">122.28332519531249</span>, <span class="float">47.2270293988673</span>],
+  [-<span class="float">122.2174072265625</span>,  <span class="float">47.154237057576594</span>],
+  [-<span class="float">121.904296875</span>,      <span class="float">47.32579231609051</span>],
+  [-<span class="float">122.06085205078125</span>, <span class="float">47.47823216312885</span>],
+  [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>]
+]])
+Geometry minimumBoundingCircle = geometry.minimumBoundingCircle</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_minimumBoundingCircle.png" alt="geometry minimumBoundingCircle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the minimum diameter of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+    [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>],
+    [-<span class="float">122.3712158203125</span>,  <span class="float">47.489368981370724</span>],
+    [-<span class="float">122.33276367187499</span>, <span class="float">47.35371061951363</span>],
+    [-<span class="float">122.11029052734374</span>, <span class="float">47.3704545156932</span>],
+    [-<span class="float">122.08831787109375</span>, <span class="float">47.286681888764214</span>],
+    [-<span class="float">122.28332519531249</span>, <span class="float">47.2270293988673</span>],
+    [-<span class="float">122.2174072265625</span>,  <span class="float">47.154237057576594</span>],
+    [-<span class="float">121.904296875</span>,      <span class="float">47.32579231609051</span>],
+    [-<span class="float">122.06085205078125</span>, <span class="float">47.47823216312885</span>],
+    [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>]
+]])
+Geometry minimumDiameter = geometry.minimumDiameter</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_minimumDiameter.png" alt="geometry minimumDiameter">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the minimum clearance of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+    [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>],
+    [-<span class="float">122.3712158203125</span>,  <span class="float">47.489368981370724</span>],
+    [-<span class="float">122.33276367187499</span>, <span class="float">47.35371061951363</span>],
+    [-<span class="float">122.11029052734374</span>, <span class="float">47.3704545156932</span>],
+    [-<span class="float">122.08831787109375</span>, <span class="float">47.286681888764214</span>],
+    [-<span class="float">122.28332519531249</span>, <span class="float">47.2270293988673</span>],
+    [-<span class="float">122.2174072265625</span>,  <span class="float">47.154237057576594</span>],
+    [-<span class="float">121.904296875</span>,      <span class="float">47.32579231609051</span>],
+    [-<span class="float">122.06085205078125</span>, <span class="float">47.47823216312885</span>],
+    [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>]
+]])
+Geometry minimumClearance = geometry.minimumClearance</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_minimumClearance.png" alt="geometry minimumClearance">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -5254,7 +5346,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--65056e6d_1623523c6cb_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--682cb63b_1626a351ded_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -5969,7 +6061,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 17 18:06:00 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Mar 28 01:24:48 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5988,7 +6080,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--65056e6d_1623523c6cb_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--682cb63b_1626a351ded_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6012,7 +6104,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 17 18:06:00 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Mar 28 01:24:48 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6032,7 +6124,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--65056e6d_1623523c6cb_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--682cb63b_1626a351ded_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -6194,7 +6286,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--65056e6d_1623523c6cb_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--682cb63b_1626a351ded_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6232,7 +6324,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--65056e6d_1623523c6cb_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--682cb63b_1626a351ded_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7494,7 +7586,73 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>vec:Aggregate
+<pre>geo:isValid
+geo:buffer
+geo:union
+geo:intersection
+geo:splitPolygon
+geo:difference
+geo:area
+geo:numGeometries
+geo:convexHull
+geo:crosses
+geo:distance
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:reproject
+geo:symDifference
+geo:isClosed
+geo:envelope
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:getX
+geo:getY
+geo:isRing
+geo:startPoint
+geo:endPoint
+geo:polygonize
+geo:equalsExact
+geo:relatePattern
+geo:pointN
+geo:interiorRingN
+geo:equalsExactTolerance
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage
+vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7523,73 +7681,7 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics
-geo:isValid
-geo:buffer
-geo:union
-geo:intersection
-geo:difference
-geo:area
-geo:numGeometries
-geo:reproject
-geo:symDifference
-geo:isClosed
-geo:crosses
-geo:distance
-geo:convexHull
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:envelope
-geo:densify
-geo:numPoints
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:touches
-geo:within
-geo:simplify
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:getX
-geo:getY
-geo:polygonize
-geo:isRing
-geo:startPoint
-geo:endPoint
-geo:equalsExact
-geo:relatePattern
-geo:equalsExactTolerance
-geo:pointN
-geo:interiorRingN
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage</pre>
+vec:VectorZonalStatistics</pre>
 </div>
 </div>
 </div>
@@ -9904,18 +9996,18 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 <div class="literalblock">
 <div class="content">
 <pre>Shapefile
-MySQL
 PostGIS (JNDI)
-H2
-PostGIS
-Web Feature Server (NG)
-H2 (JNDI)
-Properties
-Geobuf
-Directory of spatial files (shapefiles)
 SpatiaLite (JNDI)
+MySQL
+Properties
+Directory of spatial files (shapefiles)
+PostGIS
 GeoPackage
-MySQL (JNDI)</pre>
+Geobuf
+H2
+MySQL (JNDI)
+H2 (JNDI)
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10026,18 +10118,18 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 <div class="literalblock">
 <div class="content">
 <pre>Shapefile
-MySQL
 PostGIS (JNDI)
-H2
-PostGIS
-Web Feature Server (NG)
-H2 (JNDI)
-Properties
-Geobuf
-Directory of spatial files (shapefiles)
 SpatiaLite (JNDI)
+MySQL
+Properties
+Directory of spatial files (shapefiles)
+PostGIS
 GeoPackage
-MySQL (JNDI)</pre>
+Geobuf
+H2
+MySQL (JNDI)
+H2 (JNDI)
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11511,7 +11603,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--65056e6d_1623523c6cb_-6adf"
+            "id": "fid--682cb63b_1626a351ded_-6adf"
         },
         {
             "type": "Feature",
@@ -11526,7 +11618,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--65056e6d_1623523c6cb_-6add"
+            "id": "fid--682cb63b_1626a351ded_-6add"
         }
     ]
 }</pre>
@@ -11617,7 +11709,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--65056e6d_1623523c6cb_-7491"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--682cb63b_1626a351ded_-7491"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -11639,7 +11731,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--65056e6d_1623523c6cb_-748f"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--682cb63b_1626a351ded_-748f"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -11705,7 +11797,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--65056e6d_1623523c6cb_-6b14
+          fid--682cb63b_1626a351ded_-6b14
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -11732,7 +11824,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--65056e6d_1623523c6cb_-6b12
+          fid--682cb63b_1626a351ded_-6b12
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -13474,7 +13566,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-17 17:58:48 UTC
+Last updated 2018-03-28 01:16:20 UTC
 </div>
 </div>
 </body>

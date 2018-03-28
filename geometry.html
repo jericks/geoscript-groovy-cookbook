@@ -1562,6 +1562,98 @@ false
 false</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Calculate the minimum rectangle of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+  [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>],
+  [-<span class="float">122.3712158203125</span>,  <span class="float">47.489368981370724</span>],
+  [-<span class="float">122.33276367187499</span>, <span class="float">47.35371061951363</span>],
+  [-<span class="float">122.11029052734374</span>, <span class="float">47.3704545156932</span>],
+  [-<span class="float">122.08831787109375</span>, <span class="float">47.286681888764214</span>],
+  [-<span class="float">122.28332519531249</span>, <span class="float">47.2270293988673</span>],
+  [-<span class="float">122.2174072265625</span>,  <span class="float">47.154237057576594</span>],
+  [-<span class="float">121.904296875</span>,      <span class="float">47.32579231609051</span>],
+  [-<span class="float">122.06085205078125</span>, <span class="float">47.47823216312885</span>],
+  [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>]
+]])
+Geometry minimumRectangle = geometry.minimumRectangle</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_minimumrectangle.png" alt="geometry minimumrectangle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the minimum circle of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+  [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>],
+  [-<span class="float">122.3712158203125</span>,  <span class="float">47.489368981370724</span>],
+  [-<span class="float">122.33276367187499</span>, <span class="float">47.35371061951363</span>],
+  [-<span class="float">122.11029052734374</span>, <span class="float">47.3704545156932</span>],
+  [-<span class="float">122.08831787109375</span>, <span class="float">47.286681888764214</span>],
+  [-<span class="float">122.28332519531249</span>, <span class="float">47.2270293988673</span>],
+  [-<span class="float">122.2174072265625</span>,  <span class="float">47.154237057576594</span>],
+  [-<span class="float">121.904296875</span>,      <span class="float">47.32579231609051</span>],
+  [-<span class="float">122.06085205078125</span>, <span class="float">47.47823216312885</span>],
+  [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>]
+]])
+Geometry minimumBoundingCircle = geometry.minimumBoundingCircle</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_minimumBoundingCircle.png" alt="geometry minimumBoundingCircle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the minimum diameter of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+    [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>],
+    [-<span class="float">122.3712158203125</span>,  <span class="float">47.489368981370724</span>],
+    [-<span class="float">122.33276367187499</span>, <span class="float">47.35371061951363</span>],
+    [-<span class="float">122.11029052734374</span>, <span class="float">47.3704545156932</span>],
+    [-<span class="float">122.08831787109375</span>, <span class="float">47.286681888764214</span>],
+    [-<span class="float">122.28332519531249</span>, <span class="float">47.2270293988673</span>],
+    [-<span class="float">122.2174072265625</span>,  <span class="float">47.154237057576594</span>],
+    [-<span class="float">121.904296875</span>,      <span class="float">47.32579231609051</span>],
+    [-<span class="float">122.06085205078125</span>, <span class="float">47.47823216312885</span>],
+    [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>]
+]])
+Geometry minimumDiameter = geometry.minimumDiameter</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_minimumDiameter.png" alt="geometry minimumDiameter">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the minimum clearance of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+    [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>],
+    [-<span class="float">122.3712158203125</span>,  <span class="float">47.489368981370724</span>],
+    [-<span class="float">122.33276367187499</span>, <span class="float">47.35371061951363</span>],
+    [-<span class="float">122.11029052734374</span>, <span class="float">47.3704545156932</span>],
+    [-<span class="float">122.08831787109375</span>, <span class="float">47.286681888764214</span>],
+    [-<span class="float">122.28332519531249</span>, <span class="float">47.2270293988673</span>],
+    [-<span class="float">122.2174072265625</span>,  <span class="float">47.154237057576594</span>],
+    [-<span class="float">121.904296875</span>,      <span class="float">47.32579231609051</span>],
+    [-<span class="float">122.06085205078125</span>, <span class="float">47.47823216312885</span>],
+    [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>]
+]])
+Geometry minimumClearance = geometry.minimumClearance</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_minimumClearance.png" alt="geometry minimumClearance">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -2201,7 +2293,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-17 17:58:48 UTC
+Last updated 2018-03-28 01:16:20 UTC
 </div>
 </div>
 </body>
