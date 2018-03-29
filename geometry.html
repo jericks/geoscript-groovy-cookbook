@@ -1654,6 +1654,24 @@ Geometry minimumClearance = geometry.minimumClearance</code></pre>
 <img src="./images/geometry_minimumClearance.png" alt="geometry minimumClearance">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Offset a LineString by a given distance. Positive distances will offset to the right. Negative distance will offset to the left.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString line = <span class="keyword">new</span> LineString(
+        [<span class="float">3.198</span>, <span class="float">43.164</span>],
+        [<span class="float">6.713</span>, <span class="float">49.755</span>],
+        [<span class="float">9.702</span>, <span class="float">42.592</span>],
+        [<span class="float">15.32</span>, <span class="float">53.798</span>]
+)
+LineString positive = line.offset(<span class="float">1.2</span>)
+LineString negative = line.offset(-<span class="float">2.4</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_offset.png" alt="geometry offset">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -2293,7 +2311,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-28 01:16:20 UTC
+Last updated 2018-03-29 02:32:10 UTC
 </div>
 </div>
 </body>
