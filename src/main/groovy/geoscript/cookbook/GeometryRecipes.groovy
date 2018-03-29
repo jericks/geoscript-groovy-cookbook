@@ -989,6 +989,25 @@ class GeometryRecipes extends Recipes {
         [positive, negative]
     }
 
+    Map<String, Integer> getDimension() {
+        // tag::getDimension[]
+        Point point = Geometry.fromWKT("POINT (-122.3437 47.7540)")
+        println "Point Dimension = ${point.dimension}"
+
+        LineString lineString = Geometry.fromWKT("LINESTRING (-122.525 47.256, -122.376 47.595)")
+        println "LineString Dimension = ${lineString.dimension}"
+
+        Polygon polygon = Geometry.fromWKT("POLYGON ((-122.590 47.204, -122.365 47.204, -122.365 47.312, -122.590 47.312, -122.590 47.204))")
+        println "Polygon Dimension = ${polygon.dimension}"
+        // end::getDimension[]
+        writeFile("geometry_dimension", """           
+Point Dimension = ${point.dimension}
+LineString Dimension = ${lineString.dimension}
+Polygon Dimension = ${polygon.dimension}
+""")
+        [point: point.dimension, lineString: lineString.dimension, polygon: polygon.dimension]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

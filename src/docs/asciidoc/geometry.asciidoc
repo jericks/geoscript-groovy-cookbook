@@ -447,6 +447,15 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=offset,inden
 [.thumb]
 image::geometry_offset.png[]
 
+[source,groovy]
+.Get the dimension of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getDimension,indent=0]
+----
+....
+include::output/geometry_dimension.txt[]
+....
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
