@@ -974,6 +974,21 @@ class GeometryRecipes extends Recipes {
         minimumClearance
     }
 
+    List<LineString> offset() {
+        // tag::offset[]
+        LineString line = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        LineString positive = line.offset(1.2)
+        LineString negative = line.offset(-2.4)
+        // end::offset[]
+        drawGeometries("geometry_offset", [line, positive, negative])
+        [positive, negative]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

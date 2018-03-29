@@ -439,6 +439,14 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getMinimumCl
 [.thumb]
 image::geometry_minimumClearance.png[]
 
+[source,groovy]
+.Offset a LineString by a given distance. Positive distances will offset to the right. Negative distance will offset to the left.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=offset,indent=0]
+----
+[.thumb]
+image::geometry_offset.png[]
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
