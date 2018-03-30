@@ -316,6 +316,20 @@ class GeometryRecipesTest {
         assertEquals(2, dimensions.polygon)
     }
 
+    @Test void isEmpty() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Boolean> values = recipes.isEmpty()
+        assertTrue(values[0])
+        assertFalse(values[1])
+    }
+
+    @Test void isRectangle() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Boolean> values = recipes.isRectangle()
+        assertTrue(values[0])
+        assertFalse(values[1])
+    }
+    
     // Geometry IO
 
     @Test void getGeometryReaders() {

@@ -1008,6 +1008,40 @@ Polygon Dimension = ${polygon.dimension}
         [point: point.dimension, lineString: lineString.dimension, polygon: polygon.dimension]
     }
 
+    List<Boolean> isEmpty() {
+        // tag::isEmpty[]
+        Geometry geom1 = Geometry.fromWKT("POINT EMPTY")
+        boolean isGeom1Empty = geom1.empty
+        println "Is ${geom1.wkt} empty? ${isGeom1Empty ? 'Yes' : 'No'}"
+
+        Geometry geom2 = Geometry.fromWKT("POINT (-122.3437 47.7540)")
+        boolean isGeom2Empty = geom2.empty
+        println "Is ${geom2.wkt} empty? ${isGeom2Empty ? 'Yes' : 'No'}"
+        // end::isEmpty[]
+        writeFile("geometry_isempty", "Is ${geom1.wkt} empty? ${isGeom1Empty ? 'Yes' : 'No'}${NEW_LINE}Is ${geom2.wkt} empty? ${isGeom2Empty ? 'Yes' : 'No'}")
+        [isGeom1Empty, isGeom2Empty]
+    }
+
+    List<Boolean> isRectangle() {
+        // tag::isRectangle1[]
+        Geometry geom1 = Geometry.fromWKT("POLYGON ((-122.590 47.204, -122.365 47.204, -122.365 47.312, -122.590 47.312, -122.590 47.204))")
+        boolean isGeom1Rect = geom1.isRectangle()
+        println "Is the geometry a rectangle? ${isGeom1Rect ? 'Yes' : 'No'}"
+        // end::isRectangle1[]
+        writeFile("geometry_isrectangle1", "Is the geometry a rectangle? ${isGeom1Rect ? 'Yes' : 'No'}")
+        drawGeometry("geometry_isrectangle1", geom1)
+
+        // tag::isRectangle2[]
+        Geometry geom2 = Geometry.fromWKT("POLYGON ((-122.360 47.215, -122.656 46.912, -121.838 46.931, -122.360 47.215))")
+        boolean isGeom2Rect = geom2.isRectangle()
+        println "Is the geometry a rectangle? ${isGeom2Rect ? 'Yes' : 'No'}"
+        // end::isRectangle2[]
+        writeFile("geometry_isrectangle2", "Is the geometry a rectangle? ${isGeom2Rect ? 'Yes' : 'No'}")
+        drawGeometry("geometry_isrectangle2", geom2)
+
+        [isGeom1Rect, isGeom2Rect]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

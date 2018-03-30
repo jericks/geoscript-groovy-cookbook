@@ -456,6 +456,38 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getDimension
 include::output/geometry_dimension.txt[]
 ....
 
+[source,groovy]
+.Determine if a Geometry is empty or not
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isEmpty,indent=0]
+----
+[.thumb]
+image::geometry_offset.png[]
+....
+include::output/geometry_isempty.txt[]
+....
+
+[source,groovy]
+.Determine if a Geometry is rectanglular
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isRectangle1,indent=0]
+----
+[.thumb]
+image::geometry_isrectangle1.png[]
+....
+include::output/geometry_isrectangle1.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isRectangle2,indent=0]
+----
+[.thumb]
+image::geometry_isrectangle2.png[]
+....
+include::output/geometry_isrectangle2.txt[]
+....
+
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
