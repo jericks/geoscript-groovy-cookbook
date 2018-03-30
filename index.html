@@ -2105,6 +2105,64 @@ LineString Dimension = 1
 Polygon Dimension = 2</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Determine if a Geometry is empty or not</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geom1 = Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POINT EMPTY</span><span class="delimiter">&quot;</span></span>)
+<span class="type">boolean</span> isGeom1Empty = geom1.empty
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is </span><span class="inline"><span class="inline-delimiter">${</span>geom1.wkt<span class="inline-delimiter">}</span></span><span class="content"> empty? </span><span class="inline"><span class="inline-delimiter">${</span>isGeom1Empty ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+Geometry geom2 = Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POINT (-122.3437 47.7540)</span><span class="delimiter">&quot;</span></span>)
+<span class="type">boolean</span> isGeom2Empty = geom2.empty
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is </span><span class="inline"><span class="inline-delimiter">${</span>geom2.wkt<span class="inline-delimiter">}</span></span><span class="content"> empty? </span><span class="inline"><span class="inline-delimiter">${</span>isGeom2Empty ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_offset.png" alt="geometry offset">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is POINT EMPTY empty? Yes
+Is POINT (-122.3437 47.754) empty? No</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Determine if a Geometry is rectanglular</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geom1 = Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POLYGON ((-122.590 47.204, -122.365 47.204, -122.365 47.312, -122.590 47.312, -122.590 47.204))</span><span class="delimiter">&quot;</span></span>)
+<span class="type">boolean</span> isGeom1Rect = geom1.isRectangle()
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is the geometry a rectangle? </span><span class="inline"><span class="inline-delimiter">${</span>isGeom1Rect ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_isrectangle1.png" alt="geometry isrectangle1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is the geometry a rectangle? Yes</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Geometry geom2 = Geometry.fromWKT("POLYGON ((-122.360 47.215, -122.656 46.912, -121.838 46.931, -122.360 47.215))")
+boolean isGeom2Rect = geom2.isRectangle()
+println "Is the geometry a rectangle? ${isGeom2Rect ? 'Yes' : 'No'}"</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_isrectangle2.png" alt="geometry isrectangle2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is the geometry a rectangle? No</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -5384,7 +5442,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-4745b41c_1626fabff83_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-4fe79f59_1627511cb7b_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -6099,7 +6157,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Mar 29 02:52:46 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 30 04:02:03 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6118,7 +6176,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-4745b41c_1626fabff83_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-4fe79f59_1627511cb7b_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6142,7 +6200,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Mar 29 02:52:46 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 30 04:02:03 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6162,7 +6220,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-4745b41c_1626fabff83_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-4fe79f59_1627511cb7b_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -6324,7 +6382,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-4745b41c_1626fabff83_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-4fe79f59_1627511cb7b_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6362,7 +6420,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-4745b41c_1626fabff83_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-4fe79f59_1627511cb7b_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7624,73 +7682,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:union
-geo:intersection
-geo:isValid
-geo:buffer
-geo:difference
-geo:area
-geo:numGeometries
-geo:convexHull
-geo:crosses
-geo:distance
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:reproject
-geo:symDifference
-geo:isClosed
-geo:getX
-geo:getY
-geo:envelope
-geo:polygonize
-geo:isRing
-geo:isSimple
-geo:isWithinDistance
-geo:overlaps
-geo:relate
-geo:touches
-geo:within
-geo:simplify
-geo:densify
-geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:startPoint
-geo:endPoint
-geo:equalsExact
-geo:splitPolygon
-geo:pointN
-geo:interiorRingN
-geo:equalsExactTolerance
-geo:relatePattern
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -7719,7 +7711,73 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics</pre>
+vec:VectorZonalStatistics
+geo:isValid
+geo:buffer
+geo:union
+geo:intersection
+geo:difference
+geo:area
+geo:numGeometries
+geo:convexHull
+geo:crosses
+geo:distance
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:reproject
+geo:symDifference
+geo:isClosed
+geo:isSimple
+geo:isWithinDistance
+geo:overlaps
+geo:relate
+geo:touches
+geo:within
+geo:simplify
+geo:densify
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:getX
+geo:getY
+geo:polygonize
+geo:isRing
+geo:startPoint
+geo:endPoint
+geo:equalsExact
+geo:relatePattern
+geo:pointN
+geo:interiorRingN
+geo:equalsExactTolerance
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage</pre>
 </div>
 </div>
 </div>
@@ -10033,19 +10091,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS
-Geobuf
-Directory of spatial files (shapefiles)
+<pre>GeoPackage
 Properties
-PostGIS (JNDI)
-Shapefile
+MySQL
+Geobuf
 H2 (JNDI)
-Web Feature Server (NG)
-GeoPackage
 H2
 SpatiaLite (JNDI)
+Directory of spatial files (shapefiles)
+PostGIS (JNDI)
+PostGIS
 MySQL (JNDI)
-MySQL</pre>
+Shapefile
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10155,19 +10213,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS
-Geobuf
-Directory of spatial files (shapefiles)
+<pre>GeoPackage
 Properties
-PostGIS (JNDI)
-Shapefile
+MySQL
+Geobuf
 H2 (JNDI)
-Web Feature Server (NG)
-GeoPackage
 H2
 SpatiaLite (JNDI)
+Directory of spatial files (shapefiles)
+PostGIS (JNDI)
+PostGIS
 MySQL (JNDI)
-MySQL</pre>
+Shapefile
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11641,7 +11699,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-4745b41c_1626fabff83_-6adf"
+            "id": "fid-4fe79f59_1627511cb7b_-6adf"
         },
         {
             "type": "Feature",
@@ -11656,7 +11714,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-4745b41c_1626fabff83_-6add"
+            "id": "fid-4fe79f59_1627511cb7b_-6add"
         }
     ]
 }</pre>
@@ -11747,7 +11805,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4745b41c_1626fabff83_-7491"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4fe79f59_1627511cb7b_-7491"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -11769,7 +11827,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4745b41c_1626fabff83_-748f"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4fe79f59_1627511cb7b_-748f"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -11835,7 +11893,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-4745b41c_1626fabff83_-6b14
+          fid-4fe79f59_1627511cb7b_-6b14
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -11862,7 +11920,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-4745b41c_1626fabff83_-6b12
+          fid-4fe79f59_1627511cb7b_-6b12
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -13604,7 +13662,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-29 02:44:57 UTC
+Last updated 2018-03-30 03:55:08 UTC
 </div>
 </div>
 </body>
