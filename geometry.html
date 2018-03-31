@@ -1745,6 +1745,49 @@ println "Is the geometry a rectangle? ${isGeom2Rect ? 'Yes' : 'No'}"</pre>
 <pre>Is the geometry a rectangle? No</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Determine if a Geometry is simple</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geom1 = <span class="keyword">new</span> LineString(
+        [-<span class="float">122.323</span>, <span class="float">47.599</span>],
+        [-<span class="float">122.385</span>, <span class="float">47.581</span>]
+)
+<span class="type">boolean</span> isGeom1Simple = geom1.simple
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is the Geometry simple? </span><span class="inline"><span class="inline-delimiter">${</span>isGeom1Simple<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_issimple1.png" alt="geometry issimple1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is the Geometry simple? true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Geometry geom2 = new LineString(
+        [-122.356, 47.537],
+        [-122.295, 47.580],
+        [-122.284, 47.532],
+        [-122.353, 47.574]
+)
+boolean isGeom2Simple = geom2.simple
+println "Is the Geometry simple? ${isGeom2Simple}"</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_issimple2.png" alt="geometry issimple2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is the Geometry simple? false</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -2384,7 +2427,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-30 04:13:06 UTC
+Last updated 2018-03-31 23:10:50 UTC
 </div>
 </div>
 </body>
