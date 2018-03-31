@@ -1042,6 +1042,34 @@ Polygon Dimension = ${polygon.dimension}
         [isGeom1Rect, isGeom2Rect]
     }
 
+    List<Boolean> isSimple() {
+        // tag::isSimple1[]
+        Geometry geom1 = new LineString(
+                [-122.323, 47.599],
+                [-122.385, 47.581]
+        )
+        boolean isGeom1Simple = geom1.simple
+        println "Is the Geometry simple? ${isGeom1Simple}"
+        // end::isSimple1[]
+        writeFile("geometry_issimple1", "Is the Geometry simple? ${isGeom1Simple}")
+        drawGeometry("geometry_issimple1", geom1)
+
+        // tag::isSimple2[]
+        Geometry geom2 = new LineString(
+                [-122.356, 47.537],
+                [-122.295, 47.580],
+                [-122.284, 47.532],
+                [-122.353, 47.574]
+        )
+        boolean isGeom2Simple = geom2.simple
+        println "Is the Geometry simple? ${isGeom2Simple}"
+        // end::isSimple2[]
+        writeFile("geometry_issimple2", "Is the Geometry simple? ${isGeom2Simple}")
+        drawGeometry("geometry_issimple2", geom2)
+
+        [isGeom1Simple, isGeom2Simple]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

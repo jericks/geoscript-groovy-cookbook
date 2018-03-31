@@ -329,6 +329,13 @@ class GeometryRecipesTest {
         assertTrue(values[0])
         assertFalse(values[1])
     }
+
+    @Test void isSimple() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Boolean> values = recipes.isSimple()
+        assertTrue(values[0])
+        assertFalse(values[1])
+    }
     
     // Geometry IO
 

@@ -485,6 +485,26 @@ image::geometry_isrectangle2.png[]
 include::output/geometry_isrectangle2.txt[]
 ....
 
+[source,groovy]
+.Determine if a Geometry is simple
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isSimple1,indent=0]
+----
+[.thumb]
+image::geometry_issimple1.png[]
+....
+include::output/geometry_issimple1.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isSimple2,indent=0]
+----
+[.thumb]
+image::geometry_issimple2.png[]
+....
+include::output/geometry_issimple2.txt[]
+....
+
 
 === Reading and Writing Geometries
 
