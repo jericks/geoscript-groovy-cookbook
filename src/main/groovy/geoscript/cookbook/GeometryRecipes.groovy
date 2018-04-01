@@ -8,6 +8,7 @@ import geoscript.geom.CompoundRing
 import geoscript.geom.Geometry
 import geoscript.geom.GeometryCollection
 import geoscript.geom.LineString
+import geoscript.geom.LinearRing
 import geoscript.geom.MultiLineString
 import geoscript.geom.MultiPoint
 import geoscript.geom.MultiPolygon
@@ -1068,6 +1069,36 @@ Polygon Dimension = ${polygon.dimension}
         drawGeometry("geometry_issimple2", geom2)
 
         [isGeom1Simple, isGeom2Simple]
+    }
+
+    List<Boolean> isValid() {
+        // tag::isValid1[]
+        Geometry geom1 = new LineString(
+                [-122.323, 47.599],
+                [-122.385, 47.581]
+        )
+        boolean isGeom1Valid = geom1.valid
+        println "Is the Geometry valid? ${isGeom1Valid}"
+        // end::isValid1[]
+        writeFile("geometry_isvalid1", "Is the Geometry valid? ${isGeom1Valid}")
+        drawGeometry("geometry_isvalid1", geom1)
+
+        // tag::isValid2[]
+        Geometry geom2 = new Polygon(new LinearRing([
+            [48.16406, 42.29356],
+            [35.15625, 25.79989],
+            [64.33593, 24.52713],
+            [26.71875, 39.09596],
+            [48.16406, 42.29356],
+        ]))
+        boolean isGeom2Valid = geom2.valid
+        println "Is the Geometry valid? ${isGeom2Valid}"
+        println geom2.validReason
+        // end::isValid2[]
+        writeFile("geometry_isvalid2", "Is the Geometry valid? ${isGeom2Valid}${NEW_LINE}${geom2.validReason}")
+        drawGeometry("geometry_isvalid2", geom2)
+
+        [isGeom1Valid, isGeom2Valid]
     }
 
     // Geometry Readers and Writers

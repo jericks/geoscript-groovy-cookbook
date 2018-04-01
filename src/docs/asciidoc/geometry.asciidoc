@@ -505,6 +505,25 @@ image::geometry_issimple2.png[]
 include::output/geometry_issimple2.txt[]
 ....
 
+[source,groovy]
+.Determine if a Geometry is valid
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isValid1,indent=0]
+----
+[.thumb]
+image::geometry_isvalid1.png[]
+....
+include::output/geometry_isvalid1.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isValid2,indent=0]
+----
+[.thumb]
+image::geometry_isvalid2.png[]
+....
+include::output/geometry_isvalid2.txt[]
+....
 
 === Reading and Writing Geometries
 
