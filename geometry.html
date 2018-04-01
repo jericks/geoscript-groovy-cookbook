@@ -1788,6 +1788,52 @@ println "Is the Geometry simple? ${isGeom2Simple}"</pre>
 <pre>Is the Geometry simple? false</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Determine if a Geometry is valid</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geom1 = <span class="keyword">new</span> LineString(
+        [-<span class="float">122.323</span>, <span class="float">47.599</span>],
+        [-<span class="float">122.385</span>, <span class="float">47.581</span>]
+)
+<span class="type">boolean</span> isGeom1Valid = geom1.valid
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is the Geometry valid? </span><span class="inline"><span class="inline-delimiter">${</span>isGeom1Valid<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_isvalid1.png" alt="geometry isvalid1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is the Geometry valid? true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Geometry geom2 = new Polygon(new LinearRing([
+    [48.16406, 42.29356],
+    [35.15625, 25.79989],
+    [64.33593, 24.52713],
+    [26.71875, 39.09596],
+    [48.16406, 42.29356],
+]))
+boolean isGeom2Valid = geom2.valid
+println "Is the Geometry valid? ${isGeom2Valid}"
+println geom2.validReason</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_isvalid2.png" alt="geometry isvalid2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is the Geometry valid? false
+Self-intersection</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -2427,7 +2473,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-31 23:10:50 UTC
+Last updated 2018-04-01 23:02:24 UTC
 </div>
 </div>
 </body>
