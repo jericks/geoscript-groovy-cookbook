@@ -1129,6 +1129,27 @@ Polygon Dimension = ${polygon.dimension}
         [isGeom1Curved, isGeom2Curved]
     }
 
+    List<Boolean> isWithinDistance() {
+        // tag::isWithinDistance1[]
+        Geometry geom1 = new Point(-88.945, 41.771)
+        Geometry geom2 = new Point(-113.906, 37.160)
+
+        double distance1 = 26.0
+        boolean isWithin1 = geom1.isWithinDistance(geom2, distance1)
+        println "Is ${geom1} within ${distance1} of ${geom2}? ${isWithin1 ? 'Yes' : 'No'}"
+        // end::isWithinDistance1[]
+        writeFile("geometry_iswithindistance1", "Is ${geom1} within ${distance1} of ${geom2}? ${isWithin1 ? 'Yes' : 'No'}")
+        
+        // tag::isWithinDistance2[]
+        double distance2 = 15.5
+        boolean isWithin2 = geom1.isWithinDistance(geom2, distance2)
+        println "Is ${geom1} within ${distance2} of ${geom2}? ${isWithin2 ? 'Yes' : 'No'}"
+        // end::isWithinDistance2[]
+        writeFile("geometry_iswithindistance2", "Is ${geom1} within ${distance2} of ${geom2}? ${isWithin2 ? 'Yes' : 'No'}")
+
+        [isWithin1, isWithin2]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {
