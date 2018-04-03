@@ -1834,6 +1834,49 @@ println geom2.validReason</pre>
 Self-intersection</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Determine if a Geometry is curved</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geom1 = <span class="keyword">new</span> CircularString([
+        [-<span class="float">122.464599609375</span>, <span class="float">47.247542522268006</span>],
+        [-<span class="float">122.03613281249999</span>, <span class="float">47.37789454155521</span>],
+        [-<span class="float">122.37670898437499</span>, <span class="float">47.58393661978134</span>]
+])
+
+<span class="type">boolean</span> isGeom1Curved = geom1.curved
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is the Geometry valid? </span><span class="inline"><span class="inline-delimiter">${</span>isGeom1Curved<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_iscurved1.png" alt="geometry iscurved1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is the Geometry curved? true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Geometry geom2 = new LineString(
+        [-122.323, 47.599],
+        [-122.385, 47.581]
+)
+boolean isGeom2Curved = geom2.curved
+println "Is the Geometry valid? ${isGeom2Curved}"</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_iscurved2.png" alt="geometry iscurved2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is the Geometry curved? false</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -2473,7 +2516,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-01 23:02:24 UTC
+Last updated 2018-04-03 01:18:47 UTC
 </div>
 </div>
 </body>
