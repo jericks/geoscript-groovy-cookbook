@@ -525,6 +525,26 @@ image::geometry_isvalid2.png[]
 include::output/geometry_isvalid2.txt[]
 ....
 
+[source,groovy]
+.Determine if a Geometry is curved
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isCurved1,indent=0]
+----
+[.thumb]
+image::geometry_iscurved1.png[]
+....
+include::output/geometry_iscurved1.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isCurved2,indent=0]
+----
+[.thumb]
+image::geometry_iscurved2.png[]
+....
+include::output/geometry_iscurved2.txt[]
+....
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package

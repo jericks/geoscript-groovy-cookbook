@@ -1101,6 +1101,34 @@ Polygon Dimension = ${polygon.dimension}
         [isGeom1Valid, isGeom2Valid]
     }
 
+    List<Boolean> isCurved() {
+        // tag::isCurved1[]
+        Geometry geom1 = new CircularString([
+                [-122.464599609375, 47.247542522268006],
+                [-122.03613281249999, 47.37789454155521],
+                [-122.37670898437499, 47.58393661978134]
+        ])
+
+        boolean isGeom1Curved = geom1.curved
+        println "Is the Geometry valid? ${isGeom1Curved}"
+        // end::isCurved1[]
+        writeFile("geometry_iscurved1", "Is the Geometry curved? ${isGeom1Curved}")
+        drawGeometry("geometry_iscurved1", geom1)
+
+        // tag::isCurved2[]
+        Geometry geom2 = new LineString(
+                [-122.323, 47.599],
+                [-122.385, 47.581]
+        )
+        boolean isGeom2Curved = geom2.curved
+        println "Is the Geometry valid? ${isGeom2Curved}"
+        // end::isCurved2[]
+        writeFile("geometry_iscurved2", "Is the Geometry curved? ${isGeom2Curved}")
+        drawGeometry("geometry_iscurved2", geom2)
+
+        [isGeom1Curved, isGeom2Curved]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

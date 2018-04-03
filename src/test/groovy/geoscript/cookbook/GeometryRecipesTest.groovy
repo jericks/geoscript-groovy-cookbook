@@ -343,6 +343,13 @@ class GeometryRecipesTest {
         assertTrue(values[0])
         assertFalse(values[1])
     }
+
+    @Test void isCurved() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Boolean> values = recipes.isCurved()
+        assertTrue(values[0])
+        assertFalse(values[1])
+    }
     
     // Geometry IO
 
