@@ -1575,6 +1575,29 @@ false</pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Calculate the octagonal envelope of a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+    [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>],
+    [-<span class="float">122.3712158203125</span>,  <span class="float">47.489368981370724</span>],
+    [-<span class="float">122.33276367187499</span>, <span class="float">47.35371061951363</span>],
+    [-<span class="float">122.11029052734374</span>, <span class="float">47.3704545156932</span>],
+    [-<span class="float">122.08831787109375</span>, <span class="float">47.286681888764214</span>],
+    [-<span class="float">122.28332519531249</span>, <span class="float">47.2270293988673</span>],
+    [-<span class="float">122.2174072265625</span>,  <span class="float">47.154237057576594</span>],
+    [-<span class="float">121.904296875</span>,      <span class="float">47.32579231609051</span>],
+    [-<span class="float">122.06085205078125</span>, <span class="float">47.47823216312885</span>],
+    [-<span class="float">122.20367431640624</span>, <span class="float">47.543163654317304</span>]
+]])
+Geometry octagonalEnvelope = geometry.octagonalEnvelope</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_octagonalEnvelope.png" alt="geometry octagonalEnvelope">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Calculate the minimum rectangle of a Geometry</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
@@ -2556,7 +2579,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-04 03:24:57 UTC
+Last updated 2018-04-04 23:36:46 UTC
 </div>
 </div>
 </body>
