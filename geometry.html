@@ -1480,6 +1480,18 @@ MultiPoint randomPoints = Geometry.createRandomPointsInGrid(bounds, <span class=
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a delaunay triangle diagram around a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry points = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>).geometry, <span class="integer">100</span>)
+Geometry delaunayTriangle = points.delaunayTriangleDiagram</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_delaunaytrianglediagram.png" alt="geometry delaunaytrianglediagram">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Calculate the intersection between two Geometries</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
@@ -2544,7 +2556,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 01:38:20 UTC
+Last updated 2018-04-04 03:24:57 UTC
 </div>
 </div>
 </body>
