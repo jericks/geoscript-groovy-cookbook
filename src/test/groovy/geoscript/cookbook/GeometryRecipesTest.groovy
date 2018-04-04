@@ -370,6 +370,12 @@ class GeometryRecipesTest {
         assertNotNull(geom)
     }
 
+    @Test void getVoronoiDiagram() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.getVoronoiDiagram()
+        assertNotNull(geom)
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

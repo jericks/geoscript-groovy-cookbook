@@ -1176,10 +1176,22 @@ Polygon Dimension = ${polygon.dimension}
         Geometry delaunayTriangle = points.delaunayTriangleDiagram
         // end::getDelaunayTriangleDiagram[]
         drawOnBasemap("geometry_delaunaytrianglediagram", [
-                createLayerFromGeometry("points", points, "shape=#0066FF shape-size=6"),
-                createLayerFromGeometry("delaunay", delaunayTriangle, "fill=#0066FF stroke=#navy fill-opacity=0.5")
+                createLayerFromGeometry("delaunay", delaunayTriangle, "fill=#0066FF stroke=#navy fill-opacity=0.5"),
+                createLayerFromGeometry("points", points, "shape=#0066FF shape-size=8")
         ])
         delaunayTriangle
+    }
+
+    Geometry getVoronoiDiagram() {
+        // tag::getVoronoiDiagram[]
+        Geometry points = Geometry.createRandomPoints(new Bounds(-180, -90, 180, 90).geometry, 100)
+        Geometry voronoiDiagram = points.voronoiDiagram
+        // end::getVoronoiDiagram[]
+        drawOnBasemap("geometry_voronoidiagram", [
+                createLayerFromGeometry("voronoi", voronoiDiagram, "fill=#0066FF stroke=#navy fill-opacity=0.5"),
+                createLayerFromGeometry("points", points, "shape=#0066FF shape-size=8")
+        ], new Bounds(-180, -90, 180, 90, "EPSG:4326"))
+        voronoiDiagram
     }
 
     // Geometry Readers and Writers
