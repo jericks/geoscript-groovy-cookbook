@@ -417,6 +417,14 @@ include::output/geometry_intersects.txt[]
 ....
 
 [source,groovy]
+.Calculate the octagonal envelope of a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getOctagonalEnvelope,indent=0]
+----
+[.thumb]
+image::geometry_octagonalEnvelope.png[]
+
+[source,groovy]
 .Calculate the minimum rectangle of a Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getMinimumRectangle,indent=0]

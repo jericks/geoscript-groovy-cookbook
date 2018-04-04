@@ -277,6 +277,12 @@ class GeometryRecipesTest {
         assertFalse(results["23"])
     }
 
+    @Test void getOctagonalEnvelope() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.getOctagonalEnvelope()
+        assertEquals("POLYGON ((-122.3712158203125 47.308045651326594, -122.3712158203125 47.48936898137072, -122.3174211473659 47.543163654317304, -122.1216682132268 47.543163654317304, -121.904296875 47.325792316090514, -122.07585213351392 47.154237057576594, -122.2174072265625 47.154237057576594, -122.3712158203125 47.308045651326594))", geom.wkt)
+    }
+
     @Test void getMinimumRectangle() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.getMinimumRectangle()
