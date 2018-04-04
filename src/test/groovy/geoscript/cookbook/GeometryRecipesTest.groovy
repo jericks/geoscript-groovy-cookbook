@@ -357,7 +357,13 @@ class GeometryRecipesTest {
         assertTrue(values[0])
         assertFalse(values[1])
     }
-    
+
+    @Test void getDelaunayTriangleDiagram() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.getDelaunayTriangleDiagram()
+        assertNotNull(geom)
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

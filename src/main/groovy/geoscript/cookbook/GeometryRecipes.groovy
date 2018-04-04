@@ -1150,6 +1150,18 @@ Polygon Dimension = ${polygon.dimension}
         [isWithin1, isWithin2]
     }
 
+    Geometry getDelaunayTriangleDiagram() {
+        // tag::getDelaunayTriangleDiagram[]
+        Geometry points = Geometry.createRandomPoints(new Bounds(-180, -90, 180, 90).geometry, 100)
+        Geometry delaunayTriangle = points.delaunayTriangleDiagram
+        // end::getDelaunayTriangleDiagram[]
+        drawOnBasemap("geometry_delaunaytrianglediagram", [
+                createLayerFromGeometry("points", points, "shape=#0066FF shape-size=6"),
+                createLayerFromGeometry("delaunay", delaunayTriangle, "fill=#0066FF stroke=#navy fill-opacity=0.5")
+        ])
+        delaunayTriangle
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

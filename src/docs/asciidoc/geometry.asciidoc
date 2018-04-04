@@ -389,6 +389,15 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createRandom
 image::geometry_create_random_points_ingrid.png[]
 
 [source,groovy]
+.Create a delaunay triangle diagram around a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getDelaunayTriangleDiagram,indent=0]
+----
+[.thumb]
+image::geometry_delaunaytrianglediagram.png[]
+
+
+[source,groovy]
 .Calculate the intersection between two Geometries
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=intersection,indent=0]
