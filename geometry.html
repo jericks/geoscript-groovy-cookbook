@@ -1492,6 +1492,18 @@ Geometry delaunayTriangle = points.delaunayTriangleDiagram</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a voronoi diagram around a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry points = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>).geometry, <span class="integer">100</span>)
+Geometry voronoiDiagram = points.voronoiDiagram</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_voronoidiagram.png" alt="geometry voronoidiagram">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Calculate the intersection between two Geometries</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
@@ -2579,7 +2591,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-04 23:36:46 UTC
+Last updated 2018-04-05 00:00:27 UTC
 </div>
 </div>
 </body>
