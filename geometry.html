@@ -789,6 +789,19 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect2">
 <h3 id="procesing-geometries"><a class="anchor" href="#procesing-geometries"></a>Procesing Geometries</h3>
 <div class="listingblock">
+<div class="title">Get the geometry type (Point, LineString, Polygon, ect&#8230;&#8203;) from a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geom = Geometry.fromString(<span class="string"><span class="delimiter">&quot;</span><span class="content">POINT (-124.80 48.92)</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">String</span> type = geom.geometryType
+println type</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Point</pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Get the area of a Geometry</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
@@ -2591,7 +2604,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 00:00:27 UTC
+Last updated 2018-04-05 00:23:43 UTC
 </div>
 </div>
 </body>
