@@ -517,7 +517,24 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#geometry-recipes">Geometry Recipes</a>
 <ul class="sectlevel2">
-<li><a href="#creating-geometries">Creating Geometries</a></li>
+<li><a href="#creating-geometries">Creating Geometries</a>
+<ul class="sectlevel3">
+<li><a href="#point">Point</a></li>
+<li><a href="#linestring">LineString</a></li>
+<li><a href="#polygon">Polygon</a></li>
+<li><a href="#multipoint">MultiPoint</a></li>
+<li><a href="#multilinestring">MultiLineString</a></li>
+<li><a href="#multipolygon">MultiPolygon</a></li>
+<li><a href="#geometrycollection">GeometryCollection</a></li>
+<li><a href="#circularstring">CircularString</a></li>
+<li><a href="#circularring">CircularRing</a></li>
+<li><a href="#compoundcurve">CompoundCurve</a>
+<ul class="sectlevel4">
+<li><a href="#compoundring">CompoundRing</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#procesing-geometries">Procesing Geometries</a></li>
 <li><a href="#reading-and-writing-geometries">Reading and Writing Geometries</a>
 <ul class="sectlevel3">
@@ -548,6 +565,8 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="creating-geometries"><a class="anchor" href="#creating-geometries"></a>Creating Geometries</h3>
+<div class="sect3">
+<h4 id="point"><a class="anchor" href="#point"></a>Point</h4>
 <div class="listingblock">
 <div class="title">Create a Point with an XY</div>
 <div class="content">
@@ -559,6 +578,9 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_point.png" alt="geometry create point">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="linestring"><a class="anchor" href="#linestring"></a>LineString</h4>
 <div class="listingblock">
 <div class="title">Create a LineString from Coordinates</div>
 <div class="content">
@@ -575,6 +597,9 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_linestring_coordinates.png" alt="geometry create linestring coordinates">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="polygon"><a class="anchor" href="#polygon"></a>Polygon</h4>
 <div class="listingblock">
 <div class="title">Create a Polygon from a List of Coordinates</div>
 <div class="content">
@@ -593,6 +618,9 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_polygon.png" alt="geometry create polygon">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="multipoint"><a class="anchor" href="#multipoint"></a>MultiPoint</h4>
 <div class="listingblock">
 <div class="title">Create a MultiPoint with a List of Points</div>
 <div class="content">
@@ -608,6 +636,9 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_multipoint.png" alt="geometry create multipoint">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="multilinestring"><a class="anchor" href="#multilinestring"></a>MultiLineString</h4>
 <div class="listingblock">
 <div class="title">Create a MultiLineString with a List of LineStrings</div>
 <div class="content">
@@ -632,6 +663,9 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_multilinestring.png" alt="geometry create multilinestring">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="multipolygon"><a class="anchor" href="#multipolygon"></a>MultiPolygon</h4>
 <div class="listingblock">
 <div class="title">Create a MultiPolygon with a List of Polygons</div>
 <div class="content">
@@ -669,6 +703,9 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_multipolygon.png" alt="geometry create multipolygon">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="geometrycollection"><a class="anchor" href="#geometrycollection"></a>GeometryCollection</h4>
 <div class="listingblock">
 <div class="title">Create a GeometryCollection with a List of Geometries</div>
 <div class="content">
@@ -693,6 +730,9 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_geometrycollection.png" alt="geometry create geometrycollection">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="circularstring"><a class="anchor" href="#circularstring"></a>CircularString</h4>
 <div class="listingblock">
 <div class="title">Create a CircularString with a List of Points</div>
 <div class="content">
@@ -708,6 +748,9 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_circularstring.png" alt="geometry create circularstring">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="circularring"><a class="anchor" href="#circularring"></a>CircularRing</h4>
 <div class="listingblock">
 <div class="title">Create a CircularRing with a List of Points</div>
 <div class="content">
@@ -727,6 +770,9 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_circularring.png" alt="geometry create circularring">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="compoundcurve"><a class="anchor" href="#compoundcurve"></a>CompoundCurve</h4>
 <div class="listingblock">
 <div class="title">Create a CompoundCurve with a List of CircularStrings and LineStrings</div>
 <div class="content">
@@ -754,6 +800,8 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_compoundcurve.png" alt="geometry create compoundcurve">
 </div>
 </div>
+<div class="sect4">
+<h5 id="compoundring"><a class="anchor" href="#compoundring"></a>CompoundRing</h5>
 <div class="listingblock">
 <div class="title">Create a CompoundRing with a connected List of CircularStrings and LineStrings</div>
 <div class="content">
@@ -783,6 +831,8 @@ table.CodeRay td.code>pre{padding:0}
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_create_compoundring.png" alt="geometry create compoundring">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2604,7 +2654,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 00:23:43 UTC
+Last updated 2018-04-05 23:33:51 UTC
 </div>
 </div>
 </body>

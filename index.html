@@ -528,7 +528,24 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#geometry-recipes">Geometry Recipes</a>
 <ul class="sectlevel2">
-<li><a href="#creating-geometries">Creating Geometries</a></li>
+<li><a href="#creating-geometries">Creating Geometries</a>
+<ul class="sectlevel3">
+<li><a href="#point">Point</a></li>
+<li><a href="#linestring">LineString</a></li>
+<li><a href="#polygon">Polygon</a></li>
+<li><a href="#multipoint">MultiPoint</a></li>
+<li><a href="#multilinestring">MultiLineString</a></li>
+<li><a href="#multipolygon">MultiPolygon</a></li>
+<li><a href="#geometrycollection">GeometryCollection</a></li>
+<li><a href="#circularstring">CircularString</a></li>
+<li><a href="#circularring">CircularRing</a></li>
+<li><a href="#compoundcurve">CompoundCurve</a>
+<ul class="sectlevel4">
+<li><a href="#compoundring">CompoundRing</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#procesing-geometries">Procesing Geometries</a></li>
 <li><a href="#reading-and-writing-geometries">Reading and Writing Geometries</a>
 <ul class="sectlevel3">
@@ -961,6 +978,8 @@ You are now ready to use GeoScript Groovy!</p>
 </div>
 <div class="sect2">
 <h3 id="creating-geometries"><a class="anchor" href="#creating-geometries"></a>Creating Geometries</h3>
+<div class="sect3">
+<h4 id="point"><a class="anchor" href="#point"></a>Point</h4>
 <div class="listingblock">
 <div class="title">Create a Point with an XY</div>
 <div class="content">
@@ -972,6 +991,9 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_point.png" alt="geometry create point">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="linestring"><a class="anchor" href="#linestring"></a>LineString</h4>
 <div class="listingblock">
 <div class="title">Create a LineString from Coordinates</div>
 <div class="content">
@@ -988,6 +1010,9 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_linestring_coordinates.png" alt="geometry create linestring coordinates">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="polygon"><a class="anchor" href="#polygon"></a>Polygon</h4>
 <div class="listingblock">
 <div class="title">Create a Polygon from a List of Coordinates</div>
 <div class="content">
@@ -1006,6 +1031,9 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_polygon.png" alt="geometry create polygon">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="multipoint"><a class="anchor" href="#multipoint"></a>MultiPoint</h4>
 <div class="listingblock">
 <div class="title">Create a MultiPoint with a List of Points</div>
 <div class="content">
@@ -1021,6 +1049,9 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_multipoint.png" alt="geometry create multipoint">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="multilinestring"><a class="anchor" href="#multilinestring"></a>MultiLineString</h4>
 <div class="listingblock">
 <div class="title">Create a MultiLineString with a List of LineStrings</div>
 <div class="content">
@@ -1045,6 +1076,9 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_multilinestring.png" alt="geometry create multilinestring">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="multipolygon"><a class="anchor" href="#multipolygon"></a>MultiPolygon</h4>
 <div class="listingblock">
 <div class="title">Create a MultiPolygon with a List of Polygons</div>
 <div class="content">
@@ -1082,6 +1116,9 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_multipolygon.png" alt="geometry create multipolygon">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="geometrycollection"><a class="anchor" href="#geometrycollection"></a>GeometryCollection</h4>
 <div class="listingblock">
 <div class="title">Create a GeometryCollection with a List of Geometries</div>
 <div class="content">
@@ -1106,6 +1143,9 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_geometrycollection.png" alt="geometry create geometrycollection">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="circularstring"><a class="anchor" href="#circularstring"></a>CircularString</h4>
 <div class="listingblock">
 <div class="title">Create a CircularString with a List of Points</div>
 <div class="content">
@@ -1121,6 +1161,9 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_circularstring.png" alt="geometry create circularstring">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="circularring"><a class="anchor" href="#circularring"></a>CircularRing</h4>
 <div class="listingblock">
 <div class="title">Create a CircularRing with a List of Points</div>
 <div class="content">
@@ -1140,6 +1183,9 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_circularring.png" alt="geometry create circularring">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="compoundcurve"><a class="anchor" href="#compoundcurve"></a>CompoundCurve</h4>
 <div class="listingblock">
 <div class="title">Create a CompoundCurve with a List of CircularStrings and LineStrings</div>
 <div class="content">
@@ -1167,6 +1213,8 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_compoundcurve.png" alt="geometry create compoundcurve">
 </div>
 </div>
+<div class="sect4">
+<h5 id="compoundring"><a class="anchor" href="#compoundring"></a>CompoundRing</h5>
 <div class="listingblock">
 <div class="title">Create a CompoundRing with a connected List of CircularStrings and LineStrings</div>
 <div class="content">
@@ -1196,6 +1244,8 @@ You are now ready to use GeoScript Groovy!</p>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_create_compoundring.png" alt="geometry create compoundring">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -5657,7 +5707,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-5000df6c_162933610f6_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--38cdbdb3_162982dfcc8_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -6372,7 +6422,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 05 00:30:17 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 05 23:39:33 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6391,7 +6441,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-5000df6c_162933610f6_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--38cdbdb3_162982dfcc8_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6415,7 +6465,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 05 00:30:17 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 05 23:39:33 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6435,7 +6485,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-5000df6c_162933610f6_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--38cdbdb3_162982dfcc8_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -6597,7 +6647,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-5000df6c_162933610f6_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--38cdbdb3_162982dfcc8_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6635,7 +6685,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-5000df6c_162933610f6_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--38cdbdb3_162982dfcc8_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7927,22 +7977,22 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:union
-geo:intersection
 geo:isValid
 geo:buffer
+geo:union
+geo:intersection
 geo:difference
 geo:area
 geo:numGeometries
+geo:convexHull
+geo:crosses
+geo:distance
+geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:isSimple
 geo:isWithinDistance
-geo:distance
-geo:boundary
-geo:convexHull
-geo:crosses
 geo:reproject
 geo:symDifference
 geo:isClosed
@@ -10306,19 +10356,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Shapefile
+<pre>Web Feature Server (NG)
+H2 (JNDI)
 Properties
-Web Feature Server (NG)
 Directory of spatial files (shapefiles)
-SpatiaLite (JNDI)
 MySQL
 H2
-PostGIS
-MySQL (JNDI)
-Geobuf
-H2 (JNDI)
 GeoPackage
-PostGIS (JNDI)</pre>
+PostGIS
+Geobuf
+SpatiaLite (JNDI)
+Shapefile
+PostGIS (JNDI)
+MySQL (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10428,19 +10478,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Shapefile
+<pre>Web Feature Server (NG)
+H2 (JNDI)
 Properties
-Web Feature Server (NG)
 Directory of spatial files (shapefiles)
-SpatiaLite (JNDI)
 MySQL
 H2
-PostGIS
-MySQL (JNDI)
-Geobuf
-H2 (JNDI)
 GeoPackage
-PostGIS (JNDI)</pre>
+PostGIS
+Geobuf
+SpatiaLite (JNDI)
+Shapefile
+PostGIS (JNDI)
+MySQL (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11914,7 +11964,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-5000df6c_162933610f6_-6ad7"
+            "id": "fid--38cdbdb3_162982dfcc8_-6ad7"
         },
         {
             "type": "Feature",
@@ -11929,7 +11979,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-5000df6c_162933610f6_-6ad5"
+            "id": "fid--38cdbdb3_162982dfcc8_-6ad5"
         }
     ]
 }</pre>
@@ -12020,7 +12070,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-5000df6c_162933610f6_-7489"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--38cdbdb3_162982dfcc8_-7489"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -12042,7 +12092,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-5000df6c_162933610f6_-7487"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--38cdbdb3_162982dfcc8_-7487"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -12108,7 +12158,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-5000df6c_162933610f6_-6b0c
+          fid--38cdbdb3_162982dfcc8_-6b0c
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -12135,7 +12185,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-5000df6c_162933610f6_-6b0a
+          fid--38cdbdb3_162982dfcc8_-6b0a
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -13877,7 +13927,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 00:23:43 UTC
+Last updated 2018-04-05 23:33:51 UTC
 </div>
 </div>
 </body>
