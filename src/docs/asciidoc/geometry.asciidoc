@@ -7,6 +7,8 @@ The Geometry classes are in the *http://geoscript.github.io/geoscript-groovy/api
 
 === Creating Geometries
 
+==== Point
+
 [source,groovy]
 .Create a Point with an XY
 ----
@@ -14,6 +16,8 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createPoint,
 ----
 [.thumb]
 image::geometry_create_point.png[]
+
+==== LineString
 
 [source,groovy]
 .Create a LineString from Coordinates
@@ -23,6 +27,8 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createLineSt
 [.thumb]
 image::geometry_create_linestring_coordinates.png[]
 
+==== Polygon
+
 [source,groovy]
 .Create a Polygon from a List of Coordinates
 ----
@@ -30,6 +36,8 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createPolygo
 ----
 [.thumb]
 image::geometry_create_polygon.png[]
+
+==== MultiPoint
 
 [source,groovy]
 .Create a MultiPoint with a List of Points
@@ -39,6 +47,8 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createMultiP
 [.thumb]
 image::geometry_create_multipoint.png[]
 
+==== MultiLineString
+
 [source,groovy]
 .Create a MultiLineString with a List of LineStrings
 ----
@@ -46,6 +56,8 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createMultiL
 ----
 [.thumb]
 image::geometry_create_multilinestring.png[]
+
+==== MultiPolygon
 
 [source,groovy]
 .Create a MultiPolygon with a List of Polygons
@@ -55,6 +67,8 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createMultiP
 [.thumb]
 image::geometry_create_multipolygon.png[]
 
+==== GeometryCollection
+
 [source,groovy]
 .Create a GeometryCollection with a List of Geometries
 ----
@@ -62,6 +76,8 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createGeomet
 ----
 [.thumb]
 image::geometry_create_geometrycollection.png[]
+
+==== CircularString
 
 [source,groovy]
 .Create a CircularString with a List of Points
@@ -71,6 +87,8 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCircul
 [.thumb]
 image::geometry_create_circularstring.png[]
 
+==== CircularRing
+
 [source,groovy]
 .Create a CircularRing with a List of Points
 ----
@@ -79,6 +97,8 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCircul
 [.thumb]
 image::geometry_create_circularring.png[]
 
+==== CompoundCurve
+
 [source,groovy]
 .Create a CompoundCurve with a List of CircularStrings and LineStrings
 ----
@@ -86,6 +106,8 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCompou
 ----
 [.thumb]
 image::geometry_create_compoundcurve.png[]
+
+===== CompoundRing
 
 [source,groovy]
 .Create a CompoundRing with a connected List of CircularStrings and LineStrings
