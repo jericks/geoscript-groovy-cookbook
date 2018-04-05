@@ -283,6 +283,14 @@ class GeometryRecipesTest {
         assertFalse(results["23"])
     }
 
+    @Test void overlaps() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String, Boolean> results = recipes.overlaps()
+        assertTrue(results["12"])
+        assertFalse(results["13"])
+        assertFalse(results["23"])
+    }
+
     @Test void getOctagonalEnvelope() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.getOctagonalEnvelope()

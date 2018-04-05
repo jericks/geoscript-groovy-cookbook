@@ -905,6 +905,57 @@ class GeometryRecipes extends Recipes {
         values
     }
 
+    Map<String, Boolean> overlaps() {
+
+        Map<String, Boolean> values = [:]
+
+        // tag::overlaps[]
+        Polygon polygon1 = new Polygon([[
+                [-121.915, 47.390],
+                [-122.640, 46.995],
+                [-121.739, 46.308],
+                [-121.168, 46.777],
+                [-120.981, 47.316],
+                [-121.409, 47.413],
+                [-121.915, 47.390]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.794, 46.664],
+                [-121.541, 46.995],
+                [-122.200, 46.536],
+                [-121.937, 45.890],
+                [-120.959, 46.096],
+                [-120.794, 46.664]
+        ]])
+
+        Polygon polygon3 = new Polygon([[
+                [-120.541, 47.376],
+                [-120.695, 47.047],
+                [-119.794, 46.830],
+                [-119.586, 47.331],
+                [-120.102, 47.509],
+                [-120.541, 47.376]
+        ]])
+
+        boolean does1overlap2 = polygon1.overlaps(polygon2)
+        println does1overlap2
+
+        boolean does1overlap3 = polygon1.overlaps(polygon3)
+        println does1overlap3
+
+        boolean does2overlap3 = polygon2.overlaps(polygon3)
+        println does2overlap3
+        // end::overlaps[]
+        drawGeometries("geometry_overlaps", [polygon1, polygon2, polygon3])
+        writeFile("geometry_overlaps", "${does1overlap2}${NEW_LINE}${does1overlap3}${NEW_LINE}${does2overlap3}")
+        values["12"] = does1overlap2
+        values["13"] = does1overlap3
+        values["23"] = does2overlap3
+
+        values
+    }
+
     Geometry getOctagonalEnvelope() {
         // tag::getOctagonalEnvelope[]
         Geometry geometry = new Polygon ([[

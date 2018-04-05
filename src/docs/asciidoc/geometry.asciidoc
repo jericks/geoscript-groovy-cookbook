@@ -455,6 +455,18 @@ include::output/geometry_intersects.txt[]
 ....
 
 [source,groovy]
+.Check whether one Geometry overlaps from another Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=overlaps,indent=0]
+----
+[.thumb]
+image::geometry_overlaps.png[]
+....
+include::output/geometry_overlaps.txt[]
+....
+
+
+[source,groovy]
 .Calculate the octagonal envelope of a Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getOctagonalEnvelope,indent=0]
