@@ -247,6 +247,16 @@ class GeometryRecipes extends Recipes {
 
     // Processing Geometries
 
+    String getGeometryType() {
+        // tag::getGeometryType[]
+        Geometry geom = Geometry.fromString("POINT (-124.80 48.92)")
+        String type = geom.geometryType
+        println type
+        // end::getGeometryType[]
+        writeFile("geometry_geometrytype","${type}")
+        type
+    }
+
     double getArea() {
         // tag::getArea[]
         Polygon polygon = new Polygon([[

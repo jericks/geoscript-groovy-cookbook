@@ -145,6 +145,12 @@ class GeometryRecipesTest {
         assertNotNull(bounds)
     }
 
+    @Test void getGeometryType() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String type = recipes.getGeometryType()
+        assertEquals("Point", type)
+    }
+
     @Test void getArea() {
         GeometryRecipes recipes = new GeometryRecipes()
         double area = recipes.getArea()
