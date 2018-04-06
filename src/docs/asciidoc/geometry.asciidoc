@@ -107,7 +107,7 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCompou
 [.thumb]
 image::geometry_create_compoundcurve.png[]
 
-===== CompoundRing
+==== CompoundRing
 
 [source,groovy]
 .Create a CompoundRing with a connected List of CircularStrings and LineStrings
