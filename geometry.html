@@ -528,11 +528,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geometrycollection">GeometryCollection</a></li>
 <li><a href="#circularstring">CircularString</a></li>
 <li><a href="#circularring">CircularRing</a></li>
-<li><a href="#compoundcurve">CompoundCurve</a>
-<ul class="sectlevel4">
+<li><a href="#compoundcurve">CompoundCurve</a></li>
 <li><a href="#compoundring">CompoundRing</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a href="#procesing-geometries">Procesing Geometries</a></li>
@@ -800,8 +797,9 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_create_compoundcurve.png" alt="geometry create compoundcurve">
 </div>
 </div>
-<div class="sect4">
-<h5 id="compoundring"><a class="anchor" href="#compoundring"></a>CompoundRing</h5>
+</div>
+<div class="sect3">
+<h4 id="compoundring"><a class="anchor" href="#compoundring"></a>CompoundRing</h4>
 <div class="listingblock">
 <div class="title">Create a CompoundRing with a connected List of CircularStrings and LineStrings</div>
 <div class="content">
@@ -831,7 +829,6 @@ table.CodeRay td.code>pre{padding:0}
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_create_compoundring.png" alt="geometry create compoundring">
-</div>
 </div>
 </div>
 </div>
@@ -1640,6 +1637,59 @@ println does2intersect3</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_intersects.png" alt="geometry intersects">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true
+false
+false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether one Geometry overlaps from another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon3 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.541</span>, <span class="float">47.376</span>],
+        [-<span class="float">120.695</span>, <span class="float">47.047</span>],
+        [-<span class="float">119.794</span>, <span class="float">46.830</span>],
+        [-<span class="float">119.586</span>, <span class="float">47.331</span>],
+        [-<span class="float">120.102</span>, <span class="float">47.509</span>],
+        [-<span class="float">120.541</span>, <span class="float">47.376</span>]
+]])
+
+<span class="type">boolean</span> does1overlap2 = polygon1.overlaps(polygon2)
+println does1overlap2
+
+<span class="type">boolean</span> does1overlap3 = polygon1.overlaps(polygon3)
+println does1overlap3
+
+<span class="type">boolean</span> does2overlap3 = polygon2.overlaps(polygon3)
+println does2overlap3</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_overlaps.png" alt="geometry overlaps">
 </div>
 </div>
 <div class="literalblock">
@@ -2654,7 +2704,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 23:33:51 UTC
+Last updated 2018-04-06 01:24:06 UTC
 </div>
 </div>
 </body>

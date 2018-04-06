@@ -539,11 +539,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geometrycollection">GeometryCollection</a></li>
 <li><a href="#circularstring">CircularString</a></li>
 <li><a href="#circularring">CircularRing</a></li>
-<li><a href="#compoundcurve">CompoundCurve</a>
-<ul class="sectlevel4">
+<li><a href="#compoundcurve">CompoundCurve</a></li>
 <li><a href="#compoundring">CompoundRing</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a href="#procesing-geometries">Procesing Geometries</a></li>
@@ -1213,8 +1210,9 @@ You are now ready to use GeoScript Groovy!</p>
 <img src="./images/geometry_create_compoundcurve.png" alt="geometry create compoundcurve">
 </div>
 </div>
-<div class="sect4">
-<h5 id="compoundring"><a class="anchor" href="#compoundring"></a>CompoundRing</h5>
+</div>
+<div class="sect3">
+<h4 id="compoundring"><a class="anchor" href="#compoundring"></a>CompoundRing</h4>
 <div class="listingblock">
 <div class="title">Create a CompoundRing with a connected List of CircularStrings and LineStrings</div>
 <div class="content">
@@ -1244,7 +1242,6 @@ You are now ready to use GeoScript Groovy!</p>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_create_compoundring.png" alt="geometry create compoundring">
-</div>
 </div>
 </div>
 </div>
@@ -2053,6 +2050,59 @@ println does2intersect3</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_intersects.png" alt="geometry intersects">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true
+false
+false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether one Geometry overlaps from another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon3 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.541</span>, <span class="float">47.376</span>],
+        [-<span class="float">120.695</span>, <span class="float">47.047</span>],
+        [-<span class="float">119.794</span>, <span class="float">46.830</span>],
+        [-<span class="float">119.586</span>, <span class="float">47.331</span>],
+        [-<span class="float">120.102</span>, <span class="float">47.509</span>],
+        [-<span class="float">120.541</span>, <span class="float">47.376</span>]
+]])
+
+<span class="type">boolean</span> does1overlap2 = polygon1.overlaps(polygon2)
+println does1overlap2
+
+<span class="type">boolean</span> does1overlap3 = polygon1.overlaps(polygon3)
+println does1overlap3
+
+<span class="type">boolean</span> does2overlap3 = polygon2.overlaps(polygon3)
+println does2overlap3</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_overlaps.png" alt="geometry overlaps">
 </div>
 </div>
 <div class="literalblock">
@@ -5707,7 +5757,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--38cdbdb3_162982dfcc8_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-27736fc9_1629893af4b_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -6422,7 +6472,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 05 23:39:33 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Apr 06 01:30:38 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6441,7 +6491,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--38cdbdb3_162982dfcc8_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-27736fc9_1629893af4b_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6465,7 +6515,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Apr 05 23:39:33 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Apr 06 01:30:38 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6485,7 +6535,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--38cdbdb3_162982dfcc8_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-27736fc9_1629893af4b_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -6647,7 +6697,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--38cdbdb3_162982dfcc8_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-27736fc9_1629893af4b_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6685,7 +6735,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--38cdbdb3_162982dfcc8_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-27736fc9_1629893af4b_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7985,21 +8035,21 @@ geo:difference
 geo:area
 geo:numGeometries
 geo:convexHull
+geo:interiorPoint
+geo:getGeometryN
+geo:overlaps
 geo:crosses
 geo:distance
 geo:boundary
 geo:centroid
-geo:interiorPoint
-geo:getGeometryN
+geo:reproject
 geo:isSimple
 geo:isWithinDistance
-geo:reproject
 geo:symDifference
 geo:isClosed
 geo:simplify
 geo:densify
 geo:numPoints
-geo:overlaps
 geo:relate
 geo:touches
 geo:within
@@ -8016,8 +8066,8 @@ geo:startPoint
 geo:endPoint
 geo:equalsExact
 geo:relatePattern
-geo:interiorRingN
 geo:pointN
+geo:interiorRingN
 geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
@@ -10356,19 +10406,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Web Feature Server (NG)
-H2 (JNDI)
-Properties
-Directory of spatial files (shapefiles)
-MySQL
-H2
-GeoPackage
-PostGIS
-Geobuf
-SpatiaLite (JNDI)
+<pre>H2 (JNDI)
+Web Feature Server (NG)
 Shapefile
+GeoPackage
+H2
 PostGIS (JNDI)
-MySQL (JNDI)</pre>
+MySQL (JNDI)
+MySQL
+Properties
+SpatiaLite (JNDI)
+Geobuf
+PostGIS
+Directory of spatial files (shapefiles)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10478,19 +10528,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Web Feature Server (NG)
-H2 (JNDI)
-Properties
-Directory of spatial files (shapefiles)
-MySQL
-H2
-GeoPackage
-PostGIS
-Geobuf
-SpatiaLite (JNDI)
+<pre>H2 (JNDI)
+Web Feature Server (NG)
 Shapefile
+GeoPackage
+H2
 PostGIS (JNDI)
-MySQL (JNDI)</pre>
+MySQL (JNDI)
+MySQL
+Properties
+SpatiaLite (JNDI)
+Geobuf
+PostGIS
+Directory of spatial files (shapefiles)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11964,7 +12014,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--38cdbdb3_162982dfcc8_-6ad7"
+            "id": "fid-27736fc9_1629893af4b_-6ad7"
         },
         {
             "type": "Feature",
@@ -11979,7 +12029,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--38cdbdb3_162982dfcc8_-6ad5"
+            "id": "fid-27736fc9_1629893af4b_-6ad5"
         }
     ]
 }</pre>
@@ -12070,7 +12120,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--38cdbdb3_162982dfcc8_-7489"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-27736fc9_1629893af4b_-7489"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -12092,7 +12142,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--38cdbdb3_162982dfcc8_-7487"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-27736fc9_1629893af4b_-7487"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -12158,7 +12208,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--38cdbdb3_162982dfcc8_-6b0c
+          fid-27736fc9_1629893af4b_-6b0c
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -12185,7 +12235,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--38cdbdb3_162982dfcc8_-6b0a
+          fid-27736fc9_1629893af4b_-6b0a
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -13927,7 +13977,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 23:33:51 UTC
+Last updated 2018-04-06 01:24:06 UTC
 </div>
 </div>
 </body>
