@@ -1564,6 +1564,36 @@ Geometry voronoiDiagram = points.voronoiDiagram</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Calculate the union of two Geometries</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+Geometry union = polygon1.union(polygon2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_union.png" alt="geometry union">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Calculate the intersection between two Geometries</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
@@ -2704,7 +2734,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 01:24:06 UTC
+Last updated 2018-04-07 18:30:09 UTC
 </div>
 </div>
 </body>
