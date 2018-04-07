@@ -269,6 +269,12 @@ class GeometryRecipesTest {
         assertEquals(5, number)
     }
 
+    @Test void union() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.union()
+        assertEquals("POLYGON ((-122.11534856491807 46.59496055948802, -122.64 46.995, -121.915 47.39, -121.409 47.413, -120.981 47.316, -121.15214608098509 46.82269659010183, -120.794 46.664, -120.959 46.096, -121.937 45.89, -122.2 46.536, -122.11534856491807 46.59496055948802))", geom.wkt)
+    }
+
     @Test void intersection() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.intersection()

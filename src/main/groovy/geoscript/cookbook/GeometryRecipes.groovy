@@ -956,6 +956,35 @@ class GeometryRecipes extends Recipes {
         values
     }
 
+    Geometry union() {
+
+        // tag::union[]
+        Polygon polygon1 = new Polygon([[
+                [-121.915, 47.390],
+                [-122.640, 46.995],
+                [-121.739, 46.308],
+                [-121.168, 46.777],
+                [-120.981, 47.316],
+                [-121.409, 47.413],
+                [-121.915, 47.390]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.794, 46.664],
+                [-121.541, 46.995],
+                [-122.200, 46.536],
+                [-121.937, 45.890],
+                [-120.959, 46.096],
+                [-120.794, 46.664]
+        ]])
+
+        Geometry union = polygon1.union(polygon2)
+        // end::union[]
+        drawGeometries("geometry_union", [union])
+
+        union
+    }
+
     Geometry getOctagonalEnvelope() {
         // tag::getOctagonalEnvelope[]
         Geometry geometry = new Polygon ([[

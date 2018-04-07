@@ -436,6 +436,15 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getVoronoiDi
 image::geometry_voronoidiagram.png[]
 
 [source,groovy]
+.Calculate the union of two Geometries
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=union,indent=0]
+----
+[.thumb]
+image::geometry_union.png[]
+
+
+[source,groovy]
 .Calculate the intersection between two Geometries
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=intersection,indent=0]
