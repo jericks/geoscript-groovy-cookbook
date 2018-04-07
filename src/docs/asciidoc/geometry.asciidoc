@@ -282,6 +282,15 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=difference,i
 image::geometry_difference.png[]
 
 [source,groovy]
+.Calculate the symmetric difference between two Geometries
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=symDifference,indent=0]
+----
+[.thumb]
+image::geometry_symdifference.png[]
+
+
+[source,groovy]
 .Check whether one Geometry is disjoint from another Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=disjoint,indent=0]
