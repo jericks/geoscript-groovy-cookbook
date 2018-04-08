@@ -447,6 +447,42 @@ class GeometryRecipes extends Recipes {
         results
     }
 
+    Map<String, Boolean> touches() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::touches1[]
+        LineString line1 = new LineString([
+            [-122.38651514053345, 47.58219978280006],
+            [-122.38651514053345, 47.58020234903306]
+        ])
+
+        LineString line2 = new LineString([
+            [-122.38651514053345, 47.58124449789785],
+            [-122.38333940505981, 47.58124449789785]
+        ])
+
+        boolean touches = line1.touches(line2)
+        // end::touches1[]
+        drawGeometries("geometry_touches_12", [line1, line2])
+        writeFile("geometry_touches_12", "${touches}")
+        results["touches_12"] = touches
+
+        // tag::touches2[]
+        LineString line3 = new LineString([
+            [-122.386257648468, 47.58183793450921],
+            [-122.38348960876465, 47.5818668824645]
+        ])
+
+        touches = line1.touches(line3)
+        // end::touches2[]
+        drawGeometries("geometry_touches_13", [line1, line3])
+        writeFile("geometry_touches_13", "${touches}")
+        results["touches_13"] = touches
+
+        results
+    }
+
     Geometry convexHull() {
         // tag::convexHull[]
         Geometry geometry = new MultiPoint(

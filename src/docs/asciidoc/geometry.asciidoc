@@ -226,6 +226,27 @@ include::output/geometry_within_2.txt[]
 ....
 
 [source,groovy]
+.Check whether a Geometry touches another Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=touches1,indent=0]
+----
+[.thumb]
+image::geometry_touches_12.png[]
+....
+include::output/geometry_touches_12.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=touches2,indent=0]
+----
+[.thumb]
+image::geometry_touches_13.png[]
+....
+include::output/geometry_touches_13.txt[]
+....
+
+
+[source,groovy]
 .Create a convexhull Geometry around a Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=convexHull,indent=0]

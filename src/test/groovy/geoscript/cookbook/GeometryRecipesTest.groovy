@@ -125,6 +125,13 @@ class GeometryRecipesTest {
         assertFalse(results["1within3"])
     }
 
+    @Test void touches() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.touches()
+        assertTrue(results["touches_12"])
+        assertFalse(results["touches_13"])
+    }
+
     @Test void convexHull() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.convexHull()
