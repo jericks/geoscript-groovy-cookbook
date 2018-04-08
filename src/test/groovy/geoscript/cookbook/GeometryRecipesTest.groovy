@@ -118,6 +118,13 @@ class GeometryRecipesTest {
         assertFalse(results["1contains3"])
     }
 
+    @Test void within() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.within()
+        assertTrue(results["1within2"])
+        assertFalse(results["1within3"])
+    }
+
     @Test void convexHull() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.convexHull()

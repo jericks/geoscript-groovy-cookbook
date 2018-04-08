@@ -205,13 +205,24 @@ image::geometry_contains_1.png[]
 include::output/geometry_contains_1.txt[]
 ....
 
+[source,groovy]
+.Check whether a Geometry is within another Geometry
 ----
-include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=contains2,indent=0]
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=within1,indent=0]
 ----
 [.thumb]
-image::geometry_contains_2.png[]
+image::geometry_within_1.png[]
 ....
-include::output/geometry_contains_2.txt[]
+include::output/geometry_within_1.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=within2,indent=0]
+----
+[.thumb]
+image::geometry_within_2.png[]
+....
+include::output/geometry_within_2.txt[]
 ....
 
 [source,groovy]

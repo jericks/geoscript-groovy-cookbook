@@ -395,6 +395,58 @@ class GeometryRecipes extends Recipes {
         results
     }
 
+    Map<String, Boolean> within() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::within1[]
+
+        Polygon polygon1 = new Polygon([[
+                [-120.212, 47.591],
+                [-119.663, 47.591],
+                [-119.663, 47.872],
+                [-120.212, 47.872],
+                [-120.212, 47.591]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.739, 48.151],
+                [-121.003, 47.070],
+                [-119.465, 47.137],
+                [-119.553, 46.581],
+                [-121.267, 46.513],
+                [-121.168, 45.706],
+                [-118.476, 45.951],
+                [-118.762, 48.195],
+                [-120.739, 48.151]
+        ]])
+
+        boolean within = polygon1.within(polygon2)
+        println within
+        // end::within1[]
+        drawGeometries("geometry_within_1", [polygon1, polygon2])
+        writeFile("geometry_within_1", "${within}")
+        results["1within2"] = within
+
+        // tag::within2[]
+        Polygon polygon3 = new Polygon([[
+                [-120.563, 46.739],
+                [-119.948, 46.739],
+                [-119.948, 46.965],
+                [-120.563, 46.965],
+                [-120.563, 46.739]
+        ]])
+
+        within = polygon1.within(polygon3)
+        println within
+        // end::within2[]
+        drawGeometries("geometry_within_2", [polygon1, polygon3])
+        writeFile("geometry_within_2", "${within}")
+        results["1within3"] = within
+
+        results
+    }
+
     Geometry convexHull() {
         // tag::convexHull[]
         Geometry geometry = new MultiPoint(
