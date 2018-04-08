@@ -996,22 +996,105 @@ println contains</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Check whether a Geometry is within another Geometry</div>
 <div class="content">
-<pre>Polygon polygon3 = new Polygon([[
-    [-120.563, 46.739],
-    [-119.948, 46.739],
-    [-119.948, 46.965],
-    [-120.563, 46.965],
-    [-120.563, 46.739]
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>]
 ]])
 
-contains = polygon1.contains(polygon3)
-println contains</pre>
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>],
+        [-<span class="float">121.003</span>, <span class="float">47.070</span>],
+        [-<span class="float">119.465</span>, <span class="float">47.137</span>],
+        [-<span class="float">119.553</span>, <span class="float">46.581</span>],
+        [-<span class="float">121.267</span>, <span class="float">46.513</span>],
+        [-<span class="float">121.168</span>, <span class="float">45.706</span>],
+        [-<span class="float">118.476</span>, <span class="float">45.951</span>],
+        [-<span class="float">118.762</span>, <span class="float">48.195</span>],
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>]
+]])
+
+<span class="type">boolean</span> within = polygon1.within(polygon2)
+println within</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
 <div class="content">
-<img src="./images/geometry_contains_2.png" alt="geometry contains 2">
+<img src="./images/geometry_within_1.png" alt="geometry within 1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Polygon polygon3 = new Polygon([[
+        [-120.563, 46.739],
+        [-119.948, 46.739],
+        [-119.948, 46.965],
+        [-120.563, 46.965],
+        [-120.563, 46.739]
+]])
+
+within = polygon1.within(polygon3)
+println within</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_within_2.png" alt="geometry within 2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a Geometry touches another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString line1 = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.38651514053345</span>, <span class="float">47.58219978280006</span>],
+    [-<span class="float">122.38651514053345</span>, <span class="float">47.58020234903306</span>]
+])
+
+LineString line2 = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.38651514053345</span>, <span class="float">47.58124449789785</span>],
+    [-<span class="float">122.38333940505981</span>, <span class="float">47.58124449789785</span>]
+])
+
+<span class="type">boolean</span> touches = line1.touches(line2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_touches_12.png" alt="geometry touches 12">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>LineString line3 = new LineString([
+    [-122.386257648468, 47.58183793450921],
+    [-122.38348960876465, 47.5818668824645]
+])
+
+touches = line1.touches(line3)</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_touches_13.png" alt="geometry touches 13">
 </div>
 </div>
 <div class="literalblock">
@@ -2764,7 +2847,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-07 18:51:39 UTC
+Last updated 2018-04-08 22:16:32 UTC
 </div>
 </div>
 </body>
