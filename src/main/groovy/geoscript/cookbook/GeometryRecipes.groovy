@@ -1424,6 +1424,15 @@ Polygon Dimension = ${polygon.dimension}
         [geometry: geometry, normalizedGeometry: normalizedGeometry]
     }
 
+    Geometry smooth() {
+        // tag::smooth[]
+        Geometry geometry = Geometry.fromWKT("POLYGON((10 0, 10 20, 0 20, 0 30, 30 30, 30 20, 20 20, 20 0, 10 0))")
+        Geometry smoothed = geometry.smooth(0.75)
+        // end::smooth[]
+        drawGeometries("geometry_smooth", [geometry, smoothed])
+        smoothed
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

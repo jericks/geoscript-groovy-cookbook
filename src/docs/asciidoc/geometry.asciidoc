@@ -700,6 +700,13 @@ image::geometry_norm.png[]
 include::output/geometry_norm.txt[]
 ....
 
+[source,groovy]
+.Smooth a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=smooth,indent=0]
+----
+[.thumb]
+image::geometry_smooth.png[]
 
 === Reading and Writing Geometries
 

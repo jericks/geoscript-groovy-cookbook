@@ -433,6 +433,12 @@ class GeometryRecipesTest {
         assertEquals("POLYGON ((1 3, 2 4, 4 4, 6 3, 6 1, 2 1, 1 3))", geoms.normalizedGeometry.wkt)
     }
 
+    @Test void smooth() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.smooth()
+        assertNotNull(geom)
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {
