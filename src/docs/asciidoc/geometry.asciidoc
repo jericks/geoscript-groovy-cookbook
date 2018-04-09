@@ -678,6 +678,29 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isWithinDist
 include::output/geometry_iswithindistance2.txt[]
 ....
 
+[source,groovy]
+.Normalizing a Geometry changes the Geometry in place.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=normalize,indent=0]
+----
+[.thumb]
+image::geometry_normalize.png[]
+....
+include::output/geometry_normalize.txt[]
+....
+
+[source,groovy]
+.Calculating a normalized Geometry from a Geometry does not change the original Geometry.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=norm,indent=0]
+----
+[.thumb]
+image::geometry_norm.png[]
+....
+include::output/geometry_norm.txt[]
+....
+
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package

@@ -420,6 +420,19 @@ class GeometryRecipesTest {
         assertNotNull(geom)
     }
 
+    @Test void normalize() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.normalize()
+        assertEquals("POLYGON ((1 3, 2 4, 4 4, 6 3, 6 1, 2 1, 1 3))", geom.wkt)
+    }
+
+    @Test void norm() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Geometry> geoms = recipes.norm()
+        assertEquals("POLYGON ((2 4, 1 3, 2 1, 6 1, 6 3, 4 4, 2 4))", geoms.geometry.wkt)
+        assertEquals("POLYGON ((1 3, 2 4, 4 4, 6 3, 6 1, 2 1, 1 3))", geoms.normalizedGeometry.wkt)
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

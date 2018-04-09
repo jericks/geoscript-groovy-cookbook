@@ -1401,6 +1401,29 @@ Polygon Dimension = ${polygon.dimension}
         voronoiDiagram
     }
 
+    Geometry normalize() {
+        // tag::normalize[]
+        Geometry geometry = Geometry.fromWKT("POLYGON((2 4, 1 3, 2 1, 6 1, 6 3, 4 4, 2 4))")
+        geometry.normalize()
+        println "Normalized Geometry = ${geometry}"
+        // end::normalize[]
+        writeFile("geometry_normalize", "Normalized Geometry = ${geometry}")
+        drawGeometry("geometry_normalize", geometry)
+        geometry
+    }
+
+    Map<String,Geometry> norm() {
+        // tag::norm[]
+        Geometry geometry = Geometry.fromWKT("POLYGON((2 4, 1 3, 2 1, 6 1, 6 3, 4 4, 2 4))")
+        Geometry normalizedGeometry = geometry.norm
+        println "Un-normalized Geometry = ${geometry}"
+        println "Normalized Geometry    = ${normalizedGeometry}"
+        // end::norm[]
+        writeFile("geometry_norm", "Un-normalized Geometry = ${geometry}${NEW_LINE}Normalized Geometry = ${normalizedGeometry}")
+        drawGeometry("geometry_norm", normalizedGeometry)
+        [geometry: geometry, normalizedGeometry: normalizedGeometry]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {
