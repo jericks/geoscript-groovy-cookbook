@@ -2671,6 +2671,93 @@ Geometry smoothed = geometry.smooth(<span class="float">0.75</span>)</code></pre
 <img src="./images/geometry_smooth.png" alt="geometry smooth">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Calculate the DE-9IM Intersection Matrix between two geometries.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+IntersectionMatrix matrix = polygon1.relate(polygon2)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Intersection Matrix = </span><span class="inline"><span class="inline-delimiter">${</span>matrix<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Contains = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.contains<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Covered By = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.coveredBy<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Covers = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.covers<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Disjoint = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.disjoint<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Intersects = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.intersects<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Within = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.within<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_relateIntersectionMatrix.png" alt="geometry relateIntersectionMatrix">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Intersection Matrix = 212101212
+Contains = false
+Covered By = false
+Covers = false
+Disjoint = false
+Intersects = true
+Within = false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Determine if a Geometry relates to another Geometry according to the given DE-9IM Intersection Matrix string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+println polygon1.relate(polygon2, <span class="string"><span class="delimiter">&quot;</span><span class="content">212101212</span><span class="delimiter">&quot;</span></span>)
+println polygon1.relate(polygon2, <span class="string"><span class="delimiter">&quot;</span><span class="content">111111111</span><span class="delimiter">&quot;</span></span>)
+println polygon1.relate(polygon2, <span class="string"><span class="delimiter">&quot;</span><span class="content">222222222</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_relate.png" alt="geometry relate">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true
+false
+false</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -5950,7 +6037,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--5898976d_162abb9a16e_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--8cd098d_162ad009737_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -6665,7 +6752,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Apr 09 18:44:52 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Apr 10 00:42:00 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6684,7 +6771,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--5898976d_162abb9a16e_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--8cd098d_162ad009737_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6708,7 +6795,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Apr 09 18:44:52 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Apr 10 00:42:00 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6728,7 +6815,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--5898976d_162abb9a16e_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--8cd098d_162ad009737_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -6890,7 +6977,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--5898976d_162abb9a16e_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--8cd098d_162ad009737_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6928,7 +7015,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--5898976d_162abb9a16e_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--8cd098d_162ad009737_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -8190,73 +8277,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:isValid
-geo:buffer
-geo:union
-geo:intersection
-geo:difference
-geo:area
-geo:numGeometries
-geo:distance
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:overlaps
-geo:isSimple
-geo:isWithinDistance
-geo:reproject
-geo:within
-geo:touches
-geo:convexHull
-geo:crosses
-geo:symDifference
-geo:isClosed
-geo:relate
-geo:simplify
-geo:densify
-geo:envelope
-geo:getX
-geo:getY
-geo:numPoints
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:endPoint
-geo:polygonize
-geo:isRing
-geo:startPoint
-geo:equalsExact
-geo:relatePattern
-geo:pointN
-geo:equalsExactTolerance
-geo:interiorRingN
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -8285,7 +8306,73 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics</pre>
+vec:VectorZonalStatistics
+geo:isValid
+geo:buffer
+geo:union
+geo:intersection
+geo:difference
+geo:area
+geo:numGeometries
+geo:isSimple
+geo:isWithinDistance
+geo:relate
+geo:reproject
+geo:crosses
+geo:symDifference
+geo:within
+geo:touches
+geo:convexHull
+geo:distance
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:overlaps
+geo:isClosed
+geo:simplify
+geo:densify
+geo:envelope
+geo:numPoints
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:getX
+geo:getY
+geo:polygonize
+geo:isRing
+geo:startPoint
+geo:endPoint
+geo:equalsExact
+geo:relatePattern
+geo:pointN
+geo:equalsExactTolerance
+geo:interiorRingN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage</pre>
 </div>
 </div>
 </div>
@@ -10599,19 +10686,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL (JNDI)
+<pre>PostGIS
+GeoPackage
+MySQL
+SpatiaLite (JNDI)
+Shapefile
+H2
 Web Feature Server (NG)
 Geobuf
-Shapefile
-Directory of spatial files (shapefiles)
-SpatiaLite (JNDI)
-MySQL
-GeoPackage
-H2
-PostGIS (JNDI)
-PostGIS
+MySQL (JNDI)
+Properties
 H2 (JNDI)
-Properties</pre>
+Directory of spatial files (shapefiles)
+PostGIS (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10721,19 +10808,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL (JNDI)
+<pre>PostGIS
+GeoPackage
+MySQL
+SpatiaLite (JNDI)
+Shapefile
+H2
 Web Feature Server (NG)
 Geobuf
-Shapefile
-Directory of spatial files (shapefiles)
-SpatiaLite (JNDI)
-MySQL
-GeoPackage
-H2
-PostGIS (JNDI)
-PostGIS
+MySQL (JNDI)
+Properties
 H2 (JNDI)
-Properties</pre>
+Directory of spatial files (shapefiles)
+PostGIS (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -12207,7 +12294,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--5898976d_162abb9a16e_-6ad7"
+            "id": "fid--8cd098d_162ad009737_-6ad7"
         },
         {
             "type": "Feature",
@@ -12222,7 +12309,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--5898976d_162abb9a16e_-6ad5"
+            "id": "fid--8cd098d_162ad009737_-6ad5"
         }
     ]
 }</pre>
@@ -12313,7 +12400,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--5898976d_162abb9a16e_-7489"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--8cd098d_162ad009737_-7489"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -12335,7 +12422,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--5898976d_162abb9a16e_-7487"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--8cd098d_162ad009737_-7487"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -12401,7 +12488,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--5898976d_162abb9a16e_-6b0c
+          fid--8cd098d_162ad009737_-6b0c
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -12428,7 +12515,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--5898976d_162abb9a16e_-6b0a
+          fid--8cd098d_162ad009737_-6b0a
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -14170,7 +14257,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-09 18:36:43 UTC
+Last updated 2018-04-10 00:32:34 UTC
 </div>
 </div>
 </body>

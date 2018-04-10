@@ -2258,6 +2258,93 @@ Geometry smoothed = geometry.smooth(<span class="float">0.75</span>)</code></pre
 <img src="./images/geometry_smooth.png" alt="geometry smooth">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Calculate the DE-9IM Intersection Matrix between two geometries.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+IntersectionMatrix matrix = polygon1.relate(polygon2)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Intersection Matrix = </span><span class="inline"><span class="inline-delimiter">${</span>matrix<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Contains = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.contains<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Covered By = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.coveredBy<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Covers = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.covers<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Disjoint = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.disjoint<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Intersects = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.intersects<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Within = </span><span class="inline"><span class="inline-delimiter">${</span>matrix.within<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_relateIntersectionMatrix.png" alt="geometry relateIntersectionMatrix">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Intersection Matrix = 212101212
+Contains = false
+Covered By = false
+Covers = false
+Disjoint = false
+Intersects = true
+Within = false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Determine if a Geometry relates to another Geometry according to the given DE-9IM Intersection Matrix string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+        [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+        [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+        [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+        [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+        [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+        [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+        [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+        [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+        [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+        [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+        [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+println polygon1.relate(polygon2, <span class="string"><span class="delimiter">&quot;</span><span class="content">212101212</span><span class="delimiter">&quot;</span></span>)
+println polygon1.relate(polygon2, <span class="string"><span class="delimiter">&quot;</span><span class="content">111111111</span><span class="delimiter">&quot;</span></span>)
+println polygon1.relate(polygon2, <span class="string"><span class="delimiter">&quot;</span><span class="content">222222222</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_relate.png" alt="geometry relate">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true
+false
+false</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -2897,7 +2984,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-09 18:36:43 UTC
+Last updated 2018-04-10 00:32:34 UTC
 </div>
 </div>
 </body>
