@@ -2345,6 +2345,40 @@ false
 false</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Densify a Geometry by adding points at a given interval.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.28062152862547</span>, <span class="float">47.12986316579223</span>],
+    [-<span class="float">122.2809863090515</span>, <span class="float">47.12935221617075</span>],
+    [-<span class="float">122.2809863090515</span>, <span class="float">47.12786313499169</span>],
+    [-<span class="float">122.28111505508421</span>, <span class="float">47.127731743474406</span>],
+    [-<span class="float">122.28137254714966</span>, <span class="float">47.127673347140345</span>],
+    [-<span class="float">122.28178024291992</span>, <span class="float">47.12768794622986</span>],
+    [-<span class="float">122.28227376937865</span>, <span class="float">47.128067521151195</span>],
+    [-<span class="float">122.28227376937865</span>, <span class="float">47.12906024275466</span>]
+])
+Geometry densified = geometry.densify(<span class="float">0.0001</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of points in original geometry = </span><span class="inline"><span class="inline-delimiter">${</span>geometry.numPoints<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of points in densified geometry = </span><span class="inline"><span class="inline-delimiter">${</span>densified.numPoints<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_densify_orig.png" alt="geometry densify orig">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_densify.png" alt="geometry densify">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># of points in original geometry = 8
+# of points in densified geometry = 50</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -2984,7 +3018,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 00:32:34 UTC
+Last updated 2018-04-10 22:20:43 UTC
 </div>
 </div>
 </body>
