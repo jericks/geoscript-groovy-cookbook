@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import com.vividsolutions.jts.geom.IntersectionMatrix
 import geoscript.geom.*
 import geoscript.geom.io.Reader
 import org.junit.Test
@@ -437,6 +438,20 @@ class GeometryRecipesTest {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.smooth()
         assertNotNull(geom)
+    }
+
+    @Test void relateIntersectionMatrix() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        IntersectionMatrix matrix = recipes.relateIntersectionMatrix()
+        assertEquals("212101212", matrix.toString())
+    }
+
+    @Test void relate() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Boolean> values = recipes.relate()
+        assertTrue(values[0])
+        assertFalse(values[1])
+        assertFalse(values[2])
     }
 
     // Geometry IO

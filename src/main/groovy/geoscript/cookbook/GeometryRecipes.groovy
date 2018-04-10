@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import com.vividsolutions.jts.geom.IntersectionMatrix
 import geoscript.geom.Bounds
 import geoscript.geom.CircularRing
 import geoscript.geom.CircularString
@@ -1432,6 +1433,89 @@ Polygon Dimension = ${polygon.dimension}
         drawGeometries("geometry_smooth", [geometry, smoothed])
         smoothed
     }
+
+    IntersectionMatrix relateIntersectionMatrix() {
+        // tag::relateIntersectionMatrix[]
+        Polygon polygon1 = new Polygon([[
+                [-121.915, 47.390],
+                [-122.640, 46.995],
+                [-121.739, 46.308],
+                [-121.168, 46.777],
+                [-120.981, 47.316],
+                [-121.409, 47.413],
+                [-121.915, 47.390]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.794, 46.664],
+                [-121.541, 46.995],
+                [-122.200, 46.536],
+                [-121.937, 45.890],
+                [-120.959, 46.096],
+                [-120.794, 46.664]
+        ]])
+
+        IntersectionMatrix matrix = polygon1.relate(polygon2)
+        println "Intersection Matrix = ${matrix}"
+        println "Contains = ${matrix.contains}"
+        println "Covered By = ${matrix.coveredBy}"
+        println "Covers = ${matrix.covers}"
+        println "Disjoint = ${matrix.disjoint}"
+        println "Intersects = ${matrix.intersects}"
+        println "Within = ${matrix.within}"
+        // end::relateIntersectionMatrix[]
+        drawGeometries("geometry_relateIntersectionMatrix", [polygon1, polygon2])
+        writeFile("geometry_relateIntersectionMatrix", """
+Intersection Matrix = ${matrix}
+Contains = ${matrix.contains}
+Covered By = ${matrix.coveredBy}
+Covers = ${matrix.covers}
+Disjoint = ${matrix.disjoint}
+Intersects = ${matrix.intersects}
+Within = ${matrix.within}
+""")
+        matrix
+    }
+
+    List<Boolean> relate() {
+        // tag::relate[]
+        Polygon polygon1 = new Polygon([[
+                [-121.915, 47.390],
+                [-122.640, 46.995],
+                [-121.739, 46.308],
+                [-121.168, 46.777],
+                [-120.981, 47.316],
+                [-121.409, 47.413],
+                [-121.915, 47.390]
+        ]])
+
+        Polygon polygon2 = new Polygon([[
+                [-120.794, 46.664],
+                [-121.541, 46.995],
+                [-122.200, 46.536],
+                [-121.937, 45.890],
+                [-120.959, 46.096],
+                [-120.794, 46.664]
+        ]])
+
+        println polygon1.relate(polygon2, "212101212")
+        println polygon1.relate(polygon2, "111111111")
+        println polygon1.relate(polygon2, "222222222")
+
+        // end::relate[]
+        drawGeometries("geometry_relate", [polygon1, polygon2])
+        writeFile("geometry_relate", """
+${polygon1.relate(polygon2, "212101212")}
+${polygon1.relate(polygon2, "111111111")}
+${polygon1.relate(polygon2, "222222222")}
+""")
+        [
+            polygon1.relate(polygon2, "212101212"),
+            polygon1.relate(polygon2, "111111111"),
+            polygon1.relate(polygon2, "222222222")
+        ]
+    }
+
 
     // Geometry Readers and Writers
 

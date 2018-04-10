@@ -708,6 +708,28 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=smooth,inden
 [.thumb]
 image::geometry_smooth.png[]
 
+[source,groovy]
+.Calculate the DE-9IM Intersection Matrix between two geometries.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=relateIntersectionMatrix,indent=0]
+----
+[.thumb]
+image::geometry_relateIntersectionMatrix.png[]
+....
+include::output/geometry_relateIntersectionMatrix.txt[]
+....
+
+[source,groovy]
+.Determine if a Geometry relates to another Geometry according to the given DE-9IM Intersection Matrix string
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=relate,indent=0]
+----
+[.thumb]
+image::geometry_relate.png[]
+....
+include::output/geometry_relate.txt[]
+....
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
