@@ -1516,6 +1516,27 @@ ${polygon1.relate(polygon2, "222222222")}
         ]
     }
 
+    Geometry densify() {
+        // tag::densify[]
+        Geometry geometry = new LineString([
+            [-122.28062152862547, 47.12986316579223],
+            [-122.2809863090515, 47.12935221617075],
+            [-122.2809863090515, 47.12786313499169],
+            [-122.28111505508421, 47.127731743474406],
+            [-122.28137254714966, 47.127673347140345],
+            [-122.28178024291992, 47.12768794622986],
+            [-122.28227376937865, 47.128067521151195],
+            [-122.28227376937865, 47.12906024275466]
+        ])
+        Geometry densified = geometry.densify(0.0001)
+        println "# of points in original geometry = ${geometry.numPoints}"
+        println "# of points in densified geometry = ${densified.numPoints}"
+        // end::densify[]
+        drawGeometry("geometry_densify_orig", geometry)
+        drawGeometry("geometry_densify", densified)
+        writeFile("geometry_densify", "# of points in original geometry = ${geometry.numPoints}${NEW_LINE}# of points in densified geometry = ${densified.numPoints}")
+        densified
+    }
 
     // Geometry Readers and Writers
 

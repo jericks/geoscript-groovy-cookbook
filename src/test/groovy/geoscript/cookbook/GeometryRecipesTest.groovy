@@ -454,6 +454,12 @@ class GeometryRecipesTest {
         assertFalse(values[2])
     }
 
+    @Test void densify() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.densify()
+        assertEquals(50, geom.numPoints)
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

@@ -730,6 +730,20 @@ image::geometry_relate.png[]
 include::output/geometry_relate.txt[]
 ....
 
+[source,groovy]
+.Densify a Geometry by adding points at a given interval.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=densify,indent=0]
+----
+[.thumb]
+image::geometry_densify_orig.png[]
+[.thumb]
+image::geometry_densify.png[]
+....
+include::output/geometry_densify.txt[]
+....
+
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
