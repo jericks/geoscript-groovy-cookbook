@@ -469,7 +469,7 @@ class GeometryRecipesTest {
     @Test void simplifyPreservingTopology() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.simplifyPreservingTopology()
-        assertEquals(5, geom.numPoints)
+        assertEquals(11, geom.numPoints)
     }
 
     // Geometry IO
