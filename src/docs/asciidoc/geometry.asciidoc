@@ -743,6 +743,31 @@ image::geometry_densify.png[]
 include::output/geometry_densify.txt[]
 ....
 
+[source,groovy]
+.Simplify a Geometry by removing points at a given interval.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=simplify,indent=0]
+----
+[.thumb]
+image::geometry_simplify_orig.png[]
+[.thumb]
+image::geometry_simplify.png[]
+....
+include::output/geometry_simplify.txt[]
+....
+
+[source,groovy]
+.Simplify a Geometry by removing points at a given interval but preserve the topological structure.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=simplifyPreservingTopology,indent=0]
+----
+[.thumb]
+image::geometry_simplifyPreservingTopology_orig.png[]
+[.thumb]
+image::geometry_simplifyPreservingTopology.png[]
+....
+include::output/geometry_simplifyPreservingTopology.txt[]
+....
 
 === Reading and Writing Geometries
 

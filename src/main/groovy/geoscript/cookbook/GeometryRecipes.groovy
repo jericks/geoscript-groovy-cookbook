@@ -1538,6 +1538,60 @@ ${polygon1.relate(polygon2, "222222222")}
         densified
     }
 
+    Geometry simplify() {
+        // tag::simplify[]
+        Geometry geometry = new LineString([
+            [-123.59619140625001, 47.338822694822],
+            [-123.04687499999999, 47.010225655683485],
+            [-122.2119140625, 46.965259400349275],
+            [-121.201171875, 47.17477833929903],
+            [-120.87158203125, 47.487513008956554],
+            [-120.62988281249999, 48.31242790407178],
+            [-120.84960937499999, 48.647427805533546],
+            [-121.59667968749999, 48.850258199721495],
+            [-122.36572265625, 48.980216985374994],
+            [-123.134765625, 48.83579746243093],
+            [-123.3984375, 48.44377831058802],
+            [-123.59619140625001, 48.10743118848039],
+            [-123.85986328124999, 47.62097541515849]
+        ])
+        Geometry simplified = geometry.simplify(0.5)
+        println "# of points in original geometry = ${geometry.numPoints}"
+        println "# of points in simplified geometry = ${simplified.numPoints}"
+        // end::simplify[]
+        drawGeometry("geometry_simplify_orig", geometry)
+        drawGeometry("geometry_simplify", simplified)
+        writeFile("geometry_simplify", "# of points in original geometry = ${geometry.numPoints}${NEW_LINE}# of points in simplified geometry = ${simplified.numPoints}")
+        simplified
+    }
+
+    Geometry simplifyPreservingTopology() {
+        // tag::simplifyPreservingTopology[]
+        Geometry geometry = new LineString([
+                [-123.59619140625001, 47.338822694822],
+                [-123.04687499999999, 47.010225655683485],
+                [-122.2119140625, 46.965259400349275],
+                [-121.201171875, 47.17477833929903],
+                [-120.87158203125, 47.487513008956554],
+                [-120.62988281249999, 48.31242790407178],
+                [-120.84960937499999, 48.647427805533546],
+                [-121.59667968749999, 48.850258199721495],
+                [-122.36572265625, 48.980216985374994],
+                [-123.134765625, 48.83579746243093],
+                [-123.3984375, 48.44377831058802],
+                [-123.59619140625001, 48.10743118848039],
+                [-123.85986328124999, 47.62097541515849]
+        ])
+        Geometry simplified = geometry.simplifyPreservingTopology(0.1)
+        println "# of points in original geometry = ${geometry.numPoints}"
+        println "# of points in simplified geometry = ${simplified.numPoints}"
+        // end::simplifyPreservingTopology[]
+        drawGeometry("geometry_simplifyPreservingTopology_orig", geometry)
+        drawGeometry("geometry_simplifyPreservingTopology", simplified)
+        writeFile("geometry_simplifyPreservingTopology", "# of points in original geometry = ${geometry.numPoints}${NEW_LINE}# of points in simplified geometry = ${simplified.numPoints}")
+        simplified
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

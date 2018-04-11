@@ -460,6 +460,18 @@ class GeometryRecipesTest {
         assertEquals(50, geom.numPoints)
     }
 
+    @Test void simplify() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.simplify()
+        assertEquals(5, geom.numPoints)
+    }
+
+    @Test void simplifyPreservingTopology() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.simplifyPreservingTopology()
+        assertEquals(5, geom.numPoints)
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {
