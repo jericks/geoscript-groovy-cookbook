@@ -2792,6 +2792,84 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 # of points in densified geometry = 50</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Simplify a Geometry by removing points at a given interval.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString([
+    [-<span class="float">123.59619140625001</span>, <span class="float">47.338822694822</span>],
+    [-<span class="float">123.04687499999999</span>, <span class="float">47.010225655683485</span>],
+    [-<span class="float">122.2119140625</span>, <span class="float">46.965259400349275</span>],
+    [-<span class="float">121.201171875</span>, <span class="float">47.17477833929903</span>],
+    [-<span class="float">120.87158203125</span>, <span class="float">47.487513008956554</span>],
+    [-<span class="float">120.62988281249999</span>, <span class="float">48.31242790407178</span>],
+    [-<span class="float">120.84960937499999</span>, <span class="float">48.647427805533546</span>],
+    [-<span class="float">121.59667968749999</span>, <span class="float">48.850258199721495</span>],
+    [-<span class="float">122.36572265625</span>, <span class="float">48.980216985374994</span>],
+    [-<span class="float">123.134765625</span>, <span class="float">48.83579746243093</span>],
+    [-<span class="float">123.3984375</span>, <span class="float">48.44377831058802</span>],
+    [-<span class="float">123.59619140625001</span>, <span class="float">48.10743118848039</span>],
+    [-<span class="float">123.85986328124999</span>, <span class="float">47.62097541515849</span>]
+])
+Geometry simplified = geometry.simplify(<span class="float">0.5</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of points in original geometry = </span><span class="inline"><span class="inline-delimiter">${</span>geometry.numPoints<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of points in simplified geometry = </span><span class="inline"><span class="inline-delimiter">${</span>simplified.numPoints<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_simplify_orig.png" alt="geometry simplify orig">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_simplify.png" alt="geometry simplify">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># of points in original geometry = 13
+# of points in simplified geometry = 5</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Simplify a Geometry by removing points at a given interval but preserve the topological structure.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString([
+        [-<span class="float">123.59619140625001</span>, <span class="float">47.338822694822</span>],
+        [-<span class="float">123.04687499999999</span>, <span class="float">47.010225655683485</span>],
+        [-<span class="float">122.2119140625</span>, <span class="float">46.965259400349275</span>],
+        [-<span class="float">121.201171875</span>, <span class="float">47.17477833929903</span>],
+        [-<span class="float">120.87158203125</span>, <span class="float">47.487513008956554</span>],
+        [-<span class="float">120.62988281249999</span>, <span class="float">48.31242790407178</span>],
+        [-<span class="float">120.84960937499999</span>, <span class="float">48.647427805533546</span>],
+        [-<span class="float">121.59667968749999</span>, <span class="float">48.850258199721495</span>],
+        [-<span class="float">122.36572265625</span>, <span class="float">48.980216985374994</span>],
+        [-<span class="float">123.134765625</span>, <span class="float">48.83579746243093</span>],
+        [-<span class="float">123.3984375</span>, <span class="float">48.44377831058802</span>],
+        [-<span class="float">123.59619140625001</span>, <span class="float">48.10743118848039</span>],
+        [-<span class="float">123.85986328124999</span>, <span class="float">47.62097541515849</span>]
+])
+Geometry simplified = geometry.simplifyPreservingTopology(<span class="float">0.1</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of points in original geometry = </span><span class="inline"><span class="inline-delimiter">${</span>geometry.numPoints<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of points in simplified geometry = </span><span class="inline"><span class="inline-delimiter">${</span>simplified.numPoints<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_simplifyPreservingTopology_orig.png" alt="geometry simplifyPreservingTopology orig">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_simplifyPreservingTopology.png" alt="geometry simplifyPreservingTopology">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># of points in original geometry = 13
+# of points in simplified geometry = 11</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -6071,7 +6149,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--55a13a05_162b1ae13db_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-1294d00e_162b6dbbbfd_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -6786,7 +6864,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Apr 10 22:29:58 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Apr 11 22:37:56 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6805,7 +6883,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--55a13a05_162b1ae13db_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-1294d00e_162b6dbbbfd_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6829,7 +6907,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Apr 10 22:29:58 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Apr 11 22:37:56 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6849,7 +6927,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--55a13a05_162b1ae13db_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-1294d00e_162b6dbbbfd_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -7011,7 +7089,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--55a13a05_162b1ae13db_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-1294d00e_162b6dbbbfd_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7049,7 +7127,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--55a13a05_162b1ae13db_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-1294d00e_162b6dbbbfd_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -8311,7 +8389,73 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>vec:Aggregate
+<pre>geo:isValid
+geo:buffer
+geo:union
+geo:intersection
+geo:difference
+geo:area
+geo:numGeometries
+geo:within
+geo:touches
+geo:convexHull
+geo:crosses
+geo:symDifference
+geo:distance
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:overlaps
+geo:isSimple
+geo:isWithinDistance
+geo:reproject
+geo:relate
+geo:densify
+geo:simplify
+geo:numPoints
+geo:isClosed
+geo:envelope
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:getX
+geo:getY
+geo:polygonize
+geo:isRing
+geo:startPoint
+geo:endPoint
+geo:equalsExact
+geo:relatePattern
+geo:equalsExactTolerance
+geo:pointN
+geo:interiorRingN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage
+vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -8340,73 +8484,7 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics
-geo:isValid
-geo:buffer
-geo:union
-geo:intersection
-geo:difference
-geo:area
-geo:numGeometries
-geo:within
-geo:touches
-geo:convexHull
-geo:crosses
-geo:symDifference
-geo:distance
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:overlaps
-geo:isSimple
-geo:isWithinDistance
-geo:relate
-geo:densify
-geo:numPoints
-geo:isRing
-geo:startPoint
-geo:endPoint
-geo:polygonize
-geo:reproject
-geo:isClosed
-geo:simplify
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:envelope
-geo:getX
-geo:getY
-geo:equalsExact
-geo:relatePattern
-geo:pointN
-geo:interiorRingN
-geo:equalsExactTolerance
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage</pre>
+vec:VectorZonalStatistics</pre>
 </div>
 </div>
 </div>
@@ -10720,19 +10798,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Web Feature Server (NG)
-SpatiaLite (JNDI)
-Directory of spatial files (shapefiles)
-H2 (JNDI)
-Shapefile
-GeoPackage
+<pre>H2
+Web Feature Server (NG)
 MySQL
-PostGIS
-H2
-Properties
-MySQL (JNDI)
 Geobuf
-PostGIS (JNDI)</pre>
+PostGIS (JNDI)
+GeoPackage
+MySQL (JNDI)
+Shapefile
+Properties
+H2 (JNDI)
+PostGIS
+Directory of spatial files (shapefiles)
+SpatiaLite (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10842,19 +10920,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Web Feature Server (NG)
-SpatiaLite (JNDI)
-Directory of spatial files (shapefiles)
-H2 (JNDI)
-Shapefile
-GeoPackage
+<pre>H2
+Web Feature Server (NG)
 MySQL
-PostGIS
-H2
-Properties
-MySQL (JNDI)
 Geobuf
-PostGIS (JNDI)</pre>
+PostGIS (JNDI)
+GeoPackage
+MySQL (JNDI)
+Shapefile
+Properties
+H2 (JNDI)
+PostGIS
+Directory of spatial files (shapefiles)
+SpatiaLite (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -12328,7 +12406,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--55a13a05_162b1ae13db_-6ad7"
+            "id": "fid-1294d00e_162b6dbbbfd_-6ad7"
         },
         {
             "type": "Feature",
@@ -12343,7 +12421,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--55a13a05_162b1ae13db_-6ad5"
+            "id": "fid-1294d00e_162b6dbbbfd_-6ad5"
         }
     ]
 }</pre>
@@ -12434,7 +12512,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--55a13a05_162b1ae13db_-7489"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-1294d00e_162b6dbbbfd_-7489"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -12456,7 +12534,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--55a13a05_162b1ae13db_-7487"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-1294d00e_162b6dbbbfd_-7487"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -12522,7 +12600,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--55a13a05_162b1ae13db_-6b0c
+          fid-1294d00e_162b6dbbbfd_-6b0c
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -12549,7 +12627,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--55a13a05_162b1ae13db_-6b0a
+          fid-1294d00e_162b6dbbbfd_-6b0a
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -14291,7 +14369,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 22:20:43 UTC
+Last updated 2018-04-11 22:31:27 UTC
 </div>
 </div>
 </body>

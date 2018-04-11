@@ -2379,6 +2379,84 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 # of points in densified geometry = 50</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Simplify a Geometry by removing points at a given interval.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString([
+    [-<span class="float">123.59619140625001</span>, <span class="float">47.338822694822</span>],
+    [-<span class="float">123.04687499999999</span>, <span class="float">47.010225655683485</span>],
+    [-<span class="float">122.2119140625</span>, <span class="float">46.965259400349275</span>],
+    [-<span class="float">121.201171875</span>, <span class="float">47.17477833929903</span>],
+    [-<span class="float">120.87158203125</span>, <span class="float">47.487513008956554</span>],
+    [-<span class="float">120.62988281249999</span>, <span class="float">48.31242790407178</span>],
+    [-<span class="float">120.84960937499999</span>, <span class="float">48.647427805533546</span>],
+    [-<span class="float">121.59667968749999</span>, <span class="float">48.850258199721495</span>],
+    [-<span class="float">122.36572265625</span>, <span class="float">48.980216985374994</span>],
+    [-<span class="float">123.134765625</span>, <span class="float">48.83579746243093</span>],
+    [-<span class="float">123.3984375</span>, <span class="float">48.44377831058802</span>],
+    [-<span class="float">123.59619140625001</span>, <span class="float">48.10743118848039</span>],
+    [-<span class="float">123.85986328124999</span>, <span class="float">47.62097541515849</span>]
+])
+Geometry simplified = geometry.simplify(<span class="float">0.5</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of points in original geometry = </span><span class="inline"><span class="inline-delimiter">${</span>geometry.numPoints<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of points in simplified geometry = </span><span class="inline"><span class="inline-delimiter">${</span>simplified.numPoints<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_simplify_orig.png" alt="geometry simplify orig">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_simplify.png" alt="geometry simplify">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># of points in original geometry = 13
+# of points in simplified geometry = 5</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Simplify a Geometry by removing points at a given interval but preserve the topological structure.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> LineString([
+        [-<span class="float">123.59619140625001</span>, <span class="float">47.338822694822</span>],
+        [-<span class="float">123.04687499999999</span>, <span class="float">47.010225655683485</span>],
+        [-<span class="float">122.2119140625</span>, <span class="float">46.965259400349275</span>],
+        [-<span class="float">121.201171875</span>, <span class="float">47.17477833929903</span>],
+        [-<span class="float">120.87158203125</span>, <span class="float">47.487513008956554</span>],
+        [-<span class="float">120.62988281249999</span>, <span class="float">48.31242790407178</span>],
+        [-<span class="float">120.84960937499999</span>, <span class="float">48.647427805533546</span>],
+        [-<span class="float">121.59667968749999</span>, <span class="float">48.850258199721495</span>],
+        [-<span class="float">122.36572265625</span>, <span class="float">48.980216985374994</span>],
+        [-<span class="float">123.134765625</span>, <span class="float">48.83579746243093</span>],
+        [-<span class="float">123.3984375</span>, <span class="float">48.44377831058802</span>],
+        [-<span class="float">123.59619140625001</span>, <span class="float">48.10743118848039</span>],
+        [-<span class="float">123.85986328124999</span>, <span class="float">47.62097541515849</span>]
+])
+Geometry simplified = geometry.simplifyPreservingTopology(<span class="float">0.1</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of points in original geometry = </span><span class="inline"><span class="inline-delimiter">${</span>geometry.numPoints<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of points in simplified geometry = </span><span class="inline"><span class="inline-delimiter">${</span>simplified.numPoints<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_simplifyPreservingTopology_orig.png" alt="geometry simplifyPreservingTopology orig">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_simplifyPreservingTopology.png" alt="geometry simplifyPreservingTopology">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># of points in original geometry = 13
+# of points in simplified geometry = 11</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -3018,7 +3096,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 22:20:43 UTC
+Last updated 2018-04-11 22:31:27 UTC
 </div>
 </div>
 </body>
