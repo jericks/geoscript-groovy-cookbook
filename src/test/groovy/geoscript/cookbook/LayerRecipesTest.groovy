@@ -101,6 +101,12 @@ class LayerRecipesTest {
         assertEquals(2, shapefiles[1].count)
     }
 
+    @Test void createShapefile() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createShapefile()
+        assertEquals(5, layer.count)
+    }
+
     // Geoprocessing
 
     @Test void reproject() {

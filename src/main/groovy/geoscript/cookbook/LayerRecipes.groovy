@@ -456,6 +456,56 @@ class LayerRecipes extends Recipes {
         [countries, ocean]
     }
 
+    Layer createShapefile() {
+        // tag::createShapefile[]
+        Directory workspace = new Directory("target")
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String"),
+                new Field("state", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        List<Map> features = [
+                [
+                        geom: new Point(-122.333056, 47.609722),
+                        id: 1,
+                        name: "Seattle",
+                        state: "WA"
+                ],
+                [
+                        geom: new Point(-122.459444, 47.241389),
+                        id: 2,
+                        name: "Tacoma",
+                        state: "WA"
+                ],
+                [
+                        id:3,
+                        name: "Fargo",
+                        state: "ND",
+                        geom: new Point(-96.789444, 46.877222)
+                ],
+                [
+                        geom: new Point(-100.778889, 46.813333),
+                        id:4,
+                        name: "Bismarck",
+                        state: "ND"
+                ],
+                [
+                        geom: new Point(-100.891111, 46.828889),
+                        id: 5,
+                        name: "Mandan",
+                        state: "ND"
+                ]
+        ]
+        layer.add(features)
+        // end::createShapefile[]
+        layer.style = new Shape("white", 10).stroke("navy", 0.5)
+        Layer states = new Shapefile("src/main/resources/data/states.shp")
+        drawOnBasemap("layer_create_shapefile", [states, layer], layer.bounds.expandBy(2))
+        createTable("layer_create_shapefile", layer, false)
+        layer
+    }
 
     // Geoprocessing
 

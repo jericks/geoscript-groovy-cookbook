@@ -202,6 +202,20 @@ include::output/layer_read_shapefile.txt[]
 [.thumb]
 image::layer_read_shapefile.png[]
 
+==== Create
+
+[source,groovy]
+.Create a new Shapefile
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createShapefile,indent=0]
+----
+
+include::output/layer_create_shapefile.asciidoc[]
+
+[.thumb]
+image::layer_create_shapefile.png[]
+
+
 === Geoprocessing
 
 ==== Reproject
