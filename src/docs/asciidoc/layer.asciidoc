@@ -187,6 +187,20 @@ include::output/layer_delete.asciidoc[]
 [.thumb]
 image::layer_delete.png[]
 
+=== Shapefiles
+
+==== Read
+
+[source,groovy]
+.Read existing Shapefiles
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readShapefile,indent=0]
+----
+....
+include::output/layer_read_shapefile.txt[]
+....
+[.thumb]
+image::layer_read_shapefile.png[]
 
 === Geoprocessing
 

@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.feature.Feature
 import geoscript.layer.Layer
+import geoscript.layer.Shapefile
 import geoscript.workspace.Workspace
 import org.junit.Test
 import static org.junit.Assert.*
@@ -91,6 +92,13 @@ class LayerRecipesTest {
         Layer layer = recipes.updateLayer()
         assertEquals("Point", layer.schema.geom.typ)
         assertEquals(5, layer.count)
+    }
+
+    @Test void readShapefile() {
+        LayerRecipes recipes = new LayerRecipes()
+        List<Shapefile> shapefiles = recipes.readShapefile()
+        assertEquals(177, shapefiles[0].count)
+        assertEquals(2, shapefiles[1].count)
     }
 
     // Geoprocessing

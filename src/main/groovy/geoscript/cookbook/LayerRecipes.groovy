@@ -435,6 +435,28 @@ class LayerRecipes extends Recipes {
         layer
     }
 
+    // Shapefile
+
+    List<Shapefile> readShapefile() {
+        // tag::readShapefile[]
+        Shapefile countries = new Shapefile("src/main/resources/shapefiles/countries.shp")
+        println "# Features in Countries = ${countries.count}"
+
+        Shapefile ocean = new Shapefile(new File("src/main/resources/shapefiles/ocean.shp"))
+        println "# Features in Ocean = ${ocean.count}"
+        // end::readShapefile[]
+        writeFile("layer_read_shapefile", """
+# Features in Countries = ${countries.count}
+
+# Features in Ocean = ${ocean.count}
+""")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        drawOnBasemap("layer_read_shapefile", [countries, ocean])
+        [countries, ocean]
+    }
+
+
     // Geoprocessing
 
     Layer reproject() {
