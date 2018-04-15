@@ -747,6 +747,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#shapefiles">Shapefiles</a>
 <ul class="sectlevel3">
 <li><a href="#read">Read</a></li>
+<li><a href="#create">Create</a></li>
 </ul>
 </li>
 <li><a href="#geoprocessing">Geoprocessing</a>
@@ -6154,7 +6155,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-2fa69b02_162c2326746_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-2a2c2d8d_162c747b34f_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -6869,7 +6870,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 14 03:28:26 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Apr 15 03:09:47 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6888,7 +6889,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-2fa69b02_162c2326746_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-2a2c2d8d_162c747b34f_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6912,7 +6913,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Apr 14 03:28:26 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Apr 15 03:09:48 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6932,7 +6933,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-2fa69b02_162c2326746_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-2a2c2d8d_162c747b34f_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -7094,7 +7095,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-2fa69b02_162c2326746_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-2a2c2d8d_162c747b34f_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7132,7 +7133,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-2fa69b02_162c2326746_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-2a2c2d8d_162c747b34f_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -8424,47 +8425,47 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:isValid
-geo:buffer
 geo:union
 geo:intersection
+geo:isValid
+geo:buffer
 geo:difference
 geo:area
 geo:numGeometries
-geo:isSimple
-geo:isWithinDistance
-geo:relate
-geo:densify
-geo:simplify
 geo:numPoints
 geo:reproject
-geo:within
-geo:touches
-geo:convexHull
-geo:crosses
-geo:symDifference
 geo:distance
 geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:overlaps
+geo:isSimple
+geo:isWithinDistance
+geo:relate
+geo:densify
+geo:simplify
+geo:within
+geo:touches
+geo:convexHull
+geo:crosses
+geo:symDifference
 geo:isClosed
+geo:envelope
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:envelope
 geo:getX
 geo:getY
-geo:polygonize
-geo:isRing
 geo:startPoint
 geo:endPoint
+geo:polygonize
+geo:isRing
+geo:interiorRingN
+geo:equalsExactTolerance
 geo:equalsExact
 geo:pointN
-geo:equalsExactTolerance
-geo:interiorRingN
 geo:relatePattern
 geo:splitPolygon
 geo:length
@@ -11836,6 +11837,101 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="create"><a class="anchor" href="#create"></a>Create</h4>
+<div class="listingblock">
+<div class="title">Create a new Shapefile</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Directory workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">state</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">Map</span>&gt; features = [
+        [
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.333056</span>, <span class="float">47.609722</span>),
+                <span class="key">id</span>: <span class="integer">1</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">WA</span><span class="delimiter">&quot;</span></span>
+        ],
+        [
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.459444</span>, <span class="float">47.241389</span>),
+                <span class="key">id</span>: <span class="integer">2</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tacoma</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">WA</span><span class="delimiter">&quot;</span></span>
+        ],
+        [
+                <span class="key">id</span>:<span class="integer">3</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Fargo</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ND</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">96.789444</span>, <span class="float">46.877222</span>)
+        ],
+        [
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">100.778889</span>, <span class="float">46.813333</span>),
+                <span class="key">id</span>:<span class="integer">4</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Bismarck</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ND</span><span class="delimiter">&quot;</span></span>
+        ],
+        [
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">100.891111</span>, <span class="float">46.828889</span>),
+                <span class="key">id</span>: <span class="integer">5</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Mandan</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ND</span><span class="delimiter">&quot;</span></span>
+        ]
+]
+layer.add(features)</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">id</th>
+<th class="tableblock halign-left valign-top">name</th>
+<th class="tableblock halign-left valign-top">state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seattle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tacoma</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fargo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ND</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bismarck</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ND</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mandan</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ND</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_create_shapefile.png" alt="layer create shapefile">
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="geoprocessing"><a class="anchor" href="#geoprocessing"></a>Geoprocessing</h3>
@@ -12439,7 +12535,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-2fa69b02_162c2326746_-6ad7"
+            "id": "fid-2a2c2d8d_162c747b34f_-6ad2"
         },
         {
             "type": "Feature",
@@ -12454,7 +12550,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-2fa69b02_162c2326746_-6ad5"
+            "id": "fid-2a2c2d8d_162c747b34f_-6ad0"
         }
     ]
 }</pre>
@@ -12545,7 +12641,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-2fa69b02_162c2326746_-7489"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-2a2c2d8d_162c747b34f_-7489"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -12567,7 +12663,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-2fa69b02_162c2326746_-7487"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-2a2c2d8d_162c747b34f_-7487"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -12633,7 +12729,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-2fa69b02_162c2326746_-6b0c
+          fid-2a2c2d8d_162c747b34f_-6b0c
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -12660,7 +12756,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-2fa69b02_162c2326746_-6b0a
+          fid-2a2c2d8d_162c747b34f_-6b0a
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -14402,7 +14498,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 03:22:18 UTC
+Last updated 2018-04-15 03:03:30 UTC
 </div>
 </div>
 </body>
