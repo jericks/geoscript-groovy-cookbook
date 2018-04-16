@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.feature.Feature
 import geoscript.layer.Layer
+import geoscript.layer.Property
 import geoscript.layer.Shapefile
 import geoscript.workspace.Workspace
 import org.junit.Test
@@ -105,6 +106,13 @@ class LayerRecipesTest {
         LayerRecipes recipes = new LayerRecipes()
         Layer layer = recipes.createShapefile()
         assertEquals(5, layer.count)
+    }
+
+    @Test void readProperty() {
+        LayerRecipes recipes = new LayerRecipes()
+        List<Property> properties = recipes.readProperty()
+        assertEquals(10, properties[0].count)
+        assertEquals(10, properties[1].count)
     }
 
     // Geoprocessing

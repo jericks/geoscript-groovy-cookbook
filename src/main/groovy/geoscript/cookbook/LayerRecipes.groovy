@@ -507,6 +507,31 @@ class LayerRecipes extends Recipes {
         layer
     }
 
+    // Property
+
+    List<Property> readProperty() {
+
+        // tag::readProperty[]
+        geoscript.layer.Property circles = new geoscript.layer.Property("src/main/resources/property/circles.properties")
+        println "# Features in circles = ${circles.count}"
+
+        geoscript.layer.Property places = new geoscript.layer.Property(new File("src/main/resources/property/places.properties"))
+        println "# Features in places = ${places.count}"
+        // end::readProperty[]
+
+        writeFile("layer_read_property", """
+# Features in circles = ${circles.count}
+
+# Features in places = ${places.count}
+""")
+        circles.style = new SimpleStyleReader().read("fill=#555555 fill-opacity=0.6 stroke=#555555 stroke-width=0.5")
+        places.style = new SimpleStyleReader().read("shape-type=circle shape-size=8 shape=orange")
+        drawOnBasemap("layer_read_property", [circles, places], circles.bounds.expandBy(1.0))
+        [circles, places]
+
+
+    }
+
     // Geoprocessing
 
     Layer reproject() {

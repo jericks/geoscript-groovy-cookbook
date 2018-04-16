@@ -189,6 +189,9 @@ image::layer_delete.png[]
 
 === Shapefiles
 
+Shapefiles are a very commonly used format for storing spatial data.  So, instead of creating
+a Directory Workspace and getting the Layer from the Workspace, you can use the Shapefile class.
+
 ==== Read
 
 [source,groovy]
@@ -215,6 +218,21 @@ include::output/layer_create_shapefile.asciidoc[]
 [.thumb]
 image::layer_create_shapefile.png[]
 
+=== Property
+
+GeoScript can store spatial data in a simple plain text format.  With the Property class
+you can access a single property file directly.
+
+[source,groovy]
+.Read existing Property files
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readProperty,indent=0]
+----
+....
+include::output/layer_read_property.txt[]
+....
+[.thumb]
+image::layer_read_property.png[]
 
 === Geoprocessing
 
