@@ -223,6 +223,8 @@ image::layer_create_shapefile.png[]
 GeoScript can store spatial data in a simple plain text format.  With the Property class
 you can access a single property file directly.
 
+==== Read
+
 [source,groovy]
 .Read existing Property files
 ----
@@ -233,6 +235,19 @@ include::output/layer_read_property.txt[]
 ....
 [.thumb]
 image::layer_read_property.png[]
+
+==== Create
+
+[source,groovy]
+.Create a new Property
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createProperty,indent=0]
+----
+
+include::output/layer_create_property.asciidoc[]
+
+[.thumb]
+image::layer_create_shapefile.png[]
 
 === Geoprocessing
 

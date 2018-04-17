@@ -115,6 +115,12 @@ class LayerRecipesTest {
         assertEquals(10, properties[1].count)
     }
 
+    @Test void createProperty() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createProperty()
+        assertEquals(5, layer.count)
+    }
+
     // Geoprocessing
 
     @Test void reproject() {
