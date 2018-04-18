@@ -407,3 +407,49 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByZoom
 ....
 include::output/tile_cursor_zoomlevelresxy.txt[]
 ....
+
+=== OSM
+
+==== Stamen Toner
+
+Create a TileLayer for OSM Stamen Toner tiles.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMStamenToner,indent=0]
+----
+[.thumb]
+image::tile_osm_stamen_toner.png[]
+
+==== Stamen Toner Lite
+
+Create a TileLayer for OSM Stamen Toner Lite tiles.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMStamenTonerLite,indent=0]
+----
+[.thumb]
+image::tile_osm_stamen_toner_lite.png[]
+
+==== Stamen Water Color
+
+Create a TileLayer for OSM Stamen Water Color tiles.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMStamenWaterColor,indent=0]
+----
+[.thumb]
+image::tile_osm_stamen_water_color.png[]
+
+==== Stamen Terrain
+
+Create a TileLayer for OSM Stamen Terrain tiles.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMStamenTerrain,indent=0]
+----
+[.thumb]
+image::tile_osm_stamen_terrain.png[]

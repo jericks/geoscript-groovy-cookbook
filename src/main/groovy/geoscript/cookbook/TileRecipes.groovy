@@ -6,6 +6,7 @@ import geoscript.layer.ImageTile
 import geoscript.layer.ImageTileRenderer
 import geoscript.layer.Layer
 import geoscript.layer.MBTiles
+import geoscript.layer.OSM
 import geoscript.layer.Pyramid
 import geoscript.layer.TMS
 import geoscript.layer.Tile
@@ -603,5 +604,43 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         RenderedImage image = tms.getRaster(tms.tiles(1)).image
         saveImage("tile_generate_tms", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
         tms
+    }
+
+    // OSM
+
+    OSM getWellKnownOSMStamenToner() {
+        // tag::getWellKnownOSMStamenToner[]
+        OSM osm = OSM.getWellKnownOSM("stamen-toner")
+        // end::getWellKnownOSMStamenToner[]
+        RenderedImage image = osm.getRaster(osm.tiles(1)).image
+        saveImage("tile_osm_stamen_toner", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        osm
+    }
+
+    OSM getWellKnownOSMStamenTonerLite() {
+        // tag::getWellKnownOSMStamenTonerLite[]
+        OSM osm = OSM.getWellKnownOSM("stamen-toner-lite")
+        // end::getWellKnownOSMStamenTonerLite[]
+        RenderedImage image = osm.getRaster(osm.tiles(1)).image
+        saveImage("tile_osm_stamen_toner_lite", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        osm
+    }
+
+    OSM getWellKnownOSMStamenWaterColor() {
+        // tag::getWellKnownOSMStamenWaterColor[]
+        OSM osm = OSM.getWellKnownOSM("stamen-watercolor")
+        // end::getWellKnownOSMStamenWaterColor[]
+        RenderedImage image = osm.getRaster(osm.tiles(1)).image
+        saveImage("tile_osm_stamen_water_color", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        osm
+    }
+
+    OSM getWellKnownOSMStamenTerrain() {
+        // tag::getWellKnownOSMStamenTerrain[]
+        OSM osm = OSM.getWellKnownOSM("stamen-terrain")
+        // end::getWellKnownOSMStamenTerrain[]
+        RenderedImage image = osm.getRaster(osm.tiles(1)).image
+        saveImage("tile_osm_stamen_terrain", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        osm
     }
 }

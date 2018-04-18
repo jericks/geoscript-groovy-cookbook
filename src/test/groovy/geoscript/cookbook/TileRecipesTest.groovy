@@ -4,6 +4,7 @@ import geoscript.layer.GeoPackage
 import geoscript.layer.Grid
 import geoscript.layer.ImageTile
 import geoscript.layer.MBTiles
+import geoscript.layer.OSM
 import geoscript.layer.Pyramid
 import geoscript.layer.TMS
 import geoscript.layer.Tile
@@ -396,6 +397,32 @@ BOTTOM_LEFT
         assertNotNull(tms.get(0,0,0).data)
         assertNotNull(tms.get(1,1,1).data)
         assertNotNull(tms.get(2,2,2).data)
+    }
+
+    // OSM
+
+    @Test void getWellKnownOSMStamenToner() {
+        TileRecipes recipes = new TileRecipes()
+        OSM osm = recipes.getWellKnownOSMStamenToner()
+        assertNotNull(osm)
+    }
+
+    @Test void getWellKnownOSMStamenTonerLite() {
+        TileRecipes recipes = new TileRecipes()
+        OSM osm = recipes.getWellKnownOSMStamenTonerLite()
+        assertNotNull(osm)
+    }
+
+    @Test void getWellKnownOSMStamenWaterColor() {
+        TileRecipes recipes = new TileRecipes()
+        OSM osm = recipes.getWellKnownOSMStamenWaterColor()
+        assertNotNull(osm)
+    }
+
+    @Test void getWellKnownOSMStamenTerrain() {
+        TileRecipes recipes = new TileRecipes()
+        OSM osm = recipes.getWellKnownOSMStamenTerrain()
+        assertNotNull(osm)
     }
 
 }
