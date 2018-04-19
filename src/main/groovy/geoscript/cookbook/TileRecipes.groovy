@@ -608,6 +608,15 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
 
     // OSM
 
+    OSM getWellKnownOSM() {
+        // tag::getWellKnownOSM[]
+        OSM osm = OSM.getWellKnownOSM("osm")
+        // end::getWellKnownOSM[]
+        RenderedImage image = osm.getRaster(osm.tiles(1)).image
+        saveImage("tile_osm_wellknown", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        osm
+    }
+
     OSM getWellKnownOSMStamenToner() {
         // tag::getWellKnownOSMStamenToner[]
         OSM osm = OSM.getWellKnownOSM("stamen-toner")

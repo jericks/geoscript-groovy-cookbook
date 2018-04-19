@@ -410,6 +410,18 @@ include::output/tile_cursor_zoomlevelresxy.txt[]
 
 === OSM
 
+==== Standard OSM
+
+Create a TileLayer for OSM tiles.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSM,indent=0]
+----
+[.thumb]
+image::tile_osm_wellknown.png[]
+
+
 ==== Stamen Toner
 
 Create a TileLayer for OSM Stamen Toner tiles.

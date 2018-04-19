@@ -401,6 +401,12 @@ BOTTOM_LEFT
 
     // OSM
 
+    @Test void getWellKnownOSM() {
+        TileRecipes recipes = new TileRecipes()
+        OSM osm = recipes.getWellKnownOSM()
+        assertNotNull(osm)
+    }
+
     @Test void getWellKnownOSMStamenToner() {
         TileRecipes recipes = new TileRecipes()
         OSM osm = recipes.getWellKnownOSMStamenToner()
