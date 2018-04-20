@@ -130,6 +130,21 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createPyramidFro
 include::output/tile_pyramid_fromstring_globalmercator.txt[]
 ....
 
+==== Get Bounds from a Pyramid
+
+Get the Bounds for a Tile.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getBoundsForTile,indent=0]
+----
+....
+include::output/tile_pyramid_bounds_tiles.txt[]
+....
+[.thumb]
+image::tile_pyramid_bounds_tiles.png[]
+
+
 ==== Get a Grid from a Pyramid
 
 Get a the min Grid.

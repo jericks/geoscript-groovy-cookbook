@@ -183,6 +183,19 @@ Y Resolution: ${grid.yResolution}
         grid
     }
 
+    Bounds getBoundsForTile() {
+        // tag::getBoundsForTile[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        Tile tile = new Tile(2, 1, 1)
+        Bounds bounds = pyramid.bounds(tile)
+        println "The bounds of ${tile} is ${bounds}"
+        // end::getBoundsForTile[]
+        writeFile("tile_pyramid_bounds_tiles","The bounds of ${tile} is ${bounds}")
+        BufferedImage image = OSM.getWellKnownOSM("osm").get(tile.z, tile.x, tile.y).image
+        saveImage("tile_pyramid_bounds_tiles", image)
+        bounds
+    }
+
     Pyramid createGlobalMercatorPyramid() {
         // tag::pyramidGlobalMercatorPyramid[]
         Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()

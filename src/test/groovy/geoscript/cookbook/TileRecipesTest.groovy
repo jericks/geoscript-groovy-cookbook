@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.geom.Bounds
 import geoscript.layer.GeoPackage
 import geoscript.layer.Grid
 import geoscript.layer.ImageTile
@@ -113,6 +114,12 @@ class TileRecipesTest {
         assertEquals(274877906944, grid.size)
         assertEquals(0.29833221435546875, grid.xResolution, 0.0001)
         assertEquals(0.29833221435546875, grid.yResolution, 0.0001)
+    }
+
+    @Test void getBoundsForTile() {
+        TileRecipes recipes = new TileRecipes()
+        Bounds bounds = recipes.getBoundsForTile()
+        assertEquals("(-1.0018197573940657E7,-1.0018735602568535E7,0.0,-3.725290298461914E-9,EPSG:3857)", bounds.toString())
     }
 
     @Test void createPyramidFromString() {
