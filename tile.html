@@ -532,6 +532,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel3">
 <li><a href="#pyramid-properties">Pyramid Properties</a></li>
 <li><a href="#create-pyramids">Create Pyramids</a></li>
+<li><a href="#get-bounds-from-a-pyramid">Get Bounds from a Pyramid</a></li>
 <li><a href="#get-a-grid-from-a-pyramid">Get a Grid from a Pyramid</a></li>
 <li><a href="#reading-and-writing-pyramids">Reading and Writing Pyramids</a>
 <ul class="sectlevel4">
@@ -810,6 +811,30 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 Origin: BOTTOM_LEFT
 Bounds: (-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)
 Max Zoom: 19</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="get-bounds-from-a-pyramid"><a class="anchor" href="#get-bounds-from-a-pyramid"></a>Get Bounds from a Pyramid</h4>
+<div class="paragraph">
+<p>Get the Bounds for a Tile.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+Tile tile = <span class="keyword">new</span> Tile(<span class="integer">2</span>, <span class="integer">1</span>, <span class="integer">1</span>)
+Bounds bounds = pyramid.bounds(tile)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">The bounds of </span><span class="inline"><span class="inline-delimiter">${</span>tile<span class="inline-delimiter">}</span></span><span class="content"> is </span><span class="inline"><span class="inline-delimiter">${</span>bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>The bounds of Tile(x:1, y:1, z:2) is (-1.0018197573940657E7,-1.0018735602568535E7,0.0,-3.725290298461914E-9,EPSG:3857)</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_pyramid_bounds_tiles.png" alt="tile pyramid bounds tiles">
 </div>
 </div>
 </div>
@@ -1692,7 +1717,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-19 00:27:43 UTC
+Last updated 2018-04-20 03:52:26 UTC
 </div>
 </div>
 </body>
