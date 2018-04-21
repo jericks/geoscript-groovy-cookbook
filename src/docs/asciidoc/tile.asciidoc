@@ -414,7 +414,7 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByZoom
 include::output/tile_cursor_zoomlevelminmax.txt[]
 ....
 
-Get a TileCursor with Tiles form a TileLayer in a zoom level for a given Bounds.
+Get a TileCursor with Tiles from a TileLayer in a zoom level for a given Bounds.
 
 [source,groovy]
 ----
@@ -424,7 +424,7 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByZoom
 include::output/tile_cursor_zoomlevelbounds.txt[]
 ....
 
-Get a TileCursor with Tiles form a TileLayer in a zoom level for a given x and y resolution.
+Get a TileCursor with Tiles from a TileLayer in a zoom level for a given x and y resolution.
 
 [source,groovy]
 ----
@@ -432,6 +432,26 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByZoom
 ----
 ....
 include::output/tile_cursor_zoomlevelresxy.txt[]
+....
+
+Get a TileCursor with Tiles from a TileLayer within a Bounds for a given canvas width and height.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByBoundsAndWidthHeight,indent=0]
+----
+....
+include::output/tile_cursor_boundswidthheight.txt[]
+....
+
+Get a TileCursor with Tiles from a TileLayer around a Point at a given zoom level for a given canvas width and height.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByBoundsAndWidthHeight,indent=0]
+----
+....
+include::output/tile_cursor_boundswidthheight.txt[]
 ....
 
 === OSM

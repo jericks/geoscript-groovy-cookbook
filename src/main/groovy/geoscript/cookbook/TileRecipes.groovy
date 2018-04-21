@@ -574,6 +574,81 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         tileCursor
     }
 
+    TileCursor tileCursorByBoundsAndWidthHeight() {
+        // tag::tileCursorByBoundsAndWidthHeight[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+
+        Bounds bounds = new Bounds(-102.875977, 45.433154, -96.481934, 48.118434, "EPSG:4326").reproject("EPSG:3857")
+        int width = 400
+        int height = 400
+        TileCursor tileCursor = new TileCursor(mbtiles, bounds, width, height)
+
+        println "Zoom Level: ${tileCursor.z}"
+        println "# of tiles: ${tileCursor.size}"
+        println "Bounds: ${tileCursor.bounds}"
+        println "Width / # Columns: ${tileCursor.width}"
+        println "Height / # Rows: ${tileCursor.height}"
+        println "MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}"
+
+        println "Tiles:"
+        tileCursor.each { Tile t ->
+            println t
+        }
+        // end::tileCursorByBoundsAndWidthHeight[]
+        writeFile("tile_cursor_boundswidthheight", """
+Zoom Level: ${tileCursor.z}
+# of tiles: ${tileCursor.size}
+Bounds: ${tileCursor.bounds}
+Width / # Columns: ${tileCursor.width}
+Height / # Rows: ${tileCursor.height}
+MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}
+
+Tiles:
+${tileCursor.collect { it.toString() }.join(NEW_LINE)}
+""")
+        tileCursor
+    }
+
+    // Point p, long z, int w, int h
+
+    TileCursor tileCursorAroundPointAtZoomLevelAndWidthHeight() {
+        // tag::tileCursorAroundPointAtZoomLevelAndWidthHeight[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+
+        Point point = Projection.transform(new Point(-102.875977, 45.433154), "EPSG:4326", "EPSG:3857")
+        int zoomLevel = 12
+        int width = 400
+        int height = 400
+        TileCursor tileCursor = new TileCursor(mbtiles, point, zoomLevel, width, height)
+
+        println "Zoom Level: ${tileCursor.z}"
+        println "# of tiles: ${tileCursor.size}"
+        println "Bounds: ${tileCursor.bounds}"
+        println "Width / # Columns: ${tileCursor.width}"
+        println "Height / # Rows: ${tileCursor.height}"
+        println "MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}"
+
+        println "Tiles:"
+        tileCursor.each { Tile t ->
+            println t
+        }
+        // end::tileCursorAroundPointAtZoomLevelAndWidthHeight[]
+        writeFile("tile_cursor_point_zoom_widthheight", """
+Zoom Level: ${tileCursor.z}
+# of tiles: ${tileCursor.size}
+Bounds: ${tileCursor.bounds}
+Width / # Columns: ${tileCursor.width}
+Height / # Rows: ${tileCursor.height}
+MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}
+
+Tiles:
+${tileCursor.collect { it.toString() }.join(NEW_LINE)}
+""")
+        tileCursor
+    }
+
     // TileGenerator
 
     MBTiles generateTilesToMBTiles() {
