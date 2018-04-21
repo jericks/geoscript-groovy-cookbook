@@ -122,6 +122,12 @@ class TileRecipesTest {
         assertEquals("(-1.0018197573940657E7,-1.0018735602568535E7,0.0,-3.725290298461914E-9,EPSG:3857)", bounds.toString())
     }
 
+    @Test void getBoundsAroundPoint() {
+        TileRecipes recipes = new TileRecipes()
+        Bounds bounds = recipes.getBoundsAroundPoint()
+        assertEquals("(2343967.4055929263,4410824.650424092,2588361.1555929263,4655218.400424092,EPSG:3857)", bounds.toString())
+    }
+
     @Test void createPyramidFromString() {
         TileRecipes recipes = new TileRecipes()
         Pyramid pyramid = recipes.createPyramidFromString()

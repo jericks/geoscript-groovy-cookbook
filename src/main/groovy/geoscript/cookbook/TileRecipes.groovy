@@ -1,6 +1,7 @@
 package geoscript.cookbook
 
 import geoscript.geom.Bounds
+import geoscript.geom.Point
 import geoscript.layer.Grid
 import geoscript.layer.ImageTile
 import geoscript.layer.ImageTileRenderer
@@ -181,6 +182,23 @@ X Resolution: ${grid.xResolution}
 Y Resolution: ${grid.yResolution}
 """)
         grid
+    }
+
+    Bounds getBoundsAroundPoint() {
+        // tag::getBoundsAroundPoint[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        Point point = Projection.transform(new Point(22.1539306640625, 37.67077737288316), "EPSG:4326", "EPSG:3857")
+        int zoomLevel = 8
+        int width = 400
+        int height = 400
+        Bounds bounds = pyramid.bounds(point, zoomLevel, width, height)
+        println "The bounds around ${point} is ${bounds}"
+        // end::getBoundsAroundPoint[]
+        writeFile("tile_pyramid_bounds_around_point","The bounds around ${point} is ${bounds}")
+        OSM osm = OSM.getWellKnownOSM("osm")
+        RenderedImage image = osm.getRaster(osm.tiles(point, zoomLevel, width, height)).image
+        saveImage("tile_pyramid_bounds_around_point", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        bounds
     }
 
     Bounds getBoundsForTile() {

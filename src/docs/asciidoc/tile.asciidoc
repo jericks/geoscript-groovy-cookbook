@@ -144,6 +144,17 @@ include::output/tile_pyramid_bounds_tiles.txt[]
 [.thumb]
 image::tile_pyramid_bounds_tiles.png[]
 
+Get the Bounds for an area around a Point at a zoom level.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getBoundsAroundPoint,indent=0]
+----
+....
+include::output/tile_pyramid_bounds_around_point.txt[]
+....
+[.thumb]
+image::tile_pyramid_bounds_around_point.png[]
 
 ==== Get a Grid from a Pyramid
 
