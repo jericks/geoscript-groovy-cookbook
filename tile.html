@@ -837,6 +837,30 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 <img src="./images/tile_pyramid_bounds_tiles.png" alt="tile pyramid bounds tiles">
 </div>
 </div>
+<div class="paragraph">
+<p>Get the Bounds for an area around a Point at a zoom level.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+<span class="predefined-type">Point</span> point = Projection.transform(<span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="float">22.1539306640625</span>, <span class="float">37.67077737288316</span>), <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>)
+<span class="type">int</span> zoomLevel = <span class="integer">8</span>
+<span class="type">int</span> width = <span class="integer">400</span>
+<span class="type">int</span> height = <span class="integer">400</span>
+Bounds bounds = pyramid.bounds(point, zoomLevel, width, height)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">The bounds around </span><span class="inline"><span class="inline-delimiter">${</span>point<span class="inline-delimiter">}</span></span><span class="content"> is </span><span class="inline"><span class="inline-delimiter">${</span>bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>The bounds around POINT (2466164.2805929263 4533021.525424092) is (2343967.4055929263,4410824.650424092,2588361.1555929263,4655218.400424092,EPSG:3857)</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_pyramid_bounds_around_point.png" alt="tile pyramid bounds around point">
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="get-a-grid-from-a-pyramid"><a class="anchor" href="#get-a-grid-from-a-pyramid"></a>Get a Grid from a Pyramid</h4>
@@ -1717,7 +1741,7 @@ Tile(x:5, y:10, z:4)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-20 03:52:26 UTC
+Last updated 2018-04-21 04:34:54 UTC
 </div>
 </div>
 </body>
