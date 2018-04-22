@@ -1592,6 +1592,23 @@ ${polygon1.relate(polygon2, "222222222")}
         simplified
     }
 
+    List<Geometry> translate() {
+        // tag::translate[]
+        Geometry geometry = new Polygon(new LinearRing([
+            [-121.83837890625, 47.5913464767971],
+            [-122.76123046875, 46.9802523552188],
+            [-122.67333984374, 46.3014061543733],
+            [-121.00341796874, 46.3772542051002],
+            [-121.22314453124, 47.1448974855539],
+            [-121.83837890625, 47.5913464767971]
+        ]))
+        Geometry translatedGeometry = geometry.translate(2.1, 3.2)
+        // end::translate[]
+        drawGeometries("geometry_translate", [geometry, translatedGeometry])
+        [geometry,translatedGeometry]
+    }
+
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

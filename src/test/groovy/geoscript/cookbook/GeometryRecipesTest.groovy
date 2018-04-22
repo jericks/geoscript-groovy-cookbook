@@ -472,6 +472,12 @@ class GeometryRecipesTest {
         assertEquals(11, geom.numPoints)
     }
 
+    @Test void translate() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.translate()
+        assertFalse geometries[0].equals(geometries[1])
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

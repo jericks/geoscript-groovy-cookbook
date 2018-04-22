@@ -769,6 +769,14 @@ image::geometry_simplifyPreservingTopology.png[]
 include::output/geometry_simplifyPreservingTopology.txt[]
 ....
 
+[source,groovy]
+.Translate or move a geometry a given distance along the x and y axis.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=translate,indent=0]
+----
+[.thumb]
+image::geometry_translate.png[]
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
