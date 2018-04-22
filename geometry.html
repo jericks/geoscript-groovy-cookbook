@@ -2457,6 +2457,25 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 # of points in simplified geometry = 11</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Translate or move a geometry a given distance along the x and y axis.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>(<span class="keyword">new</span> LinearRing([
+    [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>],
+    [-<span class="float">122.76123046875</span>, <span class="float">46.9802523552188</span>],
+    [-<span class="float">122.67333984374</span>, <span class="float">46.3014061543733</span>],
+    [-<span class="float">121.00341796874</span>, <span class="float">46.3772542051002</span>],
+    [-<span class="float">121.22314453124</span>, <span class="float">47.1448974855539</span>],
+    [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>]
+]))
+Geometry translatedGeometry = geometry.translate(<span class="float">2.1</span>, <span class="float">3.2</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_translate.png" alt="geometry translate">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -3096,7 +3115,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-21 15:49:19 UTC
+Last updated 2018-04-22 18:16:44 UTC
 </div>
 </div>
 </body>
