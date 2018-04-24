@@ -777,6 +777,23 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=translate,in
 [.thumb]
 image::geometry_translate.png[]
 
+[source,groovy]
+.Scale a geometry a given amount in an x and y direction around the origin
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=scaleXY,indent=0]
+----
+[.thumb]
+image::geometry_scalexy.png[]
+
+[source,groovy]
+.Scale a geometry a given amount in an x and y direction around a point
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=scaleXYAroundPoint,indent=0]
+----
+[.thumb]
+image::geometry_scalexy_around_point.png[]
+
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package

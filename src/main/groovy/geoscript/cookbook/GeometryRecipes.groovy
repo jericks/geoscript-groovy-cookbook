@@ -1608,6 +1608,39 @@ ${polygon1.relate(polygon2, "222222222")}
         [geometry,translatedGeometry]
     }
 
+    List<Geometry> scaleXY() {
+        // tag::scaleXY[]
+        Geometry geometry = new Polygon(new LinearRing([
+                [-121.83837890625, 47.5913464767971],
+                [-122.76123046875, 46.9802523552188],
+                [-122.67333984374, 46.3014061543733],
+                [-121.00341796874, 46.3772542051002],
+                [-121.22314453124, 47.1448974855539],
+                [-121.83837890625, 47.5913464767971]
+        ]))
+        Geometry scaledGeometry = geometry.scale(1.1,1.2)
+        println scaledGeometry
+        // end::scaleXY[]
+        drawGeometries("geometry_scalexy", [geometry, scaledGeometry])
+        [geometry,scaledGeometry]
+    }
+
+    List<Geometry> scaleXYAroundPoint() {
+        // tag::scaleXYAroundPoint[]
+        Geometry geometry = new Polygon(new LinearRing([
+                [-121.83837890625, 47.5913464767971],
+                [-122.76123046875, 46.9802523552188],
+                [-122.67333984374, 46.3014061543733],
+                [-121.00341796874, 46.3772542051002],
+                [-121.22314453124, 47.1448974855539],
+                [-121.83837890625, 47.5913464767971]
+        ]))
+        Point centroid = geometry.centroid
+        Geometry scaledGeometry = geometry.scale(1.1, 1.1, centroid.x, centroid.y)
+        // end::scaleXYAroundPoint[]
+        drawGeometries("geometry_scalexy_around_point", [geometry, scaledGeometry])
+        [geometry,scaledGeometry]
+    }
 
     // Geometry Readers and Writers
 

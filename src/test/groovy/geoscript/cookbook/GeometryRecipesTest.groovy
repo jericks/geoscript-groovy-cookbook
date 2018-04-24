@@ -478,6 +478,18 @@ class GeometryRecipesTest {
         assertFalse geometries[0].equals(geometries[1])
     }
 
+    @Test void scaleXY() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.scaleXY()
+        assertFalse geometries[0].equals(geometries[1])
+    }
+
+    @Test void scaleXYAroundPoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.scaleXYAroundPoint()
+        assertFalse geometries[0].equals(geometries[1])
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {
