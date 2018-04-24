@@ -2476,6 +2476,46 @@ Geometry translatedGeometry = geometry.translate(<span class="float">2.1</span>,
 <img src="./images/geometry_translate.png" alt="geometry translate">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Scale a geometry a given amount in an x and y direction around the origin</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>(<span class="keyword">new</span> LinearRing([
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>],
+        [-<span class="float">122.76123046875</span>, <span class="float">46.9802523552188</span>],
+        [-<span class="float">122.67333984374</span>, <span class="float">46.3014061543733</span>],
+        [-<span class="float">121.00341796874</span>, <span class="float">46.3772542051002</span>],
+        [-<span class="float">121.22314453124</span>, <span class="float">47.1448974855539</span>],
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>]
+]))
+Geometry scaledGeometry = geometry.scale(<span class="float">1.1</span>,<span class="float">1.2</span>)
+println scaledGeometry</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_scalexy.png" alt="geometry scalexy">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Scale a geometry a given amount in an x and y direction around a point</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>(<span class="keyword">new</span> LinearRing([
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>],
+        [-<span class="float">122.76123046875</span>, <span class="float">46.9802523552188</span>],
+        [-<span class="float">122.67333984374</span>, <span class="float">46.3014061543733</span>],
+        [-<span class="float">121.00341796874</span>, <span class="float">46.3772542051002</span>],
+        [-<span class="float">121.22314453124</span>, <span class="float">47.1448974855539</span>],
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>]
+]))
+<span class="predefined-type">Point</span> centroid = geometry.centroid
+Geometry scaledGeometry = geometry.scale(<span class="float">1.1</span>, <span class="float">1.1</span>, centroid.x, centroid.y)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_scalexy_around_point.png" alt="geometry scalexy around point">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -3115,7 +3155,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-22 18:16:44 UTC
+Last updated 2018-04-24 00:19:37 UTC
 </div>
 </div>
 </body>
