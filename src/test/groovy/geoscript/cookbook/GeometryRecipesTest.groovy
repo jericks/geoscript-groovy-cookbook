@@ -495,6 +495,14 @@ class GeometryRecipesTest {
         List<Geometry> geometries = recipes.rotate()
         assertFalse geometries[0].equals(geometries[1])
         assertFalse geometries[0].equals(geometries[2])
+        assertFalse geometries[0].equals(geometries[3])
+        assertFalse geometries[0].equals(geometries[4])
+    }
+
+    @Test void shear() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.shear()
+        assertFalse geometries[0].equals(geometries[1])
     }
 
     // Geometry IO

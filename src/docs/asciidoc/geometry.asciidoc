@@ -829,6 +829,15 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=rotate_sinco
 [.thumb]
 image::geometry_rotate_sincosxy.png[]
 
+[source,groovy]
+.Shear a Geometry around it's origin by a given distance along the x and y axis.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=shear,indent=0]
+----
+[.thumb]
+image::geometry_shear1.png[]
+[.thumb]
+image::geometry_shear2.png[]
 
 === Reading and Writing Geometries
 
