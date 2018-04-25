@@ -2578,6 +2578,31 @@ Geometry theta = geometry.rotate(<span class="predefined-type">Math</span>.toRad
 <img src="./images/geometry_rotate_sincosxy.png" alt="geometry rotate sincosxy">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Shear a Geometry around it&#8217;s origin by a given distance along the x and y axis.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>(<span class="keyword">new</span> LinearRing([
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>],
+        [-<span class="float">122.76123046875</span>, <span class="float">46.9802523552188</span>],
+        [-<span class="float">122.67333984374</span>, <span class="float">46.3014061543733</span>],
+        [-<span class="float">121.00341796874</span>, <span class="float">46.3772542051002</span>],
+        [-<span class="float">121.22314453124</span>, <span class="float">47.1448974855539</span>],
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>]
+]))
+Geometry shearedGeometry = geometry.shear(<span class="float">0.1</span>,<span class="float">0.4</span>)
+println shearedGeometry</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_shear1.png" alt="geometry shear1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_shear2.png" alt="geometry shear2">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -3217,7 +3242,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-25 01:28:36 UTC
+Last updated 2018-04-25 03:21:31 UTC
 </div>
 </div>
 </body>
