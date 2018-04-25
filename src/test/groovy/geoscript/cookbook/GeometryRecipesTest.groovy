@@ -490,6 +490,13 @@ class GeometryRecipesTest {
         assertFalse geometries[0].equals(geometries[1])
     }
 
+    @Test void rotate() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.rotate()
+        assertFalse geometries[0].equals(geometries[1])
+        assertFalse geometries[0].equals(geometries[2])
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

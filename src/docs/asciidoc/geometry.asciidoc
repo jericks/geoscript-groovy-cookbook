@@ -793,6 +793,42 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=scaleXYAroun
 [.thumb]
 image::geometry_scalexy_around_point.png[]
 
+[source,groovy]
+.Rotate a Geometry around it's origin by a given angle theta (in radians).
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=rotate_theta,indent=0]
+----
+[.thumb]
+image::geometry_rotate_theta1.png[]
+[.thumb]
+image::geometry_rotate_theta2.png[]
+
+[source,groovy]
+.Rotate a Geometry around an XY coordinate by a given angle theta (in radians).
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=rotate_thetaxy,indent=0]
+----
+[.thumb]
+image::geometry_rotate_thetaxy.png[]
+
+[source,groovy]
+.Rotate a Geometry around it's origin by a given angle sine and cosine (in radians).
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=rotate_sincos,indent=0]
+----
+[.thumb]
+image::geometry_rotate_sincos1.png[]
+[.thumb]
+image::geometry_rotate_sincos2.png[]
+
+[source,groovy]
+.Rotate a Geometry around an XY coordinate by a given angle sine and cosine (in radians).
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=rotate_sincosxy,indent=0]
+----
+[.thumb]
+image::geometry_rotate_sincosxy.png[]
+
 
 === Reading and Writing Geometries
 

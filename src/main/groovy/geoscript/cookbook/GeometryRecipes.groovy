@@ -1642,6 +1642,40 @@ ${polygon1.relate(polygon2, "222222222")}
         [geometry,scaledGeometry]
     }
 
+    List<Geometry> rotate() {
+        // tag::rotate_theta[]
+        Geometry geometry = new Polygon(new LinearRing([
+                [-121.83837890625, 47.5913464767971],
+                [-122.76123046875, 46.9802523552188],
+                [-122.67333984374, 46.3014061543733],
+                [-121.00341796874, 46.3772542051002],
+                [-121.22314453124, 47.1448974855539],
+                [-121.83837890625, 47.5913464767971]
+        ]))
+        Geometry theta = geometry.rotate(Math.toRadians(45))
+        // end::rotate_theta[]
+        drawGeometry("geometry_rotate_theta1", geometry)
+        drawGeometry("geometry_rotate_theta2", theta)
+
+        // tag::rotate_sincos[]
+        Geometry sinCos = geometry.rotate(Math.toRadians(15), Math.toRadians(35))
+        // end::rotate_sincos[]
+        drawGeometry("geometry_rotate_sincos1", geometry)
+        drawGeometry("geometry_rotate_sincos2", sinCos)
+
+        // tag::rotate_thetaxy[]
+        Geometry thetaXY = geometry.rotate(Math.toRadians(90), geometry.centroid.x, geometry.centroid.y)
+        // end::rotate_thetaxy[]
+        drawGeometries("geometry_rotate_thetaxy", [geometry, thetaXY])
+
+        // tag::rotate_sincosxy[]
+        Geometry sinCosXY = geometry.rotate(Math.toRadians(15), Math.toRadians(35), geometry.centroid.x, geometry.centroid.y)
+        // end::rotate_sincosxy[]
+        drawGeometries("geometry_rotate_sincosxy", [geometry, sinCosXY])
+
+        [geometry, theta, sinCos, thetaXY, sinCosXY]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {
