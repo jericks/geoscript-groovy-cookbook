@@ -2951,6 +2951,68 @@ Geometry scaledGeometry = geometry.scale(<span class="float">1.1</span>, <span c
 <img src="./images/geometry_scalexy_around_point.png" alt="geometry scalexy around point">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Rotate a Geometry around it&#8217;s origin by a given angle theta (in radians).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>(<span class="keyword">new</span> LinearRing([
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>],
+        [-<span class="float">122.76123046875</span>, <span class="float">46.9802523552188</span>],
+        [-<span class="float">122.67333984374</span>, <span class="float">46.3014061543733</span>],
+        [-<span class="float">121.00341796874</span>, <span class="float">46.3772542051002</span>],
+        [-<span class="float">121.22314453124</span>, <span class="float">47.1448974855539</span>],
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>]
+]))
+Geometry theta = geometry.rotate(<span class="predefined-type">Math</span>.toRadians(<span class="integer">45</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_theta1.png" alt="geometry rotate theta1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_theta2.png" alt="geometry rotate theta2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Rotate a Geometry around an XY coordinate by a given angle theta (in radians).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry thetaXY = geometry.rotate(<span class="predefined-type">Math</span>.toRadians(<span class="integer">90</span>), geometry.centroid.x, geometry.centroid.y)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_thetaxy.png" alt="geometry rotate thetaxy">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Rotate a Geometry around it&#8217;s origin by a given angle sine and cosine (in radians).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry sinCos = geometry.rotate(<span class="predefined-type">Math</span>.toRadians(<span class="integer">15</span>), <span class="predefined-type">Math</span>.toRadians(<span class="integer">35</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_sincos1.png" alt="geometry rotate sincos1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_sincos2.png" alt="geometry rotate sincos2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Rotate a Geometry around an XY coordinate by a given angle sine and cosine (in radians).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry sinCosXY = geometry.rotate(<span class="predefined-type">Math</span>.toRadians(<span class="integer">15</span>), <span class="predefined-type">Math</span>.toRadians(<span class="integer">35</span>), geometry.centroid.x, geometry.centroid.y)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_sincosxy.png" alt="geometry rotate sincosxy">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -6230,7 +6292,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-1ffeab26_162f50b0910_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-56235e98_162fa70d584_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -6945,7 +7007,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Apr 24 00:26:04 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Apr 25 01:35:21 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6964,7 +7026,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-1ffeab26_162f50b0910_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-56235e98_162fa70d584_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6988,7 +7050,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Apr 24 00:26:04 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Apr 25 01:35:21 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7008,7 +7070,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-1ffeab26_162f50b0910_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-56235e98_162fa70d584_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -7170,7 +7232,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-1ffeab26_162f50b0910_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-56235e98_162fa70d584_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7208,7 +7270,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-1ffeab26_162f50b0910_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-56235e98_162fa70d584_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -8470,73 +8532,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:isValid
-geo:buffer
-geo:union
-geo:intersection
-geo:difference
-geo:interiorRingN
-geo:area
-geo:numGeometries
-geo:isSimple
-geo:isWithinDistance
-geo:relate
-geo:densify
-geo:simplify
-geo:numPoints
-geo:reproject
-geo:isClosed
-geo:within
-geo:touches
-geo:convexHull
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:overlaps
-geo:crosses
-geo:symDifference
-geo:distance
-geo:envelope
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:getX
-geo:getY
-geo:polygonize
-geo:isRing
-geo:startPoint
-geo:endPoint
-geo:splitPolygon
-geo:equalsExact
-geo:pointN
-geo:equalsExactTolerance
-geo:relatePattern
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -8565,7 +8561,73 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics</pre>
+vec:VectorZonalStatistics
+geo:union
+geo:intersection
+geo:isValid
+geo:buffer
+geo:difference
+geo:area
+geo:numGeometries
+geo:isClosed
+geo:getGeometryN
+geo:overlaps
+geo:isSimple
+geo:isWithinDistance
+geo:relate
+geo:densify
+geo:simplify
+geo:numPoints
+geo:reproject
+geo:within
+geo:touches
+geo:convexHull
+geo:crosses
+geo:symDifference
+geo:distance
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:getX
+geo:getY
+geo:isRing
+geo:startPoint
+geo:endPoint
+geo:polygonize
+geo:equalsExact
+geo:interiorRingN
+geo:equalsExactTolerance
+geo:relatePattern
+geo:pointN
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage</pre>
 </div>
 </div>
 </div>
@@ -10879,19 +10941,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory of spatial files (shapefiles)
+<pre>H2
+MySQL
 PostGIS (JNDI)
-Properties
+Shapefile
 Web Feature Server (NG)
-Geobuf
-H2
-PostGIS
+MySQL (JNDI)
+Directory of spatial files (shapefiles)
 SpatiaLite (JNDI)
 GeoPackage
 H2 (JNDI)
-Shapefile
-MySQL (JNDI)
-MySQL</pre>
+Properties
+Geobuf
+PostGIS</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11001,19 +11063,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory of spatial files (shapefiles)
+<pre>H2
+MySQL
 PostGIS (JNDI)
-Properties
+Shapefile
 Web Feature Server (NG)
-Geobuf
-H2
-PostGIS
+MySQL (JNDI)
+Directory of spatial files (shapefiles)
 SpatiaLite (JNDI)
 GeoPackage
 H2 (JNDI)
-Shapefile
-MySQL (JNDI)
-MySQL</pre>
+Properties
+Geobuf
+PostGIS</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -12741,7 +12803,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-1ffeab26_162f50b0910_-6acd"
+            "id": "fid-56235e98_162fa70d584_-6acd"
         },
         {
             "type": "Feature",
@@ -12756,7 +12818,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-1ffeab26_162f50b0910_-6acb"
+            "id": "fid-56235e98_162fa70d584_-6acb"
         }
     ]
 }</pre>
@@ -12847,7 +12909,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-1ffeab26_162f50b0910_-7489"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-56235e98_162fa70d584_-7489"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -12869,7 +12931,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-1ffeab26_162f50b0910_-7487"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-56235e98_162fa70d584_-7487"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -12935,7 +12997,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-1ffeab26_162f50b0910_-6b07
+          fid-56235e98_162fa70d584_-6b07
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -12962,7 +13024,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-1ffeab26_162f50b0910_-6b05
+          fid-56235e98_162fa70d584_-6b05
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -14923,7 +14985,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-24 00:19:37 UTC
+Last updated 2018-04-25 01:28:36 UTC
 </div>
 </div>
 </body>

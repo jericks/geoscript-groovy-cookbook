@@ -2516,6 +2516,68 @@ Geometry scaledGeometry = geometry.scale(<span class="float">1.1</span>, <span c
 <img src="./images/geometry_scalexy_around_point.png" alt="geometry scalexy around point">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Rotate a Geometry around it&#8217;s origin by a given angle theta (in radians).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>(<span class="keyword">new</span> LinearRing([
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>],
+        [-<span class="float">122.76123046875</span>, <span class="float">46.9802523552188</span>],
+        [-<span class="float">122.67333984374</span>, <span class="float">46.3014061543733</span>],
+        [-<span class="float">121.00341796874</span>, <span class="float">46.3772542051002</span>],
+        [-<span class="float">121.22314453124</span>, <span class="float">47.1448974855539</span>],
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>]
+]))
+Geometry theta = geometry.rotate(<span class="predefined-type">Math</span>.toRadians(<span class="integer">45</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_theta1.png" alt="geometry rotate theta1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_theta2.png" alt="geometry rotate theta2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Rotate a Geometry around an XY coordinate by a given angle theta (in radians).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry thetaXY = geometry.rotate(<span class="predefined-type">Math</span>.toRadians(<span class="integer">90</span>), geometry.centroid.x, geometry.centroid.y)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_thetaxy.png" alt="geometry rotate thetaxy">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Rotate a Geometry around it&#8217;s origin by a given angle sine and cosine (in radians).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry sinCos = geometry.rotate(<span class="predefined-type">Math</span>.toRadians(<span class="integer">15</span>), <span class="predefined-type">Math</span>.toRadians(<span class="integer">35</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_sincos1.png" alt="geometry rotate sincos1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_sincos2.png" alt="geometry rotate sincos2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Rotate a Geometry around an XY coordinate by a given angle sine and cosine (in radians).</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry sinCosXY = geometry.rotate(<span class="predefined-type">Math</span>.toRadians(<span class="integer">15</span>), <span class="predefined-type">Math</span>.toRadians(<span class="integer">35</span>), geometry.centroid.x, geometry.centroid.y)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_rotate_sincosxy.png" alt="geometry rotate sincosxy">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -3155,7 +3217,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-24 00:19:37 UTC
+Last updated 2018-04-25 01:28:36 UTC
 </div>
 </div>
 </body>
