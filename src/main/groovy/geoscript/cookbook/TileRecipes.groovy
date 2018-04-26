@@ -714,6 +714,28 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
 
     // OSM
 
+    OSM createOSM() {
+        // tag::createOSM[]
+        OSM osm = new OSM()
+        // end::createOSM[]
+        RenderedImage image = osm.getRaster(osm.tiles(1)).image
+        saveImage("tile_osm_default", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        osm
+    }
+
+    OSM createOSMUrls() {
+        // tag::createOSMUrls[]
+        OSM osm = new OSM("OSM", [
+            "http://a.tile.openstreetmap.org",
+            "http://b.tile.openstreetmap.org",
+            "http://c.tile.openstreetmap.org"
+        ])
+        // end::createOSMUrls[]
+        RenderedImage image = osm.getRaster(osm.tiles(1)).image
+        saveImage("tile_osm_urls", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        osm
+    }
+
     OSM getWellKnownOSM() {
         // tag::getWellKnownOSM[]
         OSM osm = OSM.getWellKnownOSM("osm")

@@ -440,6 +440,18 @@ BOTTOM_LEFT
 
     // OSM
 
+    @Test void createOSM() {
+        TileRecipes recipes = new TileRecipes()
+        OSM osm = recipes.createOSM()
+        assertNotNull(osm)
+    }
+
+    @Test void createOSMUrls() {
+        TileRecipes recipes = new TileRecipes()
+        OSM osm = recipes.createOSMUrls()
+        assertNotNull(osm)
+    }
+
     @Test void getWellKnownOSM() {
         TileRecipes recipes = new TileRecipes()
         OSM osm = recipes.getWellKnownOSM()

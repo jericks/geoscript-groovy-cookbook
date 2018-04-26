@@ -456,6 +456,24 @@ include::output/tile_cursor_boundswidthheight.txt[]
 
 === OSM
 
+Create a TileLayer for OSM tiles.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createOSM,indent=0]
+----
+[.thumb]
+image::tile_osm_default.png[]
+
+Create a TileLayer for OSM tiles with custom urls.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createOSMUrls,indent=0]
+----
+[.thumb]
+image::tile_osm_urls.png[]
+
 ==== Standard OSM
 
 Create a TileLayer for OSM tiles.
