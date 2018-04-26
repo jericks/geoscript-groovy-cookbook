@@ -2589,8 +2589,7 @@ Geometry theta = geometry.rotate(<span class="predefined-type">Math</span>.toRad
         [-<span class="float">121.22314453124</span>, <span class="float">47.1448974855539</span>],
         [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>]
 ]))
-Geometry shearedGeometry = geometry.shear(<span class="float">0.1</span>,<span class="float">0.4</span>)
-println shearedGeometry</code></pre>
+Geometry shearedGeometry = geometry.shear(<span class="float">0.1</span>,<span class="float">0.4</span>)</code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -2601,6 +2600,42 @@ println shearedGeometry</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_shear2.png" alt="geometry shear2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Reflect a Geometry around an XY coordinate for given distance along the x and y axis</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>(<span class="keyword">new</span> LinearRing([
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>],
+        [-<span class="float">122.76123046875</span>, <span class="float">46.9802523552188</span>],
+        [-<span class="float">122.67333984374</span>, <span class="float">46.3014061543733</span>],
+        [-<span class="float">121.00341796874</span>, <span class="float">46.3772542051002</span>],
+        [-<span class="float">121.22314453124</span>, <span class="float">47.1448974855539</span>],
+        [-<span class="float">121.83837890625</span>, <span class="float">47.5913464767971</span>]
+]))
+<span class="predefined-type">Point</span> centroid = geometry.centroid
+Geometry reflectedGeometry = geometry.reflect(<span class="float">0.1</span>,<span class="float">0.4</span>, centroid.x, centroid.y)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_reflect.png" alt="geometry reflect">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Reflect a Geometry around the origin for given distance along the x and y axis</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry reflectedAroundOrigin = geometry.reflect(<span class="float">0.5</span>, <span class="float">0.34</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_reflect2.png" alt="geometry reflect2">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_reflected2.png" alt="geometry reflected2">
 </div>
 </div>
 </div>
@@ -3242,7 +3277,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-25 03:21:31 UTC
+Last updated 2018-04-26 01:17:09 UTC
 </div>
 </div>
 </body>
