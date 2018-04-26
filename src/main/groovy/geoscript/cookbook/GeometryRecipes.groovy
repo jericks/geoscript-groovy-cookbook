@@ -1687,11 +1687,34 @@ ${polygon1.relate(polygon2, "222222222")}
                 [-121.83837890625, 47.5913464767971]
         ]))
         Geometry shearedGeometry = geometry.shear(0.1,0.4)
-        println shearedGeometry
         // end::shear[]
         drawGeometry("geometry_shear1", geometry)
         drawGeometry("geometry_shear2", shearedGeometry)
         [geometry,shearedGeometry]
+    }
+
+    List<Geometry> reflect() {
+        // tag::reflect1[]
+        Geometry geometry = new Polygon(new LinearRing([
+                [-121.83837890625, 47.5913464767971],
+                [-122.76123046875, 46.9802523552188],
+                [-122.67333984374, 46.3014061543733],
+                [-121.00341796874, 46.3772542051002],
+                [-121.22314453124, 47.1448974855539],
+                [-121.83837890625, 47.5913464767971]
+        ]))
+        Point centroid = geometry.centroid
+        Geometry reflectedGeometry = geometry.reflect(0.1,0.4, centroid.x, centroid.y)
+        // end::reflect1[]
+        drawGeometries("geometry_reflect", [geometry, reflectedGeometry])
+
+        // tag::reflect2[]
+        Geometry reflectedAroundOrigin = geometry.reflect(0.5, 0.34)
+        // end::reflect2[]
+        drawGeometry("geometry_reflect2", geometry)
+        drawGeometry("geometry_reflected2", reflectedAroundOrigin)
+
+        [geometry,reflectedGeometry,reflectedAroundOrigin]
     }
 
     // Geometry Readers and Writers

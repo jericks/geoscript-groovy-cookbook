@@ -505,6 +505,13 @@ class GeometryRecipesTest {
         assertFalse geometries[0].equals(geometries[1])
     }
 
+    @Test void reflect() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.reflect()
+        assertFalse geometries[0].equals(geometries[1])
+        assertFalse geometries[0].equals(geometries[2])
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

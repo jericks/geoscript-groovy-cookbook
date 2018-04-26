@@ -839,6 +839,26 @@ image::geometry_shear1.png[]
 [.thumb]
 image::geometry_shear2.png[]
 
+
+[source,groovy]
+.Reflect a Geometry around an XY coordinate for given distance along the x and y axis
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=reflect1,indent=0]
+----
+[.thumb]
+image::geometry_reflect.png[]
+
+[source,groovy]
+.Reflect a Geometry around the origin for given distance along the x and y axis
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=reflect2,indent=0]
+----
+[.thumb]
+image::geometry_reflect2.png[]
+[.thumb]
+image::geometry_reflected2.png[]
+
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
