@@ -867,6 +867,14 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=reducePrecis
 include::output/geometry_reducePrecision.txt[]
 ....
 
+[source,groovy]
+.Find the nearest points in one Geometry to another
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getNearestPoints,indent=0]
+----
+[.thumb]
+image::geometry_nearestpoints.png[]
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package

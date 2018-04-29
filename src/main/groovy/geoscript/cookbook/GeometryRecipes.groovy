@@ -1739,6 +1739,22 @@ Floating Point Single Geometry: ${g4.wkt}
         [g1,g2,g3,g4]
     }
 
+    List<Geometry> getNearestPoints() {
+        // tag::getNearestPoints[]
+        Geometry point = new Point( -122.3845276236534, 47.58285653105873)
+        Geometry polygon = Geometry.fromWKT("POLYGON ((-122.3848307132721 47.58285110342092, " +
+                "-122.38484144210814 47.58255620092149, -122.38469392061235 47.582558010144346, " +
+                "-122.3846912384033 47.5825797208137, -122.38460808992384 47.58258695770149, " +
+                "-122.38460808992384 47.582628569786834, -122.38458126783371 47.58263037900717, " +
+                "-122.38458126783371 47.58277330721735, -122.38460540771483 47.58277149800195, " +
+                "-122.38460540771483 47.582805873084084, -122.38467246294022 47.5828131099406, " +
+                "-122.38467246294022 47.58285110342092, -122.3848307132721 47.58285110342092))")
+        List<Point> nearestPoints = polygon.getNearestPoints(point)
+        // end::getNearestPoints[]
+        drawGeometries("geometry_nearestpoints", [point, polygon, new MultiPoint(nearestPoints)], drawCoords: false)
+        nearestPoints
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

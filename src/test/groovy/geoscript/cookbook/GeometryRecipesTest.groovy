@@ -521,6 +521,12 @@ class GeometryRecipesTest {
         assertEquals "POINT (5.19775390625 51.07421875)", geometries[3].wkt
     }
 
+    @Test void getNearestPoints() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Point> points = recipes.getNearestPoints()
+        assertEquals 2, points.size()
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {
