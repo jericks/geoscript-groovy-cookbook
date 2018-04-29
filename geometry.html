@@ -2638,6 +2638,30 @@ Geometry reflectedGeometry = geometry.reflect(<span class="float">0.1</span>,<sp
 <img src="./images/geometry_reflected2.png" alt="geometry reflected2">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Reduce the precision of a Geometry&#8217;s coordinates.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry g1 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="float">5.19775390625</span>, <span class="float">51.07421875</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Original Geometry: </span><span class="inline"><span class="inline-delimiter">${</span>g1.wkt<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+Geometry g2 = g1.reducePrecision()
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Floating Point Geometry: </span><span class="inline"><span class="inline-delimiter">${</span>g2.wkt<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+Geometry g3 = g1.reducePrecision(<span class="string"><span class="delimiter">&quot;</span><span class="content">fixed</span><span class="delimiter">&quot;</span></span>, <span class="key">scale</span>: <span class="integer">100</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Fixed Point Geometry: </span><span class="inline"><span class="inline-delimiter">${</span>g3.wkt<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+Geometry g4 = g1.reducePrecision(<span class="string"><span class="delimiter">&quot;</span><span class="content">floating_single</span><span class="delimiter">&quot;</span></span>, <span class="key">pointwise</span>: <span class="predefined-constant">true</span>, <span class="key">removecollapsed</span>: <span class="predefined-constant">true</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Floating Point Single Geometry: </span><span class="inline"><span class="inline-delimiter">${</span>g4.wkt<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Original Geometry: POINT (5.19775390625 51.07421875)
+Floating Point Geometry: POINT (5.19775390625 51.07421875)
+Fixed Point Geometry: POINT (5.2 51.07)
+Floating Point Single Geometry: POINT (5.19775390625 51.07421875)</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -3277,7 +3301,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-26 02:17:59 UTC
+Last updated 2018-04-29 20:26:04 UTC
 </div>
 </div>
 </body>

@@ -635,17 +635,13 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:union
-geo:intersection
-geo:isValid
+<pre>geo:isValid
 geo:buffer
+geo:union
+geo:intersection
 geo:difference
 geo:area
 geo:numGeometries
-geo:envelope
-geo:isClosed
-geo:numPoints
-geo:reproject
 geo:within
 geo:touches
 geo:convexHull
@@ -657,27 +653,31 @@ geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:overlaps
+geo:isClosed
 geo:isSimple
 geo:isWithinDistance
 geo:relate
 geo:densify
 geo:simplify
+geo:numPoints
+geo:reproject
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
 geo:getX
 geo:getY
 geo:polygonize
 geo:isRing
 geo:startPoint
 geo:endPoint
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
 geo:equalsExact
-geo:equalsExactTolerance
-geo:pointN
-geo:relatePattern
-geo:interiorRingN
 geo:splitPolygon
+geo:relatePattern
+geo:pointN
+geo:equalsExactTolerance
+geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
@@ -839,7 +839,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-26 02:17:59 UTC
+Last updated 2018-04-29 20:26:04 UTC
 </div>
 </div>
 </body>
