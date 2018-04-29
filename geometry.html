@@ -2662,6 +2662,25 @@ Fixed Point Geometry: POINT (5.2 51.07)
 Floating Point Single Geometry: POINT (5.19775390625 51.07421875)</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Find the nearest points in one Geometry to another</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry point = <span class="keyword">new</span> <span class="predefined-type">Point</span>( -<span class="float">122.3845276236534</span>, <span class="float">47.58285653105873</span>)
+Geometry polygon = Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POLYGON ((-122.3848307132721 47.58285110342092, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38484144210814 47.58255620092149, -122.38469392061235 47.582558010144346, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.3846912384033 47.5825797208137, -122.38460808992384 47.58258695770149, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38460808992384 47.582628569786834, -122.38458126783371 47.58263037900717, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38458126783371 47.58277330721735, -122.38460540771483 47.58277149800195, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38460540771483 47.582805873084084, -122.38467246294022 47.5828131099406, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38467246294022 47.58285110342092, -122.3848307132721 47.58285110342092))</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">Point</span>&gt; nearestPoints = polygon.getNearestPoints(point)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_nearestpoints.png" alt="geometry nearestpoints">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -3301,7 +3320,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-29 20:26:04 UTC
+Last updated 2018-04-29 20:44:50 UTC
 </div>
 </div>
 </body>
