@@ -1717,6 +1717,28 @@ ${polygon1.relate(polygon2, "222222222")}
         [geometry,reflectedGeometry,reflectedAroundOrigin]
     }
 
+    List<Geometry> reducePrecision() {
+        // tag::reducePrecision[]
+        Geometry g1 = new Point(5.19775390625, 51.07421875)
+        println "Original Geometry: ${g1.wkt}"
+
+        Geometry g2 = g1.reducePrecision()
+        println "Floating Point Geometry: ${g2.wkt}"
+
+        Geometry g3 = g1.reducePrecision("fixed", scale: 100)
+        println "Fixed Point Geometry: ${g3.wkt}"
+
+        Geometry g4 = g1.reducePrecision("floating_single", pointwise: true, removecollapsed: true)
+        println "Floating Point Single Geometry: ${g4.wkt}"
+        // end::reducePrecision[]
+        writeFile("geometry_reducePrecision", """Original Geometry: ${g1.wkt}
+Floating Point Geometry: ${g2.wkt}              
+Fixed Point Geometry: ${g3.wkt} 
+Floating Point Single Geometry: ${g4.wkt}
+""")
+        [g1,g2,g3,g4]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

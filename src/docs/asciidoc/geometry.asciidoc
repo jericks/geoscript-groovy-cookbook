@@ -858,6 +858,14 @@ image::geometry_reflect2.png[]
 [.thumb]
 image::geometry_reflected2.png[]
 
+[source,groovy]
+.Reduce the precision of a Geometry's coordinates.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=reducePrecision,indent=0]
+----
+....
+include::output/geometry_reducePrecision.txt[]
+....
 
 === Reading and Writing Geometries
 

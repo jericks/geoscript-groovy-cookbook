@@ -512,6 +512,15 @@ class GeometryRecipesTest {
         assertFalse geometries[0].equals(geometries[2])
     }
 
+    @Test void reducePrecision() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries = recipes.reducePrecision()
+        assertEquals "POINT (5.19775390625 51.07421875)", geometries[0].wkt
+        assertEquals "POINT (5.19775390625 51.07421875)", geometries[1].wkt
+        assertEquals "POINT (5.2 51.07)", geometries[2].wkt
+        assertEquals "POINT (5.19775390625 51.07421875)", geometries[3].wkt
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {
