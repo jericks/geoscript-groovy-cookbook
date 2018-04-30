@@ -874,6 +874,37 @@ POINT (-122.48382568359374 47.431803338643334)</pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Cast a Geometry to a Bounds or to a Point</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+    [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+    [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+    [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+    [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+    [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+    [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+
+Bounds bounds = geometry <span class="keyword">as</span> Bounds
+println bounds
+
+<span class="predefined-type">Point</span> point = geometry <span class="keyword">as</span> <span class="predefined-type">Point</span>
+println point</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>(-122.64,46.308,-120.981,47.413)
+POINT (-121.73789467295867 46.95085967283822)</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_astype.png" alt="geometry astype">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Get the area of a Geometry</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
@@ -3345,7 +3376,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-30 23:24:56 UTC
+Last updated 2018-04-30 23:34:47 UTC
 </div>
 </div>
 </body>
