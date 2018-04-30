@@ -138,6 +138,17 @@ include::output/geometry_getat.txt[]
 ....
 
 [source,groovy]
+.Cast a Geometry to a Bounds or to a Point
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=asType,indent=0]
+----
+....
+include::output/geometry_astype.txt[]
+....
+[.thumb]
+image::geometry_astype.png[]
+
+[source,groovy]
 .Get the area of a Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getArea,indent=0]

@@ -39,6 +39,7 @@ import geoscript.geom.io.WktWriter
 import geoscript.geom.io.Writer
 import geoscript.geom.io.Writers
 import geoscript.viewer.Viewer
+import org.apache.bcel.generic.NEW
 
 class GeometryRecipes extends Recipes {
   
@@ -1776,6 +1777,29 @@ ${p2.wkt}
 ${p3.wkt}
 """)
         [p1,p2,p3]
+    }
+
+    List<Object> asType() {
+        // tag::asType[]
+        Geometry geometry = new Polygon([[
+            [-121.915, 47.390],
+            [-122.640, 46.995],
+            [-121.739, 46.308],
+            [-121.168, 46.777],
+            [-120.981, 47.316],
+            [-121.409, 47.413],
+            [-121.915, 47.390]
+        ]])
+
+        Bounds bounds = geometry as Bounds
+        println bounds
+
+        Point point = geometry as Point
+        println point
+        // end::asType[]
+        writeFile("geometry_astype","${bounds}${NEW_LINE}${point}")
+        drawGeometries("geometry_astype", [geometry, bounds.geometry, point])
+        [bounds, point]
     }
 
     // Geometry Readers and Writers
