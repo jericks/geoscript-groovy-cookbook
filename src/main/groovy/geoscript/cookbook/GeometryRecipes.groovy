@@ -1755,6 +1755,29 @@ Floating Point Single Geometry: ${g4.wkt}
         nearestPoints
     }
 
+    List<Point> getAt() {
+        // tag::getAt[]
+        MultiPoint multiPoint = new MultiPoint([
+                new Point(-122.3876953125, 47.5820839916191),
+                new Point(-122.464599609375, 47.25686404408872),
+                new Point(-122.48382568359374, 47.431803338643334)
+        ])
+        Point p1 = multiPoint[0]
+        println p1
+
+        Point p2 = multiPoint[1]
+        println p2
+
+        Point p3 = multiPoint[2]
+        println p3
+        // end::getAt[]
+        writeFile("geometry_getat", """${p1.wkt}
+${p2.wkt}
+${p3.wkt}
+""")
+        [p1,p2,p3]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

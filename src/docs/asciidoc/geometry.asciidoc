@@ -129,6 +129,15 @@ include::output/geometry_geometrytype.txt[]
 ....
 
 [source,groovy]
+.Get a Geometry by index in a GeometryCollection
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getAt,indent=0]
+----
+....
+include::output/geometry_getat.txt[]
+....
+
+[source,groovy]
 .Get the area of a Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getArea,indent=0]

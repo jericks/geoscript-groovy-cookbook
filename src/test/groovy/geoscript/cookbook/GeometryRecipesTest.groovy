@@ -527,6 +527,15 @@ class GeometryRecipesTest {
         assertEquals 2, points.size()
     }
 
+    @Test void getAt() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Point> points = recipes.getAt()
+        assertEquals 3, points.size()
+        assertEquals "POINT (-122.3876953125 47.5820839916191)", points[0].wkt
+        assertEquals "POINT (-122.464599609375 47.25686404408872)", points[1].wkt
+        assertEquals "POINT (-122.48382568359374 47.431803338643334)", points[2].wkt
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {
