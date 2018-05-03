@@ -1308,6 +1308,54 @@ Does POINT (-121.915 47.39) equal POINT (-121.409 47.413)? No</pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Determine if one Geometry equals another Geometry topologically.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point1 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">121.915</span>, <span class="float">47.390</span>)
+<span class="predefined-type">Point</span> point2 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">121.915</span>, <span class="float">47.390</span>)
+<span class="predefined-type">Point</span> point3 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">121.409</span>, <span class="float">47.413</span>)
+
+<span class="type">boolean</span> does1equal2 = point1.equalsTopo(point2)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does </span><span class="inline"><span class="inline-delimiter">${</span>point1<span class="inline-delimiter">}</span></span><span class="content"> equal </span><span class="inline"><span class="inline-delimiter">${</span>point2<span class="inline-delimiter">}</span></span><span class="content">? </span><span class="inline"><span class="inline-delimiter">${</span>does1equal2 ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="type">boolean</span> does1equal3 = point1.equalsTopo(point3)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does </span><span class="inline"><span class="inline-delimiter">${</span>point1<span class="inline-delimiter">}</span></span><span class="content"> equal </span><span class="inline"><span class="inline-delimiter">${</span>point3<span class="inline-delimiter">}</span></span><span class="content">? </span><span class="inline"><span class="inline-delimiter">${</span>does1equal3 ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="type">boolean</span> does2equal3 = point2.equalsTopo(point3)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does </span><span class="inline"><span class="inline-delimiter">${</span>point2<span class="inline-delimiter">}</span></span><span class="content"> equal </span><span class="inline"><span class="inline-delimiter">${</span>point3<span class="inline-delimiter">}</span></span><span class="content">? </span><span class="inline"><span class="inline-delimiter">${</span>does2equal3 ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Does POINT (-121.915 47.39) equal POINT (-121.915 47.39)? Yes
+Does POINT (-121.915 47.39) equal POINT (-121.409 47.413)? No
+Does POINT (-121.915 47.39) equal POINT (-121.409 47.413)? No</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Determine if one Geometry equals another Geometry when both are normalized.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geom1 = Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POLYGON ((2 4, 1 3, 2 1, 6 1, 6 3, 4 4, 2 4))</span><span class="delimiter">&quot;</span></span>)
+Geometry geom2 = Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POLYGON ((1 3, 2 4, 4 4, 6 3, 6 1, 2 1, 1 3))</span><span class="delimiter">&quot;</span></span>)
+Geometry geom3 = Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POLYGON ((1 1, 1 4, 4 4, 4 1, 1 1))</span><span class="delimiter">&quot;</span></span>)
+
+<span class="type">boolean</span> does1equal2 = geom1.equalsNorm(geom2)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does </span><span class="inline"><span class="inline-delimiter">${</span>geom1<span class="inline-delimiter">}</span></span><span class="content"> equal </span><span class="inline"><span class="inline-delimiter">${</span>geom2<span class="inline-delimiter">}</span></span><span class="content">? </span><span class="inline"><span class="inline-delimiter">${</span>does1equal2 ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="type">boolean</span> does1equal3 = geom1.equalsNorm(geom3)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does </span><span class="inline"><span class="inline-delimiter">${</span>geom1<span class="inline-delimiter">}</span></span><span class="content"> equal </span><span class="inline"><span class="inline-delimiter">${</span>geom3<span class="inline-delimiter">}</span></span><span class="content">? </span><span class="inline"><span class="inline-delimiter">${</span>does1equal3 ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="type">boolean</span> does2equal3 = geom2.equalsNorm(geom3)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does </span><span class="inline"><span class="inline-delimiter">${</span>geom2<span class="inline-delimiter">}</span></span><span class="content"> equal </span><span class="inline"><span class="inline-delimiter">${</span>geom3<span class="inline-delimiter">}</span></span><span class="content">? </span><span class="inline"><span class="inline-delimiter">${</span>does2equal3 ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Does POLYGON ((2 4, 1 3, 2 1, 6 1, 6 3, 4 4, 2 4)) equal POLYGON ((1 3, 2 4, 4 4, 6 3, 6 1, 2 1, 1 3))? Yes
+Does POLYGON ((2 4, 1 3, 2 1, 6 1, 6 3, 4 4, 2 4)) equal POLYGON ((1 1, 1 4, 4 4, 4 1, 1 1))? No
+Does POLYGON ((1 3, 2 4, 4 4, 6 3, 6 1, 2 1, 1 3)) equal POLYGON ((1 1, 1 4, 4 4, 4 1, 1 1))? No</pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Get a Geometry by index in a GeometryCollection</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">MultiPoint multiPoint = <span class="keyword">new</span> MultiPoint([
@@ -3217,7 +3265,7 @@ Closure timer = { Closure action -&gt;
     end - start
 }
 
-MultiPoint points = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>).geometry, <span class="integer">10000</span>)
+MultiPoint points = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>).geometry, <span class="integer">100000</span>)
 
 
 <span class="type">long</span> timeWithGeometry = timer({ -&gt;
@@ -3238,8 +3286,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 52200215 nanoseconds
-Time with PreparedGeometry = 45993536 nanoseconds</pre>
+<pre>Time with Geometry         = 762039475 nanoseconds
+Time with PreparedGeometry = 710401771 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3263,7 +3311,7 @@ Closure timer = { Closure action -&gt;
     end - start
 }
 
-MultiPoint points = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>).geometry, <span class="integer">10000</span>)
+MultiPoint points = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>).geometry, <span class="integer">100000</span>)
 
 
 <span class="type">long</span> timeWithGeometry = timer({ -&gt;
@@ -3284,8 +3332,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 17972676 nanoseconds
-Time with PreparedGeometry = 17341500 nanoseconds</pre>
+<pre>Time with Geometry         = 277726997 nanoseconds
+Time with PreparedGeometry = 157535675 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -6567,7 +6615,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--3d807abf_163285ac355_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-4f997ead_16328657042_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -7282,7 +7330,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu May 03 23:33:47 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu May 03 23:45:26 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7301,7 +7349,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--3d807abf_163285ac355_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-4f997ead_16328657042_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7325,7 +7373,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu May 03 23:33:47 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu May 03 23:45:26 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7345,7 +7393,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--3d807abf_163285ac355_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-4f997ead_16328657042_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -7507,7 +7555,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--3d807abf_163285ac355_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-4f997ead_16328657042_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7545,7 +7593,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--3d807abf_163285ac355_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-4f997ead_16328657042_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -8841,6 +8889,7 @@ geo:isValid
 geo:buffer
 geo:union
 geo:intersection
+geo:interiorRingN
 geo:difference
 geo:area
 geo:numGeometries
@@ -8855,30 +8904,29 @@ geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:overlaps
+geo:reproject
 geo:isSimple
 geo:isWithinDistance
 geo:relate
 geo:densify
 geo:simplify
 geo:numPoints
-geo:reproject
 geo:isClosed
-geo:envelope
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
+geo:envelope
 geo:getX
 geo:getY
+geo:polygonize
 geo:isRing
 geo:startPoint
 geo:endPoint
-geo:polygonize
 geo:equalsExact
-geo:interiorRingN
 geo:pointN
-geo:relatePattern
 geo:equalsExactTolerance
+geo:relatePattern
 geo:splitPolygon
 geo:length
 geo:isEmpty
@@ -11216,19 +11264,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL
-MySQL (JNDI)
-SpatiaLite (JNDI)
-PostGIS (JNDI)
-Geobuf
-Directory of spatial files (shapefiles)
-Properties
+<pre>Shapefile
 GeoPackage
-PostGIS
+SpatiaLite (JNDI)
 H2 (JNDI)
+MySQL
+MySQL (JNDI)
+Directory of spatial files (shapefiles)
+PostGIS
+Web Feature Server (NG)
+Properties
 H2
-Shapefile
-Web Feature Server (NG)</pre>
+PostGIS (JNDI)
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11338,19 +11386,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL
-MySQL (JNDI)
-SpatiaLite (JNDI)
-PostGIS (JNDI)
-Geobuf
-Directory of spatial files (shapefiles)
-Properties
+<pre>Shapefile
 GeoPackage
-PostGIS
+SpatiaLite (JNDI)
 H2 (JNDI)
+MySQL
+MySQL (JNDI)
+Directory of spatial files (shapefiles)
+PostGIS
+Web Feature Server (NG)
+Properties
 H2
-Shapefile
-Web Feature Server (NG)</pre>
+PostGIS (JNDI)
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -13078,7 +13126,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--3d807abf_163285ac355_-6acd"
+            "id": "fid-4f997ead_16328657042_-6acd"
         },
         {
             "type": "Feature",
@@ -13093,7 +13141,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--3d807abf_163285ac355_-6acb"
+            "id": "fid-4f997ead_16328657042_-6acb"
         }
     ]
 }</pre>
@@ -13184,7 +13232,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--3d807abf_163285ac355_-7489"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4f997ead_16328657042_-7489"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -13206,7 +13254,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--3d807abf_163285ac355_-7487"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4f997ead_16328657042_-7487"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -13272,7 +13320,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--3d807abf_163285ac355_-6b07
+          fid-4f997ead_16328657042_-6b07
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -13299,7 +13347,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--3d807abf_163285ac355_-6b05
+          fid-4f997ead_16328657042_-6b05
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -15290,7 +15338,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-03 23:27:18 UTC
+Last updated 2018-05-03 23:38:08 UTC
 </div>
 </div>
 </body>
