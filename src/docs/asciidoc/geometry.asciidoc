@@ -138,6 +138,25 @@ include::output/geometry_equals.txt[]
 ....
 
 [source,groovy]
+.Determine if one Geometry equals another Geometry topologically.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=equalsTopo,indent=0]
+----
+....
+include::output/geometry_equalstopo.txt[]
+....
+
+[source,groovy]
+.Determine if one Geometry equals another Geometry when both are normalized.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=equalsNorm,indent=0]
+----
+....
+include::output/geometry_equalsnorm.txt[]
+....
+
+
+[source,groovy]
 .Get a Geometry by index in a GeometryCollection
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getAt,indent=0]

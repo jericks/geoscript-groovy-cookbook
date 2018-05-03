@@ -552,6 +552,22 @@ class GeometryRecipesTest {
         assertFalse values[2]
     }
 
+    @Test void equalsTopo() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Boolean> values = recipes.equalsTopo()
+        assertTrue values[0]
+        assertFalse values[1]
+        assertFalse values[2]
+    }
+
+    @Test void equalsNorm() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Boolean> values = recipes.equalsNorm()
+        assertTrue values[0]
+        assertFalse values[1]
+        assertFalse values[2]
+    }
+
     @Test void prepare() {
         GeometryRecipes recipes = new GeometryRecipes()
         List<Long> times = recipes.prepare()

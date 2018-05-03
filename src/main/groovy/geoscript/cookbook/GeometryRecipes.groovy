@@ -1825,6 +1825,50 @@ Does ${point2} equal ${point3}? ${does2equal3 ? 'Yes' : 'No'}
         [does1equal2, does1equal3, does2equal3]
     }
 
+    List<Boolean> equalsTopo() {
+        //tag::equalsTopo[]
+        Point point1 = new Point(-121.915, 47.390)
+        Point point2 = new Point(-121.915, 47.390)
+        Point point3 = new Point(-121.409, 47.413)
+
+        boolean does1equal2 = point1.equalsTopo(point2)
+        println "Does ${point1} equal ${point2}? ${does1equal2 ? 'Yes' : 'No'}"
+
+        boolean does1equal3 = point1.equalsTopo(point3)
+        println "Does ${point1} equal ${point3}? ${does1equal3 ? 'Yes' : 'No'}"
+
+        boolean does2equal3 = point2.equalsTopo(point3)
+        println "Does ${point2} equal ${point3}? ${does2equal3 ? 'Yes' : 'No'}"
+        //end::equalsTopo[]
+        writeFile("geometry_equalstopo", """Does ${point1} equal ${point2}? ${does1equal2 ? 'Yes' : 'No'}
+Does ${point1} equal ${point3}? ${does1equal3 ? 'Yes' : 'No'}
+Does ${point2} equal ${point3}? ${does2equal3 ? 'Yes' : 'No'}
+""")
+        [does1equal2, does1equal3, does2equal3]
+    }
+
+    List<Boolean> equalsNorm() {
+        //tag::equalsNorm[]
+        Geometry geom1 = Geometry.fromWKT("POLYGON ((2 4, 1 3, 2 1, 6 1, 6 3, 4 4, 2 4))")
+        Geometry geom2 = Geometry.fromWKT("POLYGON ((1 3, 2 4, 4 4, 6 3, 6 1, 2 1, 1 3))")
+        Geometry geom3 = Geometry.fromWKT("POLYGON ((1 1, 1 4, 4 4, 4 1, 1 1))")
+
+        boolean does1equal2 = geom1.equalsNorm(geom2)
+        println "Does ${geom1} equal ${geom2}? ${does1equal2 ? 'Yes' : 'No'}"
+
+        boolean does1equal3 = geom1.equalsNorm(geom3)
+        println "Does ${geom1} equal ${geom3}? ${does1equal3 ? 'Yes' : 'No'}"
+
+        boolean does2equal3 = geom2.equalsNorm(geom3)
+        println "Does ${geom2} equal ${geom3}? ${does2equal3 ? 'Yes' : 'No'}"
+        //end::equalsNorm[]
+        writeFile("geometry_equalsnorm", """Does ${geom1} equal ${geom2}? ${does1equal2 ? 'Yes' : 'No'}
+Does ${geom1} equal ${geom3}? ${does1equal3 ? 'Yes' : 'No'}
+Does ${geom2} equal ${geom3}? ${does2equal3 ? 'Yes' : 'No'}
+""")
+        [does1equal2, does1equal3, does2equal3]
+    }
+
     List<Long> prepare() {
 
         //tag::prepare[]
@@ -1846,7 +1890,7 @@ Does ${point2} equal ${point3}? ${does2equal3 ? 'Yes' : 'No'}
             end - start
         }
 
-        MultiPoint points = Geometry.createRandomPoints(new Bounds(-180, -90, 180, 90).geometry, 10000)
+        MultiPoint points = Geometry.createRandomPoints(new Bounds(-180, -90, 180, 90).geometry, 100000)
 
 
         long timeWithGeometry = timer({ ->
@@ -1891,7 +1935,7 @@ Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
             end - start
         }
 
-        MultiPoint points = Geometry.createRandomPoints(new Bounds(-180, -90, 180, 90).geometry, 10000)
+        MultiPoint points = Geometry.createRandomPoints(new Bounds(-180, -90, 180, 90).geometry, 100000)
 
 
         long timeWithGeometry = timer({ ->
