@@ -3238,8 +3238,54 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 56104267 nanoseconds
-Time with PreparedGeometry = 48323543 nanoseconds</pre>
+<pre>Time with Geometry         = 52200215 nanoseconds
+Time with PreparedGeometry = 45993536 nanoseconds</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Convert a Geometry to a PreparedGeometry using a static method for more effecient spatial queries.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+     [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+     [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+     [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+     [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+     [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+     [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+     [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+PreparedGeometry preparedGeometry = Geometry.prepare(geometry)
+
+Closure timer = { Closure action -&gt;
+    <span class="type">long</span> start = <span class="predefined-type">System</span>.nanoTime()
+    action.call()
+    <span class="type">long</span> end = <span class="predefined-type">System</span>.nanoTime()
+    end - start
+}
+
+MultiPoint points = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>).geometry, <span class="integer">10000</span>)
+
+
+<span class="type">long</span> timeWithGeometry = timer({ -&gt;
+    points.geometries.each { <span class="predefined-type">Point</span> point -&gt;
+        geometry.contains(point)
+    }
+})
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Time with Geometry         = </span><span class="inline"><span class="inline-delimiter">${</span>timeWithGeometry<span class="inline-delimiter">}</span></span><span class="content"> nanoseconds</span><span class="delimiter">&quot;</span></span>
+
+<span class="type">long</span> timeWithPreparedGeometry = timer({ -&gt;
+    points.geometries.each { <span class="predefined-type">Point</span> point -&gt;
+        preparedGeometry.contains(point)
+    }
+})
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Time with PreparedGeometry = </span><span class="inline"><span class="inline-delimiter">${</span>timeWithPreparedGeometry<span class="inline-delimiter">}</span></span><span class="content"> nanoseconds</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Time with Geometry         = 17972676 nanoseconds
+Time with PreparedGeometry = 17341500 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -6521,7 +6567,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--115643b1_16323f79ae2_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--3d807abf_163285ac355_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -7236,7 +7282,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu May 03 03:06:59 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu May 03 23:33:47 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7255,7 +7301,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--115643b1_16323f79ae2_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--3d807abf_163285ac355_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7279,7 +7325,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu May 03 03:06:59 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu May 03 23:33:47 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7299,7 +7345,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--115643b1_16323f79ae2_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--3d807abf_163285ac355_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -7461,7 +7507,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--115643b1_16323f79ae2_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--3d807abf_163285ac355_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7499,7 +7545,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--115643b1_16323f79ae2_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--3d807abf_163285ac355_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -8761,73 +8807,7 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>geo:isValid
-geo:buffer
-geo:union
-geo:intersection
-geo:difference
-geo:area
-geo:numGeometries
-geo:isSimple
-geo:isWithinDistance
-geo:relate
-geo:densify
-geo:simplify
-geo:numPoints
-geo:reproject
-geo:within
-geo:touches
-geo:convexHull
-geo:distance
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:overlaps
-geo:crosses
-geo:symDifference
-geo:isClosed
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:envelope
-geo:getX
-geo:getY
-geo:polygonize
-geo:isRing
-geo:startPoint
-geo:endPoint
-geo:equalsExact
-geo:relatePattern
-geo:pointN
-geo:interiorRingN
-geo:equalsExactTolerance
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage
-vec:Aggregate
+<pre>vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -8856,7 +8836,73 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics</pre>
+vec:VectorZonalStatistics
+geo:isValid
+geo:buffer
+geo:union
+geo:intersection
+geo:difference
+geo:area
+geo:numGeometries
+geo:within
+geo:touches
+geo:convexHull
+geo:crosses
+geo:symDifference
+geo:distance
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:overlaps
+geo:isSimple
+geo:isWithinDistance
+geo:relate
+geo:densify
+geo:simplify
+geo:numPoints
+geo:reproject
+geo:isClosed
+geo:envelope
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:getX
+geo:getY
+geo:isRing
+geo:startPoint
+geo:endPoint
+geo:polygonize
+geo:equalsExact
+geo:interiorRingN
+geo:pointN
+geo:relatePattern
+geo:equalsExactTolerance
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage</pre>
 </div>
 </div>
 </div>
@@ -11170,19 +11216,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>SpatiaLite (JNDI)
-Geobuf
-MySQL
-H2
+<pre>MySQL
 MySQL (JNDI)
-Shapefile
+SpatiaLite (JNDI)
 PostGIS (JNDI)
-Web Feature Server (NG)
-GeoPackage
+Geobuf
+Directory of spatial files (shapefiles)
 Properties
+GeoPackage
 PostGIS
 H2 (JNDI)
-Directory of spatial files (shapefiles)</pre>
+H2
+Shapefile
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11292,19 +11338,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>SpatiaLite (JNDI)
-Geobuf
-MySQL
-H2
+<pre>MySQL
 MySQL (JNDI)
-Shapefile
+SpatiaLite (JNDI)
 PostGIS (JNDI)
-Web Feature Server (NG)
-GeoPackage
+Geobuf
+Directory of spatial files (shapefiles)
 Properties
+GeoPackage
 PostGIS
 H2 (JNDI)
-Directory of spatial files (shapefiles)</pre>
+H2
+Shapefile
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -13032,7 +13078,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--115643b1_16323f79ae2_-6acd"
+            "id": "fid--3d807abf_163285ac355_-6acd"
         },
         {
             "type": "Feature",
@@ -13047,7 +13093,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--115643b1_16323f79ae2_-6acb"
+            "id": "fid--3d807abf_163285ac355_-6acb"
         }
     ]
 }</pre>
@@ -13138,7 +13184,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--115643b1_16323f79ae2_-7489"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--3d807abf_163285ac355_-7489"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -13160,7 +13206,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--115643b1_16323f79ae2_-7487"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--3d807abf_163285ac355_-7487"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -13226,7 +13272,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--115643b1_16323f79ae2_-6b07
+          fid--3d807abf_163285ac355_-6b07
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -13253,7 +13299,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--115643b1_16323f79ae2_-6b05
+          fid--3d807abf_163285ac355_-6b05
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -15244,7 +15290,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-03 03:01:10 UTC
+Last updated 2018-05-03 23:27:18 UTC
 </div>
 </div>
 </body>
