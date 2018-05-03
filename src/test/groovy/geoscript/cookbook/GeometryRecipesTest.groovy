@@ -544,6 +544,14 @@ class GeometryRecipesTest {
         assertEquals "POINT (-121.73789467295867 46.95085967283822)", values[1].toString()
     }
 
+    @Test void equals() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Boolean> values = recipes.equals()
+        assertTrue values[0]
+        assertFalse values[1]
+        assertFalse values[2]
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

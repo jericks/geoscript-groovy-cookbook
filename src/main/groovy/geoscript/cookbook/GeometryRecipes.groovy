@@ -1802,6 +1802,28 @@ ${p3.wkt}
         [bounds, point]
     }
 
+    List<Boolean> equals() {
+        //tag::equals[]
+        Point point1 = new Point(-121.915, 47.390)
+        Point point2 = new Point(-121.915, 47.390)
+        Point point3 = new Point(-121.409, 47.413)
+
+        boolean does1equal2 = point1.equals(point2)
+        println "Does ${point1} equal ${point2}? ${does1equal2 ? 'Yes' : 'No'}"
+
+        boolean does1equal3 = point1.equals(point3)
+        println "Does ${point1} equal ${point3}? ${does1equal3 ? 'Yes' : 'No'}"
+
+        boolean does2equal3 = point2.equals(point3)
+        println "Does ${point2} equal ${point3}? ${does2equal3 ? 'Yes' : 'No'}"
+        //end::equals[]
+        writeFile("geometry_equals", """Does ${point1} equal ${point2}? ${does1equal2 ? 'Yes' : 'No'}
+Does ${point1} equal ${point3}? ${does1equal3 ? 'Yes' : 'No'}
+Does ${point2} equal ${point3}? ${does2equal3 ? 'Yes' : 'No'}
+""")
+        [does1equal2, does1equal3, does2equal3]
+    }
+
     // Geometry Readers and Writers
 
     List<Reader> getGeometryReaders() {

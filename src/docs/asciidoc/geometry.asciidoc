@@ -129,6 +129,15 @@ include::output/geometry_geometrytype.txt[]
 ....
 
 [source,groovy]
+.Determine if one Geometry exactly equal another Geometry.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=equals,indent=0]
+----
+....
+include::output/geometry_equals.txt[]
+....
+
+[source,groovy]
 .Get a Geometry by index in a GeometryCollection
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getAt,indent=0]
