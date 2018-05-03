@@ -1870,6 +1870,50 @@ Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
         [timeWithGeometry, timeWithPreparedGeometry]
     }
 
+    List<Long> prepareStatic() {
+
+        //tag::prepareStatic[]
+        Geometry geometry = new Polygon([[
+             [-121.915, 47.390],
+             [-122.640, 46.995],
+             [-121.739, 46.308],
+             [-121.168, 46.777],
+             [-120.981, 47.316],
+             [-121.409, 47.413],
+             [-121.915, 47.390]
+        ]])
+        PreparedGeometry preparedGeometry = Geometry.prepare(geometry)
+
+        Closure timer = { Closure action ->
+            long start = System.nanoTime()
+            action.call()
+            long end = System.nanoTime()
+            end - start
+        }
+
+        MultiPoint points = Geometry.createRandomPoints(new Bounds(-180, -90, 180, 90).geometry, 10000)
+
+
+        long timeWithGeometry = timer({ ->
+            points.geometries.each { Point point ->
+                geometry.contains(point)
+            }
+        })
+        println "Time with Geometry         = ${timeWithGeometry} nanoseconds"
+
+        long timeWithPreparedGeometry = timer({ ->
+            points.geometries.each { Point point ->
+                preparedGeometry.contains(point)
+            }
+        })
+
+        println "Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds"
+        //end::prepareStatic[]
+        writeFile("geometry_preparestatic", """Time with Geometry         = ${timeWithGeometry} nanoseconds      
+Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
+""")
+        [timeWithGeometry, timeWithPreparedGeometry]
+    }
 
     // Geometry Readers and Writers
 

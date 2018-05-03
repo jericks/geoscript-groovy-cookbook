@@ -913,6 +913,14 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=prepare,inde
 include::output/geometry_prepare.txt[]
 ....
 
+[source,groovy]
+.Convert a Geometry to a PreparedGeometry using a static method for more effecient spatial queries.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=prepareStatic,indent=0]
+----
+....
+include::output/geometry_preparestatic.txt[]
+....
 
 === Reading and Writing Geometries
 

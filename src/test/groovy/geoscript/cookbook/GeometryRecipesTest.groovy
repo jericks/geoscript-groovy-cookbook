@@ -558,6 +558,12 @@ class GeometryRecipesTest {
         assertTrue times[1] < times[0]
     }
 
+    @Test void prepareStatic() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Long> times = recipes.prepareStatic()
+        assertTrue times[1] < times[0]
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {
