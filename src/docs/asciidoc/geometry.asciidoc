@@ -904,6 +904,16 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getNearestPo
 [.thumb]
 image::geometry_nearestpoints.png[]
 
+[source,groovy]
+.Convert a Geometry to a PreparedGeometry for more effecient spatial queries.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=prepare,indent=0]
+----
+....
+include::output/geometry_prepare.txt[]
+....
+
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package

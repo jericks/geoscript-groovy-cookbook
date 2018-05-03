@@ -552,6 +552,12 @@ class GeometryRecipesTest {
         assertFalse values[2]
     }
 
+    @Test void prepare() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Long> times = recipes.prepare()
+        assertTrue times[1] < times[0]
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

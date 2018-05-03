@@ -15,6 +15,7 @@ import geoscript.geom.MultiPoint
 import geoscript.geom.MultiPolygon
 import geoscript.geom.Point
 import geoscript.geom.Polygon
+import geoscript.geom.PreparedGeometry
 import geoscript.geom.io.GeoJSONReader
 import geoscript.geom.io.GeoJSONWriter
 import geoscript.geom.io.GeoRSSReader
@@ -1823,6 +1824,52 @@ Does ${point2} equal ${point3}? ${does2equal3 ? 'Yes' : 'No'}
 """)
         [does1equal2, does1equal3, does2equal3]
     }
+
+    List<Long> prepare() {
+
+        //tag::prepare[]
+        Geometry geometry = new Polygon([[
+             [-121.915, 47.390],
+             [-122.640, 46.995],
+             [-121.739, 46.308],
+             [-121.168, 46.777],
+             [-120.981, 47.316],
+             [-121.409, 47.413],
+             [-121.915, 47.390]
+        ]])
+        PreparedGeometry preparedGeometry = geometry.prepare()
+
+        Closure timer = { Closure action ->
+            long start = System.nanoTime()
+            action.call()
+            long end = System.nanoTime()
+            end - start
+        }
+
+        MultiPoint points = Geometry.createRandomPoints(new Bounds(-180, -90, 180, 90).geometry, 10000)
+
+
+        long timeWithGeometry = timer({ ->
+            points.geometries.each { Point point ->
+                geometry.contains(point)
+            }
+        })
+        println "Time with Geometry         = ${timeWithGeometry} nanoseconds"
+
+        long timeWithPreparedGeometry = timer({ ->
+            points.geometries.each { Point point ->
+                preparedGeometry.contains(point)
+            }
+        })
+
+        println "Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds"
+        //end::prepare[]
+        writeFile("geometry_prepare", """Time with Geometry         = ${timeWithGeometry} nanoseconds      
+Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
+""")
+        [timeWithGeometry, timeWithPreparedGeometry]
+    }
+
 
     // Geometry Readers and Writers
 
