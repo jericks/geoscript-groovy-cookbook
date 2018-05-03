@@ -2761,6 +2761,52 @@ Geometry polygon = Geometry.fromWKT(<span class="string"><span class="delimiter"
 <img src="./images/geometry_nearestpoints.png" alt="geometry nearestpoints">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Convert a Geometry to a PreparedGeometry for more effecient spatial queries.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+     [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+     [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+     [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+     [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+     [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+     [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+     [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]])
+PreparedGeometry preparedGeometry = geometry.prepare()
+
+Closure timer = { Closure action -&gt;
+    <span class="type">long</span> start = <span class="predefined-type">System</span>.nanoTime()
+    action.call()
+    <span class="type">long</span> end = <span class="predefined-type">System</span>.nanoTime()
+    end - start
+}
+
+MultiPoint points = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>).geometry, <span class="integer">10000</span>)
+
+
+<span class="type">long</span> timeWithGeometry = timer({ -&gt;
+    points.geometries.each { <span class="predefined-type">Point</span> point -&gt;
+        geometry.contains(point)
+    }
+})
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Time with Geometry         = </span><span class="inline"><span class="inline-delimiter">${</span>timeWithGeometry<span class="inline-delimiter">}</span></span><span class="content"> nanoseconds</span><span class="delimiter">&quot;</span></span>
+
+<span class="type">long</span> timeWithPreparedGeometry = timer({ -&gt;
+    points.geometries.each { <span class="predefined-type">Point</span> point -&gt;
+        preparedGeometry.contains(point)
+    }
+})
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Time with PreparedGeometry = </span><span class="inline"><span class="inline-delimiter">${</span>timeWithPreparedGeometry<span class="inline-delimiter">}</span></span><span class="content"> nanoseconds</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Time with Geometry         = 56104267 nanoseconds
+Time with PreparedGeometry = 48323543 nanoseconds</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
@@ -3400,7 +3446,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-03 00:07:09 UTC
+Last updated 2018-05-03 03:01:10 UTC
 </div>
 </div>
 </body>
