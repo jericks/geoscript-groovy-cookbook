@@ -849,6 +849,30 @@ println type</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Determine if one Geometry exactly equal another Geometry.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point1 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">121.915</span>, <span class="float">47.390</span>)
+<span class="predefined-type">Point</span> point2 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">121.915</span>, <span class="float">47.390</span>)
+<span class="predefined-type">Point</span> point3 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">121.409</span>, <span class="float">47.413</span>)
+
+<span class="type">boolean</span> does1equal2 = point1.equals(point2)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does </span><span class="inline"><span class="inline-delimiter">${</span>point1<span class="inline-delimiter">}</span></span><span class="content"> equal </span><span class="inline"><span class="inline-delimiter">${</span>point2<span class="inline-delimiter">}</span></span><span class="content">? </span><span class="inline"><span class="inline-delimiter">${</span>does1equal2 ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="type">boolean</span> does1equal3 = point1.equals(point3)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does </span><span class="inline"><span class="inline-delimiter">${</span>point1<span class="inline-delimiter">}</span></span><span class="content"> equal </span><span class="inline"><span class="inline-delimiter">${</span>point3<span class="inline-delimiter">}</span></span><span class="content">? </span><span class="inline"><span class="inline-delimiter">${</span>does1equal3 ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="type">boolean</span> does2equal3 = point2.equals(point3)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does </span><span class="inline"><span class="inline-delimiter">${</span>point2<span class="inline-delimiter">}</span></span><span class="content"> equal </span><span class="inline"><span class="inline-delimiter">${</span>point3<span class="inline-delimiter">}</span></span><span class="content">? </span><span class="inline"><span class="inline-delimiter">${</span>does2equal3 ? <span class="string"><span class="delimiter">'</span><span class="content">Yes</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">No</span><span class="delimiter">'</span></span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Does POINT (-121.915 47.39) equal POINT (-121.915 47.39)? Yes
+Does POINT (-121.915 47.39) equal POINT (-121.409 47.413)? No
+Does POINT (-121.915 47.39) equal POINT (-121.409 47.413)? No</pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Get a Geometry by index in a GeometryCollection</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">MultiPoint multiPoint = <span class="keyword">new</span> MultiPoint([
@@ -3376,7 +3400,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-30 23:34:47 UTC
+Last updated 2018-05-03 00:07:09 UTC
 </div>
 </div>
 </body>
