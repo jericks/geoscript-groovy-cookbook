@@ -563,7 +563,6 @@ image::geometry_overlaps.png[]
 include::output/geometry_overlaps.txt[]
 ....
 
-
 [source,groovy]
 .Calculate the octagonal envelope of a Geometry
 ----
@@ -981,6 +980,15 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=findGeometry
 ----
 ....
 include::output/geometry_find_writer.txt[]
+....
+
+[source,groovy]
+.Create a Geometry from a String.  The string will be parse by each Geometry Reader.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=fromString,indent=0]
+----
+....
+include::output/geometry_fromstring.txt[]
 ....
 
 ==== WKB

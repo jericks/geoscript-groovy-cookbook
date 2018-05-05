@@ -2004,6 +2004,22 @@ Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
         geojson
     }
 
+    List<Geometry> fromString() {
+        //tag::fromString[]
+        Geometry geom1 = Geometry.fromString('POINT (-123.15 46.237)')
+        println geom1
+
+        Geometry geom2 = Geometry.fromString('{"type":"LineString","coordinates":[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}')
+        println geom2
+
+
+        Geometry geom3 = Geometry.fromString('<Point><coordinates>-123.15,46.237</coordinates></Point>')
+        println geom3
+        //end::fromString[]
+        writeFile("geometry_fromstring", """${geom1}${NEW_LINE}${geom2}${NEW_LINE}${geom3}""")
+        [geom1, geom2, geom3]
+    }
+
     // WKB
 
     Geometry readGeometryFromWKBReader() {

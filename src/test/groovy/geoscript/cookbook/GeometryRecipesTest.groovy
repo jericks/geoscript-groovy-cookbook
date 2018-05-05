@@ -606,6 +606,15 @@ class GeometryRecipesTest {
         assertEquals('{"type":"Point","coordinates":[-122.45,43.21]}', str)
     }
 
+    @Test void fromString() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geoms = recipes.fromString()
+        assertEquals 3, geoms.size()
+        assertEquals "POINT (-123.15 46.237)", geoms[0].wkt
+        assertEquals "LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)", geoms[1].wkt
+        assertEquals "POINT (-123.15 46.237)", geoms[2].wkt
+    }
+
     // WKB
 
     @Test void readGeometryFromWKBReader() {
