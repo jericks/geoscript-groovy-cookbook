@@ -2851,8 +2851,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 762039475 nanoseconds
-Time with PreparedGeometry = 710401771 nanoseconds</pre>
+<pre>Time with Geometry         = 175679125 nanoseconds
+Time with PreparedGeometry = 139592054 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2897,8 +2897,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 277726997 nanoseconds
-Time with PreparedGeometry = 157535675 nanoseconds</pre>
+<pre>Time with Geometry         = 92783385 nanoseconds
+Time with PreparedGeometry = 141104374 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -2981,6 +2981,27 @@ println geojson</code></pre>
 <div class="literalblock">
 <div class="content">
 <pre>{"type":"Point","coordinates":[-122.45,43.21]}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Geometry from a String.  The string will be parse by each Geometry Reader.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geom1 = Geometry.fromString(<span class="string"><span class="delimiter">'</span><span class="content">POINT (-123.15 46.237)</span><span class="delimiter">'</span></span>)
+println geom1
+
+Geometry geom2 = Geometry.fromString(<span class="string"><span class="delimiter">'</span><span class="content">{&quot;type&quot;:&quot;LineString&quot;,&quot;coordinates&quot;:[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}</span><span class="delimiter">'</span></span>)
+println geom2
+
+
+Geometry geom3 = Geometry.fromString(<span class="string"><span class="delimiter">'</span><span class="content">&lt;Point&gt;&lt;coordinates&gt;-123.15,46.237&lt;/coordinates&gt;&lt;/Point&gt;</span><span class="delimiter">'</span></span>)
+println geom3</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (-123.15 46.237)
+LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)
+POINT (-123.15 46.237)</pre>
 </div>
 </div>
 </div>
@@ -3540,7 +3561,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-03 23:38:08 UTC
+Last updated 2018-05-05 18:17:32 UTC
 </div>
 </div>
 </body>

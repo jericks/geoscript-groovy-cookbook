@@ -3286,8 +3286,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 762039475 nanoseconds
-Time with PreparedGeometry = 710401771 nanoseconds</pre>
+<pre>Time with Geometry         = 175679125 nanoseconds
+Time with PreparedGeometry = 139592054 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3332,8 +3332,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 277726997 nanoseconds
-Time with PreparedGeometry = 157535675 nanoseconds</pre>
+<pre>Time with Geometry         = 92783385 nanoseconds
+Time with PreparedGeometry = 141104374 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -3416,6 +3416,27 @@ println geojson</code></pre>
 <div class="literalblock">
 <div class="content">
 <pre>{"type":"Point","coordinates":[-122.45,43.21]}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Geometry from a String.  The string will be parse by each Geometry Reader.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geom1 = Geometry.fromString(<span class="string"><span class="delimiter">'</span><span class="content">POINT (-123.15 46.237)</span><span class="delimiter">'</span></span>)
+println geom1
+
+Geometry geom2 = Geometry.fromString(<span class="string"><span class="delimiter">'</span><span class="content">{&quot;type&quot;:&quot;LineString&quot;,&quot;coordinates&quot;:[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}</span><span class="delimiter">'</span></span>)
+println geom2
+
+
+Geometry geom3 = Geometry.fromString(<span class="string"><span class="delimiter">'</span><span class="content">&lt;Point&gt;&lt;coordinates&gt;-123.15,46.237&lt;/coordinates&gt;&lt;/Point&gt;</span><span class="delimiter">'</span></span>)
+println geom3</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (-123.15 46.237)
+LINESTRING (3.198 43.164, 6.713 49.755, 9.702 42.592, 15.32 53.798)
+POINT (-123.15 46.237)</pre>
 </div>
 </div>
 </div>
@@ -6615,7 +6636,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-4f997ead_16328657042_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--74064175_163318d67c5_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -7330,7 +7351,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu May 03 23:45:26 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat May 05 18:25:40 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7349,7 +7370,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-4f997ead_16328657042_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--74064175_163318d67c5_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7373,7 +7394,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu May 03 23:45:26 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat May 05 18:25:41 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7393,7 +7414,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-4f997ead_16328657042_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--74064175_163318d67c5_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -7555,7 +7576,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-4f997ead_16328657042_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--74064175_163318d67c5_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7593,7 +7614,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-4f997ead_16328657042_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--74064175_163318d67c5_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -8855,7 +8876,73 @@ processes.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>vec:Aggregate
+<pre>geo:isValid
+geo:buffer
+geo:union
+geo:intersection
+geo:difference
+geo:area
+geo:numGeometries
+geo:within
+geo:touches
+geo:convexHull
+geo:crosses
+geo:symDifference
+geo:distance
+geo:boundary
+geo:centroid
+geo:interiorPoint
+geo:getGeometryN
+geo:overlaps
+geo:isSimple
+geo:isWithinDistance
+geo:relate
+geo:densify
+geo:simplify
+geo:numPoints
+geo:reproject
+geo:isClosed
+geo:dimension
+geo:exteriorRing
+geo:numInteriorRing
+geo:geometryType
+geo:envelope
+geo:getX
+geo:getY
+geo:polygonize
+geo:isRing
+geo:startPoint
+geo:endPoint
+geo:equalsExact
+geo:relatePattern
+geo:interiorRingN
+geo:pointN
+geo:equalsExactTolerance
+geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
+ras:AddCoverages
+ras:Affine
+ras:AreaGrid
+ras:BandMerge
+ras:BandSelect
+ras:Contour
+ras:ConvolveCoverage
+ras:CoverageClassStats
+ras:CropCoverage
+ras:MultiplyCoverages
+ras:NormalizeCoverage
+ras:PolygonExtraction
+ras:RangeLookup
+ras:RasterAsPointCollection
+ras:RasterZonalStatistics
+ras:RasterZonalStatistics2
+ras:ScaleCoverage
+ras:StyleCoverage
+vec:Aggregate
 vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
@@ -8884,73 +8971,7 @@ vec:Transform
 vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
-vec:VectorZonalStatistics
-geo:isValid
-geo:buffer
-geo:union
-geo:intersection
-geo:interiorRingN
-geo:difference
-geo:area
-geo:numGeometries
-geo:within
-geo:touches
-geo:convexHull
-geo:crosses
-geo:symDifference
-geo:distance
-geo:boundary
-geo:centroid
-geo:interiorPoint
-geo:getGeometryN
-geo:overlaps
-geo:reproject
-geo:isSimple
-geo:isWithinDistance
-geo:relate
-geo:densify
-geo:simplify
-geo:numPoints
-geo:isClosed
-geo:dimension
-geo:exteriorRing
-geo:numInteriorRing
-geo:geometryType
-geo:envelope
-geo:getX
-geo:getY
-geo:polygonize
-geo:isRing
-geo:startPoint
-geo:endPoint
-geo:equalsExact
-geo:pointN
-geo:equalsExactTolerance
-geo:relatePattern
-geo:splitPolygon
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
-ras:AddCoverages
-ras:Affine
-ras:AreaGrid
-ras:BandMerge
-ras:BandSelect
-ras:Contour
-ras:ConvolveCoverage
-ras:CoverageClassStats
-ras:CropCoverage
-ras:MultiplyCoverages
-ras:NormalizeCoverage
-ras:PolygonExtraction
-ras:RangeLookup
-ras:RasterAsPointCollection
-ras:RasterZonalStatistics
-ras:RasterZonalStatistics2
-ras:ScaleCoverage
-ras:StyleCoverage</pre>
+vec:VectorZonalStatistics</pre>
 </div>
 </div>
 </div>
@@ -11265,18 +11286,18 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 <div class="literalblock">
 <div class="content">
 <pre>Shapefile
-GeoPackage
-SpatiaLite (JNDI)
-H2 (JNDI)
-MySQL
-MySQL (JNDI)
+Properties
 Directory of spatial files (shapefiles)
+MySQL (JNDI)
+SpatiaLite (JNDI)
+Geobuf
+H2 (JNDI)
+H2
+GeoPackage
 PostGIS
 Web Feature Server (NG)
-Properties
-H2
-PostGIS (JNDI)
-Geobuf</pre>
+MySQL
+PostGIS (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11387,18 +11408,18 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 <div class="literalblock">
 <div class="content">
 <pre>Shapefile
-GeoPackage
-SpatiaLite (JNDI)
-H2 (JNDI)
-MySQL
-MySQL (JNDI)
+Properties
 Directory of spatial files (shapefiles)
+MySQL (JNDI)
+SpatiaLite (JNDI)
+Geobuf
+H2 (JNDI)
+H2
+GeoPackage
 PostGIS
 Web Feature Server (NG)
-Properties
-H2
-PostGIS (JNDI)
-Geobuf</pre>
+MySQL
+PostGIS (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -13126,7 +13147,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-4f997ead_16328657042_-6acd"
+            "id": "fid--74064175_163318d67c5_-6acd"
         },
         {
             "type": "Feature",
@@ -13141,7 +13162,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-4f997ead_16328657042_-6acb"
+            "id": "fid--74064175_163318d67c5_-6acb"
         }
     ]
 }</pre>
@@ -13232,7 +13253,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4f997ead_16328657042_-7489"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--74064175_163318d67c5_-7489"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -13254,7 +13275,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4f997ead_16328657042_-7487"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--74064175_163318d67c5_-7487"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -13320,7 +13341,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-4f997ead_16328657042_-6b07
+          fid--74064175_163318d67c5_-6b07
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -13347,7 +13368,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-4f997ead_16328657042_-6b05
+          fid--74064175_163318d67c5_-6b05
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -15338,7 +15359,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-03 23:38:08 UTC
+Last updated 2018-05-05 18:17:32 UTC
 </div>
 </div>
 </body>
