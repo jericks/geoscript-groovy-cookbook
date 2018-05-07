@@ -7,6 +7,7 @@ import geoscript.filter.Color
 import geoscript.filter.Property
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
+import geoscript.geom.MultiPoint
 import geoscript.geom.Point
 import geoscript.layer.Graticule
 import geoscript.layer.Layer
@@ -432,6 +433,63 @@ class LayerRecipes extends Recipes {
         Layer states = new Shapefile("src/main/resources/data/states.shp")
         drawOnBasemap("layer_update_features", [states, layer], layer.bounds.expandBy(2))
         createTable("layer_update_features", layer, false)
+        layer
+    }
+
+    Layer addUsingWriter() {
+        // tag::addUsingWriter[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer")
+        ])
+        Layer layer = workspace.create(schema)
+
+        Bounds bounds = new Bounds(-180,-90,180,90, "EPSG:4326")
+        MultiPoint points = Geometry.createRandomPoints(bounds.geometry, 100)
+
+        geoscript.layer.Writer writer = layer.writer
+        try {
+            points.geometries.eachWithIndex { Point point, int index ->
+                Feature feature = writer.newFeature
+                feature['id'] = index
+                feature['geom'] = point
+                writer.add(feature)
+            }
+        } finally {
+            writer.close()
+        }
+
+        // end::addUsingWriter[]
+        layer.style = new Shape("white", 10).stroke("navy", 0.5)
+        drawOnBasemap("layer_writer", [layer])
+        layer
+    }
+
+    Layer addWithWriter() {
+        // tag::addWithWriter[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer")
+        ])
+        Layer layer = workspace.create(schema)
+
+        Bounds bounds = new Bounds(-180,-90,180,90, "EPSG:4326")
+        MultiPoint points = Geometry.createRandomPoints(bounds.geometry, 100)
+
+        layer.withWriter { geoscript.layer.Writer writer ->
+            points.geometries.eachWithIndex { Point point, int index ->
+                Feature feature = writer.newFeature
+                feature['id'] = index
+                feature['geom'] = point
+                writer.add(feature)
+            }
+        }
+
+        // end::addWithWriter[]
+        layer.style = new Shape("white", 10).stroke("navy", 0.5)
+        drawOnBasemap("layer_with_writer", [layer])
         layer
     }
 

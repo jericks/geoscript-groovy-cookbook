@@ -187,6 +187,25 @@ include::output/layer_delete.asciidoc[]
 [.thumb]
 image::layer_delete.png[]
 
+[source,groovy]
+.Add Features to a Layer using a Writer.  A Writer can add Features more effeciently because is commits batches of Features in Transactions .
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=addUsingWriter,indent=0]
+----
+
+[.thumb]
+image::layer_writer.png[]
+
+[source,groovy]
+.Add Features to a Layer using a Writer inside of a Closure.
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=addWithWriter,indent=0]
+----
+
+[.thumb]
+image::layer_with_writer.png[]
+
+
 === Shapefiles
 
 Shapefiles are a very commonly used format for storing spatial data.  So, instead of creating

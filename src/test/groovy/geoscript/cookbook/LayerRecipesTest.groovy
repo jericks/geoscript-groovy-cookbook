@@ -121,6 +121,18 @@ class LayerRecipesTest {
         assertEquals(5, layer.count)
     }
 
+    @Test void addUsingWriter() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.addUsingWriter()
+        assertEquals(100, layer.count)
+    }
+
+    @Test void addWithWriter() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.addWithWriter()
+        assertEquals(100, layer.count)
+    }
+
     // Geoprocessing
 
     @Test void reproject() {
