@@ -1166,6 +1166,65 @@ layer.delete(<span class="string"><span class="delimiter">&quot;</span><span cla
 <img src="./images/layer_delete.png" alt="layer delete">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Add Features to a Layer using a Writer.  A Writer can add Features more effeciently because is commits batches of Features in Transactions .</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+
+Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+MultiPoint points = Geometry.createRandomPoints(bounds.geometry, <span class="integer">100</span>)
+
+geoscript.layer.Writer writer = layer.writer
+<span class="keyword">try</span> {
+    points.geometries.eachWithIndex { <span class="predefined-type">Point</span> point, <span class="type">int</span> index -&gt;
+        Feature feature = writer.newFeature
+        feature[<span class="string"><span class="delimiter">'</span><span class="content">id</span><span class="delimiter">'</span></span>] = index
+        feature[<span class="string"><span class="delimiter">'</span><span class="content">geom</span><span class="delimiter">'</span></span>] = point
+        writer.add(feature)
+    }
+} <span class="keyword">finally</span> {
+    writer.close()
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_writer.png" alt="layer writer">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Add Features to a Layer using a Writer inside of a Closure.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+
+Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+MultiPoint points = Geometry.createRandomPoints(bounds.geometry, <span class="integer">100</span>)
+
+layer.withWriter { geoscript.layer.Writer writer -&gt;
+    points.geometries.eachWithIndex { <span class="predefined-type">Point</span> point, <span class="type">int</span> index -&gt;
+        Feature feature = writer.newFeature
+        feature[<span class="string"><span class="delimiter">'</span><span class="content">id</span><span class="delimiter">'</span></span>] = index
+        feature[<span class="string"><span class="delimiter">'</span><span class="content">geom</span><span class="delimiter">'</span></span>] = point
+        writer.add(feature)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_with_writer.png" alt="layer with writer">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="shapefiles"><a class="anchor" href="#shapefiles"></a>Shapefiles</h3>
@@ -2023,7 +2082,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--74064175_163318d67c5_-6acd"
+            "id": "fid-50fc07f4_163381ccf6d_-693d"
         },
         {
             "type": "Feature",
@@ -2038,7 +2097,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--74064175_163318d67c5_-6acb"
+            "id": "fid-50fc07f4_163381ccf6d_-693b"
         }
     ]
 }</pre>
@@ -2129,7 +2188,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--74064175_163318d67c5_-7489"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-50fc07f4_163381ccf6d_-73c1"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -2151,7 +2210,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--74064175_163318d67c5_-7487"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-50fc07f4_163381ccf6d_-73bf"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -2217,7 +2276,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--74064175_163318d67c5_-6b07
+          fid-50fc07f4_163381ccf6d_-6a3f
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2244,7 +2303,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--74064175_163318d67c5_-6b05
+          fid-50fc07f4_163381ccf6d_-6a3d
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2421,7 +2480,7 @@ Layer layer = Graticule.createRectangles(bounds, width, height, -<span class="in
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-05 18:17:32 UTC
+Last updated 2018-05-07 00:52:51 UTC
 </div>
 </div>
 </body>
