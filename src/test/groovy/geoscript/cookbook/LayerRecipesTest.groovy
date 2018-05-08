@@ -72,6 +72,23 @@ class LayerRecipesTest {
         assertEquals(3, layer.count)
     }
 
+    // Cursor
+
+    @Test void getCursor() {
+        LayerRecipes recipes = new LayerRecipes()
+        assertEquals(52, recipes.getCursor())
+    }
+
+    @Test void getCursorWithFilter() {
+        LayerRecipes recipes = new LayerRecipes()
+        assertEquals(8, recipes.getCursorWithFilter())
+    }
+
+    @Test void getCursorWithParameters() {
+        LayerRecipes recipes = new LayerRecipes()
+        assertEquals(5, recipes.getCursorWithParameters())
+    }
+
     // Add, Update, Delete
 
     @Test void addToLayer() {

@@ -9,6 +9,7 @@ import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.MultiPoint
 import geoscript.geom.Point
+import geoscript.layer.Cursor
 import geoscript.layer.Graticule
 import geoscript.layer.Layer
 import geoscript.layer.Renderable
@@ -262,6 +263,68 @@ class LayerRecipes extends Recipes {
         disputedLayer.style = new Fill("red") + new Stroke("black")
         drawOnBasemap("layer_filter", [disputedLayer], disputedLayer.bounds.expandBy(4))
         disputedLayer
+    }
+
+    // Cursor
+
+    int getCursor() {
+        // tag::getCursor[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("states")
+        Cursor cursor = layer.cursor
+        cursor.each { Feature feature ->
+            println feature["NAME_1"]
+        }
+        // end::getCursor[]
+        int max = 10
+        int count = 0
+        String str = ""
+        layer.cursor.each { Feature feature ->
+            if (count < max) {
+                str += feature["NAME_1"] + NEW_LINE
+            }
+            count++
+        }
+        writeFile("layer_cursor", "${str}..." )
+        count
+    }
+
+    int getCursorWithFilter() {
+        // tag::getCursorWithFilter[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("states")
+        Cursor cursor = layer.getCursor(filter: "NAME_1 LIKE 'M%'")
+        while(cursor.hasNext()) {
+            Feature feature = cursor.next()
+            println feature["NAME_1"]
+        }
+        // end::getCursorWithFilter[]
+        int count = 0
+        String str = ""
+        layer.getCursor("NAME_1 LIKE 'M%'").each { Feature feature ->
+            str += feature["NAME_1"] + NEW_LINE
+            count++
+        }
+        writeFile("layer_cursor_filtered", "${str}")
+        count
+    }
+
+    int getCursorWithParameters() {
+        // tag::getCursorWithParameters[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("states")
+        layer.getCursor(sort: ["NAME_1"], start: 0, max: 5, fields: ["NAME_1"], filter: "NAME_1 LIKE 'M%'").each { Feature feature ->
+            println feature["NAME_1"]
+        }
+        // end::getCursorWithParameters[]
+        int count = 0
+        String str = ""
+        layer.getCursor(sort: ["NAME_1"], start: 0, max: 5, fields: ["NAME_1"], filter: "NAME_1 LIKE 'M%'").each { Feature feature ->
+            str += feature["NAME_1"] + NEW_LINE
+            count++
+        }
+        writeFile("layer_cursor_parameters", "${str}")
+        count
     }
 
     // Add, Update, Delete
@@ -589,6 +652,10 @@ class LayerRecipes extends Recipes {
     }
 
     Layer createProperty() {
+        File f = new File("target/cities.properties")
+        if (f.exists()) {
+            f.delete()
+        }
         // tag::createProperty[]
         geoscript.workspace.Property workspace = new geoscript.workspace.Property("target")
         Schema schema = new Schema("cities", [

@@ -56,6 +56,8 @@ include::output/layer_properties_bounds.txt[]
 
 === Getting a Layer's Features
 
+==== Each Feature
+
 [source,groovy]
 .Iterate over a Layer's Features
 ----
@@ -92,6 +94,8 @@ Parameters
 * start: The index of the record to start the cursor at.  Together with maxFeatures this simulates paging. Not all Layers support the start index and paging!
 * fields: A List of Fields or Field names to include.  Used to select only a subset of Fields.
 
+==== Read all Features
+
 [source,groovy]
 .Read all Feature into a List
 ----
@@ -100,6 +104,8 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerFeature
 ....
 include::output/layer_list_features.txt[]
 ....
+
+==== Collect values
 
 [source,groovy]
 .Collect values from a Layer's Features
@@ -118,6 +124,8 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=collectFromFeat
 ....
 include::output/layer_collect_from_feature_options.txt[]
 ....
+
+==== First
 
 [source,groovy]
 .Get the first Feature that matches the Filter.
@@ -140,6 +148,8 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=firstSort,inden
 include::output/layer_first_sort.txt[]
 ....
 
+==== Filter
+
 [.thumb]
 image::layer_first_sort.png[]
 
@@ -151,6 +161,44 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=filter,indent=0
 
 [.thumb]
 image::layer_filter.png[]
+
+==== Cursor
+
+[source,groovy]
+.Iterate over a Layer's Features with a Cursor
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getCursor,indent=0]
+----
+....
+include::output/layer_cursor.txt[]
+....
+
+[source,groovy]
+.Iterate over a subset of a Layer's Features with a Cursor
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getCursorWithFilter,indent=0]
+----
+....
+include::output/layer_cursor_filtered.txt[]
+....
+
+[source,groovy]
+.Iterate over a Layer's Features with parameters with a Cursor
+
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getCursorWithParameters,indent=0]
+----
+....
+include::output/layer_cursor_parameters.txt[]
+....
+
+Parameters
+
+* filter: The Filter or Filter String to limit the Features. Defaults to null.
+* sort:  A List of Lists that define the sort order [[Field or Field name, "ASC" or "DESC"],...]. Not all Layers support sorting!
+* max:  The maximum number of Features to include
+* start: The index of the record to start the cursor at.  Together with maxFeatures this simulates paging. Not all Layers support the start index and paging!
+* fields: A List of Fields or Field names to include.  Used to select only a subset of Fields.
 
 === Adding, Updating, and Deleting
 
