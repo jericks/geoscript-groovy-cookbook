@@ -742,7 +742,16 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#layer-recipes">Layer Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#getting-a-layer-s-properties">Getting a Layer&#8217;s Properties</a></li>
-<li><a href="#getting-a-layer-s-features">Getting a Layer&#8217;s Features</a></li>
+<li><a href="#getting-a-layer-s-features">Getting a Layer&#8217;s Features</a>
+<ul class="sectlevel3">
+<li><a href="#each-feature">Each Feature</a></li>
+<li><a href="#read-all-features">Read all Features</a></li>
+<li><a href="#collect-values">Collect values</a></li>
+<li><a href="#first">First</a></li>
+<li><a href="#filter">Filter</a></li>
+<li><a href="#cursor">Cursor</a></li>
+</ul>
+</li>
 <li><a href="#adding-updating-and-deleting">Adding, Updating, and Deleting</a></li>
 <li><a href="#shapefiles">Shapefiles</a>
 <ul class="sectlevel3">
@@ -3286,8 +3295,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 349888579 nanoseconds
-Time with PreparedGeometry = 378310103 nanoseconds</pre>
+<pre>Time with Geometry         = 468489946 nanoseconds
+Time with PreparedGeometry = 503907878 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3332,8 +3341,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 152003182 nanoseconds
-Time with PreparedGeometry = 142839971 nanoseconds</pre>
+<pre>Time with Geometry         = 274302442 nanoseconds
+Time with PreparedGeometry = 229262366 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -6636,7 +6645,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-50fc07f4_163381ccf6d_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid-6849e75_1633dc2de74_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -7351,7 +7360,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon May 07 01:00:02 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue May 08 03:19:31 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7370,7 +7379,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-50fc07f4_163381ccf6d_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-6849e75_1633dc2de74_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7394,7 +7403,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon May 07 01:00:02 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue May 08 03:19:31 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7414,7 +7423,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-50fc07f4_163381ccf6d_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-6849e75_1633dc2de74_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -7576,7 +7585,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-50fc07f4_163381ccf6d_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-6849e75_1633dc2de74_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7614,7 +7623,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-50fc07f4_163381ccf6d_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-6849e75_1633dc2de74_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -8906,10 +8915,10 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:union
-geo:intersection
 geo:isValid
 geo:buffer
+geo:union
+geo:intersection
 geo:difference
 geo:area
 geo:numGeometries
@@ -8924,31 +8933,31 @@ geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:overlaps
+geo:reproject
 geo:isSimple
 geo:isWithinDistance
-geo:reproject
 geo:relate
 geo:densify
 geo:simplify
 geo:numPoints
 geo:isClosed
+geo:envelope
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:envelope
 geo:getX
 geo:getY
-geo:polygonize
 geo:isRing
+geo:polygonize
 geo:startPoint
 geo:endPoint
-geo:relatePattern
 geo:equalsExact
 geo:pointN
-geo:equalsExactTolerance
-geo:splitPolygon
 geo:interiorRingN
+geo:equalsExactTolerance
+geo:relatePattern
+geo:splitPolygon
 geo:length
 geo:isEmpty
 geo:contains
@@ -11285,19 +11294,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>H2 (JNDI)
-MySQL (JNDI)
-Geobuf
-Properties
+<pre>Properties
 GeoPackage
-Web Feature Server (NG)
-H2
 Directory of spatial files (shapefiles)
-PostGIS (JNDI)
 PostGIS
+Geobuf
+MySQL (JNDI)
+H2 (JNDI)
+Web Feature Server (NG)
+MySQL
 SpatiaLite (JNDI)
+PostGIS (JNDI)
 Shapefile
-MySQL</pre>
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11407,19 +11416,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>H2 (JNDI)
-MySQL (JNDI)
-Geobuf
-Properties
+<pre>Properties
 GeoPackage
-Web Feature Server (NG)
-H2
 Directory of spatial files (shapefiles)
-PostGIS (JNDI)
 PostGIS
+Geobuf
+MySQL (JNDI)
+H2 (JNDI)
+Web Feature Server (NG)
+MySQL
 SpatiaLite (JNDI)
+PostGIS (JNDI)
 Shapefile
-MySQL</pre>
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11776,6 +11785,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="sect2">
 <h3 id="getting-a-layer-s-features"><a class="anchor" href="#getting-a-layer-s-features"></a>Getting a Layer&#8217;s Features</h3>
+<div class="sect3">
+<h4 id="each-feature"><a class="anchor" href="#each-feature"></a>Each Feature</h4>
 <div class="listingblock">
 <div class="title">Iterate over a Layer&#8217;s Features</div>
 <div class="content">
@@ -11864,6 +11875,9 @@ Minnesota</pre>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect3">
+<h4 id="read-all-features"><a class="anchor" href="#read-all-features"></a>Read all Features</h4>
 <div class="listingblock">
 <div class="title">Read all Feature into a List</div>
 <div class="content">
@@ -11893,6 +11907,9 @@ Nevada
 ...</pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="collect-values"><a class="anchor" href="#collect-values"></a>Collect values</h4>
 <div class="listingblock">
 <div class="title">Collect values from a Layer&#8217;s Features</div>
 <div class="content">
@@ -11954,6 +11971,9 @@ Michigan
 Minnesota</pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="first"><a class="anchor" href="#first"></a>First</h4>
 <div class="listingblock">
 <div class="title">Get the first Feature that matches the Filter.</div>
 <div class="content">
@@ -11992,6 +12012,9 @@ println featureDesc.get(<span class="string"><span class="delimiter">&quot;</spa
 Wyoming</pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="filter"><a class="anchor" href="#filter"></a>Filter</h4>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/layer_first_sort.png" alt="layer first sort">
@@ -12008,6 +12031,101 @@ Layer disputedLayer = layer.filter(<span class="string"><span class="delimiter">
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/layer_filter.png" alt="layer filter">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cursor"><a class="anchor" href="#cursor"></a>Cursor</h4>
+<div class="listingblock">
+<div class="title">Iterate over a Layer&#8217;s Features with a Cursor</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Cursor</span> cursor = layer.cursor
+cursor.each { Feature feature -&gt;
+    println feature[<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Minnesota
+Montana
+North Dakota
+Hawaii
+Idaho
+Washington
+Arizona
+California
+Colorado
+Nevada
+...</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Iterate over a subset of a Layer&#8217;s Features with a Cursor</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Cursor</span> cursor = layer.getCursor(<span class="key">filter</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1 LIKE 'M%'</span><span class="delimiter">&quot;</span></span>)
+<span class="keyword">while</span>(cursor.hasNext()) {
+    Feature feature = cursor.next()
+    println feature[<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Minnesota
+Montana
+Missouri
+Massachusetts
+Mississippi
+Maryland
+Maine
+Michigan</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Iterate over a Layer&#8217;s Features with parameters with a Cursor</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">states</span><span class="delimiter">&quot;</span></span>)
+layer.getCursor(<span class="key">sort</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>], <span class="key">start</span>: <span class="integer">0</span>, <span class="key">max</span>: <span class="integer">5</span>, <span class="key">fields</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>], <span class="key">filter</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1 LIKE 'M%'</span><span class="delimiter">&quot;</span></span>).each { Feature feature -&gt;
+    println feature[<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>]
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Maine
+Maryland
+Massachusetts
+Michigan
+Minnesota</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Parameters</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>filter: The Filter or Filter String to limit the Features. Defaults to null.</p>
+</li>
+<li>
+<p>sort:  A List of Lists that define the sort order [[Field or Field name, "ASC" or "DESC"],&#8230;&#8203;]. Not all Layers support sorting!</p>
+</li>
+<li>
+<p>max:  The maximum number of Features to include</p>
+</li>
+<li>
+<p>start: The index of the record to start the cursor at.  Together with maxFeatures this simulates paging. Not all Layers support the start index and paging!</p>
+</li>
+<li>
+<p>fields: A List of Fields or Field names to include.  Used to select only a subset of Fields.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -13206,7 +13324,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-50fc07f4_163381ccf6d_-693d"
+            "id": "fid-6849e75_1633dc2de74_-693d"
         },
         {
             "type": "Feature",
@@ -13221,7 +13339,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-50fc07f4_163381ccf6d_-693b"
+            "id": "fid-6849e75_1633dc2de74_-693b"
         }
     ]
 }</pre>
@@ -13312,7 +13430,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-50fc07f4_163381ccf6d_-73c1"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-6849e75_1633dc2de74_-73c1"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -13334,7 +13452,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-50fc07f4_163381ccf6d_-73bf"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-6849e75_1633dc2de74_-73bf"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -13400,7 +13518,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-50fc07f4_163381ccf6d_-6a3f
+          fid-6849e75_1633dc2de74_-6a3f
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -13427,7 +13545,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-50fc07f4_163381ccf6d_-6a3d
+          fid-6849e75_1633dc2de74_-6a3d
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -15418,7 +15536,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-07 00:52:51 UTC
+Last updated 2018-05-08 03:11:53 UTC
 </div>
 </div>
 </body>
