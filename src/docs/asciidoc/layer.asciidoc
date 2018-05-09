@@ -544,7 +544,7 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=unionToWorkspac
 [.thumb]
 image::layer_union_to_workspace.png[]
 
-=== Reading and Writing Features
+=== Reading and Writing Layers
 
 The Layer IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
 
