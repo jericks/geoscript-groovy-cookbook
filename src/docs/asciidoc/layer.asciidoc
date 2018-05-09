@@ -630,6 +630,24 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=layerToKMLStrin
 include::output/layer_to_kml_string.txt[]
 ....
 
+==== CSV
+
+[source,groovy]
+.Write a Layer to a CSV String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=writeLayerToCsv,indent=0]
+----
+....
+include::output/layer_to_csv.txt[]
+....
+
+[source,groovy]
+.Read a Layer from a CSV String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromCsvString,indent=0]
+----
+[.thumb]
+image::layer_read_csv.png[]
 
 === Graticules
 

@@ -14,6 +14,8 @@ import geoscript.layer.Graticule
 import geoscript.layer.Layer
 import geoscript.layer.Renderable
 import geoscript.layer.Shapefile
+import geoscript.layer.io.CsvReader
+import geoscript.layer.io.CsvWriter
 import geoscript.layer.io.Writer
 import geoscript.layer.io.Reader
 import geoscript.layer.io.Readers
@@ -1268,6 +1270,51 @@ The merged Layer has ${mergedLayer.count} features
         writeFile("layer_to_geobuf_string", geobuf)
         geobuf
     }
+
+    // CSV
+
+    String writeLayerToCsv() {
+        // tag::writeLayerToCsv[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        CsvWriter writer = new CsvWriter()
+        String csv = writer.write(layer)
+        println csv
+        // end::writeLayerToCsv[]
+        writeFile("layer_to_csv", csv)
+        csv
+    }
+
+    Layer readLayerFromCsvString() {
+        // tag::readLayerFromCsvString[]
+        String csv = """"geom:Point:EPSG:4326","id:Integer","name:String"
+"POINT (-122.3204 47.6024)","1","Seattle"
+"POINT (-122.48416 47.2619)","2","Tacoma"
+"""
+        CsvReader reader = new CsvReader()
+        Layer layer = reader.read(csv)
+        // end::readLayerFromCsvString[]
+        layer.style = new Shape("navy")
+        drawOnBasemap("layer_read_csv", [layer], layer.bounds.expandBy(3.5))
+        layer
+    }
+
 
     // Graticule
 

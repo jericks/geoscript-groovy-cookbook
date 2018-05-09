@@ -531,6 +531,18 @@ class LayerRecipesTest {
         assertNotNull(str)
     }
 
+    @Test void writeLayerToCsv() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.writeLayerToCsv()
+        assertNotNull(str)
+    }
+
+    @Test void readLayerFromCsvString() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.readLayerFromCsvString()
+        assertEquals(2, layer.count)
+    }
+
     // Graticule
 
     @Test void createSquareGraticule() {
