@@ -2201,7 +2201,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--71ef515b_16342847abd_-6935"
+            "id": "fid--1dba373e_16348207ef2_-692d"
         },
         {
             "type": "Feature",
@@ -2216,10 +2216,124 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--71ef515b_16342847abd_-6933"
+            "id": "fid--1dba373e_16348207ef2_-692b"
         }
     ]
 }</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Layer to a GeoJSON String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+])
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.48416</span>, <span class="float">47.2619</span>),
+        <span class="key">id</span>: <span class="integer">2</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tacoma</span><span class="delimiter">&quot;</span></span>
+])
+
+GeoJSONWriter writer = <span class="keyword">new</span> GeoJSONWriter()
+<span class="predefined-type">String</span> geojson = writer.write(layer)
+println geojson</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3204,
+                    47.6024
+                ]
+            },
+            "properties": {
+                "id": 1,
+                "name": "Seattle"
+            },
+            "id": "fid--1dba373e_16348207ef2_-7e32"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4842,
+                    47.2619
+                ]
+            },
+            "properties": {
+                "id": 2,
+                "name": "Tacoma"
+            },
+            "id": "fid--1dba373e_16348207ef2_-7e30"
+        }
+    ]
+}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Layer from a GeoJSON String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> geoJson = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+{
+    &quot;type&quot;: &quot;FeatureCollection&quot;,
+    &quot;features&quot;: [
+        {
+            &quot;type&quot;: &quot;Feature&quot;,
+            &quot;geometry&quot;: {
+                &quot;type&quot;: &quot;Point&quot;,
+                &quot;coordinates&quot;: [
+                    -122.3204,
+                    47.6024
+                ]
+            },
+            &quot;properties&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;Seattle&quot;
+            },
+            &quot;id&quot;: &quot;1&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Feature&quot;,
+            &quot;geometry&quot;: {
+                &quot;type&quot;: &quot;Point&quot;,
+                &quot;coordinates&quot;: [
+                    -122.4842,
+                    47.2619
+                ]
+            },
+            &quot;properties&quot;: {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;Tacoma&quot;
+            },
+            &quot;id&quot;: &quot;2&quot;
+        }
+    ]
+}
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        GeoJSONReader reader = <span class="keyword">new</span> GeoJSONReader()
+        Layer layer = reader.read(geoJson)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_read_geojson.png" alt="layer read geojson">
 </div>
 </div>
 </div>
@@ -2307,7 +2421,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--71ef515b_16342847abd_-73bd"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--1dba373e_16348207ef2_-73b9"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -2329,7 +2443,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--71ef515b_16342847abd_-73bb"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--1dba373e_16348207ef2_-73b7"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -2395,7 +2509,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--71ef515b_16342847abd_-6a37
+          fid--1dba373e_16348207ef2_-6a33
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2422,7 +2536,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--71ef515b_16342847abd_-6a35
+          fid--1dba373e_16348207ef2_-6a31
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2651,7 +2765,7 @@ Layer layer = Graticule.createRectangles(bounds, width, height, -<span class="in
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-09 01:22:28 UTC
+Last updated 2018-05-10 03:31:59 UTC
 </div>
 </div>
 </body>
