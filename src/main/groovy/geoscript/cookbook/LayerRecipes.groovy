@@ -16,6 +16,8 @@ import geoscript.layer.Renderable
 import geoscript.layer.Shapefile
 import geoscript.layer.io.CsvReader
 import geoscript.layer.io.CsvWriter
+import geoscript.layer.io.GeoJSONReader
+import geoscript.layer.io.GeoJSONWriter
 import geoscript.layer.io.Writer
 import geoscript.layer.io.Reader
 import geoscript.layer.io.Readers
@@ -1163,6 +1165,8 @@ The merged Layer has ${mergedLayer.count} features
         csv
     }
 
+    // GeoJSON
+
     String layerToGeoJSONString() {
         // tag::layerToGeoJSONString[]
         Workspace workspace = new Memory()
@@ -1190,6 +1194,81 @@ The merged Layer has ${mergedLayer.count} features
         geojson
     }
 
+    String writeLayerToGeoJson() {
+        // tag::writeLayerToGeoJson[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        GeoJSONWriter writer = new GeoJSONWriter()
+        String geojson = writer.write(layer)
+        println geojson
+        // end::writeLayerToGeoJson[]
+        writeFile("layer_write_geojson", JsonOutput.prettyPrint(geojson))
+        geojson
+    }
+
+    Layer readLayerFromGeoJsonString() {
+        // tag::readLayerFromGeoJsonString[]
+        String geoJson = """
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.3204,
+                    47.6024
+                ]
+            },
+            "properties": {
+                "id": 1,
+                "name": "Seattle"
+            },
+            "id": "1"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -122.4842,
+                    47.2619
+                ]
+            },
+            "properties": {
+                "id": 2,
+                "name": "Tacoma"
+            },
+            "id": "2"
+        }
+    ]
+}
+"""
+        GeoJSONReader reader = new GeoJSONReader()
+        Layer layer = reader.read(geoJson)
+        // end::readLayerFromGeoJsonString[]
+        layer.style = new Shape("navy")
+        drawOnBasemap("layer_read_geojson", [layer], layer.bounds.expandBy(3.5))
+        layer
+    }
+    
     String layerToKMLString() {
         // tag::layerToKMLString[]
         Workspace workspace = new Memory()

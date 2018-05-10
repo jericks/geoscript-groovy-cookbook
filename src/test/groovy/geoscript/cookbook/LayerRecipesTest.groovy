@@ -507,10 +507,24 @@ class LayerRecipesTest {
         assertNotNull(str)
     }
 
+    // GeoJSON
+
     @Test void layerToGeoJSONString() {
         LayerRecipes recipes = new LayerRecipes()
         String str = recipes.layerToGeoJSONString()
         assertNotNull(str)
+    }
+
+    @Test void writeLayerToGeoJson() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.writeLayerToGeoJson()
+        assertNotNull(str)
+    }
+
+    @Test void readLayerFromGeoJsonString() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.readLayerFromGeoJsonString()
+        assertEquals(2, layer.count)
     }
 
     @Test void layerToKMLString() {
@@ -530,6 +544,8 @@ class LayerRecipesTest {
         String str = recipes.layerToGeobufString()
         assertNotNull(str)
     }
+
+    // CSV
 
     @Test void writeLayerToCsv() {
         LayerRecipes recipes = new LayerRecipes()

@@ -597,6 +597,24 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=layerToGeoJSONS
 include::output/layer_to_geojson_string.txt[]
 ....
 
+[source,groovy]
+.Write a Layer to a GeoJSON String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=writeLayerToGeoJson,indent=0]
+----
+....
+include::output/layer_write_geojson.txt[]
+....
+
+[source,groovy]
+.Read a Layer from a GeoJSON String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromGeoJsonString,indent=0]
+----
+[.thumb]
+image::layer_read_geojson.png[]
+
+
 ==== GeoBuf
 
 [source,groovy]
