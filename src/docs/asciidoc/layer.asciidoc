@@ -637,6 +637,23 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=layerToGMLStrin
 include::output/layer_to_gml_string.txt[]
 ....
 
+[source,groovy]
+.Write a Layer to a GML String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=writeLayerToGml,indent=0]
+----
+....
+include::output/layer_to_gml.txt[]
+....
+
+[source,groovy]
+.Read a Layer from a GML String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromGmlString,indent=0]
+----
+[.thumb]
+image::layer_read_gml.png[]
+
 ==== KML
 
 [source,groovy]

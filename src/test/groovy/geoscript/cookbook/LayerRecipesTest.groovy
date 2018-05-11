@@ -554,7 +554,19 @@ class LayerRecipesTest {
         String str = recipes.layerToGMLString()
         assertNotNull(str)
     }
-    
+
+    @Test void writeLayerToGml() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.writeLayerToGml()
+        assertNotNull(str)
+    }
+
+    @Test void readLayerFromGmlString() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.readLayerFromGmlString()
+        assertEquals(2, layer.count)
+    }
+
     @Test void layerToGeobufString() {
         LayerRecipes recipes = new LayerRecipes()
         String str = recipes.layerToGeobufString()

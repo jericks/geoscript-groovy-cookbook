@@ -18,6 +18,8 @@ import geoscript.layer.io.CsvReader
 import geoscript.layer.io.CsvWriter
 import geoscript.layer.io.GeoJSONReader
 import geoscript.layer.io.GeoJSONWriter
+import geoscript.layer.io.GmlReader
+import geoscript.layer.io.GmlWriter
 import geoscript.layer.io.KmlReader
 import geoscript.layer.io.KmlWriter
 import geoscript.layer.io.Writer
@@ -1383,6 +1385,88 @@ The merged Layer has ${mergedLayer.count} features
         // end::layerToGMLString[]
         writeFile("layer_to_gml_string", prettyPrintXml(gml))
         gml
+    }
+
+    String writeLayerToGml() {
+        // tag::writeLayerToGml[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        GmlWriter writer = new GmlWriter()
+        String gml = writer.write(layer)
+        println gml
+        // end::writeLayerToGml[]
+        writeFile("layer_to_gml", gml)
+        gml
+    }
+
+    Layer readLayerFromGmlString() {
+        // tag::readLayerFromGmlString[]
+        String gml = """
+<wfs:FeatureCollection xmlns:gsf="http://geoscript.org/feature" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wfs="http://www.opengis.net/wfs" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc">
+    <gml:boundedBy>
+        <gml:Box srsName="http://www.opengis.net/gml/srs/epsg.xml#4326">
+            <gml:coord>
+                <gml:X>-122.48416</gml:X>
+                <gml:Y>47.2619</gml:Y>
+            </gml:coord>
+            <gml:coord>
+                <gml:X>-122.3204</gml:X>
+                <gml:Y>47.6024</gml:Y>
+            </gml:coord>
+        </gml:Box>
+    </gml:boundedBy>
+    <gml:featureMember>
+        <gsf:cities fid="fid-a7cd555_1634fc34503_-7fff">
+            <gml:name>Seattle</gml:name>
+            <gsf:geom>
+                <gml:Point>
+                    <gml:coord>
+                        <gml:X>-122.3204</gml:X>
+                        <gml:Y>47.6024</gml:Y>
+                    </gml:coord>
+                </gml:Point>
+            </gsf:geom>
+            <gsf:id>1</gsf:id>
+        </gsf:cities>
+    </gml:featureMember>
+    <gml:featureMember>
+        <gsf:cities fid="fid-a7cd555_1634fc34503_-7ffd">
+            <gml:name>Portland</gml:name>
+            <gsf:geom>
+                <gml:Point>
+                    <gml:coord>
+                        <gml:X>-122.681944</gml:X>
+                        <gml:Y>45.52</gml:Y>
+                    </gml:coord>        
+                </gml:Point>
+            </gsf:geom>
+            <gsf:id>2</gsf:id>
+        </gsf:cities>
+    </gml:featureMember>
+</wfs:FeatureCollection>
+"""
+        GmlReader reader = new GmlReader()
+        Layer layer = reader.read(gml)
+        // end::readLayerFromGmlString[]
+        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
+        drawOnBasemap("layer_read_gml", [layer], layer.bounds.expandBy(3.5))
+        layer
     }
 
     String layerToGeobufString() {
