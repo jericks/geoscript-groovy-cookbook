@@ -2201,7 +2201,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--67eda8_1634fd3ec7a_-691c"
+            "id": "fid-397f160d_163512c1cb2_-6918"
         },
         {
             "type": "Feature",
@@ -2216,7 +2216,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--67eda8_1634fd3ec7a_-691a"
+            "id": "fid-397f160d_163512c1cb2_-6916"
         }
     ]
 }</pre>
@@ -2266,7 +2266,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--67eda8_1634fd3ec7a_-7e32"
+            "id": "fid-397f160d_163512c1cb2_-7e32"
         },
         {
             "type": "Feature",
@@ -2281,7 +2281,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--67eda8_1634fd3ec7a_-7e30"
+            "id": "fid-397f160d_163512c1cb2_-7e30"
         }
     ]
 }</pre>
@@ -2369,6 +2369,50 @@ println geobuf</code></pre>
 <pre>0a0269640a046e616d6510021806223d0a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c650a1c0a0c08001a08ffd6e77498a3892d6a0218026a080a065461636f6d61</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Write a Layer to a GeoBuf String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+])
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.681944</span>, <span class="float">45.52</span>),
+        <span class="key">id</span>: <span class="integer">2</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Portland</span><span class="delimiter">&quot;</span></span>
+])
+
+GeobufWriter writer = <span class="keyword">new</span> GeobufWriter()
+<span class="predefined-type">String</span> geobuf = writer.write(layer)
+println geobuf</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0a0269640a046e616d6510021806223f0a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c650a1e0a0c08001a08afe9ff7480d2b42b6a0218026a0a0a08506f72746c616e64</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Layer from a GeoBuf String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> geobuf = <span class="string"><span class="delimiter">&quot;</span><span class="content">0a0269640a046e616d6510021806223f0a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c650a1e0a0c08001a08afe9ff7480d2b42b6a0218026a0a0a08506f72746c616e64</span><span class="delimiter">&quot;</span></span>
+GeobufReader reader = <span class="keyword">new</span> GeobufReader()
+Layer layer = reader.read(geobuf)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_read_geobuf.png" alt="layer read geobuf">
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="gml"><a class="anchor" href="#gml"></a>GML</h4>
@@ -2421,7 +2465,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--67eda8_1634fd3ec7a_-73b1"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-397f160d_163512c1cb2_-73ad"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -2443,7 +2487,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--67eda8_1634fd3ec7a_-73af"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-397f160d_163512c1cb2_-73ab"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -2509,7 +2553,7 @@ println gml</code></pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--67eda8_1634fd3ec7a_-73c7"&gt;
+&lt;gsf:cities fid="fid-397f160d_163512c1cb2_-73c3"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -2523,7 +2567,7 @@ println gml</code></pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--67eda8_1634fd3ec7a_-73c5"&gt;
+&lt;gsf:cities fid="fid-397f160d_163512c1cb2_-73c1"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -2637,7 +2681,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--67eda8_1634fd3ec7a_-6a27
+          fid-397f160d_163512c1cb2_-6a23
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2664,7 +2708,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--67eda8_1634fd3ec7a_-6a25
+          fid-397f160d_163512c1cb2_-6a21
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2724,13 +2768,13 @@ println kml</code></pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid--67eda8_1634fd3ec7a_-73c3"&gt;
+&lt;kml:Placemark id="fid-397f160d_163512c1cb2_-73bf"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid--67eda8_1634fd3ec7a_-73c1"&gt;
+&lt;kml:Placemark id="fid-397f160d_163512c1cb2_-73bd"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -2969,7 +3013,7 @@ Layer layer = Graticule.createRectangles(bounds, width, height, -<span class="in
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-11 15:22:55 UTC
+Last updated 2018-05-11 21:39:29 UTC
 </div>
 </div>
 </body>
