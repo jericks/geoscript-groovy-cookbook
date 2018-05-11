@@ -527,11 +527,27 @@ class LayerRecipesTest {
         assertEquals(2, layer.count)
     }
 
+    // Kml
+
     @Test void layerToKMLString() {
         LayerRecipes recipes = new LayerRecipes()
         String str = recipes.layerToKMLString()
         assertNotNull(str)
     }
+
+    @Test void writeLayerToKml() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.writeLayerToKml()
+        assertNotNull(str)
+    }
+
+    @Test void readLayerFromKmlString() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.readLayerFromKmlString()
+        assertEquals(2, layer.count)
+    }
+
+    // GML
 
     @Test void layerToGMLString() {
         LayerRecipes recipes = new LayerRecipes()

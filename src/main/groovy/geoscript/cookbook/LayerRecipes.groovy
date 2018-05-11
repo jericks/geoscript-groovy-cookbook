@@ -18,6 +18,8 @@ import geoscript.layer.io.CsvReader
 import geoscript.layer.io.CsvWriter
 import geoscript.layer.io.GeoJSONReader
 import geoscript.layer.io.GeoJSONWriter
+import geoscript.layer.io.KmlReader
+import geoscript.layer.io.KmlWriter
 import geoscript.layer.io.Writer
 import geoscript.layer.io.Reader
 import geoscript.layer.io.Readers
@@ -1248,13 +1250,13 @@ The merged Layer has ${mergedLayer.count} features
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -122.4842,
-                    47.2619
+                    -122.681944,
+                    45.52
                 ]
             },
             "properties": {
                 "id": 2,
-                "name": "Tacoma"
+                "name": "Portland"
             },
             "id": "2"
         }
@@ -1264,11 +1266,13 @@ The merged Layer has ${mergedLayer.count} features
         GeoJSONReader reader = new GeoJSONReader()
         Layer layer = reader.read(geoJson)
         // end::readLayerFromGeoJsonString[]
-        layer.style = new Shape("navy")
+        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
         drawOnBasemap("layer_read_geojson", [layer], layer.bounds.expandBy(3.5))
         layer
     }
-    
+
+    // KML
+
     String layerToKMLString() {
         // tag::layerToKMLString[]
         Workspace workspace = new Memory()
@@ -1295,6 +1299,64 @@ The merged Layer has ${mergedLayer.count} features
         writeFile("layer_to_kml_string", prettyPrintXml(kml))
         kml
     }
+
+    String writeLayerToKml() {
+        // tag::writeLayerToKml[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        KmlWriter writer = new KmlWriter()
+        String kml = writer.write(layer)
+        println kml
+        // end::writeLayerToKml[]
+        writeFile("layer_to_kml", kml)
+        kml
+    }
+
+    Layer readLayerFromKmlString() {
+        // tag::readLayerFromKmlString[]
+        String kml = """
+<kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1">
+    <kml:Document>
+        <kml:Placemark id="fid-61215c1b_1634ca279f5_-7fff">
+            <kml:name>Seattle</kml:name>
+            <kml:Point>
+                <kml:coordinates>-122.3204,47.6024</kml:coordinates>
+            </kml:Point>
+        </kml:Placemark>
+        <kml:Placemark id="fid-61215c1b_1634ca279f5_-7ffd">
+            <kml:name>Portland</kml:name>
+            <kml:Point>
+                <kml:coordinates>-122.681944,45.52</kml:coordinates>
+            </kml:Point>
+        </kml:Placemark>
+    </kml:Document>
+</kml:kml>
+"""
+        KmlReader reader = new KmlReader()
+        Layer layer = reader.read(kml)
+        // end::readLayerFromKmlString[]
+        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
+        drawOnBasemap("layer_read_kml", [layer], layer.bounds.expandBy(3.5))
+        layer
+    }
+
+    // GML
 
     String layerToGMLString() {
         // tag::layerToGMLString[]
@@ -1384,12 +1446,12 @@ The merged Layer has ${mergedLayer.count} features
         // tag::readLayerFromCsvString[]
         String csv = """"geom:Point:EPSG:4326","id:Integer","name:String"
 "POINT (-122.3204 47.6024)","1","Seattle"
-"POINT (-122.48416 47.2619)","2","Tacoma"
+"POINT (-122.681944 45.52)","2","Portland"
 """
         CsvReader reader = new CsvReader()
         Layer layer = reader.read(csv)
         // end::readLayerFromCsvString[]
-        layer.style = new Shape("navy")
+        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
         drawOnBasemap("layer_read_csv", [layer], layer.bounds.expandBy(3.5))
         layer
     }
