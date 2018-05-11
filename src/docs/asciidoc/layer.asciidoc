@@ -626,6 +626,23 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=layerToGeobufSt
 include::output/layer_to_geobuf_string.txt[]
 ....
 
+[source,groovy]
+.Write a Layer to a GeoBuf String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=writeLayerToGeoBuf,indent=0]
+----
+....
+include::output/layer_to_geobuf.txt[]
+....
+
+[source,groovy]
+.Read a Layer from a GeoBuf String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromGeoBufString,indent=0]
+----
+[.thumb]
+image::layer_read_geobuf.png[]
+
 ==== GML
 
 [source,groovy]

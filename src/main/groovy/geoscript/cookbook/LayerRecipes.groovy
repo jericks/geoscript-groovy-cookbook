@@ -18,6 +18,8 @@ import geoscript.layer.io.CsvReader
 import geoscript.layer.io.CsvWriter
 import geoscript.layer.io.GeoJSONReader
 import geoscript.layer.io.GeoJSONWriter
+import geoscript.layer.io.GeobufReader
+import geoscript.layer.io.GeobufWriter
 import geoscript.layer.io.GmlReader
 import geoscript.layer.io.GmlWriter
 import geoscript.layer.io.KmlReader
@@ -1469,6 +1471,8 @@ The merged Layer has ${mergedLayer.count} features
         layer
     }
 
+    // GeoBuf
+
     String layerToGeobufString() {
         // tag::layerToGeobufString[]
         Workspace workspace = new Memory()
@@ -1494,6 +1498,45 @@ The merged Layer has ${mergedLayer.count} features
         // end::layerToGeobufString[]
         writeFile("layer_to_geobuf_string", geobuf)
         geobuf
+    }
+
+    String writeLayerToGeoBuf() {
+        // tag::writeLayerToGeoBuf[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.681944, 45.52),
+                id: 2,
+                name: "Portland"
+        ])
+
+        GeobufWriter writer = new GeobufWriter()
+        String geobuf = writer.write(layer)
+        println geobuf
+        // end::writeLayerToGeoBuf[]
+        writeFile("layer_to_geobuf", geobuf)
+        geobuf
+    }
+
+    Layer readLayerFromGeoBufString() {
+        // tag::readLayerFromGeoBufString[]
+        String geobuf = "0a0269640a046e616d6510021806223f0a1d0a0c08001a089fd8d374c0ebb22d6a0218016a090a0753656174746c650a1e0a0c08001a08afe9ff7480d2b42b6a0218026a0a0a08506f72746c616e64"
+        GeobufReader reader = new GeobufReader()
+        Layer layer = reader.read(geobuf)
+        // end::readLayerFromGeoBufString[]
+        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
+        drawOnBasemap("layer_read_geobuf", [layer], layer.bounds.expandBy(3.5))
+        layer
     }
 
     // CSV

@@ -567,10 +567,24 @@ class LayerRecipesTest {
         assertEquals(2, layer.count)
     }
 
+    // Geobuf
+
     @Test void layerToGeobufString() {
         LayerRecipes recipes = new LayerRecipes()
         String str = recipes.layerToGeobufString()
         assertNotNull(str)
+    }
+
+    @Test void writeLayerToGeoBuf() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.writeLayerToGeoBuf()
+        assertNotNull(str)
+    }
+
+    @Test void readLayerFromGeoBufString() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.readLayerFromGeoBufString()
+        assertEquals(2, layer.count)
     }
 
     // CSV
