@@ -18,6 +18,8 @@ import geoscript.layer.io.CsvReader
 import geoscript.layer.io.CsvWriter
 import geoscript.layer.io.GeoJSONReader
 import geoscript.layer.io.GeoJSONWriter
+import geoscript.layer.io.GeoRSSReader
+import geoscript.layer.io.GeoRSSWriter
 import geoscript.layer.io.GeobufReader
 import geoscript.layer.io.GeobufWriter
 import geoscript.layer.io.GmlReader
@@ -1583,6 +1585,64 @@ The merged Layer has ${mergedLayer.count} features
         layer
     }
 
+    // GeoRSS
+
+    String writeLayerToGeoRss() {
+        // tag::writeLayerToGeoRss[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        GeoRSSWriter writer = new GeoRSSWriter()
+        String georss = writer.write(layer)
+        println georss
+        // end::writeLayerToGeoRss[]
+        writeFile("layer_to_georss", georss)
+        georss
+    }
+
+    Layer readLayerFromGeoRssString() {
+        // tag::readLayerFromGeoRssString[]
+        String georss = """<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:georss="http://www.georss.org/georss" xmlns="http://www.w3.org/2005/Atom">
+<title>cities</title>
+<subtitle>cities geom: Point(EPSG:4326), id: Integer, name: String</subtitle>
+<link>http://geoscript.org/feature</link>
+<entry>
+<title>fid--5e0c8831_163514ce963_-7fff</title>
+<summary>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>
+<updated>Fri May 11 15:23:05 PDT 2018</updated>
+<georss:point>47.6024 -122.3204</georss:point>
+</entry>
+<entry>
+<title>fid--5e0c8831_163514ce963_-7ffd</title>
+<summary>[geom:POINT (-122.681944 45.52), id:2, name:Portland]</summary>
+<updated>Fri May 11 15:23:05 PDT 2018</updated>
+<georss:point>45.52 -122.681944</georss:point>
+</entry>
+</feed>
+"""
+        GeoRSSReader reader = new GeoRSSReader()
+        Layer layer = reader.read(georss)
+        // end::readLayerFromGeoRssString[]
+        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5)
+        drawOnBasemap("layer_read_georss", [layer], layer.bounds.expandBy(3.5))
+        layer
+    }
 
     // Graticule
 

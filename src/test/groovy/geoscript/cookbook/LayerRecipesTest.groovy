@@ -601,6 +601,20 @@ class LayerRecipesTest {
         assertEquals(2, layer.count)
     }
 
+    // GeoRSS
+
+    @Test void writeLayerToGeoRss() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.writeLayerToGeoRss()
+        assertNotNull(str)
+    }
+
+    @Test void readLayerFromGeoRssString() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.readLayerFromGeoRssString()
+        assertNotNull(str)
+    }
+
     // Graticule
 
     @Test void createSquareGraticule() {

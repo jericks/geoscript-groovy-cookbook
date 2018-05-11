@@ -718,6 +718,26 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromCs
 [.thumb]
 image::layer_read_csv.png[]
 
+==== GeoRSS
+
+[source,groovy]
+.Write a Layer to a GeoRSS String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=writeLayerToGeoRss,indent=0]
+----
+....
+include::output/layer_to_georss.txt[]
+....
+
+[source,groovy]
+.Read a Layer from a GeoRSS String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromGeoRssString,indent=0]
+----
+[.thumb]
+image::layer_read_georss.png[]
+
+
 === Graticules
 
 ==== Square
