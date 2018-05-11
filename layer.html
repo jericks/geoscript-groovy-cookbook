@@ -2201,7 +2201,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--568844f2_1634ccaee0c_-6924"
+            "id": "fid--67eda8_1634fd3ec7a_-691c"
         },
         {
             "type": "Feature",
@@ -2216,7 +2216,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--568844f2_1634ccaee0c_-6922"
+            "id": "fid--67eda8_1634fd3ec7a_-691a"
         }
     ]
 }</pre>
@@ -2266,7 +2266,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--568844f2_1634ccaee0c_-7e32"
+            "id": "fid--67eda8_1634fd3ec7a_-7e32"
         },
         {
             "type": "Feature",
@@ -2281,7 +2281,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--568844f2_1634ccaee0c_-7e30"
+            "id": "fid--67eda8_1634fd3ec7a_-7e30"
         }
     ]
 }</pre>
@@ -2421,7 +2421,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--568844f2_1634ccaee0c_-73b5"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--67eda8_1634fd3ec7a_-73b1"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -2443,7 +2443,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--568844f2_1634ccaee0c_-73b3"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--67eda8_1634fd3ec7a_-73af"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -2465,6 +2465,134 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
 &lt;/wfs:FeatureCollection&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Layer to a GML String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+])
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.48416</span>, <span class="float">47.2619</span>),
+        <span class="key">id</span>: <span class="integer">2</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tacoma</span><span class="delimiter">&quot;</span></span>
+])
+
+GmlWriter writer = <span class="keyword">new</span> GmlWriter()
+<span class="predefined-type">String</span> gml = writer.write(layer)
+println gml</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;wfs:FeatureCollection xmlns:gsf="http://geoscript.org/feature" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wfs="http://www.opengis.net/wfs" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc"&gt;
+&lt;gml:boundedBy&gt;
+&lt;gml:Box srsName="http://www.opengis.net/gml/srs/epsg.xml#4326"&gt;
+&lt;gml:coord&gt;
+&lt;gml:X&gt;-122.48416&lt;/gml:X&gt;
+&lt;gml:Y&gt;47.2619&lt;/gml:Y&gt;
+&lt;/gml:coord&gt;
+&lt;gml:coord&gt;
+&lt;gml:X&gt;-122.3204&lt;/gml:X&gt;
+&lt;gml:Y&gt;47.6024&lt;/gml:Y&gt;
+&lt;/gml:coord&gt;
+&lt;/gml:Box&gt;
+&lt;/gml:boundedBy&gt;
+&lt;gml:featureMember&gt;
+&lt;gsf:cities fid="fid--67eda8_1634fd3ec7a_-73c7"&gt;
+&lt;gml:name&gt;Seattle&lt;/gml:name&gt;
+&lt;gsf:geom&gt;
+&lt;gml:Point&gt;
+&lt;gml:coord&gt;
+&lt;gml:X&gt;-122.3204&lt;/gml:X&gt;
+&lt;gml:Y&gt;47.6024&lt;/gml:Y&gt;
+&lt;/gml:coord&gt;
+&lt;/gml:Point&gt;
+&lt;/gsf:geom&gt;
+&lt;gsf:id&gt;1&lt;/gsf:id&gt;
+&lt;/gsf:cities&gt;
+&lt;/gml:featureMember&gt;
+&lt;gml:featureMember&gt;
+&lt;gsf:cities fid="fid--67eda8_1634fd3ec7a_-73c5"&gt;
+&lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
+&lt;gsf:geom&gt;
+&lt;gml:Point&gt;
+&lt;gml:coord&gt;
+&lt;gml:X&gt;-122.48416&lt;/gml:X&gt;
+&lt;gml:Y&gt;47.2619&lt;/gml:Y&gt;
+&lt;/gml:coord&gt;
+&lt;/gml:Point&gt;
+&lt;/gsf:geom&gt;
+&lt;gsf:id&gt;2&lt;/gsf:id&gt;
+&lt;/gsf:cities&gt;
+&lt;/gml:featureMember&gt;
+&lt;/wfs:FeatureCollection&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Layer from a GML String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> gml = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+&lt;wfs:FeatureCollection xmlns:gsf=&quot;http://geoscript.org/feature&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:wfs=&quot;http://www.opengis.net/wfs&quot; xmlns:gml=&quot;http://www.opengis.net/gml&quot; xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;
+    &lt;gml:boundedBy&gt;
+        &lt;gml:Box srsName=&quot;http://www.opengis.net/gml/srs/epsg.xml#4326&quot;&gt;
+            &lt;gml:coord&gt;
+                &lt;gml:X&gt;-122.48416&lt;/gml:X&gt;
+                &lt;gml:Y&gt;47.2619&lt;/gml:Y&gt;
+            &lt;/gml:coord&gt;
+            &lt;gml:coord&gt;
+                &lt;gml:X&gt;-122.3204&lt;/gml:X&gt;
+                &lt;gml:Y&gt;47.6024&lt;/gml:Y&gt;
+            &lt;/gml:coord&gt;
+        &lt;/gml:Box&gt;
+    &lt;/gml:boundedBy&gt;
+    &lt;gml:featureMember&gt;
+        &lt;gsf:cities fid=&quot;fid-a7cd555_1634fc34503_-7fff&quot;&gt;
+            &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
+            &lt;gsf:geom&gt;
+                &lt;gml:Point&gt;
+                    &lt;gml:coord&gt;
+                        &lt;gml:X&gt;-122.3204&lt;/gml:X&gt;
+                        &lt;gml:Y&gt;47.6024&lt;/gml:Y&gt;
+                    &lt;/gml:coord&gt;
+                &lt;/gml:Point&gt;
+            &lt;/gsf:geom&gt;
+            &lt;gsf:id&gt;1&lt;/gsf:id&gt;
+        &lt;/gsf:cities&gt;
+    &lt;/gml:featureMember&gt;
+    &lt;gml:featureMember&gt;
+        &lt;gsf:cities fid=&quot;fid-a7cd555_1634fc34503_-7ffd&quot;&gt;
+            &lt;gml:name&gt;Portland&lt;/gml:name&gt;
+            &lt;gsf:geom&gt;
+                &lt;gml:Point&gt;
+                    &lt;gml:coord&gt;
+                        &lt;gml:X&gt;-122.681944&lt;/gml:X&gt;
+                        &lt;gml:Y&gt;45.52&lt;/gml:Y&gt;
+                    &lt;/gml:coord&gt;
+                &lt;/gml:Point&gt;
+            &lt;/gsf:geom&gt;
+            &lt;gsf:id&gt;2&lt;/gsf:id&gt;
+        &lt;/gsf:cities&gt;
+    &lt;/gml:featureMember&gt;
+&lt;/wfs:FeatureCollection&gt;
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        GmlReader reader = <span class="keyword">new</span> GmlReader()
+        Layer layer = reader.read(gml)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_read_gml.png" alt="layer read gml">
 </div>
 </div>
 </div>
@@ -2509,7 +2637,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--568844f2_1634ccaee0c_-6a2f
+          fid--67eda8_1634fd3ec7a_-6a27
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2536,7 +2664,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--568844f2_1634ccaee0c_-6a2d
+          fid--67eda8_1634fd3ec7a_-6a25
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2596,13 +2724,13 @@ println kml</code></pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid--568844f2_1634ccaee0c_-73c7"&gt;
+&lt;kml:Placemark id="fid--67eda8_1634fd3ec7a_-73c3"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid--568844f2_1634ccaee0c_-73c5"&gt;
+&lt;kml:Placemark id="fid--67eda8_1634fd3ec7a_-73c1"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -2841,7 +2969,7 @@ Layer layer = Graticule.createRectangles(bounds, width, height, -<span class="in
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-10 17:41:31 PDT
+Last updated 2018-05-11 15:22:55 UTC
 </div>
 </div>
 </body>
