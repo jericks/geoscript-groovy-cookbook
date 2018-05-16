@@ -39,4 +39,16 @@ class FormatRecipesTest {
         assertNotNull(raster)
     }
 
+    @Test void readGeoTiff() {
+        FormatRecipes recipes = new FormatRecipes()
+        Raster raster = recipes.readGeoTiff()
+        assertNotNull(raster)
+    }
+
+    @Test void readWorldImage() {
+        FormatRecipes recipes = new FormatRecipes()
+        Raster raster = recipes.readWorldImage()
+        assertNotNull(raster)
+    }
+
 }

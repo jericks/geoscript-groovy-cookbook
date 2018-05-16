@@ -1,7 +1,9 @@
 package geoscript.cookbook
 
 import geoscript.layer.Format
+import geoscript.layer.GeoTIFF
 import geoscript.layer.Raster
+import geoscript.layer.WorldImage
 
 class FormatRecipes extends Recipes {
 
@@ -67,6 +69,26 @@ class FormatRecipes extends Recipes {
         // end::write[]
         draw("format_write", [outRaster])
         outRaster
+    }
+
+    Raster readGeoTiff() {
+        // tag::readGeoTiff[]
+        File file = new File("src/main/resources/earth.tif")
+        GeoTIFF geotiff = new GeoTIFF(file)
+        Raster raster = geotiff.read("earth")
+        // end::readGeoTiff[]
+        draw("format_geotiff_read", [raster])
+        raster
+    }
+
+    Raster readWorldImage() {
+        // tag::readWorldImage[]
+        File file = new File("src/main/resources/earth.png")
+        WorldImage worldImage = new WorldImage(file)
+        Raster raster = worldImage.read("earth")
+        // end::readWorldImage[]
+        draw("format_worldimage_read", [raster])
+        raster
     }
 
 }

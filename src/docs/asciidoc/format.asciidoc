@@ -64,3 +64,29 @@ include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=hasRaster,inde
 ....
 include::output/format_has.txt[]
 ....
+
+=== GeoTIFF
+
+==== Read
+
+Read a GeoTIFF Raster from a File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readGeoTiff,indent=0]
+----
+[.thumb]
+image::format_geotiff_read.png[]
+
+=== WorldImage
+
+==== Read
+
+Read a WorldImage Raster from a File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readWorldImage,indent=0]
+----
+[.thumb]
+image::format_worldimage_read.png[]
