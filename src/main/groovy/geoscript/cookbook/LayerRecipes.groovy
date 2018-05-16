@@ -24,6 +24,8 @@ import geoscript.layer.io.GeobufReader
 import geoscript.layer.io.GeobufWriter
 import geoscript.layer.io.GmlReader
 import geoscript.layer.io.GmlWriter
+import geoscript.layer.io.GpxReader
+import geoscript.layer.io.GpxWriter
 import geoscript.layer.io.KmlReader
 import geoscript.layer.io.KmlWriter
 import geoscript.layer.io.Writer
@@ -1623,13 +1625,13 @@ The merged Layer has ${mergedLayer.count} features
 <subtitle>cities geom: Point(EPSG:4326), id: Integer, name: String</subtitle>
 <link>http://geoscript.org/feature</link>
 <entry>
-<title>fid--5e0c8831_163514ce963_-7fff</title>
+<title>Seattle</title>
 <summary>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>
 <updated>Fri May 11 15:23:05 PDT 2018</updated>
 <georss:point>47.6024 -122.3204</georss:point>
 </entry>
 <entry>
-<title>fid--5e0c8831_163514ce963_-7ffd</title>
+<title>Portland</title>
 <summary>[geom:POINT (-122.681944 45.52), id:2, name:Portland]</summary>
 <updated>Fri May 11 15:23:05 PDT 2018</updated>
 <georss:point>45.52 -122.681944</georss:point>
@@ -1638,9 +1640,60 @@ The merged Layer has ${mergedLayer.count} features
 """
         GeoRSSReader reader = new GeoRSSReader()
         Layer layer = reader.read(georss)
+
         // end::readLayerFromGeoRssString[]
-        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5)
+        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("title").point([0.5,0.5], [0, 5.0], 0)
         drawOnBasemap("layer_read_georss", [layer], layer.bounds.expandBy(3.5))
+        layer
+    }
+
+    // GPX
+
+    String writeLayerToGpx() {
+        // tag::writeLayerToGpx[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        GpxWriter writer = new GpxWriter()
+        String gpx = writer.write(layer)
+        println gpx
+        // end::writeLayerToGpx[]
+        writeFile("layer_to_gpx", gpx)
+        gpx
+    }
+
+    Layer readLayerFromGpxString() {
+        // tag::readLayerFromGpxString[]
+        String gpx = """<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript">
+<wpt lat="47.6024" lon="-122.3204">
+<name>Seattle</name>
+</wpt>
+<wpt lat="45.52" lon="-122.681944">      
+<name>Portland</name>
+</wpt>
+</gpx>
+"""
+        GpxReader reader = new GpxReader()
+        Layer layer = reader.read(gpx)
+        // end::readLayerFromGpxString[]
+        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
+        drawOnBasemap("layer_read_gpx", [layer], layer.bounds.expandBy(3.5))
         layer
     }
 

@@ -611,8 +611,22 @@ class LayerRecipesTest {
 
     @Test void readLayerFromGeoRssString() {
         LayerRecipes recipes = new LayerRecipes()
-        String str = recipes.readLayerFromGeoRssString()
+        Layer layer  = recipes.readLayerFromGeoRssString()
+        assertEquals(2, layer.count)
+    }
+
+    // GPX
+
+    @Test void writeLayerToGpx() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.writeLayerToGpx()
         assertNotNull(str)
+    }
+
+    @Test void readLayerFromGpxString() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.readLayerFromGpxString()
+        assertEquals(2, layer.count)
     }
 
     // Graticule

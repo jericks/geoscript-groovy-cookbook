@@ -737,6 +737,24 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromGe
 [.thumb]
 image::layer_read_georss.png[]
 
+==== GPX
+
+[source,groovy]
+.Write a Layer to a GPX String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=writeLayerToGpx,indent=0]
+----
+....
+include::output/layer_to_gpx.txt[]
+....
+
+[source,groovy]
+.Read a Layer from a GPX String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromGpxString,indent=0]
+----
+[.thumb]
+image::layer_read_gpx.png[]
 
 === Graticules
 
