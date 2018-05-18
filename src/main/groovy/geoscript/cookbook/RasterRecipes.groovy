@@ -249,6 +249,24 @@ class RasterRecipes extends Recipes {
         layer
     }
 
+    Raster invert() {
+        // tag::invert[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        Raster invertedRaster = raster.invert()
+        // end::invert[]
+        invertedRaster.style = new ColorMap([
+                [color: "#9fd182", quantity:-4370],
+                [color: "#3e7f3c", quantity:-1000],
+                [color: "#133912", quantity:0],
+                [color: "#08306b", quantity:20000],
+                [color: "#fffff5", quantity:32768],
+        ])
+        draw("raster_invert", [invertedRaster])
+        invertedRaster
+    }
+
     // Band
 
     List<Band> band() {

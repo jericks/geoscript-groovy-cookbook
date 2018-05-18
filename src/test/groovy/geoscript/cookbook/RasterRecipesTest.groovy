@@ -87,4 +87,10 @@ class RasterRecipesTest {
         Layer layer = recipes.pointLayer()
         assertTrue(layer.count > 1000)
     }
+
+    @Test void invert() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.invert()
+        assertNotNull(raster)
+    }
 }

@@ -198,6 +198,17 @@ include::output/raster_scaled.txt[]
 [.thumb]
 image::raster_scaled.png[]
 
+==== Invert
+
+Invert the values of a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=invert,indent=0]
+----
+[.thumb]
+image::raster_invert.png[]
+
 ==== Vectorize
 
 Create a Polygon Layer from a Raster
