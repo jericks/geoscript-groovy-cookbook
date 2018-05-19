@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.layer.ArcGrid
 import geoscript.layer.Format
 import geoscript.layer.GeoTIFF
 import geoscript.layer.Raster
@@ -78,6 +79,22 @@ class FormatRecipes extends Recipes {
         Raster raster = geotiff.read("earth")
         // end::readGeoTiff[]
         draw("format_geotiff_read", [raster])
+        raster
+    }
+
+    Raster writeGeoTiffToArcGrid() {
+        // tag::writeGeoTiffToArcGrid[]
+        File file = new File("src/main/resources/earth.tif")
+        GeoTIFF geotiff = new GeoTIFF(file)
+        Raster raster = geotiff.read("earth")
+
+        File arcGridFile = new File("target/earth.asc")
+        ArcGrid arcGrid = new ArcGrid(arcGridFile)
+        arcGrid.write(raster)
+        Raster arcGridRaster = arcGrid.read("earth")
+
+        // end::writeGeoTiffToArcGrid[]
+        draw("format_write_geotiff_to_arcgrid", [arcGridRaster])
         raster
     }
 

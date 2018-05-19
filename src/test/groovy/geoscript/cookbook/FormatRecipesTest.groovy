@@ -45,6 +45,12 @@ class FormatRecipesTest {
         assertNotNull(raster)
     }
 
+    @Test void writeGeoTiffToArcGrid() {
+        FormatRecipes recipes = new FormatRecipes()
+        Raster raster = recipes.writeGeoTiffToArcGrid()
+        assertNotNull(raster)
+    }
+
     @Test void readWorldImage() {
         FormatRecipes recipes = new FormatRecipes()
         Raster raster = recipes.readWorldImage()

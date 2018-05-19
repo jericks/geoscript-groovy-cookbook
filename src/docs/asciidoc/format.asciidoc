@@ -78,6 +78,17 @@ include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readGeoTiff,in
 [.thumb]
 image::format_geotiff_read.png[]
 
+==== Write
+
+Write a GeoTIFF Raster to an ArcGrid Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=writeGeoTiffToArcGrid,indent=0]
+----
+[.thumb]
+image::format_write_geotiff_to_arcgrid.png[]
+
 === WorldImage
 
 ==== Read
