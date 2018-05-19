@@ -525,6 +525,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geotiff">GeoTIFF</a>
 <ul class="sectlevel3">
 <li><a href="#read">Read</a></li>
+<li><a href="#write">Write</a></li>
 </ul>
 </li>
 <li><a href="#worldimage">WorldImage</a>
@@ -671,6 +672,29 @@ GeoTIFF geotiff = <span class="keyword">new</span> GeoTIFF(file)
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="write"><a class="anchor" href="#write"></a>Write</h4>
+<div class="paragraph">
+<p>Write a GeoTIFF Raster to an ArcGrid Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/earth.tif</span><span class="delimiter">&quot;</span></span>)
+GeoTIFF geotiff = <span class="keyword">new</span> GeoTIFF(file)
+<span class="predefined-type">Raster</span> raster = geotiff.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth</span><span class="delimiter">&quot;</span></span>)
+
+<span class="predefined-type">File</span> arcGridFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/earth.asc</span><span class="delimiter">&quot;</span></span>)
+ArcGrid arcGrid = <span class="keyword">new</span> ArcGrid(arcGridFile)
+arcGrid.write(raster)
+<span class="predefined-type">Raster</span> arcGridRaster = arcGrid.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/format_write_geotiff_to_arcgrid.png" alt="format write geotiff to arcgrid">
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="worldimage"><a class="anchor" href="#worldimage"></a>WorldImage</h3>
@@ -698,7 +722,7 @@ WorldImage worldImage = <span class="keyword">new</span> WorldImage(file)
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-18 03:18:23 UTC
+Last updated 2018-05-19 18:34:41 UTC
 </div>
 </div>
 </body>
