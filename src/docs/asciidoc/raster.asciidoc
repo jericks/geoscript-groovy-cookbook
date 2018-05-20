@@ -228,3 +228,29 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=pointLayer,ind
 ----
 [.thumb]
 image::raster_pointLayer.png[]
+
+==== Raster Algebra
+
+Add a constant value to a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=add,indent=0]
+----
+....
+include::output/raster_add.txt[]
+....
+[.thumb]
+image::raster_add.png[]
+
+Subtract a constant value to a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=minus,indent=0]
+----
+....
+include::output/raster_minus.txt[]
+....
+[.thumb]
+image::raster_minus.png[]

@@ -267,6 +267,58 @@ class RasterRecipes extends Recipes {
         invertedRaster
     }
 
+    // Raster Algebra
+
+    Raster add() {
+        // tag::add[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        double elevation1 = raster.getValue(new Point(-121.799927,46.867703))
+        println elevation1
+
+        Raster higherRaster = raster.add(100.00)
+        double elevation2 = higherRaster.getValue(new Point(-121.799927,46.867703))
+        println elevation2
+
+        // end::add[]
+        higherRaster.style = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ])
+        draw("raster_add", [higherRaster])
+        writeFile("raster_add", "${elevation1}${NEW_LINE}${elevation2}")
+        higherRaster
+    }
+
+    Raster minus() {
+        // tag::minus[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        double elevation1 = raster.getValue(new Point(-121.799927,46.867703))
+        println elevation1
+
+        Raster lowerRaster = raster.minus(50.00)
+        double elevation2 = lowerRaster.getValue(new Point(-121.799927,46.867703))
+        println elevation2
+
+        // end::minus[]
+        lowerRaster.style = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ])
+        draw("raster_minus", [lowerRaster])
+        writeFile("raster_minus", "${elevation1}${NEW_LINE}${elevation2}")
+        lowerRaster
+    }
+
     // Band
 
     List<Band> band() {
