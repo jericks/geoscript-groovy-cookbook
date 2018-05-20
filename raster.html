@@ -529,6 +529,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#scale">Scale</a></li>
 <li><a href="#invert">Invert</a></li>
 <li><a href="#vectorize">Vectorize</a></li>
+<li><a href="#raster-algebra">Raster Algebra</a></li>
 </ul>
 </li>
 </ul>
@@ -973,13 +974,70 @@ Layer layer = raster.pointLayer</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="raster-algebra"><a class="anchor" href="#raster-algebra"></a>Raster Algebra</h4>
+<div class="paragraph">
+<p>Add a constant value to a Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">pc</span><span class="delimiter">&quot;</span></span>)
+<span class="type">double</span> elevation1 = raster.getValue(<span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">121.799927</span>,<span class="float">46.867703</span>))
+println elevation1
+
+<span class="predefined-type">Raster</span> higherRaster = raster.add(<span class="float">100.00</span>)
+<span class="type">double</span> elevation2 = higherRaster.getValue(<span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">121.799927</span>,<span class="float">46.867703</span>))
+println elevation2</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>3069.0
+3169.0</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_add.png" alt="raster add">
+</div>
+</div>
+<div class="paragraph">
+<p>Subtract a constant value to a Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">pc</span><span class="delimiter">&quot;</span></span>)
+<span class="type">double</span> elevation1 = raster.getValue(<span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">121.799927</span>,<span class="float">46.867703</span>))
+println elevation1
+
+<span class="predefined-type">Raster</span> lowerRaster = raster.minus(<span class="float">50.00</span>)
+<span class="type">double</span> elevation2 = lowerRaster.getValue(<span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">121.799927</span>,<span class="float">46.867703</span>))
+println elevation2</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>3069.0
+3019.0</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_minus.png" alt="raster minus">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-05-19 18:34:41 UTC
+Last updated 2018-05-20 22:34:40 UTC
 </div>
 </div>
 </body>
