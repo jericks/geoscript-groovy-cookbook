@@ -42,13 +42,13 @@ geo:crosses
 geo:symDifference
 geo:distance
 geo:boundary
+geo:reproject
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:overlaps
 geo:isSimple
 geo:isWithinDistance
-geo:reproject
 geo:relate
 geo:densify
 geo:simplify
@@ -67,9 +67,9 @@ geo:startPoint
 geo:endPoint
 geo:equalsExact
 geo:relatePattern
-geo:interiorRingN
 geo:pointN
 geo:equalsExactTolerance
+geo:interiorRingN
 geo:splitPolygon
 geo:length
 geo:isEmpty
