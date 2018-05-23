@@ -231,6 +231,8 @@ image::raster_pointLayer.png[]
 
 ==== Raster Algebra
 
+===== Add
+
 Add a constant value to a Raster
 
 [source,groovy]
@@ -243,6 +245,8 @@ include::output/raster_add.txt[]
 [.thumb]
 image::raster_add.png[]
 
+===== Subtract
+
 Subtract a constant value to a Raster
 
 [source,groovy]
@@ -254,3 +258,31 @@ include::output/raster_minus.txt[]
 ....
 [.thumb]
 image::raster_minus.png[]
+
+===== Multiply
+
+Multiply a constant value against a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=multiply,indent=0]
+----
+....
+include::output/raster_multiply.txt[]
+....
+[.thumb]
+image::raster_multiply.png[]
+
+===== Divide
+
+Divide a constant value against a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=divide,indent=0]
+----
+....
+include::output/raster_divide.txt[]
+....
+[.thumb]
+image::raster_divide.png[]

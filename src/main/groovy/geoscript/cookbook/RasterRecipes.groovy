@@ -319,6 +319,56 @@ class RasterRecipes extends Recipes {
         lowerRaster
     }
 
+    Raster multiply() {
+        // tag::multiply[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        double elevation1 = raster.getValue(new Point(-121.799927,46.867703))
+        println elevation1
+
+        Raster higherRaster = raster.multiply(2.0)
+        double elevation2 = higherRaster.getValue(new Point(-121.799927,46.867703))
+        println elevation2
+
+        // end::multiply[]
+        higherRaster.style = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ])
+        draw("raster_multiply", [higherRaster])
+        writeFile("raster_multiply", "${elevation1}${NEW_LINE}${elevation2}")
+        higherRaster
+    }
+
+    Raster divide() {
+        // tag::divide[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        double elevation1 = raster.getValue(new Point(-121.799927,46.867703))
+        println elevation1
+
+        Raster lowerRaster = raster.divide(2.0)
+        double elevation2 = lowerRaster.getValue(new Point(-121.799927,46.867703))
+        println elevation2
+
+        // end::divide[]
+        lowerRaster.style = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ])
+        draw("raster_divide", [lowerRaster])
+        writeFile("raster_divide", "${elevation1}${NEW_LINE}${elevation2}")
+        lowerRaster
+    }
+
     // Band
 
     List<Band> band() {
