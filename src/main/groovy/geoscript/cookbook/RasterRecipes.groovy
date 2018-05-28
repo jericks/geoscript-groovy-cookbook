@@ -319,6 +319,31 @@ class RasterRecipes extends Recipes {
         lowerRaster
     }
 
+    Raster minusFrom() {
+        // tag::minusFrom[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        double elevation1 = raster.getValue(new Point(-121.799927,46.867703))
+        println elevation1
+
+        Raster lowerRaster = raster.minusFrom(2000.0)
+        double elevation2 = lowerRaster.getValue(new Point(-121.799927,46.867703))
+        println elevation2
+
+        // end::minusFrom[]
+        lowerRaster.style = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ])
+        draw("raster_minusfrom", [lowerRaster])
+        writeFile("raster_minusfrom", "${elevation1}${NEW_LINE}${elevation2}")
+        lowerRaster
+    }
+
     Raster multiply() {
         // tag::multiply[]
         File file = new File("src/main/resources/pc.tif")

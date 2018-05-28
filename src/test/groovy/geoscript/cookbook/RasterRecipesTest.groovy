@@ -106,6 +106,13 @@ class RasterRecipesTest {
         assertNotNull(raster)
     }
 
+    @Test void minusFrom() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.minusFrom()
+        assertNotNull(raster)
+    }
+
+
     @Test void multiply() {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.multiply()

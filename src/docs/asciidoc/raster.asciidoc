@@ -247,7 +247,7 @@ image::raster_add.png[]
 
 ===== Subtract
 
-Subtract a constant value to a Raster
+Subtract a constant value from a Raster
 
 [source,groovy]
 ----
@@ -258,6 +258,18 @@ include::output/raster_minus.txt[]
 ....
 [.thumb]
 image::raster_minus.png[]
+
+Subtract the Raster from a constant value
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=minusFrom,indent=0]
+----
+....
+include::output/raster_minusfrom.txt[]
+....
+[.thumb]
+image::raster_minusfrom.png[]
 
 ===== Multiply
 
