@@ -209,6 +209,29 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=invert,indent=
 [.thumb]
 image::raster_invert.png[]
 
+==== Exponent
+
+Calculate the exponent of the values of a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=exp,indent=0]
+----
+[.thumb]
+image::raster_exp.png[]
+
+==== Log
+
+Calculate the log of the values of a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=log,indent=0]
+----
+[.thumb]
+image::raster_log.png[]
+
+
 ==== Vectorize
 
 Create a Polygon Layer from a Raster

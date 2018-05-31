@@ -267,6 +267,42 @@ class RasterRecipes extends Recipes {
         invertedRaster
     }
 
+    Raster log() {
+        // tag::log[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        Raster logRaster = raster.log()
+        // end::log[]
+        logRaster.style = new ColorMap([
+                [color: "#9fd182", quantity:0],
+                [color: "#3e7f3c", quantity:2],
+                [color: "#133912", quantity:4],
+                [color: "#08306b", quantity:6],
+                [color: "#fffff5", quantity:10],
+        ])
+        draw("raster_log", [logRaster])
+        logRaster
+    }
+
+    Raster exp() {
+        // tag::exp[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        Raster expRaster = raster.exp()
+        // end::exp[]
+        expRaster.style = new ColorMap([
+                [color: "#9fd182", quantity:Math.exp(0)],
+                [color: "#3e7f3c", quantity:Math.exp(50)],
+                [color: "#133912", quantity:Math.exp(100)],
+                [color: "#08306b", quantity:Math.exp(200)],
+                [color: "#fffff5", quantity:Math.exp(500)],
+        ])
+        draw("raster_exp", [expRaster])
+        expRaster
+    }
+
     // Raster Algebra
 
     Raster add() {

@@ -94,6 +94,18 @@ class RasterRecipesTest {
         assertNotNull(raster)
     }
 
+    @Test void log() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.log()
+        assertNotNull(raster)
+    }
+
+    @Test void exp() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.exp()
+        assertNotNull(raster)
+    }
+
     @Test void add() {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.add()
