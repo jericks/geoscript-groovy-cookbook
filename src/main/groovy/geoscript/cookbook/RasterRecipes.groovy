@@ -69,6 +69,12 @@ class RasterRecipes extends Recipes {
         // end::properties_pixelsize[]
         writeFile("raster_properties_pixelsize","Pixel size: ${pixelSize[0]}x${pixelSize[1]}")
 
+        // tag::properties_extrema[]
+        Map extrema = raster.extrema
+        println "Min values: ${extrema.min} Max values: ${extrema.max}"
+        // end::properties_extrema[]
+        writeFile("raster_properties_extrema","Min value: ${extrema.min} Max value: ${extrema.max}")
+
         raster
     }
 

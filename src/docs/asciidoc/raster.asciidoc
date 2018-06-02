@@ -96,6 +96,17 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=band,indent=0]
 include::output/raster_band.txt[]
 ....
 
+Get the minimum and maximum values from a Raster for each band
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_extrema,indent=0]
+----
+....
+include::output/raster_properties_extrema.txt[]
+....
+
+
 === Raster Values
 
 Get values from a Raster
