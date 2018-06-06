@@ -37,6 +37,16 @@ class RasterRecipesTest {
         assertEquals(288.0, raster.getValue([100,200]), 0.01)
     }
 
+    @Test void rasterMath() {
+        RasterRecipes recipes = new RasterRecipes()
+        List<Raster> rasters = recipes.rasterMath()
+        Raster originalRaster = rasters[0]
+        Raster plus100Raster = rasters[1]
+        originalRaster.eachCell { double value, double x, double y ->
+            assertEquals(value + 100, plus100Raster.getValue([x as int,y as int]), 0.1)
+        }
+    }
+
     @Test void crop() {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.crop()

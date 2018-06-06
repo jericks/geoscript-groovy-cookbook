@@ -3,8 +3,10 @@ package geoscript.cookbook
 import geoscript.filter.Color
 import geoscript.geom.Bounds
 import geoscript.geom.Point
+import geoscript.layer.ArcGrid
 import geoscript.layer.Band
 import geoscript.layer.Format
+import geoscript.layer.GeoTIFF
 import geoscript.layer.Layer
 import geoscript.layer.Raster
 import geoscript.proj.Projection
@@ -108,6 +110,45 @@ class RasterRecipes extends Recipes {
 
 
         raster
+    }
+
+    List<Raster> rasterMath() {
+        // tag::rasterMath[]
+        File file = new File("src/main/resources/earth.tif")
+        GeoTIFF geotiff = new GeoTIFF(file)
+        Raster raster = geotiff.read("earth")
+
+        File arcGridFile = new File("target/earth.asc")
+        ArcGrid arcGrid = new ArcGrid(arcGridFile)
+        arcGrid.write(raster)
+        Raster arcGridRaster = arcGrid.read("earth")
+
+        arcGridRaster.eachCell {double value, double x, double y ->
+            double newValue = value + 100
+            arcGridRaster.setValue([x as int, y as int], newValue)
+        }
+
+        File arcGridAddFile = new File("target/earth_100.asc")
+        ArcGrid arcGridAdd = new ArcGrid(arcGridAddFile)
+        arcGridAdd.write(arcGridRaster)
+        Raster arcGridRasterAdd = arcGridAdd.read("earth_100")
+
+        List pixels = [
+            [92, 298],
+            [393.0, 343.0],
+            [795.0, 399.0]
+        ]
+        pixels.each { List pixel ->
+            println "Original: ${raster.getValue(pixel)} New: ${arcGridRasterAdd.getValue(pixel)}"
+        }
+
+        // end::rasterMath[]
+        draw("raster_math_orig", [raster])
+        draw("raster_math_100", [arcGridRasterAdd])
+        writeFile("raster_math", pixels.collect { List pixel ->
+            "Original: ${raster.getValue(pixel)} New: ${arcGridRasterAdd.getValue(pixel)}"
+        }.join(NEW_LINE))
+        [raster, arcGridRasterAdd]
     }
 
     // Processing
