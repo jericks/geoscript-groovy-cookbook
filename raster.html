@@ -791,6 +791,57 @@ println elevation</code></pre>
 <pre>288.0</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Set values on a Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/earth.tif</span><span class="delimiter">&quot;</span></span>)
+GeoTIFF geotiff = <span class="keyword">new</span> GeoTIFF(file)
+<span class="predefined-type">Raster</span> raster = geotiff.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth</span><span class="delimiter">&quot;</span></span>)
+
+<span class="predefined-type">File</span> arcGridFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/earth.asc</span><span class="delimiter">&quot;</span></span>)
+ArcGrid arcGrid = <span class="keyword">new</span> ArcGrid(arcGridFile)
+arcGrid.write(raster)
+<span class="predefined-type">Raster</span> arcGridRaster = arcGrid.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth</span><span class="delimiter">&quot;</span></span>)
+
+arcGridRaster.eachCell {<span class="type">double</span> value, <span class="type">double</span> x, <span class="type">double</span> y -&gt;
+    <span class="type">double</span> newValue = value + <span class="integer">100</span>
+    arcGridRaster.setValue([x <span class="keyword">as</span> <span class="type">int</span>, y <span class="keyword">as</span> <span class="type">int</span>], newValue)
+}
+
+<span class="predefined-type">File</span> arcGridAddFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/earth_100.asc</span><span class="delimiter">&quot;</span></span>)
+ArcGrid arcGridAdd = <span class="keyword">new</span> ArcGrid(arcGridAddFile)
+arcGridAdd.write(arcGridRaster)
+<span class="predefined-type">Raster</span> arcGridRasterAdd = arcGridAdd.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth_100</span><span class="delimiter">&quot;</span></span>)
+
+<span class="predefined-type">List</span> pixels = [
+    [<span class="integer">92</span>, <span class="integer">298</span>],
+    [<span class="float">393.0</span>, <span class="float">343.0</span>],
+    [<span class="float">795.0</span>, <span class="float">399.0</span>]
+]
+pixels.each { <span class="predefined-type">List</span> pixel -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">Original: </span><span class="inline"><span class="inline-delimiter">${</span>raster.getValue(pixel)<span class="inline-delimiter">}</span></span><span class="content"> New: </span><span class="inline"><span class="inline-delimiter">${</span>arcGridRasterAdd.getValue(pixel)<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Original: 97.0 New: 197.0
+Original: 96.0 New: 196.0
+Original: 237.0 New: 337.0</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_math_orig.png" alt="raster math orig">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_math_100.png" alt="raster math 100">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="raster-processing"><a class="anchor" href="#raster-processing"></a>Raster Processing</h3>
@@ -1191,7 +1242,7 @@ println elevation2</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-02 22:23:26 UTC
+Last updated 2018-06-06 03:59:20 UTC
 </div>
 </div>
 </body>
