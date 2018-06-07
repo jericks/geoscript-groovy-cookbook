@@ -810,13 +810,28 @@ Chart chart = Scatter.scatterplot(data)</code></pre>
 <img src="./images/plot_scatterplot.png" alt="plot scatterplot">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a scatter plot chart with options</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiPoint mulitPoint = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">100</span>,<span class="integer">100</span>).geometry, <span class="integer">10</span>)
+<span class="predefined-type">List</span> data = mulitPoint.geometries.collect{ <span class="predefined-type">Point</span> pt -&gt;
+    [pt.x, pt.y]
+}
+Chart chart = Scatter.scatterplot(data, <span class="key">legend</span>: <span class="predefined-constant">false</span>, <span class="key">xLabel</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">X Coordinates</span><span class="delimiter">&quot;</span></span>, <span class="key">yLabel</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Y Coordinates</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/plot_scatterplot_options.png" alt="plot scatterplot options">
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-06 03:59:20 UTC
+Last updated 2018-06-07 01:26:49 UTC
 </div>
 </div>
 </body>
