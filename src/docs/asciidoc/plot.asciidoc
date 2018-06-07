@@ -154,3 +154,11 @@ include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createScatterPlo
 ----
 [.thumb]
 image::plot_scatterplot.png[]
+
+[source,groovy]
+.Create a scatter plot chart with options
+----
+include::{sourcedir}/geoscript/cookbook/PlotRecipes.groovy[tags=createScatterPlotWithOptions,indent=0]
+----
+[.thumb]
+image::plot_scatterplot_options.png[]

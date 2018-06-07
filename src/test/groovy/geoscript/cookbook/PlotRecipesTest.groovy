@@ -105,4 +105,10 @@ class PlotRecipesTest {
         Chart chart = plotRecipes.createScatterPlot()
         assertNotNull(chart)
     }
+
+    @Test void createScatterPlotWithOptions() {
+        PlotRecipes plotRecipes = new PlotRecipes()
+        Chart chart = plotRecipes.createScatterPlotWithOptions()
+        assertNotNull(chart)
+    }
 }

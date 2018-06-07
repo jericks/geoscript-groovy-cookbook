@@ -219,4 +219,16 @@ class PlotRecipes extends Recipes {
         chart
     }
 
+    Chart createScatterPlotWithOptions() {
+        // tag::createScatterPlotWithOptions[]
+        MultiPoint mulitPoint = Geometry.createRandomPoints(new Bounds(0,0,100,100).geometry, 10)
+        List data = mulitPoint.geometries.collect{ Point pt ->
+            [pt.x, pt.y]
+        }
+        Chart chart = Scatter.scatterplot(data, legend: false, xLabel: "X Coordinates", yLabel: "Y Coordinates")
+        // end::createScatterPlotWithOptions[]
+        drawChart("plot_scatterplot_options", chart)
+        chart
+    }
+
 }
