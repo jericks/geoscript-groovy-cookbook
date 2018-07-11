@@ -1,6 +1,6 @@
 RED_BAND
   Min = 0.0
-  Max = 0.0
+  Max = 255.0
   No Data = [0.0]
   Is No Data = false
   Unit = null
@@ -10,7 +10,7 @@ RED_BAND
 
 GREEN_BAND
   Min = 0.0
-  Max = 0.0
+  Max = 255.0
   No Data = [0.0]
   Is No Data = false
   Unit = null
@@ -20,7 +20,7 @@ GREEN_BAND
 
 BLUE_BAND
   Min = 0.0
-  Max = 0.0
+  Max = 255.0
   No Data = [0.0]
   Is No Data = false
   Unit = null

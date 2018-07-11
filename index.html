@@ -1027,7 +1027,7 @@ You are now ready to use GeoScript Groovy!</p>
 <h2 id="geometry-recipes"><a class="anchor" href="#geometry-recipes"></a>Geometry Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Geometry classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/package-summary.html">geoscript.geom</a></strong> package.</p>
+<p>The Geometry classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/geom/package-summary.html">geoscript.geom</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="creating-geometries"><a class="anchor" href="#creating-geometries"></a>Creating Geometries</h3>
@@ -3320,8 +3320,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 682018966 nanoseconds
-Time with PreparedGeometry = 188847904 nanoseconds</pre>
+<pre>Time with Geometry         = 662514794 nanoseconds
+Time with PreparedGeometry = 365856222 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3366,15 +3366,15 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 160017135 nanoseconds
-Time with PreparedGeometry = 143620819 nanoseconds</pre>
+<pre>Time with Geometry         = 245557443 nanoseconds
+Time with PreparedGeometry = 228693936 nanoseconds</pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
 <div class="paragraph">
-<p>The <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html">geoscript.geom.io</a></strong> package
+<p>The <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/geom/io/package-summary.html">geoscript.geom.io</a></strong> package
 has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.</p>
 </div>
 <div class="sect3">
@@ -3399,6 +3399,7 @@ GpxReader
 KmlReader
 WkbReader
 WktReader
+GeoPackageReader
 GooglePolylineEncoder</pre>
 </div>
 </div>
@@ -3435,6 +3436,7 @@ GpxWriter
 KmlWriter
 WkbWriter
 WktWriter
+GeoPackageWriter
 GooglePolylineEncoder</pre>
 </div>
 </div>
@@ -4031,7 +4033,7 @@ println str</code></pre>
 <h2 id="bounds-recipes"><a class="anchor" href="#bounds-recipes"></a>Bounds Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Bounds class is in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/package-summary.html">geoscript.geom</a></strong> package.</p>
+<p>The Bounds class is in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/geom/package-summary.html">geoscript.geom</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="creating-bounds"><a class="anchor" href="#creating-bounds"></a>Creating Bounds</h3>
@@ -4263,7 +4265,7 @@ println reprojectedBounds</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>(1147444.7684517875,703506.223164177,1155828.120242509,711367.9403610165,EPSG:2927)</pre>
+<pre>(1147444.7684517875,703506.2231641772,1155828.1202425088,711367.9403610165,EPSG:2927)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4641,7 +4643,7 @@ LineString lineString = bounds.createArc(<span class="predefined-type">Math</spa
 <h2 id="projection-recipes"><a class="anchor" href="#projection-recipes"></a>Projection Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Projection classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/proj/package-summary.html">geoscript.proj</a></strong> package.</p>
+<p>The Projection classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/proj/package-summary.html">geoscript.proj</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="creating-projections"><a class="anchor" href="#creating-projections"></a>Creating Projections</h3>
@@ -4826,7 +4828,7 @@ println epsg2927Geom</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+<pre>POINT (1158609.2040371667 703068.0661327888)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4841,7 +4843,7 @@ println epsg2927Geom</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+<pre>POINT (1158609.2040371667 703068.0661327888)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4856,7 +4858,7 @@ println projectedGeom</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+<pre>POINT (1158609.2040371667 703068.0661327888)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4870,7 +4872,7 @@ println projectedGeom</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>POINT (1158609.2040371667 703068.0661327887)</pre>
+<pre>POINT (1158609.2040371667 703068.0661327888)</pre>
 </div>
 </div>
 </div>
@@ -5200,7 +5202,7 @@ println decimalDegrees.toDdm(<span class="predefined-constant">true</span>)</cod
 <h2 id="spatial-index-recipes"><a class="anchor" href="#spatial-index-recipes"></a>Spatial Index Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Index classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/index/package-summary.html">geoscript.index</a></strong> package.</p>
+<p>The Index classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/index/package-summary.html">geoscript.index</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="using-strtree"><a class="anchor" href="#using-strtree"></a>Using STRtree</h3>
@@ -5561,7 +5563,7 @@ bboxes.each { <span class="type">long</span> hash -&gt;
 <h2 id="viewer-recipes"><a class="anchor" href="#viewer-recipes"></a>Viewer Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Viewer classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/viewer/package-summary.html">geoscript.viewer</a></strong> package.</p>
+<p>The Viewer classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/viewer/package-summary.html">geoscript.viewer</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="drawing-geometries"><a class="anchor" href="#drawing-geometries"></a>Drawing geometries</h3>
@@ -5744,7 +5746,7 @@ Viewer.plotToFile([buffer, point], file, <span class="key">size</span>: [<span c
 <h2 id="plot-recipes"><a class="anchor" href="#plot-recipes"></a>Plot Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Plot classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/plot/package-summary.html">geoscript.plot</a></strong> package.</p>
+<p>The Plot classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/plot/package-summary.html">geoscript.plot</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="processing-charts"><a class="anchor" href="#processing-charts"></a>Processing Charts</h3>
@@ -6042,7 +6044,7 @@ Chart chart = Scatter.scatterplot(data, <span class="key">legend</span>: <span c
 <h2 id="feature-recipes"><a class="anchor" href="#feature-recipes"></a>Feature Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Feature classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/feature/package-summary.html">geoscript.feature</a></strong> package.</p>
+<p>The Feature classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/feature/package-summary.html">geoscript.feature</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="creating-fields"><a class="anchor" href="#creating-fields"></a>Creating Fields</h3>
@@ -6685,14 +6687,14 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-2f3fc81a_163d7e18cf8_-7ffc geom: null, id: null, name: null</pre>
+<pre>cities.fid--4cc88d8a_16486ed5882_-7ffc geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-schemas"><a class="anchor" href="#reading-and-writing-schemas"></a>Reading and Writing Schemas</h3>
 <div class="paragraph">
-<p>The Schema IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/feature/io/package-summary.html">geoscript.feature.io</a></strong> package.</p>
+<p>The Schema IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/feature/io/package-summary.html">geoscript.feature.io</a></strong> package.</p>
 </div>
 <div class="sect3">
 <h4 id="finding-schema-writer-and-readers"><a class="anchor" href="#finding-schema-writer-and-readers"></a>Finding Schema Writer and Readers</h4>
@@ -7157,7 +7159,7 @@ println feature.geom</code></pre>
 <div class="sect2">
 <h3 id="reading-and-writing-features"><a class="anchor" href="#reading-and-writing-features"></a>Reading and Writing Features</h3>
 <div class="paragraph">
-<p>The Feature IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/feature/io/package-summary.html">geoscript.feature.io</a></strong> package.</p>
+<p>The Feature IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/feature/io/package-summary.html">geoscript.feature.io</a></strong> package.</p>
 </div>
 <div class="sect3">
 <h4 id="finding-feature-writer-and-readers"><a class="anchor" href="#finding-feature-writer-and-readers"></a>Finding Feature Writer and Readers</h4>
@@ -7400,7 +7402,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Jun 07 01:34:33 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Jul 11 01:20:59 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7419,7 +7421,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-2f3fc81a_163d7e18cf8_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--4cc88d8a_16486ed5882_-8000 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7443,7 +7445,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Thu Jun 07 01:34:33 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Jul 11 01:20:59 UTC 2018&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7463,7 +7465,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-2f3fc81a_163d7e18cf8_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--4cc88d8a_16486ed5882_-7ffe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -7625,7 +7627,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-2f3fc81a_163d7e18cf8_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--4cc88d8a_16486ed5882_-7ffd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7663,7 +7665,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-2f3fc81a_163d7e18cf8_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--4cc88d8a_16486ed5882_-7fff geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -7689,12 +7691,7 @@ println kml</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1"&gt;
-&lt;kml:name&gt;Seattle&lt;/kml:name&gt;
-&lt;kml:Point&gt;
-&lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
-&lt;/kml:Point&gt;
-&lt;/kml:Placemark&gt;</pre>
+<pre>&lt;kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1"&gt;&lt;kml:name&gt;Seattle&lt;/kml:name&gt;&lt;kml:Point&gt;&lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;&lt;/kml:Point&gt;&lt;/kml:Placemark&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7736,12 +7733,7 @@ println kml</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1"&gt;
-&lt;kml:name&gt;Seattle&lt;/kml:name&gt;
-&lt;kml:Point&gt;
-&lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
-&lt;/kml:Point&gt;
-&lt;/kml:Placemark&gt;</pre>
+<pre>&lt;kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1"&gt;&lt;kml:name&gt;Seattle&lt;/kml:name&gt;&lt;kml:Point&gt;&lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;&lt;/kml:Point&gt;&lt;/kml:Placemark&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -7771,7 +7763,7 @@ println kml</code></pre>
 <h2 id="filter-recipes"><a class="anchor" href="#filter-recipes"></a>Filter Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Filter classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/filter/package-summary.html">geoscript.filter</a></strong> package.</p>
+<p>The Filter classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/filter/package-summary.html">geoscript.filter</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="creating-filters"><a class="anchor" href="#creating-filters"></a>Creating Filters</h3>
@@ -8284,7 +8276,7 @@ functionNames.sort().subList(<span class="integer">0</span>,<span class="integer
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>There are 277 Functions:
+<pre>There are 296 Functions:
 Area
 Categorize
 Collection_Average
@@ -8820,7 +8812,7 @@ println function</code></pre>
 <h2 id="process-recipes"><a class="anchor" href="#process-recipes"></a>Process Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Process classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/process/package-summary.html">geoscript.process</a></strong> package.</p>
+<p>The Process classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/process/package-summary.html">geoscript.process</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="execute-a-built-in-process"><a class="anchor" href="#execute-a-built-in-process"></a>Execute a built-in Process</h3>
@@ -8930,6 +8922,7 @@ vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
 vec:Centroid
+vec:ClassifyByRange
 vec:Clip
 vec:CollectGeometries
 vec:Count
@@ -8962,6 +8955,7 @@ geo:intersection
 geo:difference
 geo:area
 geo:numGeometries
+geo:equalsExact
 geo:within
 geo:touches
 geo:convexHull
@@ -8973,14 +8967,14 @@ geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:overlaps
-geo:isClosed
-geo:reproject
 geo:isSimple
 geo:isWithinDistance
+geo:reproject
 geo:relate
 geo:densify
 geo:simplify
 geo:numPoints
+geo:isClosed
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
@@ -8992,17 +8986,17 @@ geo:startPoint
 geo:endPoint
 geo:polygonize
 geo:isRing
-geo:equalsExact
 geo:relatePattern
 geo:pointN
-geo:equalsExactTolerance
 geo:interiorRingN
+geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
 geo:isEmpty
 geo:contains
 geo:disjoint
 geo:intersects
+polygonlabelprocess:PolyLabeller
 ras:AddCoverages
 ras:Affine
 ras:AreaGrid
@@ -9012,6 +9006,7 @@ ras:Contour
 ras:ConvolveCoverage
 ras:CoverageClassStats
 ras:CropCoverage
+ras:Jiffle
 ras:MultiplyCoverages
 ras:NormalizeCoverage
 ras:PolygonExtraction
@@ -9020,7 +9015,8 @@ ras:RasterAsPointCollection
 ras:RasterZonalStatistics
 ras:RasterZonalStatistics2
 ras:ScaleCoverage
-ras:StyleCoverage</pre>
+ras:StyleCoverage
+ras:TransparencyFill</pre>
 </div>
 </div>
 </div>
@@ -9130,7 +9126,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 <h2 id="render-recipes"><a class="anchor" href="#render-recipes"></a>Render Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Render classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/render/package-summary.html">geoscript.render</a></strong> package.</p>
+<p>The Render classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/render/package-summary.html">geoscript.render</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="creating-maps"><a class="anchor" href="#creating-maps"></a>Creating Maps</h3>
@@ -10148,7 +10144,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 <h2 id="style-recipes"><a class="anchor" href="#style-recipes"></a>Style Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Styles are found in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/style/package-summary.html">geoscript.style</a></strong> package.</p>
+<p>Styles are found in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/style/package-summary.html">geoscript.style</a></strong> package.</p>
 </div>
 <div class="paragraph">
 <p>Styles are made up Symbolizers and Composites.  A Symbolizer is a particular style like Stroke or Fill.  Symbolizers also have methods for controlling the drawing order (zindex), the min and max scale (range), and filtering (where).</p>
@@ -10860,7 +10856,7 @@ raster.style = symbolizer</code></pre>
 <div class="sect2">
 <h3 id="reading-and-writing-styles"><a class="anchor" href="#reading-and-writing-styles"></a>Reading and Writing Styles</h3>
 <div class="paragraph">
-<p>Style Readers and Writers are found in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/style/io/package-summary.html">geoscript.style.io</a></strong> package.</p>
+<p>Style Readers and Writers are found in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/style/io/package-summary.html">geoscript.style.io</a></strong> package.</p>
 </div>
 <div class="sect3">
 <h4 id="finding-style-readers-and-writers"><a class="anchor" href="#finding-style-readers-and-writers"></a>Finding Style Readers and Writers</h4>
@@ -10939,8 +10935,7 @@ println sld</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" version="1.0.0"&gt;
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" version="1.0.0"&gt;
   &lt;sld:UserLayer&gt;
     &lt;sld:LayerFeatureConstraints&gt;
       &lt;sld:FeatureTypeConstraint/&gt;
@@ -11249,7 +11244,7 @@ println str</code></pre>
 <h2 id="workspace-recipes"><a class="anchor" href="#workspace-recipes"></a>Workspace Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Workspace classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/workspace/package-summary.html">geoscript.workspace</a></strong> package.</p>
+<p>The Workspace classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/workspace/package-summary.html">geoscript.workspace</a></strong> package.</p>
 </div>
 <div class="paragraph">
 <p>A Workspace is a collection of Layers.  You can create, add, remove, and get Layers.  There are many
@@ -11334,19 +11329,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS (JNDI)
+<pre>PostGIS
+MySQL
 MySQL (JNDI)
-Web Feature Server (NG)
-Properties
-H2
-Geobuf
+PostGIS (JNDI)
 Directory of spatial files (shapefiles)
 Shapefile
+SpatiaLite (JNDI)
+SQLite
 H2 (JNDI)
-PostGIS
+Properties
 GeoPackage
-MySQL
-SpatiaLite (JNDI)</pre>
+Geobuf
+Web Feature Server (NG)
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11456,19 +11452,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS (JNDI)
+<pre>PostGIS
+MySQL
 MySQL (JNDI)
-Web Feature Server (NG)
-Properties
-H2
-Geobuf
+PostGIS (JNDI)
 Directory of spatial files (shapefiles)
 Shapefile
+SpatiaLite (JNDI)
+SQLite
 H2 (JNDI)
-PostGIS
+Properties
 GeoPackage
-MySQL
-SpatiaLite (JNDI)</pre>
+Geobuf
+Web Feature Server (NG)
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -11484,20 +11481,11 @@ parameters.each { <span class="predefined-type">Map</span> param -&gt;
 <div class="content">
 <pre>Parameter = dbtype Type = java.lang.String Required? true
 Parameter = database Type = java.io.File Required? true
-Parameter = user Type = java.lang.String Required? false
 Parameter = passwd Type = java.lang.String Required? false
 Parameter = namespace Type = java.lang.String Required? false
 Parameter = Expose primary keys Type = java.lang.Boolean Required? false
-Parameter = max connections Type = java.lang.Integer Required? false
-Parameter = min connections Type = java.lang.Integer Required? false
 Parameter = fetch size Type = java.lang.Integer Required? false
 Parameter = Batch insert size Type = java.lang.Integer Required? false
-Parameter = Connection timeout Type = java.lang.Integer Required? false
-Parameter = validate connections Type = java.lang.Boolean Required? false
-Parameter = Test while idle Type = java.lang.Boolean Required? false
-Parameter = Evictor run periodicity Type = java.lang.Integer Required? false
-Parameter = Max connection idle time Type = java.lang.Integer Required? false
-Parameter = Evictor tests per run Type = java.lang.Integer Required? false
 Parameter = Primary key metadata table Type = java.lang.String Required? false
 Parameter = Session startup SQL Type = java.lang.String Required? false
 Parameter = Session close-up SQL Type = java.lang.String Required? false
@@ -11753,7 +11741,7 @@ places (10)</pre>
 <h2 id="layer-recipes"><a class="anchor" href="#layer-recipes"></a>Layer Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Layer classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
+<p>The Layer classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
 </div>
 <div class="paragraph">
 <p>A Layer is a collection of Features.</p>
@@ -13223,7 +13211,7 @@ Layer layerC = layerB.union(layerA, <span class="key">outWorkspace</span>: outWo
 <div class="sect2">
 <h3 id="reading-and-writing-layers"><a class="anchor" href="#reading-and-writing-layers"></a>Reading and Writing Layers</h3>
 <div class="paragraph">
-<p>The Layer IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
+<p>The Layer IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
 </div>
 <div class="sect3">
 <h4 id="finding-layer-writer-and-readers"><a class="anchor" href="#finding-layer-writer-and-readers"></a>Finding Layer Writer and Readers</h4>
@@ -13364,7 +13352,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-2f3fc81a_163d7e18cf8_-6902"
+            "id": "fid--4cc88d8a_16486ed5882_-6902"
         },
         {
             "type": "Feature",
@@ -13379,7 +13367,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-2f3fc81a_163d7e18cf8_-6900"
+            "id": "fid--4cc88d8a_16486ed5882_-6900"
         }
     ]
 }</pre>
@@ -13429,7 +13417,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-2f3fc81a_163d7e18cf8_-7e2c"
+            "id": "fid--4cc88d8a_16486ed5882_-7e2c"
         },
         {
             "type": "Feature",
@@ -13444,7 +13432,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-2f3fc81a_163d7e18cf8_-7e2a"
+            "id": "fid--4cc88d8a_16486ed5882_-7e2a"
         }
     ]
 }</pre>
@@ -13628,7 +13616,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-2f3fc81a_163d7e18cf8_-7397"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--4cc88d8a_16486ed5882_-7397"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -13650,7 +13638,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-2f3fc81a_163d7e18cf8_-7395"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--4cc88d8a_16486ed5882_-7395"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -13716,7 +13704,7 @@ println gml</code></pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid-2f3fc81a_163d7e18cf8_-73b1"&gt;
+&lt;gsf:cities fid="fid--4cc88d8a_16486ed5882_-73b1"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -13730,7 +13718,7 @@ println gml</code></pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid-2f3fc81a_163d7e18cf8_-73af"&gt;
+&lt;gsf:cities fid="fid--4cc88d8a_16486ed5882_-73af"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -13844,7 +13832,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-2f3fc81a_163d7e18cf8_-6a0d
+          fid--4cc88d8a_16486ed5882_-6a0d
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -13871,7 +13859,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-2f3fc81a_163d7e18cf8_-6a0b
+          fid--4cc88d8a_16486ed5882_-6a0b
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -13931,13 +13919,13 @@ println kml</code></pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid-2f3fc81a_163d7e18cf8_-73a9"&gt;
+&lt;kml:Placemark id="fid--4cc88d8a_16486ed5882_-73a9"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid-2f3fc81a_163d7e18cf8_-73a7"&gt;
+&lt;kml:Placemark id="fid--4cc88d8a_16486ed5882_-73a7"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -14060,21 +14048,20 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;feed xmlns:georss="http://www.georss.org/georss" xmlns="http://www.w3.org/2005/Atom"&gt;
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;feed xmlns:georss="http://www.georss.org/georss" xmlns="http://www.w3.org/2005/Atom"&gt;
 &lt;title&gt;cities&lt;/title&gt;
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid-2f3fc81a_163d7e18cf8_-7a35&lt;/title&gt;
+&lt;title&gt;fid--4cc88d8a_16486ed5882_-7a35&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Thu Jun 07 01:34:47 UTC 2018&lt;/updated&gt;
+&lt;updated&gt;Wed Jul 11 01:21:17 UTC 2018&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid-2f3fc81a_163d7e18cf8_-7a33&lt;/title&gt;
+&lt;title&gt;fid--4cc88d8a_16486ed5882_-7a33&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Thu Jun 07 01:34:47 UTC 2018&lt;/updated&gt;
+&lt;updated&gt;Wed Jul 11 01:21:17 UTC 2018&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -14142,13 +14129,12 @@ println gpx</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid-2f3fc81a_163d7e18cf8_-73ad&lt;/name&gt;
+&lt;name&gt;fid--4cc88d8a_16486ed5882_-73ad&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid-2f3fc81a_163d7e18cf8_-73ab&lt;/name&gt;
+&lt;name&gt;fid--4cc88d8a_16486ed5882_-73ab&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -14323,7 +14309,7 @@ Layer layer = Graticule.createRectangles(bounds, width, height, -<span class="in
 <h2 id="format-recipes"><a class="anchor" href="#format-recipes"></a>Format Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Format classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
+<p>The Format classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
 </div>
 <div class="paragraph">
 <p>A Format is a collection of Rasters.</p>
@@ -14503,7 +14489,7 @@ WorldImage worldImage = <span class="keyword">new</span> WorldImage(file)
 <h2 id="raster-recipes"><a class="anchor" href="#raster-recipes"></a>Raster Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Raster classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
+<p>The Raster classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="raster-properties"><a class="anchor" href="#raster-properties"></a>Raster Properties</h3>
@@ -14653,7 +14639,7 @@ bands.each { Band band -&gt;
 <div class="content">
 <pre>RED_BAND
   Min = 0.0
-  Max = 0.0
+  Max = 255.0
   No Data = [0.0]
   Is No Data = false
   Unit = null
@@ -14663,7 +14649,7 @@ bands.each { Band band -&gt;
 
 GREEN_BAND
   Min = 0.0
-  Max = 0.0
+  Max = 255.0
   No Data = [0.0]
   Is No Data = false
   Unit = null
@@ -14673,7 +14659,7 @@ GREEN_BAND
 
 BLUE_BAND
   Min = 0.0
-  Max = 0.0
+  Max = 255.0
   No Data = [0.0]
   Is No Data = false
   Unit = null
@@ -15195,7 +15181,7 @@ println elevation2</code></pre>
 <h2 id="tile-recipes"><a class="anchor" href="#tile-recipes"></a>Tile Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Tile classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
+<p>The Tile classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="tile"><a class="anchor" href="#tile"></a>Tile</h3>
@@ -15557,7 +15543,7 @@ Y Resolution: 78206.0</pre>
 <div class="sect3">
 <h4 id="reading-and-writing-pyramids"><a class="anchor" href="#reading-and-writing-pyramids"></a>Reading and Writing Pyramids</h4>
 <div class="paragraph">
-<p>The Pyramid IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
+<p>The Pyramid IO classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/layer/io/package-summary.html">geoscript.layer.io</a></strong> package.</p>
 </div>
 <div class="sect4">
 <h5 id="finding-pyramid-writer-and-readers"><a class="anchor" href="#finding-pyramid-writer-and-readers"></a>Finding Pyramid Writer and Readers</h5>
@@ -16473,7 +16459,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-07 01:26:49 UTC
+Last updated 2018-07-11 01:11:02 UTC
 </div>
 </div>
 </body>

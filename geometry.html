@@ -558,7 +558,7 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="geometry-recipes"><a class="anchor" href="#geometry-recipes"></a>Geometry Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Geometry classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/package-summary.html">geoscript.geom</a></strong> package.</p>
+<p>The Geometry classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/geom/package-summary.html">geoscript.geom</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="creating-geometries"><a class="anchor" href="#creating-geometries"></a>Creating Geometries</h3>
@@ -2851,8 +2851,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 682018966 nanoseconds
-Time with PreparedGeometry = 188847904 nanoseconds</pre>
+<pre>Time with Geometry         = 662514794 nanoseconds
+Time with PreparedGeometry = 365856222 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2897,15 +2897,15 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 160017135 nanoseconds
-Time with PreparedGeometry = 143620819 nanoseconds</pre>
+<pre>Time with Geometry         = 245557443 nanoseconds
+Time with PreparedGeometry = 228693936 nanoseconds</pre>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="reading-and-writing-geometries"><a class="anchor" href="#reading-and-writing-geometries"></a>Reading and Writing Geometries</h3>
 <div class="paragraph">
-<p>The <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/geom/io/package-summary.html">geoscript.geom.io</a></strong> package
+<p>The <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/geom/io/package-summary.html">geoscript.geom.io</a></strong> package
 has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.</p>
 </div>
 <div class="sect3">
@@ -2930,6 +2930,7 @@ GpxReader
 KmlReader
 WkbReader
 WktReader
+GeoPackageReader
 GooglePolylineEncoder</pre>
 </div>
 </div>
@@ -2966,6 +2967,7 @@ GpxWriter
 KmlWriter
 WkbWriter
 WktWriter
+GeoPackageWriter
 GooglePolylineEncoder</pre>
 </div>
 </div>
@@ -3561,7 +3563,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-06-07 01:26:49 UTC
+Last updated 2018-07-11 01:11:02 UTC
 </div>
 </div>
 </body>

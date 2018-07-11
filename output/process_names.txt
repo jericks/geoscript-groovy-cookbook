@@ -3,6 +3,7 @@ vec:BarnesSurface
 vec:Bounds
 vec:BufferFeatureCollection
 vec:Centroid
+vec:ClassifyByRange
 vec:Clip
 vec:CollectGeometries
 vec:Count
@@ -35,6 +36,7 @@ geo:intersection
 geo:difference
 geo:area
 geo:numGeometries
+geo:equalsExact
 geo:within
 geo:touches
 geo:convexHull
@@ -46,14 +48,14 @@ geo:centroid
 geo:interiorPoint
 geo:getGeometryN
 geo:overlaps
-geo:isClosed
-geo:reproject
 geo:isSimple
 geo:isWithinDistance
+geo:reproject
 geo:relate
 geo:densify
 geo:simplify
 geo:numPoints
+geo:isClosed
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
@@ -65,17 +67,17 @@ geo:startPoint
 geo:endPoint
 geo:polygonize
 geo:isRing
-geo:equalsExact
 geo:relatePattern
 geo:pointN
-geo:equalsExactTolerance
 geo:interiorRingN
+geo:equalsExactTolerance
 geo:splitPolygon
 geo:length
 geo:isEmpty
 geo:contains
 geo:disjoint
 geo:intersects
+polygonlabelprocess:PolyLabeller
 ras:AddCoverages
 ras:Affine
 ras:AreaGrid
@@ -85,6 +87,7 @@ ras:Contour
 ras:ConvolveCoverage
 ras:CoverageClassStats
 ras:CropCoverage
+ras:Jiffle
 ras:MultiplyCoverages
 ras:NormalizeCoverage
 ras:PolygonExtraction
@@ -94,3 +97,4 @@ ras:RasterZonalStatistics
 ras:RasterZonalStatistics2
 ras:ScaleCoverage
 ras:StyleCoverage
+ras:TransparencyFill
