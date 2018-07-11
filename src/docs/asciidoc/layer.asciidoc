@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Layer Recipes
 
-The Layer classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/package-summary.html[geoscript.layer]* package.
+The Layer classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/layer/package-summary.html[geoscript.layer]* package.
 
 A Layer is a collection of Features.
 
@@ -546,7 +546,7 @@ image::layer_union_to_workspace.png[]
 
 === Reading and Writing Layers
 
-The Layer IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.9.0/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
+The Layer IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
 
 ==== Finding Layer Writer and Readers
 

@@ -58,25 +58,25 @@ class ProjectionRecipesTest {
     @Test void transformProj() {
         ProjectionRecipes recipes = new ProjectionRecipes()
         Geometry geom = recipes.transformProj()
-        assertEquals("POINT (1158609.2040371667 703068.0661327887)", geom.wkt)
+        assertEquals("POINT (1158609.2040371667 703068.0661327888)", geom.wkt)
     }
 
     @Test void transformStr() {
         ProjectionRecipes recipes = new ProjectionRecipes()
         Geometry geom = recipes.transformStr()
-        assertEquals("POINT (1158609.2040371667 703068.0661327887)", geom.wkt)
+        assertEquals("POINT (1158609.2040371667 703068.0661327888)", geom.wkt)
     }
 
     @Test void transformStaticProj() {
       ProjectionRecipes recipes = new ProjectionRecipes()
       Geometry geom = recipes.transformStaticProj()
-      assertEquals("POINT (1158609.2040371667 703068.0661327887)", geom.wkt)
+      assertEquals("POINT (1158609.2040371667 703068.0661327888)", geom.wkt)
     }
 
     @Test void transformStaticStr() {
         ProjectionRecipes recipes = new ProjectionRecipes()
         Geometry geom = recipes.transformStaticStr()
-        assertEquals("POINT (1158609.2040371667 703068.0661327887)", geom.wkt)
+        assertEquals("POINT (1158609.2040371667 703068.0661327888)", geom.wkt)
     }
 
     @Test void createGeodetic() {

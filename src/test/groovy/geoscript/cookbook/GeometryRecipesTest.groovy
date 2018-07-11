@@ -1,6 +1,6 @@
 package geoscript.cookbook
 
-import com.vividsolutions.jts.geom.IntersectionMatrix
+import org.locationtech.jts.geom.IntersectionMatrix
 import geoscript.geom.*
 import geoscript.geom.io.Reader
 import org.junit.Test
@@ -267,7 +267,7 @@ class GeometryRecipesTest {
     @Test void interiorPoint() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geometry = recipes.interiorPoint()
-        assertEquals("POINT (-121.02232180851064 47.343500000000006)", geometry.wkt)
+        assertEquals("POINT (-121.00204734961912 47.479)", geometry.wkt)
     }
 
     @Test void getNumGeometries() {

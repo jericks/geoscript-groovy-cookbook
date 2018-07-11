@@ -473,13 +473,12 @@ class FeatureRecipesTest {
     @Test void featureGetKml() {
         FeatureRecipes recipes = new FeatureRecipes()
         String str = recipes.featureGetKml()
-        assertEquals("""<kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1">
-<kml:name>Seattle</kml:name>
-<kml:Point>
-<kml:coordinates>-122.3204,47.6024</kml:coordinates>
-</kml:Point>
-</kml:Placemark>
-""".normalize(), str.normalize())
+        assertEquals('<kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1">' +
+            "<kml:name>Seattle</kml:name>" +
+            "<kml:Point>" +
+            "<kml:coordinates>-122.3204,47.6024</kml:coordinates>" +
+            "</kml:Point>" +
+            "</kml:Placemark>", str)
     }
 
     @Test void featureFromKml() {
@@ -491,13 +490,12 @@ class FeatureRecipesTest {
     @Test void writeFeatureToKml() {
         FeatureRecipes recipes = new FeatureRecipes()
         String str = recipes.writeFeatureToKml()
-        assertEquals("""<kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1">
-<kml:name>Seattle</kml:name>
-<kml:Point>
-<kml:coordinates>-122.3204,47.6024</kml:coordinates>
-</kml:Point>
-</kml:Placemark>
-""".normalize(), str.normalize())
+        assertEquals("""<kml:Placemark xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1" id="city.1">""" +
+                "<kml:name>Seattle</kml:name>" +
+                "<kml:Point>" +
+                "<kml:coordinates>-122.3204,47.6024</kml:coordinates>" +
+                "</kml:Point>" +
+                "</kml:Placemark>", str)
     }
 
     @Test void readFeatureFromKml() {

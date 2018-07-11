@@ -1,6 +1,6 @@
 package geoscript.cookbook
 
-import com.vividsolutions.jts.geom.IntersectionMatrix
+import org.locationtech.jts.geom.IntersectionMatrix
 import geoscript.geom.Bounds
 import geoscript.geom.CircularRing
 import geoscript.geom.CircularString
@@ -40,7 +40,6 @@ import geoscript.geom.io.WktWriter
 import geoscript.geom.io.Writer
 import geoscript.geom.io.Writers
 import geoscript.viewer.Viewer
-import org.apache.bcel.generic.NEW
 
 class GeometryRecipes extends Recipes {
   

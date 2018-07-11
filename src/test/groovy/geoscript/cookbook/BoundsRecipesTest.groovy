@@ -57,7 +57,7 @@ class BoundsRecipesTest {
     @Test void reprojectBounds() {
         BoundsRecipes recipes = new BoundsRecipes()
         Bounds bounds = recipes.reprojectBounds()
-        assertEquals("(1147444.7684517875,703506.223164177,1155828.120242509,711367.9403610165,EPSG:2927)", bounds.toString())
+        assertEquals("(1147444.7684517875,703506.2231641772,1155828.1202425088,711367.9403610165,EPSG:2927)", bounds.toString())
     }
 
     @Test void boundsGetGeometry() {
