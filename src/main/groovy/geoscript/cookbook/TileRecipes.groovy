@@ -142,6 +142,28 @@ Y Resolution: ${grid.yResolution}
         grid
     }
 
+    Grid gridFromPyramidByBoundsAndResolution() {
+        // tag::gridFromPyramidByBoundsAndResolution[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        Bounds bounds = new Bounds(-123.09, 46.66, -121.13, 47.48, "EPSG:4326").reproject("EPSG:3857")
+        Grid grid = pyramid.grid(bounds, bounds.width / 400.0, bounds.height / 200.0)
+        println "Zoom Level: ${grid.z}"
+        println "Width / # Columns: ${grid.width}"
+        println "Height / # Rows: ${grid.height}"
+        println "Size / # Tiles: ${grid.size}"
+        println "X Resolution: ${grid.xResolution}"
+        println "Y Resolution: ${grid.yResolution}"
+        // end::gridFromPyramidByBoundsAndResolution[]
+        writeFile("tile_pyramid_grid_bounds_res", """Zoom Level: ${grid.z}
+Width / # Columns: ${grid.width}
+Height / # Rows: ${grid.height}
+Size / # Tiles: ${grid.size}
+X Resolution: ${grid.xResolution}
+Y Resolution: ${grid.yResolution}
+""")
+        grid
+    }
+
     Grid maxGrid() {
         // tag::maxGrid[]
         Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()

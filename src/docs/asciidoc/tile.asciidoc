@@ -188,6 +188,17 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=gridFromPyramidB
 include::output/tile_pyramid_grid_zoomlevel.txt[]
 ....
 
+Get a Grid from a Pyramid by a Bounds and Resolution.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=gridFromPyramidByBoundsAndResolution,indent=0]
+----
+....
+include::output/tile_pyramid_grid_bounds_res.txt[]
+....
+
+
 ==== Reading and Writing Pyramids
 
 The Pyramid IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.12-SNAPSHOT/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
