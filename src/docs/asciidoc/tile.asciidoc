@@ -198,6 +198,15 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=gridFromPyramidB
 include::output/tile_pyramid_grid_bounds_res.txt[]
 ....
 
+Get a Grid from a Pyramid by a Bounds and Size.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=gridFromPyramidByBoundsAndSize,indent=0]
+----
+....
+include::output/tile_pyramid_grid_bounds_size.txt[]
+....
 
 ==== Reading and Writing Pyramids
 

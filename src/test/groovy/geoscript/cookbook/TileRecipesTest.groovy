@@ -105,6 +105,17 @@ class TileRecipesTest {
         assertEquals(610.984375, grid.yResolution, 0.1)
     }
 
+    @Test void gridFromPyramidByBoundsAndSize() {
+        TileRecipes recipes = new TileRecipes()
+        Grid grid = recipes.gridFromPyramidByBoundsAndSize()
+        assertEquals(8, grid.z)
+        assertEquals(256, grid.width)
+        assertEquals(256, grid.height)
+        assertEquals(65536, grid.size)
+        assertEquals(610.984375, grid.xResolution, 0.1)
+        assertEquals(610.984375, grid.yResolution, 0.1)
+    }
+
     @Test void minGrid() {
         TileRecipes recipes = new TileRecipes()
         Grid grid = recipes.minGrid()
