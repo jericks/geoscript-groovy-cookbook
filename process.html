@@ -666,22 +666,19 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:length
-geo:isEmpty
-geo:contains
-geo:disjoint
-geo:intersects
+geo:union
+geo:intersection
+geo:isValid
 geo:buffer
 geo:difference
-geo:boundary
-geo:area
-geo:numGeometries
 geo:within
 geo:touches
 geo:convexHull
+geo:area
 geo:crosses
 geo:symDifference
 geo:distance
+geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
@@ -693,27 +690,30 @@ geo:densify
 geo:simplify
 geo:numPoints
 geo:reproject
-geo:envelope
-geo:polygonize
-geo:isRing
-geo:startPoint
-geo:endPoint
 geo:isClosed
+geo:numGeometries
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
+geo:envelope
 geo:getX
 geo:getY
-geo:union
-geo:intersection
-geo:isValid
 geo:equalsExact
+geo:polygonize
+geo:isRing
+geo:startPoint
+geo:endPoint
 geo:interiorRingN
 geo:relatePattern
-geo:equalsExactTolerance
 geo:pointN
+geo:equalsExactTolerance
 geo:splitPolygon
+geo:length
+geo:isEmpty
+geo:contains
+geo:disjoint
+geo:intersects
 polygonlabelprocess:PolyLabeller
 ras:AddCoverages
 ras:Affine
@@ -734,7 +734,8 @@ ras:RasterZonalStatistics
 ras:RasterZonalStatistics2
 ras:ScaleCoverage
 ras:StyleCoverage
-ras:TransparencyFill</pre>
+ras:TransparencyFill
+geoscript:convexhull</pre>
 </div>
 </div>
 </div>
@@ -843,7 +844,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-10 16:43:08 PDT
+Last updated 2018-10-16 01:40:31 UTC
 </div>
 </div>
 </body>
