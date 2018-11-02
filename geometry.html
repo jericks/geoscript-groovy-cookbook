@@ -532,7 +532,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#compoundring">CompoundRing</a></li>
 </ul>
 </li>
-<li><a href="#procesing-geometries">Procesing Geometries</a></li>
+<li><a href="#linestrings">LineStrings</a></li>
+<li><a href="#processing-geometries">Processing Geometries</a></li>
 <li><a href="#reading-and-writing-geometries">Reading and Writing Geometries</a>
 <ul class="sectlevel3">
 <li><a href="#readers-and-writers">Readers and Writers</a></li>
@@ -834,7 +835,44 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="procesing-geometries"><a class="anchor" href="#procesing-geometries"></a>Procesing Geometries</h3>
+<h3 id="linestrings"><a class="anchor" href="#linestrings"></a>LineStrings</h3>
+<div class="listingblock">
+<div class="title">Get the start Point from a LineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString(
+        [<span class="float">3.1982421875</span>, <span class="float">43.1640625</span>],
+        [<span class="float">6.7138671875</span>, <span class="float">49.755859375</span>],
+        [<span class="float">9.7021484375</span>, <span class="float">42.5927734375</span>],
+        [<span class="float">15.3271484375</span>, <span class="float">53.798828125</span>]
+)
+<span class="predefined-type">Point</span> startPoint = lineString.startPoint</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_get_startpoint_from_linestring.png" alt="geometry get startpoint from linestring">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the end Point from a LineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString(
+        [<span class="float">3.1982421875</span>, <span class="float">43.1640625</span>],
+        [<span class="float">6.7138671875</span>, <span class="float">49.755859375</span>],
+        [<span class="float">9.7021484375</span>, <span class="float">42.5927734375</span>],
+        [<span class="float">15.3271484375</span>, <span class="float">53.798828125</span>]
+)
+<span class="predefined-type">Point</span> endPoint = lineString.endPoint</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_get_endpoint_from_linestring.png" alt="geometry get endpoint from linestring">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="processing-geometries"><a class="anchor" href="#processing-geometries"></a>Processing Geometries</h3>
 <div class="listingblock">
 <div class="title">Get the geometry type (Point, LineString, Polygon, ect&#8230;&#8203;) from a Geometry</div>
 <div class="content">
@@ -2851,8 +2889,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 347687111 nanoseconds
-Time with PreparedGeometry = 300537630 nanoseconds</pre>
+<pre>Time with Geometry         = 476797581 nanoseconds
+Time with PreparedGeometry = 298541994 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2897,8 +2935,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 250563553 nanoseconds
-Time with PreparedGeometry = 139262162 nanoseconds</pre>
+<pre>Time with Geometry         = 123208504 nanoseconds
+Time with PreparedGeometry = 107521509 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -3563,7 +3601,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-28 23:02:53 UTC
+Last updated 2018-11-02 01:53:57 UTC
 </div>
 </div>
 </body>
