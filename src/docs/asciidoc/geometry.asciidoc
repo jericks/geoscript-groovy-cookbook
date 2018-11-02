@@ -117,7 +117,25 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCompou
 [.thumb]
 image::geometry_create_compoundring.png[]
 
-=== Procesing Geometries
+=== LineStrings
+
+[source,groovy]
+.Get the start Point from a LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getStartPointFromLineString,indent=0]
+----
+[.thumb]
+image::geometry_get_startpoint_from_linestring.png[]
+
+[source,groovy]
+.Get the end Point from a LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getEndPointFromLineString,indent=0]
+----
+[.thumb]
+image::geometry_get_endpoint_from_linestring.png[]
+
+=== Processing Geometries
 
 [source,groovy]
 .Get the geometry type (Point, LineString, Polygon, ect...) from a Geometry

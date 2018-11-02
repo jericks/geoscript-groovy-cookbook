@@ -247,6 +247,36 @@ class GeometryRecipes extends Recipes {
         compoundRing
     }
 
+    // LineStrings
+
+    Map<String,Geometry> getStartPointFromLineString() {
+        // tag::getStartPointFromLineString[]
+        LineString lineString = new LineString(
+                [3.1982421875, 43.1640625],
+                [6.7138671875, 49.755859375],
+                [9.7021484375, 42.5927734375],
+                [15.3271484375, 53.798828125]
+        )
+        Point startPoint = lineString.startPoint
+        // end::getStartPointFromLineString[]
+        drawGeometries("geometry_get_startpoint_from_linestring", [startPoint, lineString], drawCoords: false)
+        [lineString: lineString, point: startPoint]
+    }
+
+    Map<String,Geometry> getEndPointFromLineString() {
+        // tag::getEndPointFromLineString[]
+        LineString lineString = new LineString(
+                [3.1982421875, 43.1640625],
+                [6.7138671875, 49.755859375],
+                [9.7021484375, 42.5927734375],
+                [15.3271484375, 53.798828125]
+        )
+        Point endPoint = lineString.endPoint
+        // end::getEndPointFromLineString[]
+        drawGeometries("geometry_get_endpoint_from_linestring", [endPoint, lineString], drawCoords: false)
+        [lineString: lineString, point: endPoint]
+    }
+
     // Processing Geometries
 
     String getGeometryType() {

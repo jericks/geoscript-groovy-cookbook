@@ -90,6 +90,24 @@ class GeometryRecipesTest {
                 ")", compoundRing.curvedWkt)
     }
 
+    // LineString
+
+    @Test void getStartPointFromLineString() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Geometry> geoms = recipes.getStartPointFromLineString()
+        assertTrue(geoms.lineString instanceof LineString)
+        assertTrue(geoms.point instanceof Point)
+        assertEquals("POINT (3.1982421875 43.1640625)", geoms.point.wkt)
+    }
+
+    @Test void getEndPointFromLineString() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Geometry> geoms = recipes.getEndPointFromLineString()
+        assertTrue(geoms.lineString instanceof LineString)
+        assertTrue(geoms.point instanceof Point)
+        assertEquals("POINT (15.3271484375 53.798828125)", geoms.point.wkt)
+    }
+
     // Geometry Operations
 
     @Test void bufferPoint() {
