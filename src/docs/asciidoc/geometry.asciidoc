@@ -135,6 +135,38 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getEndPointF
 [.thumb]
 image::geometry_get_endpoint_from_linestring.png[]
 
+[source,groovy]
+.Determine if a LineString is closed or not
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isLineStringClosed,indent=0]
+----
+[.thumb]
+image::geometry_is_linestring_closed1.png[]
+....
+include::output/geometry_is_linestring_closed1.txt[]
+....
+[.thumb]
+image::geometry_is_linestring_closed2.png[]
+....
+include::output/geometry_is_linestring_closed2.txt[]
+....
+
+[source,groovy]
+.Determine if a LineString is a Ring or not
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isLineStringRing,indent=0]
+----
+[.thumb]
+image::geometry_is_linestring_ring1.png[]
+....
+include::output/geometry_is_linestring_ring1.txt[]
+....
+[.thumb]
+image::geometry_is_linestring_ring2.png[]
+....
+include::output/geometry_is_linestring_ring2.txt[]
+....
+
 === Processing Geometries
 
 [source,groovy]

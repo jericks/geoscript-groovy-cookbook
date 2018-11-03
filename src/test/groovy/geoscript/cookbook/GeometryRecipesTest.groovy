@@ -108,6 +108,24 @@ class GeometryRecipesTest {
         assertEquals("POINT (15.3271484375 53.798828125)", geoms.point.wkt)
     }
 
+    @Test void isLineStringClosed() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Object> geoms = recipes.isLineStringClosed()
+        assertTrue(geoms.lineString1 instanceof LineString)
+        assertFalse(geoms.isClosed1)
+        assertTrue(geoms.lineString2 instanceof LineString)
+        assertTrue(geoms.isClosed2)
+    }
+
+    @Test void isLineStringRing() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Object> geoms = recipes.isLineStringRing()
+        assertTrue(geoms.lineString1 instanceof LineString)
+        assertFalse(geoms.isRing1)
+        assertTrue(geoms.lineString2 instanceof LineString)
+        assertTrue(geoms.isRing2)
+    }
+
     // Geometry Operations
 
     @Test void bufferPoint() {

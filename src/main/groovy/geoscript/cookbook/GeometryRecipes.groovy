@@ -277,6 +277,62 @@ class GeometryRecipes extends Recipes {
         [lineString: lineString, point: endPoint]
     }
 
+    Map<String,Object> isLineStringClosed() {
+        // tag::isLineStringClosed[]
+        LineString lineString1 = new LineString(
+                [3.1982421875, 43.1640625],
+                [6.7138671875, 49.755859375],
+                [9.7021484375, 42.5927734375],
+                [15.3271484375, 53.798828125]
+        )
+        boolean isClosed1 = lineString1.closed
+        println "Is ${lineString1.wkt} closed? ${isClosed1}"
+
+        LineString lineString2 = new LineString(
+                [3.1982421875, 43.1640625],
+                [6.7138671875, 49.755859375],
+                [9.7021484375, 42.5927734375],
+                [15.3271484375, 53.798828125],
+                [3.1982421875, 43.1640625]
+        )
+        boolean isClosed2 = lineString2.closed
+        println "Is ${lineString2.wkt} closed? ${isClosed2}"
+        // end::isLineStringClosed[]
+        drawGeometry("geometry_is_linestring_closed1", lineString1)
+        writeFile("geometry_is_linestring_closed1", "Is ${lineString1.wkt} closed? ${isClosed1}")
+        drawGeometry("geometry_is_linestring_closed2", lineString2)
+        writeFile("geometry_is_linestring_closed2", "Is ${lineString2.wkt} closed? ${isClosed2}")
+        [lineString1: lineString1, isClosed1: isClosed1, lineString2: lineString2, isClosed2: isClosed2]
+    }
+
+    Map<String,Object> isLineStringRing() {
+        // tag::isLineStringRing[]
+        LineString lineString1 = new LineString(
+            [-122.391428, 47.563300],
+            [-122.391836, 47.562793],
+            [-122.391010, 47.562417],
+            [-122.390516, 47.563126]
+        )
+        boolean isRing1 = lineString1.ring
+        println "Is ${lineString1.wkt} a ring? ${isRing1}"
+
+        LineString lineString2 = new LineString(
+            [-122.391428, 47.563300],
+            [-122.391836, 47.562793],
+            [-122.391010, 47.562417],
+            [-122.390516, 47.563126],
+            [-122.391428, 47.563300]
+        )
+        boolean isRing2 = lineString2.ring
+        println "Is ${lineString2.wkt} a ring? ${isRing2}"
+        // end::isLineStringRing[]
+        drawGeometry("geometry_is_linestring_ring1", lineString1)
+        writeFile("geometry_is_linestring_ring1", "Is ${lineString1.wkt} a ring? ${isRing1}")
+        drawGeometry("geometry_is_linestring_ring2", lineString2)
+        writeFile("geometry_is_linestring_ring2", "Is ${lineString2.wkt} a ring? ${isRing2}")
+        [lineString1: lineString1, isRing1: isRing1, lineString2: lineString2, isRing2: isRing2]
+    }
+
     // Processing Geometries
 
     String getGeometryType() {
