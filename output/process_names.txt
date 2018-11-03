@@ -29,10 +29,10 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:isValid
-geo:buffer
 geo:union
 geo:intersection
+geo:isValid
+geo:buffer
 geo:difference
 geo:within
 geo:touches
@@ -54,8 +54,9 @@ geo:simplify
 geo:startPoint
 geo:numPoints
 geo:reproject
-geo:isClosed
 geo:numGeometries
+geo:isClosed
+geo:splitPolygon
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
@@ -67,11 +68,10 @@ geo:endPoint
 geo:equalsExact
 geo:polygonize
 geo:isRing
-geo:pointN
 geo:relatePattern
+geo:pointN
 geo:equalsExactTolerance
 geo:interiorRingN
-geo:splitPolygon
 geo:length
 geo:isEmpty
 geo:contains
