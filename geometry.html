@@ -871,6 +871,37 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Reverse a LineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString(
+        [<span class="float">3.1982421875</span>, <span class="float">43.1640625</span>],
+        [<span class="float">6.7138671875</span>, <span class="float">49.755859375</span>],
+        [<span class="float">9.7021484375</span>, <span class="float">42.5927734375</span>],
+        [<span class="float">15.3271484375</span>, <span class="float">53.798828125</span>]
+)
+<span class="predefined-type">Point</span> startPoint = lineString.startPoint
+
+LineString reversedLineString = lineString.reverse()
+<span class="predefined-type">Point</span> reversedStartPoint = reversedLineString.startPoint</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Original LineString showing start point</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_reverse_linestring1.png" alt="geometry reverse linestring1">
+</div>
+</div>
+<div class="paragraph">
+<p>Reversed LineString showing start point</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_reverse_linestring2.png" alt="geometry reverse linestring2">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Determine if a LineString is closed or not</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString1 = <span class="keyword">new</span> LineString(
@@ -954,6 +985,35 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 <div class="literalblock">
 <div class="content">
 <pre>Is LINESTRING (-122.391428 47.5633, -122.391836 47.562793, -122.39101 47.562417, -122.390516 47.563126, -122.391428 47.5633) a ring? true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Close an open LineString to create a LinearRing</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString(
+        [-<span class="float">122.391428</span>, <span class="float">47.563300</span>],
+        [-<span class="float">122.391836</span>, <span class="float">47.562793</span>],
+        [-<span class="float">122.391010</span>, <span class="float">47.562417</span>],
+        [-<span class="float">122.390516</span>, <span class="float">47.563126</span>]
+)
+
+LinearRing linearRing = lineString.close()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Open LineString</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_close_linestring.png" alt="geometry close linestring">
+</div>
+</div>
+<div class="paragraph">
+<p>Closed LinearRing</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_close_linearring.png" alt="geometry close linearring">
 </div>
 </div>
 </div>
@@ -2975,8 +3035,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 349884357 nanoseconds
-Time with PreparedGeometry = 187753535 nanoseconds</pre>
+<pre>Time with Geometry         = 286797512 nanoseconds
+Time with PreparedGeometry = 221662450 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3021,8 +3081,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 238635528 nanoseconds
-Time with PreparedGeometry = 140458851 nanoseconds</pre>
+<pre>Time with Geometry         = 247997260 nanoseconds
+Time with PreparedGeometry = 224917485 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -3687,7 +3747,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-03 00:50:11 UTC
+Last updated 2018-11-03 21:58:57 UTC
 </div>
 </div>
 </body>
