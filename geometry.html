@@ -870,6 +870,92 @@ table.CodeRay td.code>pre{padding:0}
 <img src="./images/geometry_get_endpoint_from_linestring.png" alt="geometry get endpoint from linestring">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Determine if a LineString is closed or not</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString1 = <span class="keyword">new</span> LineString(
+        [<span class="float">3.1982421875</span>, <span class="float">43.1640625</span>],
+        [<span class="float">6.7138671875</span>, <span class="float">49.755859375</span>],
+        [<span class="float">9.7021484375</span>, <span class="float">42.5927734375</span>],
+        [<span class="float">15.3271484375</span>, <span class="float">53.798828125</span>]
+)
+<span class="type">boolean</span> isClosed1 = lineString1.closed
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is </span><span class="inline"><span class="inline-delimiter">${</span>lineString1.wkt<span class="inline-delimiter">}</span></span><span class="content"> closed? </span><span class="inline"><span class="inline-delimiter">${</span>isClosed1<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+LineString lineString2 = <span class="keyword">new</span> LineString(
+        [<span class="float">3.1982421875</span>, <span class="float">43.1640625</span>],
+        [<span class="float">6.7138671875</span>, <span class="float">49.755859375</span>],
+        [<span class="float">9.7021484375</span>, <span class="float">42.5927734375</span>],
+        [<span class="float">15.3271484375</span>, <span class="float">53.798828125</span>],
+        [<span class="float">3.1982421875</span>, <span class="float">43.1640625</span>]
+)
+<span class="type">boolean</span> isClosed2 = lineString2.closed
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is </span><span class="inline"><span class="inline-delimiter">${</span>lineString2.wkt<span class="inline-delimiter">}</span></span><span class="content"> closed? </span><span class="inline"><span class="inline-delimiter">${</span>isClosed2<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_is_linestring_closed1.png" alt="geometry is linestring closed1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is LINESTRING (3.1982421875 43.1640625, 6.7138671875 49.755859375, 9.7021484375 42.5927734375, 15.3271484375 53.798828125) closed? false</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_is_linestring_closed2.png" alt="geometry is linestring closed2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is LINESTRING (3.1982421875 43.1640625, 6.7138671875 49.755859375, 9.7021484375 42.5927734375, 15.3271484375 53.798828125, 3.1982421875 43.1640625) closed? true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Determine if a LineString is a Ring or not</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString1 = <span class="keyword">new</span> LineString(
+    [-<span class="float">122.391428</span>, <span class="float">47.563300</span>],
+    [-<span class="float">122.391836</span>, <span class="float">47.562793</span>],
+    [-<span class="float">122.391010</span>, <span class="float">47.562417</span>],
+    [-<span class="float">122.390516</span>, <span class="float">47.563126</span>]
+)
+<span class="type">boolean</span> isRing1 = lineString1.ring
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is </span><span class="inline"><span class="inline-delimiter">${</span>lineString1.wkt<span class="inline-delimiter">}</span></span><span class="content"> a ring? </span><span class="inline"><span class="inline-delimiter">${</span>isRing1<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+LineString lineString2 = <span class="keyword">new</span> LineString(
+    [-<span class="float">122.391428</span>, <span class="float">47.563300</span>],
+    [-<span class="float">122.391836</span>, <span class="float">47.562793</span>],
+    [-<span class="float">122.391010</span>, <span class="float">47.562417</span>],
+    [-<span class="float">122.390516</span>, <span class="float">47.563126</span>],
+    [-<span class="float">122.391428</span>, <span class="float">47.563300</span>]
+)
+<span class="type">boolean</span> isRing2 = lineString2.ring
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Is </span><span class="inline"><span class="inline-delimiter">${</span>lineString2.wkt<span class="inline-delimiter">}</span></span><span class="content"> a ring? </span><span class="inline"><span class="inline-delimiter">${</span>isRing2<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_is_linestring_ring1.png" alt="geometry is linestring ring1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is LINESTRING (-122.391428 47.5633, -122.391836 47.562793, -122.39101 47.562417, -122.390516 47.563126) a ring? false</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_is_linestring_ring2.png" alt="geometry is linestring ring2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Is LINESTRING (-122.391428 47.5633, -122.391836 47.562793, -122.39101 47.562417, -122.390516 47.563126, -122.391428 47.5633) a ring? true</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="processing-geometries"><a class="anchor" href="#processing-geometries"></a>Processing Geometries</h3>
@@ -2889,8 +2975,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 476797581 nanoseconds
-Time with PreparedGeometry = 298541994 nanoseconds</pre>
+<pre>Time with Geometry         = 349884357 nanoseconds
+Time with PreparedGeometry = 187753535 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2935,8 +3021,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 123208504 nanoseconds
-Time with PreparedGeometry = 107521509 nanoseconds</pre>
+<pre>Time with Geometry         = 238635528 nanoseconds
+Time with PreparedGeometry = 140458851 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -3601,7 +3687,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-02 01:53:57 UTC
+Last updated 2018-11-03 00:50:11 UTC
 </div>
 </div>
 </body>
