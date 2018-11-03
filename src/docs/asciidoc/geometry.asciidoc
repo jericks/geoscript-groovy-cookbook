@@ -136,6 +136,20 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getEndPointF
 image::geometry_get_endpoint_from_linestring.png[]
 
 [source,groovy]
+.Reverse a LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=reverseLineString,indent=0]
+----
+
+Original LineString showing start point
+[.thumb]
+image::geometry_reverse_linestring1.png[]
+
+Reversed LineString showing start point
+[.thumb]
+image::geometry_reverse_linestring2.png[]
+
+[source,groovy]
 .Determine if a LineString is closed or not
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isLineStringClosed,indent=0]
@@ -166,6 +180,20 @@ image::geometry_is_linestring_ring2.png[]
 ....
 include::output/geometry_is_linestring_ring2.txt[]
 ....
+
+[source,groovy]
+.Close an open LineString to create a LinearRing
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=closeLineString,indent=0]
+----
+
+Open LineString
+[.thumb]
+image::geometry_close_linestring.png[]
+
+Closed LinearRing
+[.thumb]
+image::geometry_close_linearring.png[]
 
 === Processing Geometries
 

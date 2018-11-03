@@ -108,6 +108,17 @@ class GeometryRecipesTest {
         assertEquals("POINT (15.3271484375 53.798828125)", geoms.point.wkt)
     }
 
+    @Test void reverseLineString() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Geometry> geoms = recipes.reverseLineString()
+        assertTrue(geoms.lineString instanceof LineString)
+        assertTrue(geoms.startPoint instanceof Point)
+        assertEquals("POINT (3.1982421875 43.1640625)", geoms.startPoint.wkt)
+        assertTrue(geoms.reversedLineString instanceof LineString)
+        assertTrue(geoms.reversedStartPoint instanceof Point)
+        assertEquals("POINT (15.3271484375 53.798828125)", geoms.reversedStartPoint.wkt)
+    }
+
     @Test void isLineStringClosed() {
         GeometryRecipes recipes = new GeometryRecipes()
         Map<String,Object> geoms = recipes.isLineStringClosed()
@@ -124,6 +135,13 @@ class GeometryRecipesTest {
         assertFalse(geoms.isRing1)
         assertTrue(geoms.lineString2 instanceof LineString)
         assertTrue(geoms.isRing2)
+    }
+
+    @Test void closeLineString() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Geometry> geoms = recipes.closeLineString()
+        assertTrue(geoms.lineString instanceof LineString)
+        assertTrue(geoms.linearRing instanceof LinearRing)
     }
 
     // Geometry Operations

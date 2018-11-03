@@ -277,6 +277,24 @@ class GeometryRecipes extends Recipes {
         [lineString: lineString, point: endPoint]
     }
 
+    Map<String,Geometry> reverseLineString() {
+        // tag::reverseLineString[]
+        LineString lineString = new LineString(
+                [3.1982421875, 43.1640625],
+                [6.7138671875, 49.755859375],
+                [9.7021484375, 42.5927734375],
+                [15.3271484375, 53.798828125]
+        )
+        Point startPoint = lineString.startPoint
+
+        LineString reversedLineString = lineString.reverse()
+        Point reversedStartPoint = reversedLineString.startPoint
+        // end::reverseLineString[]
+        drawGeometries("geometry_reverse_linestring1", [startPoint, lineString], drawCoords: false)
+        drawGeometries("geometry_reverse_linestring2", [reversedStartPoint, reversedLineString], drawCoords: false)
+        [lineString: lineString, startPoint: startPoint, reversedLineString: reversedLineString, reversedStartPoint: reversedStartPoint]
+    }
+
     Map<String,Object> isLineStringClosed() {
         // tag::isLineStringClosed[]
         LineString lineString1 = new LineString(
@@ -331,6 +349,22 @@ class GeometryRecipes extends Recipes {
         drawGeometry("geometry_is_linestring_ring2", lineString2)
         writeFile("geometry_is_linestring_ring2", "Is ${lineString2.wkt} a ring? ${isRing2}")
         [lineString1: lineString1, isRing1: isRing1, lineString2: lineString2, isRing2: isRing2]
+    }
+
+    Map<String,Geometry> closeLineString() {
+        // tag::closeLineString[]
+        LineString lineString = new LineString(
+                [-122.391428, 47.563300],
+                [-122.391836, 47.562793],
+                [-122.391010, 47.562417],
+                [-122.390516, 47.563126]
+        )
+
+        LinearRing linearRing = lineString.close()
+        // end::closeLineString[]
+        drawGeometry("geometry_close_linestring", lineString)
+        drawGeometry("geometry_close_linearring", linearRing)
+        [lineString: lineString, linearRing: linearRing]
     }
 
     // Processing Geometries
