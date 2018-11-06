@@ -117,6 +117,19 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createCompou
 [.thumb]
 image::geometry_create_compoundring.png[]
 
+=== Points
+
+[source,groovy]
+.Get x, y, and z values from a Point
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getPointXYZ,indent=0]
+----
+[.thumb]
+image::geometry_point_xyz.png[]
+....
+include::output/geometry_point_xyz.txt[]
+....
+
 === LineStrings
 
 [source,groovy]

@@ -144,6 +144,16 @@ class GeometryRecipesTest {
         assertTrue(geoms.linearRing instanceof LinearRing)
     }
 
+    // Point
+
+    @Test void getPointXYZ() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Point point =  recipes.getPointXYZ()
+        assertEquals(-122.38632, point.x, 0.001)
+        assertEquals(47.58208, point.y, 0.001)
+        assertEquals(101.45, point.z, 0.001)
+    }
+
     // Geometry Operations
 
     @Test void bufferPoint() {

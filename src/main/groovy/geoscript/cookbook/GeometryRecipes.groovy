@@ -367,6 +367,21 @@ class GeometryRecipes extends Recipes {
         [lineString: lineString, linearRing: linearRing]
     }
 
+    // Point
+
+    Point getPointXYZ() {
+        // tag::getPointXYZ[]
+        Point point = new Point(-122.38632, 47.58208, 101.45)
+        println "X = ${point.x}"
+        println "Y = ${point.y}"
+        println "Z = ${point.z}"
+        // end::getPointXYZ[]
+        drawGeometry("geometry_point_xyz", point)
+        writeFile("geometry_point_xyz", "X = ${point.x}${NEW_LINE}Y = ${point.y}${NEW_LINE}Z = ${point.z}")
+        point
+    }
+
+
     // Processing Geometries
 
     String getGeometryType() {
