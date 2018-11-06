@@ -532,6 +532,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#compoundring">CompoundRing</a></li>
 </ul>
 </li>
+<li><a href="#points">Points</a></li>
 <li><a href="#linestrings">LineStrings</a></li>
 <li><a href="#processing-geometries">Processing Geometries</a></li>
 <li><a href="#reading-and-writing-geometries">Reading and Writing Geometries</a>
@@ -831,6 +832,30 @@ table.CodeRay td.code>pre{padding:0}
 <div class="content">
 <img src="./images/geometry_create_compoundring.png" alt="geometry create compoundring">
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="points"><a class="anchor" href="#points"></a>Points</h3>
+<div class="listingblock">
+<div class="title">Get x, y, and z values from a Point</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.38632</span>, <span class="float">47.58208</span>, <span class="float">101.45</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">X = </span><span class="inline"><span class="inline-delimiter">${</span>point.x<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Y = </span><span class="inline"><span class="inline-delimiter">${</span>point.y<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Z = </span><span class="inline"><span class="inline-delimiter">${</span>point.z<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_point_xyz.png" alt="geometry point xyz">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>X = -122.38632
+Y = 47.58208
+Z = 101.45</pre>
 </div>
 </div>
 </div>
@@ -3035,8 +3060,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 388611247 nanoseconds
-Time with PreparedGeometry = 375628694 nanoseconds</pre>
+<pre>Time with Geometry         = 344183718 nanoseconds
+Time with PreparedGeometry = 340715196 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3081,8 +3106,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 168959491 nanoseconds
-Time with PreparedGeometry = 290461087 nanoseconds</pre>
+<pre>Time with Geometry         = 517808307 nanoseconds
+Time with PreparedGeometry = 282685305 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -3747,7 +3772,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-03 22:03:34 UTC
+Last updated 2018-11-06 00:28:56 UTC
 </div>
 </div>
 </body>
