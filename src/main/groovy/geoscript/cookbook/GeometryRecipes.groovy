@@ -381,6 +381,15 @@ class GeometryRecipes extends Recipes {
         point
     }
 
+    MultiPoint plusPoint() {
+        // tag::plusPoint[]
+        Point point1 = new Point(-122.38632, 47.58208)
+        Point point2 = new Point(-122.37001, 47.55868)
+        MultiPoint points = point1 + point2
+        // end::plusPoint[]
+        drawGeometry("geometry_plus_point", points)
+        points
+    }
 
     // Processing Geometries
 

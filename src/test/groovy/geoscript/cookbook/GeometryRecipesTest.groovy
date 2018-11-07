@@ -154,6 +154,14 @@ class GeometryRecipesTest {
         assertEquals(101.45, point.z, 0.001)
     }
 
+    @Test void plusPoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        MultiPoint points =  recipes.plusPoint()
+        assertEquals(2, points.numGeometries)
+        assertEquals("POINT (-122.38632 47.58208)", points[0].wkt)
+        assertEquals("POINT (-122.37001 47.55868)", points[1].wkt)
+    }
+
     // Geometry Operations
 
     @Test void bufferPoint() {

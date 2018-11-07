@@ -130,6 +130,14 @@ image::geometry_point_xyz.png[]
 include::output/geometry_point_xyz.txt[]
 ....
 
+[source,groovy]
+.Add two Points together to create a MultiPoint
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=plusPoint,indent=0]
+----
+[.thumb]
+image::geometry_plus_point.png[]
+
 === LineStrings
 
 [source,groovy]
