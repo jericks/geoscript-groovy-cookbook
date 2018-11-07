@@ -871,6 +871,48 @@ MultiPoint points = point1 + point2</code></pre>
 <img src="./images/geometry_plus_point.png" alt="geometry plus point">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Calculate the angle between two points</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point1 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.29980</span>, <span class="float">47.65058</span>)
+<span class="predefined-type">Point</span> point2 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">120.54199</span>, <span class="float">46.64943</span>)
+<span class="type">double</span> angleInDegrees = point1.getAngle(point2, <span class="string"><span class="delimiter">&quot;</span><span class="content">degrees</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Angle in degrees = </span><span class="inline"><span class="inline-delimiter">${</span>angleInDegrees<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="type">double</span> angleInRadians = point1.getAngle(point2, <span class="string"><span class="delimiter">&quot;</span><span class="content">radians</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Angle in radians = </span><span class="inline"><span class="inline-delimiter">${</span>angleInRadians<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_point_getangle.png" alt="geometry point getangle">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Angle in degrees = -29.663413013476646
+Angle in radians = -0.5177242244641005</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the azimuth between two points</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point1 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.29980</span>, <span class="float">47.65058</span>)
+<span class="predefined-type">Point</span> point2 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">120.54199</span>, <span class="float">46.64943</span>)
+<span class="type">double</span> azimuth = point1.getAzimuth(point2)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Azimuth = </span><span class="inline"><span class="inline-delimiter">${</span>azimuth<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_point_getazimuth.png" alt="geometry point getazimuth">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Azimuth = 129.21026122904846</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="linestrings"><a class="anchor" href="#linestrings"></a>LineStrings</h3>
@@ -3073,8 +3115,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 358671581 nanoseconds
-Time with PreparedGeometry = 316995856 nanoseconds</pre>
+<pre>Time with Geometry         = 260627450 nanoseconds
+Time with PreparedGeometry = 216715738 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3119,8 +3161,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 134738702 nanoseconds
-Time with PreparedGeometry = 223257091 nanoseconds</pre>
+<pre>Time with Geometry         = 161407468 nanoseconds
+Time with PreparedGeometry = 103604392 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -3785,7 +3827,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-07 00:04:57 UTC
+Last updated 2018-11-07 00:42:15 UTC
 </div>
 </div>
 </body>

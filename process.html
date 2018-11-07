@@ -671,7 +671,6 @@ geo:buffer
 geo:union
 geo:intersection
 geo:difference
-geo:reproject
 geo:within
 geo:touches
 geo:convexHull
@@ -692,23 +691,24 @@ geo:simplify
 geo:startPoint
 geo:numGeometries
 geo:numPoints
+geo:polygonize
+geo:isRing
+geo:reproject
 geo:isClosed
+geo:envelope
+geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:dimension
-geo:envelope
 geo:getX
 geo:getY
 geo:endPoint
-geo:polygonize
 geo:equalsExact
-geo:isRing
+geo:splitPolygon
+geo:interiorRingN
 geo:pointN
 geo:relatePattern
-geo:interiorRingN
 geo:equalsExactTolerance
-geo:splitPolygon
 geo:length
 geo:isEmpty
 geo:contains
@@ -844,7 +844,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-07 00:04:57 UTC
+Last updated 2018-11-07 00:42:15 UTC
 </div>
 </div>
 </body>
