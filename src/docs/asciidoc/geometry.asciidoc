@@ -138,6 +138,29 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=plusPoint,in
 [.thumb]
 image::geometry_plus_point.png[]
 
+[source,groovy]
+.Calculate the angle between two points
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getAngleBetweenPoints,indent=0]
+----
+[.thumb]
+image::geometry_point_getangle.png[]
+....
+include::output/geometry_point_getangle.txt[]
+....
+
+[source,groovy]
+.Calculate the azimuth between two points
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getAzimuthBetweenPoints,indent=0]
+----
+[.thumb]
+image::geometry_point_getazimuth.png[]
+....
+include::output/geometry_point_getazimuth.txt[]
+....
+
+
 === LineStrings
 
 [source,groovy]

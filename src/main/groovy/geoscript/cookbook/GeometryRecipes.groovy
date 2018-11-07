@@ -391,6 +391,33 @@ class GeometryRecipes extends Recipes {
         points
     }
 
+    List<Double> getAngleBetweenPoints() {
+        // tag::getAngleBetweenPoints[]
+        Point point1 = new Point(-122.29980, 47.65058)
+        Point point2 = new Point(-120.54199, 46.64943)
+        double angleInDegrees = point1.getAngle(point2, "degrees")
+        println "Angle in degrees = ${angleInDegrees}"
+
+        double angleInRadians = point1.getAngle(point2, "radians")
+        println "Angle in radians = ${angleInRadians}"
+        // end::getAngleBetweenPoints[]
+        drawGeometries("geometry_point_getangle", [point1, point2])
+        writeFile("geometry_point_getangle", "Angle in degrees = ${angleInDegrees}${NEW_LINE}Angle in radians = ${angleInRadians}")
+        [angleInDegrees, angleInRadians]
+    }
+
+    double getAzimuthBetweenPoints() {
+        // tag::getAzimuthBetweenPoints[]
+        Point point1 = new Point(-122.29980, 47.65058)
+        Point point2 = new Point(-120.54199, 46.64943)
+        double azimuth = point1.getAzimuth(point2)
+        println "Azimuth = ${azimuth}"
+        // end::getAzimuthBetweenPoints[]
+        drawGeometries("geometry_point_getazimuth", [point1, point2])
+        writeFile("geometry_point_getazimuth", "Azimuth = ${azimuth}")
+        azimuth
+    }
+
     // Processing Geometries
 
     String getGeometryType() {

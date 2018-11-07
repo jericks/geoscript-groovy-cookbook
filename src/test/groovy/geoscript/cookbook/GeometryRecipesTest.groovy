@@ -162,6 +162,19 @@ class GeometryRecipesTest {
         assertEquals("POINT (-122.37001 47.55868)", points[1].wkt)
     }
 
+    @Test void getAngleBetweenPoints() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Double> angles =  recipes.getAngleBetweenPoints()
+        assertEquals(-29.663413013476646, angles[0], 0.01)
+        assertEquals(-0.517724224464100, angles[1], 0.01)
+    }
+
+    @Test void getAzimuthBetweenPoints() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        double azimuth =  recipes.getAzimuthBetweenPoints()
+        assertEquals(129.21026122904846, azimuth, 0.01)
+    }
+
     // Geometry Operations
 
     @Test void bufferPoint() {
