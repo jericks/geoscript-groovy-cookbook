@@ -418,6 +418,24 @@ class GeometryRecipes extends Recipes {
         azimuth
     }
 
+    // MultiPoint
+
+    MultiPoint plusMultiPoint() {
+        // tag::plusMultiPoint[]
+        MultiPoint multiPoint = new MultiPoint(
+                new Point(-122.83813,47.05141),
+                new Point(-122.38220,47.58023)
+        )
+        println multiPoint.wkt
+        MultiPoint newMultiPoint = multiPoint + new Point(-122.48657, 47.271775)
+        println newMultiPoint.wkt
+        // end::plusMultiPoint[]
+        drawGeometry("geometry_plus_multipoint1", multiPoint)
+        drawGeometry("geometry_plus_multipoint2", newMultiPoint)
+        writeFile("geometry_plus_multipoint", "${multiPoint.wkt}${NEW_LINE}${newMultiPoint}")
+        newMultiPoint
+    }
+
     // Processing Geometries
 
     String getGeometryType() {

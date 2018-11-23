@@ -139,6 +139,25 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=plusPoint,in
 image::geometry_plus_point.png[]
 
 [source,groovy]
+.Add a Point to a MultiPoint
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=plusMultiPoint,indent=0]
+----
+....
+include::output/geometry_plus_multipoint.txt[]
+....
+
+MultiPoint
+
+[.thumb]
+image::geometry_plus_multipoint1.png[]
+
+MultiPoint with extra Point
+
+[.thumb]
+image::geometry_plus_multipoint2.png[]
+
+[source,groovy]
 .Calculate the angle between two points
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getAngleBetweenPoints,indent=0]
