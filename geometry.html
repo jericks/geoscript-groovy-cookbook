@@ -872,6 +872,40 @@ MultiPoint points = point1 + point2</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Add a Point to a MultiPoint</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiPoint multiPoint = <span class="keyword">new</span> MultiPoint(
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.83813</span>,<span class="float">47.05141</span>),
+        <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.38220</span>,<span class="float">47.58023</span>)
+)
+println multiPoint.wkt
+MultiPoint newMultiPoint = multiPoint + <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.48657</span>, <span class="float">47.271775</span>)
+println newMultiPoint.wkt</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>MULTIPOINT ((-122.83813 47.05141), (-122.3822 47.58023))
+MULTIPOINT ((-122.83813 47.05141), (-122.3822 47.58023), (-122.48657 47.271775))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>MultiPoint</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_plus_multipoint1.png" alt="geometry plus multipoint1">
+</div>
+</div>
+<div class="paragraph">
+<p>MultiPoint with extra Point</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_plus_multipoint2.png" alt="geometry plus multipoint2">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Calculate the angle between two points</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Point</span> point1 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.29980</span>, <span class="float">47.65058</span>)
@@ -3115,8 +3149,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 260627450 nanoseconds
-Time with PreparedGeometry = 216715738 nanoseconds</pre>
+<pre>Time with Geometry         = 322812431 nanoseconds
+Time with PreparedGeometry = 218155506 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3161,8 +3195,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 161407468 nanoseconds
-Time with PreparedGeometry = 103604392 nanoseconds</pre>
+<pre>Time with Geometry         = 138126081 nanoseconds
+Time with PreparedGeometry = 270613023 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -3827,7 +3861,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-07 00:42:15 UTC
+Last updated 2018-11-23 17:56:00 UTC
 </div>
 </div>
 </body>
