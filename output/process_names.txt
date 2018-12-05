@@ -29,6 +29,8 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:getX
+geo:getY
 geo:isValid
 geo:buffer
 geo:union
@@ -61,12 +63,10 @@ geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
 geo:envelope
-geo:getX
-geo:getY
+geo:polygonize
+geo:isRing
 geo:endPoint
 geo:equalsExact
-geo:isRing
-geo:polygonize
 geo:pointN
 geo:interiorRingN
 geo:relatePattern
