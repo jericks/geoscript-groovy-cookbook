@@ -365,8 +365,10 @@ class FeatureRecipesTest {
         String str = recipes.featureGetGeoRSS()
         assertTrue(str.contains("<entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'>"))
         assertTrue(str.contains('<title>city.1</title>'))
-        assertTrue(str.contains('<summary>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>'))
-        assertTrue(str.contains('<georss:point>47.6024 -122.3204</georss:point>'))
+        assertTrue(str.contains('<summary'))
+        assertTrue(str.contains('>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>'))
+        assertTrue(str.contains('<georss:point'))
+        assertTrue(str.contains('>47.6024 -122.3204</georss:point>'))
     }
 
     @Test void featureFromGeoRSS() {
@@ -380,8 +382,10 @@ class FeatureRecipesTest {
         String str = recipes.writeFeatureToGeoRSS()
         assertTrue(str.contains("<entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'>"))
         assertTrue(str.contains('<title>city.1</title>'))
-        assertTrue(str.contains('<summary>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>'))
-        assertTrue(str.contains('<georss:point>47.6024 -122.3204</georss:point>'))
+        assertTrue(str.contains('<summary'))
+        assertTrue(str.contains('>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>'))
+        assertTrue(str.contains('<georss:point'))
+        assertTrue(str.contains('>47.6024 -122.3204</georss:point>'))
     }
 
     @Test void readFeatureFromGeoRSS() {
