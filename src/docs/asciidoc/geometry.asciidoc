@@ -37,6 +37,14 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createPolygo
 [.thumb]
 image::geometry_create_polygon.png[]
 
+[source,groovy]
+.Create a Polygon with holes
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createPolygonWithHoles,indent=0]
+----
+[.thumb]
+image::geometry_create_polygon_withholes.png[]
+
 ==== MultiPoint
 
 [source,groovy]
@@ -179,7 +187,6 @@ image::geometry_point_getazimuth.png[]
 include::output/geometry_point_getazimuth.txt[]
 ....
 
-
 === LineStrings
 
 [source,groovy]
@@ -257,6 +264,18 @@ image::geometry_close_linestring.png[]
 Closed LinearRing
 [.thumb]
 image::geometry_close_linearring.png[]
+
+==== Polygons
+
+[source,groovy]
+.Get a Polygon's exterior LinearRing
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=polygonGetExteriorRing,indent=0]
+----
+[.thumb]
+image::geometry_polygon_exteriorring1.png[]
+[.thumb]
+image::geometry_polygon_exteriorring2.png[]
 
 === Processing Geometries
 
