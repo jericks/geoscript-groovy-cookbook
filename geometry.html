@@ -533,11 +533,8 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </li>
 <li><a href="#points">Points</a></li>
-<li><a href="#linestrings">LineStrings</a>
-<ul class="sectlevel3">
+<li><a href="#linestrings">LineStrings</a></li>
 <li><a href="#polygons">Polygons</a></li>
-</ul>
-</li>
 <li><a href="#processing-geometries">Processing Geometries</a></li>
 <li><a href="#reading-and-writing-geometries">Reading and Writing Geometries</a>
 <ul class="sectlevel3">
@@ -1173,8 +1170,9 @@ LinearRing linearRing = lineString.close()</code></pre>
 <img src="./images/geometry_close_linearring.png" alt="geometry close linearring">
 </div>
 </div>
-<div class="sect3">
-<h4 id="polygons"><a class="anchor" href="#polygons"></a>Polygons</h4>
+</div>
+<div class="sect2">
+<h3 id="polygons"><a class="anchor" href="#polygons"></a>Polygons</h3>
 <div class="listingblock">
 <div class="title">Get a Polygon&#8217;s exterior LinearRing</div>
 <div class="content">
@@ -1219,6 +1217,75 @@ LinearRing exteriorRing = polygon.getExteriorRing()</code></pre>
 <div class="content">
 <img src="./images/geometry_polygon_exteriorring2.png" alt="geometry polygon exteriorring2">
 </div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Polygon&#8217;s interior LinearRings</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>(
+        <span class="comment">// Exterior Ring</span>
+        <span class="keyword">new</span> LinearRing(
+                [-<span class="float">122.39138603210449</span>, <span class="float">47.58659965790016</span>],
+                [-<span class="float">122.41250038146973</span>, <span class="float">47.57681522195182</span>],
+                [-<span class="float">122.40305900573729</span>, <span class="float">47.56523364515569</span>],
+                [-<span class="float">122.38117218017578</span>, <span class="float">47.56621817878201</span>],
+                [-<span class="float">122.3712158203125</span>, <span class="float">47.57235661809739</span>],
+                [-<span class="float">122.37602233886717</span>, <span class="float">47.584747123985615</span>],
+                [-<span class="float">122.39138603210449</span>, <span class="float">47.58659965790016</span>]
+        ),
+        <span class="comment">// Holes</span>
+        [
+                <span class="keyword">new</span> LinearRing(
+                        [-<span class="float">122.39859580993652</span>, <span class="float">47.578957532923376</span>],
+                        [-<span class="float">122.40468978881836</span>, <span class="float">47.57548347095205</span>],
+                        [-<span class="float">122.39593505859376</span>, <span class="float">47.570271945800094</span>],
+                        [-<span class="float">122.3920726776123</span>, <span class="float">47.57606249728773</span>],
+                        [-<span class="float">122.39859580993652</span>, <span class="float">47.578957532923376</span>]
+                ),
+                <span class="keyword">new</span> LinearRing(
+                        [-<span class="float">122.3836612701416</span>, <span class="float">47.58156292813543</span>],
+                        [-<span class="float">122.38829612731934</span>, <span class="float">47.57114056934196</span>],
+                        [-<span class="float">122.37456321716309</span>, <span class="float">47.57420959047542</span>],
+                        [-<span class="float">122.37868309020995</span>, <span class="float">47.58023129789275</span>],
+                        [-<span class="float">122.3836612701416</span>, <span class="float">47.58156292813543</span>]
+                )
+        ]
+)
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># Interior Rings = </span><span class="inline"><span class="inline-delimiter">${</span>polygon.numInteriorRing<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+(<span class="integer">0</span>..&lt;polygon.numInteriorRing).each { <span class="type">int</span> i -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  </span><span class="inline"><span class="inline-delimiter">${</span>polygon.getInteriorRingN(i)<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Interior Rings</span><span class="delimiter">&quot;</span></span>
+polygon.interiorRings.each { LinearRing ring -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">  </span><span class="inline"><span class="inline-delimiter">${</span>ring<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># Interior Rings = 2
+  LINEARRING (-122.39859580993652 47.578957532923376, -122.40468978881836 47.57548347095205, -122.39593505859376 47.570271945800094, -122.3920726776123 47.57606249728773, -122.39859580993652 47.578957532923376)
+  LINEARRING (-122.3836612701416 47.58156292813543, -122.38829612731934 47.57114056934196, -122.37456321716309 47.57420959047542, -122.37868309020995 47.58023129789275, -122.3836612701416 47.58156292813543)
+
+Interior Rings
+  LINEARRING (-122.39859580993652 47.578957532923376, -122.40468978881836 47.57548347095205, -122.39593505859376 47.570271945800094, -122.3920726776123 47.57606249728773, -122.39859580993652 47.578957532923376)
+  LINEARRING (-122.3836612701416 47.58156292813543, -122.38829612731934 47.57114056934196, -122.37456321716309 47.57420959047542, -122.37868309020995 47.58023129789275, -122.3836612701416 47.58156292813543)</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_polygon_interiorring1.png" alt="geometry polygon interiorring1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_polygon_interiorring2.png" alt="geometry polygon interiorring2">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_polygon_interiorring3.png" alt="geometry polygon interiorring3">
 </div>
 </div>
 </div>
@@ -3240,8 +3307,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 279284060 nanoseconds
-Time with PreparedGeometry = 185289421 nanoseconds</pre>
+<pre>Time with Geometry         = 473555603 nanoseconds
+Time with PreparedGeometry = 475488745 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3286,8 +3353,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 198181836 nanoseconds
-Time with PreparedGeometry = 124795701 nanoseconds</pre>
+<pre>Time with Geometry         = 321579432 nanoseconds
+Time with PreparedGeometry = 178491991 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -3952,7 +4019,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-19 04:33:16 UTC
+Last updated 2018-12-21 05:39:48 UTC
 </div>
 </div>
 </body>
