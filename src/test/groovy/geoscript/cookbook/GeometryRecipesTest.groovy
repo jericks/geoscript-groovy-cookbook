@@ -106,6 +106,14 @@ class GeometryRecipesTest {
                 "-122.37602233886717 47.584747123985615, -122.39138603210449 47.58659965790016)", ring.wkt)
     }
 
+    @Test void polygonInteriorRing() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<LinearRing> rings = recipes.polygonInteriorRing()
+        assertEquals(2, rings.size())
+        assertEquals("LINEARRING (-122.39859580993652 47.578957532923376, -122.40468978881836 47.57548347095205, -122.39593505859376 47.570271945800094, -122.3920726776123 47.57606249728773, -122.39859580993652 47.578957532923376)", rings[0].wkt)
+        assertEquals("LINEARRING (-122.3836612701416 47.58156292813543, -122.38829612731934 47.57114056934196, -122.37456321716309 47.57420959047542, -122.37868309020995 47.58023129789275, -122.3836612701416 47.58156292813543)", rings[1].wkt)
+    }
+
     // LineString
 
     @Test void getStartPointFromLineString() {

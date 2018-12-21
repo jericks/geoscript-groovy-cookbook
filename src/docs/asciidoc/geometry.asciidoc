@@ -265,7 +265,7 @@ Closed LinearRing
 [.thumb]
 image::geometry_close_linearring.png[]
 
-==== Polygons
+=== Polygons
 
 [source,groovy]
 .Get a Polygon's exterior LinearRing
@@ -276,6 +276,21 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=polygonGetEx
 image::geometry_polygon_exteriorring1.png[]
 [.thumb]
 image::geometry_polygon_exteriorring2.png[]
+
+[source,groovy]
+.Get a Polygon's interior LinearRings
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=polygonInteriorRing,indent=0]
+----
+....
+include::output/geometry_polygon_interiorring.txt[]
+....
+[.thumb]
+image::geometry_polygon_interiorring1.png[]
+[.thumb]
+image::geometry_polygon_interiorring2.png[]
+[.thumb]
+image::geometry_polygon_interiorring3.png[]
 
 === Processing Geometries
 
