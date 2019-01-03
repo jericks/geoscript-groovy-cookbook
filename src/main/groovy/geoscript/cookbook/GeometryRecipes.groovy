@@ -567,6 +567,27 @@ ${polygon.interiorRings.collect { '  ' + it.wkt }.join(NEW_LINE)}
         polygon.interiorRings
     }
 
+    MultiPolygon plusPolygons() {
+        // tag::plusPolygons[]
+        Polygon polygon1 = new Polygon ([[
+          [-122.2723388671875,  47.818687628247105],
+          [-122.37945556640624, 47.66168780332917],
+          [-121.95373535156249, 47.67093619422418],
+          [-122.2723388671875,  47.818687628247105]
+        ]])
+        Polygon polygon2 = new Polygon ([[
+          [-122.76672363281249, 47.42437092240516],
+          [-122.76672363281249, 47.59505101193038],
+          [-122.52227783203125, 47.59505101193038],
+          [-122.52227783203125, 47.42437092240516],
+          [-122.76672363281249, 47.42437092240516]
+        ]])
+        MultiPolygon multiPolygon = polygon1 + polygon2
+        // end::plusPolygons[]
+        drawGeometry("geometry_plus_polygons", multiPolygon)
+        multiPolygon
+    }
+
     // Processing Geometries
 
     String getGeometryType() {

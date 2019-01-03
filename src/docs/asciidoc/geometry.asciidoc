@@ -292,6 +292,14 @@ image::geometry_polygon_interiorring2.png[]
 [.thumb]
 image::geometry_polygon_interiorring3.png[]
 
+[source,groovy]
+.Add a Polygon to another Polygon to create a MultiPolygon
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=plusPolygons,indent=0]
+----
+[.thumb]
+image::geometry_plus_polygons.png[]
+
 === Processing Geometries
 
 [source,groovy]
