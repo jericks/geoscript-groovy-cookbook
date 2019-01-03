@@ -588,6 +588,33 @@ ${polygon.interiorRings.collect { '  ' + it.wkt }.join(NEW_LINE)}
         multiPolygon
     }
 
+    MultiPolygon splitPolygon() {
+
+        // tag::splitPolygon[]
+        Polygon polygon = new Polygon(
+            new LinearRing(
+                [-122.39138603210449, 47.58659965790016],
+                [-122.41250038146973, 47.57681522195182],
+                [-122.40305900573729, 47.56523364515569],
+                [-122.38117218017578, 47.56621817878201],
+                [-122.3712158203125, 47.57235661809739],
+                [-122.37602233886717, 47.584747123985615],
+                [-122.39138603210449, 47.58659965790016]
+            )
+        )
+
+        LineString lineString = new LineString([
+            [-122.3924160003662, 47.56395951534652],
+            [-122.38649368286131, 47.58729434121508]
+        ])
+
+        MultiPolygon multiPolygon = polygon.split(lineString)
+        // end::splitPolygon[]
+        drawGeometries("geometry_split_polygon1", [polygon, lineString])
+        drawGeometry("geometry_split_polygon2", multiPolygon)
+        multiPolygon
+    }
+
     // Processing Geometries
 
     String getGeometryType() {

@@ -300,6 +300,16 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=plusPolygons
 [.thumb]
 image::geometry_plus_polygons.png[]
 
+[source,groovy]
+.Split a Polygon with a LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=splitPolygon,indent=0]
+----
+[.thumb]
+image::geometry_split_polygon1.png[]
+[.thumb]
+image::geometry_split_polygon2.png[]
+
 === Processing Geometries
 
 [source,groovy]
