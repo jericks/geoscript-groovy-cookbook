@@ -1288,6 +1288,30 @@ Interior Rings
 <img src="./images/geometry_polygon_interiorring3.png" alt="geometry polygon interiorring3">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Add a Polygon to another Polygon to create a MultiPolygon</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+  [-<span class="float">122.2723388671875</span>,  <span class="float">47.818687628247105</span>],
+  [-<span class="float">122.37945556640624</span>, <span class="float">47.66168780332917</span>],
+  [-<span class="float">121.95373535156249</span>, <span class="float">47.67093619422418</span>],
+  [-<span class="float">122.2723388671875</span>,  <span class="float">47.818687628247105</span>]
+]])
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+  [-<span class="float">122.76672363281249</span>, <span class="float">47.42437092240516</span>],
+  [-<span class="float">122.76672363281249</span>, <span class="float">47.59505101193038</span>],
+  [-<span class="float">122.52227783203125</span>, <span class="float">47.59505101193038</span>],
+  [-<span class="float">122.52227783203125</span>, <span class="float">47.42437092240516</span>],
+  [-<span class="float">122.76672363281249</span>, <span class="float">47.42437092240516</span>]
+]])
+MultiPolygon multiPolygon = polygon1 + polygon2</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_plus_polygons.png" alt="geometry plus polygons">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="processing-geometries"><a class="anchor" href="#processing-geometries"></a>Processing Geometries</h3>
@@ -3307,8 +3331,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 473555603 nanoseconds
-Time with PreparedGeometry = 475488745 nanoseconds</pre>
+<pre>Time with Geometry         = 341974161 nanoseconds
+Time with PreparedGeometry = 300593875 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3353,8 +3377,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 321579432 nanoseconds
-Time with PreparedGeometry = 178491991 nanoseconds</pre>
+<pre>Time with Geometry         = 395421052 nanoseconds
+Time with PreparedGeometry = 299075050 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -4019,7 +4043,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-21 05:39:48 UTC
+Last updated 2019-01-03 22:43:08 UTC
 </div>
 </div>
 </body>
