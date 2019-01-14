@@ -310,6 +310,146 @@ image::geometry_split_polygon1.png[]
 [.thumb]
 image::geometry_split_polygon2.png[]
 
+=== Circular Strings
+
+[source,groovy]
+.Get Curved WKT from a Circular Strings
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=circularStringCurvedWkt,indent=0]
+----
+[.thumb]
+image::geometry_circularstring_curvedwkt.png[]
+....
+include::output/geometry_circularstring_curvedwkt.txt[]
+....
+
+[source,groovy]
+.Get control points from a Circular Strings
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=circularStringControlPoints,indent=0]
+----
+[.thumb]
+image::geometry_circularstring_controlpoints.png[]
+....
+include::output/geometry_circularstring_controlpoints.txt[]
+....
+
+[source,groovy]
+.Convert a Circural Strings to a Linear Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=circularStringToLinear,indent=0]
+----
+[.thumb]
+image::geometry_circularstring_linear.png[]
+....
+include::output/geometry_circularstring_linear.txt[]
+....
+
+=== Circular Rings
+
+[source,groovy]
+.Get Curved WKT from a Circular Ring
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=circularRingCurvedWkt,indent=0]
+----
+[.thumb]
+image::geometry_circularring_curvedwkt.png[]
+....
+include::output/geometry_circularring_curvedwkt.txt[]
+....
+
+[source,groovy]
+.Get control points from a Circular Ring
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=circularRingControlPoints,indent=0]
+----
+[.thumb]
+image::geometry_circularring_controlpoints.png[]
+....
+include::output/geometry_circularring_controlpoints.txt[]
+....
+
+[source,groovy]
+.Convert a Circural Ring to a Linear Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=circularRingToLinear,indent=0]
+----
+[.thumb]
+image::geometry_circularring_linear.png[]
+....
+include::output/geometry_circularring_linear.txt[]
+....
+
+=== Compound Curves
+
+[source,groovy]
+.Get Curved WKT from a Compound Curves
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=compoundCurveCurvedWkt,indent=0]
+----
+[.thumb]
+image::geometry_compoundcurve_curvedwkt.png[]
+....
+include::output/geometry_compoundcurve_curvedwkt.txt[]
+....
+
+[source,groovy]
+.Get component LineStrings from a Compound Curves
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=compoundCurveComponents,indent=0]
+----
+[.thumb]
+image::geometry_compoundcurve_components.png[]
+....
+include::output/geometry_compoundcurve_components.txt[]
+....
+
+[source,groovy]
+.Convert a Compound Curves to a Linear Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=compoundCurveToLinear,indent=0]
+----
+[.thumb]
+image::geometry_compoundcurve_linear.png[]
+....
+include::output/geometry_compoundcurve_linear.txt[]
+....
+
+=== Compound Rings
+
+[source,groovy]
+.Get Curved WKT from a Compound Rings
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=compoundRingCurvedWkt,indent=0]
+----
+[.thumb]
+image::geometry_compoundring_curvedwkt.png[]
+....
+include::output/geometry_compoundring_curvedwkt.txt[]
+....
+
+[source,groovy]
+.Get component LineStrings from a Compound Rings
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=compoundRingComponents,indent=0]
+----
+[.thumb]
+image::geometry_compoundring_components.png[]
+....
+include::output/geometry_compoundring_components.txt[]
+....
+
+[source,groovy]
+.Convert a Compound Rings to a Linear Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=compoundRingToLinear,indent=0]
+----
+[.thumb]
+image::geometry_compoundring_linear.png[]
+....
+include::output/geometry_compoundring_linear.txt[]
+....
+
 === Processing Geometries
 
 [source,groovy]

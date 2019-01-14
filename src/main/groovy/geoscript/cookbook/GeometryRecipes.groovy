@@ -283,6 +283,298 @@ class GeometryRecipes extends Recipes {
         compoundRing
     }
 
+    // CircularRing
+
+    CircularRing circularRingCurvedWkt() {
+        // tag::circularRingCurvedWkt[]
+        CircularRing circularRing = new CircularRing([
+                [-118.47656249999999, 41.508577297439324],
+                [-109.6875, 57.51582286553883],
+                [-93.8671875, 42.032974332441405],
+                [-62.57812500000001, 30.14512718337613],
+                [-92.10937499999999, 7.36246686553575],
+                [ -127.265625, 14.604847155053898],
+                [-118.47656249999999, 41.508577297439324]
+        ])
+        println "WKT = ${circularRing.wkt}"
+        println "Curnved WKT = ${circularRing.curvedWkt}"
+        // end::circularRingCurvedWkt[]
+        drawGeometries("geometry_circularring_curvedwkt", [circularRing.linear])
+        writeFile("geometry_circularring_curvedwkt", "WKT = ${circularRing.wkt}${NEW_LINE}Curnved WKT = ${circularRing.curvedWkt}")
+        circularRing
+    }
+
+    List<Point> circularRingControlPoints() {
+        // tag::circularRingControlPoints[]
+        CircularRing circularRing = new CircularRing([
+                [-118.47656249999999, 41.508577297439324],
+                [-109.6875, 57.51582286553883],
+                [-93.8671875, 42.032974332441405],
+                [-62.57812500000001, 30.14512718337613],
+                [-92.10937499999999, 7.36246686553575],
+                [ -127.265625, 14.604847155053898],
+                [-118.47656249999999, 41.508577297439324]
+        ])
+        List<Point> points = circularRing.controlPoints
+        points.each { Point point ->
+            println point
+        }
+        // end::circularRingControlPoints[]
+        drawGeometries("geometry_circularring_controlpoints", [circularRing.linear] + points, drawCoords: false)
+        writeFile("geometry_circularring_controlpoints", "${points.collect { it.wkt }.join(NEW_LINE)}")
+        points
+    }
+
+    Geometry circularRingToLinear() {
+        // tag::circularRingToLinear[]
+        CircularRing circularRing = new CircularRing([
+                [-118.47656249999999, 41.508577297439324],
+                [-109.6875, 57.51582286553883],
+                [-93.8671875, 42.032974332441405],
+                [-62.57812500000001, 30.14512718337613],
+                [-92.10937499999999, 7.36246686553575],
+                [ -127.265625, 14.604847155053898],
+                [-118.47656249999999, 41.508577297439324]
+        ])
+        Geometry linear = circularRing.linear
+        println linear.wkt
+        // end::circularRingToLinear[]
+        drawGeometries("geometry_circularring_linear", [circularRing.linear])
+        writeFile("geometry_circularring_linear", "${linear.wkt}")
+        linear
+    }
+
+    // CircularString
+
+    CircularString circularStringCurvedWkt() {
+        // tag::circularStringCurvedWkt[]
+        CircularString circularString = new CircularString([
+                [-122.464599609375, 47.247542522268006],
+                [-122.03613281249999, 47.37789454155521],
+                [-122.37670898437499, 47.58393661978134]
+        ])
+        println "WKT = ${circularString.wkt}"
+        println "Curnved WKT = ${circularString.curvedWkt}"
+        // end::circularStringCurvedWkt[]
+        drawGeometries("geometry_circularstring_curvedwkt", [circularString.linear])
+        writeFile("geometry_circularstring_curvedwkt", "WKT = ${circularString.wkt}${NEW_LINE}Curnved WKT = ${circularString.curvedWkt}")
+        circularString
+    }
+
+    List<Point> circularStringControlPoints() {
+        // tag::circularStringControlPoints[]
+        CircularString circularString = new CircularString([
+                [-122.464599609375, 47.247542522268006],
+                [-122.03613281249999, 47.37789454155521],
+                [-122.37670898437499, 47.58393661978134]
+        ])
+        List<Point> points = circularString.controlPoints
+        points.each { Point point ->
+            println point
+        }
+        // end::circularStringControlPoints[]
+        drawGeometries("geometry_circularstring_controlpoints", [circularString.linear] + points, drawCoords: false)
+        writeFile("geometry_circularstring_controlpoints", "${points.collect { it.wkt }.join(NEW_LINE)}")
+        points
+    }
+
+    Geometry circularStringToLinear() {
+        // tag::circularStringToLinear[]
+        CircularString circularString = new CircularString([
+                [-122.464599609375, 47.247542522268006],
+                [-122.03613281249999, 47.37789454155521],
+                [-122.37670898437499, 47.58393661978134]
+        ])
+        Geometry linear = circularString.linear
+        println linear.wkt
+        // end::circularStringToLinear[]
+        drawGeometries("geometry_circularstring_linear", [linear])
+        writeFile("geometry_circularstring_linear", "${linear.wkt}")
+        linear
+    }
+
+    // CompoundCurve
+
+    CompoundCurve compoundCurveCurvedWkt() {
+        // tag::compoundCurveCurvedWkt[]
+        CompoundCurve compoundCurve = new CompoundCurve([
+                new CircularString([
+                        [27.0703125, 23.885837699862005],
+                        [5.9765625, 40.17887331434696],
+                        [22.5, 47.98992166741417],
+                ]),
+                new LineString([
+                        [22.5, 47.98992166741417],
+                        [71.71875, 49.15296965617039],
+                ]),
+                new CircularString([
+                        [71.71875, 49.15296965617039],
+                        [81.5625, 39.36827914916011],
+                        [69.9609375, 24.5271348225978]
+
+                ])
+        ])
+        println "WKT = ${compoundCurve.wkt}"
+        println "Curnved WKT = ${compoundCurve.curvedWkt}"
+        // end::compoundCurveCurvedWkt[]
+        drawGeometries("geometry_compoundcurve_curvedwkt", [compoundCurve.linear])
+        writeFile("geometry_compoundcurve_curvedwkt", "WKT = ${compoundCurve.wkt}${NEW_LINE}Curnved WKT = ${compoundCurve.curvedWkt}")
+        compoundCurve
+    }
+
+    List<LineString> compoundCurveComponents() {
+        // tag::compoundCurveComponents[]
+        CompoundCurve compoundCurve = new CompoundCurve([
+                new CircularString([
+                        [27.0703125, 23.885837699862005],
+                        [5.9765625, 40.17887331434696],
+                        [22.5, 47.98992166741417],
+                ]),
+                new LineString([
+                        [22.5, 47.98992166741417],
+                        [71.71875, 49.15296965617039],
+                ]),
+                new CircularString([
+                        [71.71875, 49.15296965617039],
+                        [81.5625, 39.36827914916011],
+                        [69.9609375, 24.5271348225978]
+
+                ])
+        ])
+        List<LineString> lineStrings = compoundCurve.components
+        lineStrings.each { LineString lineString ->
+            println lineString
+        }
+        // end::compoundCurveComponents[]
+        drawGeometries("geometry_compoundcurve_components", lineStrings, drawCoords: true)
+        writeFile("geometry_compoundcurve_components", "${lineStrings.collect { it.wkt }.join(NEW_LINE)}")
+        lineStrings
+    }
+
+    Geometry compoundCurveToLinear() {
+        // tag::compoundCurveToLinear[]
+        CompoundCurve compoundCurve = new CompoundCurve([
+                new CircularString([
+                        [27.0703125, 23.885837699862005],
+                        [5.9765625, 40.17887331434696],
+                        [22.5, 47.98992166741417],
+                ]),
+                new LineString([
+                        [22.5, 47.98992166741417],
+                        [71.71875, 49.15296965617039],
+                ]),
+                new CircularString([
+                        [71.71875, 49.15296965617039],
+                        [81.5625, 39.36827914916011],
+                        [69.9609375, 24.5271348225978]
+
+                ])
+        ])
+        Geometry linear = compoundCurve.linear
+        println linear.wkt
+        // end::compoundCurveToLinear[]
+        drawGeometries("geometry_compoundcurve_linear", [linear])
+        writeFile("geometry_compoundcurve_linear", "${linear.wkt}")
+        linear
+    }
+    
+    // CompoundRing
+
+    CompoundRing compoundRingCurvedWkt() {
+        // tag::compoundRingCurvedWkt[]
+        CompoundRing compoundRing = new CompoundRing([
+                new CircularString([
+                        [27.0703125, 23.885837699862005],
+                        [5.9765625, 40.17887331434696],
+                        [22.5, 47.98992166741417],
+                ]),
+                new LineString([
+                        [22.5, 47.98992166741417],
+                        [71.71875, 49.15296965617039],
+                ]),
+                new CircularString([
+                        [71.71875, 49.15296965617039],
+                        [81.5625, 39.36827914916011],
+                        [69.9609375, 24.5271348225978]
+
+                ]),
+                new LineString([
+                        [69.9609375, 24.5271348225978],
+                        [27.0703125, 23.885837699862005],
+                ])
+        ])
+        println "WKT = ${compoundRing.wkt}"
+        println "Curnved WKT = ${compoundRing.curvedWkt}"
+        // end::compoundRingCurvedWkt[]
+        drawGeometries("geometry_compoundring_curvedwkt", [compoundRing.linear])
+        writeFile("geometry_compoundring_curvedwkt", "WKT = ${compoundRing.wkt}${NEW_LINE}Curnved WKT = ${compoundRing.curvedWkt}")
+        compoundRing
+    }
+
+    List<LineString> compoundRingComponents() {
+        // tag::compoundRingComponents[]
+        CompoundRing compoundRing = new CompoundRing([
+                new CircularString([
+                        [27.0703125, 23.885837699862005],
+                        [5.9765625, 40.17887331434696],
+                        [22.5, 47.98992166741417],
+                ]),
+                new LineString([
+                        [22.5, 47.98992166741417],
+                        [71.71875, 49.15296965617039],
+                ]),
+                new CircularString([
+                        [71.71875, 49.15296965617039],
+                        [81.5625, 39.36827914916011],
+                        [69.9609375, 24.5271348225978]
+
+                ]),
+                new LineString([
+                        [69.9609375, 24.5271348225978],
+                        [27.0703125, 23.885837699862005],
+                ])
+        ])
+        List<LineString> lineStrings = compoundRing.components
+        lineStrings.each { LineString lineString ->
+            println lineString
+        }
+        // end::compoundRingComponents[]
+        drawGeometries("geometry_compoundring_components", lineStrings, drawCoords: true)
+        writeFile("geometry_compoundring_components", "${lineStrings.collect { it.wkt }.join(NEW_LINE)}")
+        lineStrings
+    }
+
+    Geometry compoundRingToLinear() {
+        // tag::compoundRingToLinear[]
+        CompoundRing compoundRing = new CompoundRing([
+                new CircularString([
+                        [27.0703125, 23.885837699862005],
+                        [5.9765625, 40.17887331434696],
+                        [22.5, 47.98992166741417],
+                ]),
+                new LineString([
+                        [22.5, 47.98992166741417],
+                        [71.71875, 49.15296965617039],
+                ]),
+                new CircularString([
+                        [71.71875, 49.15296965617039],
+                        [81.5625, 39.36827914916011],
+                        [69.9609375, 24.5271348225978]
+
+                ]),
+                new LineString([
+                        [69.9609375, 24.5271348225978],
+                        [27.0703125, 23.885837699862005],
+                ])
+        ])
+        Geometry linear = compoundRing.linear
+        println linear.wkt
+        // end::compoundRingToLinear[]
+        drawGeometries("geometry_compoundring_linear", [linear])
+        writeFile("geometry_compoundring_linear", "${linear.wkt}")
+        linear
+    }
+    
     // LineStrings
 
     Map<String,Geometry> getStartPointFromLineString() {
