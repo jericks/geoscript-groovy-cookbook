@@ -400,6 +400,41 @@ class GeometryRecipesTest {
         assertEquals("POINT (-122.48657 47.271775)", points[2].wkt)
     }
 
+    // Geometry Collection
+
+    @Test void geometryCollectionPlus() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        GeometryCollection geometryCollection =  recipes.geometryCollectionPlus()
+        assertEquals(4, geometryCollection.numGeometries)
+        assertEquals("POINT (-122.38654196262358 47.581211931059826)", geometryCollection[0].wkt)
+        assertEquals("LINESTRING (-122.3865446448326 47.58118841055313, -122.38657146692276 47.58067638459562)", geometryCollection[1].wkt)
+        assertEquals("POLYGON ((-122.38693356513977 47.58088445228483, -122.38672703504562 47.58088445228483, " +
+                "-122.38672703504562 47.58096225129535, -122.38693356513977 47.58096225129535, " +
+                "-122.38693356513977 47.58088445228483))", geometryCollection[2].wkt)
+        assertEquals("POINT (-122.38718032836913 47.58121374032914)", geometryCollection[3].wkt)
+    }
+
+    @Test void geometryCollectionSlice() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries =  recipes.geometryCollectionSlice()
+        assertEquals(2, geometries.size())
+        assertEquals("POLYGON ((-122.38693356513977 47.58088445228483, -122.38672703504562 47.58088445228483, " +
+                "-122.38672703504562 47.58096225129535, -122.38693356513977 47.58096225129535, " +
+                "-122.38693356513977 47.58088445228483))", geometries[0].wkt)
+        assertEquals("GEOMETRYCOLLECTION (POINT (-122.38654196262358 47.581211931059826), " +
+                "LINESTRING (-122.3865446448326 47.58118841055313, -122.38657146692276 47.58067638459562))", geometries[1].wkt)
+    }
+
+    @Test void geometryCollectionNarrow() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Geometry> geometries =  recipes.geometryCollectionNarrow()
+        assertEquals(2, geometries.size())
+        assertEquals("MULTIPOINT ((-122.38654196262358 47.581211931059826), (-122.38718032836913 47.58121374032914))", geometries[0].wkt)
+        assertEquals("GEOMETRYCOLLECTION (POINT (-122.38654196262358 47.581211931059826), POLYGON ((-122.38693356513977 47.58088445228483, " +
+                "-122.38672703504562 47.58088445228483, -122.38672703504562 47.58096225129535, -122.38693356513977 47.58096225129535, " +
+                "-122.38693356513977 47.58088445228483)))", geometries[1].wkt)
+    }
+
     // Geometry Operations
 
     @Test void bufferPoint() {

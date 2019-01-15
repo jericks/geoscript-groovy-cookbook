@@ -310,6 +310,71 @@ image::geometry_split_polygon1.png[]
 [.thumb]
 image::geometry_split_polygon2.png[]
 
+=== Geometry Collections
+
+[source,groovy]
+.Add a Geometry to a Geometry Collection
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=geometryCollectionPlus,indent=0]
+----
+
+Original Geometry Collection
+
+[.thumb]
+image::geometry_geometrycollection_plus1.png[]
+
+New Geometry Collection
+
+[.thumb]
+image::geometry_geometrycollection_plus2.png[]
+
+[source,groovy]
+.Get a subset of Geometries from a Geometry Collection
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=geometryCollectionSlice1,indent=0]
+----
+[.thumb]
+image::geometry_geometrycollection_slice1.png[]
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=geometryCollectionSlice2,indent=0]
+----
+[.thumb]
+image::geometry_geometrycollection_slice2.png[]
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=geometryCollectionSlice3,indent=0]
+----
+[.thumb]
+image::geometry_geometrycollection_slice3.png[]
+
+[source,groovy]
+.Get a Geometry from a GeometryCollection that is the most type specific as possible.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=geometryCollectionNarrow1,indent=0]
+----
+
+[.thumb]
+image::geometry_geometrycollection_narrow1.png[]
+
+....
+include::output/geometry_geometrycollection_narrow1.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=geometryCollectionNarrow2,indent=0]
+----
+
+[.thumb]
+image::geometry_geometrycollection_narrow2.png[]
+
+....
+include::output/geometry_geometrycollection_narrow2.txt[]
+....
+
 === Circular Strings
 
 [source,groovy]

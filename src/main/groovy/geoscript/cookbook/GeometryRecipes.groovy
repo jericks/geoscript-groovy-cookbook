@@ -907,6 +907,93 @@ ${polygon.interiorRings.collect { '  ' + it.wkt }.join(NEW_LINE)}
         multiPolygon
     }
 
+    // Geometry Collection
+    // plus, slice, narrow
+
+    GeometryCollection geometryCollectionPlus() {
+        // tag::geometryCollectionPlus[]
+        GeometryCollection geometryCollection = new GeometryCollection([
+            new Point(-122.38654196262358, 47.581211931059826),
+            new LineString([
+                [-122.3865446448326, 47.58118841055313],
+                [-122.38657146692276, 47.58067638459562]
+            ]),
+            new Polygon(new LinearRing([
+                [-122.38693356513977, 47.58088445228483],
+                [-122.38672703504562, 47.58088445228483],
+                [-122.38672703504562, 47.58096225129535],
+                [-122.38693356513977, 47.58096225129535],
+                [-122.38693356513977, 47.58088445228483]
+            ]))
+        ])
+        GeometryCollection newGeometryCollection =  geometryCollection + new Point(-122.38718032836913, 47.58121374032914)
+        // end::geometryCollectionPlus[]
+        drawGeometry("geometry_geometrycollection_plus1", geometryCollection)
+        drawGeometry("geometry_geometrycollection_plus2", newGeometryCollection)
+        newGeometryCollection
+    }
+
+    List<Geometry> geometryCollectionSlice() {
+        // tag::geometryCollectionSlice1[]
+        GeometryCollection geometryCollection = new GeometryCollection([
+                new Point(-122.38654196262358, 47.581211931059826),
+                new LineString([
+                        [-122.3865446448326, 47.58118841055313],
+                        [-122.38657146692276, 47.58067638459562]
+                ]),
+                new Polygon(new LinearRing([
+                        [-122.38693356513977, 47.58088445228483],
+                        [-122.38672703504562, 47.58088445228483],
+                        [-122.38672703504562, 47.58096225129535],
+                        [-122.38693356513977, 47.58096225129535],
+                        [-122.38693356513977, 47.58088445228483]
+                ]))
+        ])
+        // end::geometryCollectionSlice1[]
+        // tag::geometryCollectionSlice2[]
+        Polygon slicedGeometryCollection1 =  geometryCollection.slice(2)
+        // end::geometryCollectionSlice2[]
+        // tag::geometryCollectionSlice3[]
+        GeometryCollection slicedGeometryCollection2 =  geometryCollection.slice(0,2)
+        // end::geometryCollectionSlice3[]
+        drawGeometry("geometry_geometrycollection_slice1", geometryCollection)
+        drawGeometry("geometry_geometrycollection_slice2", slicedGeometryCollection1)
+        drawGeometry("geometry_geometrycollection_slice3", slicedGeometryCollection2)
+        [slicedGeometryCollection1, slicedGeometryCollection2]
+    }
+
+    List<Geometry> geometryCollectionNarrow() {
+        // tag::geometryCollectionNarrow1[]
+        GeometryCollection geometryCollection1 = new GeometryCollection([
+            new Point(-122.38654196262358, 47.581211931059826),
+            new Point(-122.38718032836913, 47.58121374032914),
+        ])
+        Geometry narrowedGeometry1 = geometryCollection1.narrow()
+        println "Narrow Geometry #1 = ${narrowedGeometry1.wkt}"
+        // end::geometryCollectionNarrow1[]
+        writeFile("geometry_geometrycollection_narrow1", "Narrow Geometry #1 = ${narrowedGeometry1.wkt}")
+        drawGeometry("geometry_geometrycollection_narrow1", narrowedGeometry1)
+
+        // tag::geometryCollectionNarrow2[]
+        GeometryCollection geometryCollection2 = new GeometryCollection([
+                new Point(-122.38654196262358, 47.581211931059826),
+                new Polygon(new LinearRing([
+                        [-122.38693356513977, 47.58088445228483],
+                        [-122.38672703504562, 47.58088445228483],
+                        [-122.38672703504562, 47.58096225129535],
+                        [-122.38693356513977, 47.58096225129535],
+                        [-122.38693356513977, 47.58088445228483]
+                ]))
+        ])
+        Geometry narrowedGeometry2 = geometryCollection2.narrow()
+        println "Narrow Geometry #2 = ${narrowedGeometry2.wkt}"
+        // end::geometryCollectionNarrow2[]
+        writeFile("geometry_geometrycollection_narrow2", "Narrow Geometry #2 = ${narrowedGeometry2.wkt}")
+        drawGeometry("geometry_geometrycollection_narrow2", narrowedGeometry2)
+        
+        [narrowedGeometry1, narrowedGeometry2]
+    }
+
     // Processing Geometries
 
     String getGeometryType() {
