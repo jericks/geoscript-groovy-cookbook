@@ -199,6 +199,12 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Test void createLabelForPolygonsWithExpression() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createLabelForPolygonsWithExpression()
+        assertNotNull(symbolizer)
+    }
+
     @Test void createLabelForLines() {
         StyleRecipes recipes = new StyleRecipes()
         Symbolizer symbolizer = recipes.createLabelForLines()

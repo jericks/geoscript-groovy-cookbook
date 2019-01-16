@@ -416,6 +416,19 @@ class StyleRecipes extends Recipes {
         symbolizer
     }
 
+    Symbolizer createLabelForPolygonsWithExpression() {
+        // tag::createLabelForPolygonsWithExpression[]
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label(Expression.fromCQL("strToLowerCase(NAME_1)"))
+                .point(anchor: [0.5,0.5])
+                .polygonAlign("mbr")
+        // end::createLabelForPolygonsWithExpression[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = symbolizer
+        drawOnBasemap("style_label_polygons_expression", [states], new Bounds(-137.416992,40.896906,-105.842285,51.835778))
+        symbolizer
+    }
+
     Symbolizer createLabelForLines() {
         // tag::createLabelForLines[]
         Symbolizer symbolizer = new Stroke("blue", 0.75)  + new Label("name")
