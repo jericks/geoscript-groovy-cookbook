@@ -745,6 +745,37 @@ class GeometryRecipes extends Recipes {
         lineStringWithPoint
     }
 
+    LineString lineStringSetPoint() {
+        // tag::lineStringSetPoint[]
+        LineString lineString = new LineString([
+                [-122.39142894744873, 47.5812734461813],
+                [-122.38237380981445, 47.58121554959838]
+        ])
+
+        Point point = new Point(-122.38640785217285, 47.58552866972616)
+
+        LineString newLineString = lineString.setPoint(1, point)
+        // end::lineStringSetPoint[]
+        drawGeometries("geometry_linestring_setpoint1", [lineString, point])
+        drawGeometry("geometry_linestring_setpoint2", newLineString)
+        newLineString
+    }
+
+    LineString lineStringRemovePoint() {
+        // tag::lineStringRemovePoint[]
+        LineString lineString = new LineString([
+                [-122.39142894744873, 47.5812734461813],
+                [-122.38237380981445, 47.58121554959838],
+                [-122.38640785217285, 47.58552866972616]
+        ])
+
+        LineString newLineString = lineString.removePoint(2)
+        // end::lineStringRemovePoint[]
+        drawGeometries("geometry_linestring_removepoint1", [lineString])
+        drawGeometry("geometry_linestring_removepoint2", newLineString)
+        newLineString
+    }
+
     // Point
 
     Point getPointXYZ() {

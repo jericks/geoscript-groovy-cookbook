@@ -294,6 +294,26 @@ image::geometry_linestring_addpoint1.png[]
 [.thumb]
 image::geometry_linestring_addpoint2.png[]
 
+[source,groovy]
+.Set a Point on a LineString at a specific index
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringSetPoint,indent=0]
+----
+[.thumb]
+image::geometry_linestring_setpoint1.png[]
+[.thumb]
+image::geometry_linestring_setpoint2.png[]
+
+[source,groovy]
+.Remove a Point on a LineString at a specific index
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringRemovePoint,indent=0]
+----
+[.thumb]
+image::geometry_linestring_removepoint1.png[]
+[.thumb]
+image::geometry_linestring_removepoint2.png[]
+
 === Polygons
 
 [source,groovy]

@@ -385,6 +385,20 @@ class GeometryRecipesTest {
                 "-122.38237380981445 47.58121554959838)", lineString.wkt)
     }
 
+    @Test void lineStringSetPoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        LineString lineString = recipes.lineStringSetPoint()
+        assertEquals("LINESTRING (-122.39142894744873 47.5812734461813, " +
+                "-122.38640785217285 47.58552866972616)", lineString.wkt)
+    }
+
+    @Test void lineStringRemovePoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        LineString lineString = recipes.lineStringRemovePoint()
+        assertEquals("LINESTRING (-122.39142894744873 47.5812734461813, " +
+                "-122.38237380981445 47.58121554959838)", lineString.wkt)
+    }
+
     // Point
 
     @Test void getPointXYZ() {
