@@ -69,9 +69,9 @@ geo:isRing
 geo:endPoint
 geo:equalsExact
 geo:relatePattern
-geo:interiorRingN
-geo:equalsExactTolerance
 geo:pointN
+geo:equalsExactTolerance
+geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
