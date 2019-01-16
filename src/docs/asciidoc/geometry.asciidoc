@@ -265,6 +265,35 @@ Closed LinearRing
 [.thumb]
 image::geometry_close_linearring.png[]
 
+[source,groovy]
+.Add a LineString to another LineString to create a MultiLineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringPlus,indent=0]
+----
+[.thumb]
+image::geometry_linestring_plus.png[]
+
+
+[source,groovy]
+.Add a Point to a  LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringPlusPoint,indent=0]
+----
+[.thumb]
+image::geometry_linestring_pluspoint1.png[]
+[.thumb]
+image::geometry_linestring_pluspoint2.png[]
+
+[source,groovy]
+.Add a Point to a LineString at a specific index
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringAddPoint,indent=0]
+----
+[.thumb]
+image::geometry_linestring_addpoint1.png[]
+[.thumb]
+image::geometry_linestring_addpoint2.png[]
+
 === Polygons
 
 [source,groovy]

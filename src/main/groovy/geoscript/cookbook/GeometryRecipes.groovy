@@ -695,6 +695,56 @@ class GeometryRecipes extends Recipes {
         [lineString: lineString, linearRing: linearRing]
     }
 
+    MultiLineString lineStringPlus() {
+        // tag::lineStringPlus[]
+        LineString lineString1 = new LineString([
+            [-122.39142894744873, 47.5812734461813],
+            [-122.38237380981445, 47.58121554959838]
+        ])
+
+        LineString lineString2 = new LineString([
+            [-122.38640785217285, 47.58552866972616],
+            [-122.38670825958253, 47.57837853860192]
+        ])
+
+        MultiLineString multiLineString = lineString1 + lineString2
+        // end::lineStringPlus[]
+        drawGeometry("geometry_linestring_plus", multiLineString)
+        multiLineString
+    }
+
+    LineString lineStringPlusPoint() {
+        // tag::lineStringPlusPoint[]
+        LineString lineString = new LineString([
+                [-122.39142894744873, 47.5812734461813],
+                [-122.38237380981445, 47.58121554959838]
+        ])
+
+        Point point = new Point(-122.38640785217285, 47.58552866972616)
+
+        LineString lineStringWithPoint = lineString + point
+        // end::lineStringPlusPoint[]
+        drawGeometries("geometry_linestring_pluspoint1", [lineString, point])
+        drawGeometry("geometry_linestring_pluspoint2", lineStringWithPoint)
+        lineStringWithPoint
+    }
+
+    LineString lineStringAddPoint() {
+        // tag::lineStringAddPoint[]
+        LineString lineString = new LineString([
+                [-122.39142894744873, 47.5812734461813],
+                [-122.38237380981445, 47.58121554959838]
+        ])
+
+        Point point = new Point(-122.38640785217285, 47.58552866972616)
+
+        LineString lineStringWithPoint = lineString.addPoint(1, point)
+        // end::lineStringAddPoint[]
+        drawGeometries("geometry_linestring_addpoint1", [lineString, point])
+        drawGeometry("geometry_linestring_addpoint2", lineStringWithPoint)
+        lineStringWithPoint
+    }
+
     // Point
 
     Point getPointXYZ() {

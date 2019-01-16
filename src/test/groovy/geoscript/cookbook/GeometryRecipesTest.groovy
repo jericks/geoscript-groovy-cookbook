@@ -360,6 +360,31 @@ class GeometryRecipesTest {
         assertTrue(geoms.linearRing instanceof LinearRing)
     }
 
+    @Test void lineStringPlus() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        MultiLineString multiLineString = recipes.lineStringPlus()
+        assertEquals("MULTILINESTRING ((-122.39142894744873 47.5812734461813, " +
+                "-122.38237380981445 47.58121554959838), " +
+                "(-122.38640785217285 47.58552866972616, " +
+                "-122.38670825958253 47.57837853860192))", multiLineString.wkt)
+    }
+
+    @Test void lineStringPlusPoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        LineString lineString = recipes.lineStringPlusPoint()
+        assertEquals("LINESTRING (-122.39142894744873 47.5812734461813, " +
+                "-122.38237380981445 47.58121554959838, " +
+                "-122.38640785217285 47.58552866972616)", lineString.wkt)
+    }
+
+    @Test void lineStringAddPoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        LineString lineString = recipes.lineStringAddPoint()
+        assertEquals("LINESTRING (-122.39142894744873 47.5812734461813, " +
+                "-122.38640785217285 47.58552866972616, " +
+                "-122.38237380981445 47.58121554959838)", lineString.wkt)
+    }
+
     // Point
 
     @Test void getPointXYZ() {
