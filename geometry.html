@@ -1187,6 +1187,73 @@ LinearRing linearRing = lineString.close()</code></pre>
 <img src="./images/geometry_close_linearring.png" alt="geometry close linearring">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Add a LineString to another LineString to create a MultiLineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString1 = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.39142894744873</span>, <span class="float">47.5812734461813</span>],
+    [-<span class="float">122.38237380981445</span>, <span class="float">47.58121554959838</span>]
+])
+
+LineString lineString2 = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.38640785217285</span>, <span class="float">47.58552866972616</span>],
+    [-<span class="float">122.38670825958253</span>, <span class="float">47.57837853860192</span>]
+])
+
+MultiLineString multiLineString = lineString1 + lineString2</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_plus.png" alt="geometry linestring plus">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Add a Point to a  LineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString([
+        [-<span class="float">122.39142894744873</span>, <span class="float">47.5812734461813</span>],
+        [-<span class="float">122.38237380981445</span>, <span class="float">47.58121554959838</span>]
+])
+
+<span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.38640785217285</span>, <span class="float">47.58552866972616</span>)
+
+LineString lineStringWithPoint = lineString + point</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_pluspoint1.png" alt="geometry linestring pluspoint1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_pluspoint2.png" alt="geometry linestring pluspoint2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Add a Point to a LineString at a specific index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString([
+        [-<span class="float">122.39142894744873</span>, <span class="float">47.5812734461813</span>],
+        [-<span class="float">122.38237380981445</span>, <span class="float">47.58121554959838</span>]
+])
+
+<span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.38640785217285</span>, <span class="float">47.58552866972616</span>)
+
+LineString lineStringWithPoint = lineString.addPoint(<span class="integer">1</span>, point)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_addpoint1.png" alt="geometry linestring addpoint1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_addpoint2.png" alt="geometry linestring addpoint2">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="polygons"><a class="anchor" href="#polygons"></a>Polygons</h3>
@@ -3908,8 +3975,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 294275050 nanoseconds
-Time with PreparedGeometry = 279279490 nanoseconds</pre>
+<pre>Time with Geometry         = 403591320 nanoseconds
+Time with PreparedGeometry = 216478621 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -3954,8 +4021,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 181126537 nanoseconds
-Time with PreparedGeometry = 103830927 nanoseconds</pre>
+<pre>Time with Geometry         = 172848593 nanoseconds
+Time with PreparedGeometry = 235108238 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -4620,7 +4687,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-16 00:17:16 UTC
+Last updated 2019-01-16 00:38:18 UTC
 </div>
 </div>
 </body>
