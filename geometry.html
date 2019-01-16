@@ -1254,6 +1254,51 @@ LineString lineStringWithPoint = lineString.addPoint(<span class="integer">1</sp
 <img src="./images/geometry_linestring_addpoint2.png" alt="geometry linestring addpoint2">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Set a Point on a LineString at a specific index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString([
+        [-<span class="float">122.39142894744873</span>, <span class="float">47.5812734461813</span>],
+        [-<span class="float">122.38237380981445</span>, <span class="float">47.58121554959838</span>]
+])
+
+<span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.38640785217285</span>, <span class="float">47.58552866972616</span>)
+
+LineString newLineString = lineString.setPoint(<span class="integer">1</span>, point)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_setpoint1.png" alt="geometry linestring setpoint1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_setpoint2.png" alt="geometry linestring setpoint2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Remove a Point on a LineString at a specific index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString([
+        [-<span class="float">122.39142894744873</span>, <span class="float">47.5812734461813</span>],
+        [-<span class="float">122.38237380981445</span>, <span class="float">47.58121554959838</span>],
+        [-<span class="float">122.38640785217285</span>, <span class="float">47.58552866972616</span>]
+])
+
+LineString newLineString = lineString.removePoint(<span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_removepoint1.png" alt="geometry linestring removepoint1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_removepoint2.png" alt="geometry linestring removepoint2">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="polygons"><a class="anchor" href="#polygons"></a>Polygons</h3>
@@ -3975,8 +4020,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 403591320 nanoseconds
-Time with PreparedGeometry = 216478621 nanoseconds</pre>
+<pre>Time with Geometry         = 445811557 nanoseconds
+Time with PreparedGeometry = 299252302 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4021,8 +4066,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 172848593 nanoseconds
-Time with PreparedGeometry = 235108238 nanoseconds</pre>
+<pre>Time with Geometry         = 258017405 nanoseconds
+Time with PreparedGeometry = 133243607 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -4687,7 +4732,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-16 00:38:18 UTC
+Last updated 2019-01-16 04:25:54 UTC
 </div>
 </div>
 </body>

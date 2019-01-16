@@ -36,6 +36,7 @@ geo:buffer
 geo:union
 geo:intersection
 geo:difference
+geo:polygonize
 geo:isRing
 geo:endPoint
 geo:reproject
@@ -66,7 +67,6 @@ geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
 geo:envelope
-geo:polygonize
 geo:equalsExact
 geo:pointN
 geo:interiorRingN
