@@ -306,6 +306,23 @@ class GeometryRecipesTest {
         assertEquals(2, multiPolygon.numGeometries)
     }
 
+    // MultiPolygon
+
+    @Test void multiPolygonPlus() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        MultiPolygon multiPolygon = recipes.multiPolygonPlus()
+        assertNotNull(multiPolygon)
+        assertEquals(3, multiPolygon.numGeometries)
+    }
+
+    @Test void multiPolygonSplit() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry splitGeometry = recipes.multiPolygonSplit()
+        assertNotNull(splitGeometry)
+        assertTrue(splitGeometry instanceof MultiPolygon)
+        assertEquals(6, splitGeometry.numGeometries)
+    }
+
     // LineString
 
     @Test void getStartPointFromLineString() {

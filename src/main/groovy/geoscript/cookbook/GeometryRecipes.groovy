@@ -1013,8 +1013,82 @@ ${polygon.interiorRings.collect { '  ' + it.wkt }.join(NEW_LINE)}
         multiPolygon
     }
 
+    // MultiPolygon
+    MultiPolygon multiPolygonPlus() {
+
+        // tag::multiPolygonPlus[]
+        MultiPolygon multiPolygon = new MultiPolygon (
+            new Polygon([[
+                 [-122.2723388671875,  47.818687628247105],
+                 [-122.37945556640624, 47.66168780332917],
+                 [-121.95373535156249, 47.67093619422418],
+                 [-122.2723388671875,  47.818687628247105]
+            ]]),
+            new Polygon ([[
+                 [-122.76672363281249, 47.42437092240516],
+                 [-122.76672363281249, 47.59505101193038],
+                 [-122.52227783203125, 47.59505101193038],
+                 [-122.52227783203125, 47.42437092240516],
+                 [-122.76672363281249, 47.42437092240516]
+            ]])
+        )
+        Polygon polygon = new Polygon ([[
+            [-122.32177734375, 47.54501765940571],
+            [-122.27645874023438, 47.36673410912714],
+            [-122.03887939453125, 47.44480754169437],
+            [-122.15972900390624, 47.55150616084034],
+            [-122.32177734375, 47.54501765940571]
+        ]])
+
+        MultiPolygon newMultiPolygon = multiPolygon + polygon
+        // end::multiPolygonPlus[]
+
+        drawGeometry("geometry_multipolygon_plus", newMultiPolygon)
+        newMultiPolygon
+    }
+
+    public Geometry multiPolygonSplit() {
+
+        // tag::multiPolygonSplit[]
+        MultiPolygon multiPolygon = new MultiPolygon (
+            new Polygon([[
+                     [-122.2723388671875,  47.818687628247105],
+                     [-122.37945556640624, 47.66168780332917],
+                     [-121.95373535156249, 47.67093619422418],
+                     [-122.2723388671875,  47.818687628247105]
+            ]]),
+            new Polygon ([[
+                  [-122.76672363281249, 47.42437092240516],
+                  [-122.76672363281249, 47.59505101193038],
+                  [-122.52227783203125, 47.59505101193038],
+                  [-122.52227783203125, 47.42437092240516],
+                  [-122.76672363281249, 47.42437092240516]
+            ]]),
+            new Polygon ([[
+                  [-122.32177734375, 47.54501765940571],
+                  [-122.27645874023438, 47.36673410912714],
+                  [-122.03887939453125, 47.44480754169437],
+                  [-122.15972900390624, 47.55150616084034],
+                  [-122.32177734375, 47.54501765940571]
+            ]])
+        )
+
+        LineString lineString = new LineString([
+            [-122.84362792968749, 47.484728927366504],
+            [-122.05810546875, 47.50421439972969],
+            [-122.35748291015625, 47.85832433461554]
+        ])
+
+        Geometry splitGeometry = multiPolygon.split(lineString)
+        // end::multiPolygonSplit[]
+
+        drawGeometries("geometry_multipolygon_split1", [multiPolygon, lineString])
+        drawGeometry("geometry_multipolygon_split2", splitGeometry)
+
+        splitGeometry
+    }
+
     // Geometry Collection
-    // plus, slice, narrow
 
     GeometryCollection geometryCollectionPlus() {
         // tag::geometryCollectionPlus[]

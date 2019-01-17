@@ -273,7 +273,6 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringPl
 [.thumb]
 image::geometry_linestring_plus.png[]
 
-
 [source,groovy]
 .Add a Point to a  LineString
 ----
@@ -380,6 +379,31 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=splitPolygon
 image::geometry_split_polygon1.png[]
 [.thumb]
 image::geometry_split_polygon2.png[]
+
+=== MultiPolygons
+
+[source,groovy]
+.Add a Polygon to a MultiPolygon to get a new MultiPolygon
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=multiPolygonPlus,indent=0]
+----
+[.thumb]
+image::geometry_multipolygon_plus.png[]
+
+[source,groovy]
+.Split a MultiPolygon with a LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=multiPolygonSplit,indent=0]
+----
+
+Before
+[.thumb]
+image::geometry_multipolygon_split1.png[]
+
+After
+[.thumb]
+image::geometry_multipolygon_split2.png[]
+
 
 === Geometry Collections
 
