@@ -547,6 +547,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#points">Points</a></li>
 <li><a href="#linestrings">LineStrings</a></li>
 <li><a href="#polygons">Polygons</a></li>
+<li><a href="#multipolygons">MultiPolygons</a></li>
 <li><a href="#geometry-collections">Geometry Collections</a></li>
 <li><a href="#circular-strings">Circular Strings</a></li>
 <li><a href="#circular-rings">Circular Rings</a></li>
@@ -1509,6 +1510,94 @@ MultiPolygon multiPolygon = polygon.split(lineString)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_split_polygon2.png" alt="geometry split polygon2">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multipolygons"><a class="anchor" href="#multipolygons"></a>MultiPolygons</h3>
+<div class="listingblock">
+<div class="title">Add a Polygon to a MultiPolygon to get a new MultiPolygon</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiPolygon multiPolygon = <span class="keyword">new</span> MultiPolygon (
+    <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+         [-<span class="float">122.2723388671875</span>,  <span class="float">47.818687628247105</span>],
+         [-<span class="float">122.37945556640624</span>, <span class="float">47.66168780332917</span>],
+         [-<span class="float">121.95373535156249</span>, <span class="float">47.67093619422418</span>],
+         [-<span class="float">122.2723388671875</span>,  <span class="float">47.818687628247105</span>]
+    ]]),
+    <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+         [-<span class="float">122.76672363281249</span>, <span class="float">47.42437092240516</span>],
+         [-<span class="float">122.76672363281249</span>, <span class="float">47.59505101193038</span>],
+         [-<span class="float">122.52227783203125</span>, <span class="float">47.59505101193038</span>],
+         [-<span class="float">122.52227783203125</span>, <span class="float">47.42437092240516</span>],
+         [-<span class="float">122.76672363281249</span>, <span class="float">47.42437092240516</span>]
+    ]])
+)
+<span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+    [-<span class="float">122.32177734375</span>, <span class="float">47.54501765940571</span>],
+    [-<span class="float">122.27645874023438</span>, <span class="float">47.36673410912714</span>],
+    [-<span class="float">122.03887939453125</span>, <span class="float">47.44480754169437</span>],
+    [-<span class="float">122.15972900390624</span>, <span class="float">47.55150616084034</span>],
+    [-<span class="float">122.32177734375</span>, <span class="float">47.54501765940571</span>]
+]])
+
+MultiPolygon newMultiPolygon = multiPolygon + polygon</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_multipolygon_plus.png" alt="geometry multipolygon plus">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Split a MultiPolygon with a LineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiPolygon multiPolygon = <span class="keyword">new</span> MultiPolygon (
+    <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+             [-<span class="float">122.2723388671875</span>,  <span class="float">47.818687628247105</span>],
+             [-<span class="float">122.37945556640624</span>, <span class="float">47.66168780332917</span>],
+             [-<span class="float">121.95373535156249</span>, <span class="float">47.67093619422418</span>],
+             [-<span class="float">122.2723388671875</span>,  <span class="float">47.818687628247105</span>]
+    ]]),
+    <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+          [-<span class="float">122.76672363281249</span>, <span class="float">47.42437092240516</span>],
+          [-<span class="float">122.76672363281249</span>, <span class="float">47.59505101193038</span>],
+          [-<span class="float">122.52227783203125</span>, <span class="float">47.59505101193038</span>],
+          [-<span class="float">122.52227783203125</span>, <span class="float">47.42437092240516</span>],
+          [-<span class="float">122.76672363281249</span>, <span class="float">47.42437092240516</span>]
+    ]]),
+    <span class="keyword">new</span> <span class="predefined-type">Polygon</span> ([[
+          [-<span class="float">122.32177734375</span>, <span class="float">47.54501765940571</span>],
+          [-<span class="float">122.27645874023438</span>, <span class="float">47.36673410912714</span>],
+          [-<span class="float">122.03887939453125</span>, <span class="float">47.44480754169437</span>],
+          [-<span class="float">122.15972900390624</span>, <span class="float">47.55150616084034</span>],
+          [-<span class="float">122.32177734375</span>, <span class="float">47.54501765940571</span>]
+    ]])
+)
+
+LineString lineString = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.84362792968749</span>, <span class="float">47.484728927366504</span>],
+    [-<span class="float">122.05810546875</span>, <span class="float">47.50421439972969</span>],
+    [-<span class="float">122.35748291015625</span>, <span class="float">47.85832433461554</span>]
+])
+
+Geometry splitGeometry = multiPolygon.split(lineString)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Before</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_multipolygon_split1.png" alt="geometry multipolygon split1">
+</div>
+</div>
+<div class="paragraph">
+<p>After</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_multipolygon_split2.png" alt="geometry multipolygon split2">
 </div>
 </div>
 </div>
@@ -4057,8 +4146,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 265568696 nanoseconds
-Time with PreparedGeometry = 190483461 nanoseconds</pre>
+<pre>Time with Geometry         = 318617797 nanoseconds
+Time with PreparedGeometry = 225641278 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4103,8 +4192,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 169381548 nanoseconds
-Time with PreparedGeometry = 90015468 nanoseconds</pre>
+<pre>Time with Geometry         = 143350055 nanoseconds
+Time with PreparedGeometry = 132302777 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -4769,7 +4858,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-17 00:50:44 UTC
+Last updated 2019-01-17 02:06:05 UTC
 </div>
 </div>
 </body>
