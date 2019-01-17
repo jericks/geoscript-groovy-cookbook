@@ -1299,6 +1299,43 @@ LineString newLineString = lineString.removePoint(<span class="integer">2</span>
 <img src="./images/geometry_linestring_removepoint2.png" alt="geometry linestring removepoint2">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Remove a Point from the end of a LineString.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString1 = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.39423990249632</span>, <span class="float">47.57926150237904</span>],
+    [-<span class="float">122.3918581008911</span>, <span class="float">47.58121554959838</span>],
+    [-<span class="float">122.38657951354979</span>, <span class="float">47.58121554959838</span>],
+    [-<span class="float">122.38638639450075</span>, <span class="float">47.58535499390333</span>],
+    [-<span class="float">122.38374710083008</span>, <span class="float">47.58535499390333</span>]
+])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_negative1.png" alt="geometry linestring negative1">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString2 = -lineString1</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_negative2.png" alt="geometry linestring negative2">
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString3 = -lineString2</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_negative3.png" alt="geometry linestring negative3">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="polygons"><a class="anchor" href="#polygons"></a>Polygons</h3>
@@ -4020,8 +4057,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 445811557 nanoseconds
-Time with PreparedGeometry = 299252302 nanoseconds</pre>
+<pre>Time with Geometry         = 265568696 nanoseconds
+Time with PreparedGeometry = 190483461 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4066,8 +4103,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 258017405 nanoseconds
-Time with PreparedGeometry = 133243607 nanoseconds</pre>
+<pre>Time with Geometry         = 169381548 nanoseconds
+Time with PreparedGeometry = 90015468 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -4732,7 +4769,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-16 04:25:54 UTC
+Last updated 2019-01-17 00:50:44 UTC
 </div>
 </div>
 </body>

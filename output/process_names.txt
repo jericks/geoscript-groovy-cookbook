@@ -36,8 +36,6 @@ geo:buffer
 geo:union
 geo:intersection
 geo:difference
-geo:polygonize
-geo:isRing
 geo:endPoint
 geo:reproject
 geo:splitPolygon
@@ -67,11 +65,13 @@ geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
 geo:envelope
+geo:polygonize
+geo:isRing
 geo:equalsExact
-geo:pointN
-geo:interiorRingN
-geo:relatePattern
 geo:equalsExactTolerance
+geo:interiorRingN
+geo:pointN
+geo:relatePattern
 geo:length
 geo:isEmpty
 geo:contains
