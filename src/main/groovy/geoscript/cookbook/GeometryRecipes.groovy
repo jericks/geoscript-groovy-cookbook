@@ -776,6 +776,31 @@ class GeometryRecipes extends Recipes {
         newLineString
     }
 
+    List<LineString> lineStringNegative() {
+        // tag::lineStringNegative1[]
+        LineString lineString1 = new LineString([
+            [-122.39423990249632, 47.57926150237904],
+            [-122.3918581008911, 47.58121554959838],
+            [-122.38657951354979, 47.58121554959838],
+            [-122.38638639450075, 47.58535499390333],
+            [-122.38374710083008, 47.58535499390333]
+        ])
+        // end::lineStringNegative1[]
+        drawGeometry("geometry_linestring_negative1", lineString1)
+
+        // tag::lineStringNegative2[]
+        LineString lineString2 = -lineString1
+        // end::lineStringNegative2[]
+        drawGeometry("geometry_linestring_negative2", lineString2)
+
+        // tag::lineStringNegative3[]
+        LineString lineString3 = -lineString2
+        // end::lineStringNegative3[]
+        drawGeometry("geometry_linestring_negative3", lineString3)
+
+        [lineString1, lineString2, lineString3]
+    }
+
     // Point
 
     Point getPointXYZ() {

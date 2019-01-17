@@ -314,6 +314,28 @@ image::geometry_linestring_removepoint1.png[]
 [.thumb]
 image::geometry_linestring_removepoint2.png[]
 
+[source,groovy]
+.Remove a Point from the end of a LineString.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringNegative1,indent=0]
+----
+[.thumb]
+image::geometry_linestring_negative1.png[]
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringNegative2,indent=0]
+----
+[.thumb]
+image::geometry_linestring_negative2.png[]
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringNegative3,indent=0]
+----
+[.thumb]
+image::geometry_linestring_negative3.png[]
+
 === Polygons
 
 [source,groovy]

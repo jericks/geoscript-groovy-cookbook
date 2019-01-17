@@ -399,6 +399,15 @@ class GeometryRecipesTest {
                 "-122.38237380981445 47.58121554959838)", lineString.wkt)
     }
 
+    @Test void lineStringNegative() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<LineString> lineStrings = recipes.lineStringNegative()
+        assertEquals(3, lineStrings.size())
+        assertEquals("LINESTRING (-122.39423990249632 47.57926150237904, -122.3918581008911 47.58121554959838, -122.38657951354979 47.58121554959838, -122.38638639450075 47.58535499390333, -122.38374710083008 47.58535499390333)", lineStrings[0].wkt)
+        assertEquals("LINESTRING (-122.39423990249632 47.57926150237904, -122.3918581008911 47.58121554959838, -122.38657951354979 47.58121554959838, -122.38638639450075 47.58535499390333)", lineStrings[1].wkt)
+        assertEquals("LINESTRING (-122.39423990249632 47.57926150237904, -122.3918581008911 47.58121554959838, -122.38657951354979 47.58121554959838)", lineStrings[2].wkt)
+    }
+
     // Point
 
     @Test void getPointXYZ() {
