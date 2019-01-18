@@ -849,6 +849,40 @@ Position of ${point3} is ${position3}""")
         [position1, position2, position3]
     }
 
+    List<Point> lineStringPlacePoint() {
+        // tag::lineStringPlacePoint[]
+        LineString lineString = new LineString ([
+            [-122.37155914306639, 47.57166173655188],
+            [-122.32160568237306, 47.5714301073211]
+        ])
+
+        Point point1 = new Point(-122.358341217041, 47.57432539907205)
+        Point pointOnLine1 = lineString.placePoint(point1)
+
+        Point point2 = new Point(-122.33860015869139, 47.56830301243495)
+        Point pointOnLine2 = lineString.placePoint(point2)
+        // end::lineStringPlacePoint[]
+        drawGeometries("geometry_linestring_placepoint1", [lineString, point1, point2])
+        drawGeometries("geometry_linestring_placepoint2", [lineString, point1, point2, pointOnLine1, pointOnLine2])
+        [pointOnLine1, pointOnLine2]
+    }
+
+    LineString lineStringSubLine() {
+        // tag::lineStringSubLine[]
+        LineString lineString = new LineString([
+            [-122.39423990249632, 47.57926150237904],
+            [-122.3918581008911, 47.58121554959838],
+            [-122.38657951354979, 47.58121554959838],
+            [-122.38638639450075, 47.58535499390333],
+            [-122.38374710083008, 47.58535499390333]
+        ])
+        LineString subLine = lineString.subLine(0.33, 0.66)
+        // end::lineStringSubLine[]
+        drawGeometry("geometry_linestring_subline1", lineString)
+        drawGeometry("geometry_linestring_subline2", subLine)
+        subLine
+    }
+
     // Point
 
     Point getPointXYZ() {

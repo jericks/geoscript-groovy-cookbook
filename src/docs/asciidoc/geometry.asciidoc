@@ -354,6 +354,31 @@ image::geometry_linestring_locatepoint.png[]
 include::output/geometry_linestring_locatepoint.txt[]
 ....
 
+[source,groovy]
+.Place Points on a LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringPlacePoint,indent=0]
+----
+Points near LineString
+[.thumb]
+image::geometry_linestring_placepoint1.png[]
+
+Point on LineString
+[.thumb]
+image::geometry_linestring_placepoint2.png[]
+
+[source,groovy]
+.Extract part of a LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringSubLine,indent=0]
+----
+
+[.thumb]
+image::geometry_linestring_subline1.png[]
+
+[.thumb]
+image::geometry_linestring_subline2.png[]
+
 === Polygons
 
 [source,groovy]

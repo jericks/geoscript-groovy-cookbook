@@ -444,6 +444,22 @@ class GeometryRecipesTest {
         assertEquals(1.0, positions[2], 0.1)
     }
 
+    @Test void lineStringPlacePoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Point> points = recipes.lineStringPlacePoint()
+        assertEquals(2, points.size())
+        assertEquals("POINT (-122.35835385210422 47.57160050493058)", points[0].wkt)
+        assertEquals("POINT (-122.33858529358729 47.57150884009016)", points[1].wkt)
+    }
+
+    @Test void lineStringSubLine() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        LineString lineString = recipes.lineStringSubLine()
+        assertEquals("LINESTRING (-122.38994182839951 47.58121554959838, " +
+                "-122.38657951354979 47.58121554959838, " +
+                "-122.38650332982382 47.58284852310433)", lineString.wkt)
+    }
+
     // Point
 
     @Test void getPointXYZ() {
