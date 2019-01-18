@@ -425,6 +425,25 @@ class GeometryRecipesTest {
         assertEquals("LINESTRING (-122.39423990249632 47.57926150237904, -122.3918581008911 47.58121554959838, -122.38657951354979 47.58121554959838)", lineStrings[2].wkt)
     }
 
+    @Test void lineStringInterpolatePoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Point> points = recipes.lineStringInterpolatePoint()
+        assertEquals(3, points.size())
+        assertEquals("POINT (-122.39423990249632 47.57926150237904)", points[0].wkt)
+        assertEquals("POINT (-122.38736758304911 47.58121554959838)", points[1].wkt)
+        assertEquals("POINT (-122.38374710083008 47.58535499390333)", points[2].wkt)
+    }
+
+    @Test void lineStringLocatePoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        List<Double> positions = recipes.lineStringLocatePoint()
+        assertEquals(3, positions.size())
+        println positions
+        assertEquals(0.0, positions[0], 0.1)
+        assertEquals(0.5, positions[1], 0.1)
+        assertEquals(1.0, positions[2], 0.1)
+    }
+
     // Point
 
     @Test void getPointXYZ() {

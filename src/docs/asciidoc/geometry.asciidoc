@@ -335,6 +335,25 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringNe
 [.thumb]
 image::geometry_linestring_negative3.png[]
 
+[source,groovy]
+.Interpolate Points on a LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringInterpolatePoint,indent=0]
+----
+[.thumb]
+image::geometry_linestring_interpolatepoint.png[]
+
+[source,groovy]
+.Locate the position of Points on a LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringLocatePoint,indent=0]
+----
+[.thumb]
+image::geometry_linestring_locatepoint.png[]
+....
+include::output/geometry_linestring_locatepoint.txt[]
+....
+
 === Polygons
 
 [source,groovy]

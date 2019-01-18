@@ -801,6 +801,54 @@ class GeometryRecipes extends Recipes {
         [lineString1, lineString2, lineString3]
     }
 
+    List<Point> lineStringInterpolatePoint() {
+        // tag::lineStringInterpolatePoint[]
+        LineString lineString = new LineString([
+            [-122.39423990249632, 47.57926150237904],
+            [-122.3918581008911, 47.58121554959838],
+            [-122.38657951354979, 47.58121554959838],
+            [-122.38638639450075, 47.58535499390333],
+            [-122.38374710083008, 47.58535499390333]
+        ])
+        Point startPoint = lineString.interpolatePoint(0.0)
+        Point midPoint = lineString.interpolatePoint(0.5)
+        Point endPoint = lineString.interpolatePoint(1.0)
+        // end::lineStringInterpolatePoint[]
+        drawGeometries("geometry_linestring_interpolatepoint", [lineString, startPoint, midPoint, endPoint], drawCoords: false)
+
+        [startPoint, midPoint, endPoint]
+    }
+
+    List<Double> lineStringLocatePoint() {
+        // tag::lineStringLocatePoint[]
+        LineString lineString = new LineString([
+            [-122.39423990249632, 47.57926150237904],
+            [-122.3918581008911, 47.58121554959838],
+            [-122.38657951354979, 47.58121554959838],
+            [-122.38638639450075, 47.58535499390333],
+            [-122.38374710083008, 47.58535499390333]
+        ])
+
+        Point point1 = new Point(-122.39423990249632, 47.57926150237904)
+        Double position1 = lineString.locatePoint(point1)
+        println "Position of ${point1} is ${position1}"
+
+        Point point2 = new Point(-122.38736758304911, 47.58121554959838)
+        Double position2 = lineString.locatePoint(point2)
+        println "Position of ${point2} is ${position2}"
+        
+        Point point3 = new Point(-122.38374710083008, 47.58535499390333)
+        Double position3 = lineString.locatePoint(point3)
+        println "Position of ${point3} is ${position3}"
+        // end::lineStringLocatePoint[]
+        drawGeometries("geometry_linestring_locatepoint", [lineString, point1, point2, point3], drawCoords: false)
+        writeFile("geometry_linestring_locatepoint", """Position of ${point1} is ${position1}
+Position of ${point2} is ${position2}
+Position of ${point3} is ${position3}""")
+
+        [position1, position2, position3]
+    }
+
     // Point
 
     Point getPointXYZ() {
