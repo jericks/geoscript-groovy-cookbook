@@ -1393,6 +1393,60 @@ Position of POINT (-122.38736758304911 47.58121554959838) is 0.5000000000004425
 Position of POINT (-122.38374710083008 47.58535499390333) is 1.0</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Place Points on a LineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString ([
+    [-<span class="float">122.37155914306639</span>, <span class="float">47.57166173655188</span>],
+    [-<span class="float">122.32160568237306</span>, <span class="float">47.5714301073211</span>]
+])
+
+<span class="predefined-type">Point</span> point1 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.358341217041</span>, <span class="float">47.57432539907205</span>)
+<span class="predefined-type">Point</span> pointOnLine1 = lineString.placePoint(point1)
+
+<span class="predefined-type">Point</span> point2 = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.33860015869139</span>, <span class="float">47.56830301243495</span>)
+<span class="predefined-type">Point</span> pointOnLine2 = lineString.placePoint(point2)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Points near LineString</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_placepoint1.png" alt="geometry linestring placepoint1">
+</div>
+</div>
+<div class="paragraph">
+<p>Point on LineString</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_placepoint2.png" alt="geometry linestring placepoint2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Extract part of a LineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.39423990249632</span>, <span class="float">47.57926150237904</span>],
+    [-<span class="float">122.3918581008911</span>, <span class="float">47.58121554959838</span>],
+    [-<span class="float">122.38657951354979</span>, <span class="float">47.58121554959838</span>],
+    [-<span class="float">122.38638639450075</span>, <span class="float">47.58535499390333</span>],
+    [-<span class="float">122.38374710083008</span>, <span class="float">47.58535499390333</span>]
+])
+LineString subLine = lineString.subLine(<span class="float">0.33</span>, <span class="float">0.66</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_subline1.png" alt="geometry linestring subline1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_subline2.png" alt="geometry linestring subline2">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="polygons"><a class="anchor" href="#polygons"></a>Polygons</h3>
@@ -4202,8 +4256,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 367758058 nanoseconds
-Time with PreparedGeometry = 194454271 nanoseconds</pre>
+<pre>Time with Geometry         = 382072175 nanoseconds
+Time with PreparedGeometry = 413588651 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4248,8 +4302,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 318383579 nanoseconds
-Time with PreparedGeometry = 134697144 nanoseconds</pre>
+<pre>Time with Geometry         = 238938168 nanoseconds
+Time with PreparedGeometry = 148156499 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -4914,7 +4968,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-18 00:47:09 UTC
+Last updated 2019-01-18 01:25:07 UTC
 </div>
 </div>
 </body>
