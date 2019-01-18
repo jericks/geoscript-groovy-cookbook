@@ -33,8 +33,10 @@ geo:isValid
 geo:buffer
 geo:union
 geo:intersection
+geo:getX
+geo:getY
 geo:difference
-geo:equalsExact
+geo:endPoint
 geo:reproject
 geo:splitPolygon
 geo:within
@@ -58,8 +60,6 @@ geo:numGeometries
 geo:startPoint
 geo:numPoints
 geo:isClosed
-geo:getX
-geo:getY
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
@@ -67,11 +67,11 @@ geo:geometryType
 geo:envelope
 geo:isRing
 geo:polygonize
-geo:endPoint
+geo:equalsExact
+geo:interiorRingN
 geo:relatePattern
 geo:pointN
 geo:equalsExactTolerance
-geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
