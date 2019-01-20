@@ -1653,6 +1653,41 @@ MultiLineString newMultiLineString = multiLineString + lineString</code></pre>
 <img src="./images/geometry_multilinestring_plus.png" alt="geometry multilinestring plus">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Merge the LineStrings in a MultiLineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiLineString multiLineString = <span class="keyword">new</span> MultiLineString([
+    <span class="keyword">new</span> LineString (
+        [-<span class="float">122.3822021484375</span>, <span class="float">47.57837853860192</span>],
+        [-<span class="float">122.32452392578125</span>, <span class="float">47.48380086737799</span>]
+    ),
+    <span class="keyword">new</span> LineString (
+        [-<span class="float">122.32452392578125</span>, <span class="float">47.48380086737799</span>],
+        [-<span class="float">122.29705810546874</span>, <span class="float">47.303447043862626</span>]
+    ),
+    <span class="keyword">new</span> LineString (
+        [-<span class="float">122.29705810546874</span>, <span class="float">47.303447043862626</span>],
+        [-<span class="float">122.42889404296875</span>, <span class="float">47.23262467463881</span>]
+    )
+])
+MultiLineString mergedMultiLineString = multiLineString.merge()
+
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Original MultiLineString = </span><span class="inline"><span class="inline-delimiter">${</span>multiLineString<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Merged MultiLineString   = </span><span class="inline"><span class="inline-delimiter">${</span>mergedMultiLineString<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Original MultiLineString = MULTILINESTRING ((-122.3822021484375 47.57837853860192, -122.32452392578125 47.48380086737799), (-122.32452392578125 47.48380086737799, -122.29705810546874 47.303447043862626), (-122.29705810546874 47.303447043862626, -122.42889404296875 47.23262467463881))
+
+Merged MultiLineString   = MULTILINESTRING ((-122.3822021484375 47.57837853860192, -122.32452392578125 47.48380086737799, -122.29705810546874 47.303447043862626, -122.42889404296875 47.23262467463881))</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_multilinestring_plus.png" alt="geometry multilinestring plus">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="multipolygons"><a class="anchor" href="#multipolygons"></a>MultiPolygons</h3>
@@ -4287,8 +4322,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 318368983 nanoseconds
-Time with PreparedGeometry = 165454438 nanoseconds</pre>
+<pre>Time with Geometry         = 326064158 nanoseconds
+Time with PreparedGeometry = 218184312 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4333,8 +4368,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 372312973 nanoseconds
-Time with PreparedGeometry = 141514136 nanoseconds</pre>
+<pre>Time with Geometry         = 154672869 nanoseconds
+Time with PreparedGeometry = 139721208 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -4999,7 +5034,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-20 00:38:40 UTC
+Last updated 2019-01-20 21:42:25 UTC
 </div>
 </div>
 </body>
