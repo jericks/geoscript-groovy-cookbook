@@ -909,7 +909,31 @@ Position of ${point3} is ${position3}""")
         newMultiLineString
     }
 
+    MultiLineString multiLineStringMerge() {
+        // tag::multiLineStringMerge[]
+        MultiLineString multiLineString = new MultiLineString([
+            new LineString (
+                [-122.3822021484375, 47.57837853860192],
+                [-122.32452392578125, 47.48380086737799]
+            ),
+            new LineString (
+                [-122.32452392578125, 47.48380086737799],
+                [-122.29705810546874, 47.303447043862626]
+            ),
+            new LineString (
+                [-122.29705810546874, 47.303447043862626],
+                [-122.42889404296875, 47.23262467463881]
+            )
+        ])
+        MultiLineString mergedMultiLineString = multiLineString.merge()
 
+        println "Original MultiLineString = ${multiLineString}"
+        println "Merged MultiLineString   = ${mergedMultiLineString}"
+        // end::multiLineStringMerge[]
+        drawGeometry("geometry_multilinestring_merge", mergedMultiLineString)
+        writeFile("geometry_multilinestring_merge", "Original MultiLineString = ${multiLineString}${NEW_LINE}${NEW_LINE}Merged MultiLineString   = ${mergedMultiLineString}")
+        mergedMultiLineString
+    }
 
     // Point
 

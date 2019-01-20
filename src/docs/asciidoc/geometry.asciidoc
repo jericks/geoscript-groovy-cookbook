@@ -434,6 +434,16 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=multiLineStr
 [.thumb]
 image::geometry_multilinestring_plus.png[]
 
+[source,groovy]
+.Merge the LineStrings in a MultiLineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=multiLineStringMerge,indent=0]
+----
+....
+include::output/geometry_multilinestring_merge.txt[]
+....
+[.thumb]
+image::geometry_multilinestring_plus.png[]
 
 === MultiPolygons
 
