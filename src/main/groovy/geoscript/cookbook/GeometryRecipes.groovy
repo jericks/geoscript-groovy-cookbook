@@ -883,6 +883,34 @@ Position of ${point3} is ${position3}""")
         subLine
     }
 
+    // MultiLineString
+
+    MultiLineString multiLineStringPlus() {
+        // tag::multiLineStringPlus[]
+        MultiLineString multiLineString = new MultiLineString([
+            new LineString (
+                    [-122.3822021484375, 47.57837853860192],
+                    [-122.32452392578125, 47.48380086737799]
+            ),
+            new LineString (
+                    [-122.32452392578125, 47.48380086737799],
+                    [-122.29705810546874, 47.303447043862626]
+            )
+        ])
+
+        LineString lineString = new LineString (
+            [-122.29705810546874, 47.303447043862626],
+            [-122.42889404296875, 47.23262467463881]
+        )
+
+        MultiLineString newMultiLineString = multiLineString + lineString
+        // end::multiLineStringPlus[]
+        drawGeometry("geometry_multilinestring_plus", newMultiLineString)
+        newMultiLineString
+    }
+
+
+
     // Point
 
     Point getPointXYZ() {

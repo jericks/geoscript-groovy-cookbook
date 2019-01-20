@@ -460,6 +460,17 @@ class GeometryRecipesTest {
                 "-122.38650332982382 47.58284852310433)", lineString.wkt)
     }
 
+    // MultiLineString
+
+    @Test void multiLineStringPlus() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        MultiLineString multiLineString =  recipes.multiLineStringPlus()
+        assertEquals("MULTILINESTRING ((-122.3822021484375 47.57837853860192, -122.32452392578125 47.48380086737799), " +
+                "(-122.32452392578125 47.48380086737799, -122.29705810546874 47.303447043862626), " +
+                "(-122.29705810546874 47.303447043862626, -122.42889404296875 47.23262467463881))", multiLineString.wkt)
+    }
+
+
     // Point
 
     @Test void getPointXYZ() {

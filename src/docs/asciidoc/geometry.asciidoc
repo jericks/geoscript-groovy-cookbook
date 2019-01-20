@@ -424,6 +424,17 @@ image::geometry_split_polygon1.png[]
 [.thumb]
 image::geometry_split_polygon2.png[]
 
+=== MultiLineStrings
+
+[source,groovy]
+.Add a LineString to a MultiLineString to get a new MultiLineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=multiLineStringPlus,indent=0]
+----
+[.thumb]
+image::geometry_multilinestring_plus.png[]
+
+
 === MultiPolygons
 
 [source,groovy]
