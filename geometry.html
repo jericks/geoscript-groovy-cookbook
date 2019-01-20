@@ -547,6 +547,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#points">Points</a></li>
 <li><a href="#linestrings">LineStrings</a></li>
 <li><a href="#polygons">Polygons</a></li>
+<li><a href="#multilinestrings">MultiLineStrings</a></li>
 <li><a href="#multipolygons">MultiPolygons</a></li>
 <li><a href="#geometry-collections">Geometry Collections</a></li>
 <li><a href="#circular-strings">Circular Strings</a></li>
@@ -1620,6 +1621,36 @@ MultiPolygon multiPolygon = polygon.split(lineString)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_split_polygon2.png" alt="geometry split polygon2">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multilinestrings"><a class="anchor" href="#multilinestrings"></a>MultiLineStrings</h3>
+<div class="listingblock">
+<div class="title">Add a LineString to a MultiLineString to get a new MultiLineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiLineString multiLineString = <span class="keyword">new</span> MultiLineString([
+    <span class="keyword">new</span> LineString (
+            [-<span class="float">122.3822021484375</span>, <span class="float">47.57837853860192</span>],
+            [-<span class="float">122.32452392578125</span>, <span class="float">47.48380086737799</span>]
+    ),
+    <span class="keyword">new</span> LineString (
+            [-<span class="float">122.32452392578125</span>, <span class="float">47.48380086737799</span>],
+            [-<span class="float">122.29705810546874</span>, <span class="float">47.303447043862626</span>]
+    )
+])
+
+LineString lineString = <span class="keyword">new</span> LineString (
+    [-<span class="float">122.29705810546874</span>, <span class="float">47.303447043862626</span>],
+    [-<span class="float">122.42889404296875</span>, <span class="float">47.23262467463881</span>]
+)
+
+MultiLineString newMultiLineString = multiLineString + lineString</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_multilinestring_plus.png" alt="geometry multilinestring plus">
 </div>
 </div>
 </div>
@@ -4256,8 +4287,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 382072175 nanoseconds
-Time with PreparedGeometry = 413588651 nanoseconds</pre>
+<pre>Time with Geometry         = 318368983 nanoseconds
+Time with PreparedGeometry = 165454438 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4302,8 +4333,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 238938168 nanoseconds
-Time with PreparedGeometry = 148156499 nanoseconds</pre>
+<pre>Time with Geometry         = 372312973 nanoseconds
+Time with PreparedGeometry = 141514136 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -4968,7 +4999,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-18 01:25:07 UTC
+Last updated 2019-01-20 00:38:40 UTC
 </div>
 </div>
 </body>
