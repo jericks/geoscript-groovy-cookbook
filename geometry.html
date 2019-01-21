@@ -555,6 +555,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#compound-curves">Compound Curves</a></li>
 <li><a href="#compound-rings">Compound Rings</a></li>
 <li><a href="#processing-geometries">Processing Geometries</a></li>
+<li><a href="#prepared-geometry">Prepared Geometry</a></li>
 <li><a href="#reading-and-writing-geometries">Reading and Writing Geometries</a>
 <ul class="sectlevel3">
 <li><a href="#readers-and-writers">Readers and Writers</a></li>
@@ -4322,8 +4323,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 326064158 nanoseconds
-Time with PreparedGeometry = 218184312 nanoseconds</pre>
+<pre>Time with Geometry         = 469456381 nanoseconds
+Time with PreparedGeometry = 251557016 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4368,8 +4369,248 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 154672869 nanoseconds
-Time with PreparedGeometry = 139721208 nanoseconds</pre>
+<pre>Time with Geometry         = 171276859 nanoseconds
+Time with PreparedGeometry = 112977475 nanoseconds</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="prepared-geometry"><a class="anchor" href="#prepared-geometry"></a>Prepared Geometry</h3>
+<div class="paragraph">
+<p>PreparedGeometry are more effecient for spatial queries.</p>
+</div>
+<div class="listingblock">
+<div class="title">You can create a PreparedGeometry by wrapping an existing Geometry.  You can then get the original Geometry with the geometry property.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+   [-<span class="float">120.739</span>, <span class="float">48.151</span>],
+   [-<span class="float">121.003</span>, <span class="float">47.070</span>],
+   [-<span class="float">119.465</span>, <span class="float">47.137</span>],
+   [-<span class="float">119.553</span>, <span class="float">46.581</span>],
+   [-<span class="float">121.267</span>, <span class="float">46.513</span>],
+   [-<span class="float">121.168</span>, <span class="float">45.706</span>],
+   [-<span class="float">118.476</span>, <span class="float">45.951</span>],
+   [-<span class="float">118.762</span>, <span class="float">48.195</span>],
+   [-<span class="float">120.739</span>, <span class="float">48.151</span>]
+]])
+
+PreparedGeometry preparedGeometry = <span class="keyword">new</span> PreparedGeometry(polygon)
+
+Geometry geometry = preparedGeometry.geometry</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_create.png" alt="geometry preparedgeometry create">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a PreparedGeometry contains another Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PreparedGeometry polygon1 = <span class="keyword">new</span> PreparedGeometry(<span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>],
+        [-<span class="float">121.003</span>, <span class="float">47.070</span>],
+        [-<span class="float">119.465</span>, <span class="float">47.137</span>],
+        [-<span class="float">119.553</span>, <span class="float">46.581</span>],
+        [-<span class="float">121.267</span>, <span class="float">46.513</span>],
+        [-<span class="float">121.168</span>, <span class="float">45.706</span>],
+        [-<span class="float">118.476</span>, <span class="float">45.951</span>],
+        [-<span class="float">118.762</span>, <span class="float">48.195</span>],
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>]
+]]))
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>]
+]])
+
+<span class="type">boolean</span> contains = polygon1.contains(polygon2)
+println contains</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_contains_1.png" alt="geometry preparedgeometry contains 1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_contains_2.png" alt="geometry preparedgeometry contains 2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a PreparedGeometry properly contains another Geometry.  This means that every point in the other geometry doesn&#8217;t intersect with the first.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PreparedGeometry polygon1 = <span class="keyword">new</span> PreparedGeometry(<span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">122.50064849853516</span>, <span class="float">47.22096718353454</span>],
+    [-<span class="float">122.41928100585938</span>, <span class="float">47.22096718353454</span>],
+    [-<span class="float">122.41928100585938</span>, <span class="float">47.277365616965646</span>],
+    [-<span class="float">122.50064849853516</span>, <span class="float">47.277365616965646</span>],
+    [-<span class="float">122.50064849853516</span>, <span class="float">47.22096718353454</span>]
+]]))
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">122.44571685791014</span>, <span class="float">47.24031721435104</span>],
+    [-<span class="float">122.42958068847656</span>, <span class="float">47.24031721435104</span>],
+    [-<span class="float">122.42958068847656</span>, <span class="float">47.253135632244216</span>],
+    [-<span class="float">122.44571685791014</span>, <span class="float">47.253135632244216</span>],
+    [-<span class="float">122.44571685791014</span>, <span class="float">47.24031721435104</span>]
+]])
+
+<span class="type">boolean</span> contains = polygon1.containsProperly(polygon2)
+println contains</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_containsproperly_1.png" alt="geometry preparedgeometry containsproperly 1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_containsproperly_2.png" alt="geometry preparedgeometry containsproperly 2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a PreparedGeometry is covered by another Geometry.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>],
+        [-<span class="float">121.003</span>, <span class="float">47.070</span>],
+        [-<span class="float">119.465</span>, <span class="float">47.137</span>],
+        [-<span class="float">119.553</span>, <span class="float">46.581</span>],
+        [-<span class="float">121.267</span>, <span class="float">46.513</span>],
+        [-<span class="float">121.168</span>, <span class="float">45.706</span>],
+        [-<span class="float">118.476</span>, <span class="float">45.951</span>],
+        [-<span class="float">118.762</span>, <span class="float">48.195</span>],
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>]
+]])
+
+PreparedGeometry polygon2 = <span class="keyword">new</span> PreparedGeometry(<span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>]
+]]))
+
+<span class="type">boolean</span> isCoveredBy = polygon2.coveredBy(polygon1)
+println isCoveredBy</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_coveredby_1.png" alt="geometry preparedgeometry coveredby 1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_coveredby_2.png" alt="geometry preparedgeometry coveredby 2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a PreparedGeometry covers another Geometry.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PreparedGeometry polygon1 = <span class="keyword">new</span> PreparedGeometry(<span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>],
+        [-<span class="float">121.003</span>, <span class="float">47.070</span>],
+        [-<span class="float">119.465</span>, <span class="float">47.137</span>],
+        [-<span class="float">119.553</span>, <span class="float">46.581</span>],
+        [-<span class="float">121.267</span>, <span class="float">46.513</span>],
+        [-<span class="float">121.168</span>, <span class="float">45.706</span>],
+        [-<span class="float">118.476</span>, <span class="float">45.951</span>],
+        [-<span class="float">118.762</span>, <span class="float">48.195</span>],
+        [-<span class="float">120.739</span>, <span class="float">48.151</span>]
+]]))
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.591</span>],
+        [-<span class="float">119.663</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.872</span>],
+        [-<span class="float">120.212</span>, <span class="float">47.591</span>]
+]])
+
+<span class="type">boolean</span> isCovered = polygon1.covers(polygon2)
+println isCovered</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_covers_1.png" alt="geometry preparedgeometry covers 1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_covers_2.png" alt="geometry preparedgeometry covers 2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a PreparedGeometry crosses another Geometry.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PreparedGeometry line1 = <span class="keyword">new</span> PreparedGeometry(<span class="keyword">new</span> LineString([[-<span class="float">122.387</span>, <span class="float">47.613</span>], [-<span class="float">121.750</span>, <span class="float">47.353</span>]]))
+LineString line2 = <span class="keyword">new</span> LineString([[-<span class="float">122.255</span>, <span class="float">47.368</span>], [-<span class="float">121.882</span>, <span class="float">47.746</span>]])
+LineString line3 = <span class="keyword">new</span> LineString([[-<span class="float">122.486</span>, <span class="float">47.256</span>], [-<span class="float">121.695</span>, <span class="float">46.822</span>]])
+
+<span class="type">boolean</span> doesCross12 = line1.crosses(line2)
+println doesCross12
+
+<span class="type">boolean</span> doesCross13 = line1.crosses(line3)
+println doesCross13</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_crosses.png" alt="geometry preparedgeometry crosses">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true
+false</pre>
 </div>
 </div>
 </div>
@@ -5034,7 +5275,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-20 21:42:25 UTC
+Last updated 2019-01-21 22:16:21 UTC
 </div>
 </div>
 </body>
