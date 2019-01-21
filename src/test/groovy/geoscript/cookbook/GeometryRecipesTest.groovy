@@ -1045,6 +1045,51 @@ class GeometryRecipesTest {
         assertTrue times[1] > 0
     }
 
+    // Prepared Geometry
+
+    @Test void preparedGeometryCreate() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        PreparedGeometry preparedGeometry = recipes.preparedGeometryCreate()
+        assertEquals("POLYGON ((-120.739 48.151, -121.003 47.07, -119.465 47.137, -119.553 46.581, " +
+                "-121.267 46.513, -121.168 45.706, -118.476 45.951, " +
+                "-118.762 48.195, -120.739 48.151))", preparedGeometry.geometry.wkt)
+    }
+
+    @Test void preparedGeometryContains() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.preparedGeometryContains()
+        assertTrue(results["1contains2"])
+        assertFalse(results["1contains3"])
+    }
+
+    @Test void preparedGeometryContainsProperly() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.preparedGeometryContainsProperly()
+        assertTrue(results["1contains2"])
+        assertFalse(results["1contains3"])
+    }
+
+    @Test void preparedGeometryCoveredBy() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.preparedGeometryCoveredBy()
+        assertTrue(results["2coveredBy1"])
+        assertFalse(results["3coveredBy1"])
+    }
+
+    @Test void preparedGeometryCovers() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.preparedGeometryCovers()
+        assertTrue(results["1covers2"])
+        assertFalse(results["1covers3"])
+    }
+
+    @Test void preparedGeometryCrosses() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.preparedGeometryCrosses()
+        assertTrue(results["12"])
+        assertFalse(results["13"])
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

@@ -1498,6 +1498,93 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=prepareStati
 include::output/geometry_preparestatic.txt[]
 ....
 
+=== Prepared Geometry
+
+PreparedGeometry are more effecient for spatial queries.
+
+[source,groovy]
+.You can create a PreparedGeometry by wrapping an existing Geometry.  You can then get the original Geometry with the geometry property.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryCreate,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_create.png[]
+
+[source,groovy]
+.Check whether a PreparedGeometry contains another Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryContains1,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_contains_1.png[]
+....
+include::output/geometry_preparedgeometry_contains_1.txt[]
+....
+[.thumb]
+image::geometry_preparedgeometry_contains_2.png[]
+....
+include::output/geometry_preparedgeometry_contains_2.txt[]
+....
+
+[source,groovy]
+.Check whether a PreparedGeometry properly contains another Geometry.  This means that every point in the other geometry doesn't intersect with the first.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryContainsProperly1,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_containsproperly_1.png[]
+....
+include::output/geometry_preparedgeometry_containsproperly_1.txt[]
+....
+[.thumb]
+image::geometry_preparedgeometry_containsproperly_2.png[]
+....
+include::output/geometry_preparedgeometry_containsproperly_2.txt[]
+....
+
+[source,groovy]
+.Check whether a PreparedGeometry is covered by another Geometry.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryCoveredBy1,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_coveredby_1.png[]
+....
+include::output/geometry_preparedgeometry_coveredby_1.txt[]
+....
+[.thumb]
+image::geometry_preparedgeometry_coveredby_2.png[]
+....
+include::output/geometry_preparedgeometry_coveredby_2.txt[]
+....
+
+[source,groovy]
+.Check whether a PreparedGeometry covers another Geometry.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryCovers1,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_covers_1.png[]
+....
+include::output/geometry_preparedgeometry_covers_1.txt[]
+....
+[.thumb]
+image::geometry_preparedgeometry_covers_2.png[]
+....
+include::output/geometry_preparedgeometry_covers_2.txt[]
+....
+
+[source,groovy]
+.Check whether a PreparedGeometry crosses another Geometry.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryCrosses,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_crosses.png[]
+....
+include::output/geometry_preparedgeometry_crosses.txt[]
+....
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.13-SNAPSHOT/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package

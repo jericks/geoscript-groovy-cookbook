@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import org.h2.command.Prepared
 import org.locationtech.jts.geom.IntersectionMatrix
 import geoscript.geom.Bounds
 import geoscript.geom.CircularRing
@@ -3018,6 +3019,259 @@ Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
 """)
         [timeWithGeometry, timeWithPreparedGeometry]
     }
+
+    // Prepared Geometry
+
+    PreparedGeometry preparedGeometryCreate() {
+        // tag::preparedGeometryCreate[]
+        Polygon polygon = new Polygon([[
+           [-120.739, 48.151],
+           [-121.003, 47.070],
+           [-119.465, 47.137],
+           [-119.553, 46.581],
+           [-121.267, 46.513],
+           [-121.168, 45.706],
+           [-118.476, 45.951],
+           [-118.762, 48.195],
+           [-120.739, 48.151]
+        ]])
+
+        PreparedGeometry preparedGeometry = new PreparedGeometry(polygon)
+
+        Geometry geometry = preparedGeometry.geometry
+        // end::preparedGeometryCreate[]
+        drawGeometry("geometry_preparedgeometry_create", geometry)
+        preparedGeometry
+    }
+
+    Map<String, Boolean> preparedGeometryContains() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::preparedGeometryContains1[]
+        PreparedGeometry polygon1 = new PreparedGeometry(new Polygon([[
+                [-120.739, 48.151],
+                [-121.003, 47.070],
+                [-119.465, 47.137],
+                [-119.553, 46.581],
+                [-121.267, 46.513],
+                [-121.168, 45.706],
+                [-118.476, 45.951],
+                [-118.762, 48.195],
+                [-120.739, 48.151]
+        ]]))
+
+        Polygon polygon2 = new Polygon([[
+                [-120.212, 47.591],
+                [-119.663, 47.591],
+                [-119.663, 47.872],
+                [-120.212, 47.872],
+                [-120.212, 47.591]
+        ]])
+
+        boolean contains = polygon1.contains(polygon2)
+        println contains
+        // end::preparedGeometryContains1[]
+        drawGeometries("geometry_preparedgeometry_contains_1", [polygon1.geometry, polygon2])
+        writeFile("geometry_preparedgeometry_contains_1", "${contains}")
+        results["1contains2"] = contains
+
+        // tag::preparedGeometryContains2[]
+        Polygon polygon3 = new Polygon([[
+                [-120.563, 46.739],
+                [-119.948, 46.739],
+                [-119.948, 46.965],
+                [-120.563, 46.965],
+                [-120.563, 46.739]
+        ]])
+
+        contains = polygon1.contains(polygon3)
+        println contains
+        // end::preparedGeometryContains2[]
+        drawGeometries("geometry_preparedgeometry_contains_2", [polygon1.geometry, polygon3])
+        writeFile("geometry_preparedgeometry_contains_2", "${contains}")
+        results["1contains3"] = contains
+
+        results
+    }
+
+    Map<String, Boolean> preparedGeometryContainsProperly() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::preparedGeometryContainsProperly1[]
+        PreparedGeometry polygon1 = new PreparedGeometry(new Polygon([[
+            [-122.50064849853516, 47.22096718353454],
+            [-122.41928100585938, 47.22096718353454],
+            [-122.41928100585938, 47.277365616965646],
+            [-122.50064849853516, 47.277365616965646],
+            [-122.50064849853516, 47.22096718353454]
+        ]]))
+
+        Polygon polygon2 = new Polygon([[
+            [-122.44571685791014, 47.24031721435104],
+            [-122.42958068847656, 47.24031721435104],
+            [-122.42958068847656, 47.253135632244216],
+            [-122.44571685791014, 47.253135632244216],
+            [-122.44571685791014, 47.24031721435104]
+        ]])
+
+        boolean contains = polygon1.containsProperly(polygon2)
+        println contains
+        // end::preparedGeometryContainsProperly1[]
+        drawGeometries("geometry_preparedgeometry_containsproperly_1", [polygon1.geometry, polygon2])
+        writeFile("geometry_preparedgeometry_containsproperly_1", "${contains}")
+        results["1contains2"] = contains
+
+        // tag::preparedGeometryContainsProperly2[]
+        Polygon polygon3 = new Polygon([[
+            [-122.50064849853516, 47.22096718353454],
+            [-122.46631622314455, 47.22096718353454],
+            [-122.46631622314455, 47.277365616965646],
+            [-122.50133514404297, 47.277365616965646],
+            [-122.50064849853516, 47.22096718353454],
+        ]])
+
+        contains = polygon1.containsProperly(polygon3)
+        println contains
+        // end::preparedGeometryContainsProperly2[]
+        drawGeometries("geometry_preparedgeometry_containsproperly_2", [polygon1.geometry, polygon3])
+        writeFile("geometry_preparedgeometry_containsproperly_2", "${contains}")
+        results["1contains3"] = contains
+
+        results
+    }
+
+    Map<String, Boolean> preparedGeometryCoveredBy() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::preparedGeometryCoveredBy1[]
+        Polygon polygon1 = new Polygon([[
+                [-120.739, 48.151],
+                [-121.003, 47.070],
+                [-119.465, 47.137],
+                [-119.553, 46.581],
+                [-121.267, 46.513],
+                [-121.168, 45.706],
+                [-118.476, 45.951],
+                [-118.762, 48.195],
+                [-120.739, 48.151]
+        ]])
+
+        PreparedGeometry polygon2 = new PreparedGeometry(new Polygon([[
+                [-120.212, 47.591],
+                [-119.663, 47.591],
+                [-119.663, 47.872],
+                [-120.212, 47.872],
+                [-120.212, 47.591]
+        ]]))
+
+        boolean isCoveredBy = polygon2.coveredBy(polygon1)
+        println isCoveredBy
+        // end::preparedGeometryCoveredBy1[]
+        drawGeometries("geometry_preparedgeometry_coveredby_1", [polygon1, polygon2.geometry])
+        writeFile("geometry_preparedgeometry_coveredby_1", "${isCoveredBy}")
+        results["2coveredBy1"] = isCoveredBy
+
+        // tag::preparedGeometryCoveredBy2[]
+        PreparedGeometry polygon3 = new PreparedGeometry(new Polygon([[
+                [-120.563, 46.739],
+                [-119.948, 46.739],
+                [-119.948, 46.965],
+                [-120.563, 46.965],
+                [-120.563, 46.739]
+        ]]))
+
+        isCoveredBy = polygon3.coveredBy(polygon1)
+        println isCoveredBy
+        // end::preparedGeometryCoveredBy2[]
+        drawGeometries("geometry_preparedgeometry_coveredby_2", [polygon1, polygon3.geometry])
+        writeFile("geometry_preparedgeometry_coveredby_2", "${isCoveredBy}")
+        results["3coveredBy1"] = isCoveredBy
+
+        results
+    }
+
+
+    Map<String, Boolean> preparedGeometryCovers() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::preparedGeometryCovers1[]
+        PreparedGeometry polygon1 = new PreparedGeometry(new Polygon([[
+                [-120.739, 48.151],
+                [-121.003, 47.070],
+                [-119.465, 47.137],
+                [-119.553, 46.581],
+                [-121.267, 46.513],
+                [-121.168, 45.706],
+                [-118.476, 45.951],
+                [-118.762, 48.195],
+                [-120.739, 48.151]
+        ]]))
+
+        Polygon polygon2 = new Polygon([[
+                [-120.212, 47.591],
+                [-119.663, 47.591],
+                [-119.663, 47.872],
+                [-120.212, 47.872],
+                [-120.212, 47.591]
+        ]])
+
+        boolean isCovered = polygon1.covers(polygon2)
+        println isCovered
+        // end::preparedGeometryCovers1[]
+        drawGeometries("geometry_preparedgeometry_covers_1", [polygon1.geometry, polygon2])
+        writeFile("geometry_preparedgeometry_covers_1", "${isCovered}")
+        results["1covers2"] = isCovered
+
+        // tag::preparedGeometryCovers2[]
+        Polygon polygon3 = new Polygon([[
+                [-120.563, 46.739],
+                [-119.948, 46.739],
+                [-119.948, 46.965],
+                [-120.563, 46.965],
+                [-120.563, 46.739]
+        ]])
+
+        isCovered = polygon1.covers(polygon3)
+        println isCovered
+        // end::preparedGeometryCovers2[]
+        drawGeometries("geometry_preparedgeometry_covers_2", [polygon1.geometry, polygon3])
+        writeFile("geometry_preparedgeometry_covers_2", "${isCovered}")
+        results["1covers3"] = isCovered
+
+        results
+    }
+
+    Map<String, Boolean> preparedGeometryCrosses() {
+        Map<String, Boolean> values = [:]
+
+        // tag::preparedGeometryCrosses[]
+        PreparedGeometry line1 = new PreparedGeometry(new LineString([[-122.387, 47.613], [-121.750, 47.353]]))
+        LineString line2 = new LineString([[-122.255, 47.368], [-121.882, 47.746]])
+        LineString line3 = new LineString([[-122.486, 47.256], [-121.695, 46.822]])
+
+        boolean doesCross12 = line1.crosses(line2)
+        println doesCross12
+
+        boolean doesCross13 = line1.crosses(line3)
+        println doesCross13
+        // end::preparedGeometryCrosses[]
+        drawGeometries("geometry_preparedgeometry_crosses", [line1.geometry, line2, line3])
+        writeFile("geometry_preparedgeometry_crosses", "${doesCross12}${NEW_LINE}${doesCross13}")
+        values["12"] = doesCross12
+        values["13"] = doesCross13
+
+        values
+    }
+    // disjoint
+    // [.line-through]#getGeometry#
+    // intersects
+    // overlaps
+    // touches
+    // within
 
     // Geometry Readers and Writers
 
