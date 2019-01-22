@@ -4323,8 +4323,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 469456381 nanoseconds
-Time with PreparedGeometry = 251557016 nanoseconds</pre>
+<pre>Time with Geometry         = 403158618 nanoseconds
+Time with PreparedGeometry = 374819955 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4369,8 +4369,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 171276859 nanoseconds
-Time with PreparedGeometry = 112977475 nanoseconds</pre>
+<pre>Time with Geometry         = 175039543 nanoseconds
+Time with PreparedGeometry = 161887239 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -4611,6 +4611,260 @@ println doesCross13</code></pre>
 <div class="content">
 <pre>true
 false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a PreparedGeometry is disjoint from another Geometry.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PreparedGeometry polygon1 = <span class="keyword">new</span> PreparedGeometry(<span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+    [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+    [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+    [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+    [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+    [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+    [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]]))
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+    [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+    [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+    [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+    [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+    [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon3 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">120.541</span>, <span class="float">47.376</span>],
+    [-<span class="float">120.695</span>, <span class="float">47.047</span>],
+    [-<span class="float">119.794</span>, <span class="float">46.830</span>],
+    [-<span class="float">119.586</span>, <span class="float">47.331</span>],
+    [-<span class="float">120.102</span>, <span class="float">47.509</span>],
+    [-<span class="float">120.541</span>, <span class="float">47.376</span>]
+]])
+
+<span class="type">boolean</span> isDisjoint12 = polygon1.disjoint(polygon2)
+println isDisjoint12
+
+<span class="type">boolean</span> isDisjoint13 = polygon1.disjoint(polygon3)
+println isDisjoint13</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_disjoint.png" alt="geometry preparedgeometry disjoint">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false
+true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a PreparedGeometry intersects another Geometry.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PreparedGeometry polygon1 = <span class="keyword">new</span> PreparedGeometry(<span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+    [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+    [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+    [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+    [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+    [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+    [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]]))
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+    [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+    [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+    [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+    [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+    [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon3 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">120.541</span>, <span class="float">47.376</span>],
+    [-<span class="float">120.695</span>, <span class="float">47.047</span>],
+    [-<span class="float">119.794</span>, <span class="float">46.830</span>],
+    [-<span class="float">119.586</span>, <span class="float">47.331</span>],
+    [-<span class="float">120.102</span>, <span class="float">47.509</span>],
+    [-<span class="float">120.541</span>, <span class="float">47.376</span>]
+]])
+
+<span class="type">boolean</span> does1intersect2 = polygon1.intersects(polygon2)
+println does1intersect2
+
+<span class="type">boolean</span> does1intersect3 = polygon1.intersects(polygon3)
+println does1intersect3</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_intersects.png" alt="geometry preparedgeometry intersects">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true
+false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a PreparedGeometry overlaps another Geometry.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PreparedGeometry polygon1 = <span class="keyword">new</span> PreparedGeometry(<span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">121.915</span>, <span class="float">47.390</span>],
+    [-<span class="float">122.640</span>, <span class="float">46.995</span>],
+    [-<span class="float">121.739</span>, <span class="float">46.308</span>],
+    [-<span class="float">121.168</span>, <span class="float">46.777</span>],
+    [-<span class="float">120.981</span>, <span class="float">47.316</span>],
+    [-<span class="float">121.409</span>, <span class="float">47.413</span>],
+    [-<span class="float">121.915</span>, <span class="float">47.390</span>]
+]]))
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">120.794</span>, <span class="float">46.664</span>],
+    [-<span class="float">121.541</span>, <span class="float">46.995</span>],
+    [-<span class="float">122.200</span>, <span class="float">46.536</span>],
+    [-<span class="float">121.937</span>, <span class="float">45.890</span>],
+    [-<span class="float">120.959</span>, <span class="float">46.096</span>],
+    [-<span class="float">120.794</span>, <span class="float">46.664</span>]
+]])
+
+<span class="predefined-type">Polygon</span> polygon3 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">120.541</span>, <span class="float">47.376</span>],
+    [-<span class="float">120.695</span>, <span class="float">47.047</span>],
+    [-<span class="float">119.794</span>, <span class="float">46.830</span>],
+    [-<span class="float">119.586</span>, <span class="float">47.331</span>],
+    [-<span class="float">120.102</span>, <span class="float">47.509</span>],
+    [-<span class="float">120.541</span>, <span class="float">47.376</span>]
+]])
+
+<span class="type">boolean</span> does1overlap2 = polygon1.overlaps(polygon2)
+println does1overlap2
+
+<span class="type">boolean</span> does1overlap3 = polygon1.overlaps(polygon3)
+println does1overlap3</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_overlaps.png" alt="geometry preparedgeometry overlaps">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true
+false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a PreparedGeometry touches another Geometry.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PreparedGeometry line1 = <span class="keyword">new</span> PreparedGeometry(<span class="keyword">new</span> LineString([
+    [-<span class="float">122.38651514053345</span>, <span class="float">47.58219978280006</span>],
+    [-<span class="float">122.38651514053345</span>, <span class="float">47.58020234903306</span>]
+]))
+
+LineString line2 = <span class="keyword">new</span> LineString([
+    [-<span class="float">122.38651514053345</span>, <span class="float">47.58124449789785</span>],
+    [-<span class="float">122.38333940505981</span>, <span class="float">47.58124449789785</span>]
+])
+
+<span class="type">boolean</span> touches = line1.touches(line2)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_touches_12.png" alt="geometry preparedgeometry touches 12">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>LineString line3 = new LineString([
+    [-122.386257648468, 47.58183793450921],
+    [-122.38348960876465, 47.5818668824645]
+])
+
+touches = line1.touches(line3)</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_touches_13.png" alt="geometry preparedgeometry touches 13">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Check whether a PreparedGeometry is within another Geometry.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PreparedGeometry polygon1 = <span class="keyword">new</span> PreparedGeometry(<span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">120.212</span>, <span class="float">47.591</span>],
+    [-<span class="float">119.663</span>, <span class="float">47.591</span>],
+    [-<span class="float">119.663</span>, <span class="float">47.872</span>],
+    [-<span class="float">120.212</span>, <span class="float">47.872</span>],
+    [-<span class="float">120.212</span>, <span class="float">47.591</span>]
+]]))
+
+<span class="predefined-type">Polygon</span> polygon2 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
+    [-<span class="float">120.739</span>, <span class="float">48.151</span>],
+    [-<span class="float">121.003</span>, <span class="float">47.070</span>],
+    [-<span class="float">119.465</span>, <span class="float">47.137</span>],
+    [-<span class="float">119.553</span>, <span class="float">46.581</span>],
+    [-<span class="float">121.267</span>, <span class="float">46.513</span>],
+    [-<span class="float">121.168</span>, <span class="float">45.706</span>],
+    [-<span class="float">118.476</span>, <span class="float">45.951</span>],
+    [-<span class="float">118.762</span>, <span class="float">48.195</span>],
+    [-<span class="float">120.739</span>, <span class="float">48.151</span>]
+]])
+
+<span class="type">boolean</span> within = polygon1.within(polygon2)
+println within</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_within_1.png" alt="geometry preparedgeometry within 1">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Polygon polygon3 = new Polygon([[
+    [-120.563, 46.739],
+    [-119.948, 46.739],
+    [-119.948, 46.965],
+    [-120.563, 46.965],
+    [-120.563, 46.739]
+]])
+
+within = polygon1.within(polygon3)
+println within</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_preparedgeometry_within_2.png" alt="geometry preparedgeometry within 2">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>false</pre>
 </div>
 </div>
 </div>
@@ -5275,7 +5529,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-21 22:16:21 UTC
+Last updated 2019-01-22 21:17:15 UTC
 </div>
 </div>
 </body>
