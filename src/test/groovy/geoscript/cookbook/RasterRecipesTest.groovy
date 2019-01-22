@@ -75,7 +75,7 @@ class RasterRecipesTest {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.reclassify()
         assertEquals(1, raster.bands.size())
-        assertEquals(0, raster.extrema.min[0], 0.1)
+        assertEquals(1, raster.extrema.min[0], 0.1)
         assertEquals(6, raster.extrema.max[0], 0.1)
     }
 
