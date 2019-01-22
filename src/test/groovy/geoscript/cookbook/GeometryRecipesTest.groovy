@@ -1090,6 +1090,41 @@ class GeometryRecipesTest {
         assertFalse(results["13"])
     }
 
+    @Test void preparedGeometryDisjoint() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.preparedGeometryDisjoint()
+        assertFalse(results["12"])
+        assertTrue(results["13"])
+    }
+
+    @Test void preparedGeometryIntersects() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.preparedGeometryIntersects()
+        assertTrue(results["12"])
+        assertFalse(results["13"])
+    }
+
+    @Test void preparedGeometryOverlaps() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.preparedGeometryOverlaps()
+        assertTrue(results["12"])
+        assertFalse(results["13"])
+    }
+
+    @Test void preparedGeometryTouches() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.preparedGeometryTouches()
+        assertTrue(results["touches_12"])
+        assertFalse(results["touches_13"])
+    }
+
+    @Test void preparedGeometryWithin() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Map<String,Boolean> results = recipes.preparedGeometryWithin()
+        assertTrue(results["1within2"])
+        assertFalse(results["1within3"])
+    }
+
     // Geometry IO
 
     @Test void getGeometryReaders() {

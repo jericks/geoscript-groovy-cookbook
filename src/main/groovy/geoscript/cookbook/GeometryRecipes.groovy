@@ -3266,12 +3266,235 @@ Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
 
         values
     }
-    // disjoint
-    // [.line-through]#getGeometry#
-    // intersects
-    // overlaps
-    // touches
-    // within
+
+    Map<String, Boolean> preparedGeometryDisjoint() {
+
+        Map<String, Boolean> values = [:]
+
+        // tag::preparedGeometryDisjoint[]
+        PreparedGeometry polygon1 = new PreparedGeometry(new Polygon([[
+            [-121.915, 47.390],
+            [-122.640, 46.995],
+            [-121.739, 46.308],
+            [-121.168, 46.777],
+            [-120.981, 47.316],
+            [-121.409, 47.413],
+            [-121.915, 47.390]
+        ]]))
+
+        Polygon polygon2 = new Polygon([[
+            [-120.794, 46.664],
+            [-121.541, 46.995],
+            [-122.200, 46.536],
+            [-121.937, 45.890],
+            [-120.959, 46.096],
+            [-120.794, 46.664]
+        ]])
+
+        Polygon polygon3 = new Polygon([[
+            [-120.541, 47.376],
+            [-120.695, 47.047],
+            [-119.794, 46.830],
+            [-119.586, 47.331],
+            [-120.102, 47.509],
+            [-120.541, 47.376]
+        ]])
+
+        boolean isDisjoint12 = polygon1.disjoint(polygon2)
+        println isDisjoint12
+
+        boolean isDisjoint13 = polygon1.disjoint(polygon3)
+        println isDisjoint13
+        // end::preparedGeometryDisjoint[]
+        drawGeometries("geometry_preparedgeometry_disjoint", [polygon1.geometry, polygon2, polygon3])
+        writeFile("geometry_preparedgeometry_disjoint", "${isDisjoint12}${NEW_LINE}${isDisjoint13}")
+        values["12"] = isDisjoint12
+        values["13"] = isDisjoint13
+
+        values
+    }
+
+    Map<String, Boolean> preparedGeometryIntersects() {
+
+        Map<String, Boolean> values = [:]
+
+        // tag::preparedGeometryIntersects[]
+        PreparedGeometry polygon1 = new PreparedGeometry(new Polygon([[
+            [-121.915, 47.390],
+            [-122.640, 46.995],
+            [-121.739, 46.308],
+            [-121.168, 46.777],
+            [-120.981, 47.316],
+            [-121.409, 47.413],
+            [-121.915, 47.390]
+        ]]))
+
+        Polygon polygon2 = new Polygon([[
+            [-120.794, 46.664],
+            [-121.541, 46.995],
+            [-122.200, 46.536],
+            [-121.937, 45.890],
+            [-120.959, 46.096],
+            [-120.794, 46.664]
+        ]])
+
+        Polygon polygon3 = new Polygon([[
+            [-120.541, 47.376],
+            [-120.695, 47.047],
+            [-119.794, 46.830],
+            [-119.586, 47.331],
+            [-120.102, 47.509],
+            [-120.541, 47.376]
+        ]])
+
+        boolean does1intersect2 = polygon1.intersects(polygon2)
+        println does1intersect2
+
+        boolean does1intersect3 = polygon1.intersects(polygon3)
+        println does1intersect3
+        // end::preparedGeometryIntersects[]
+        drawGeometries("geometry_preparedgeometry_intersects", [polygon1.geometry, polygon2, polygon3])
+        writeFile("geometry_preparedgeometry_intersects", "${does1intersect2}${NEW_LINE}${does1intersect3}")
+        values["12"] = does1intersect2
+        values["13"] = does1intersect3
+
+        values
+    }
+
+    Map<String, Boolean> preparedGeometryOverlaps() {
+
+        Map<String, Boolean> values = [:]
+
+        // tag::preparedGeometryOverlaps[]
+        PreparedGeometry polygon1 = new PreparedGeometry(new Polygon([[
+            [-121.915, 47.390],
+            [-122.640, 46.995],
+            [-121.739, 46.308],
+            [-121.168, 46.777],
+            [-120.981, 47.316],
+            [-121.409, 47.413],
+            [-121.915, 47.390]
+        ]]))
+
+        Polygon polygon2 = new Polygon([[
+            [-120.794, 46.664],
+            [-121.541, 46.995],
+            [-122.200, 46.536],
+            [-121.937, 45.890],
+            [-120.959, 46.096],
+            [-120.794, 46.664]
+        ]])
+
+        Polygon polygon3 = new Polygon([[
+            [-120.541, 47.376],
+            [-120.695, 47.047],
+            [-119.794, 46.830],
+            [-119.586, 47.331],
+            [-120.102, 47.509],
+            [-120.541, 47.376]
+        ]])
+
+        boolean does1overlap2 = polygon1.overlaps(polygon2)
+        println does1overlap2
+
+        boolean does1overlap3 = polygon1.overlaps(polygon3)
+        println does1overlap3
+        // end::preparedGeometryOverlaps[]
+        drawGeometries("geometry_preparedgeometry_overlaps", [polygon1.geometry, polygon2, polygon3])
+        writeFile("geometry_preparedgeometry_overlaps", "${does1overlap2}${NEW_LINE}${does1overlap3}")
+        values["12"] = does1overlap2
+        values["13"] = does1overlap3
+
+        values
+    }
+
+    Map<String, Boolean> preparedGeometryTouches() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::preparedGeometryTouches1[]
+        PreparedGeometry line1 = new PreparedGeometry(new LineString([
+            [-122.38651514053345, 47.58219978280006],
+            [-122.38651514053345, 47.58020234903306]
+        ]))
+
+        LineString line2 = new LineString([
+            [-122.38651514053345, 47.58124449789785],
+            [-122.38333940505981, 47.58124449789785]
+        ])
+
+        boolean touches = line1.touches(line2)
+        // end::preparedGeometryTouches1[]
+        drawGeometries("geometry_preparedgeometry_touches_12", [line1.geometry, line2])
+        writeFile("geometry_preparedgeometry_touches_12", "${touches}")
+        results["touches_12"] = touches
+
+        // tag::preparedGeometryTouches2[]
+        LineString line3 = new LineString([
+            [-122.386257648468, 47.58183793450921],
+            [-122.38348960876465, 47.5818668824645]
+        ])
+
+        touches = line1.touches(line3)
+        // end::preparedGeometryTouches2[]
+        drawGeometries("geometry_preparedgeometry_touches_13", [line1.geometry, line3])
+        writeFile("geometry_preparedgeometry_touches_13", "${touches}")
+        results["touches_13"] = touches
+
+        results
+    }
+
+    Map<String, Boolean> preparedGeometryWithin() {
+
+        Map<String, Boolean> results = [:]
+
+        // tag::preparedGeometryWithin1[]
+
+        PreparedGeometry polygon1 = new PreparedGeometry(new Polygon([[
+            [-120.212, 47.591],
+            [-119.663, 47.591],
+            [-119.663, 47.872],
+            [-120.212, 47.872],
+            [-120.212, 47.591]
+        ]]))
+
+        Polygon polygon2 = new Polygon([[
+            [-120.739, 48.151],
+            [-121.003, 47.070],
+            [-119.465, 47.137],
+            [-119.553, 46.581],
+            [-121.267, 46.513],
+            [-121.168, 45.706],
+            [-118.476, 45.951],
+            [-118.762, 48.195],
+            [-120.739, 48.151]
+        ]])
+
+        boolean within = polygon1.within(polygon2)
+        println within
+        // end::preparedGeometryWithin1[]
+        drawGeometries("geometry_preparedgeometry_within_1", [polygon1.geometry, polygon2])
+        writeFile("geometry_preparedgeometry_within_1", "${within}")
+        results["1within2"] = within
+
+        // tag::preparedGeometryWithin2[]
+        Polygon polygon3 = new Polygon([[
+            [-120.563, 46.739],
+            [-119.948, 46.739],
+            [-119.948, 46.965],
+            [-120.563, 46.965],
+            [-120.563, 46.739]
+        ]])
+
+        within = polygon1.within(polygon3)
+        println within
+        // end::preparedGeometryWithin2[]
+        drawGeometries("geometry_preparedgeometry_within_2", [polygon1.geometry, polygon3])
+        writeFile("geometry_preparedgeometry_within_2", "${within}")
+        results["1within3"] = within
+
+        results
+    }
 
     // Geometry Readers and Writers
 

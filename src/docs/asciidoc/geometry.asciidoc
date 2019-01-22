@@ -1585,6 +1585,79 @@ image::geometry_preparedgeometry_crosses.png[]
 include::output/geometry_preparedgeometry_crosses.txt[]
 ....
 
+[source,groovy]
+.Check whether a PreparedGeometry is disjoint from another Geometry.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryDisjoint,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_disjoint.png[]
+....
+include::output/geometry_preparedgeometry_disjoint.txt[]
+....
+
+[source,groovy]
+.Check whether a PreparedGeometry intersects another Geometry.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryIntersects,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_intersects.png[]
+....
+include::output/geometry_preparedgeometry_intersects.txt[]
+....
+
+[source,groovy]
+.Check whether a PreparedGeometry overlaps another Geometry.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryOverlaps,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_overlaps.png[]
+....
+include::output/geometry_preparedgeometry_overlaps.txt[]
+....
+
+[source,groovy]
+.Check whether a PreparedGeometry touches another Geometry.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryTouches1,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_touches_12.png[]
+....
+include::output/geometry_preparedgeometry_touches_12.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryTouches2,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_touches_13.png[]
+....
+include::output/geometry_preparedgeometry_touches_13.txt[]
+....
+
+[source,groovy]
+.Check whether a PreparedGeometry is within another Geometry.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryWithin1,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_within_1.png[]
+....
+include::output/geometry_preparedgeometry_within_1.txt[]
+....
+
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=preparedGeometryWithin2,indent=0]
+----
+[.thumb]
+image::geometry_preparedgeometry_within_2.png[]
+....
+include::output/geometry_preparedgeometry_within_2.txt[]
+....
+
 === Reading and Writing Geometries
 
 The *http://geoscript.github.io/geoscript-groovy/api/1.13-SNAPSHOT/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
