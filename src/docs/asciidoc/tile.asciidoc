@@ -208,6 +208,28 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=gridFromPyramidB
 include::output/tile_pyramid_grid_bounds_size.txt[]
 ....
 
+==== Get Tile Coordinates
+
+Get the tile coordinates from a Pyramid by Bounds and zoom level
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidGetTileCoordinatesByBoundsAndZoom,indent=0]
+----
+....
+include::output/tile_pyramid_gettilecoordinates_bounds_zoom.txt[]
+....
+
+Get the tile coordinates from a Pyramid by Bounds and Grid
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=pyramidGetTileCoordinatesByBoundsAndGrid,indent=0]
+----
+....
+include::output/tile_pyramid_gettilecoordinates_bounds_grid.txt[]
+....
+
 ==== Reading and Writing Pyramids
 
 The Pyramid IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.13-SNAPSHOT/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.

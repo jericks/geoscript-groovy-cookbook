@@ -11,6 +11,11 @@ import geoscript.layer.TMS
 import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import org.junit.Test
+
+import static junit.framework.Assert.assertEquals
+import static junit.framework.Assert.assertEquals
+import static junit.framework.Assert.assertEquals
+import static junit.framework.Assert.assertEquals
 import static org.junit.Assert.*
 
 class TileRecipesTest {
@@ -81,6 +86,24 @@ class TileRecipesTest {
         assertEquals(19, pyramid.maxGrid.z)
         assertEquals(256, pyramid.tileWidth)
         assertEquals(256, pyramid.tileHeight)
+    }
+
+    @Test void pyramidGetTileCoordinatesByBoundsAndZoom() {
+        TileRecipes recipes = new TileRecipes()
+        Map<String,Integer> coords = recipes.pyramidGetTileCoordinatesByBoundsAndZoom()
+        assertEquals (2, coords.minX)
+        assertEquals (9, coords.minY)
+        assertEquals (5, coords.maxX)
+        assertEquals (10, coords.maxY)
+    }
+
+    @Test void pyramidGetTileCoordinatesByBoundsAndGrid() {
+        TileRecipes recipes = new TileRecipes()
+        Map<String,Integer> coords = recipes.pyramidGetTileCoordinatesByBoundsAndGrid()
+        assertEquals (571, coords.minX)
+        assertEquals (623, coords.minY)
+        assertEquals (576, coords.maxX)
+        assertEquals (626, coords.maxY)
     }
 
     @Test void gridFromPyramidByZoomLevel() {

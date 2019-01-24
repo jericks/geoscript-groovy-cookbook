@@ -290,6 +290,38 @@ Max Zoom: ${pyramid.maxGrid.z}
         pyramid
     }
 
+    Map<String, Integer> pyramidGetTileCoordinatesByBoundsAndZoom() {
+        // tag::pyramidGetTileCoordinatesByBoundsAndZoom[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        Bounds bounds = new Bounds(-124.73142200000001, 24.955967, -66.969849, 49.371735, "EPSG:4326").reproject("EPSG:3857")
+        long zoomLevel = 4
+        Map<String, Integer> coords = pyramid.getTileCoordinates(bounds, zoomLevel)
+        println "Min X = ${coords.minX}"
+        println "Min Y = ${coords.minY}"
+        println "Max X = ${coords.maxX}"
+        println "Max Y = ${coords.maxY}"
+        // end::pyramidGetTileCoordinatesByBoundsAndZoom[]
+        writeFile("tile_pyramid_gettilecoordinates_bounds_zoom", "Min X = ${coords.minX}${NEW_LINE}Min Y = ${coords.minY}${NEW_LINE}" +
+                "Max X = ${coords.maxX}${NEW_LINE}Max Y = ${coords.maxY}")
+        coords
+    }
+
+    Map<String, Integer> pyramidGetTileCoordinatesByBoundsAndGrid() {
+        // tag::pyramidGetTileCoordinatesByBoundsAndGrid[]
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        Bounds bounds = new Bounds(20.798492,36.402494,22.765045,37.223768, "EPSG:4326").reproject("EPSG:3857")
+        Grid grid = pyramid.grid(10)
+        Map<String, Integer> coords = pyramid.getTileCoordinates(bounds, grid)
+        println "Min X = ${coords.minX}"
+        println "Min Y = ${coords.minY}"
+        println "Max X = ${coords.maxX}"
+        println "Max Y = ${coords.maxY}"
+        // end::pyramidGetTileCoordinatesByBoundsAndGrid[]
+        writeFile("tile_pyramid_gettilecoordinates_bounds_grid", "Min X = ${coords.minX}${NEW_LINE}Min Y = ${coords.minY}${NEW_LINE}" +
+                "Max X = ${coords.maxX}${NEW_LINE}Max Y = ${coords.maxY}")
+        coords
+    }
+
     // TileLayer
 
     TileLayer tileLayerProperties() {
