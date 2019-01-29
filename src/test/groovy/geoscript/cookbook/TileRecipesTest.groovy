@@ -379,6 +379,14 @@ BOTTOM_LEFT
         assertEquals("EPSG:3857", mbtiles.proj.id)
     }
 
+    @Test void tileLayerGetPutDelete() {
+        TileRecipes recipes = new TileRecipes()
+        Map<String, Boolean> results = recipes.tileLayerGetPutDelete()
+        assertTrue(results.get)
+        assertTrue(results.put)
+        assertTrue(results.delete)
+    }
+
     // TileCursor
 
     @Test void tileCursorByZoomLevel() {

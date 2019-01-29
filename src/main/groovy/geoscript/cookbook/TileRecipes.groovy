@@ -27,6 +27,7 @@ import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 import groovy.json.JsonOutput
 
+import javax.imageio.ImageIO
 import javax.media.jai.PlanarImage
 import java.awt.image.BufferedImage
 import java.awt.image.RenderedImage
@@ -64,6 +65,94 @@ Data as base64 encoded string = ${tile.base64String.substring(0,50)}...
         // end::imageTile[]
         saveImage("tile_image_tile", image)
         tile
+    }
+
+    // TileLayer
+
+    TileLayer tileLayerProperties() {
+        // tag::tileLayerProperties[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+        // end::tileLayerProperties[]
+
+        // tag::tileLayerProperties_name[]
+        String name = mbtiles.name
+        println name
+        // end::tileLayerProperties_name[]
+        writeFile("tilelayer_properties_name", "${name}")
+
+        // tag::tileLayerProperties_bounds[]
+        Bounds bounds = mbtiles.bounds
+        println bounds
+        // end::tileLayerProperties_bounds[]
+        writeFile("tilelayer_properties_bounds", "${bounds}")
+
+        // tag::tileLayerProperties_proj[]
+        Projection proj = mbtiles.proj
+        println proj
+        // end::tileLayerProperties_proj[]
+        writeFile("tilelayer_properties_proj", "${proj}")
+
+        // tag::tileLayerProperties_pyramid[]
+        Pyramid pyramid = mbtiles.pyramid
+        println pyramid
+        // end::tileLayerProperties_pyramid[]
+        writeFile("tilelayer_properties_pyramid", "${pyramid}")
+
+        // tag::tileLayerProperties_tile[]
+        Tile tile = mbtiles.get(0, 0, 0)
+        println tile
+        // end::tileLayerProperties_tile[]
+        writeFile("tilelayer_properties_tile", "${tile}")
+        saveImage("tilelayer_properties_tile", (tile as ImageTile).image)
+
+        mbtiles
+    }
+
+    Map<String, Boolean> tileLayerGetPutDelete() {
+
+        File originalFile = new File("src/main/resources/tiles.mbtiles")
+        File directory = new File("target")
+        File file = new File(directory, "states_temp.mbtiles")
+        file.withOutputStream { out ->
+            originalFile.withInputStream { inp ->
+                out << inp
+            }
+        }
+
+        Map<String, Boolean> results = [:]
+
+        // tag::tileLayerGetPutDelete_get[]
+        MBTiles layer = new MBTiles(file)
+        ImageTile tile = layer.get(0,0,0)
+        // end::tileLayerGetPutDelete_get[]
+        saveImage("tileLayerGetPutDelete_get", tile.image)
+        results.get = tile.image != null
+
+        // tag::tileLayerGetPutDelete_put[]
+        File newTileFile = new File("src/main/resources/yellowtile.png")
+        ImageTile newTile = new ImageTile(0,0,0, newTileFile.bytes)
+        layer.put(newTile)
+        newTile = layer.get(0,0,0)
+        // end::tileLayerGetPutDelete_put[]
+        saveImage("tileLayerGetPutDelete_put", newTile.image)
+        results.put = newTile.image != null
+
+        // tag::tileLayerGetPutDelete_delete[]
+        layer.delete(newTile)
+        newTile = layer.get(0,0,0)
+        println "Image = ${newTile.image}"
+        // end::tileLayerGetPutDelete_delete[]
+        writeFile("tileLayerGetPutDelete_delete", "Image = ${newTile.image}")
+        results.delete = newTile.image == null
+
+        // tag::tileLayerGetPutDelete_close[]
+        layer.close()
+        // end::tileLayerGetPutDelete_close[]
+
+        file.delete()
+
+        results
     }
 
     // Grid
@@ -320,48 +409,6 @@ Max Zoom: ${pyramid.maxGrid.z}
         writeFile("tile_pyramid_gettilecoordinates_bounds_grid", "Min X = ${coords.minX}${NEW_LINE}Min Y = ${coords.minY}${NEW_LINE}" +
                 "Max X = ${coords.maxX}${NEW_LINE}Max Y = ${coords.maxY}")
         coords
-    }
-
-    // TileLayer
-
-    TileLayer tileLayerProperties() {
-        // tag::tileLayerProperties[]
-        File file = new File("src/main/resources/tiles.mbtiles")
-        MBTiles mbtiles = new MBTiles(file)
-        // end::tileLayerProperties[]
-
-        // tag::tileLayerProperties_name[]
-        String name = mbtiles.name
-        println name
-        // end::tileLayerProperties_name[]
-        writeFile("tilelayer_properties_name", "${name}")
-
-        // tag::tileLayerProperties_bounds[]
-        Bounds bounds = mbtiles.bounds
-        println bounds
-        // end::tileLayerProperties_bounds[]
-        writeFile("tilelayer_properties_bounds", "${bounds}")
-
-        // tag::tileLayerProperties_proj[]
-        Projection proj = mbtiles.proj
-        println proj
-        // end::tileLayerProperties_proj[]
-        writeFile("tilelayer_properties_proj", "${proj}")
-
-        // tag::tileLayerProperties_pyramid[]
-        Pyramid pyramid = mbtiles.pyramid
-        println pyramid
-        // end::tileLayerProperties_pyramid[]
-        writeFile("tilelayer_properties_pyramid", "${pyramid}")
-
-        // tag::tileLayerProperties_tile[]
-        Tile tile = mbtiles.get(0, 0, 0)
-        println tile
-        // end::tileLayerProperties_tile[]
-        writeFile("tilelayer_properties_tile", "${tile}")
-        saveImage("tilelayer_properties_tile", (tile as ImageTile).image)
-
-        mbtiles
     }
 
     Pyramid createPyramidFromString() {

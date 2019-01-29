@@ -432,6 +432,46 @@ include::output/tilelayer_properties_tile.txt[]
 [.thumb]
 image::tilelayer_properties_tile.png[]
 
+==== Get, put, and delete a Tile from a TileLayer
+
+Get a Tile from a  TileLayer.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerGetPutDelete_get,indent=0]
+----
+
+[.thumb]
+image::tileLayerGetPutDelete_get.png[]
+
+Add a Tile to a TileLayer.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerGetPutDelete_put,indent=0]
+----
+
+[.thumb]
+image::tileLayerGetPutDelete_put.png[]
+
+Remove a Tile from a TileLayer.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerGetPutDelete_delete,indent=0]
+----
+
+....
+include::output/tileLayerGetPutDelete_delete.txt[]
+....
+
+Close a TileLayer
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerGetPutDelete_close,indent=0]
+----
+
 === TileCursor
 
 A TileCursor is a way to get a collection of Tiles from a TileLayer.
