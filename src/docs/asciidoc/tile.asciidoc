@@ -472,11 +472,33 @@ Close a TileLayer
 include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerGetPutDelete_close,indent=0]
 ----
 
+==== Tiles
+
+Get a TileCursor from a TileLayer with all of the Tiles in a zoom level.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerTilesByZoomLevel,indent=0]
+----
+....
+include::output/tileLayerTilesByZoomLevel.txt[]
+....
+
+Get a TileCursor from a TileLayer with Tiles from a zoom level between min and max x and y coordinates.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerTilesByZoomLevelAndMinMax,indent=0]
+----
+....
+include::output/tileLayerTilesByZoomLevelAndMinMax.txt[]
+....
+
 === TileCursor
 
 A TileCursor is a way to get a collection of Tiles from a TileLayer.
 
-Get a TileCursor with all of the Tiles form a TileLayer in a zoom level.
+Get a TileCursor with all of the Tiles from a TileLayer in a zoom level.
 
 [source,groovy]
 ----
@@ -486,7 +508,7 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByZoom
 include::output/tile_cursor_zoomlevel.txt[]
 ....
 
-Get a TileCursor with Tiles form a TileLayer in a zoom level between min and max x and y coordinates.
+Get a TileCursor with Tiles from a TileLayer in a zoom level between min and max x and y coordinates.
 
 [source,groovy]
 ----

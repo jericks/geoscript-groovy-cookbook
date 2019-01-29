@@ -155,6 +155,78 @@ Data as base64 encoded string = ${tile.base64String.substring(0,50)}...
         results
     }
 
+    TileCursor tileLayerTilesByZoomLevel() {
+        // tag::tileLayerTilesByZoomLevel[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+
+        long zoomLevel = 1
+        TileCursor tileCursor = mbtiles.tiles(zoomLevel)
+
+        println "Zoom Level: ${tileCursor.z}"
+        println "# of tiles: ${tileCursor.size}"
+        println "Bounds: ${tileCursor.bounds}"
+        println "Width / # Columns: ${tileCursor.width}"
+        println "Height / # Rows: ${tileCursor.height}"
+        println "MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}"
+
+        println "Tiles:"
+        tileCursor.each { Tile t ->
+            println t
+        }
+        // end::tileLayerTilesByZoomLevel[]
+        writeFile("tileLayerTilesByZoomLevel", """
+Zoom Level: ${tileCursor.z}
+# of tiles: ${tileCursor.size}
+Bounds: ${tileCursor.bounds}
+Width / # Columns: ${tileCursor.width}
+Height / # Rows: ${tileCursor.height}
+MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}
+
+Tiles:
+${tileCursor.collect { it.toString() }.join(NEW_LINE)}
+""")
+        tileCursor
+    }
+
+    TileCursor tileLayerTilesByZoomLevelAndMinMax() {
+        // tag::tileLayerTilesByZoomLevelAndMinMax[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+
+        long zoomLevel = 4
+        long minX = 2
+        long minY = 4
+        long maxX = 5
+        long maxY = 8
+        TileCursor tileCursor = mbtiles.tiles(zoomLevel, minX, minY, maxX, maxY)
+
+        println "Zoom Level: ${tileCursor.z}"
+        println "# of tiles: ${tileCursor.size}"
+        println "Bounds: ${tileCursor.bounds}"
+        println "Width / # Columns: ${tileCursor.width}"
+        println "Height / # Rows: ${tileCursor.height}"
+        println "MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}"
+
+        println "Tiles:"
+        tileCursor.each { Tile t ->
+            println t
+        }
+        // end::tileLayerTilesByZoomLevelAndMinMax[]
+        writeFile("tileLayerTilesByZoomLevelAndMinMax", """
+Zoom Level: ${tileCursor.z}
+# of tiles: ${tileCursor.size}
+Bounds: ${tileCursor.bounds}
+Width / # Columns: ${tileCursor.width}
+Height / # Rows: ${tileCursor.height}
+MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}
+
+Tiles:
+${tileCursor.collect { it.toString() }.join(NEW_LINE)}
+""")
+        tileCursor
+    }
+
     // Grid
 
     Grid gridProperties() {

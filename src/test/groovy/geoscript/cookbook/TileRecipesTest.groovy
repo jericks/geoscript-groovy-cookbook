@@ -387,6 +387,31 @@ BOTTOM_LEFT
         assertTrue(results.delete)
     }
 
+    @Test void tileLayerTilesByZoomLevel() {
+        TileRecipes recipes = new TileRecipes()
+        TileCursor tileCursor = recipes.tileLayerTilesByZoomLevel()
+        assertEquals(4, tileCursor.size)
+        assertEquals(2, tileCursor.width)
+        assertEquals(2, tileCursor.height)
+        assertEquals(0, tileCursor.minX)
+        assertEquals(0, tileCursor.minY)
+        assertEquals(1, tileCursor.maxX)
+        assertEquals(1, tileCursor.maxY)
+    }
+
+    @Test void tileLayerTilesByZoomLevelAndMinMax() {
+        TileRecipes recipes = new TileRecipes()
+        TileCursor tileCursor = recipes.tileLayerTilesByZoomLevelAndMinMax()
+        assertEquals(4, tileCursor.z)
+        assertEquals(20, tileCursor.size)
+        assertEquals(4, tileCursor.width)
+        assertEquals(5, tileCursor.height)
+        assertEquals(2, tileCursor.minX)
+        assertEquals(4, tileCursor.minY)
+        assertEquals(5, tileCursor.maxX)
+        assertEquals(8, tileCursor.maxY)
+    }
+
     // TileCursor
 
     @Test void tileCursorByZoomLevel() {
