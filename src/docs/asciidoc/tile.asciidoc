@@ -494,6 +494,36 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerTilesBy
 include::output/tileLayerTilesByZoomLevelAndMinMax.txt[]
 ....
 
+Get a TileCursor from a TileLayer for a zoom level and a given Bounds.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerTilesByZoomLevelAndBounds,indent=0]
+----
+....
+include::output/tileLayerTilesByZoomLevelAndBounds.txt[]
+....
+
+Get a TileCursor from a TileLayer for a zoom level and given x and y resolutions.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerTilesByZoomLevelAndResXY,indent=0]
+----
+....
+include::output/tileLayerTilesByZoomLevelAndResXY.txt[]
+....
+
+Get a TileCursor from a TileLayer for a Bounds and a given canvas width and height.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerTilesByBoundsAndWidthHeight,indent=0]
+----
+....
+include::output/tileLayerTilesByBoundsAndWidthHeight.txt[]
+....
+
 === TileCursor
 
 A TileCursor is a way to get a collection of Tiles from a TileLayer.

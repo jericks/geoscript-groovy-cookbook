@@ -227,6 +227,113 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         tileCursor
     }
 
+    TileCursor tileLayerTilesByZoomLevelAndBounds() {
+        // tag::tileLayerTilesByZoomLevelAndBounds[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+
+        Bounds bounds = new Bounds(-102.875977, 45.433154, -96.481934, 48.118434, "EPSG:4326").reproject("EPSG:3857")
+        int zoomLevel = 8
+        TileCursor tileCursor = mbtiles.tiles(bounds, zoomLevel)
+
+        println "Zoom Level: ${tileCursor.z}"
+        println "# of tiles: ${tileCursor.size}"
+        println "Bounds: ${tileCursor.bounds}"
+        println "Width / # Columns: ${tileCursor.width}"
+        println "Height / # Rows: ${tileCursor.height}"
+        println "MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}"
+
+        println "Tiles:"
+        tileCursor.each { Tile t ->
+            println t
+        }
+        // end::tileLayerTilesByZoomLevelAndBounds[]
+        writeFile("tileLayerTilesByZoomLevelAndBounds", """
+Zoom Level: ${tileCursor.z}
+# of tiles: ${tileCursor.size}
+Bounds: ${tileCursor.bounds}
+Width / # Columns: ${tileCursor.width}
+Height / # Rows: ${tileCursor.height}
+MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}
+
+Tiles:
+${tileCursor.collect { it.toString() }.join(NEW_LINE)}
+""")
+        tileCursor
+    }
+
+    TileCursor tileLayerTilesByZoomLevelAndResXY() {
+        // tag::tileLayerTilesByZoomLevelAndResXY[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+
+        Bounds bounds = new Bounds(-124.73142200000001, 24.955967, -66.969849, 49.371735, "EPSG:4326").reproject("EPSG:3857")
+        double resolutionX = bounds.width / 400
+        double resolutionY = bounds.height / 300
+        TileCursor tileCursor = mbtiles.tiles(bounds, resolutionX, resolutionY)
+
+        println "Zoom Level: ${tileCursor.z}"
+        println "# of tiles: ${tileCursor.size}"
+        println "Bounds: ${tileCursor.bounds}"
+        println "Width / # Columns: ${tileCursor.width}"
+        println "Height / # Rows: ${tileCursor.height}"
+        println "MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}"
+
+        println "Tiles:"
+        tileCursor.each { Tile t ->
+            println t
+        }
+        // end::tileLayerTilesByZoomLevelAndResXY[]
+        writeFile("tileLayerTilesByZoomLevelAndResXY", """
+Zoom Level: ${tileCursor.z}
+# of tiles: ${tileCursor.size}
+Bounds: ${tileCursor.bounds}
+Width / # Columns: ${tileCursor.width}
+Height / # Rows: ${tileCursor.height}
+MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}
+
+Tiles:
+${tileCursor.collect { it.toString() }.join(NEW_LINE)}
+""")
+        tileCursor
+    }
+
+    TileCursor tileLayerTilesByBoundsAndWidthHeight() {
+        // tag::tileLayerTilesByBoundsAndWidthHeight[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+
+        Bounds bounds = new Bounds(-102.875977, 45.433154, -96.481934, 48.118434, "EPSG:4326").reproject("EPSG:3857")
+        int width = 400
+        int height = 400
+        TileCursor tileCursor = mbtiles.tiles(bounds, width, height)
+
+        println "Zoom Level: ${tileCursor.z}"
+        println "# of tiles: ${tileCursor.size}"
+        println "Bounds: ${tileCursor.bounds}"
+        println "Width / # Columns: ${tileCursor.width}"
+        println "Height / # Rows: ${tileCursor.height}"
+        println "MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}"
+
+        println "Tiles:"
+        tileCursor.each { Tile t ->
+            println t
+        }
+        // end::tileLayerTilesByBoundsAndWidthHeight[]
+        writeFile("tileLayerTilesByBoundsAndWidthHeight", """
+Zoom Level: ${tileCursor.z}
+# of tiles: ${tileCursor.size}
+Bounds: ${tileCursor.bounds}
+Width / # Columns: ${tileCursor.width}
+Height / # Rows: ${tileCursor.height}
+MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}
+
+Tiles:
+${tileCursor.collect { it.toString() }.join(NEW_LINE)}
+""")
+        tileCursor
+    }
+
     // Grid
 
     Grid gridProperties() {

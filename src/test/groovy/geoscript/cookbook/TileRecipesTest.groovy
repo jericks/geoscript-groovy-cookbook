@@ -412,6 +412,45 @@ BOTTOM_LEFT
         assertEquals(8, tileCursor.maxY)
     }
 
+    @Test void tileLayerTilesByZoomLevelAndBounds() {
+        TileRecipes recipes = new TileRecipes()
+        TileCursor tileCursor = recipes.tileLayerTilesByZoomLevelAndBounds()
+        assertEquals(8, tileCursor.z)
+        assertEquals(24, tileCursor.size)
+        assertEquals(6, tileCursor.width)
+        assertEquals(4, tileCursor.height)
+        assertEquals(54, tileCursor.minX)
+        assertEquals(164, tileCursor.minY)
+        assertEquals(59, tileCursor.maxX)
+        assertEquals(167, tileCursor.maxY)
+    }
+
+    @Test void tileLayerTilesByZoomLevelAndResXY() {
+        TileRecipes recipes = new TileRecipes()
+        TileCursor tileCursor = recipes.tileLayerTilesByZoomLevelAndResXY()
+        assertEquals(4, tileCursor.z)
+        assertEquals(8, tileCursor.size)
+        assertEquals(4, tileCursor.width)
+        assertEquals(2, tileCursor.height)
+        assertEquals(2, tileCursor.minX)
+        assertEquals(9, tileCursor.minY)
+        assertEquals(5, tileCursor.maxX)
+        assertEquals(10, tileCursor.maxY)
+    }
+
+    @Test void tileLayerTilesByBoundsAndWidthHeight() {
+        TileRecipes recipes = new TileRecipes()
+        TileCursor tileCursor = recipes.tileLayerTilesByBoundsAndWidthHeight()
+        assertEquals(7, tileCursor.z)
+        assertEquals(6, tileCursor.size)
+        assertEquals(3, tileCursor.width)
+        assertEquals(2, tileCursor.height)
+        assertEquals(27, tileCursor.minX)
+        assertEquals(82, tileCursor.minY)
+        assertEquals(29, tileCursor.maxX)
+        assertEquals(83, tileCursor.maxY)
+    }
+
     // TileCursor
 
     @Test void tileCursorByZoomLevel() {
