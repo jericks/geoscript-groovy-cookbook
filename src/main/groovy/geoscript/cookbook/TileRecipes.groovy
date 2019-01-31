@@ -155,6 +155,37 @@ Data as base64 encoded string = ${tile.base64String.substring(0,50)}...
         results
     }
 
+    List<Tile> tileLayerDeleteTiles() {
+        File originalFile = new File("src/main/resources/tiles.mbtiles")
+        File directory = new File("target")
+        File file = new File(directory, "states_temp.mbtiles")
+        file.withOutputStream { out ->
+            originalFile.withInputStream { inp ->
+                out << inp
+            }
+        }
+
+        List<Tile> tiles = []
+
+        // tag::tileLayerDeleteTiles1[]
+        MBTiles layer = new MBTiles(file)
+        layer.tiles(1).each { Tile tile ->
+            println "${tile} = ${tile.image == null}"
+        }
+        // end::tileLayerDeleteTiles1[]
+        writeFile("tileLayerDeleteTiles1", layer.tiles(1).collect { "${it} = ${it.image == null}" }.join(NEW_LINE))
+
+        // tag::tileLayerDeleteTiles2[]
+        layer.delete(layer.tiles(1))
+        layer.tiles(1).each { Tile tile ->
+            println "${tile} = ${tile.image == null}"
+        }
+        // end::tileLayerDeleteTiles2[]
+        writeFile("tileLayerDeleteTiles2", layer.tiles(1).collect { "${it} = ${it.image == null}" }.join(NEW_LINE))
+
+        layer.tiles(1).collect { it }
+    }
+
     Map<String, Integer> tileLayerGetTileCoordinatesByBoundsAndGrid() {
         // tag::tileLayerGetTileCoordinatesByBoundsAndGrid[]
         File file = new File("src/main/resources/tiles.mbtiles")

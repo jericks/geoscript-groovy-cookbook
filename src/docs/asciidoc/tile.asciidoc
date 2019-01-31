@@ -472,6 +472,24 @@ Close a TileLayer
 include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerGetPutDelete_close,indent=0]
 ----
 
+==== Delete Tiles from a TileLayer
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerDeleteTiles1,indent=0]
+----
+....
+include::output/tileLayerDeleteTiles1.txt[]
+....
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerDeleteTiles2,indent=0]
+----
+....
+include::output/tileLayerDeleteTiles2.txt[]
+....
+
 ==== Tiles
 
 Get a TileCursor from a TileLayer with all of the Tiles in a zoom level.

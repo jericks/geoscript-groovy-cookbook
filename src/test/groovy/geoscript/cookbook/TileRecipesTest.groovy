@@ -387,6 +387,12 @@ BOTTOM_LEFT
         assertTrue(results.delete)
     }
 
+    @Test void tileLayerDeleteTiles() {
+        TileRecipes recipes = new TileRecipes()
+        List<Tile> tiles = recipes.tileLayerDeleteTiles()
+        tiles.each { assertNull it.image }
+    }
+
     @Test void tileLayerTilesByZoomLevel() {
         TileRecipes recipes = new TileRecipes()
         TileCursor tileCursor = recipes.tileLayerTilesByZoomLevel()
