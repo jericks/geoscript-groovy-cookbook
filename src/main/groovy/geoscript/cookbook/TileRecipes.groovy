@@ -155,6 +155,23 @@ Data as base64 encoded string = ${tile.base64String.substring(0,50)}...
         results
     }
 
+    Map<String, Integer> tileLayerGetTileCoordinatesByBoundsAndGrid() {
+        // tag::tileLayerGetTileCoordinatesByBoundsAndGrid[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+        Bounds bounds = new Bounds(20.798492,36.402494,22.765045,37.223768, "EPSG:4326").reproject("EPSG:3857")
+        Grid grid = mbtiles.pyramid.grid(10)
+        Map<String, Integer> coords = mbtiles.getTileCoordinates(bounds, grid)
+        println "Min X = ${coords.minX}"
+        println "Min Y = ${coords.minY}"
+        println "Max X = ${coords.maxX}"
+        println "Max Y = ${coords.maxY}"
+        // end::tileLayerGetTileCoordinatesByBoundsAndGrid[]
+        writeFile("tileLayerGetTileCoordinatesByBoundsAndGrid", "Min X = ${coords.minX}${NEW_LINE}Min Y = ${coords.minY}${NEW_LINE}" +
+                "Max X = ${coords.maxX}${NEW_LINE}Max Y = ${coords.maxY}")
+        coords
+    }
+
     TileCursor tileLayerTilesByZoomLevel() {
         // tag::tileLayerTilesByZoomLevel[]
         File file = new File("src/main/resources/tiles.mbtiles")
@@ -321,6 +338,43 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         }
         // end::tileLayerTilesByBoundsAndWidthHeight[]
         writeFile("tileLayerTilesByBoundsAndWidthHeight", """
+Zoom Level: ${tileCursor.z}
+# of tiles: ${tileCursor.size}
+Bounds: ${tileCursor.bounds}
+Width / # Columns: ${tileCursor.width}
+Height / # Rows: ${tileCursor.height}
+MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}
+
+Tiles:
+${tileCursor.collect { it.toString() }.join(NEW_LINE)}
+""")
+        tileCursor
+    }
+
+    TileCursor tileLayerTilesAroundPointAtZoomLevelAndWidthHeight() {
+        // tag::tileLayerTilesAroundPointAtZoomLevelAndWidthHeight[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+
+        Point point = Projection.transform(new Point(-102.875977, 45.433154), "EPSG:4326", "EPSG:3857")
+        int zoomLevel = 12
+        int width = 400
+        int height = 400
+        TileCursor tileCursor = mbtiles.tiles(point, zoomLevel, width, height)
+
+        println "Zoom Level: ${tileCursor.z}"
+        println "# of tiles: ${tileCursor.size}"
+        println "Bounds: ${tileCursor.bounds}"
+        println "Width / # Columns: ${tileCursor.width}"
+        println "Height / # Rows: ${tileCursor.height}"
+        println "MinX: ${tileCursor.minX}, MinY: ${tileCursor.minY}, MaxX: ${tileCursor.maxX}, MaxY: ${tileCursor.maxY}"
+
+        println "Tiles:"
+        tileCursor.each { Tile t ->
+            println t
+        }
+        // end::tileLayerTilesAroundPointAtZoomLevelAndWidthHeight[]
+        writeFile("tileLayerTilesAroundPointAtZoomLevelAndWidthHeight", """
 Zoom Level: ${tileCursor.z}
 # of tiles: ${tileCursor.size}
 Bounds: ${tileCursor.bounds}

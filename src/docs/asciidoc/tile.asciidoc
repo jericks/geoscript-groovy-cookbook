@@ -524,6 +524,26 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerTilesBy
 include::output/tileLayerTilesByBoundsAndWidthHeight.txt[]
 ....
 
+Get a TileCursor from a TileLayer around a Point at a given zoom level for a given canvas width and height.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerTilesAroundPointAtZoomLevelAndWidthHeight,indent=0]
+----
+....
+include::output/tileLayerTilesAroundPointAtZoomLevelAndWidthHeight.txt[]
+....
+
+Get the tile coordinates from a TileLayer by Bounds and Grid
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerGetTileCoordinatesByBoundsAndGrid,indent=0]
+----
+....
+include::output/tileLayerGetTileCoordinatesByBoundsAndGrid.txt[]
+....
+
 === TileCursor
 
 A TileCursor is a way to get a collection of Tiles from a TileLayer.

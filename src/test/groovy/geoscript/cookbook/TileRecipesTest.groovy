@@ -451,6 +451,28 @@ BOTTOM_LEFT
         assertEquals(83, tileCursor.maxY)
     }
 
+    @Test void tileLayerTilesAroundPointAtZoomLevelAndWidthHeight() {
+        TileRecipes recipes = new TileRecipes()
+        TileCursor tileCursor = recipes.tileLayerTilesAroundPointAtZoomLevelAndWidthHeight()
+        assertEquals(12, tileCursor.z)
+        assertEquals(9, tileCursor.size)
+        assertEquals(3, tileCursor.width)
+        assertEquals(3, tileCursor.height)
+        assertEquals(876, tileCursor.minX)
+        assertEquals(2628, tileCursor.minY)
+        assertEquals(878, tileCursor.maxX)
+        assertEquals(2630, tileCursor.maxY)
+    }
+
+    @Test void tileLayerGetTileCoordinatesByBoundsAndGrid() {
+        TileRecipes recipes = new TileRecipes()
+        Map<String,Integer> coords = recipes.tileLayerGetTileCoordinatesByBoundsAndGrid()
+        assertEquals (571, coords.minX)
+        assertEquals (623, coords.minY)
+        assertEquals (576, coords.maxX)
+        assertEquals (626, coords.maxY)
+    }
+
     // TileCursor
 
     @Test void tileCursorByZoomLevel() {
