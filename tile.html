@@ -573,6 +573,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel3">
 <li><a href="#tile-layer-properties">Tile Layer Properties</a></li>
 <li><a href="#get-put-and-delete-a-tile-from-a-tilelayer">Get, put, and delete a Tile from a TileLayer</a></li>
+<li><a href="#delete-tiles-from-a-tilelayer">Delete Tiles from a TileLayer</a></li>
 <li><a href="#tiles">Tiles</a></li>
 </ul>
 </li>
@@ -1612,6 +1613,41 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 </div>
 <div class="sect3">
+<h4 id="delete-tiles-from-a-tilelayer"><a class="anchor" href="#delete-tiles-from-a-tilelayer"></a>Delete Tiles from a TileLayer</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MBTiles layer = <span class="keyword">new</span> MBTiles(file)
+layer.tiles(<span class="integer">1</span>).each { Tile tile -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>tile<span class="inline-delimiter">}</span></span><span class="content"> = </span><span class="inline"><span class="inline-delimiter">${</span>tile.image == <span class="predefined-constant">null</span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Tile(x:0, y:0, z:1) = false
+Tile(x:1, y:0, z:1) = false
+Tile(x:0, y:1, z:1) = false
+Tile(x:1, y:1, z:1) = false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">layer.delete(layer.tiles(<span class="integer">1</span>))
+layer.tiles(<span class="integer">1</span>).each { Tile tile -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>tile<span class="inline-delimiter">}</span></span><span class="content"> = </span><span class="inline"><span class="inline-delimiter">${</span>tile.image == <span class="predefined-constant">null</span><span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Tile(x:0, y:0, z:1) = true
+Tile(x:1, y:0, z:1) = true
+Tile(x:0, y:1, z:1) = true
+Tile(x:1, y:1, z:1) = true</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="tiles"><a class="anchor" href="#tiles"></a>Tiles</h4>
 <div class="paragraph">
 <p>Get a TileCursor from a TileLayer with all of the Tiles in a zoom level.</p>
@@ -2357,7 +2393,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-31 03:25:23 UTC
+Last updated 2019-01-31 04:08:42 UTC
 </div>
 </div>
 </body>
