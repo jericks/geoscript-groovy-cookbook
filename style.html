@@ -989,6 +989,18 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a Label for a Polygon Layer using an Expression that concatenates properties and strings.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Expression</span> expression = <span class="predefined-type">Expression</span>.fromCQL(<span class="string"><span class="delimiter">&quot;</span><span class="content">Concatenate(z, '/', x, '/', y)</span><span class="delimiter">&quot;</span></span>)
+Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">1.0</span>) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(expression)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/createLabelWithExpression.png" alt="createLabelWithExpression">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Create a Label for a Line Layer</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>)  + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>)
@@ -1672,7 +1684,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-31 04:08:42 UTC
+Last updated 2019-02-01 00:52:15 UTC
 </div>
 </div>
 </body>
