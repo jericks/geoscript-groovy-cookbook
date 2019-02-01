@@ -9,6 +9,7 @@ import geoscript.geom.GeometryCollection
 import geoscript.layer.Format
 import geoscript.layer.GeoTIFF
 import geoscript.layer.Layer
+import geoscript.layer.MBTiles
 import geoscript.layer.Raster
 import geoscript.process.Process
 import geoscript.style.ChannelSelection
@@ -443,6 +444,20 @@ class StyleRecipes extends Recipes {
         drawOnBasemap("style_label_lines", [rivers], new Bounds(-137.416,40.896,-105.842,51.835))
         symbolizer
     }
+
+    Symbolizer createLabelWithExpression() {
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+        Layer layer = mbtiles.getLayer(mbtiles.tiles(1))
+        // tag::createLabelWithExpression[]
+        Expression expression = Expression.fromCQL("Concatenate(z, '/', x, '/', y)")
+        Symbolizer symbolizer = new Stroke("black", 1.0) + new Label(expression)
+        // end::createLabelWithExpression[]
+        layer.style = symbolizer
+        drawOnBasemapInWebMercator("createLabelWithExpression", [layer], mbtiles.bounds)
+        symbolizer
+    }
+
 
     // Gradient
 

@@ -4,6 +4,7 @@ import geoscript.geom.Bounds
 import geoscript.layer.GeoPackage
 import geoscript.layer.Grid
 import geoscript.layer.ImageTile
+import geoscript.layer.Layer
 import geoscript.layer.MBTiles
 import geoscript.layer.OSM
 import geoscript.layer.Pyramid
@@ -477,6 +478,12 @@ BOTTOM_LEFT
         assertEquals (623, coords.minY)
         assertEquals (576, coords.maxX)
         assertEquals (626, coords.maxY)
+    }
+
+    @Test void tileLayerGetLayer() {
+        TileRecipes recipes = new TileRecipes()
+        Layer layer = recipes.tileLayerGetLayer()
+        assertEquals(4, layer.count)
     }
 
     // TileCursor

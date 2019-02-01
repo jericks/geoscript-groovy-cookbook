@@ -205,6 +205,12 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Test void createLabelWithExpression() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createLabelWithExpression()
+        assertNotNull(symbolizer)
+    }
+
     @Test void createLabelForLines() {
         StyleRecipes recipes = new StyleRecipes()
         Symbolizer symbolizer = recipes.createLabelForLines()

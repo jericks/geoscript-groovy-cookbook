@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.filter.Expression
 import geoscript.geom.Bounds
 import geoscript.geom.Point
 import geoscript.layer.Grid
@@ -22,6 +23,7 @@ import geoscript.layer.io.PyramidWriter
 import geoscript.layer.io.PyramidWriters
 import geoscript.proj.Projection
 import geoscript.style.Fill
+import geoscript.style.Label
 import geoscript.style.Stroke
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
@@ -417,6 +419,18 @@ Tiles:
 ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
 """)
         tileCursor
+    }
+
+    Layer tileLayerGetLayer() {
+        // tag::tileLayerGetLayer[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+        Layer layer = mbtiles.getLayer(mbtiles.tiles(1))
+        // end::tileLayerGetLayer[]
+        layer.style = new Stroke("black", 1.0) + new Label(Expression.fromCQL("Concatenate(z, '/', x, '/', y)"))
+        drawOnBasemapInWebMercator("tileLayerGetLayer", [layer], mbtiles.bounds)
+        createTable("tileLayerGetLayer", layer, false)
+        layer
     }
 
     // Grid

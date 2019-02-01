@@ -276,6 +276,15 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForP
 image::style_label_polygons_expression.png[]
 
 [source,groovy]
+.Create a Label for a Polygon Layer using an Expression that concatenates properties and strings.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelWithExpression,indent=0]
+----
+
+[.thumb]
+image::createLabelWithExpression.png[]
+
+[source,groovy]
 .Create a Label for a Line Layer
 ----
 include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForLines,indent=0]

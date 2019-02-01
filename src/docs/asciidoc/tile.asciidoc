@@ -562,6 +562,19 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerGetTile
 include::output/tileLayerGetTileCoordinatesByBoundsAndGrid.txt[]
 ....
 
+Get a Layer from a TileLayer representing the outline of the Tiles in the TileCursor.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerGetLayer,indent=0]
+----
+[.thumb]
+image::tileLayerGetLayer.png[]
+
+include::output/tileLayerGetLayer.asciidoc[]
+
+
+
 === TileCursor
 
 A TileCursor is a way to get a collection of Tiles from a TileLayer.
