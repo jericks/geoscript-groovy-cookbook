@@ -73,3 +73,54 @@ geoscript-groovy -e "new geoscript.layer.Shapefile('states.shp').eachFeature{ pr
 echo "POINT (1 1)" | geom buffer -d 10 | geoscript-groovy -e "println geoscript.geom.Geometry.fromWKT(System.in.text).kml"
 ----
 
+=== Library
+
+==== Maven
+
+[source,xml]
+.You can also use GeoScript Groovy as a library. If you use Maven you will need to add the Boundless Maven Repository:
+----
+<repositories>
+    <repository>
+        <id>boundless</id>
+        <name>Boundless Maven Repository</name>
+        <url>https://repo.boundlessgeo.com/main</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
+----
+
+[source,xml]
+.and then include the GeoScript Groovy dependency:
+----
+<dependency>
+    <groupId>org.geoscript</groupId>
+    <artifactId>geoscript-groovy</artifactId>
+    <version>1.13-SNAPSHOT</version>
+</dependency>
+----
+
+==== Gradle
+
+[source,groovy]
+.To use GeoScript Groovy in a Gradle project, add the following repositories:
+----
+repositories {
+    maven {
+        url "https://repo.boundlessgeo.com/main"
+    }
+    maven {
+        url "http://download.osgeo.org/webdav/geotools/"
+    }
+}
+----
+
+[source,groovy]
+.and the include the GeoScript Groovy dependency:
+----
+dependencies {
+    compile("org.geoscript:geoscript-groovy:1.13-SNAPSHOT")
+}
+----
