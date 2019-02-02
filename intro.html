@@ -531,6 +531,12 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#using-geoscript">Using GeoScript</a>
 <ul class="sectlevel2">
 <li><a href="#geoscript-groovy">geoscript-groovy</a></li>
+<li><a href="#library">Library</a>
+<ul class="sectlevel3">
+<li><a href="#maven">Maven</a></li>
+<li><a href="#gradle">Gradle</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -640,12 +646,67 @@ You are now ready to use GeoScript Groovy!</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="library"><a class="anchor" href="#library"></a>Library</h3>
+<div class="sect3">
+<h4 id="maven"><a class="anchor" href="#maven"></a>Maven</h4>
+<div class="listingblock">
+<div class="title">You can also use GeoScript Groovy as a library. If you use Maven you will need to add the Boundless Maven Repository:</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;repositories&gt;</span>
+    <span class="tag">&lt;repository&gt;</span>
+        <span class="tag">&lt;id&gt;</span>boundless<span class="tag">&lt;/id&gt;</span>
+        <span class="tag">&lt;name&gt;</span>Boundless Maven Repository<span class="tag">&lt;/name&gt;</span>
+        <span class="tag">&lt;url&gt;</span>https://repo.boundlessgeo.com/main<span class="tag">&lt;/url&gt;</span>
+        <span class="tag">&lt;snapshots&gt;</span>
+            <span class="tag">&lt;enabled&gt;</span>true<span class="tag">&lt;/enabled&gt;</span>
+        <span class="tag">&lt;/snapshots&gt;</span>
+    <span class="tag">&lt;/repository&gt;</span>
+<span class="tag">&lt;/repositories&gt;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">and then include the GeoScript Groovy dependency:</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.geoscript<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>geoscript-groovy<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>1.13-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gradle"><a class="anchor" href="#gradle"></a>Gradle</h4>
+<div class="listingblock">
+<div class="title">To use GeoScript Groovy in a Gradle project, add the following repositories:</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">repositories {
+    maven {
+        url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://repo.boundlessgeo.com/main</span><span class="delimiter">&quot;</span></span>
+    }
+    maven {
+        url <span class="string"><span class="delimiter">&quot;</span><span class="content">http://download.osgeo.org/webdav/geotools/</span><span class="delimiter">&quot;</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">and the include the GeoScript Groovy dependency:</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
+    compile(<span class="string"><span class="delimiter">&quot;</span><span class="content">org.geoscript:geoscript-groovy:1.13-SNAPSHOT</span><span class="delimiter">&quot;</span></span>)
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-01 00:52:15 UTC
+Last updated 2019-02-02 18:04:45 UTC
 </div>
 </div>
 </body>
