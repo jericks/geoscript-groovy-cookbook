@@ -530,6 +530,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#workspace-recipes">Workspace Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#using-workspaces">Using Workspaces</a></li>
+<li><a href="#creating-an-in-memory-workspace">Creating an in Memory Workspace</a></li>
 <li><a href="#using-a-directory-workspace">Using a Directory Workspace</a></li>
 <li><a href="#investigating-workspaces">Investigating Workspaces</a></li>
 <li><a href="#creating-workspaces">Creating Workspaces</a>
@@ -670,6 +671,27 @@ println workspace.has(<span class="string"><span class="delimiter">'</span><span
 <div class="title">Close the Workspace when you are done</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">workspace.close()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-an-in-memory-workspace"><a class="anchor" href="#creating-an-in-memory-workspace"></a>Creating an in Memory Workspace</h3>
+<div class="listingblock">
+<div class="title">The empty Workspace constructor creates an in Memory Workspace.  You can create a Layer by passing a name and a list of Fields.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Workspace()
+
+Layer layer = workspace.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+println layer</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cities</pre>
 </div>
 </div>
 </div>
@@ -1049,7 +1071,7 @@ places (10)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-02 18:04:45 UTC
+Last updated 2019-02-03 02:39:21 UTC
 </div>
 </div>
 </body>
