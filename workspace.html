@@ -677,7 +677,7 @@ println workspace.has(<span class="string"><span class="delimiter">'</span><span
 <div class="sect2">
 <h3 id="creating-an-in-memory-workspace"><a class="anchor" href="#creating-an-in-memory-workspace"></a>Creating an in Memory Workspace</h3>
 <div class="listingblock">
-<div class="title">The empty Workspace constructor creates an in Memory Workspace.  You can create a Layer by passing a name and a list of Fields.</div>
+<div class="title">The empty Workspace constructor creates an in Memory Workspace.  You can create a Layer by passing a name and a list of Fields. You can then remove the Layer by passing a reference to the Layer.</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Workspace()
 
@@ -686,12 +686,16 @@ Layer layer = workspace.create(<span class="string"><span class="delimiter">&quo
         <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
         <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
 ])
-println layer</code></pre>
+println layer
+
+workspace.remove(layer)
+println workspace.has(layer.name)</code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities</pre>
+<pre>cities
+false</pre>
 </div>
 </div>
 </div>
@@ -852,6 +856,29 @@ workspace = Workspace.getWorkspace(connectionString)</code></pre>
 workspace = Workspace.getWorkspace(connectionString)</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">You can use the withWorkspace method to automatically handle closing the Workspace.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace.withWorkspace(<span class="string"><span class="delimiter">&quot;</span><span class="content">dbtype=geopkg database=src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>) { Workspace workspace -&gt;
+    println workspace.format
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">----------</span><span class="delimiter">&quot;</span></span>
+    workspace.names.each { <span class="predefined-type">String</span> name -&gt;
+        println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>name<span class="inline-delimiter">}</span></span><span class="content"> (</span><span class="inline"><span class="inline-delimiter">${</span>workspace.get(name).count<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>GeoPackage
+---------
+countries (177)
+ocean (2)
+places (326)
+rivers (460)
+states (52)</pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="creating-a-workspace-from-a-connection-map"><a class="anchor" href="#creating-a-workspace-from-a-connection-map"></a>Creating a Workspace from a connection map</h4>
@@ -884,6 +911,29 @@ workspace = Workspace.getWorkspace(params)</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">params = [<span class="key">file</span>: <span class="string"><span class="delimiter">'</span><span class="content">layers.pbf</span><span class="delimiter">'</span></span>, <span class="key">precision</span>: <span class="integer">6</span>, <span class="key">dimension</span>:<span class="integer">2</span>]
 workspace = Workspace.getWorkspace(params)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">You can use the withWorkspace method to automatically handle closing the Workspace.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace.withWorkspace([<span class="key">dbtype</span>: <span class="string"><span class="delimiter">'</span><span class="content">geopkg</span><span class="delimiter">'</span></span>, <span class="key">database</span>: <span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>]) { Workspace workspace -&gt;
+    println workspace.format
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">----------</span><span class="delimiter">&quot;</span></span>
+    workspace.names.each { <span class="predefined-type">String</span> name -&gt;
+        println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>name<span class="inline-delimiter">}</span></span><span class="content"> (</span><span class="inline"><span class="inline-delimiter">${</span>workspace.get(name).count<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>GeoPackage
+---------
+countries (177)
+ocean (2)
+places (326)
+rivers (460)
+states (52)</pre>
 </div>
 </div>
 </div>
@@ -1071,7 +1121,7 @@ places (10)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-03 02:39:21 UTC
+Last updated 2019-02-03 16:40:08 UTC
 </div>
 </div>
 </body>
