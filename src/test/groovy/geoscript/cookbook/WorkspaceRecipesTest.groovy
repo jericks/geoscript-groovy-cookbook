@@ -42,6 +42,13 @@ class WorkspaceRecipesTest {
         assertEquals("cities", layer.name)
     }
 
+    @Test void workspaceAddLayerNameChunk() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Layer layer = recipes.workspaceAddLayerNameChunk()
+        assertEquals("random points", layer.name)
+        assertEquals(500, layer.count())
+    }
+
     @Test void createDirectoryWorkspace() {
         WorkspaceRecipes recipes = new WorkspaceRecipes()
         Map<String,Object> values = recipes.createDirectoryWorkspace()

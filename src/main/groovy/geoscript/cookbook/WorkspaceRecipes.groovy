@@ -2,11 +2,14 @@ package geoscript.cookbook
 
 import geoscript.feature.Field
 import geoscript.feature.Schema
+import geoscript.geom.Bounds
+import geoscript.geom.Geometry
 import geoscript.layer.Layer
 import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Geobuf
 import geoscript.workspace.H2
+import geoscript.workspace.Memory
 import geoscript.workspace.Property
 import geoscript.workspace.Workspace
 
@@ -124,6 +127,26 @@ class WorkspaceRecipes extends Recipes {
         layer
     }
 
+    Layer workspaceAddLayerNameChunk() {
+        // tag::workspaceAddLayerNameChunk[]
+        Workspace workspace = new Memory()
+        Layer layer = workspace.create("points", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer")
+        ])
+        Bounds bounds = new Bounds(-180,-90, 180,90, "EPSG:4326")
+        Geometry.createRandomPoints(bounds.geometry, 500).geometries.eachWithIndex { Geometry geom, int i ->
+            layer.add([geom: geom, id: i])
+        }
+        println "Original Layer has ${layer.count} features."
+
+        Layer copyOfLayer = workspace.add(layer, "random points", 100)
+        println "Copied Layer has ${copyOfLayer.count} features."
+        // end::workspaceAddLayerNameChunk[]
+        writeFile("workspaceAddLayerNameChunk", "Original Layer has ${layer.count} features.${NEW_LINE}Copied Layer has ${copyOfLayer.count} features.")
+        drawOnBasemap("workspaceAddLayerNameChunk", [copyOfLayer], bounds)
+        copyOfLayer
+    }
 
     Map<String,Object> createDirectoryWorkspace() {
 

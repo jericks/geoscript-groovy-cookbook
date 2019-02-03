@@ -88,6 +88,20 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createMemor
 include::output/workspace_create_memory.txt[]
 ....
 
+=== Add Layer's Features in Chunks
+
+[source,groovy]
+.When adding a large Layer to a Workspace, you can add Features in chunks.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=workspaceAddLayerNameChunk,indent=0]
+----
+....
+include::output/workspaceAddLayerNameChunk.txt[]
+....
+
+[.thumb]
+image::workspaceAddLayerNameChunk.png[]
+
 === Using a Directory Workspace
 
 A Directory Workspace is a directory of Shapefiles.
