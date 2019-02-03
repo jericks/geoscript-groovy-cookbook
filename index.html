@@ -755,6 +755,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#using-workspaces">Using Workspaces</a></li>
 <li><a href="#creating-an-in-memory-workspace">Creating an in Memory Workspace</a></li>
+<li><a href="#add-layers-features-in-chunks">Add Layer&#8217;s Features in Chunks</a></li>
 <li><a href="#using-a-directory-workspace">Using a Directory Workspace</a></li>
 <li><a href="#investigating-workspaces">Investigating Workspaces</a></li>
 <li><a href="#creating-workspaces">Creating Workspaces</a>
@@ -4859,8 +4860,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 304820841 nanoseconds
-Time with PreparedGeometry = 290317123 nanoseconds</pre>
+<pre>Time with Geometry         = 463558107 nanoseconds
+Time with PreparedGeometry = 193726248 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4905,8 +4906,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 142312523 nanoseconds
-Time with PreparedGeometry = 91551816 nanoseconds</pre>
+<pre>Time with Geometry         = 397070115 nanoseconds
+Time with PreparedGeometry = 395514297 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -8720,7 +8721,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--63fc96b8_168b4435af4_-371c geom: null, id: null, name: null</pre>
+<pre>cities.fid-62e4bb90_168b4ef3141_-2f4c geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -9435,7 +9436,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 03 16:50:19 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 03 19:58:01 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9454,7 +9455,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--63fc96b8_168b4435af4_-3720 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-62e4bb90_168b4ef3141_-2f50 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9478,7 +9479,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 03 16:50:19 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 03 19:58:01 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9498,7 +9499,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--63fc96b8_168b4435af4_-371e title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-62e4bb90_168b4ef3141_-2f4e title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -9660,7 +9661,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--63fc96b8_168b4435af4_-371d geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-62e4bb90_168b4ef3141_-2f4d geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9698,7 +9699,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--63fc96b8_168b4435af4_-371f geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-62e4bb90_168b4ef3141_-2f4f geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -10981,12 +10982,12 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:getX
-geo:getY
 geo:isValid
 geo:buffer
 geo:union
 geo:intersection
+geo:getX
+geo:getY
 geo:difference
 geo:reproject
 geo:splitPolygon
@@ -11010,6 +11011,7 @@ geo:simplify
 geo:numGeometries
 geo:startPoint
 geo:numPoints
+geo:endPoint
 geo:isClosed
 geo:envelope
 geo:dimension
@@ -11018,12 +11020,11 @@ geo:numInteriorRing
 geo:geometryType
 geo:isRing
 geo:polygonize
-geo:endPoint
 geo:equalsExact
-geo:interiorRingN
-geo:pointN
 geo:relatePattern
+geo:interiorRingN
 geo:equalsExactTolerance
+geo:pointN
 geo:length
 geo:isEmpty
 geo:contains
@@ -13449,6 +13450,38 @@ false</pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="add-layers-features-in-chunks"><a class="anchor" href="#add-layers-features-in-chunks"></a>Add Layer&#8217;s Features in Chunks</h3>
+<div class="listingblock">
+<div class="title">When adding a large Layer to a Workspace, you can add Features in chunks.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+Layer layer = workspace.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">points</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>)
+])
+Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>, <span class="integer">180</span>,<span class="integer">90</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry.createRandomPoints(bounds.geometry, <span class="integer">500</span>).geometries.eachWithIndex { Geometry geom, <span class="type">int</span> i -&gt;
+    layer.add([<span class="key">geom</span>: geom, <span class="key">id</span>: i])
+}
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Original Layer has </span><span class="inline"><span class="inline-delimiter">${</span>layer.count<span class="inline-delimiter">}</span></span><span class="content"> features.</span><span class="delimiter">&quot;</span></span>
+
+Layer copyOfLayer = workspace.add(layer, <span class="string"><span class="delimiter">&quot;</span><span class="content">random points</span><span class="delimiter">&quot;</span></span>, <span class="integer">100</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Copied Layer has </span><span class="inline"><span class="inline-delimiter">${</span>copyOfLayer.count<span class="inline-delimiter">}</span></span><span class="content"> features.</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Original Layer has 500 features.
+Copied Layer has 500 features.</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/workspaceAddLayerNameChunk.png" alt="workspaceAddLayerNameChunk">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="using-a-directory-workspace"><a class="anchor" href="#using-a-directory-workspace"></a>Using a Directory Workspace</h3>
 <div class="paragraph">
 <p>A Directory Workspace is a directory of Shapefiles.</p>
@@ -15482,7 +15515,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--63fc96b8_168b4435af4_-6907"
+            "id": "fid-62e4bb90_168b4ef3141_-6907"
         },
         {
             "type": "Feature",
@@ -15497,7 +15530,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--63fc96b8_168b4435af4_-6905"
+            "id": "fid-62e4bb90_168b4ef3141_-6905"
         }
     ]
 }</pre>
@@ -15547,7 +15580,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--63fc96b8_168b4435af4_-7e31"
+            "id": "fid-62e4bb90_168b4ef3141_-7e31"
         },
         {
             "type": "Feature",
@@ -15562,7 +15595,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--63fc96b8_168b4435af4_-7e2f"
+            "id": "fid-62e4bb90_168b4ef3141_-7e2f"
         }
     ]
 }</pre>
@@ -15746,7 +15779,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--63fc96b8_168b4435af4_-739c"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-62e4bb90_168b4ef3141_-739c"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -15768,7 +15801,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--63fc96b8_168b4435af4_-739a"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-62e4bb90_168b4ef3141_-739a"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -15834,7 +15867,7 @@ println gml</code></pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--63fc96b8_168b4435af4_-73b6"&gt;
+&lt;gsf:cities fid="fid-62e4bb90_168b4ef3141_-73b6"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -15848,7 +15881,7 @@ println gml</code></pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--63fc96b8_168b4435af4_-73b4"&gt;
+&lt;gsf:cities fid="fid-62e4bb90_168b4ef3141_-73b4"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -15962,7 +15995,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--63fc96b8_168b4435af4_-6a12
+          fid-62e4bb90_168b4ef3141_-6a12
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -15989,7 +16022,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--63fc96b8_168b4435af4_-6a10
+          fid-62e4bb90_168b4ef3141_-6a10
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -16049,13 +16082,13 @@ println kml</code></pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid--63fc96b8_168b4435af4_-73ae"&gt;
+&lt;kml:Placemark id="fid-62e4bb90_168b4ef3141_-73ae"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid--63fc96b8_168b4435af4_-73ac"&gt;
+&lt;kml:Placemark id="fid-62e4bb90_168b4ef3141_-73ac"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -16183,15 +16216,15 @@ println georss</code></pre>
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--63fc96b8_168b4435af4_-7a3a&lt;/title&gt;
+&lt;title&gt;fid-62e4bb90_168b4ef3141_-7a3a&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Sun Feb 03 16:49:14 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Sun Feb 03 19:56:56 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--63fc96b8_168b4435af4_-7a38&lt;/title&gt;
+&lt;title&gt;fid-62e4bb90_168b4ef3141_-7a38&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Sun Feb 03 16:49:14 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Sun Feb 03 19:56:56 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -16261,10 +16294,10 @@ println gpx</code></pre>
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid--63fc96b8_168b4435af4_-73b2&lt;/name&gt;
+&lt;name&gt;fid-62e4bb90_168b4ef3141_-73b2&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid--63fc96b8_168b4435af4_-73b0&lt;/name&gt;
+&lt;name&gt;fid-62e4bb90_168b4ef3141_-73b0&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -19165,7 +19198,7 @@ Tile(x:29, y:83, z:7)</pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.13-SNAPSHOT<br>
-Last updated 2019-02-03 16:40:08 UTC
+Last updated 2019-02-03 19:47:12 UTC
 </div>
 </div>
 </body>
