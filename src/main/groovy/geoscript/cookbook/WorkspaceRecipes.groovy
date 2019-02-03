@@ -105,6 +105,22 @@ class WorkspaceRecipes extends Recipes {
         values
     }
 
+    Layer createMemoryWorkspace() {
+        // tag::createMemoryWorkspace[]
+        Workspace workspace = new Workspace()
+
+        Layer layer = workspace.create("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        println layer
+        // end::createMemoryWorkspace[]
+        writeFile("workspace_create_memory", "${layer}")
+        layer
+    }
+
+
     Map<String,Object> createDirectoryWorkspace() {
 
         Map<String,Object> values = [:]

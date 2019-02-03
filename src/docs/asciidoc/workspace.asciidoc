@@ -77,6 +77,17 @@ include::output/workspace_remove_layer.txt[]
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=closeWorkspace,indent=0]
 ----
 
+=== Creating an in Memory Workspace
+
+[source,groovy]
+.The empty Workspace constructor creates an in Memory Workspace.  You can create a Layer by passing a name and a list of Fields.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createMemoryWorkspace,indent=0]
+----
+....
+include::output/workspace_create_memory.txt[]
+....
+
 === Using a Directory Workspace
 
 A Directory Workspace is a directory of Shapefiles.

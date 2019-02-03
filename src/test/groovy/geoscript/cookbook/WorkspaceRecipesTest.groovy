@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.layer.Layer
 import geoscript.workspace.Workspace
 import org.junit.Test
 import static org.junit.Assert.*
@@ -33,6 +34,12 @@ class WorkspaceRecipesTest {
         assertTrue(names.contains('cities'))
         assertTrue(names.contains('states'))
         assertTrue(values['citiesRemoved'])
+    }
+
+    @Test void createMemoryWorkspace() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Layer layer = recipes.createMemoryWorkspace()
+        assertEquals("cities", layer.name)
     }
 
     @Test void createDirectoryWorkspace() {
