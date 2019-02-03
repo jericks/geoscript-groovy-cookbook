@@ -80,7 +80,7 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=closeWorksp
 === Creating an in Memory Workspace
 
 [source,groovy]
-.The empty Workspace constructor creates an in Memory Workspace.  You can create a Layer by passing a name and a list of Fields.
+.The empty Workspace constructor creates an in Memory Workspace.  You can create a Layer by passing a name and a list of Fields. You can then remove the Layer by passing a reference to the Layer.
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createMemoryWorkspace,indent=0]
 ----
@@ -187,6 +187,15 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspac
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspaceFromString_H2,indent=0]
 ----
 
+[source,groovy]
+.You can use the withWorkspace method to automatically handle closing the Workspace.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=withWorkspaceFromString,indent=0]
+----
+....
+include::output/workspace_with_string.txt[]
+....
+
 ==== Creating a Workspace from a connection map
 
 You can create a Workspace from a connection map that contains paramters.
@@ -208,6 +217,15 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspac
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=getWorkspaceFromMap_Geobuf,indent=0]
 ----
+
+[source,groovy]
+.You can use the withWorkspace method to automatically handle closing the Workspace.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=withWorkspaceFromMap,indent=0]
+----
+....
+include::output/workspace_with_map.txt[]
+....
 
 ==== Creating Directory Workspaces
 

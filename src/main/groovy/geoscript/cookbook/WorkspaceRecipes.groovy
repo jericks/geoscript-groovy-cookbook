@@ -115,8 +115,12 @@ class WorkspaceRecipes extends Recipes {
                 new Field("name", "String")
         ])
         println layer
+
+        workspace.remove(layer)
+        println workspace.has(layer.name)
+
         // end::createMemoryWorkspace[]
-        writeFile("workspace_create_memory", "${layer}")
+        writeFile("workspace_create_memory", "${layer}${NEW_LINE}${workspace.has('cities')}")
         layer
     }
 
@@ -222,6 +226,45 @@ class WorkspaceRecipes extends Recipes {
 
         values
     }
+
+    Map<String,Object> withWorkspaceFromString() {
+        Map<String,Object> values = [:]
+        // tag::withWorkspaceFromString[]
+        Workspace.withWorkspace("dbtype=geopkg database=src/main/resources/data.gpkg") { Workspace workspace ->
+            println workspace.format
+            println "----------"
+            workspace.names.each { String name ->
+                println "${name} (${workspace.get(name).count})"
+            }
+        }
+        // end::withWorkspaceFromString[]
+        Workspace.withWorkspace("dbtype=geopkg database=src/main/resources/data.gpkg") { Workspace workspace ->
+            writeFile("workspace_with_string", "${workspace.format}${NEW_LINE}---------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
+            values.format = workspace.format
+            values.names = workspace.names
+        }
+        values
+    }
+
+    Map<String,Object> withWorkspaceFromMap() {
+        Map<String,Object> values = [:]
+        // tag::withWorkspaceFromMap[]
+        Workspace.withWorkspace([dbtype: 'geopkg', database: 'src/main/resources/data.gpkg']) { Workspace workspace ->
+            println workspace.format
+            println "----------"
+            workspace.names.each { String name ->
+                println "${name} (${workspace.get(name).count})"
+            }
+        }
+        // end::withWorkspaceFromMap[]
+        Workspace.withWorkspace([dbtype: 'geopkg', database: 'src/main/resources/data.gpkg']) { Workspace workspace ->
+            writeFile("workspace_with_map", "${workspace.format}${NEW_LINE}---------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
+            values.format = workspace.format
+            values.names = workspace.names
+        }
+        values
+    }
+
 
     Workspace createDirectoryWorkspaceFromName() {
         // tag::createDirectoryWorkspaceFromName[]
