@@ -143,3 +143,23 @@ include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=executeClosur
 ----
 [.thumb]
 image::process_execute_closure.png[]
+
+=== Process Functions
+
+Process Functions are a combination of Functions and Processes that can be used to create rendering transformations.
+
+[source,groovy]
+.Create a Function from a Process that converts geometries in a Layer into a convexhull.
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=processFunctionProcess,indent=0]
+----
+[.thumb]
+image::processFunctionProcess.png[]
+
+[source,groovy]
+.Create a ProcessFunction from a Process that converts geometries in a Layer into a bounds.
+----
+include::{sourcedir}/geoscript/cookbook/ProcessRecipes.groovy[tags=processProcessFunction,indent=0]
+----
+[.thumb]
+image::processProcessFunction.png[]

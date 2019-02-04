@@ -374,6 +374,26 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=evaulateFuncti
 include::output/filter_function_evaluate_lowercase.txt[]
 ....
 
+=== Process Functions
+
+Process Functions are a combination of Functions and Processes that can be used to create rendering transformations.
+
+[source,groovy]
+.Create a Function from a Process that converts geometries in a Layer into a convexhull.
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createFunctionProcess,indent=0]
+----
+[.thumb]
+image::createFunctionProcess.png[]
+
+[source,groovy]
+.Create a ProcessFunction from a Process that converts geometries in a Layer into a bounds.
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createProcessFunction,indent=0]
+----
+[.thumb]
+image::createProcessFunction.png[]
+
 === Creating Colors
 
 [source,groovy]

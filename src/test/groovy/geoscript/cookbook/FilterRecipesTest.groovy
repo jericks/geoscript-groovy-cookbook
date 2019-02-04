@@ -4,6 +4,7 @@ import geoscript.filter.Color
 import geoscript.filter.Expression
 import geoscript.filter.Filter
 import geoscript.filter.Function
+import geoscript.filter.ProcessFunction
 import geoscript.filter.Property
 import geoscript.geom.Polygon
 import org.junit.Test
@@ -249,6 +250,22 @@ class FilterRecipesTest {
         List<String> names = recipes.getFunctionNames()
         assertTrue(names.size() > 0)
         assertTrue(names.contains("buffer"))
+    }
+
+    // Process Function
+
+    @Test void createFunctionProcess() {
+        FilterRecipes recipes = new FilterRecipes()
+        Function function = recipes.createFunctionProcess()
+        assertNotNull(function)
+        assertTrue(function instanceof Function)
+    }
+
+    @Test void createProcessFunction() {
+        FilterRecipes recipes = new FilterRecipes()
+        Function function = recipes.createProcessFunction()
+        assertNotNull(function)
+        assertTrue(function instanceof ProcessFunction)
     }
 
     // Color

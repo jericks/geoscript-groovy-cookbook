@@ -6,10 +6,20 @@ import geoscript.filter.Color
 import geoscript.filter.Expression
 import geoscript.filter.Filter
 import geoscript.filter.Function
+import geoscript.filter.ProcessFunction
 import geoscript.filter.Property
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
+import geoscript.geom.GeometryCollection
 import geoscript.geom.Point
+import geoscript.layer.Layer
+import geoscript.process.Process
+import geoscript.style.Fill
+import geoscript.style.Stroke
+import geoscript.style.Symbolizer
+import geoscript.style.Transform
+import geoscript.workspace.GeoPackage
+import geoscript.workspace.Workspace
 
 import java.awt.image.BufferedImage
 
@@ -462,6 +472,54 @@ class FilterRecipes extends Recipes {
         // end::getFunctionNames[]
         writeFile("filter_function_names","There are ${functionNames.size()} Functions:${NEW_LINE}${functionNames.sort().subList(0,10).collect { it }.join(NEW_LINE)}")
         functionNames
+    }
+
+    // Process Function
+
+    Function createFunctionProcess() {
+        // tag::createFunctionProcess[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        Process process = new Process("convexhull",
+                "Create a convexhull around the features",
+                [features: geoscript.layer.Cursor],
+                [result: geoscript.layer.Cursor],
+                { inputs ->
+                    def geoms = new GeometryCollection(inputs.features.collect{ f -> f.geom})
+                    def output = new Layer()
+                    output.add([geoms.convexHull])
+                    [result: output]
+                }
+        )
+        Function function = new Function(process, new Function("parameter", new Expression("features")))
+        Symbolizer symbolizer =  new Transform(function, Transform.RENDERING) + new Fill("aqua", 0.75) + new Stroke("navy", 0.5)
+        places.style = symbolizer
+        // end::createFunctionProcess[]
+        drawOnBasemap("createFunctionProcess", [places])
+        function
+    }
+
+    Function createProcessFunction() {
+        // tag::createProcessFunction[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        Process process = new Process("bounds",
+                "Create a bounds around the features",
+                [features: geoscript.layer.Cursor],
+                [result: geoscript.layer.Cursor],
+                { inputs ->
+                    def geoms = new GeometryCollection(inputs.features.collect{ f -> f.geom})
+                    def output = new Layer()
+                    output.add([geoms.bounds.geometry])
+                    [result: output]
+                }
+        )
+        ProcessFunction processFunction = new ProcessFunction(process, new Function("parameter", new Expression("features")))
+        Symbolizer symbolizer =  new Transform(processFunction, Transform.RENDERING) + new Fill("aqua", 0.75) + new Stroke("navy", 0.5)
+        places.style = symbolizer
+        // end::createProcessFunction[]
+        drawOnBasemap("createProcessFunction", [places])
+        processFunction
     }
 
     // Color

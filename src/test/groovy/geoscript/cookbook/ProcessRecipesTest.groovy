@@ -1,5 +1,7 @@
 package geoscript.cookbook
 
+import geoscript.filter.Function
+import geoscript.filter.ProcessFunction
 import geoscript.layer.Cursor
 import org.junit.Test
 import static org.junit.Assert.*
@@ -35,6 +37,22 @@ class ProcessRecipesTest {
         assertEquals("[features:class geoscript.layer.Cursor]", values.parameters.toString())
         assertEquals("[result:class geoscript.layer.Cursor]", values.results.toString())
         assertTrue(values.executeResults.result instanceof Cursor)
+    }
+
+    // Process Function
+
+    @Test void processFunctionProcess() {
+        ProcessRecipes recipes = new ProcessRecipes()
+        Function function = recipes.processFunctionProcess()
+        assertNotNull(function)
+        assertTrue(function instanceof Function)
+    }
+
+    @Test void processProcessFunction() {
+        ProcessRecipes recipes = new ProcessRecipes()
+        Function function = recipes.processProcessFunction()
+        assertNotNull(function)
+        assertTrue(function instanceof ProcessFunction)
     }
 
 }
