@@ -20,6 +20,7 @@ import geoscript.style.Symbolizer
 import geoscript.style.Transform
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
+import static geoscript.filter.Expressions.*
 
 import java.awt.image.BufferedImage
 
@@ -763,6 +764,34 @@ class FilterRecipes extends Recipes {
         List<Color> colors = Color.getPaletteColors("YlOrBr")
         Color.draw(colors, "horizontal", 50)
         // end::drawColorToGui[]
+    }
+
+    // Expressions static import
+
+    List<Expression> staticImports() {
+        List<Expression> expressions = []
+
+        // tag::staticImportsLiteral[]
+        Expression literal = expression(1.2)
+        // end::staticImportsLiteral[]
+        expressions.add(literal)
+
+        // tag::staticImportsColor[]
+        Expression color = color("wheat")
+        // end::staticImportsColor[]
+        expressions.add(color)
+
+        // tag::staticImportsProperty[]
+        Expression property = property("ID")
+        // end::staticImportsProperty[]
+        expressions.add(property)
+
+        // tag::staticImportsFunction[]
+        Expression function = function("max(10,22)")
+        // end::staticImportsFunction[]
+        expressions.add(function)
+
+        expressions
     }
 
 }

@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.filter.Color
 import geoscript.filter.Expression
+import geoscript.filter.Expressions
 import geoscript.filter.Filter
 import geoscript.filter.Function
 import geoscript.filter.ProcessFunction
@@ -383,4 +384,15 @@ class FilterRecipesTest {
         assertNotNull(image)
     }
 
+    // Static Imports
+    @Test
+    void staticImports() {
+        FilterRecipes recipes = new FilterRecipes()
+        List<Expressions> expressions = recipes.staticImports()
+        assertTrue(expressions[0] instanceof Expression)
+        assertTrue(expressions[1] instanceof Color)
+        assertTrue(expressions[2] instanceof Property)
+        assertTrue(expressions[3] instanceof Function)
+    }
+    
 }

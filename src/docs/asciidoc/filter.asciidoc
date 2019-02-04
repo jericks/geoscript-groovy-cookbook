@@ -663,3 +663,35 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=getFunctionFro
 ....
 include::output/filter_cql_function.txt[]
 ....
+
+=== Create Expression from static imports
+
+[source,groovy]
+.You can import short helper methods from the Expressions class.
+----
+import static geoscript.filter.Expressions.*
+----
+
+[source,groovy]
+.Create a literal
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=staticImportsLiteral,indent=0]
+----
+
+[source,groovy]
+.Create a Color
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=staticImportsColor,indent=0]
+----
+
+[source,groovy]
+.Create a Property
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=staticImportsProperty,indent=0]
+----
+
+[source,groovy]
+.Create a Function
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=staticImportsFunction,indent=0]
+----
