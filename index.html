@@ -674,6 +674,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#evaluating-properties">Evaluating Properties</a></li>
 <li><a href="#creating-functions">Creating Functions</a></li>
 <li><a href="#evaluating-functions">Evaluating Functions</a></li>
+<li><a href="#process-functions">Process Functions</a></li>
 <li><a href="#creating-colors">Creating Colors</a></li>
 <li><a href="#getting-color-formats">Getting Color Formats</a></li>
 <li><a href="#displaying-colors">Displaying Colors</a></li>
@@ -686,6 +687,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#execute-a-built-in-process">Execute a built-in Process</a></li>
 <li><a href="#listing-built-in-processes">Listing built-in Processes</a></li>
 <li><a href="#executing-a-new-process">Executing a new Process</a></li>
+<li><a href="#process-functions-2">Process Functions</a></li>
 </ul>
 </li>
 <li><a href="#render-recipes">Render Recipes</a>
@@ -972,7 +974,7 @@ GeoScript Groovy is open source and licensed under the MIT license.</p>
 <h2 id="using-geoscript"><a class="anchor" href="#using-geoscript"></a>Using GeoScript</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To use GeoScript Groovy you need Java and Groovy installed and on your PATH. Next, download the latest stable release,
+<p>To use GeoScript Groovy you need Java, Java Advanced Imaging (JAI), and Groovy installed and on your PATH. Next, download the latest stable release,
 the latest in development build, or build the code yourself. Then put the GeoScript Groovy bin directory on your PATH.
 You are now ready to use GeoScript Groovy!</p>
 </div>
@@ -4860,8 +4862,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 463558107 nanoseconds
-Time with PreparedGeometry = 193726248 nanoseconds</pre>
+<pre>Time with Geometry         = 360304219 nanoseconds
+Time with PreparedGeometry = 173515124 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4906,8 +4908,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 397070115 nanoseconds
-Time with PreparedGeometry = 395514297 nanoseconds</pre>
+<pre>Time with Geometry         = 214760091 nanoseconds
+Time with PreparedGeometry = 111144763 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -8721,7 +8723,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-62e4bb90_168b4ef3141_-2f4c geom: null, id: null, name: null</pre>
+<pre>cities.fid--23256db9_168b9ca3f49_-2f3c geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -9436,7 +9438,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 03 19:58:01 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Feb 04 18:35:44 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9455,7 +9457,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-62e4bb90_168b4ef3141_-2f50 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--23256db9_168b9ca3f49_-2f40 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9479,7 +9481,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Feb 03 19:58:01 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon Feb 04 18:35:44 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9499,7 +9501,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-62e4bb90_168b4ef3141_-2f4e title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--23256db9_168b9ca3f49_-2f3e title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -9661,7 +9663,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-62e4bb90_168b4ef3141_-2f4d geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--23256db9_168b9ca3f49_-2f3d geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9699,7 +9701,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-62e4bb90_168b4ef3141_-2f4f geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--23256db9_168b9ca3f49_-2f3f geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -10359,6 +10361,64 @@ println lowerCaseName</code></pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="process-functions"><a class="anchor" href="#process-functions"></a>Process Functions</h3>
+<div class="paragraph">
+<p>Process Functions are a combination of Functions and Processes that can be used to create rendering transformations.</p>
+</div>
+<div class="listingblock">
+<div class="title">Create a Function from a Process that converts geometries in a Layer into a convexhull.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer places = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Process</span> process = <span class="keyword">new</span> <span class="predefined-type">Process</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">convexhull</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Create a convexhull around the features</span><span class="delimiter">&quot;</span></span>,
+        [<span class="key">features</span>: geoscript.layer.Cursor],
+        [<span class="key">result</span>: geoscript.layer.Cursor],
+        { inputs -&gt;
+            <span class="keyword">def</span> geoms = <span class="keyword">new</span> GeometryCollection(inputs.features.collect{ f -&gt; f.geom})
+            <span class="keyword">def</span> output = <span class="keyword">new</span> Layer()
+            output.add([geoms.convexHull])
+            [<span class="key">result</span>: output]
+        }
+)
+Function function = <span class="keyword">new</span> Function(process, <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">parameter</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Expression</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">features</span><span class="delimiter">&quot;</span></span>)))
+Symbolizer symbolizer =  <span class="keyword">new</span> Transform(function, Transform.RENDERING) + <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">aqua</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+places.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/createFunctionProcess.png" alt="createFunctionProcess">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a ProcessFunction from a Process that converts geometries in a Layer into a bounds.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer places = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Process</span> process = <span class="keyword">new</span> <span class="predefined-type">Process</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">bounds</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Create a bounds around the features</span><span class="delimiter">&quot;</span></span>,
+        [<span class="key">features</span>: geoscript.layer.Cursor],
+        [<span class="key">result</span>: geoscript.layer.Cursor],
+        { inputs -&gt;
+            <span class="keyword">def</span> geoms = <span class="keyword">new</span> GeometryCollection(inputs.features.collect{ f -&gt; f.geom})
+            <span class="keyword">def</span> output = <span class="keyword">new</span> Layer()
+            output.add([geoms.bounds.geometry])
+            [<span class="key">result</span>: output]
+        }
+)
+ProcessFunction processFunction = <span class="keyword">new</span> ProcessFunction(process, <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">parameter</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Expression</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">features</span><span class="delimiter">&quot;</span></span>)))
+Symbolizer symbolizer =  <span class="keyword">new</span> Transform(processFunction, Transform.RENDERING) + <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">aqua</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+places.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/createProcessFunction.png" alt="createProcessFunction">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="creating-colors"><a class="anchor" href="#creating-colors"></a>Creating Colors</h3>
 <div class="listingblock">
 <div class="title">Create a Color from a RGB color string</div>
@@ -10984,10 +11044,10 @@ vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:isValid
 geo:buffer
-geo:union
-geo:intersection
 geo:getX
 geo:getY
+geo:union
+geo:intersection
 geo:difference
 geo:reproject
 geo:splitPolygon
@@ -11011,7 +11071,6 @@ geo:simplify
 geo:numGeometries
 geo:startPoint
 geo:numPoints
-geo:endPoint
 geo:isClosed
 geo:envelope
 geo:dimension
@@ -11020,11 +11079,12 @@ geo:numInteriorRing
 geo:geometryType
 geo:isRing
 geo:polygonize
+geo:endPoint
 geo:equalsExact
 geo:relatePattern
-geo:interiorRingN
-geo:equalsExactTolerance
 geo:pointN
+geo:equalsExactTolerance
+geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
@@ -11152,6 +11212,64 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/process_execute_closure.png" alt="process execute closure">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="process-functions-2"><a class="anchor" href="#process-functions-2"></a>Process Functions</h3>
+<div class="paragraph">
+<p>Process Functions are a combination of Functions and Processes that can be used to create rendering transformations.</p>
+</div>
+<div class="listingblock">
+<div class="title">Create a Function from a Process that converts geometries in a Layer into a convexhull.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer places = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Process</span> process = <span class="keyword">new</span> <span class="predefined-type">Process</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">convexhull</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Create a convexhull around the features</span><span class="delimiter">&quot;</span></span>,
+        [<span class="key">features</span>: geoscript.layer.Cursor],
+        [<span class="key">result</span>: geoscript.layer.Cursor],
+        { inputs -&gt;
+            <span class="keyword">def</span> geoms = <span class="keyword">new</span> GeometryCollection(inputs.features.collect{ f -&gt; f.geom})
+            <span class="keyword">def</span> output = <span class="keyword">new</span> Layer()
+            output.add([geoms.convexHull])
+            [<span class="key">result</span>: output]
+        }
+)
+Function function = <span class="keyword">new</span> Function(process, <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">parameter</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Expression</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">features</span><span class="delimiter">&quot;</span></span>)))
+Symbolizer symbolizer =  <span class="keyword">new</span> Transform(function, Transform.RENDERING) + <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">aqua</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+places.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/processFunctionProcess.png" alt="processFunctionProcess">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a ProcessFunction from a Process that converts geometries in a Layer into a bounds.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer places = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Process</span> process = <span class="keyword">new</span> <span class="predefined-type">Process</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">bounds</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Create a bounds around the features</span><span class="delimiter">&quot;</span></span>,
+        [<span class="key">features</span>: geoscript.layer.Cursor],
+        [<span class="key">result</span>: geoscript.layer.Cursor],
+        { inputs -&gt;
+            <span class="keyword">def</span> geoms = <span class="keyword">new</span> GeometryCollection(inputs.features.collect{ f -&gt; f.geom})
+            <span class="keyword">def</span> output = <span class="keyword">new</span> Layer()
+            output.add([geoms.bounds.geometry])
+            [<span class="key">result</span>: output]
+        }
+)
+ProcessFunction processFunction = <span class="keyword">new</span> ProcessFunction(process, <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">parameter</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Expression</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">features</span><span class="delimiter">&quot;</span></span>)))
+Symbolizer symbolizer =  <span class="keyword">new</span> Transform(processFunction, Transform.RENDERING) + <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">aqua</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+places.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/processProcessFunction.png" alt="processProcessFunction">
 </div>
 </div>
 </div>
@@ -15515,7 +15633,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-62e4bb90_168b4ef3141_-6907"
+            "id": "fid--23256db9_168b9ca3f49_-6907"
         },
         {
             "type": "Feature",
@@ -15530,7 +15648,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-62e4bb90_168b4ef3141_-6905"
+            "id": "fid--23256db9_168b9ca3f49_-6905"
         }
     ]
 }</pre>
@@ -15580,7 +15698,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-62e4bb90_168b4ef3141_-7e31"
+            "id": "fid--23256db9_168b9ca3f49_-7e31"
         },
         {
             "type": "Feature",
@@ -15595,7 +15713,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-62e4bb90_168b4ef3141_-7e2f"
+            "id": "fid--23256db9_168b9ca3f49_-7e2f"
         }
     ]
 }</pre>
@@ -15779,7 +15897,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-62e4bb90_168b4ef3141_-739c"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--23256db9_168b9ca3f49_-739c"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -15801,7 +15919,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-62e4bb90_168b4ef3141_-739a"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--23256db9_168b9ca3f49_-739a"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -15867,7 +15985,7 @@ println gml</code></pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid-62e4bb90_168b4ef3141_-73b6"&gt;
+&lt;gsf:cities fid="fid--23256db9_168b9ca3f49_-73b6"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -15881,7 +15999,7 @@ println gml</code></pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid-62e4bb90_168b4ef3141_-73b4"&gt;
+&lt;gsf:cities fid="fid--23256db9_168b9ca3f49_-73b4"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -15995,7 +16113,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-62e4bb90_168b4ef3141_-6a12
+          fid--23256db9_168b9ca3f49_-6a12
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -16022,7 +16140,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-62e4bb90_168b4ef3141_-6a10
+          fid--23256db9_168b9ca3f49_-6a10
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -16082,13 +16200,13 @@ println kml</code></pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid-62e4bb90_168b4ef3141_-73ae"&gt;
+&lt;kml:Placemark id="fid--23256db9_168b9ca3f49_-73ae"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid-62e4bb90_168b4ef3141_-73ac"&gt;
+&lt;kml:Placemark id="fid--23256db9_168b9ca3f49_-73ac"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -16216,15 +16334,15 @@ println georss</code></pre>
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid-62e4bb90_168b4ef3141_-7a3a&lt;/title&gt;
+&lt;title&gt;fid--23256db9_168b9ca3f49_-7a3a&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Sun Feb 03 19:56:56 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Mon Feb 04 18:34:40 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid-62e4bb90_168b4ef3141_-7a38&lt;/title&gt;
+&lt;title&gt;fid--23256db9_168b9ca3f49_-7a38&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Sun Feb 03 19:56:56 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Mon Feb 04 18:34:40 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -16294,10 +16412,10 @@ println gpx</code></pre>
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid-62e4bb90_168b4ef3141_-73b2&lt;/name&gt;
+&lt;name&gt;fid--23256db9_168b9ca3f49_-73b2&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid-62e4bb90_168b4ef3141_-73b0&lt;/name&gt;
+&lt;name&gt;fid--23256db9_168b9ca3f49_-73b0&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -19198,7 +19316,7 @@ Tile(x:29, y:83, z:7)</pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.13-SNAPSHOT<br>
-Last updated 2019-02-03 19:47:12 UTC
+Last updated 2019-02-04 18:25:08 UTC
 </div>
 </div>
 </body>

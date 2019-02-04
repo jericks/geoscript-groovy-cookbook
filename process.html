@@ -532,6 +532,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#execute-a-built-in-process">Execute a built-in Process</a></li>
 <li><a href="#listing-built-in-processes">Listing built-in Processes</a></li>
 <li><a href="#executing-a-new-process">Executing a new Process</a></li>
+<li><a href="#process-functions">Process Functions</a></li>
 </ul>
 </li>
 </ul>
@@ -680,10 +681,10 @@ vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:isValid
 geo:buffer
-geo:union
-geo:intersection
 geo:getX
 geo:getY
+geo:union
+geo:intersection
 geo:difference
 geo:reproject
 geo:splitPolygon
@@ -707,7 +708,6 @@ geo:simplify
 geo:numGeometries
 geo:startPoint
 geo:numPoints
-geo:endPoint
 geo:isClosed
 geo:envelope
 geo:dimension
@@ -716,11 +716,12 @@ geo:numInteriorRing
 geo:geometryType
 geo:isRing
 geo:polygonize
+geo:endPoint
 geo:equalsExact
 geo:relatePattern
-geo:interiorRingN
-geo:equalsExactTolerance
 geo:pointN
+geo:equalsExactTolerance
+geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
@@ -851,12 +852,70 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="process-functions"><a class="anchor" href="#process-functions"></a>Process Functions</h3>
+<div class="paragraph">
+<p>Process Functions are a combination of Functions and Processes that can be used to create rendering transformations.</p>
+</div>
+<div class="listingblock">
+<div class="title">Create a Function from a Process that converts geometries in a Layer into a convexhull.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer places = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Process</span> process = <span class="keyword">new</span> <span class="predefined-type">Process</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">convexhull</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Create a convexhull around the features</span><span class="delimiter">&quot;</span></span>,
+        [<span class="key">features</span>: geoscript.layer.Cursor],
+        [<span class="key">result</span>: geoscript.layer.Cursor],
+        { inputs -&gt;
+            <span class="keyword">def</span> geoms = <span class="keyword">new</span> GeometryCollection(inputs.features.collect{ f -&gt; f.geom})
+            <span class="keyword">def</span> output = <span class="keyword">new</span> Layer()
+            output.add([geoms.convexHull])
+            [<span class="key">result</span>: output]
+        }
+)
+Function function = <span class="keyword">new</span> Function(process, <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">parameter</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Expression</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">features</span><span class="delimiter">&quot;</span></span>)))
+Symbolizer symbolizer =  <span class="keyword">new</span> Transform(function, Transform.RENDERING) + <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">aqua</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+places.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/processFunctionProcess.png" alt="processFunctionProcess">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a ProcessFunction from a Process that converts geometries in a Layer into a bounds.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer places = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Process</span> process = <span class="keyword">new</span> <span class="predefined-type">Process</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">bounds</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">Create a bounds around the features</span><span class="delimiter">&quot;</span></span>,
+        [<span class="key">features</span>: geoscript.layer.Cursor],
+        [<span class="key">result</span>: geoscript.layer.Cursor],
+        { inputs -&gt;
+            <span class="keyword">def</span> geoms = <span class="keyword">new</span> GeometryCollection(inputs.features.collect{ f -&gt; f.geom})
+            <span class="keyword">def</span> output = <span class="keyword">new</span> Layer()
+            output.add([geoms.bounds.geometry])
+            [<span class="key">result</span>: output]
+        }
+)
+ProcessFunction processFunction = <span class="keyword">new</span> ProcessFunction(process, <span class="keyword">new</span> Function(<span class="string"><span class="delimiter">&quot;</span><span class="content">parameter</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Expression</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">features</span><span class="delimiter">&quot;</span></span>)))
+Symbolizer symbolizer =  <span class="keyword">new</span> Transform(processFunction, Transform.RENDERING) + <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">aqua</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">navy</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+places.style = symbolizer</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/processProcessFunction.png" alt="processProcessFunction">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-03 19:47:12 UTC
+Last updated 2019-02-04 18:25:08 UTC
 </div>
 </div>
 </body>
