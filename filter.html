@@ -543,6 +543,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#displaying-colors">Displaying Colors</a></li>
 <li><a href="#using-color-palettes">Using Color Palettes</a></li>
 <li><a href="#creating-expressions-from-cql">Creating Expressions from CQL</a></li>
+<li><a href="#create-expression-from-static-imports">Create Expression from static imports</a></li>
 </ul>
 </li>
 </ul>
@@ -1654,12 +1655,45 @@ println function</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="create-expression-from-static-imports"><a class="anchor" href="#create-expression-from-static-imports"></a>Create Expression from static imports</h3>
+<div class="listingblock">
+<div class="title">You can import short helper methods from the Expressions class.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">import</span> <span class="include">static</span> <span class="include">geoscript.filter.Expressions.*</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a literal</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Expression</span> literal = expression(<span class="float">1.2</span>)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Expression</span> color = color(<span class="string"><span class="delimiter">&quot;</span><span class="content">wheat</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Property</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Expression</span> property = property(<span class="string"><span class="delimiter">&quot;</span><span class="content">ID</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Function</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Expression</span> function = function(<span class="string"><span class="delimiter">&quot;</span><span class="content">max(10,22)</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-04 18:25:08 UTC
+Last updated 2019-02-04 18:52:11 UTC
 </div>
 </div>
 </body>
