@@ -140,6 +140,12 @@ class RenderRecipesTest {
         assertNotNull(file)
     }
 
+    @Test void renderAnimatedGifBytes() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.renderAnimatedGifBytes()
+        assertNotNull(file)
+    }
+
     // GeoTIFF
 
     @Test void renderToGeoTiffImage() {

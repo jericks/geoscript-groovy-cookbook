@@ -534,6 +534,39 @@ class RenderRecipes extends Recipes {
         movedFile
     }
 
+    File renderAnimatedGifBytes() {
+        // tag::renderAnimatedGifBytes[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = new Fill("") + new Stroke("black", 1.0)
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries, states]
+        )
+
+        GIF gif = new GIF()
+        List images = ["Washington","Oregon","California"].collect { String state ->
+            map.bounds = states.getFeatures("NAME_1 = '${state}'")[0].bounds
+            def image = gif.render(map)
+            image
+        }
+        File file = new File("states.gif")
+        byte[] bytes = gif.renderAnimated(images, 500, true)
+        file.bytes = bytes
+        // end::renderAnimatedGifBytes[]
+        File movedFile = new File("src/docs/asciidoc/images/render_animated_gif_bytes.gif")
+        moveFile(file, movedFile)
+        images.eachWithIndex { BufferedImage img, int index ->
+            saveImage("render_animated_gif_bytes_${index}", img, "png")
+        }
+        movedFile
+    }
+
     // GEOTIF
 
     BufferedImage renderToGeoTiffImage() {

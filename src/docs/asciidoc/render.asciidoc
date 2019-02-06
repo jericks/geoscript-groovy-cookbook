@@ -295,6 +295,25 @@ image::render_animated_gif_1.png[]
 image::render_animated_gif_2.png[]
 endif::[]
 
+[source,groovy]
+.Render a Map to an animated GIF to a byte array using the GIF Renderer
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=renderAnimatedGifBytes,indent=0]
+----
+
+ifndef::backend-pdf[]
+[.thumb]
+image::render_animated_gif_bytes.gif[]
+endif::[]
+
+ifdef::backend-pdf[]
+[.thumb]
+image::render_animated_gif_bytes_0.png[]
+[.thumb]
+image::render_animated_gif_bytes_1.png[]
+[.thumb]
+image::render_animated_gif_bytes_2.png[]
+endif::[]
 
 ==== GeoTIFF
 
