@@ -530,6 +530,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#render-recipes">Render Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#creating-maps">Creating Maps</a></li>
+<li><a href="#map-properties">Map Properties</a></li>
+<li><a href="#advanced-properties">Advanced Properties</a></li>
 <li><a href="#rendering-maps">Rendering Maps</a>
 <ul class="sectlevel3">
 <li><a href="#finding-renderers">Finding Renderers</a></li>
@@ -578,7 +580,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect2">
 <h3 id="creating-maps"><a class="anchor" href="#creating-maps"></a>Creating Maps</h3>
 <div class="listingblock">
-<div class="title">Create a Map with Layers</div>
+<div class="title">Create a Map with Layers and render to a File.</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
 Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
@@ -597,6 +599,368 @@ map.render(file)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/map_create.png" alt="map create">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Map with Layers and render to a file name.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+map.render(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.png</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_create_filename.png" alt="map create filename">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Map with Layers and render to an OutputStream.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.png</span><span class="delimiter">&quot;</span></span>)
+file.withOutputStream { <span class="predefined-type">OutputStream</span> outputStream -&gt;
+    map.render(outputStream)
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_create_outputstream.png" alt="map create outputstream">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Map with Layers and render to an BufferedImage.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+<span class="predefined-type">BufferedImage</span> image = map.renderToImage()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_create_image.png" alt="map create image">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Map with Layers and render to a Graphics2D object.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+<span class="predefined-type">BufferedImage</span> image = <span class="keyword">new</span> <span class="predefined-type">BufferedImage</span>(<span class="integer">800</span>, <span class="integer">300</span>, <span class="predefined-type">BufferedImage</span>.TYPE_INT_ARGB)
+<span class="predefined-type">Graphics2D</span> graphics = image.graphics
+map.render(graphics)
+graphics.dispose()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_create_graphics.png" alt="map create graphics">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Map with Layers and display in a simple UI.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+map.display()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/render_display_map.png" alt="render display map">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="map-properties"><a class="anchor" href="#map-properties"></a>Map Properties</h3>
+<div class="listingblock">
+<div class="title">Get Map properties</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">600</span>,
+        <span class="key">height</span>: <span class="integer">600</span>,
+        <span class="key">backgroundColor</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">layers</span>: [countries],
+        <span class="key">type</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">png</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">proj</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>,
+        <span class="key">bounds</span>: <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">85</span>,<span class="integer">180</span>,<span class="integer">85</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>).reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>),
+        <span class="key">fixAspectRatio</span>: <span class="predefined-constant">false</span>
+)
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.png</span><span class="delimiter">&quot;</span></span>)
+map.render(file)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_properties.png" alt="map properties">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get width and height</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> width = map.width
+<span class="type">int</span> height = map.height
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Width and Height = </span><span class="inline"><span class="inline-delimiter">${</span>width<span class="inline-delimiter">}</span></span><span class="content"> x </span><span class="inline"><span class="inline-delimiter">${</span>height<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Width and Height = 600 x 600</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = map.bounds
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Bounds = </span><span class="inline"><span class="inline-delimiter">${</span>bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Bounds = (-2.0037508342789244E7,-1.9971868880408555E7,2.0037508342789244E7,1.9971868880408563E7,EPSG:3857)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Projection</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Projection projection = map.proj
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Projeciton = </span><span class="inline"><span class="inline-delimiter">${</span>projection<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Projeciton = EPSG:3857</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the Layers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;Layer&gt; layers = map.layers
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Layers:</span><span class="delimiter">&quot;</span></span>
+layers.each { Layer layer -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">   </span><span class="inline"><span class="inline-delimiter">${</span>layer.name<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Layers:
+   countries</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the renderer type</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> type = map.type
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Type = </span><span class="inline"><span class="inline-delimiter">${</span>type<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Type = png</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get whether we are fixing the aspect ration or not.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">boolean</span> shouldFixAspectRation = map.fixAspectRatio
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Fix Aspect Ratio = </span><span class="inline"><span class="inline-delimiter">${</span>shouldFixAspectRation<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Fix Aspect Ratio = false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the background color</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> backgroundColor = map.backgroundColor
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Background Color = </span><span class="inline"><span class="inline-delimiter">${</span>backgroundColor<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Background Color = #a5bfdd</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the scale</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> scale = map.scaleDenominator
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Scale = </span><span class="inline"><span class="inline-delimiter">${</span>scale<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Scale = 2.385417659855862E8</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="advanced-properties"><a class="anchor" href="#advanced-properties"></a>Advanced Properties</h3>
+<div class="listingblock">
+<div class="title">You can set the scale computation to be accurate (the default) or ogc compliant.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">400</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries],
+        <span class="key">bounds</span>: <span class="keyword">new</span> Bounds(-<span class="float">162.070313</span>,<span class="float">9.968851</span>,-<span class="float">35.507813</span>,<span class="float">58.995311</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+)
+
+map.setScaleComputation(<span class="string"><span class="delimiter">&quot;</span><span class="content">accurate</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">File</span> accurateFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map_accurate.png</span><span class="delimiter">&quot;</span></span>)
+map.render(accurateFile)
+
+map.setScaleComputation(<span class="string"><span class="delimiter">&quot;</span><span class="content">ogc</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">File</span> ogcFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map_ogc.png</span><span class="delimiter">&quot;</span></span>)
+map.render(ogcFile)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Accurate</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_accurate.png" alt="map accurate">
+</div>
+</div>
+<div class="paragraph">
+<p>OGC</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_ogc.png" alt="map ogc">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">You can set whether to use advanced projection handling or not.  By default this is set to true.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">400</span>,
+        <span class="key">height</span>: <span class="integer">300</span>,
+        <span class="key">layers</span>: [ocean, countries],
+        <span class="key">bounds</span>: <span class="keyword">new</span> Bounds(-<span class="float">162.070313</span>,<span class="float">9.968851</span>,-<span class="float">35.507813</span>,<span class="float">58.995311</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+)
+
+map.setAdvancedProjectionHandling(<span class="predefined-constant">true</span>)
+<span class="predefined-type">File</span> trueFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map_advancedproj_true.png</span><span class="delimiter">&quot;</span></span>)
+map.render(trueFile)
+
+map.setAdvancedProjectionHandling(<span class="predefined-constant">false</span>)
+<span class="predefined-type">File</span> falseFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map_advancedproj_false.png</span><span class="delimiter">&quot;</span></span>)
+map.render(falseFile)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Yes</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_advancedproj_true.png" alt="map advancedproj true">
+</div>
+</div>
+<div class="paragraph">
+<p>No</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_advancedproj_false.png" alt="map advancedproj false">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">You can set whether to use continuous map wrapping. The default is true.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">width</span>: <span class="integer">800</span>,
+        <span class="key">height</span>: <span class="integer">200</span>,
+        <span class="key">layers</span>: [ocean, countries]
+)
+
+map.setContinuousMapWrapping(<span class="predefined-constant">true</span>)
+<span class="predefined-type">File</span> trueFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map_continuouswrapping_true.png</span><span class="delimiter">&quot;</span></span>)
+map.render(trueFile)
+
+map.setContinuousMapWrapping(<span class="predefined-constant">false</span>)
+<span class="predefined-type">File</span> falseFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map_continuouswrapping_false.png</span><span class="delimiter">&quot;</span></span>)
+map.render(falseFile)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Yes</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_continuouswrapping_true.png" alt="map continuouswrapping true">
+</div>
+</div>
+<div class="paragraph">
+<p>No</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_continuouswrapping_false.png" alt="map continuouswrapping false">
 </div>
 </div>
 </div>
@@ -1590,7 +1954,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-04 18:52:11 UTC
+Last updated 2019-02-06 00:26:41 UTC
 </div>
 </div>
 </body>

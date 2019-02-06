@@ -3229,6 +3229,19 @@ Geometry geometry = Geometry.createKochSnowflake(bounds, <span class="integer">5
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Perform a cascaded union on a List of Polygons.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry randomPoints = Geometry.createRandomPoints(<span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>).geometry, <span class="integer">100</span>)
+<span class="predefined-type">List</span>&lt;Geometry&gt; bufferedPoints = randomPoints.collect{Geometry geom -&gt; geom.buffer(<span class="float">4.5</span>)}
+Geometry unionedGeometry = Geometry.cascadedUnion(bufferedPoints)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_cascadeunion.png" alt="geometry cascadeunion">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Create a number of random points within a given Geometry</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>, -<span class="integer">90</span>, <span class="integer">180</span>, <span class="integer">90</span>).geometry
@@ -4323,8 +4336,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 282569489 nanoseconds
-Time with PreparedGeometry = 275379824 nanoseconds</pre>
+<pre>Time with Geometry         = 326314473 nanoseconds
+Time with PreparedGeometry = 164113365 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4369,8 +4382,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 144768999 nanoseconds
-Time with PreparedGeometry = 135263207 nanoseconds</pre>
+<pre>Time with Geometry         = 140297521 nanoseconds
+Time with PreparedGeometry = 129013408 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5529,7 +5542,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-04 18:52:11 UTC
+Last updated 2019-02-06 00:26:41 UTC
 </div>
 </div>
 </body>
