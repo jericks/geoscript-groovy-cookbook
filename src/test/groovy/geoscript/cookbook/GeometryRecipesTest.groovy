@@ -653,6 +653,12 @@ class GeometryRecipesTest {
         assertNotNull geometry
     }
 
+    @Test void cascadeUnion() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.cascadeUnion()
+        assertNotNull geometry
+    }
+
     @Test void createRandomPoints() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geometry = recipes.createRandomPoints()

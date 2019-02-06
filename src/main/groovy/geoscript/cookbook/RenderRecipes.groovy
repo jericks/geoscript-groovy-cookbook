@@ -7,6 +7,7 @@ import geoscript.geom.GeometryCollection
 import geoscript.geom.Point
 import geoscript.layer.Layer
 import geoscript.layer.Raster
+import geoscript.proj.Projection
 import geoscript.render.ASCII
 import geoscript.render.Base64
 import geoscript.render.Displayer
@@ -31,6 +32,7 @@ import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 
 import javax.imageio.ImageIO
+import java.awt.Graphics2D
 import java.awt.image.BufferedImage
 
 class RenderRecipes extends Recipes {
@@ -51,6 +53,257 @@ class RenderRecipes extends Recipes {
         map.render(file)
         // end::createMap[]
         moveFile(file, new File("src/docs/asciidoc/images/map_create.png"))
+        map
+    }
+
+    Map createMapWithFileName() {
+        // tag::createMapWithFileName[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        map.render("map.png")
+        // end::createMapWithFileName[]
+        moveFile(new File("map.png"), new File("src/docs/asciidoc/images/map_create_filename.png"))
+        map
+    }
+
+    Map createMapWithOutputStream() {
+        // tag::createMapWithOutputStream[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        File file = new File("map.png")
+        file.withOutputStream { OutputStream outputStream ->
+            map.render(outputStream)
+        }
+        // end::createMapWithOutputStream[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_create_outputstream.png"))
+        map
+    }
+
+    Map createMapToImage() {
+        // tag::createMapToImage[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        BufferedImage image = map.renderToImage()
+        // end::createMapToImage[]
+        ImageIO.write(image, "png", new File("src/docs/asciidoc/images/map_create_image.png"))
+        map
+    }
+
+    Map createMapWithGraphics() {
+        // tag::createMapWithGraphics[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        BufferedImage image = new BufferedImage(800, 300, BufferedImage.TYPE_INT_ARGB)
+        Graphics2D graphics = image.graphics
+        map.render(graphics)
+        graphics.dispose()
+        // end::createMapWithGraphics[]
+        ImageIO.write(image, "png", new File("src/docs/asciidoc/images/map_create_graphics.png"))
+        map
+    }
+    
+    Map displayMap() {
+        // tag::displayMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 300,
+                layers: [ocean, countries]
+        )
+        map.display()
+        // end::displayMap[]
+        map
+    }
+
+    Map getMapProperties() {
+
+        // tag::getMapProperties[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Map map = new Map(
+                width: 600,
+                height: 600,
+                backgroundColor: "#a5bfdd",
+                layers: [countries],
+                type: "png",
+                proj: "EPSG:3857",
+                bounds: new Bounds(-180,-85,180,85, "EPSG:4326").reproject("EPSG:3857"),
+                fixAspectRatio: false
+        )
+        File file = new File("map.png")
+        map.render(file)
+        // end::getMapProperties[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_properties.png"))
+
+        // tag::getMapProperties_widthheight[]
+        int width = map.width
+        int height = map.height
+        println "Width and Height = ${width} x ${height}"
+        // end::getMapProperties_widthheight[]
+        writeFile("map_properties_widthheight", "Width and Height = ${width} x ${height}")
+
+        // tag::getMapProperties_bounds[]
+        Bounds bounds = map.bounds
+        println "Bounds = ${bounds}"
+        // end::getMapProperties_bounds[]
+        writeFile("map_properties_bounds", "Bounds = ${bounds}")
+
+        // tag::getMapProperties_proj[]
+        Projection projection = map.proj
+        println "Projeciton = ${projection}"
+        // end::getMapProperties_proj[]
+        writeFile("map_properties_proj","Projeciton = ${projection}")
+
+        // tag::getMapProperties_layers[]
+        List<Layer> layers = map.layers
+        println "Layers:"
+        layers.each { Layer layer ->
+            println "   ${layer.name}"
+        }
+        // end::getMapProperties_layers[]
+        writeFile("map_properties_layers", "Layers:${NEW_LINE}${layers.collect { '   ' + it.name }.join(NEW_LINE)}")
+
+        // tag::getMapProperties_type[]
+        String type = map.type
+        println "Type = ${type}"
+        // end::getMapProperties_type[]
+        writeFile("map_properties_type", "Type = ${type}")
+
+        // tag::getMapProperties_fixAspectRatio[]
+        boolean shouldFixAspectRation = map.fixAspectRatio
+        println "Fix Aspect Ratio = ${shouldFixAspectRation}"
+        // end::getMapProperties_fixAspectRatio[]
+        writeFile("map_properties_fixaspectratio", "Fix Aspect Ratio = ${shouldFixAspectRation}")
+
+        // tag::getMapProperties_backgroundcolor[]
+        String backgroundColor = map.backgroundColor
+        println "Background Color = ${backgroundColor}"
+        // end::getMapProperties_backgroundcolor[]
+        writeFile("map_properties_backgroundcolor", "Background Color = ${backgroundColor}")
+
+        // tag::getMapProperties_scale[]
+        double scale = map.scaleDenominator
+        println "Scale = ${scale}"
+        // end::getMapProperties_scale[]
+        writeFile("map_properties_scale", "Scale = ${scale}")
+
+        map
+    }
+
+    Map setScaleComputation() {
+        // tag::setScaleComputation[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 400,
+                height: 300,
+                layers: [ocean, countries],
+                bounds: new Bounds(-162.070313,9.968851,-35.507813,58.995311, "EPSG:4326")
+        )
+        
+        map.setScaleComputation("accurate")
+        File accurateFile = new File("map_accurate.png")
+        map.render(accurateFile)
+
+        map.setScaleComputation("ogc")
+        File ogcFile = new File("map_ogc.png")
+        map.render(ogcFile)
+        // end::setScaleComputation[]
+        moveFile(accurateFile, new File("src/docs/asciidoc/images/map_accurate.png"))
+        moveFile(ogcFile, new File("src/docs/asciidoc/images/map_ogc.png"))
+        map
+    }
+
+    Map setAdvancedProjectionHandling() {
+        // tag::setAdvancedProjectionHandling[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 400,
+                height: 300,
+                layers: [ocean, countries],
+                bounds: new Bounds(-162.070313,9.968851,-35.507813,58.995311, "EPSG:4326")
+        )
+
+        map.setAdvancedProjectionHandling(true)
+        File trueFile = new File("map_advancedproj_true.png")
+        map.render(trueFile)
+
+        map.setAdvancedProjectionHandling(false)
+        File falseFile = new File("map_advancedproj_false.png")
+        map.render(falseFile)
+        // end::setAdvancedProjectionHandling[]
+        moveFile(trueFile, new File("src/docs/asciidoc/images/map_advancedproj_true.png"))
+        moveFile(falseFile, new File("src/docs/asciidoc/images/map_advancedproj_false.png"))
+        map
+    }
+
+    Map setContinuousMapWrapping() {
+        // tag::setContinuousMapWrapping[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        Map map = new Map(
+                width: 800,
+                height: 200,
+                layers: [ocean, countries]
+        )
+
+        map.setContinuousMapWrapping(true)
+        File trueFile = new File("map_continuouswrapping_true.png")
+        map.render(trueFile)
+
+        map.setContinuousMapWrapping(false)
+        File falseFile = new File("map_continuouswrapping_false.png")
+        map.render(falseFile)
+        // end::setContinuousMapWrapping[]
+        moveFile(trueFile, new File("src/docs/asciidoc/images/map_continuouswrapping_true.png"))
+        moveFile(falseFile, new File("src/docs/asciidoc/images/map_continuouswrapping_false.png"))
         map
     }
 

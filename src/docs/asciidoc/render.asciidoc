@@ -8,12 +8,178 @@ The Render classes are in the *http://geoscript.github.io/geoscript-groovy/api/1
 === Creating Maps
 
 [source,groovy]
-.Create a Map with Layers
+.Create a Map with Layers and render to a File.
 ----
 include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMap,indent=0]
 ----
 [.thumb]
 image::map_create.png[]
+
+[source,groovy]
+.Create a Map with Layers and render to a file name.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMapWithFileName,indent=0]
+----
+[.thumb]
+image::map_create_filename.png[]
+
+[source,groovy]
+.Create a Map with Layers and render to an OutputStream.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMapWithOutputStream,indent=0]
+----
+[.thumb]
+image::map_create_outputstream.png[]
+
+[source,groovy]
+.Create a Map with Layers and render to an BufferedImage.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMapToImage,indent=0]
+----
+[.thumb]
+image::map_create_image.png[]
+
+[source,groovy]
+.Create a Map with Layers and render to a Graphics2D object.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMapWithGraphics,indent=0]
+----
+[.thumb]
+image::map_create_graphics.png[]
+
+[source,groovy]
+.Create a Map with Layers and display in a simple UI.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=displayMap,indent=0]
+----
+[.thumb]
+image::render_display_map.png[]
+
+=== Map Properties
+
+[source,groovy]
+.Get Map properties
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getMapProperties,indent=0]
+----
+[.thumb]
+image::map_properties.png[]
+
+[source,groovy]
+.Get width and height
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getMapProperties_widthheight,indent=0]
+----
+....
+include::output/map_properties_widthheight.txt[]
+....
+
+[source,groovy]
+.Get the Bounds
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getMapProperties_bounds,indent=0]
+----
+....
+include::output/map_properties_bounds.txt[]
+....
+
+[source,groovy]
+.Get the Projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getMapProperties_proj,indent=0]
+----
+....
+include::output/map_properties_proj.txt[]
+....
+
+[source,groovy]
+.Get the Layers
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getMapProperties_layers,indent=0]
+----
+....
+include::output/map_properties_layers.txt[]
+....
+
+[source,groovy]
+.Get the renderer type
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getMapProperties_type,indent=0]
+----
+....
+include::output/map_properties_type.txt[]
+....
+
+[source,groovy]
+.Get whether we are fixing the aspect ration or not.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getMapProperties_fixAspectRatio,indent=0]
+----
+....
+include::output/map_properties_fixaspectratio.txt[]
+....
+
+[source,groovy]
+.Get the background color
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getMapProperties_backgroundcolor,indent=0]
+----
+....
+include::output/map_properties_backgroundcolor.txt[]
+....
+
+[source,groovy]
+.Get the scale
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=getMapProperties_scale,indent=0]
+----
+....
+include::output/map_properties_scale.txt[]
+....
+
+=== Advanced Properties
+
+[source,groovy]
+.You can set the scale computation to be accurate (the default) or ogc compliant.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=setScaleComputation,indent=0]
+----
+
+Accurate
+[.thumb]
+image::map_accurate.png[]
+
+OGC
+[.thumb]
+image::map_ogc.png[]
+
+[source,groovy]
+.You can set whether to use advanced projection handling or not.  By default this is set to true.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=setAdvancedProjectionHandling,indent=0]
+----
+
+Yes
+[.thumb]
+image::map_advancedproj_true.png[]
+
+No
+[.thumb]
+image::map_advancedproj_false.png[]
+
+[source,groovy]
+.You can set whether to use continuous map wrapping. The default is true.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=setContinuousMapWrapping,indent=0]
+----
+
+Yes
+[.thumb]
+image::map_continuouswrapping_true.png[]
+
+No
+[.thumb]
+image::map_continuouswrapping_false.png[]
 
 === Rendering Maps
 

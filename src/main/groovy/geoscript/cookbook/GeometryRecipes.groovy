@@ -1720,6 +1720,19 @@ ${polygon.interiorRings.collect { '  ' + it.wkt }.join(NEW_LINE)}
         geometry
     }
 
+    Geometry cascadeUnion() {
+        // tag::cascadeUnion[]
+        Geometry randomPoints = Geometry.createRandomPoints(new Bounds(-180,-90,180,90, "EPSG:4326").geometry, 100)
+        List<Geometry> bufferedPoints = randomPoints.collect{Geometry geom -> geom.buffer(4.5)}
+        Geometry unionedGeometry = Geometry.cascadedUnion(bufferedPoints)
+        // end::cascadeUnion[]
+        drawOnBasemap("geometry_cascadeunion", [
+            createLayerFromGeometry("points", randomPoints, "shape=#0066FF shape-size=6"),
+            createLayerFromGeometry("polygons", unionedGeometry, "fill=#B0C4DE stroke=#4682B4")
+        ])
+        unionedGeometry
+    }
+
     Map<String, Boolean> crosses() {
         Map<String, Boolean> values = [:]
 

@@ -16,6 +16,54 @@ class RenderRecipesTest {
         assertNotNull(map)
     }
 
+    @Test void createMapWithFileName() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createMapWithFileName()
+        assertNotNull(map)
+    }
+
+    @Test void createMapWithOutputStream() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createMapWithOutputStream()
+        assertNotNull(map)
+    }
+
+    @Test void createMapToImage() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createMapToImage()
+        assertNotNull(map)
+    }
+
+    @Test void createMapWithGraphics() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createMapWithGraphics()
+        assertNotNull(map)
+    }
+
+    @Test void getMapProperties() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.getMapProperties()
+        assertNotNull(map)
+    }
+
+    @Test void setScaleComputation() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.setScaleComputation()
+        assertNotNull(map)
+    }
+
+    @Test void setAdvancedProjectionHandling() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.setAdvancedProjectionHandling()
+        assertNotNull(map)
+    }
+
+    @Test void setContinuousMapWrapping() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.setContinuousMapWrapping()
+        assertNotNull(map)
+    }
+
     // Renderer
 
     @Test void getRenderers() {

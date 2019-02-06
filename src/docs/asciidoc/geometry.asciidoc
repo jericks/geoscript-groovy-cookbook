@@ -1051,6 +1051,15 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createKochSn
 image::geometry_kochsnowflake.png[]
 
 [source,groovy]
+.Perform a cascaded union on a List of Polygons.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=cascadeUnion,indent=0]
+----
+[.thumb]
+image::geometry_cascadeunion.png[]
+
+
+[source,groovy]
 .Create a number of random points within a given Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=createRandomPoints,indent=0]
