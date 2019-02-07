@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.layer.Layer
 import geoscript.workspace.Workspace
+import geoscript.workspace.WorkspaceFactory
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -131,4 +132,11 @@ class WorkspaceRecipesTest {
         Workspace workspace = recipes.createPropertyWorkspaceFromFile()
         assertNotNull workspace
     }
+
+    @Test void createPostGISWorkspace() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createPostGISWorkspace()
+        assertNotNull workspace
+    }
+
 }

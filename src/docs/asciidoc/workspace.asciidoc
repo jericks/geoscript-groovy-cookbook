@@ -330,3 +330,38 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createPrope
 ....
 include::output/workspace_property_file.txt[]
 ....
+
+==== Creating PostGIS Workspaces
+
+[source,groovy]
+.Create a PostGIS Workspace with basic parameters
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createPostGISWorkspace,indent=0]
+----
+<1> Database name
+<2> Host name
+<3> Port
+<4> Schema
+<5> User name
+<6> Password
+
+[source,groovy]
+.Create a PostGIS Workspace with advanced parameters
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createPostGISWorkspaceWithParameters,indent=0]
+----
+<1> Database name
+<2> Host name
+<3> Port
+<4> Schema
+<5> User name
+<6> Password
+<7> Estimated Extent
+<8> Create Database
+<9> Create Database Params
+
+[source,groovy]
+.Create a PostGIS Workspace with named parameters.  Only the database name is required.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createPostGISWorkspaceWithNamedParameters,indent=0]
+----

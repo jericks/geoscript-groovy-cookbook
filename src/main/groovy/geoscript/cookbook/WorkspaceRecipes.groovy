@@ -10,6 +10,7 @@ import geoscript.workspace.GeoPackage
 import geoscript.workspace.Geobuf
 import geoscript.workspace.H2
 import geoscript.workspace.Memory
+import geoscript.workspace.PostGIS
 import geoscript.workspace.Property
 import geoscript.workspace.Workspace
 
@@ -400,6 +401,54 @@ class WorkspaceRecipes extends Recipes {
         // end::createPropertyWorkspaceFromFile[]
         writeFile("workspace_property_file", "${workspace.format}${NEW_LINE}------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
         workspace
+    }
+
+    // PostGIS
+    Workspace createPostGISWorkspace() {
+        // tag::createPostGISWorkspace[]
+        PostGIS postgis = new PostGIS(
+                "database",    // <1>
+                "localhost",   // <2>
+                "5432",        // <3>
+                "public",      // <4>
+                "user",        // <5>
+                "password"     // <6>
+        )
+        // end::createPostGISWorkspace[]
+        postgis
+    }
+
+    Workspace createPostGISWorkspaceWithParameters() {
+        // tag::createPostGISWorkspaceWithParameters[]
+        PostGIS postgis = new PostGIS(
+                "database",                   // <1>
+                "localhost",                  // <2>
+                "5432",                       // <3>
+                "public",                     // <4>
+                "user",                       // <5>
+                "password",                   // <6>
+                true,                         // <7>
+                true,                         // <8>
+                "OWNER geo TABLESPACE points" // <9>
+        )
+        // end::createPostGISWorkspaceWithParameters[]
+        postgis
+    }
+
+    Workspace createPostGISWorkspaceWithNamedParameters() {
+        // tag::createPostGISWorkspaceWithNamedParameters[]
+        PostGIS postgis = new PostGIS("database",
+                "host": "localhost",
+                "post": "5432",
+                "schema": "public",
+                "user": "user",
+                "password": "secret",
+                "estimatedExtent": false,
+                "createDatabase": false,
+                "createDatabaseParams": "OWNER geo TABLESPACE points"
+        )
+        // end::createPostGISWorkspaceWithNamedParameters[]
+        postgis
     }
 
 }
