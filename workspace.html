@@ -543,6 +543,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-h2-workspaces">Creating H2 Workspaces</a></li>
 <li><a href="#creating-geobuf-workspaces">Creating Geobuf Workspaces</a></li>
 <li><a href="#creating-property-workspaces">Creating Property Workspaces</a></li>
+<li><a href="#creating-postgis-workspaces">Creating PostGIS Workspaces</a></li>
 </ul>
 </li>
 </ul>
@@ -640,19 +641,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Shapefile
-SpatiaLite (JNDI)
-SQLite
+<pre>Directory of spatial files (shapefiles)
+MySQL (JNDI)
 PostGIS
+PostGIS (JNDI)
+Properties
+Shapefile
 H2 (JNDI)
 H2
-Properties
-Geobuf
-PostGIS (JNDI)
-Directory of spatial files (shapefiles)
+SQLite
 MySQL
+SpatiaLite (JNDI)
+Geobuf
 GeoPackage
-MySQL (JNDI)
 Web Feature Server (NG)</pre>
 </div>
 </div>
@@ -820,19 +821,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Shapefile
-SpatiaLite (JNDI)
-SQLite
+<pre>Directory of spatial files (shapefiles)
+MySQL (JNDI)
 PostGIS
+PostGIS (JNDI)
+Properties
+Shapefile
 H2 (JNDI)
 H2
-Properties
-Geobuf
-PostGIS (JNDI)
-Directory of spatial files (shapefiles)
+SQLite
 MySQL
+SpatiaLite (JNDI)
+Geobuf
 GeoPackage
-MySQL (JNDI)
 Web Feature Server (NG)</pre>
 </div>
 </div>
@@ -1148,13 +1149,128 @@ places (10)</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="creating-postgis-workspaces"><a class="anchor" href="#creating-postgis-workspaces"></a>Creating PostGIS Workspaces</h4>
+<div class="listingblock">
+<div class="title">Create a PostGIS Workspace with basic parameters</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PostGIS postgis = <span class="keyword">new</span> PostGIS(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,    <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,   <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,        <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">public</span><span class="delimiter">&quot;</span></span>,      <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,        <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>     <i class="conum" data-value="6"></i><b>(6)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Database name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Host name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Port</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Schema</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>User name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Password</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Create a PostGIS Workspace with advanced parameters</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PostGIS postgis = <span class="keyword">new</span> PostGIS(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,                   <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,                  <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,                       <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">public</span><span class="delimiter">&quot;</span></span>,                     <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,                       <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>,                   <i class="conum" data-value="6"></i><b>(6)</b>
+        <span class="predefined-constant">true</span>,                         <i class="conum" data-value="7"></i><b>(7)</b>
+        <span class="predefined-constant">true</span>,                         <i class="conum" data-value="8"></i><b>(8)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">OWNER geo TABLESPACE points</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="9"></i><b>(9)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Database name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Host name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Port</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Schema</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>User name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Password</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Estimated Extent</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>Create Database</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>Create Database Params</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Create a PostGIS Workspace with named parameters.  Only the database name is required.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PostGIS postgis = <span class="keyword">new</span> PostGIS(<span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">host</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">public</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">estimatedExtent</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">false</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">createDatabase</span><span class="delimiter">&quot;</span></span>: <span class="predefined-constant">false</span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">createDatabaseParams</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">OWNER geo TABLESPACE points</span><span class="delimiter">&quot;</span></span>
+)</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-06 01:06:23 UTC
+Last updated 2019-02-07 01:47:49 UTC
 </div>
 </div>
 </body>
