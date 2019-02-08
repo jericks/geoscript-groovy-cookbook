@@ -641,20 +641,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory of spatial files (shapefiles)
-MySQL (JNDI)
-PostGIS
-PostGIS (JNDI)
-Properties
-Shapefile
-H2 (JNDI)
-H2
-SQLite
-MySQL
-SpatiaLite (JNDI)
+<pre>PostGIS (JNDI)
 Geobuf
+Web Feature Server (NG)
+SQLite
+H2
 GeoPackage
-Web Feature Server (NG)</pre>
+PostGIS
+Directory of spatial files (shapefiles)
+H2 (JNDI)
+Shapefile
+MySQL (JNDI)
+Properties
+MySQL
+SpatiaLite (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -821,20 +821,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory of spatial files (shapefiles)
-MySQL (JNDI)
-PostGIS
-PostGIS (JNDI)
-Properties
-Shapefile
-H2 (JNDI)
-H2
-SQLite
-MySQL
-SpatiaLite (JNDI)
+<pre>PostGIS (JNDI)
 Geobuf
+Web Feature Server (NG)
+SQLite
+H2
 GeoPackage
-Web Feature Server (NG)</pre>
+PostGIS
+Directory of spatial files (shapefiles)
+H2 (JNDI)
+Shapefile
+MySQL (JNDI)
+Properties
+MySQL
+SpatiaLite (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1263,6 +1263,53 @@ places (10)</pre>
 )</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Delete a PostGIS database.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PostGIS.deleteDatabase(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,    <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,   <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,        <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,        <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>     <i class="conum" data-value="5"></i><b>(5)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Database name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Host name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Port</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>User name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Password</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Delete a PostGIS database with named parameters.  Only the database name is required.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">PostGIS.deleteDatabase(<span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">host</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>
+)</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1270,7 +1317,7 @@ places (10)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-07 01:47:49 UTC
+Last updated 2019-02-08 01:37:04 UTC
 </div>
 </div>
 </body>
