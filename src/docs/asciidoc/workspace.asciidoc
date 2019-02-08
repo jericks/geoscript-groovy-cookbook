@@ -365,3 +365,20 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createPostG
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createPostGISWorkspaceWithNamedParameters,indent=0]
 ----
+
+[source,groovy]
+.Delete a PostGIS database.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=postGisDeleteDatabase,indent=0]
+----
+<1> Database name
+<2> Host name
+<3> Port
+<4> User name
+<5> Password
+
+[source,groovy]
+.Delete a PostGIS database with named parameters.  Only the database name is required.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=postGisDeleteDatabaseWithNamedParameters,indent=0]
+----

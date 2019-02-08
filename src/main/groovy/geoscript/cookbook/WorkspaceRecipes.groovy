@@ -451,4 +451,28 @@ class WorkspaceRecipes extends Recipes {
         postgis
     }
 
+    // PostGIS
+    void postGisDeleteDatabase() {
+        // tag::postGisDeleteDatabase[]
+        PostGIS.deleteDatabase(
+                "database",    // <1>
+                "localhost",   // <2>
+                "5432",        // <3>
+                "user",        // <4>
+                "password"     // <5>
+        )
+        // end::postGisDeleteDatabase[]
+    }
+
+    void postGisDeleteDatabaseWithNamedParameters() {
+        // tag::postGisDeleteDatabaseWithNamedParameters[]
+        PostGIS.deleteDatabase("database",
+                "host": "localhost",
+                "post": "5432",
+                "user": "user",
+                "password": "secret"
+        )
+        // end::postGisDeleteDatabaseWithNamedParameters[]
+    }
+
 }
