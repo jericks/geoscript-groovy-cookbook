@@ -139,4 +139,16 @@ class WorkspaceRecipesTest {
         assertNotNull workspace
     }
 
+    @Test void createMySQLWorkspace() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createMySQLWorkspace()
+        assertNotNull workspace
+    }
+
+    @Test void createMySQLWorkspaceWithNamedParameters() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createMySQLWorkspaceWithNamedParameters()
+        assertNotNull workspace
+    }
+
 }

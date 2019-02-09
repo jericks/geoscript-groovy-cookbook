@@ -307,6 +307,24 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createH2Wor
 include::output/workspace_h2_file.txt[]
 ....
 
+[source,groovy]
+.Create a H2 Workspace with basic parameters
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createH2Workspace,indent=0]
+----
+<1> Database name
+<2> Host name
+<3> Port
+<4> User name
+<5> Password
+
+[source,groovy]
+.Create a H2 Workspace with named parameters.  Only the database name is required.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createH2WorkspaceWithNamedParameters,indent=0]
+----
+
+
 ==== Creating Geobuf Workspaces
 
 [source,groovy]
@@ -381,4 +399,23 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=postGisDele
 .Delete a PostGIS database with named parameters.  Only the database name is required.
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=postGisDeleteDatabaseWithNamedParameters,indent=0]
+----
+
+==== Creating MySQL Workspaces
+
+[source,groovy]
+.Create a MySQL Workspace with basic parameters
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createMySQLWorkspace,indent=0]
+----
+<1> Database name
+<2> Host name
+<3> Port
+<4> User name
+<5> Password
+
+[source,groovy]
+.Create a MySQL Workspace with named parameters.  Only the database name is required.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createMySQLWorkspaceWithNamedParameters,indent=0]
 ----

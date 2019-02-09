@@ -10,6 +10,7 @@ import geoscript.workspace.GeoPackage
 import geoscript.workspace.Geobuf
 import geoscript.workspace.H2
 import geoscript.workspace.Memory
+import geoscript.workspace.MySQL
 import geoscript.workspace.PostGIS
 import geoscript.workspace.Property
 import geoscript.workspace.Workspace
@@ -373,6 +374,33 @@ class WorkspaceRecipes extends Recipes {
         workspace
     }
 
+    Workspace createH2Workspace() {
+        // tag::createH2Workspace[]
+        H2 h2 = new H2(
+                "database",    // <1>
+                "localhost",   // <2>
+                "5421",        // <3>
+                "geo",         // <4>
+                "user",        // <5>
+                "password"     // <6>
+        )
+        // end::createH2Workspace[]
+        h2
+    }
+
+    Workspace createH2WorkspaceWithNamedParameters() {
+        // tag::createH2WorkspaceWithNamedParameters[]
+        H2 h2 = new H2("database",
+                "host": "localhost",
+                "port": "5412",
+                "schema": "geo",
+                "user": "user",
+                "password": "secret"
+        )
+        // end::createH2WorkspaceWithNamedParameters[]
+        h2
+    }
+
     // Geobuf
 
     Workspace createGeobufWorkspaceFromFile() {
@@ -404,6 +432,7 @@ class WorkspaceRecipes extends Recipes {
     }
 
     // PostGIS
+
     Workspace createPostGISWorkspace() {
         // tag::createPostGISWorkspace[]
         PostGIS postgis = new PostGIS(
@@ -439,7 +468,7 @@ class WorkspaceRecipes extends Recipes {
         // tag::createPostGISWorkspaceWithNamedParameters[]
         PostGIS postgis = new PostGIS("database",
                 "host": "localhost",
-                "post": "5432",
+                "port": "5432",
                 "schema": "public",
                 "user": "user",
                 "password": "secret",
@@ -468,11 +497,37 @@ class WorkspaceRecipes extends Recipes {
         // tag::postGisDeleteDatabaseWithNamedParameters[]
         PostGIS.deleteDatabase("database",
                 "host": "localhost",
-                "post": "5432",
+                "port": "5432",
                 "user": "user",
                 "password": "secret"
         )
         // end::postGisDeleteDatabaseWithNamedParameters[]
     }
 
+    // MySQL
+
+    Workspace createMySQLWorkspace() {
+        // tag::createMySQLWorkspace[]
+        MySQL mysql = new MySQL(
+                "database",    // <1>
+                "localhost",   // <2>
+                "3306",        // <3>
+                "user",        // <4>
+                "password"     // <5>
+        )
+        // end::createMySQLWorkspace[]
+        mysql
+    }
+
+    Workspace createMySQLWorkspaceWithNamedParameters() {
+        // tag::createMySQLWorkspaceWithNamedParameters[]
+        MySQL mysql = new MySQL("database",
+                "host": "localhost",
+                "port": "3306",
+                "user": "user",
+                "password": "secret"
+        )
+        // end::createMySQLWorkspaceWithNamedParameters[]
+        mysql
+    }
 }
