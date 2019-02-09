@@ -4,7 +4,9 @@ import geoscript.feature.Field
 import geoscript.feature.Schema
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
+import geoscript.geom.Polygon
 import geoscript.layer.Layer
+import geoscript.workspace.Database
 import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Geobuf
@@ -17,6 +19,8 @@ import geoscript.workspace.Property
 import geoscript.workspace.SpatiaLite
 import geoscript.workspace.WFS
 import geoscript.workspace.Workspace
+import groovy.sql.GroovyRowResult
+import groovy.sql.Sql
 
 class WorkspaceRecipes extends Recipes {
 
@@ -483,7 +487,6 @@ class WorkspaceRecipes extends Recipes {
         postgis
     }
 
-    // PostGIS
     void postGisDeleteDatabase() {
         // tag::postGisDeleteDatabase[]
         PostGIS.deleteDatabase(
@@ -604,6 +607,62 @@ class WorkspaceRecipes extends Recipes {
         OGR ogr = new OGR("GeoJSON", file.absolutePath)
         // end::createOGRGeoJsonWorkspace[]
         ogr
+    }
+
+    // Database
+
+    Map<String,Object> databaseGetSql() {
+        Map<String,Object> values = [:]
+        // tag::databaseGetSql[]
+        Database workspace = new H2(new File("src/main/resources/h2/data.db"))
+        Sql sql = workspace.sql
+        // end::databaseGetSql[]
+
+        // tag::databaseGetSql_count[]
+        int numberOfPlaces = sql.firstRow("SELECT COUNT(*) as count FROM \"places\"").get("count") as int
+        println "# of Places = ${numberOfPlaces}"
+        // end::databaseGetSql_count[]
+        values.numberOfPlaces = numberOfPlaces
+        writeFile("workspace_database_getsql_count", "# of Places = ${numberOfPlaces}")
+
+        // tag::databaseGetSql_stats[]
+        GroovyRowResult result = sql.firstRow("SELECT MIN(ELEVATION) as min_elev, MAX(ELEVATION) as max_elev, AVG(ELEVATION) as avg_elev FROM \"places\"")
+        println "Mininum Elevation = ${result.get('min_elev')}"
+        println "Maximum Elevation = ${result.get('max_elev')}"
+        println "Average Elevation = ${result.get('avg_elev')}"
+        // end::databaseGetSql_stats[]
+        values.minElevation = result.get('min_elev')
+        values.maxElevation = result.get('max_elev')
+        values.avgElevation = result.get('avg_elev')
+        writeFile("workspace_database_getsql_stats", """Mininum Elevation = ${result.get('min_elev')}
+Maximum Elevation = ${result.get('max_elev')}
+Average Elevation = ${result.get('avg_elev')} 
+""")
+
+        // tag::databaseGetSql_select[]
+        List<String> names = []
+        sql.eachRow "SELECT TOP 10 \"NAME\" FROM \"places\" ORDER BY \"NAME\" DESC ", {
+            names.add(it["NAME"])
+        }
+        names.each { String name ->
+            println name
+        }
+        // end::databaseGetSql_select[]
+        values.names = names
+        writeFile("workspace_database_getsql_select", " ${names.collect { it }.join(NEW_LINE)}")
+
+        // tag::databaseGetSql_spatial[]
+        Workspace memory = new Memory()
+        Layer layer = memory.create("places_polys", [new Field("buffer", "Polygon"), new Field("name", "String")])
+        sql.eachRow "SELECT ST_Buffer(\"the_geom\", 10) as buffer, \"NAME\" as name FROM \"places\"", {row ->
+            Geometry poly = Geometry.fromWKB(row.buffer as byte[])
+            layer.add([buffer: poly, name: row.NAME])
+        }
+        // end::databaseGetSql_spatial[]
+        drawOnBasemap("workspace_database_getsql", [layer, workspace.get("places")])
+        values.layer = layer
+
+        values
     }
 
 }

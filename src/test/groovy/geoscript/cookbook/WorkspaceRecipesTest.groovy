@@ -151,4 +151,17 @@ class WorkspaceRecipesTest {
         assertNotNull workspace
     }
 
+    // Database
+
+    @Test void databaseGetSql() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Map<String,Object> values = recipes.databaseGetSql()
+        assertEquals(326, values.numberOfPlaces)
+        assertEquals(0.0, values.minElevation, 0.1)
+        assertEquals(2320.0, values.maxElevation, 0.1)
+        assertEquals(30.085889570552148, values.avgElevation, 0.1)
+        assertEquals(10, values.names.size())
+        assertEquals(326, values.layer.count)
+    }
+
 }

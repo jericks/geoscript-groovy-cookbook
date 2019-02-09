@@ -477,3 +477,46 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createOGRSq
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createOGRGeoJsonWorkspace,indent=0]
 ----
+
+=== Database Workspace
+
+[source,groovy]
+.Run SQL queries directly against Databse Workspace (PostGIS, MySQL, H2)
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseGetSql,indent=0]
+----
+
+[source,groovy]
+.Count the number of results
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseGetSql_count,indent=0]
+----
+....
+include::output/workspace_database_getsql_count.txt[]
+....
+
+[source,groovy]
+.Calculate statistics
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseGetSql_stats,indent=0]
+----
+....
+include::output/workspace_database_getsql_stats.txt[]
+....
+
+[source,groovy]
+.Select rows
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseGetSql_select,indent=0]
+----
+....
+include::output/workspace_database_getsql_select.txt[]
+....
+
+[source,groovy]
+.Execute spatial sql
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseGetSql_spatial,indent=0]
+----
+[.thumb]
+image::workspace_database_getsql.png[]
