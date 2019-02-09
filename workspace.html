@@ -550,6 +550,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-ogr-workspaces">Creating OGR Workspaces</a></li>
 </ul>
 </li>
+<li><a href="#database-workspace">Database Workspace</a></li>
 </ul>
 </li>
 </ul>
@@ -645,20 +646,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory of spatial files (shapefiles)
+<pre>SpatiaLite (JNDI)
+SQLite
+Web Feature Server (NG)
 MySQL (JNDI)
+Shapefile
+GeoPackage
 PostGIS
+Directory of spatial files (shapefiles)
 PostGIS (JNDI)
 Properties
-Shapefile
-H2 (JNDI)
 H2
-SQLite
+H2 (JNDI)
 MySQL
-SpatiaLite (JNDI)
-Geobuf
-GeoPackage
-Web Feature Server (NG)</pre>
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -825,20 +826,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory of spatial files (shapefiles)
+<pre>SpatiaLite (JNDI)
+SQLite
+Web Feature Server (NG)
 MySQL (JNDI)
+Shapefile
+GeoPackage
 PostGIS
+Directory of spatial files (shapefiles)
 PostGIS (JNDI)
 Properties
-Shapefile
-H2 (JNDI)
 H2
-SQLite
+H2 (JNDI)
 MySQL
-SpatiaLite (JNDI)
-Geobuf
-GeoPackage
-Web Feature Server (NG)</pre>
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1506,12 +1507,92 @@ OGR ogr = <span class="keyword">new</span> OGR(<span class="string"><span class=
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="database-workspace"><a class="anchor" href="#database-workspace"></a>Database Workspace</h3>
+<div class="listingblock">
+<div class="title">Run SQL queries directly against Databse Workspace (PostGIS, MySQL, H2)</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Database workspace = <span class="keyword">new</span> H2(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/h2/data.db</span><span class="delimiter">&quot;</span></span>))
+Sql sql = workspace.sql</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Count the number of results</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> numberOfPlaces = sql.firstRow(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT COUNT(*) as count FROM </span><span class="char">\&quot;</span><span class="content">places</span><span class="char">\&quot;</span><span class="delimiter">&quot;</span></span>).get(<span class="string"><span class="delimiter">&quot;</span><span class="content">count</span><span class="delimiter">&quot;</span></span>) <span class="keyword">as</span> <span class="type">int</span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content"># of Places = </span><span class="inline"><span class="inline-delimiter">${</span>numberOfPlaces<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre># of Places = 326</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate statistics</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">GroovyRowResult result = sql.firstRow(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT MIN(ELEVATION) as min_elev, MAX(ELEVATION) as max_elev, AVG(ELEVATION) as avg_elev FROM </span><span class="char">\&quot;</span><span class="content">places</span><span class="char">\&quot;</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Mininum Elevation = </span><span class="inline"><span class="inline-delimiter">${</span>result.get(<span class="string"><span class="delimiter">'</span><span class="content">min_elev</span><span class="delimiter">'</span></span>)<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Maximum Elevation = </span><span class="inline"><span class="inline-delimiter">${</span>result.get(<span class="string"><span class="delimiter">'</span><span class="content">max_elev</span><span class="delimiter">'</span></span>)<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Average Elevation = </span><span class="inline"><span class="inline-delimiter">${</span>result.get(<span class="string"><span class="delimiter">'</span><span class="content">avg_elev</span><span class="delimiter">'</span></span>)<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Mininum Elevation = 0.0
+Maximum Elevation = 2320.0
+Average Elevation = 30.085889570552148</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Select rows</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; names = <span class="type">[]</span>
+sql.eachRow <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT TOP 10 </span><span class="char">\&quot;</span><span class="content">NAME</span><span class="char">\&quot;</span><span class="content"> FROM </span><span class="char">\&quot;</span><span class="content">places</span><span class="char">\&quot;</span><span class="content"> ORDER BY </span><span class="char">\&quot;</span><span class="content">NAME</span><span class="char">\&quot;</span><span class="content"> DESC </span><span class="delimiter">&quot;</span></span>, {
+    names.add(<span class="local-variable">it</span>[<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>])
+}
+names.each { <span class="predefined-type">String</span> name -&gt;
+    println name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> Zürich
+Zibo
+Zhengzhou
+Zagreb
+Yerevan
+Yaounde
+Yamoussoukro
+Xian
+Wuhan
+Windhoek</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Execute spatial sql</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace memory = <span class="keyword">new</span> Memory()
+Layer layer = memory.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">places_polys</span><span class="delimiter">&quot;</span></span>, [<span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">buffer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>), <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)])
+sql.eachRow <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT ST_Buffer(</span><span class="char">\&quot;</span><span class="content">the_geom</span><span class="char">\&quot;</span><span class="content">, 10) as buffer, </span><span class="char">\&quot;</span><span class="content">NAME</span><span class="char">\&quot;</span><span class="content"> as name FROM </span><span class="char">\&quot;</span><span class="content">places</span><span class="char">\&quot;</span><span class="delimiter">&quot;</span></span>, {row -&gt;
+    Geometry poly = Geometry.fromWKB(row.buffer <span class="keyword">as</span> <span class="type">byte</span><span class="type">[]</span>)
+    layer.add([<span class="key">buffer</span>: poly, <span class="key">name</span>: row.NAME])
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/workspace_database_getsql.png" alt="workspace database getsql">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-09 16:29:05 UTC
+Last updated 2019-02-09 19:31:19 UTC
 </div>
 </div>
 </body>

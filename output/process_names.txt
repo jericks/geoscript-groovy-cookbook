@@ -36,6 +36,7 @@ geo:intersection
 geo:getX
 geo:getY
 geo:difference
+geo:endPoint
 geo:reproject
 geo:splitPolygon
 geo:within
@@ -64,13 +65,12 @@ geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:isRing
 geo:polygonize
-geo:endPoint
+geo:isRing
 geo:equalsExact
-geo:pointN
 geo:relatePattern
 geo:interiorRingN
+geo:pointN
 geo:equalsExactTolerance
 geo:length
 geo:isEmpty
