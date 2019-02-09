@@ -544,6 +544,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-geobuf-workspaces">Creating Geobuf Workspaces</a></li>
 <li><a href="#creating-property-workspaces">Creating Property Workspaces</a></li>
 <li><a href="#creating-postgis-workspaces">Creating PostGIS Workspaces</a></li>
+<li><a href="#creating-mysql-workspaces">Creating MySQL Workspaces</a></li>
 </ul>
 </li>
 </ul>
@@ -641,20 +642,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS (JNDI)
-Geobuf
-Web Feature Server (NG)
-SQLite
-H2
-GeoPackage
+<pre>Directory of spatial files (shapefiles)
 PostGIS
-Directory of spatial files (shapefiles)
-H2 (JNDI)
-Shapefile
 MySQL (JNDI)
+Web Feature Server (NG)
+GeoPackage
 Properties
+Shapefile
+PostGIS (JNDI)
+H2
 MySQL
-SpatiaLite (JNDI)</pre>
+SQLite
+SpatiaLite (JNDI)
+H2 (JNDI)
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -821,20 +822,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS (JNDI)
-Geobuf
-Web Feature Server (NG)
-SQLite
-H2
-GeoPackage
+<pre>Directory of spatial files (shapefiles)
 PostGIS
-Directory of spatial files (shapefiles)
-H2 (JNDI)
-Shapefile
 MySQL (JNDI)
+Web Feature Server (NG)
+GeoPackage
 Properties
+Shapefile
+PostGIS (JNDI)
+H2
 MySQL
-SpatiaLite (JNDI)</pre>
+SQLite
+SpatiaLite (JNDI)
+H2 (JNDI)
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1103,6 +1104,55 @@ places (326)
 states (52)</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a H2 Workspace with basic parameters</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">H2 h2 = <span class="keyword">new</span> H2(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,    <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,   <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">5421</span><span class="delimiter">&quot;</span></span>,        <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">geo</span><span class="delimiter">&quot;</span></span>,         <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,        <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>     <i class="conum" data-value="6"></i><b>(6)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Database name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Host name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Port</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>User name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Password</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Create a H2 Workspace with named parameters.  Only the database name is required.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">H2 h2 = <span class="keyword">new</span> H2(<span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">host</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5412</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">geo</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>
+)</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="creating-geobuf-workspaces"><a class="anchor" href="#creating-geobuf-workspaces"></a>Creating Geobuf Workspaces</h4>
@@ -1253,7 +1303,7 @@ places (10)</pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">PostGIS postgis = <span class="keyword">new</span> PostGIS(<span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,
         <span class="string"><span class="delimiter">&quot;</span><span class="content">host</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,
-        <span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,
         <span class="string"><span class="delimiter">&quot;</span><span class="content">schema</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">public</span><span class="delimiter">&quot;</span></span>,
         <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
         <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>,
@@ -1304,7 +1354,57 @@ places (10)</pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">PostGIS.deleteDatabase(<span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,
         <span class="string"><span class="delimiter">&quot;</span><span class="content">host</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,
-        <span class="string"><span class="delimiter">&quot;</span><span class="content">post</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">5432</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>
+)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-mysql-workspaces"><a class="anchor" href="#creating-mysql-workspaces"></a>Creating MySQL Workspaces</h4>
+<div class="listingblock">
+<div class="title">Create a MySQL Workspace with basic parameters</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MySQL mysql = <span class="keyword">new</span> MySQL(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,    <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,   <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">3306</span><span class="delimiter">&quot;</span></span>,        <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,        <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>     <i class="conum" data-value="5"></i><b>(5)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Database name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Host name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Port</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>User name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Password</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Create a MySQL Workspace with named parameters.  Only the database name is required.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MySQL mysql = <span class="keyword">new</span> MySQL(<span class="string"><span class="delimiter">&quot;</span><span class="content">database</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">host</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">3306</span><span class="delimiter">&quot;</span></span>,
         <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
         <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>
 )</code></pre>
@@ -1317,7 +1417,7 @@ places (10)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-08 01:37:04 UTC
+Last updated 2019-02-09 00:37:58 UTC
 </div>
 </div>
 </body>
