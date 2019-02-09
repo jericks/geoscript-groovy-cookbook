@@ -545,6 +545,9 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-property-workspaces">Creating Property Workspaces</a></li>
 <li><a href="#creating-postgis-workspaces">Creating PostGIS Workspaces</a></li>
 <li><a href="#creating-mysql-workspaces">Creating MySQL Workspaces</a></li>
+<li><a href="#creating-spatialite-workspaces">Creating SpatiaLite Workspaces</a></li>
+<li><a href="#creating-wfs-workspaces">Creating WFS Workspaces</a></li>
+<li><a href="#creating-ogr-workspaces">Creating OGR Workspaces</a></li>
 </ul>
 </li>
 </ul>
@@ -643,19 +646,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 <div class="literalblock">
 <div class="content">
 <pre>Directory of spatial files (shapefiles)
-PostGIS
 MySQL (JNDI)
-Web Feature Server (NG)
-GeoPackage
+PostGIS
+PostGIS (JNDI)
 Properties
 Shapefile
-PostGIS (JNDI)
-H2
-MySQL
-SQLite
-SpatiaLite (JNDI)
 H2 (JNDI)
-Geobuf</pre>
+H2
+SQLite
+MySQL
+SpatiaLite (JNDI)
+Geobuf
+GeoPackage
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -823,19 +826,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 <div class="literalblock">
 <div class="content">
 <pre>Directory of spatial files (shapefiles)
-PostGIS
 MySQL (JNDI)
-Web Feature Server (NG)
-GeoPackage
+PostGIS
+PostGIS (JNDI)
 Properties
 Shapefile
-PostGIS (JNDI)
-H2
-MySQL
-SQLite
-SpatiaLite (JNDI)
 H2 (JNDI)
-Geobuf</pre>
+H2
+SQLite
+MySQL
+SpatiaLite (JNDI)
+Geobuf
+GeoPackage
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1411,13 +1414,104 @@ places (10)</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="creating-spatialite-workspaces"><a class="anchor" href="#creating-spatialite-workspaces"></a>Creating SpatiaLite Workspaces</h4>
+<div class="listingblock">
+<div class="title">Create a SpatiaLite Workspace with file and directory name</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">SpatiaLite spatialite = <span class="keyword">new</span> SpatiaLite(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">db.sqlite</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">databases</span><span class="delimiter">&quot;</span></span>  <i class="conum" data-value="2"></i><b>(2)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>File name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Directory name</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Create a SpatiaLite Workspace with file and a File directory</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> directory = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">databases</span><span class="delimiter">&quot;</span></span>)
+SpatiaLite spatialite = <span class="keyword">new</span> SpatiaLite(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">db.sqlite</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+        directory    <i class="conum" data-value="2"></i><b>(2)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>File name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>File Directory</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-wfs-workspaces"><a class="anchor" href="#creating-wfs-workspaces"></a>Creating WFS Workspaces</h4>
+<div class="listingblock">
+<div class="title">Create a WFS Workspace with a URL</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">WFS wfs = <span class="keyword">new</span> WFS(<span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/geoserver/ows?service=wfs&amp;version=1.1.0&amp;request=GetCapabilities</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-ogr-workspaces"><a class="anchor" href="#creating-ogr-workspaces"></a>Creating OGR Workspaces</h4>
+<div class="listingblock">
+<div class="title">Determine if OGR is available.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">boolean</span> isAvailable = OGR.isAvailable()</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get OGR Drivers.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt; drivers = OGR.drivers</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Shapefile Workspace from OGR.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">states.shp</span><span class="delimiter">&quot;</span></span>)
+OGR ogr = <span class="keyword">new</span> OGR(<span class="string"><span class="delimiter">&quot;</span><span class="content">ESRI Shapefile</span><span class="delimiter">&quot;</span></span>, file.absolutePath)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a SQLite Workspace from OGR</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">states.sqlite</span><span class="delimiter">&quot;</span></span>)
+OGR ogr = <span class="keyword">new</span> OGR(<span class="string"><span class="delimiter">&quot;</span><span class="content">SQLite</span><span class="delimiter">&quot;</span></span>, file.absolutePath)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a GeoJSON Workspace from OGR</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">states.json</span><span class="delimiter">&quot;</span></span>)
+OGR ogr = <span class="keyword">new</span> OGR(<span class="string"><span class="delimiter">&quot;</span><span class="content">GeoJSON</span><span class="delimiter">&quot;</span></span>, file.absolutePath)</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-09 00:37:58 UTC
+Last updated 2019-02-09 16:29:05 UTC
 </div>
 </div>
 </body>
