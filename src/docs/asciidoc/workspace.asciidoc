@@ -419,3 +419,61 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createMySQL
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createMySQLWorkspaceWithNamedParameters,indent=0]
 ----
+
+==== Creating SpatiaLite Workspaces
+
+[source,groovy]
+.Create a SpatiaLite Workspace with file and directory name
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createSpatiaLiteWorkspace,indent=0]
+----
+<1> File name
+<2> Directory name
+
+[source,groovy]
+.Create a SpatiaLite Workspace with file and a File directory
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createSpatiaLiteWorkspaceFile,indent=0]
+----
+<1> File name
+<2> File Directory
+
+==== Creating WFS Workspaces
+
+[source,groovy]
+.Create a WFS Workspace with a URL
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createWFSWorkspace,indent=0]
+----
+
+==== Creating OGR Workspaces
+
+[source,groovy]
+.Determine if OGR is available.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=ogrIsAvailable,indent=0]
+----
+
+[source,groovy]
+.Get OGR Drivers.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=ogrDrivers,indent=0]
+----
+
+[source,groovy]
+.Get a Shapefile Workspace from OGR.
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createOGRShapefileWorkspace,indent=0]
+----
+
+[source,groovy]
+.Get a SQLite Workspace from OGR
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createOGRSqliteWorkspace,indent=0]
+----
+
+[source,groovy]
+.Get a GeoJSON Workspace from OGR
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createOGRGeoJsonWorkspace,indent=0]
+----

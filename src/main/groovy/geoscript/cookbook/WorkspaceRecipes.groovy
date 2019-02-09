@@ -11,8 +11,11 @@ import geoscript.workspace.Geobuf
 import geoscript.workspace.H2
 import geoscript.workspace.Memory
 import geoscript.workspace.MySQL
+import geoscript.workspace.OGR
 import geoscript.workspace.PostGIS
 import geoscript.workspace.Property
+import geoscript.workspace.SpatiaLite
+import geoscript.workspace.WFS
 import geoscript.workspace.Workspace
 
 class WorkspaceRecipes extends Recipes {
@@ -530,4 +533,77 @@ class WorkspaceRecipes extends Recipes {
         // end::createMySQLWorkspaceWithNamedParameters[]
         mysql
     }
+
+    // Spatialite
+
+    Workspace createSpatiaLiteWorkspace() {
+        // tag::createSpatiaLiteWorkspace[]
+        SpatiaLite spatialite = new SpatiaLite(
+                "db.sqlite", // <1>
+                "databases"  // <2>
+        )
+        // end::createSpatiaLiteWorkspace[]
+        spatialite
+    }
+
+    Workspace createSpatiaLiteWorkspaceFile() {
+        // tag::createSpatiaLiteWorkspaceFile[]
+        File directory = new File("databases")
+        SpatiaLite spatialite = new SpatiaLite(
+                "db.sqlite", // <1>
+                directory    // <2>
+        )
+        // end::createSpatiaLiteWorkspaceFile[]
+        spatialite
+    }
+
+    // WFS
+
+    Workspace createWFSWorkspace() {
+        // tag::createWFSWorkspace[]
+        WFS wfs = new WFS("http://localhost:8080/geoserver/ows?service=wfs&version=1.1.0&request=GetCapabilities")
+        // end::createWFSWorkspace[]
+        wfs
+    }
+
+    // OGR
+
+    boolean ogrIsAvailable() {
+        // tag::ogrIsAvailable[]
+        boolean isAvailable = OGR.isAvailable()
+        // end::ogrIsAvailable[]
+        isAvailable
+    }
+
+    Set<String> ogrDrivers() {
+        // tag::ogrDrivers[]
+        Set<String> drivers = OGR.drivers
+        // end::ogrDrivers[]
+        drivers
+    }
+
+    Workspace createOGRShapefileWorkspace() {
+        // tag::createOGRShapefileWorkspace[]
+        File file = new File("states.shp")
+        OGR ogr = new OGR("ESRI Shapefile", file.absolutePath)
+        // end::createOGRShapefileWorkspace[]
+        ogr
+    }
+
+    Workspace createOGRSqliteWorkspace() {
+        // tag::createOGRSqliteWorkspace[]
+        File file = new File("states.sqlite")
+        OGR ogr = new OGR("SQLite", file.absolutePath)
+        // end::createOGRSqliteWorkspace[]
+        ogr
+    }
+
+    Workspace createOGRGeoJsonWorkspace() {
+        // tag::createOGRGeoJsonWorkspace[]
+        File file = new File("states.json")
+        OGR ogr = new OGR("GeoJSON", file.absolutePath)
+        // end::createOGRGeoJsonWorkspace[]
+        ogr
+    }
+
 }
