@@ -164,4 +164,12 @@ class WorkspaceRecipesTest {
         assertEquals(326, values.layer.count)
     }
 
+    @Test void databaseView() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Map<String,Object> values = recipes.databaseView()
+        assertEquals(225, values.count)
+        assertTrue(values.hasLayer1)
+        assertFalse(values.hasLayer2)
+    }
+
 }

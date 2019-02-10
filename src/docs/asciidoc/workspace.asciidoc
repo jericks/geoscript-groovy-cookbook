@@ -480,6 +480,8 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createOGRGe
 
 === Database Workspace
 
+==== SQL
+
 [source,groovy]
 .Run SQL queries directly against Databse Workspace (PostGIS, MySQL, H2)
 ----
@@ -520,3 +522,31 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseGet
 ----
 [.thumb]
 image::workspace_database_getsql.png[]
+
+==== Index
+
+[source,groovy]
+.Create a new Layer from a SQL View
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseView_create,indent=0]
+----
+<1> The layer name
+<2> The SQL Statement
+<3> The Geometry Field
+<4> Query Parameters
+
+....
+include::output/workspace_database_view_create.txt[]
+....
+[.thumb]
+image::workspace_database_view.png[]
+
+[source,groovy]
+.Remove the new Layer created from a SQL View
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseView_delete,indent=0]
+----
+....
+include::output/workspace_database_view_delete.txt[]
+....
+

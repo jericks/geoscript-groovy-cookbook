@@ -6,6 +6,7 @@ import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.Polygon
 import geoscript.layer.Layer
+import geoscript.style.Shape
 import geoscript.workspace.Database
 import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
@@ -662,6 +663,35 @@ Average Elevation = ${result.get('avg_elev')}
         drawOnBasemap("workspace_database_getsql", [layer, workspace.get("places")])
         values.layer = layer
 
+        values
+    }
+
+    Map<String,Object> databaseView() {
+        Map<String,Object> values = [:]
+        // tag::databaseView_create[]
+        Database workspace = new H2(new File("src/main/resources/h2/data.db"))
+        Layer layer = workspace.createView(
+                "megacities",                                             // <1>
+                "SELECT * FROM \"places\" WHERE \"MEGACITY\" = '%mega%'", // <2>
+                new Field("the_geom","Point","EPSG:4326"),                // <3>
+                params: [['mega', '1']]                                   // <4>
+        )
+        boolean hasLayer1 = workspace.has("megacities")
+        println "Does layer exist? ${hasLayer1}"
+        // end::databaseView_create[]
+        values.count = layer.count
+        values.hasLayer1 = hasLayer1
+        layer.style = new Shape("blue", 6, "star")
+        drawOnBasemap("workspace_database_view", [workspace.get("places"), layer])
+        writeFile("workspace_database_view_create", "Does layer exist? ${hasLayer1}")
+
+        // tag::databaseView_delete[]
+        workspace.deleteView("megacities")
+        boolean hasLayer2 = workspace.has("megacities")
+        println "Does layer exist? ${hasLayer2}"
+        // end::databaseView_delete[]
+        values.hasLayer2 = hasLayer2
+        writeFile("workspace_database_view_delete", "Does layer exist? ${hasLayer2}")
         values
     }
 
