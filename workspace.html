@@ -550,7 +550,12 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-ogr-workspaces">Creating OGR Workspaces</a></li>
 </ul>
 </li>
-<li><a href="#database-workspace">Database Workspace</a></li>
+<li><a href="#database-workspace">Database Workspace</a>
+<ul class="sectlevel3">
+<li><a href="#sql">SQL</a></li>
+<li><a href="#index">Index</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -646,19 +651,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>SpatiaLite (JNDI)
-SQLite
+<pre>PostGIS
+H2 (JNDI)
 Web Feature Server (NG)
+H2
+Properties
+MySQL
+Directory of spatial files (shapefiles)
 MySQL (JNDI)
+SpatiaLite (JNDI)
 Shapefile
 GeoPackage
-PostGIS
-Directory of spatial files (shapefiles)
 PostGIS (JNDI)
-Properties
-H2
-H2 (JNDI)
-MySQL
+SQLite
 Geobuf</pre>
 </div>
 </div>
@@ -826,19 +831,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>SpatiaLite (JNDI)
-SQLite
+<pre>PostGIS
+H2 (JNDI)
 Web Feature Server (NG)
+H2
+Properties
+MySQL
+Directory of spatial files (shapefiles)
 MySQL (JNDI)
+SpatiaLite (JNDI)
 Shapefile
 GeoPackage
-PostGIS
-Directory of spatial files (shapefiles)
 PostGIS (JNDI)
-Properties
-H2
-H2 (JNDI)
-MySQL
+SQLite
 Geobuf</pre>
 </div>
 </div>
@@ -1509,6 +1514,8 @@ OGR ogr = <span class="keyword">new</span> OGR(<span class="string"><span class=
 </div>
 <div class="sect2">
 <h3 id="database-workspace"><a class="anchor" href="#database-workspace"></a>Database Workspace</h3>
+<div class="sect3">
+<h4 id="sql"><a class="anchor" href="#sql"></a>SQL</h4>
 <div class="listingblock">
 <div class="title">Run SQL queries directly against Databse Workspace (PostGIS, MySQL, H2)</div>
 <div class="content">
@@ -1587,12 +1594,73 @@ sql.eachRow <span class="string"><span class="delimiter">&quot;</span><span clas
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="index"><a class="anchor" href="#index"></a>Index</h4>
+<div class="listingblock">
+<div class="title">Create a new Layer from a SQL View</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Database workspace = <span class="keyword">new</span> H2(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/h2/data.db</span><span class="delimiter">&quot;</span></span>))
+Layer layer = workspace.createView(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">megacities</span><span class="delimiter">&quot;</span></span>,                                             <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM </span><span class="char">\&quot;</span><span class="content">places</span><span class="char">\&quot;</span><span class="content"> WHERE </span><span class="char">\&quot;</span><span class="content">MEGACITY</span><span class="char">\&quot;</span><span class="content"> = '%mega%'</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">the_geom</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),                <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="key">params</span>: [[<span class="string"><span class="delimiter">'</span><span class="content">mega</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">1</span><span class="delimiter">'</span></span>]]                                   <i class="conum" data-value="4"></i><b>(4)</b>
+)
+<span class="type">boolean</span> hasLayer1 = workspace.has(<span class="string"><span class="delimiter">&quot;</span><span class="content">megacities</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does layer exist? </span><span class="inline"><span class="inline-delimiter">${</span>hasLayer1<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The layer name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The SQL Statement</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The Geometry Field</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Query Parameters</td>
+</tr>
+</table>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Does layer exist? true</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/workspace_database_view.png" alt="workspace database view">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Remove the new Layer created from a SQL View</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">workspace.deleteView(<span class="string"><span class="delimiter">&quot;</span><span class="content">megacities</span><span class="delimiter">&quot;</span></span>)
+<span class="type">boolean</span> hasLayer2 = workspace.has(<span class="string"><span class="delimiter">&quot;</span><span class="content">megacities</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does layer exist? </span><span class="inline"><span class="inline-delimiter">${</span>hasLayer2<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Does layer exist? false</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-09 19:31:19 UTC
+Last updated 2019-02-10 19:56:55 UTC
 </div>
 </div>
 </body>
