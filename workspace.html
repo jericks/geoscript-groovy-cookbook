@@ -553,6 +553,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#database-workspace">Database Workspace</a>
 <ul class="sectlevel3">
 <li><a href="#sql">SQL</a></li>
+<li><a href="#view">View</a></li>
 <li><a href="#index">Index</a></li>
 </ul>
 </li>
@@ -651,20 +652,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS
+<pre>Shapefile
+SpatiaLite (JNDI)
+SQLite
+PostGIS
 H2 (JNDI)
-Web Feature Server (NG)
 H2
 Properties
-MySQL
-Directory of spatial files (shapefiles)
-MySQL (JNDI)
-SpatiaLite (JNDI)
-Shapefile
-GeoPackage
+Geobuf
 PostGIS (JNDI)
-SQLite
-Geobuf</pre>
+Directory of spatial files (shapefiles)
+MySQL
+GeoPackage
+MySQL (JNDI)
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -831,20 +832,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS
+<pre>Shapefile
+SpatiaLite (JNDI)
+SQLite
+PostGIS
 H2 (JNDI)
-Web Feature Server (NG)
 H2
 Properties
-MySQL
-Directory of spatial files (shapefiles)
-MySQL (JNDI)
-SpatiaLite (JNDI)
-Shapefile
-GeoPackage
+Geobuf
 PostGIS (JNDI)
-SQLite
-Geobuf</pre>
+Directory of spatial files (shapefiles)
+MySQL
+GeoPackage
+MySQL (JNDI)
+Web Feature Server (NG)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1595,7 +1596,7 @@ sql.eachRow <span class="string"><span class="delimiter">&quot;</span><span clas
 </div>
 </div>
 <div class="sect3">
-<h4 id="index"><a class="anchor" href="#index"></a>Index</h4>
+<h4 id="view"><a class="anchor" href="#view"></a>View</h4>
 <div class="listingblock">
 <div class="title">Create a new Layer from a SQL View</div>
 <div class="content">
@@ -1654,13 +1655,50 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="index"><a class="anchor" href="#index"></a>Index</h4>
+<div class="listingblock">
+<div class="title">Create an Index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Database workspace = <span class="keyword">new</span> H2(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/h2/data.db</span><span class="delimiter">&quot;</span></span>))
+workspace.createIndex(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">name_idx</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>,<span class="predefined-constant">true</span>)
+workspace.createIndex(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">megacity_idx</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">MEGACITY</span><span class="delimiter">&quot;</span></span>,<span class="predefined-constant">false</span>)
+workspace.createIndex(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">a3_idx</span><span class="delimiter">&quot;</span></span>, [<span class="string"><span class="delimiter">&quot;</span><span class="content">SOV_A3</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">ADM0_A3</span><span class="delimiter">&quot;</span></span>],<span class="predefined-constant">false</span>)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get an Index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;<span class="predefined-type">Map</span>&gt; indexes = workspace.getIndexes(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+indexes.each { <span class="predefined-type">Map</span> index -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="content">Index name = </span><span class="inline"><span class="inline-delimiter">${</span>index.name<span class="inline-delimiter">}</span></span><span class="content">, unique = </span><span class="inline"><span class="inline-delimiter">${</span>index.unique<span class="inline-delimiter">}</span></span><span class="content">, attributes = </span><span class="inline"><span class="inline-delimiter">${</span>index.attributes<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Index name = PRIMARY_KEY_C, unique = true, attributes = [fid]
+Index name = name_idx, unique = true, attributes = [NAME]
+Index name = a3_idx, unique = false, attributes = [SOV_A3, ADM0_A3]
+Index name = megacity_idx, unique = false, attributes = [MEGACITY]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Remove an Index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">workspace.deleteIndex(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">name_idx</span><span class="delimiter">&quot;</span></span>)
+workspace.deleteIndex(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">megacity_idx</span><span class="delimiter">&quot;</span></span>)
+workspace.deleteIndex(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">a3_idx</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-10 19:56:55 UTC
+Last updated 2019-02-11 01:09:38 UTC
 </div>
 </div>
 </body>
