@@ -523,7 +523,7 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseGet
 [.thumb]
 image::workspace_database_getsql.png[]
 
-==== Index
+==== View
 
 [source,groovy]
 .Create a new Layer from a SQL View
@@ -549,4 +549,27 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseVie
 ....
 include::output/workspace_database_view_delete.txt[]
 ....
+
+==== Index
+
+[source,groovy]
+.Create an Index
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseIndex_create,indent=0]
+----
+
+[source,groovy]
+.Get an Index
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseIndex_get,indent=0]
+----
+....
+include::output/workspace_database_index.txt[]
+....
+
+[source,groovy]
+.Remove an Index
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=databaseIndex_delete,indent=0]
+----
 

@@ -172,4 +172,15 @@ class WorkspaceRecipesTest {
         assertFalse(values.hasLayer2)
     }
 
+    @Test void databaseIndex() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Map<String,Object> values = recipes.databaseIndex()
+        assertTrue(values.nameIndexCreated)
+        assertTrue(values.megacityIndexCreated)
+        assertTrue(values.a3IndexCreated)
+        assertTrue(values.nameIndexDeleted)
+        assertTrue(values.megacityIndexDeleted)
+        assertTrue(values.a3IndexDeleted)
+    }
+
 }

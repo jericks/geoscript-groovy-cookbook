@@ -1968,3 +1968,331 @@ java.lang.Exception: Stack Trace
 	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:386)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:323)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:143)
+02-09 10:55:46 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-09 11:09:19 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-09 11:09:23 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Column name not found; SQL statement:
+SELECT TOP 10 "name" FROM "places" ORDER BY "name" DESC  [42122-119]
+	at org.h2.message.Message.getSQLException(Message.java:106)
+	at org.h2.message.Message.getSQLException(Message.java:117)
+	at org.h2.message.Message.getSQLException(Message.java:76)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:128)
+	at org.h2.command.dml.Select.prepare(Select.java:716)
+	at org.h2.command.Parser.prepareCommand(Parser.java:236)
+	at org.h2.engine.Session.prepareLocal(Session.java:415)
+	at org.h2.engine.Session.prepareCommand(Session.java:376)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1049)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:70)
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208)
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208)
+	at groovy.sql.Sql.eachRow(Sql.java:1180)
+	at groovy.sql.Sql.eachRow(Sql.java:1142)
+	at groovy.sql.Sql.eachRow(Sql.java:1079)
+	at groovy.sql.Sql$eachRow$0.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:135)
+	at geoscript.cookbook.WorkspaceRecipes.databaseGetSql(WorkspaceRecipes.groovy:632)
+	at geoscript.cookbook.WorkspaceRecipes$databaseGetSql.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:119)
+	at geoscript.cookbook.WorkspaceRecipesTest.databaseGetSql(WorkspaceRecipesTest.groovy:158)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+02-09 11:10:26 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-09 11:11:04 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-09 11:15:42 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-09 11:16:41 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-09 11:26:33 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 11:43:16 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 11:43:18 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table megacities not found; SQL statement:
+SELECT ST_Envelope("the_geom") FROM "megacities" [42102-119]
+02-10 11:46:33 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 11:47:38 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 11:50:50 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 11:53:01 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 16:55:32 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 16:55:35 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Column MAGACITY not found; SQL statement:
+CREATE INDEX "megacity_idx" ON "places"("MAGACITY") [42122-119]
+	at org.h2.message.Message.getSQLException(Message.java:106)
+	at org.h2.message.Message.getSQLException(Message.java:117)
+	at org.h2.message.Message.getSQLException(Message.java:76)
+	at org.h2.table.Table.getColumn(Table.java:528)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:77)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:88)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:72)
+	at org.h2.command.Command.executeUpdate(Command.java:208)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:162)
+	at org.apache.commons.dbcp.DelegatingStatement.execute(DelegatingStatement.java:264)
+	at org.apache.commons.dbcp.DelegatingStatement.execute(DelegatingStatement.java:264)
+	at org.geotools.jdbc.SQLDialect.createIndex(SQLDialect.java:1297)
+	at org.geotools.jdbc.JDBCDataStore.createIndex(JDBCDataStore.java:4998)
+	at org.geotools.jdbc.JDBCDataStore$createIndex.call(Unknown Source)
+	at geoscript.workspace.Database.createIndex(Database.groovy:103)
+	at geoscript.workspace.Database$createIndex$0.callCurrent(Unknown Source)
+	at geoscript.workspace.Database.createIndex(Database.groovy:92)
+	at geoscript.workspace.Database$createIndex.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:151)
+	at geoscript.cookbook.WorkspaceRecipes.databaseIndex(WorkspaceRecipes.groovy:704)
+	at geoscript.cookbook.WorkspaceRecipes$databaseIndex.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:119)
+	at geoscript.cookbook.WorkspaceRecipesTest.databaseIndex(WorkspaceRecipesTest.groovy:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+02-10 16:56:09 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 16:56:10 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Index name_idx already exists; SQL statement:
+CREATE UNIQUE INDEX "name_idx" ON "places"("NAME") [42111-119]
+	at org.h2.message.Message.getSQLException(Message.java:106)
+	at org.h2.message.Message.getSQLException(Message.java:117)
+	at org.h2.message.Message.getSQLException(Message.java:76)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:75)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:72)
+	at org.h2.command.Command.executeUpdate(Command.java:208)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:162)
+	at org.apache.commons.dbcp.DelegatingStatement.execute(DelegatingStatement.java:264)
+	at org.apache.commons.dbcp.DelegatingStatement.execute(DelegatingStatement.java:264)
+	at org.geotools.jdbc.SQLDialect.createIndex(SQLDialect.java:1297)
+	at org.geotools.jdbc.JDBCDataStore.createIndex(JDBCDataStore.java:4998)
+	at org.geotools.jdbc.JDBCDataStore$createIndex.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:127)
+	at geoscript.workspace.Database.createIndex(Database.groovy:103)
+	at geoscript.workspace.Database$createIndex$0.callCurrent(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:51)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:156)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:192)
+	at geoscript.workspace.Database.createIndex(Database.groovy:92)
+	at geoscript.workspace.Database$createIndex.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:151)
+	at geoscript.cookbook.WorkspaceRecipes.databaseIndex(WorkspaceRecipes.groovy:703)
+	at geoscript.cookbook.WorkspaceRecipes$databaseIndex.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:119)
+	at geoscript.cookbook.WorkspaceRecipesTest.databaseIndex(WorkspaceRecipesTest.groovy:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+02-10 16:57:05 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 16:57:06 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Column ADMO_A3 not found; SQL statement:
+CREATE INDEX "a3_idx" ON "places"("SOV_A3", "ADMO_A3") [42122-119]
+	at org.h2.message.Message.getSQLException(Message.java:106)
+	at org.h2.message.Message.getSQLException(Message.java:117)
+	at org.h2.message.Message.getSQLException(Message.java:76)
+	at org.h2.table.Table.getColumn(Table.java:528)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:77)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:88)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:72)
+	at org.h2.command.Command.executeUpdate(Command.java:208)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:162)
+	at org.apache.commons.dbcp.DelegatingStatement.execute(DelegatingStatement.java:264)
+	at org.apache.commons.dbcp.DelegatingStatement.execute(DelegatingStatement.java:264)
+	at org.geotools.jdbc.SQLDialect.createIndex(SQLDialect.java:1297)
+	at org.geotools.jdbc.JDBCDataStore.createIndex(JDBCDataStore.java:4998)
+	at org.geotools.jdbc.JDBCDataStore$createIndex$0.call(Unknown Source)
+	at geoscript.workspace.Database.createIndex(Database.groovy:103)
+	at geoscript.workspace.Database$createIndex$1.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:151)
+	at geoscript.cookbook.WorkspaceRecipes.databaseIndex(WorkspaceRecipes.groovy:706)
+	at geoscript.cookbook.WorkspaceRecipes$databaseIndex.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:119)
+	at geoscript.cookbook.WorkspaceRecipesTest.databaseIndex(WorkspaceRecipesTest.groovy:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+02-10 16:57:44 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 16:58:09 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 16:58:11 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Index a3_idx already exists; SQL statement:
+CREATE INDEX "a3_idx" ON "places"("SOV_A3", "ADM0_A3") [42111-119]
+	at org.h2.message.Message.getSQLException(Message.java:106)
+	at org.h2.message.Message.getSQLException(Message.java:117)
+	at org.h2.message.Message.getSQLException(Message.java:76)
+	at org.h2.command.ddl.CreateIndex.update(CreateIndex.java:75)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:72)
+	at org.h2.command.Command.executeUpdate(Command.java:208)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:162)
+	at org.apache.commons.dbcp.DelegatingStatement.execute(DelegatingStatement.java:264)
+	at org.apache.commons.dbcp.DelegatingStatement.execute(DelegatingStatement.java:264)
+	at org.geotools.jdbc.SQLDialect.createIndex(SQLDialect.java:1297)
+	at org.geotools.jdbc.JDBCDataStore.createIndex(JDBCDataStore.java:4998)
+	at org.geotools.jdbc.JDBCDataStore$createIndex$0.call(Unknown Source)
+	at geoscript.workspace.Database.createIndex(Database.groovy:103)
+	at geoscript.workspace.Database$createIndex$1.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:151)
+	at geoscript.cookbook.WorkspaceRecipes.databaseIndex(WorkspaceRecipes.groovy:707)
+	at geoscript.cookbook.WorkspaceRecipes$databaseIndex.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:119)
+	at geoscript.cookbook.WorkspaceRecipesTest.databaseIndex(WorkspaceRecipesTest.groovy:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+02-10 16:58:44 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 16:59:17 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 16:59:43 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 17:02:48 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 17:05:03 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]
+02-10 17:07:02 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table GT_PK_METADATA not found; SQL statement:
+SELECT * FROM GT_PK_METADATA WHERE 1 = 0 [42102-119]

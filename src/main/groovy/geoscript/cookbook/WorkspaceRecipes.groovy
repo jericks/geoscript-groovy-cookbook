@@ -695,4 +695,37 @@ Average Elevation = ${result.get('avg_elev')}
         values
     }
 
+    Map<String,Object> databaseIndex() {
+        Map<String, Object> values = [:]
+
+        // tag::databaseIndex_create[]
+        Database workspace = new H2(new File("src/main/resources/h2/data.db"))
+        workspace.createIndex("places","name_idx","NAME",true)
+        workspace.createIndex("places","megacity_idx","MEGACITY",false)
+        workspace.createIndex("places","a3_idx", ["SOV_A3", "ADM0_A3"],false)
+        // end::databaseIndex_create[]
+        values.nameIndexCreated = workspace.getIndexes("places").find { it.name == "name_idx"} != null
+        values.megacityIndexCreated = workspace.getIndexes("places").find { it.name == "megacity_idx"} != null
+        values.a3IndexCreated = workspace.getIndexes("places").find { it.name == "a3_idx"} != null
+
+        // tag::databaseIndex_get[]
+        List<Map> indexes = workspace.getIndexes("places")
+        indexes.each { Map index ->
+            println "Index name = ${index.name}, unique = ${index.unique}, attributes = ${index.attributes}"
+        }
+        // end::databaseIndex_get[]
+        writeFile("workspace_database_index", indexes.collect { Map index -> "Index name = ${index.name}, unique = ${index.unique}, attributes = ${index.attributes}" }.join(NEW_LINE))
+
+        // tag::databaseIndex_delete[]
+        workspace.deleteIndex("places", "name_idx")
+        workspace.deleteIndex("places", "megacity_idx")
+        workspace.deleteIndex("places", "a3_idx")
+        // end::databaseIndex_delete[]
+        values.nameIndexDeleted = workspace.getIndexes("places").find { it.name == "name_idx"} == null
+        values.megacityIndexDeleted = workspace.getIndexes("places").find { it.name == "megacity_idx"} == null
+        values.a3IndexDeleted = workspace.getIndexes("places").find { it.name == "a3_idx"} == null
+
+        values
+    }
+
 }
