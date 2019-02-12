@@ -349,6 +349,19 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createPrope
 include::output/workspace_property_file.txt[]
 ....
 
+==== Creating SQLite Workspaces
+
+[source,groovy]
+.Create a SQLite Workspace from a File
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createSqliteWorkspaceFromFile,indent=0]
+----
+
+....
+include::output/workspace_sqlite_file.txt[]
+....
+
+
 ==== Creating PostGIS Workspaces
 
 [source,groovy]

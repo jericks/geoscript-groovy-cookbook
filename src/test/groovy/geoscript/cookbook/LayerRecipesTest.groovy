@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.feature.Feature
 import geoscript.layer.Layer
 import geoscript.layer.Property
+import geoscript.layer.Raster
 import geoscript.layer.Shapefile
 import geoscript.workspace.Workspace
 import org.junit.Test
@@ -18,6 +19,28 @@ class LayerRecipesTest {
         assertEquals(177, values.count)
         assertEquals("EPSG:4326", values.proj.id)
         assertEquals("(-179.99999999999997,-90.00000000000003,180.00000000000014,83.64513000000002,EPSG:4326)", values.bounds.toString())
+    }
+
+    @Test void getLayerMinMax() {
+        LayerRecipes recipes = new LayerRecipes()
+        Map<String, Double> stats = recipes.getLayerMinMax()
+        assertEquals(0.0, stats.min, 0.01)
+        assertEquals(36400.0, stats.max, 0.01)
+    }
+
+    @Test void getLayerHistogram() {
+        LayerRecipes recipes = new LayerRecipes()
+        List<Double> values = recipes.getLayerHistogram()
+        assertEquals(10, values.size())
+        values.each { assertEquals(2, it.size()) }
+    }
+
+    @Test void getLayerInterpolate() {
+        LayerRecipes recipes = new LayerRecipes()
+        Map<String, List<Double>> values = recipes.getLayerInterpolate()
+        assertEquals(11, values.linear.size())
+        assertEquals(9, values.exp.size())
+        assertEquals(13, values.log.size())
     }
 
     @Test void getLayerFeatures() {
@@ -196,6 +219,12 @@ class LayerRecipesTest {
         Layer layer = recipes.transform()
         assertEquals("Point", layer.schema.geom.typ)
         assertEquals(49, layer.count)
+    }
+
+    @Test void getRaster() {
+        LayerRecipes recipes = new LayerRecipes()
+        Raster raster = recipes.getRaster()
+        assertNotNull(raster)
     }
 
     // Layer Algebra

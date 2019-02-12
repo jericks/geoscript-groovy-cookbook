@@ -133,6 +133,12 @@ class WorkspaceRecipesTest {
         assertNotNull workspace
     }
 
+    @Test void createSqliteWorkspaceFromFile() {
+        WorkspaceRecipes recipes = new WorkspaceRecipes()
+        Workspace workspace = recipes.createSqliteWorkspaceFromFile()
+        assertNotNull workspace
+    }
+
     @Test void createPostGISWorkspace() {
         WorkspaceRecipes recipes = new WorkspaceRecipes()
         Workspace workspace = recipes.createPostGISWorkspace()

@@ -54,6 +54,61 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerPropert
 include::output/layer_properties_bounds.txt[]
 ....
 
+[source,groovy]
+.Get the minimum and maximum value from a Field.
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerMinMax,indent=0]
+----
+....
+include::output/layer_minmax.txt[]
+....
+
+[source,groovy]
+.Calculate a histogram of values for a Field.
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerHistogram,indent=0]
+----
+....
+include::output/layer_histogram.txt[]
+....
+
+[source,groovy]
+.Create a List of interpolated values for a Field using a linear algorithm
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerInterpolateLinear,indent=0]
+----
+<1> Field Name
+<2> Number of classes
+<3> Algorithm
+....
+include::output/layer_interpolate_linear.txt[]
+....
+
+[source,groovy]
+.Create a List of interpolated values for a Field using a exponetial algorithm
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerInterpolateExp,indent=0]
+----
+<1> Field Name
+<2> Number of classes
+<3> Algorithm
+....
+include::output/layer_interpolate_exp.txt[]
+....
+
+[source,groovy]
+.Create a List of interpolated values for a Field using a logarithmic algorithm
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getLayerInterpolateLog,indent=0]
+----
+<1> Field Name
+<2> Number of classes
+<3> Algorithm
+....
+include::output/layer_interpolate_log.txt[]
+....
+
+
 === Getting a Layer's Features
 
 ==== Each Feature
@@ -410,6 +465,28 @@ include::output/layer_transform.txt[]
 
 [.thumb]
 image::layer_transform.png[]
+
+==== Raster
+
+[source,groovy]
+.Create a Raster from the geometry and values of a Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=getRaster,indent=0]
+----
+<1> Field for values
+<2> Raster size (width and height)
+<3> Raster bounds
+<4> Name
+
+Layer
+
+[.thumb]
+image::layer_getraster_layer.png[]
+
+Raster
+
+[.thumb]
+image::layer_getraster_raster.png[]
 
 === Layer Algebra
 

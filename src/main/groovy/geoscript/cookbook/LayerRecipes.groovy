@@ -12,6 +12,7 @@ import geoscript.geom.Point
 import geoscript.layer.Cursor
 import geoscript.layer.Graticule
 import geoscript.layer.Layer
+import geoscript.layer.Raster
 import geoscript.layer.Renderable
 import geoscript.layer.Shapefile
 import geoscript.layer.io.CsvReader
@@ -34,6 +35,7 @@ import geoscript.layer.io.Readers
 import geoscript.layer.io.Writers
 import geoscript.proj.Projection
 import geoscript.render.Map as GMap
+import geoscript.style.ColorMap
 import geoscript.style.Fill
 import geoscript.style.Label
 import geoscript.style.Shape
@@ -92,6 +94,79 @@ class LayerRecipes extends Recipes {
         writeFile("layer_properties_bounds", "Bounds: ${bounds}")
 
         values
+    }
+
+    Map<String,Double> getLayerMinMax() {
+        // tag::getLayerMinMax[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("places")
+        Map<String,Double> minMax = layer.minmax("POP2050")
+        println "Minimum Population in 2050 = ${minMax.min}"
+        println "Maximum Population in 2050 = ${minMax.max}"
+        // end::getLayerMinMax[]
+        writeFile("layer_minmax", "Minimum Population in 2050 = ${minMax.min}${NEW_LINE}Maximum Population in 2050 = ${minMax.max}")
+        minMax
+    }
+
+    List<Double> getLayerHistogram() {
+        // tag::getLayerHistogram[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("places")
+        List<List<Double>> values = layer.histogram("POP2050", 10)
+        values.each { List<Double> value ->
+            println "${value[0]} - ${value[1]}"
+        }
+        // end::getLayerHistogram[]
+        writeFile("layer_histogram", values.collect { "${it[0]} - ${it[1]}" }.join(NEW_LINE))
+        values
+    }
+
+    Map<String, List<Double>> getLayerInterpolate() {
+
+        Map<String, List<Double>> results = [:]
+
+        // tag::getLayerInterpolateLinear[]
+        Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
+        Layer layer = workspace.get("places")
+        List<Double> values = layer.interpolate(
+                "POP2050", // <1>
+                10,        // <2>
+                "linear"   // <3>
+        )
+        values.each { Double value ->
+            println value
+        }
+        // end::getLayerInterpolateLinear[]
+        results.linear = values
+        writeFile("layer_interpolate_linear", values.collect { "${it}" }.join(NEW_LINE))
+
+        // tag::getLayerInterpolateExp[]
+        values = layer.interpolate(
+                "POP2050", // <1>
+                8,         // <2>
+                "exp"      // <3>
+        )
+        values.each { Double value ->
+            println value
+        }
+        // end::getLayerInterpolateExp[]
+        results.exp = values
+        writeFile("layer_interpolate_exp", values.collect { "${it}" }.join(NEW_LINE))
+
+        // tag::getLayerInterpolateLog[]
+        values = layer.interpolate(
+                "POP2050", // <1>
+                12,        // <2>
+                "exp"      // <3>
+        )
+        values.each { Double value ->
+            println value
+        }
+        // end::getLayerInterpolateLog[]
+        results.log = values
+        writeFile("layer_interpolate_log", values.collect { "${it}" }.join(NEW_LINE))
+
+        results
     }
 
     int getLayerFeatures() {
@@ -894,6 +969,51 @@ The merged Layer has ${mergedLayer.count} features
             "${f['name']} = ${f['ratio']}"
         }.join(NEW_LINE))
         centroids
+    }
+
+    Raster getRaster() {
+
+        // tag::getRaster[]
+        Workspace workspace = new Memory()
+        Layer layer = workspace.create("earthquake", [
+            new Field("geom", "Polygon", "EPSG:4326"),
+            new Field("intensity", "Double")
+        ])
+        Point point = new Point(-122.387695, 47.572357)
+
+        double distance = 5.0
+        List<Geometry> geometries = (1..5).collect { int i ->
+            point.buffer(i * distance)
+        }
+
+        geometries.eachWithIndex { Geometry geometry, int i ->
+            if (i > 0) {
+                Geometry previousGeometry = geometries.get(i - 1)
+                geometry = geometry.difference(previousGeometry)
+            }
+            layer.add([
+                geom: geometry,
+                intensity: (i + 1) * 20
+            ])
+        }
+
+        Raster raster = layer.getRaster(
+            "intensity",  // <1>
+            [400,400],    // <2>
+            layer.bounds, // <3>
+            "intensity"   // <4>
+        )
+        // end::getRaster[]
+        layer.style = new UniqueValues(layer, "intensity", "LightPurpleToDarkPurpleHeatMap")
+        drawOnBasemap("layer_getraster_layer", [layer], layer.bounds)
+        raster.style = new ColorMap(
+                20,
+                100,
+                "LightPurpleToDarkPurpleHeatMap",
+                5
+        )
+        drawOnBasemap("layer_getraster_raster", [raster], raster.bounds)
+        raster
     }
 
     // Layer Algebra

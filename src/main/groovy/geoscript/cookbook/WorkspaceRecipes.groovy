@@ -18,6 +18,7 @@ import geoscript.workspace.OGR
 import geoscript.workspace.PostGIS
 import geoscript.workspace.Property
 import geoscript.workspace.SpatiaLite
+import geoscript.workspace.Sqlite
 import geoscript.workspace.WFS
 import geoscript.workspace.Workspace
 import groovy.sql.GroovyRowResult
@@ -436,6 +437,21 @@ class WorkspaceRecipes extends Recipes {
         }
         // end::createPropertyWorkspaceFromFile[]
         writeFile("workspace_property_file", "${workspace.format}${NEW_LINE}------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
+        workspace
+    }
+
+    // SQLite
+
+    Workspace createSqliteWorkspaceFromFile() {
+        // tag::createSqliteWorkspaceFromFile[]
+        Workspace workspace = new Sqlite(new File("src/main/resources/data.sqlite"))
+        println workspace.format
+        println "--------"
+        workspace.names.each { String name ->
+            println "${name} (${workspace.get(name).count})"
+        }
+        // end::createSqliteWorkspaceFromFile[]
+        writeFile("workspace_sqlite_file", "${workspace.format}${NEW_LINE}------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
         workspace
     }
 
