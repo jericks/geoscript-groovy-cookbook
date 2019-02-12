@@ -561,6 +561,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#merge">Merge</a></li>
 <li><a href="#split">Split</a></li>
 <li><a href="#transform">Transform</a></li>
+<li><a href="#raster">Raster</a></li>
 </ul>
 </li>
 <li><a href="#layer-algebra">Layer Algebra</a>
@@ -671,6 +672,181 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 <div class="literalblock">
 <div class="content">
 <pre>Bounds: (-179.99999999999997,-90.00000000000003,180.00000000000014,83.64513000000002,EPSG:4326)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the minimum and maximum value from a Field.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>,<span class="predefined-type">Double</span>&gt; minMax = layer.minmax(<span class="string"><span class="delimiter">&quot;</span><span class="content">POP2050</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Minimum Population in 2050 = </span><span class="inline"><span class="inline-delimiter">${</span>minMax.min<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Maximum Population in 2050 = </span><span class="inline"><span class="inline-delimiter">${</span>minMax.max<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Minimum Population in 2050 = 0.0
+Maximum Population in 2050 = 36400.0</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate a histogram of values for a Field.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">List</span>&lt;<span class="predefined-type">Double</span>&gt;&gt; values = layer.histogram(<span class="string"><span class="delimiter">&quot;</span><span class="content">POP2050</span><span class="delimiter">&quot;</span></span>, <span class="integer">10</span>)
+values.each { <span class="predefined-type">List</span>&lt;<span class="predefined-type">Double</span>&gt; value -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>value[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="content"> - </span><span class="inline"><span class="inline-delimiter">${</span>value[<span class="integer">1</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0.0 - 3640.0
+3640.0 - 7280.0
+7280.0 - 10920.0
+10920.0 - 14560.0
+14560.0 - 18200.0
+18200.0 - 21840.0
+21840.0 - 25480.0
+25480.0 - 29120.0
+29120.0 - 32760.0
+32760.0 - 36400.0</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a List of interpolated values for a Field using a linear algorithm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">places</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">Double</span>&gt; values = layer.interpolate(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">POP2050</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="integer">10</span>,        <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">linear</span><span class="delimiter">&quot;</span></span>   <i class="conum" data-value="3"></i><b>(3)</b>
+)
+values.each { <span class="predefined-type">Double</span> value -&gt;
+    println value
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Field Name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Number of classes</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Algorithm</td>
+</tr>
+</table>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0.0
+3640.0
+7280.0
+10920.0
+14560.0
+18200.0
+21840.0
+25480.0
+29120.0
+32760.0
+36400.0</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a List of interpolated values for a Field using a exponetial algorithm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">values = layer.interpolate(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">POP2050</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="integer">8</span>,         <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">exp</span><span class="delimiter">&quot;</span></span>      <i class="conum" data-value="3"></i><b>(3)</b>
+)
+values.each { <span class="predefined-type">Double</span> value -&gt;
+    println value
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Field Name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Number of classes</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Algorithm</td>
+</tr>
+</table>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0.0
+2.7165430207384107
+12.81269202499939
+50.33546414312058
+189.79046097748173
+708.0809561693237
+2634.3298787896188
+9793.31686835896
+36399.99999999998</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a List of interpolated values for a Field using a logarithmic algorithm</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">values = layer.interpolate(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">POP2050</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="integer">12</span>,        <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">exp</span><span class="delimiter">&quot;</span></span>      <i class="conum" data-value="3"></i><b>(3)</b>
+)
+values.each { <span class="predefined-type">Double</span> value -&gt;
+    println value
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Field Name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Number of classes</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Algorithm</td>
+</tr>
+</table>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0.0
+1.3993454247861767
+4.75685846744236
+12.81269202499939
+32.14141941416279
+78.51771304229133
+189.79046097748173
+456.77221963916656
+1097.3536807854464
+2634.3298787896188
+6322.06668747619
+15170.221127213848
+36399.99999999998</pre>
 </div>
 </div>
 </div>
@@ -1835,6 +2011,79 @@ MARYLAND = 1.0621588832568312</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="raster"><a class="anchor" href="#raster"></a>Raster</h4>
+<div class="listingblock">
+<div class="title">Create a Raster from the geometry and values of a Layer</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+Layer layer = workspace.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">earthquake</span><span class="delimiter">&quot;</span></span>, [
+    <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Polygon</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+    <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">intensity</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Double</span><span class="delimiter">&quot;</span></span>)
+])
+<span class="predefined-type">Point</span> point = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.387695</span>, <span class="float">47.572357</span>)
+
+<span class="type">double</span> distance = <span class="float">5.0</span>
+<span class="predefined-type">List</span>&lt;Geometry&gt; geometries = (<span class="integer">1</span>..<span class="integer">5</span>).collect { <span class="type">int</span> i -&gt;
+    point.buffer(i * distance)
+}
+
+geometries.eachWithIndex { Geometry geometry, <span class="type">int</span> i -&gt;
+    <span class="keyword">if</span> (i &gt; <span class="integer">0</span>) {
+        Geometry previousGeometry = geometries.get(i - <span class="integer">1</span>)
+        geometry = geometry.difference(previousGeometry)
+    }
+    layer.add([
+        <span class="key">geom</span>: geometry,
+        <span class="key">intensity</span>: (i + <span class="integer">1</span>) * <span class="integer">20</span>
+    ])
+}
+
+<span class="predefined-type">Raster</span> raster = layer.getRaster(
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">intensity</span><span class="delimiter">&quot;</span></span>,  <i class="conum" data-value="1"></i><b>(1)</b>
+    [<span class="integer">400</span>,<span class="integer">400</span>],    <i class="conum" data-value="2"></i><b>(2)</b>
+    layer.bounds, <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">intensity</span><span class="delimiter">&quot;</span></span>   <i class="conum" data-value="4"></i><b>(4)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Field for values</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Raster size (width and height)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Raster bounds</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Name</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Layer</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_getraster_layer.png" alt="layer getraster layer">
+</div>
+</div>
+<div class="paragraph">
+<p>Raster</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_getraster_raster.png" alt="layer getraster raster">
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="layer-algebra"><a class="anchor" href="#layer-algebra"></a>Layer Algebra</h3>
@@ -2215,7 +2464,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-2114f051_168da228c02_-6903"
+            "id": "fid--3912193_168df8f42cb_-68f7"
         },
         {
             "type": "Feature",
@@ -2230,7 +2479,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-2114f051_168da228c02_-6901"
+            "id": "fid--3912193_168df8f42cb_-68f5"
         }
     ]
 }</pre>
@@ -2280,7 +2529,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-2114f051_168da228c02_-7e2d"
+            "id": "fid--3912193_168df8f42cb_-7e2d"
         },
         {
             "type": "Feature",
@@ -2295,7 +2544,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-2114f051_168da228c02_-7e2b"
+            "id": "fid--3912193_168df8f42cb_-7e2b"
         }
     ]
 }</pre>
@@ -2479,7 +2728,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-2114f051_168da228c02_-7398"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--3912193_168df8f42cb_-7398"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -2501,7 +2750,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-2114f051_168da228c02_-7396"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--3912193_168df8f42cb_-7396"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -2567,7 +2816,7 @@ println gml</code></pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid-2114f051_168da228c02_-73b2"&gt;
+&lt;gsf:cities fid="fid--3912193_168df8f42cb_-73b2"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -2581,7 +2830,7 @@ println gml</code></pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid-2114f051_168da228c02_-73b0"&gt;
+&lt;gsf:cities fid="fid--3912193_168df8f42cb_-73b0"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -2695,7 +2944,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-2114f051_168da228c02_-6a0e
+          fid--3912193_168df8f42cb_-6a02
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2722,7 +2971,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-2114f051_168da228c02_-6a0c
+          fid--3912193_168df8f42cb_-6a00
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -2782,13 +3031,13 @@ println kml</code></pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid-2114f051_168da228c02_-73aa"&gt;
+&lt;kml:Placemark id="fid--3912193_168df8f42cb_-73aa"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid-2114f051_168da228c02_-73a8"&gt;
+&lt;kml:Placemark id="fid--3912193_168df8f42cb_-73a8"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -2916,15 +3165,15 @@ println georss</code></pre>
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid-2114f051_168da228c02_-7a36&lt;/title&gt;
+&lt;title&gt;fid--3912193_168df8f42cb_-7a36&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Mon Feb 11 01:18:58 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Tue Feb 12 02:35:50 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid-2114f051_168da228c02_-7a34&lt;/title&gt;
+&lt;title&gt;fid--3912193_168df8f42cb_-7a34&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Mon Feb 11 01:18:58 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Tue Feb 12 02:35:50 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -2994,10 +3243,10 @@ println gpx</code></pre>
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid-2114f051_168da228c02_-73ae&lt;/name&gt;
+&lt;name&gt;fid--3912193_168df8f42cb_-73ae&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid-2114f051_168da228c02_-73ac&lt;/name&gt;
+&lt;name&gt;fid--3912193_168df8f42cb_-73ac&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -3171,7 +3420,7 @@ Layer layer = Graticule.createRectangles(bounds, width, height, -<span class="in
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-11 01:09:38 UTC
+Last updated 2019-02-12 02:26:34 UTC
 </div>
 </div>
 </body>
