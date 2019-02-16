@@ -19,6 +19,9 @@ import org.apache.commons.io.FileUtils
 
 import javax.imageio.ImageIO
 import java.awt.image.BufferedImage
+import java.awt.image.ColorModel
+import java.awt.image.RenderedImage
+import java.awt.image.WritableRaster
 
 class Recipes {
 
@@ -54,6 +57,16 @@ class Recipes {
 
     protected void saveImage(String name, BufferedImage image) {
         saveImage(name, image, "png")
+    }
+
+    protected void saveImage(String name, RenderedImage image) {
+        ColorModel colorModel = image.colorModel
+        WritableRaster writableRaster = colorModel.createCompatibleWritableRaster(image.width, image.height)
+        boolean isAlphaPremultiplied = colorModel.isAlphaPremultiplied()
+        Hashtable properties = new Hashtable()
+        BufferedImage result = new BufferedImage(colorModel, writableRaster, isAlphaPremultiplied, properties)
+        image.copyData(writableRaster)
+        saveImage(name, result)
     }
 
     protected File getImageFile(String name) {

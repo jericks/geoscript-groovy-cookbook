@@ -15,6 +15,11 @@ import geoscript.style.Gradient
 import geoscript.style.Stroke
 import geoscript.style.UniqueValues
 
+import java.awt.image.BufferedImage
+import java.awt.image.ColorModel
+import java.awt.image.RenderedImage
+import java.awt.image.WritableRaster
+
 class RasterRecipes extends Recipes {
 
     Raster properties() {
@@ -77,6 +82,15 @@ class RasterRecipes extends Recipes {
         // end::properties_extrema[]
         writeFile("raster_properties_extrema","Min value: ${extrema.min} Max value: ${extrema.max}")
 
+        // tag::properties_image[]
+        RenderedImage image = raster.image
+        // end::properties_image[]
+        saveImage("raster_properies_image", image)
+
+        // tag::properties_dispose[]
+        raster.dispose()
+        // end::properties_dispose[]
+
         raster
     }
 
@@ -108,6 +122,28 @@ class RasterRecipes extends Recipes {
         // end::values_2[]
         writeFile("raster_values_2", "${elevation}")
 
+        // tag::values_3[]
+        int x = 10
+        int y = 8
+        int w = 5
+        int h = 6
+        int band = 0
+        List values = raster.getValues(x, y, w, h, band, false)
+        println values
+        // end::values_3[]
+        writeFile("raster_values_3", "${values}")
+
+        // tag::values_4[]
+        List flatValues = raster.getValues(x, y, w, h, band, true)
+        println flatValues
+        // end::values_4[]
+        writeFile("raster_values_4", "${flatValues}")
+
+        // tag::values_5[]
+        String valuesAsString = raster.getValuesAsString(x, y, w, h, band, prettyPrint: true)
+        println valuesAsString
+        // end::values_5[]
+        writeFile("raster_values_5", "${valuesAsString}")
 
         raster
     }

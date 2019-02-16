@@ -11,6 +11,7 @@ import geoscript.layer.Pyramid
 import geoscript.layer.TMS
 import geoscript.layer.Tile
 import geoscript.layer.TileCursor
+import geoscript.layer.TileLayer
 import org.junit.Test
 
 import static junit.framework.Assert.assertEquals
@@ -484,6 +485,14 @@ BOTTOM_LEFT
         TileRecipes recipes = new TileRecipes()
         Layer layer = recipes.tileLayerGetLayer()
         assertEquals(4, layer.count)
+    }
+
+    @Test void withTileLayer() {
+        TileRecipes recipes = new TileRecipes()
+        TileLayer tileLayer = recipes.withTileLayer()
+        assertEquals("countries", tileLayer.name)
+        assertEquals("EPSG:3857", tileLayer.proj.toString())
+        assertEquals("(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)", tileLayer.bounds.toString())
     }
 
     // TileCursor

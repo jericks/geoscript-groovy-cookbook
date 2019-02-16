@@ -135,6 +135,17 @@ class LayerRecipesTest {
         assertEquals(5, layer.count)
     }
 
+    @Test void updateSetLayer() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.updateSetLayer()
+        assertEquals("Point", layer.schema.geom.typ)
+        assertEquals(2, layer.count)
+        assertEquals("Seattle", layer.features[0].get("name"))
+        assertEquals("WA", layer.features[0].get("state"))
+        assertEquals("Tacoma", layer.features[1].get("name"))
+        assertEquals("WA", layer.features[1].get("state"))
+    }
+
     @Test void readShapefile() {
         LayerRecipes recipes = new LayerRecipes()
         List<Shapefile> shapefiles = recipes.readShapefile()
@@ -656,6 +667,35 @@ class LayerRecipesTest {
         LayerRecipes recipes = new LayerRecipes()
         Layer layer = recipes.readLayerFromGpxString()
         assertEquals(2, layer.count)
+    }
+
+    // MVT
+
+    @Test void writeLayerToMvt() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.writeLayerToMvt()
+        assertNotNull(str)
+    }
+
+    @Test void readLayerFromMvtString() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.readLayerFromMvtString()
+        assertEquals(2, layer.count)
+    }
+
+    // PBF
+
+    @Test void writeLayerToPbf() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.writeLayerToPbf()
+        assertNotNull(str)
+    }
+
+    @Test void readLayerFromPbfString() {
+        LayerRecipes recipes = new LayerRecipes()
+        List<Layer> layers = recipes.readLayerFromPbfString()
+        assertEquals(1, layers.size())
+        assertEquals(2, layers[0].count)
     }
 
     // Graticule

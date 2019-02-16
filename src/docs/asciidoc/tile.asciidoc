@@ -573,7 +573,17 @@ image::tileLayerGetLayer.png[]
 
 include::output/tileLayerGetLayer.asciidoc[]
 
+==== Using Tile Layers
 
+Get a TileLayer and make sure it is closed when done.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=withTileLayer,indent=0]
+----
+....
+include::output/tile_withtilelayer.txt[]
+....
 
 === TileCursor
 

@@ -433,6 +433,23 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         layer
     }
 
+    TileLayer withTileLayer() {
+        // tag::withTileLayer[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        TileLayer.withTileLayer(new MBTiles(file)) { TileLayer tileLayer ->
+            println tileLayer.name
+            println tileLayer.proj
+            println tileLayer.bounds
+        }
+        // end::withTileLayer[]
+        TileLayer tileLayer
+        TileLayer.withTileLayer(new MBTiles(file)) { TileLayer t ->
+            tileLayer = t
+            writeFile("tile_withtilelayer", "${t.name}${NEW_LINE}${t.proj}${NEW_LINE}${t.bounds}")
+        }
+        tileLayer
+    }
+
     // Grid
 
     Grid gridProperties() {

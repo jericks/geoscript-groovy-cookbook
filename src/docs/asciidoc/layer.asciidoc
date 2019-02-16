@@ -280,6 +280,18 @@ include::output/layer_update_features.asciidoc[]
 image::layer_update_features.png[]
 
 [source,groovy]
+.Update Features in a Layer by setting values
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=updateSetLayer,indent=0]
+----
+
+include::output/layer_update_set_features.asciidoc[]
+
+[.thumb]
+image::layer_update_set_features.png[]
+
+
+[source,groovy]
 .Delete Features from a Layer
 ----
 include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=deleteFromLayer,indent=0]
@@ -832,6 +844,44 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromGp
 ----
 [.thumb]
 image::layer_read_gpx.png[]
+
+==== MVT
+
+[source,groovy]
+.Write a Layer to a MVT String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=writeLayerToMvt,indent=0]
+----
+....
+include::output/layer_to_mvt.txt[]
+....
+
+[source,groovy]
+.Read a Layer from a MVT String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromMvtString,indent=0]
+----
+[.thumb]
+image::layer_read_mvt.png[]
+
+==== PBF
+
+[source,groovy]
+.Write a Layer to PBF bytes
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=writeLayerToPbf,indent=0]
+----
+....
+include::output/layer_to_pbf.txt[]
+....
+
+[source,groovy]
+.Read a Layer from a PBF Base64 encoded String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromPbfString,indent=0]
+----
+[.thumb]
+image::layer_read_pbf.png[]
 
 === Graticules
 

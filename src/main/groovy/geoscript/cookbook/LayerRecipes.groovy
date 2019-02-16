@@ -12,9 +12,11 @@ import geoscript.geom.Point
 import geoscript.layer.Cursor
 import geoscript.layer.Graticule
 import geoscript.layer.Layer
+import geoscript.layer.Pyramid
 import geoscript.layer.Raster
 import geoscript.layer.Renderable
 import geoscript.layer.Shapefile
+import geoscript.layer.Tile
 import geoscript.layer.io.CsvReader
 import geoscript.layer.io.CsvWriter
 import geoscript.layer.io.GeoJSONReader
@@ -29,6 +31,9 @@ import geoscript.layer.io.GpxReader
 import geoscript.layer.io.GpxWriter
 import geoscript.layer.io.KmlReader
 import geoscript.layer.io.KmlWriter
+import geoscript.layer.io.MvtReader
+import geoscript.layer.io.MvtWriter
+import geoscript.layer.io.Pbf
 import geoscript.layer.io.Writer
 import geoscript.layer.io.Reader
 import geoscript.layer.io.Readers
@@ -585,6 +590,49 @@ class LayerRecipes extends Recipes {
         Layer states = new Shapefile("src/main/resources/data/states.shp")
         drawOnBasemap("layer_update_features", [states, layer], layer.bounds.expandBy(2))
         createTable("layer_update_features", layer, false)
+        layer
+    }
+
+    Layer updateSetLayer() {
+        // tag::updateSetLayer[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String"),
+                new Field("state", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        List<Map> features = [
+                [
+                        geom: new Point(-122.333056, 47.609722),
+                        id: 1,
+                        name: "",
+                        state: ""
+                ],
+                [
+                        geom: new Point(-122.459444, 47.241389),
+                        id: 2,
+                        name: "",
+                        state: ""
+                ]
+        ]
+        layer.add(features)
+
+        List<Feature> layerFeatures = layer.features
+        layerFeatures[0].set("name", "Seattle")
+        layerFeatures[0].set("state", "WA")
+
+        layerFeatures[1].set("name", "Tacoma")
+        layerFeatures[1].set("state", "WA")
+
+        layer.update()
+
+        // end::updateSetLayer[]
+        layer.style = new Shape("white", 10).stroke("navy", 0.5)
+        Layer states = new Shapefile("src/main/resources/data/states.shp")
+        drawOnBasemap("layer_update_set_features", [states, layer], layer.bounds.expandBy(2))
+        createTable("layer_update_set_features", layer, false)
         layer
     }
 
@@ -1815,6 +1863,95 @@ The merged Layer has ${mergedLayer.count} features
         layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
         drawOnBasemap("layer_read_gpx", [layer], layer.bounds.expandBy(3.5))
         layer
+    }
+
+    // MVT
+
+    String writeLayerToMvt() {
+        // tag::writeLayerToMvt[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        MvtWriter writer = new MvtWriter()
+        String mvt = writer.write(layer.reproject(new Projection("EPSG:3857")))
+        println mvt
+        // end::writeLayerToMvt[]
+        writeFile("layer_to_mvt", mvt)
+        mvt
+    }
+
+    Layer readLayerFromMvtString() {
+        // tag::readLayerFromMvtString[]
+        String mvt = "iU1WVAAAAGF4nGNgYGBiYGAQBWIGxoOZPw5M6bBa6xjOnRDd8rIcKCZZrZSZomRlqKOUl5ibqmSlFJyaWFKSk6pUi9CVxbjcy9Mh0zHsygrWwt2vgGISEF1GcF0hicn5uYlKtQBZLx7y="
+        MvtReader reader = new MvtReader()
+        Layer layer = reader.read(mvt)
+        // end::readLayerFromMvtString[]
+        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
+        drawOnBasemap("layer_read_mvt", [layer], layer.bounds.reproject("EPSG:4326").expandBy(3.5))
+        layer
+    }
+
+    // PBF
+
+    byte[] writeLayerToPbf() {
+        // tag::writeLayerToPbf[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(origin: Pyramid.Origin.TOP_LEFT)
+        Tile tile = new Tile(4,2,5)
+        Bounds bounds = pyramid.bounds(tile)
+
+        byte[] bytes = Pbf.write([layer], bounds)
+        println bytes.encodeBase64()
+        // end::writeLayerToPbf[]
+        writeFile("layer_to_pbf", bytes.encodeBase64().toString())
+        bytes
+    }
+
+    List<Layer> readLayerFromPbfString() {
+        // tag::readLayerFromPbfString[]
+        byte[] bytes = "GlYKBmNpdGllcxIPEgQAAAEBGAEiBQmGJNIlEg8SBAACAQMYASIFCcojiicaAmlkGgRuYW1lIgIwAiIJCgdTZWF0dGxlIgIwBCIICgZUYWNvbWEogCB4Ag".decodeBase64()
+
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(origin: Pyramid.Origin.TOP_LEFT)
+        Tile tile = new Tile(4,2,5)
+        Bounds bounds = pyramid.bounds(tile)
+
+        List<Layer> layers = Pbf.read(bytes, bounds)
+        // end::readLayerFromPbfString[]
+        layers[0].style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
+        drawOnBasemap("layer_read_pbf", layers, layers[0].bounds.reproject("EPSG:4326").expandBy(3.5))
+        layers
     }
 
     // Graticule
