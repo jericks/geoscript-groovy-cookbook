@@ -847,6 +847,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#csv">CSV</a></li>
 <li><a href="#georss-3">GeoRSS</a></li>
 <li><a href="#gpx-3">GPX</a></li>
+<li><a href="#mvt">MVT</a></li>
+<li><a href="#pbf">PBF</a></li>
 </ul>
 </li>
 <li><a href="#graticules">Graticules</a>
@@ -955,6 +957,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#get-put-and-delete-a-tile-from-a-tilelayer">Get, put, and delete a Tile from a TileLayer</a></li>
 <li><a href="#delete-tiles-from-a-tilelayer">Delete Tiles from a TileLayer</a></li>
 <li><a href="#tiles">Tiles</a></li>
+<li><a href="#using-tile-layers">Using Tile Layers</a></li>
 </ul>
 </li>
 <li><a href="#tilecursor">TileCursor</a></li>
@@ -4892,8 +4895,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 273878862 nanoseconds
-Time with PreparedGeometry = 184353894 nanoseconds</pre>
+<pre>Time with Geometry         = 302590019 nanoseconds
+Time with PreparedGeometry = 257996285 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4938,8 +4941,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 162830248 nanoseconds
-Time with PreparedGeometry = 108206884 nanoseconds</pre>
+<pre>Time with Geometry         = 270862167 nanoseconds
+Time with PreparedGeometry = 122862516 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -8753,7 +8756,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--3912193_168df8f42cb_-2ade geom: null, id: null, name: null</pre>
+<pre>cities.fid-1b77e510_168f7edbe07_-2ac6 geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -9468,7 +9471,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Feb 12 02:37:01 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 16 20:11:01 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9487,7 +9490,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--3912193_168df8f42cb_-2ae2 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-1b77e510_168f7edbe07_-2aca title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9511,7 +9514,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Feb 12 02:37:01 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Feb 16 20:11:01 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9531,7 +9534,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--3912193_168df8f42cb_-2ae0 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-1b77e510_168f7edbe07_-2ac8 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -9693,7 +9696,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--3912193_168df8f42cb_-2adf geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-1b77e510_168f7edbe07_-2ac7 geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9731,7 +9734,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--3912193_168df8f42cb_-2ae1 geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-1b77e510_168f7edbe07_-2ac9 geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -11105,13 +11108,14 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:getX
+geo:getY
 geo:isValid
 geo:buffer
 geo:union
 geo:intersection
-geo:getX
-geo:getY
 geo:difference
+geo:endPoint
 geo:reproject
 geo:splitPolygon
 geo:within
@@ -11142,12 +11146,11 @@ geo:numInteriorRing
 geo:geometryType
 geo:isRing
 geo:polygonize
-geo:endPoint
 geo:equalsExact
+geo:interiorRingN
 geo:relatePattern
 geo:pointN
 geo:equalsExactTolerance
-geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
@@ -13964,20 +13967,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory of spatial files (shapefiles)
+<pre>Properties
+Shapefile
 PostGIS (JNDI)
+PostGIS
+MySQL
 Web Feature Server (NG)
 SQLite
-H2
-MySQL
-Geobuf
-PostGIS
-Properties
-MySQL (JNDI)
-Shapefile
 H2 (JNDI)
 SpatiaLite (JNDI)
-GeoPackage</pre>
+Directory of spatial files (shapefiles)
+H2
+MySQL (JNDI)
+GeoPackage
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -14144,20 +14147,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Directory of spatial files (shapefiles)
+<pre>Properties
+Shapefile
 PostGIS (JNDI)
+PostGIS
+MySQL
 Web Feature Server (NG)
 SQLite
-H2
-MySQL
-Geobuf
-PostGIS
-Properties
-MySQL (JNDI)
-Shapefile
 H2 (JNDI)
 SpatiaLite (JNDI)
-GeoPackage</pre>
+Directory of spatial files (shapefiles)
+H2
+MySQL (JNDI)
+GeoPackage
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -15828,6 +15831,74 @@ layer.update(layer.schema.state, <span class="string"><span class="delimiter">&q
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Update Features in a Layer by setting values</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">state</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">Map</span>&gt; features = [
+        [
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.333056</span>, <span class="float">47.609722</span>),
+                <span class="key">id</span>: <span class="integer">1</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+        ],
+        [
+                <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.459444</span>, <span class="float">47.241389</span>),
+                <span class="key">id</span>: <span class="integer">2</span>,
+                <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>,
+                <span class="key">state</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+        ]
+]
+layer.add(features)
+
+<span class="predefined-type">List</span>&lt;Feature&gt; layerFeatures = layer.features
+layerFeatures[<span class="integer">0</span>].set(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>)
+layerFeatures[<span class="integer">0</span>].set(<span class="string"><span class="delimiter">&quot;</span><span class="content">state</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">WA</span><span class="delimiter">&quot;</span></span>)
+
+layerFeatures[<span class="integer">1</span>].set(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Tacoma</span><span class="delimiter">&quot;</span></span>)
+layerFeatures[<span class="integer">1</span>].set(<span class="string"><span class="delimiter">&quot;</span><span class="content">state</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">WA</span><span class="delimiter">&quot;</span></span>)
+
+layer.update()</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">id</th>
+<th class="tableblock halign-left valign-top">name</th>
+<th class="tableblock halign-left valign-top">state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seattle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tacoma</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">WA</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_update_set_features.png" alt="layer update set features">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Delete Features from a Layer</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
@@ -16895,7 +16966,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--3912193_168df8f42cb_-68f7"
+            "id": "fid-1b77e510_168f7edbe07_-68df"
         },
         {
             "type": "Feature",
@@ -16910,7 +16981,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--3912193_168df8f42cb_-68f5"
+            "id": "fid-1b77e510_168f7edbe07_-68dd"
         }
     ]
 }</pre>
@@ -16960,7 +17031,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--3912193_168df8f42cb_-7e2d"
+            "id": "fid-1b77e510_168f7edbe07_-7e25"
         },
         {
             "type": "Feature",
@@ -16975,7 +17046,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--3912193_168df8f42cb_-7e2b"
+            "id": "fid-1b77e510_168f7edbe07_-7e23"
         }
     ]
 }</pre>
@@ -17159,7 +17230,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--3912193_168df8f42cb_-7398"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-1b77e510_168f7edbe07_-7380"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -17181,7 +17252,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--3912193_168df8f42cb_-7396"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-1b77e510_168f7edbe07_-737e"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -17247,7 +17318,7 @@ println gml</code></pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--3912193_168df8f42cb_-73b2"&gt;
+&lt;gsf:cities fid="fid-1b77e510_168f7edbe07_-73a6"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -17261,7 +17332,7 @@ println gml</code></pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--3912193_168df8f42cb_-73b0"&gt;
+&lt;gsf:cities fid="fid-1b77e510_168f7edbe07_-73a4"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -17375,7 +17446,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--3912193_168df8f42cb_-6a02
+          fid-1b77e510_168f7edbe07_-69ea
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -17402,7 +17473,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--3912193_168df8f42cb_-6a00
+          fid-1b77e510_168f7edbe07_-69e8
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -17462,13 +17533,13 @@ println kml</code></pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid--3912193_168df8f42cb_-73aa"&gt;
+&lt;kml:Placemark id="fid-1b77e510_168f7edbe07_-739e"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid--3912193_168df8f42cb_-73a8"&gt;
+&lt;kml:Placemark id="fid-1b77e510_168f7edbe07_-739c"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -17596,15 +17667,15 @@ println georss</code></pre>
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--3912193_168df8f42cb_-7a36&lt;/title&gt;
+&lt;title&gt;fid-1b77e510_168f7edbe07_-7a2e&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Tue Feb 12 02:35:50 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Sat Feb 16 20:09:55 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--3912193_168df8f42cb_-7a34&lt;/title&gt;
+&lt;title&gt;fid-1b77e510_168f7edbe07_-7a2c&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Tue Feb 12 02:35:50 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Sat Feb 16 20:09:55 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -17674,10 +17745,10 @@ println gpx</code></pre>
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid--3912193_168df8f42cb_-73ae&lt;/name&gt;
+&lt;name&gt;fid-1b77e510_168f7edbe07_-73a2&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid--3912193_168df8f42cb_-73ac&lt;/name&gt;
+&lt;name&gt;fid-1b77e510_168f7edbe07_-73a0&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -17702,6 +17773,107 @@ println gpx</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/layer_read_gpx.png" alt="layer read gpx">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mvt"><a class="anchor" href="#mvt"></a>MVT</h4>
+<div class="listingblock">
+<div class="title">Write a Layer to a MVT String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+])
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.48416</span>, <span class="float">47.2619</span>),
+        <span class="key">id</span>: <span class="integer">2</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tacoma</span><span class="delimiter">&quot;</span></span>
+])
+
+MvtWriter writer = <span class="keyword">new</span> MvtWriter()
+<span class="predefined-type">String</span> mvt = writer.write(layer.reproject(<span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>)))
+println mvt</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>iU1WVAAAAGF4nGNgYGBiYGAQBWIGxoOZPw5M6bBa6xjOnRDd8rIcKCZZrZSZomRlqKOUl5ibqmSlFJyaWFKSk6pUi9CVxbjcy9Mh0zHsygrWwt2vgGISEF1GcF0hicn5uYlKtQBZLx7y</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Layer from a MVT String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> mvt = <span class="string"><span class="delimiter">&quot;</span><span class="content">iU1WVAAAAGF4nGNgYGBiYGAQBWIGxoOZPw5M6bBa6xjOnRDd8rIcKCZZrZSZomRlqKOUl5ibqmSlFJyaWFKSk6pUi9CVxbjcy9Mh0zHsygrWwt2vgGISEF1GcF0hicn5uYlKtQBZLx7y=</span><span class="delimiter">&quot;</span></span>
+MvtReader reader = <span class="keyword">new</span> MvtReader()
+Layer layer = reader.read(mvt)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_read_mvt.png" alt="layer read mvt">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pbf"><a class="anchor" href="#pbf"></a>PBF</h4>
+<div class="listingblock">
+<div class="title">Write a Layer to PBF bytes</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Memory()
+<span class="predefined-type">Schema</span> schema = <span class="keyword">new</span> <span class="predefined-type">Schema</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">cities</span><span class="delimiter">&quot;</span></span>, [
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Point</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Integer</span><span class="delimiter">&quot;</span></span>),
+        <span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">String</span><span class="delimiter">&quot;</span></span>)
+])
+Layer layer = workspace.create(schema)
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.3204</span>, <span class="float">47.6024</span>),
+        <span class="key">id</span>: <span class="integer">1</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Seattle</span><span class="delimiter">&quot;</span></span>
+])
+layer.add([
+        <span class="key">geom</span>: <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">122.48416</span>, <span class="float">47.2619</span>),
+        <span class="key">id</span>: <span class="integer">2</span>,
+        <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Tacoma</span><span class="delimiter">&quot;</span></span>
+])
+
+Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(<span class="key">origin</span>: Pyramid.Origin.TOP_LEFT)
+Tile tile = <span class="keyword">new</span> Tile(<span class="integer">4</span>,<span class="integer">2</span>,<span class="integer">5</span>)
+Bounds bounds = pyramid.bounds(tile)
+
+<span class="type">byte</span><span class="type">[]</span> bytes = Pbf.write([layer], bounds)
+println bytes.encodeBase64()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Gg0KBmNpdGllcyiAIHgC</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Layer from a PBF Base64 encoded String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">byte</span><span class="type">[]</span> bytes = <span class="string"><span class="delimiter">&quot;</span><span class="content">GlYKBmNpdGllcxIPEgQAAAEBGAEiBQmGJNIlEg8SBAACAQMYASIFCcojiicaAmlkGgRuYW1lIgIwAiIJCgdTZWF0dGxlIgIwBCIICgZUYWNvbWEogCB4Ag</span><span class="delimiter">&quot;</span></span>.decodeBase64()
+
+Pyramid pyramid = Pyramid.createGlobalMercatorPyramid(<span class="key">origin</span>: Pyramid.Origin.TOP_LEFT)
+Tile tile = <span class="keyword">new</span> Tile(<span class="integer">4</span>,<span class="integer">2</span>,<span class="integer">5</span>)
+Bounds bounds = pyramid.bounds(tile)
+
+<span class="predefined-type">List</span>&lt;Layer&gt; layers = Pbf.read(bytes, bounds)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_read_pbf.png" alt="layer read pbf">
 </div>
 </div>
 </div>
@@ -18225,6 +18397,27 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 <pre>Min value: [56.0, 84.0, 91.0] Max value: [255.0, 255.0, 255.0]</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Get a RenderedImage from the Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">RenderedImage</span> image = raster.image</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_properies_image.png" alt="raster properies image">
+</div>
+</div>
+<div class="paragraph">
+<p>Dispose of the Raster when you are done</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">raster.dispose()</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="raster-values"><a class="anchor" href="#raster-values"></a>Raster Values</h3>
@@ -18270,6 +18463,65 @@ println elevation</code></pre>
 <div class="literalblock">
 <div class="content">
 <pre>288.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get values from a Raster for a range of pixels in a list of lists.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> x = <span class="integer">10</span>
+<span class="type">int</span> y = <span class="integer">8</span>
+<span class="type">int</span> w = <span class="integer">5</span>
+<span class="type">int</span> h = <span class="integer">6</span>
+<span class="type">int</span> band = <span class="integer">0</span>
+<span class="predefined-type">List</span> values = raster.getValues(x, y, w, h, band, <span class="predefined-constant">false</span>)
+println values</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[[1032, 1186, 1340, 1435, 1301], [1143, 1143, 1193, 1224, 1313], [942, 938, 966, 982, 1129], [746, 835, 912, 949, 1028], [723, 948, 1130, 1244, 1211], [673, 890, 1100, 1133, 1024]]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get values from a Raster for a range of pixels in a flat list.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> flatValues = raster.getValues(x, y, w, h, band, <span class="predefined-constant">true</span>)
+println flatValues</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[1032, 1186, 1340, 1435, 1301, 1143, 1143, 1193, 1224, 1313, 942, 938, 966, 982, 1129, 746, 835, 912, 949, 1028, 723, 948, 1130, 1244, 1211, 673, 890, 1100, 1133, 1024]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get values from a Raster for a range of pixels as a pretty printed string.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> valuesAsString = raster.getValuesAsString(x, y, w, h, band, <span class="key">prettyPrint</span>: <span class="predefined-constant">true</span>)
+println valuesAsString</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>----------------------------------------------
+| 1,032.0 | 1,186.0 | 1,340.0 | 1,435.0 | 1,301.0 |
+----------------------------------------------
+| 1,143.0 | 1,143.0 | 1,193.0 | 1,224.0 | 1,313.0 |
+----------------------------------------------
+|  942.0 |  938.0 |  966.0 |  982.0 | 1,129.0 |
+----------------------------------------------
+|  746.0 |  835.0 |  912.0 |  949.0 | 1,028.0 |
+----------------------------------------------
+|  723.0 |  948.0 | 1,130.0 | 1,244.0 | 1,211.0 |
+----------------------------------------------
+|  673.0 |  890.0 | 1,100.0 | 1,133.0 | 1,024.0 |
+----------------------------------------------</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -20157,6 +20409,29 @@ Layer layer = mbtiles.getLayer(mbtiles.tiles(<span class="integer">1</span>))</c
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="using-tile-layers"><a class="anchor" href="#using-tile-layers"></a>Using Tile Layers</h4>
+<div class="paragraph">
+<p>Get a TileLayer and make sure it is closed when done.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/tiles.mbtiles</span><span class="delimiter">&quot;</span></span>)
+TileLayer.withTileLayer(<span class="keyword">new</span> MBTiles(file)) { TileLayer tileLayer -&gt;
+    println tileLayer.name
+    println tileLayer.proj
+    println tileLayer.bounds
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>countries
+EPSG:3857
+(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="tilecursor"><a class="anchor" href="#tilecursor"></a>TileCursor</h3>
@@ -20578,7 +20853,7 @@ Tile(x:29, y:83, z:7)</pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.13-SNAPSHOT<br>
-Last updated 2019-02-12 02:26:34 UTC
+Last updated 2019-02-16 20:01:11 UTC
 </div>
 </div>
 </body>

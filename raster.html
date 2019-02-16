@@ -756,6 +756,27 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 <pre>Min value: [56.0, 84.0, 91.0] Max value: [255.0, 255.0, 255.0]</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Get a RenderedImage from the Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">RenderedImage</span> image = raster.image</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_properies_image.png" alt="raster properies image">
+</div>
+</div>
+<div class="paragraph">
+<p>Dispose of the Raster when you are done</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">raster.dispose()</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="raster-values"><a class="anchor" href="#raster-values"></a>Raster Values</h3>
@@ -801,6 +822,65 @@ println elevation</code></pre>
 <div class="literalblock">
 <div class="content">
 <pre>288.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get values from a Raster for a range of pixels in a list of lists.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> x = <span class="integer">10</span>
+<span class="type">int</span> y = <span class="integer">8</span>
+<span class="type">int</span> w = <span class="integer">5</span>
+<span class="type">int</span> h = <span class="integer">6</span>
+<span class="type">int</span> band = <span class="integer">0</span>
+<span class="predefined-type">List</span> values = raster.getValues(x, y, w, h, band, <span class="predefined-constant">false</span>)
+println values</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[[1032, 1186, 1340, 1435, 1301], [1143, 1143, 1193, 1224, 1313], [942, 938, 966, 982, 1129], [746, 835, 912, 949, 1028], [723, 948, 1130, 1244, 1211], [673, 890, 1100, 1133, 1024]]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get values from a Raster for a range of pixels in a flat list.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> flatValues = raster.getValues(x, y, w, h, band, <span class="predefined-constant">true</span>)
+println flatValues</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[1032, 1186, 1340, 1435, 1301, 1143, 1143, 1193, 1224, 1313, 942, 938, 966, 982, 1129, 746, 835, 912, 949, 1028, 723, 948, 1130, 1244, 1211, 673, 890, 1100, 1133, 1024]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get values from a Raster for a range of pixels as a pretty printed string.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> valuesAsString = raster.getValuesAsString(x, y, w, h, band, <span class="key">prettyPrint</span>: <span class="predefined-constant">true</span>)
+println valuesAsString</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>----------------------------------------------
+| 1,032.0 | 1,186.0 | 1,340.0 | 1,435.0 | 1,301.0 |
+----------------------------------------------
+| 1,143.0 | 1,143.0 | 1,193.0 | 1,224.0 | 1,313.0 |
+----------------------------------------------
+|  942.0 |  938.0 |  966.0 |  982.0 | 1,129.0 |
+----------------------------------------------
+|  746.0 |  835.0 |  912.0 |  949.0 | 1,028.0 |
+----------------------------------------------
+|  723.0 |  948.0 | 1,130.0 | 1,244.0 | 1,211.0 |
+----------------------------------------------
+|  673.0 |  890.0 | 1,100.0 | 1,133.0 | 1,024.0 |
+----------------------------------------------</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1254,7 +1334,7 @@ println elevation2</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-12 02:26:34 UTC
+Last updated 2019-02-16 20:01:11 UTC
 </div>
 </div>
 </body>
