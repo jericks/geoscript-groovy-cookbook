@@ -106,6 +106,26 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_ext
 include::output/raster_properties_extrema.txt[]
 ....
 
+Get a Point at the given pixel location.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_getpoint,indent=0]
+----
+....
+include::output/raster_properties_getpoint.txt[]
+....
+
+Get a Pixel location at the given Point.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_getpixel,indent=0]
+----
+....
+include::output/raster_properties_getpixel.txt[]
+....
+
 Get a RenderedImage from the Raster
 
 [source,groovy]
@@ -181,6 +201,26 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=values_5,inden
 ----
 ....
 include::output/raster_values_5.txt[]
+....
+
+Iterate over the cells in a Raster.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=values_6,indent=0]
+----
+....
+include::output/raster_values_6.txt[]
+....
+
+Iterate over a window of cells in a Raster.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=values_7,indent=0]
+----
+....
+include::output/raster_values_7.txt[]
 ....
 
 Set values on a Raster

@@ -87,6 +87,18 @@ class RasterRecipes extends Recipes {
         // end::properties_image[]
         saveImage("raster_properies_image", image)
 
+        // tag::properties_getpoint[]
+        Point point = raster.getPoint(7,9)
+        println "Geographic location at pixel 7,9 is ${point}"
+        // end::properties_getpoint[]
+        writeFile("raster_properties_getpoint", "Geographic location at pixel 7,9 is ${point}")
+
+        // tag::properties_getpixel[]
+        List pixel = raster.getPixel(new Point(-176.625, 85.72499))
+        println "Pixel coordinates at POINT (-176.625 85.7249984741211) is ${pixel[0]}, ${pixel[1]}"
+        // end::properties_getpixel[]
+        writeFile("raster_properties_getpixel","Pixel coordinates at POINT (-176.625 85.7249984741211) is ${pixel[0]}, ${pixel[1]}")
+
         // tag::properties_dispose[]
         raster.dispose()
         // end::properties_dispose[]
@@ -144,6 +156,28 @@ class RasterRecipes extends Recipes {
         println valuesAsString
         // end::values_5[]
         writeFile("raster_values_5", "${valuesAsString}")
+
+        // tag::values_6[]
+        raster.eachCell(bounds: [0,0,5,5]) { double value, double pixelX, double pixelY ->
+            println "${pixelX},${pixelY} = ${value}"
+        }
+        // end::values_6[]
+        String result = ""
+        raster.eachCell(bounds: [0,0,5,5]) { double value, double pixelX, double pixelY ->
+            result += "${pixelX},${pixelY} = ${value}${NEW_LINE}"
+        }
+        writeFile("raster_values_6", result)
+
+        // tag::values_7[]
+        raster.eachWindow (bounds: [0,0,8,8], window: [2,2]) { Number[][] windowsValues, double pixelX, double pixelY ->
+            println "${pixelX},${pixelY} = ${windowsValues}"
+        }
+        // end::values_7[]
+        result = ""
+        raster.eachWindow (bounds: [0,0,8,8], window: [2,2]) { Number[][] windowsValues, double pixelX, double pixelY ->
+            result += "${pixelX},${pixelY} = ${windowsValues}${NEW_LINE}"
+        }
+        writeFile("raster_values_7", result)
 
         raster
     }
