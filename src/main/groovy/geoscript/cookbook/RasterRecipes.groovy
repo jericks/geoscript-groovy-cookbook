@@ -99,6 +99,30 @@ class RasterRecipes extends Recipes {
         // end::properties_getpixel[]
         writeFile("raster_properties_getpixel","Pixel coordinates at POINT (-176.625 85.7249984741211) is ${pixel[0]}, ${pixel[1]}")
 
+        // tag::properties_neighbors_point[]
+        Map neighborsOfPoint = raster.getNeighbors(new Point(-176.625, 85.72499), 0)
+        println "Values neighboring POINT (-176.625 85.7249984741211) = ${neighborsOfPoint}"
+        // end::properties_neighbors_point[]
+        writeFile("raster_properties_neighbors_point","Values neighboring POINT (-176.625 85.7249984741211) = ${neighborsOfPoint}")
+
+        // tag::properties_neighbors_pixel[]
+        Map neighborsOfPixel = raster.getNeighbors([7,9], 0)
+        println "Values neighboring pixel 7,9 = ${neighborsOfPixel}"
+        // end::properties_neighbors_pixel[]
+        writeFile("raster_properties_neighbors_pixel","Values neighboring pixel 7,9 = ${neighborsOfPixel}")
+
+        // tag::properties_containspoint[]
+        boolean containsPoint = raster.contains(new Point(-180, -90))
+        println "Does raster cover point? ${containsPoint}"
+        // end::properties_containspoint[]
+        writeFile("raster_properties_containspoint","Does raster cover point? ${containsPoint}")
+
+        // tag::properties_containspixel[]
+        boolean containsPixel = raster.contains(500,600)
+        println "Does raster cover pixel? ${containsPixel}"
+        // end::properties_containspixel[]
+        writeFile("raster_properties_containspixel","Does raster cover pixel? ${containsPixel}")
+
         // tag::properties_dispose[]
         raster.dispose()
         // end::properties_dispose[]

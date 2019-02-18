@@ -126,6 +126,26 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_get
 include::output/raster_properties_getpixel.txt[]
 ....
 
+Determine whether the Raster covers the given Point.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_containspoint,indent=0]
+----
+....
+include::output/raster_properties_containspoint.txt[]
+....
+
+Determine whether the Raster covers the given Pixel.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_containspixel,indent=0]
+----
+....
+include::output/raster_properties_containspixel.txt[]
+....
+
 Get a RenderedImage from the Raster
 
 [source,groovy]
@@ -171,6 +191,26 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=values_2,inden
 ----
 ....
 include::output/raster_values_2.txt[]
+....
+
+Get neighboring values from a Raster with a Point Location.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_neighbors_point,indent=0]
+----
+....
+include::output/raster_properties_neighbors_point.txt[]
+....
+
+Get neighboring values from a Raster with a Pixel Location.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_neighbors_pixel,indent=0]
+----
+....
+include::output/raster_properties_neighbors_pixel.txt[]
 ....
 
 Get values from a Raster for a range of pixels in a list of lists.
