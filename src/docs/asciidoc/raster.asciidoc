@@ -404,6 +404,22 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=pointLayer,ind
 [.thumb]
 image::raster_pointLayer.png[]
 
+Get histogram of the Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=getHistogram,indent=0]
+----
+
+....
+include::output/raster_gethistogram.txt[]
+....
+
+[.thumb]
+image::raster_gethistogram.png[]
+
+
+
 ==== Raster Algebra
 
 ===== Add

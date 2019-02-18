@@ -7,8 +7,11 @@ import geoscript.layer.ArcGrid
 import geoscript.layer.Band
 import geoscript.layer.Format
 import geoscript.layer.GeoTIFF
+import geoscript.layer.Histogram
 import geoscript.layer.Layer
 import geoscript.layer.Raster
+import geoscript.plot.Bar
+import geoscript.plot.Chart
 import geoscript.proj.Projection
 import geoscript.style.ColorMap
 import geoscript.style.Gradient
@@ -243,6 +246,32 @@ class RasterRecipes extends Recipes {
             "Original: ${raster.getValue(pixel)} New: ${arcGridRasterAdd.getValue(pixel)}"
         }.join(NEW_LINE))
         [raster, arcGridRasterAdd]
+    }
+
+    Histogram getHistogram() {
+        // tag::getHistogram[]
+        File file = new File("src/main/resources/earth.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("earth")
+
+        Histogram histogram = raster.getHistogram()
+        println "# of bands = ${histogram.numberOfBands}"
+        println "# Counts = ${histogram.counts().size()}"
+        println "# Bins = ${histogram.bins().size()}"
+        println "Count 25 = ${histogram.count(25)}"
+        println "Bin 45 = ${histogram.bin(45)}"
+
+        Chart chart = Bar.xy(histogram.counts(0).withIndex().collect {int count, int index -> [index, count]})
+
+        // end::getHistogram[]
+        drawChart("raster_gethistogram", chart)
+        writeFile("raster_gethistogram", """# of bands = ${histogram.numberOfBands}
+# Counts = ${histogram.counts().size()}
+# Bins = ${histogram.bins().size()}
+Count 25 = ${histogram.count(25)}
+Bin 45 = ${histogram.bin(45)}
+""")
+        histogram
     }
 
     // Processing

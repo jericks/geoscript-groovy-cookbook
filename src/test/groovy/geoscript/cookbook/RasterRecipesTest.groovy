@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.geom.Point
 import geoscript.layer.Band
+import geoscript.layer.Histogram
 import geoscript.layer.Layer
 import geoscript.layer.Raster
 import org.junit.Test
@@ -45,6 +46,12 @@ class RasterRecipesTest {
         originalRaster.eachCell { double value, double x, double y ->
             assertEquals(value + 100, plus100Raster.getValue([x as int,y as int]), 0.1)
         }
+    }
+
+    @Test void getHistogram() {
+        RasterRecipes recipes = new RasterRecipes()
+        Histogram histogram = recipes.getHistogram()
+        assertEquals(3, histogram.numberOfBands)
     }
 
     @Test void crop() {
