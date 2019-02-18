@@ -785,6 +785,34 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 </div>
 <div class="paragraph">
+<p>Determine whether the Raster covers the given Point.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">boolean</span> containsPoint = raster.contains(<span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="integer">180</span>, -<span class="integer">90</span>))
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does raster cover point? </span><span class="inline"><span class="inline-delimiter">${</span>containsPoint<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Does raster cover point? true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Determine whether the Raster covers the given Pixel.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">boolean</span> containsPixel = raster.contains(<span class="integer">500</span>,<span class="integer">600</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Does raster cover pixel? </span><span class="inline"><span class="inline-delimiter">${</span>containsPixel<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Does raster cover pixel? false</pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Get a RenderedImage from the Raster</p>
 </div>
 <div class="listingblock">
@@ -850,6 +878,34 @@ println elevation</code></pre>
 <div class="literalblock">
 <div class="content">
 <pre>288.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get neighboring values from a Raster with a Point Location.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> neighborsOfPoint = raster.getNeighbors(<span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">176.625</span>, <span class="float">85.72499</span>), <span class="integer">0</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Values neighboring POINT (-176.625 85.7249984741211) = </span><span class="inline"><span class="inline-delimiter">${</span>neighborsOfPoint<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Values neighboring POINT (-176.625 85.7249984741211) = [nw:103.0, n:104.0, ne:109.0, e:109.0, se:111.0, s:110.0, sw:110.0, w:108.0]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get neighboring values from a Raster with a Pixel Location.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Map</span> neighborsOfPixel = raster.getNeighbors([<span class="integer">7</span>,<span class="integer">9</span>], <span class="integer">0</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Values neighboring pixel 7,9 = </span><span class="inline"><span class="inline-delimiter">${</span>neighborsOfPixel<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Values neighboring pixel 7,9 = [nw:103.0, n:104.0, ne:109.0, e:109.0, se:111.0, s:110.0, sw:110.0, w:108.0]</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1478,7 +1534,7 @@ println elevation2</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-17 00:30:55 UTC
+Last updated 2019-02-18 00:35:07 UTC
 </div>
 </div>
 </body>

@@ -29,10 +29,10 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:isValid
-geo:buffer
 geo:getX
 geo:getY
+geo:isValid
+geo:buffer
 geo:union
 geo:intersection
 geo:difference
@@ -69,8 +69,8 @@ geo:polygonize
 geo:endPoint
 geo:equalsExact
 geo:relatePattern
-geo:interiorRingN
 geo:pointN
+geo:interiorRingN
 geo:equalsExactTolerance
 geo:length
 geo:isEmpty
