@@ -93,6 +93,19 @@ class RasterRecipesTest {
         assertEquals(200, raster.size[1], 0.1)
     }
 
+    @Test void resample() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.resample()
+        assertEquals(400, raster.size[0], 0.1)
+        assertEquals(400, raster.size[1], 0.1)
+    }
+
+    @Test void normalize() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.normalize()
+        assertNotNull(raster)
+    }
+
     @Test void polygonLayer() {
         RasterRecipes recipes = new RasterRecipes()
         Layer layer = recipes.polygonLayer()

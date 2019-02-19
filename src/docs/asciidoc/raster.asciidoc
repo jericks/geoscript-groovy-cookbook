@@ -350,6 +350,34 @@ include::output/raster_scaled.txt[]
 [.thumb]
 image::raster_scaled.png[]
 
+==== Resample
+
+Resample a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=resample,indent=0]
+----
+....
+include::output/raster_resample.txt[]
+....
+[.thumb]
+image::raster_resample.png[]
+
+==== Normalize
+
+Normalize a Raster by diving all values by the maximum value.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=normalize,indent=0]
+----
+....
+include::output/raster_normalize.txt[]
+....
+[.thumb]
+image::raster_normalize.png[]
+
 ==== Invert
 
 Invert the values of a Raster
@@ -383,7 +411,6 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=log,indent=0]
 [.thumb]
 image::raster_log.png[]
 
-
 ==== Vectorize
 
 Create a Polygon Layer from a Raster
@@ -404,6 +431,8 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=pointLayer,ind
 [.thumb]
 image::raster_pointLayer.png[]
 
+==== Histogram
+
 Get histogram of the Raster
 
 [source,groovy]
@@ -417,8 +446,6 @@ include::output/raster_gethistogram.txt[]
 
 [.thumb]
 image::raster_gethistogram.png[]
-
-
 
 ==== Raster Algebra
 

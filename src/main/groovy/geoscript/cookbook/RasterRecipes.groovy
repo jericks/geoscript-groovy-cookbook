@@ -387,6 +387,55 @@ Bin 45 = ${histogram.bin(45)}
         scaledRaster
     }
 
+    Raster resample() {
+        // tag::resample[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        println "Original Raster Bounds = ${raster.bounds}"
+        println "Original Raster Size = ${raster.size[0]}x${raster.size[1]}"
+
+        Raster resampledRaster = raster.resample(size: [400, 400], bbox: raster.bounds.scale(-2))
+        println "Resampled Raster Bounds = ${resampledRaster.bounds}"
+        println "Resampled Raster Size = ${resampledRaster.size[0]}x${resampledRaster.size[1]}"
+        // end::resample[]
+        resampledRaster.style = new ColorMap([
+                [color: "#9fd182", quantity: 25],
+                [color: "#3e7f3c", quantity: 470],
+                [color: "#133912", quantity: 920],
+                [color: "#08306b", quantity: 1370],
+                [color: "#fffff5", quantity: 1820],
+        ])
+        draw("raster_resample", [resampledRaster])
+        writeFile("raster_resample", "Original Raster Bounds = ${raster.bounds}${NEW_LINE}Original Raster Size = ${raster.size[0]}x${raster.size[1]}${NEW_LINE}" +
+                "Resampled Raster Bounds = ${resampledRaster.bounds}${NEW_LINE}Resampled Raster Size = ${resampledRaster.size[0]}x${resampledRaster.size[1]}")
+        resampledRaster
+    }
+
+    Raster normalize() {
+        // tag::normalize[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        println "Original Raster Min Max values = ${raster.extrema.min[0]} - ${raster.extrema.max[0]}"
+
+        Raster normalizedRaster = raster.normalize()
+        println "Normalized Raster Min Max values = ${normalizedRaster.extrema.min[0]} - ${normalizedRaster.extrema.max[0]}"
+        // end::normalize[]
+        normalizedRaster.style = new ColorMap([
+                [color: "#9fd182", quantity: 0.1],
+                [color: "#3e7f3c", quantity: 0.2],
+                [color: "#133912", quantity: 0.3],
+                [color: "#08306b", quantity: 0.4],
+                [color: "#fffff5", quantity: 0.8],
+        ])
+        draw("raster_normalize", [normalizedRaster])
+        writeFile("raster_normalize", "Original Raster Min Max values = ${raster.extrema.min[0]} - ${raster.extrema.max[0]}${NEW_LINE}" +
+                "Normalized Raster Min Max values = ${normalizedRaster.extrema.min[0]} - ${normalizedRaster.extrema.max[0]}")
+        normalizedRaster
+    }
+
+
     Layer polygonLayer() {
         // tag::polygonLayer[]
         File file = new File("src/main/resources/pc.tif")
