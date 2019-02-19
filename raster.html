@@ -539,10 +539,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#stylize">Stylize</a></li>
 <li><a href="#reclassify">Reclassify</a></li>
 <li><a href="#scale">Scale</a></li>
+<li><a href="#resample">Resample</a></li>
+<li><a href="#normalize">Normalize</a></li>
 <li><a href="#invert">Invert</a></li>
 <li><a href="#exponent">Exponent</a></li>
 <li><a href="#log">Log</a></li>
 <li><a href="#vectorize">Vectorize</a></li>
+<li><a href="#histogram">Histogram</a></li>
 <li><a href="#raster-algebra">Raster Algebra</a>
 <ul class="sectlevel4">
 <li><a href="#add">Add</a></li>
@@ -1279,6 +1282,66 @@ Scaled Raster Size = 400x200</pre>
 </div>
 </div>
 <div class="sect3">
+<h4 id="resample"><a class="anchor" href="#resample"></a>Resample</h4>
+<div class="paragraph">
+<p>Resample a Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">pc</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Original Raster Bounds = </span><span class="inline"><span class="inline-delimiter">${</span>raster.bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Original Raster Size = </span><span class="inline"><span class="inline-delimiter">${</span>raster.size[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="content">x</span><span class="inline"><span class="inline-delimiter">${</span>raster.size[<span class="integer">1</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="predefined-type">Raster</span> resampledRaster = raster.resample(<span class="key">size</span>: [<span class="integer">400</span>, <span class="integer">400</span>], <span class="key">bbox</span>: raster.bounds.scale(-<span class="integer">2</span>))
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Resampled Raster Bounds = </span><span class="inline"><span class="inline-delimiter">${</span>resampledRaster.bounds<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Resampled Raster Size = </span><span class="inline"><span class="inline-delimiter">${</span>resampledRaster.size[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="content">x</span><span class="inline"><span class="inline-delimiter">${</span>resampledRaster.size[<span class="integer">1</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Original Raster Bounds = (-123.55291606131708,46.25375026634816,-120.73958272798374,47.522916933014834,EPSG:4326)
+Original Raster Size = 800x400
+Resampled Raster Bounds = (-124.95958272798374,45.619166933014824,-119.33291606131708,48.157500266348165,EPSG:4326)
+Resampled Raster Size = 400x400</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_resample.png" alt="raster resample">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="normalize"><a class="anchor" href="#normalize"></a>Normalize</h4>
+<div class="paragraph">
+<p>Normalize a Raster by diving all values by the maximum value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">pc</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Original Raster Min Max values = </span><span class="inline"><span class="inline-delimiter">${</span>raster.extrema.min[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="content"> - </span><span class="inline"><span class="inline-delimiter">${</span>raster.extrema.max[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+<span class="predefined-type">Raster</span> normalizedRaster = raster.normalize()
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Normalized Raster Min Max values = </span><span class="inline"><span class="inline-delimiter">${</span>normalizedRaster.extrema.min[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="content"> - </span><span class="inline"><span class="inline-delimiter">${</span>normalizedRaster.extrema.max[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Original Raster Min Max values = -23.0 - 4370.0
+Normalized Raster Min Max values = -0.005263158120214939 - 1.0</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_normalize.png" alt="raster normalize">
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="invert"><a class="anchor" href="#invert"></a>Invert</h4>
 <div class="paragraph">
 <p>Invert the values of a Raster</p>
@@ -1377,6 +1440,9 @@ Layer layer = raster.pointLayer</code></pre>
 <img src="./images/raster_pointLayer.png" alt="raster pointLayer">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="histogram"><a class="anchor" href="#histogram"></a>Histogram</h4>
 <div class="paragraph">
 <p>Get histogram of the Raster</p>
 </div>
@@ -1567,7 +1633,7 @@ println elevation2</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-18 17:19:47 UTC
+Last updated 2019-02-19 01:11:30 UTC
 </div>
 </div>
 </body>
