@@ -435,6 +435,52 @@ Bin 45 = ${histogram.bin(45)}
         normalizedRaster
     }
 
+    Raster convolveRadius() {
+        // tag::convolveRadius[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        println "Original Raster Min Max values = ${raster.extrema.min[0]} - ${raster.extrema.max[0]}"
+
+        Raster convolvedRaster = raster.convolve(2)
+        println "Convolved Raster Min Max values = ${convolvedRaster.extrema.min[0]} - ${convolvedRaster.extrema.max[0]}"
+        // end::convolveRadius[]
+        convolvedRaster.style = new ColorMap([
+                [color: "#9fd182", quantity: -32767.0],
+                [color: "#3e7f3c", quantity: -15000.0],
+                [color: "#133912", quantity: 0.3],
+                [color: "#08306b", quantity: 15000.0],
+                [color: "#fffff5", quantity: 32767.0],
+        ])
+        draw("raster_convolve_radius", [convolvedRaster])
+        writeFile("raster_convolve_radius", "Original Raster Min Max values = ${raster.extrema.min[0]} - ${raster.extrema.max[0]}${NEW_LINE}" +
+                "Convolved Raster Min Max values = ${convolvedRaster.extrema.min[0]} - ${convolvedRaster.extrema.max[0]}")
+        convolvedRaster
+    }
+
+    Raster convolveWidthHeight() {
+        // tag::convolveWidthHeight[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        println "Original Raster Min Max values = ${raster.extrema.min[0]} - ${raster.extrema.max[0]}"
+
+        Raster convolvedRaster = raster.convolve(1,2)
+        println "Convolved Raster Min Max values = ${convolvedRaster.extrema.min[0]} - ${convolvedRaster.extrema.max[0]}"
+        // end::convolveWidthHeight[]
+        convolvedRaster.style = new ColorMap([
+                [color: "#9fd182", quantity: -32767.0],
+                [color: "#3e7f3c", quantity: -15000.0],
+                [color: "#133912", quantity: 0.0],
+                [color: "#08306b", quantity: 3000.0],
+                [color: "#fffff5", quantity: 8000.0],
+        ])
+        draw("raster_convolve_wh", [convolvedRaster])
+        writeFile("raster_convolve_wh", "Original Raster Min Max values = ${raster.extrema.min[0]} - ${raster.extrema.max[0]}${NEW_LINE}" +
+                "Convolved Raster Min Max values = ${convolvedRaster.extrema.min[0]} - ${convolvedRaster.extrema.max[0]}")
+        convolvedRaster
+    }
+
 
     Layer polygonLayer() {
         // tag::polygonLayer[]
@@ -465,6 +511,18 @@ Bin 45 = ${histogram.bin(45)}
         // end::pointLayer[]
         layer.style = new Gradient(layer, "GRAY_INDEX", "quantile", 8, "MutedTerrain")
         draw("raster_pointLayer", [layer])
+        layer
+    }
+
+    Layer footPrint() {
+        // tag::footPrint[]
+        File file = new File("src/main/resources/earth.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("earth")
+        Layer layer = raster.extractFootPrint()
+        // end::footPrint[]
+        layer.style = new Stroke("black", 1.0)
+        draw("raster_footprint", [raster, layer])
         layer
     }
 

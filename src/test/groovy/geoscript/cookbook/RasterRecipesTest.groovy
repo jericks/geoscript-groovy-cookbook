@@ -106,6 +106,18 @@ class RasterRecipesTest {
         assertNotNull(raster)
     }
 
+    @Test void convolveRadius() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.convolveRadius()
+        assertNotNull(raster)
+    }
+
+    @Test void convolveWidthHeight() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.convolveWidthHeight()
+        assertNotNull(raster)
+    }
+
     @Test void polygonLayer() {
         RasterRecipes recipes = new RasterRecipes()
         Layer layer = recipes.polygonLayer()
@@ -116,6 +128,12 @@ class RasterRecipesTest {
         RasterRecipes recipes = new RasterRecipes()
         Layer layer = recipes.pointLayer()
         assertTrue(layer.count > 1000)
+    }
+
+    @Test void footPrint() {
+        RasterRecipes recipes = new RasterRecipes()
+        Layer layer = recipes.footPrint()
+        assertTrue(layer.count == 1)
     }
 
     @Test void invert() {

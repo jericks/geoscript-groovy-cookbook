@@ -378,6 +378,32 @@ include::output/raster_normalize.txt[]
 [.thumb]
 image::raster_normalize.png[]
 
+==== Convolve
+
+Convolve a Raster with a radius.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=convolveRadius,indent=0]
+----
+....
+include::output/raster_convolve_radius.txt[]
+....
+[.thumb]
+image::raster_convolve_radius.png[]
+
+Convolve a Raster with a width and height.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=convolveWidthHeight,indent=0]
+----
+....
+include::output/raster_convolve_wh.txt[]
+....
+[.thumb]
+image::raster_convolve_wh.png[]
+
 ==== Invert
 
 Invert the values of a Raster
@@ -430,6 +456,15 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=pointLayer,ind
 ----
 [.thumb]
 image::raster_pointLayer.png[]
+
+Extract a foot print from a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=footPrint,indent=0]
+----
+[.thumb]
+image::raster_footprint.png[]
 
 ==== Histogram
 
