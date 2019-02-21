@@ -1510,6 +1510,81 @@ Layer layer = raster.extractFootPrint()</code></pre>
 <img src="./images/raster_footprint.png" alt="raster footprint">
 </div>
 </div>
+<div class="paragraph">
+<p>Calculate zonal statistics</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">pc</span><span class="delimiter">&quot;</span></span>)
+
+Layer zones = <span class="keyword">new</span> Memory().create(<span class="string"><span class="delimiter">&quot;</span><span class="content">zones</span><span class="delimiter">&quot;</span></span>, [<span class="keyword">new</span> <span class="predefined-type">Field</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">geom</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">Geometry</span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)])
+Bounds bounds = raster.bounds
+bounds.tile(<span class="float">0.5</span>).each{b -&gt; zones.add([b.geometry])}
+
+Layer stats = raster.zonalStatistics(<span class="integer">0</span>, zones)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_zonalStats.png" alt="raster zonalStats">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">count</th>
+<th class="tableblock halign-left valign-top">min</th>
+<th class="tableblock halign-left valign-top">max</th>
+<th class="tableblock halign-left valign-top">sum</th>
+<th class="tableblock halign-left valign-top">avg</th>
+<th class="tableblock halign-left valign-top">stddev</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79950</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1718.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.6618944E7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">332.94489055659943</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">262.73459374414483</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">254.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4370.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.2963902E7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1162.0487749999913</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">439.0841907966851</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">71728</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-23.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1755.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1585759E7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">161.52351940664724</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">179.29389227723505</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80000</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2728.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.9051464E7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">988.1433000000056</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">465.8407188458327</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="histogram"><a class="anchor" href="#histogram"></a>Histogram</h4>
@@ -1703,7 +1778,7 @@ println elevation2</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-20 04:41:09 UTC
+Last updated 2019-02-21 01:36:52 UTC
 </div>
 </div>
 </body>
