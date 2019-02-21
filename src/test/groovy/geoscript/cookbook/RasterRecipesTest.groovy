@@ -136,6 +136,12 @@ class RasterRecipesTest {
         assertTrue(layer.count == 1)
     }
 
+    @Test void zonalStats() {
+        RasterRecipes recipes = new RasterRecipes()
+        Layer layer = recipes.zonalStats()
+        assertEquals(4, layer.count)
+    }
+
     @Test void invert() {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.invert()

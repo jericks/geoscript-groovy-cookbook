@@ -466,6 +466,17 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=footPrint,inde
 [.thumb]
 image::raster_footprint.png[]
 
+Calculate zonal statistics
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=zonalStats,indent=0]
+----
+[.thumb]
+image::raster_zonalStats.png[]
+
+include::output/raster_zonalStats.asciidoc[]
+
 ==== Histogram
 
 Get histogram of the Raster

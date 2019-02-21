@@ -1,5 +1,6 @@
 package geoscript.cookbook
 
+import geoscript.feature.Field
 import geoscript.filter.Color
 import geoscript.geom.Bounds
 import geoscript.geom.Point
@@ -17,6 +18,7 @@ import geoscript.style.ColorMap
 import geoscript.style.Gradient
 import geoscript.style.Stroke
 import geoscript.style.UniqueValues
+import geoscript.workspace.Memory
 
 import java.awt.image.BufferedImage
 import java.awt.image.ColorModel
@@ -524,6 +526,31 @@ Bin 45 = ${histogram.bin(45)}
         layer.style = new Stroke("black", 1.0)
         draw("raster_footprint", [raster, layer])
         layer
+    }
+
+    Layer zonalStats() {
+        // tag::zonalStats[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+
+        Layer zones = new Memory().create("zones", [new Field("geom","Geometry","EPSG:4326")])
+        Bounds bounds = raster.bounds
+        bounds.tile(0.5).each{b -> zones.add([b.geometry])}
+
+        Layer stats = raster.zonalStatistics(0, zones)
+        // end::zonalStats[]
+        raster.style = new ColorMap([
+            [color: "#9fd182", quantity:25],
+            [color: "#3e7f3c", quantity:470],
+            [color: "#133912", quantity:920],
+            [color: "#08306b", quantity:1370],
+            [color: "#fffff5", quantity:1820],
+        ])
+        zones.style = new Stroke("black", 1.0)
+        draw("raster_zonalStats", [raster, zones])
+        createTable("raster_zonalStats", stats, false)
+        stats
     }
 
     Raster invert() {
