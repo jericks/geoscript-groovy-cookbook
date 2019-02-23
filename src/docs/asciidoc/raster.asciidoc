@@ -303,6 +303,92 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=reproject,inde
 [.thumb]
 image::raster_reproject.png[]
 
+==== Transform
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=transform,indent=0]
+----
+
+Scale a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=transform_scale,indent=0]
+----
+[.thumb]
+image::raster_transform_scale.png[]
+
+Shear a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=transform_shear,indent=0]
+----
+[.thumb]
+image::raster_transform_shear.png[]
+
+Translate a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=transform_translate,indent=0]
+----
+[.thumb]
+image::raster_transform_translate.png[]
+
+Transform a Raster with a combination of parameters
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=transform_combo,indent=0]
+----
+[.thumb]
+image::raster_transform_transformed.png[]
+
+==== Select Bands
+
+Extract a band from a Raster to create a new Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=selectBands,indent=0]
+----
+Band 1
+[.thumb]
+image::raster_selectband_r.png[]
+Band 2
+[.thumb]
+image::raster_selectband_g.png[]
+Band 3
+[.thumb]
+image::raster_selectband_b.png[]
+
+==== Merge
+
+Merge a List of Rasters representing different bands together to create a single Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=merge,indent=0]
+----
+[.thumb]
+image::raster_merged.png[]
+
+==== Mosaic
+
+Mosaic a List of Rasters together to create a single Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=mosaic,indent=0]
+----
+[.thumb]
+image::raster_mosaic_1.png[]
+
+[.thumb]
+image::raster_mosaic_2.png[]
+
 ==== Contours
 
 Create vector contours from a Raster
@@ -509,6 +595,23 @@ include::output/raster_add.txt[]
 [.thumb]
 image::raster_add.png[]
 
+Add two Raster together
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=addRasters,indent=0]
+----
+
+Low
+[.thumb]
+image::raster_addraster_low.png[]
+High
+[.thumb]
+image::raster_addraster_high.png[]
+Low + High
+[.thumb]
+image::raster_addraster_add.png[]
+
 ===== Subtract
 
 Subtract a constant value from a Raster
@@ -534,6 +637,24 @@ include::output/raster_minusfrom.txt[]
 ....
 [.thumb]
 image::raster_minusfrom.png[]
+
+Subtract a Raster from another Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=subtractRasters,indent=0]
+----
+
+Low
+[.thumb]
+image::raster_subtractraster_low.png[]
+High
+[.thumb]
+image::raster_subtractraster_high.png[]
+High - Low
+[.thumb]
+image::raster_subtractraster_subtract.png[]
+
 
 ===== Multiply
 

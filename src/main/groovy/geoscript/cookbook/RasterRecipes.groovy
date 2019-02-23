@@ -16,14 +16,12 @@ import geoscript.plot.Chart
 import geoscript.proj.Projection
 import geoscript.style.ColorMap
 import geoscript.style.Gradient
+import geoscript.style.Label
 import geoscript.style.Stroke
+import geoscript.style.Style
 import geoscript.style.UniqueValues
 import geoscript.workspace.Memory
-
-import java.awt.image.BufferedImage
-import java.awt.image.ColorModel
 import java.awt.image.RenderedImage
-import java.awt.image.WritableRaster
 
 class RasterRecipes extends Recipes {
 
@@ -553,6 +551,127 @@ Bin 45 = ${histogram.bin(45)}
         stats
     }
 
+    Map<String, Raster> transform() {
+        Map<String, Raster> rasters = [:]
+
+        // tag::transform[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        // end::transform[]
+
+        Layer layer = new Memory().create("bounds", [new Field("geom","Geometry","EPSG:4326")])
+        layer.add([geom: raster.bounds.geometry])
+        layer.style = new Stroke("red", 1)
+
+        Style style = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ])
+        raster.style = style
+
+        // tag::transform_scale[]
+        Raster scaledRaster = raster.transform(scalex: 10, scaley: 10)
+        // end::transform_scale[]
+        scaledRaster.style = style
+        rasters["scaled"] = scaledRaster
+        draw("raster_transform_scale", [scaledRaster, layer], scaledRaster.bounds.expand(raster.bounds))
+
+        // tag::transform_shear[]
+        Raster shearedRaster = raster.transform(shearx: 10, sheary: 10)
+        // end::transform_shear[]
+        shearedRaster.style = style
+        rasters["sheared"] = shearedRaster
+        draw("raster_transform_shear", [shearedRaster, layer], shearedRaster.bounds.expand(raster.bounds))
+
+        // tag::transform_translate[]
+        Raster translatedRaster = raster.transform(translatex: 10.1, translatey: 12.6)
+        // end::transform_translate[]
+        translatedRaster.style = style
+        rasters["translated"] = translatedRaster
+        draw("raster_transform_translate", [translatedRaster, layer], translatedRaster.bounds.expand(raster.bounds))
+
+        // tag::transform_combo[]
+        Raster transformedRaster = raster.transform(
+            scalex: 1.1, scaley: 2.1,
+            shearx: 0.4, sheary: 0.3,
+            translatex: 10.1, translatey: 12.6,
+            nodata: [-255],
+            interpolation: "NEAREST"
+        )
+        // end::transform_combo[]
+        transformedRaster.style = style
+        rasters["transformed"] = transformedRaster
+        draw("raster_transform_transformed", [transformedRaster, layer], transformedRaster.bounds.expand(raster.bounds))
+
+        rasters
+    }
+
+    List<Raster> selectBands() {
+        // tag::selectBands[]
+        File file = new File("src/main/resources/earth.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("earth")
+
+        Raster band1 = raster.selectBands([0])
+        Raster band2 = raster.selectBands([1])
+        Raster band3 = raster.selectBands([2])
+        // end::selectBands[]
+        draw("raster_selectband_1", [band1])
+        draw("raster_selectband_2", [band2])
+        draw("raster_selectband_3", [band3])
+        [band1,band2,band3]
+    }
+
+    Raster merge() {
+        // tag::merge[]
+        File file = new File("src/main/resources/earth.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("earth")
+
+        Raster band1 = raster.selectBands([0])
+        Raster band2 = raster.selectBands([1])
+        Raster band3 = raster.selectBands([2])
+
+        Raster mergedRaster = Raster.merge([band1,band2,band3], transform: "FIRST")
+        // end::merge[]
+        draw("raster_merged", [mergedRaster])
+        mergedRaster
+    }
+
+    Raster mosaic() {
+        // tag::mosaic[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+
+        Bounds bounds = raster.bounds
+        List<Raster> rasters = bounds.tile(0.5).collect { Bounds b ->
+            raster.crop(b)
+        }
+
+        Raster mosaicedRaster = Raster.mosaic(rasters)
+        // end::mosaic[]
+        Style style = new ColorMap([
+                [color: "#9fd182", quantity:25],
+                [color: "#3e7f3c", quantity:470],
+                [color: "#133912", quantity:920],
+                [color: "#08306b", quantity:1370],
+                [color: "#fffff5", quantity:1820],
+        ])
+        mosaicedRaster.style = style
+        rasters.each { Raster r -> r.style = style}
+        Layer zones = new Memory().create("zones", [new Field("geom","Geometry","EPSG:4326")])
+        bounds.tile(0.5).each{b -> zones.add([b.geometry])}
+        zones.style = new Stroke("black", 1.0)
+        draw("raster_mosaic_1", rasters << zones)
+        draw("raster_mosaic_2", [mosaicedRaster])
+        mosaicedRaster
+    }
+
     Raster invert() {
         // tag::invert[]
         File file = new File("src/main/resources/pc.tif")
@@ -732,6 +851,62 @@ Bin 45 = ${histogram.bin(45)}
         draw("raster_divide", [lowerRaster])
         writeFile("raster_divide", "${elevation1}${NEW_LINE}${elevation2}")
         lowerRaster
+    }
+
+    Raster addRasters() {
+
+        Style rasterStyle = new ColorMap(1, 50, "MutedTerrain", 20)
+        Style vectorStyle = new Stroke("black",1) + new Label("value")
+
+        // tag::addRasters[]
+        Raster lowRaster = Format.getFormat(new File("src/main/resources/low.tif")).read("low")
+        Raster highRaster = Format.getFormat(new File("src/main/resources/high.tif")).read("high")
+        Raster lowPlusHighRaster = lowRaster.add(highRaster)
+        // end::addRasters[]
+
+        lowRaster.style = rasterStyle
+        highRaster.style = rasterStyle
+        lowPlusHighRaster.style = rasterStyle
+        
+        Closure createLayer = { Raster raster, Style style ->
+            Layer layer = raster.polygonLayer
+            layer.style = style
+            layer
+        }
+
+        draw("raster_addraster_low", [lowRaster, createLayer(lowRaster, vectorStyle)])
+        draw("raster_addraster_high", [highRaster, createLayer(highRaster, vectorStyle)])
+        draw("raster_addraster_add", [lowPlusHighRaster, createLayer(lowPlusHighRaster, vectorStyle)])
+
+        lowPlusHighRaster
+    }
+
+    Raster subtractRasters() {
+
+        Style rasterStyle = new ColorMap(1, 50, "MutedTerrain", 20)
+        Style vectorStyle = new Stroke("black",1) + new Label("value")
+
+        // tag::subtractRasters[]
+        Raster lowRaster = Format.getFormat(new File("src/main/resources/low.tif")).read("low")
+        Raster highRaster = Format.getFormat(new File("src/main/resources/high.tif")).read("high")
+        Raster highMinusLowRaster = highRaster.minus(lowRaster)
+        // end::subtractRasters[]
+
+        lowRaster.style = rasterStyle
+        highRaster.style = rasterStyle
+        highMinusLowRaster.style = rasterStyle
+
+        Closure createLayer = { Raster raster, Style style ->
+            Layer layer = raster.polygonLayer
+            layer.style = style
+            layer
+        }
+
+        draw("raster_subtractraster_low", [lowRaster, createLayer(lowRaster, vectorStyle)])
+        draw("raster_subtractraster_high", [highRaster, createLayer(highRaster, vectorStyle)])
+        draw("raster_subtractraster_subtract", [highMinusLowRaster, createLayer(highMinusLowRaster, vectorStyle)])
+
+        highMinusLowRaster
     }
 
     // Band

@@ -142,6 +142,33 @@ class RasterRecipesTest {
         assertEquals(4, layer.count)
     }
 
+    @Test void transform() {
+        RasterRecipes recipes = new RasterRecipes()
+        Map<String, Raster> rasters = recipes.transform()
+        assertNotNull(rasters["scaled"])
+        assertNotNull(rasters["sheared"])
+        assertNotNull(rasters["translated"])
+        assertNotNull(rasters["transformed"])
+    }
+
+    @Test void selectBands() {
+        RasterRecipes recipes = new RasterRecipes()
+        List<Raster> rasters = recipes.selectBands()
+        assertEquals(3, rasters.size())
+    }
+
+    @Test void merge() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.merge()
+        assertNotNull(raster)
+    }
+
+    @Test void mosaic() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.mosaic()
+        assertNotNull(raster)
+    }
+
     @Test void invert() {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.invert()
@@ -188,6 +215,18 @@ class RasterRecipesTest {
     @Test void divide() {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.divide()
+        assertNotNull(raster)
+    }
+
+    @Test void addRasters() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.addRasters()
+        assertNotNull(raster)
+    }
+
+    @Test void subtractRasters() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.subtractRasters()
         assertNotNull(raster)
     }
 }
