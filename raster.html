@@ -535,6 +535,10 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel3">
 <li><a href="#crop">Crop</a></li>
 <li><a href="#project">Project</a></li>
+<li><a href="#transform">Transform</a></li>
+<li><a href="#select-bands">Select Bands</a></li>
+<li><a href="#merge">Merge</a></li>
+<li><a href="#mosaic">Mosaic</a></li>
 <li><a href="#contours">Contours</a></li>
 <li><a href="#stylize">Stylize</a></li>
 <li><a href="#reclassify">Reclassify</a></li>
@@ -956,19 +960,19 @@ println valuesAsString</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>----------------------------------------------
-| 1,032.0 | 1,186.0 | 1,340.0 | 1,435.0 | 1,301.0 |
-----------------------------------------------
-| 1,143.0 | 1,143.0 | 1,193.0 | 1,224.0 | 1,313.0 |
-----------------------------------------------
-|  942.0 |  938.0 |  966.0 |  982.0 | 1,129.0 |
-----------------------------------------------
-|  746.0 |  835.0 |  912.0 |  949.0 | 1,028.0 |
-----------------------------------------------
-|  723.0 |  948.0 | 1,130.0 | 1,244.0 | 1,211.0 |
-----------------------------------------------
-|  673.0 |  890.0 | 1,100.0 | 1,133.0 | 1,024.0 |
-----------------------------------------------</pre>
+<pre>---------------------------------------------------
+| 1032.00 | 1186.00 | 1340.00 | 1435.00 | 1301.00 |
+---------------------------------------------------
+| 1143.00 | 1143.00 | 1193.00 | 1224.00 | 1313.00 |
+---------------------------------------------------
+|  942.00 |  938.00 |  966.00 |  982.00 | 1129.00 |
+---------------------------------------------------
+|  746.00 |  835.00 |  912.00 |  949.00 | 1028.00 |
+---------------------------------------------------
+|  723.00 |  948.00 | 1130.00 | 1244.00 | 1211.00 |
+---------------------------------------------------
+|  673.00 |  890.00 | 1100.00 | 1133.00 | 1024.00 |
+---------------------------------------------------</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1177,6 +1181,169 @@ Projection projection = <span class="keyword">new</span> Projection(<span class=
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/raster_reproject.png" alt="raster reproject">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="transform"><a class="anchor" href="#transform"></a>Transform</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">pc</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Scale a Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> scaledRaster = raster.transform(<span class="key">scalex</span>: <span class="integer">10</span>, <span class="key">scaley</span>: <span class="integer">10</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_transform_scale.png" alt="raster transform scale">
+</div>
+</div>
+<div class="paragraph">
+<p>Shear a Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> shearedRaster = raster.transform(<span class="key">shearx</span>: <span class="integer">10</span>, <span class="key">sheary</span>: <span class="integer">10</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_transform_shear.png" alt="raster transform shear">
+</div>
+</div>
+<div class="paragraph">
+<p>Translate a Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> translatedRaster = raster.transform(<span class="key">translatex</span>: <span class="float">10.1</span>, <span class="key">translatey</span>: <span class="float">12.6</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_transform_translate.png" alt="raster transform translate">
+</div>
+</div>
+<div class="paragraph">
+<p>Transform a Raster with a combination of parameters</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> transformedRaster = raster.transform(
+    <span class="key">scalex</span>: <span class="float">1.1</span>, <span class="key">scaley</span>: <span class="float">2.1</span>,
+    <span class="key">shearx</span>: <span class="float">0.4</span>, <span class="key">sheary</span>: <span class="float">0.3</span>,
+    <span class="key">translatex</span>: <span class="float">10.1</span>, <span class="key">translatey</span>: <span class="float">12.6</span>,
+    <span class="key">nodata</span>: [-<span class="integer">255</span>],
+    <span class="key">interpolation</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">NEAREST</span><span class="delimiter">&quot;</span></span>
+)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_transform_transformed.png" alt="raster transform transformed">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="select-bands"><a class="anchor" href="#select-bands"></a>Select Bands</h4>
+<div class="paragraph">
+<p>Extract a band from a Raster to create a new Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/earth.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth</span><span class="delimiter">&quot;</span></span>)
+
+<span class="predefined-type">Raster</span> band1 = raster.selectBands([<span class="integer">0</span>])
+<span class="predefined-type">Raster</span> band2 = raster.selectBands([<span class="integer">1</span>])
+<span class="predefined-type">Raster</span> band3 = raster.selectBands([<span class="integer">2</span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Band 1</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_selectband_r.png" alt="raster selectband r">
+</div>
+</div>
+<div class="paragraph">
+<p>Band 2</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_selectband_g.png" alt="raster selectband g">
+</div>
+</div>
+<div class="paragraph">
+<p>Band 3</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_selectband_b.png" alt="raster selectband b">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="merge"><a class="anchor" href="#merge"></a>Merge</h4>
+<div class="paragraph">
+<p>Merge a List of Rasters representing different bands together to create a single Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/earth.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">earth</span><span class="delimiter">&quot;</span></span>)
+
+<span class="predefined-type">Raster</span> band1 = raster.selectBands([<span class="integer">0</span>])
+<span class="predefined-type">Raster</span> band2 = raster.selectBands([<span class="integer">1</span>])
+<span class="predefined-type">Raster</span> band3 = raster.selectBands([<span class="integer">2</span>])
+
+<span class="predefined-type">Raster</span> mergedRaster = <span class="predefined-type">Raster</span>.merge([band1,band2,band3], <span class="key">transform</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">FIRST</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_merged.png" alt="raster merged">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mosaic"><a class="anchor" href="#mosaic"></a>Mosaic</h4>
+<div class="paragraph">
+<p>Mosaic a List of Rasters together to create a single Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">pc</span><span class="delimiter">&quot;</span></span>)
+
+Bounds bounds = raster.bounds
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">Raster</span>&gt; rasters = bounds.tile(<span class="float">0.5</span>).collect { Bounds b -&gt;
+    raster.crop(b)
+}
+
+<span class="predefined-type">Raster</span> mosaicedRaster = <span class="predefined-type">Raster</span>.mosaic(rasters)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_mosaic_1.png" alt="raster mosaic 1">
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_mosaic_2.png" alt="raster mosaic 2">
 </div>
 </div>
 </div>
@@ -1653,6 +1820,40 @@ println elevation2</code></pre>
 <img src="./images/raster_add.png" alt="raster add">
 </div>
 </div>
+<div class="paragraph">
+<p>Add two Raster together</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> lowRaster = <span class="predefined-type">Format</span>.getFormat(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/low.tif</span><span class="delimiter">&quot;</span></span>)).read(<span class="string"><span class="delimiter">&quot;</span><span class="content">low</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> highRaster = <span class="predefined-type">Format</span>.getFormat(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/high.tif</span><span class="delimiter">&quot;</span></span>)).read(<span class="string"><span class="delimiter">&quot;</span><span class="content">high</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> lowPlusHighRaster = lowRaster.add(highRaster)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Low</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_addraster_low.png" alt="raster addraster low">
+</div>
+</div>
+<div class="paragraph">
+<p>High</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_addraster_high.png" alt="raster addraster high">
+</div>
+</div>
+<div class="paragraph">
+<p>Low + High</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_addraster_add.png" alt="raster addraster add">
+</div>
+</div>
 </div>
 <div class="sect4">
 <h5 id="subtract"><a class="anchor" href="#subtract"></a>Subtract</h5>
@@ -1708,6 +1909,40 @@ println elevation2</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/raster_minusfrom.png" alt="raster minusfrom">
+</div>
+</div>
+<div class="paragraph">
+<p>Subtract a Raster from another Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> lowRaster = <span class="predefined-type">Format</span>.getFormat(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/low.tif</span><span class="delimiter">&quot;</span></span>)).read(<span class="string"><span class="delimiter">&quot;</span><span class="content">low</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> highRaster = <span class="predefined-type">Format</span>.getFormat(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/high.tif</span><span class="delimiter">&quot;</span></span>)).read(<span class="string"><span class="delimiter">&quot;</span><span class="content">high</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> highMinusLowRaster = highRaster.minus(lowRaster)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Low</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_subtractraster_low.png" alt="raster subtractraster low">
+</div>
+</div>
+<div class="paragraph">
+<p>High</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_subtractraster_high.png" alt="raster subtractraster high">
+</div>
+</div>
+<div class="paragraph">
+<p>High - Low</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_subtractraster_subtract.png" alt="raster subtractraster subtract">
 </div>
 </div>
 </div>
@@ -1778,7 +2013,7 @@ println elevation2</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-21 01:36:52 UTC
+Last updated 2019-02-24 23:36:37 UTC
 </div>
 </div>
 </body>
