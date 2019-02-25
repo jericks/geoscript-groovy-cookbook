@@ -229,4 +229,16 @@ class RasterRecipesTest {
         Raster raster = recipes.subtractRasters()
         assertNotNull(raster)
     }
+
+    @Test void multiplyRasters() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.multiplyRasters()
+        assertNotNull(raster)
+    }
+
+    @Test void divideRasters() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.divideRasters()
+        assertNotNull(raster)
+    }
 }

@@ -2,6 +2,8 @@ package geoscript.cookbook
 
 import geoscript.feature.Field
 import geoscript.filter.Color
+import geoscript.filter.Expression
+import geoscript.filter.Filter
 import geoscript.geom.Bounds
 import geoscript.geom.Point
 import geoscript.layer.ArcGrid
@@ -908,6 +910,63 @@ Bin 45 = ${histogram.bin(45)}
 
         highMinusLowRaster
     }
+
+    Raster multiplyRasters() {
+
+        Style rasterStyle = new ColorMap(1, 320, "MutedTerrain", 20)
+        Style vectorStyle = new Stroke("black",1) + new Label("value")
+
+        // tag::multiplyRasters[]
+        Raster lowRaster = Format.getFormat(new File("src/main/resources/low.tif")).read("low")
+        Raster highRaster = Format.getFormat(new File("src/main/resources/high.tif")).read("high")
+        Raster multiplyRaster = highRaster.multiply(lowRaster)
+        // end::multiplyRasters[]
+
+        lowRaster.style = rasterStyle
+        highRaster.style = rasterStyle
+        multiplyRaster.style = rasterStyle
+
+        Closure createLayer = { Raster raster, Style style ->
+            Layer layer = raster.polygonLayer
+            layer.style = style
+            layer
+        }
+
+        draw("raster_multiplyraster_low", [lowRaster, createLayer(lowRaster, vectorStyle)])
+        draw("raster_multiplyraster_high", [highRaster, createLayer(highRaster, vectorStyle)])
+        draw("raster_multiplyraster_subtract", [multiplyRaster, createLayer(multiplyRaster, vectorStyle)])
+
+        multiplyRaster
+    }
+
+    Raster divideRasters() {
+
+        Style rasterStyle = new ColorMap(1, 20, "MutedTerrain", 10)
+        Style vectorStyle = new Stroke("black",1) + new Label(Expression.fromCQL("numberFormat('0.00', value)"))
+
+        // tag::divideRasters[]
+        Raster lowRaster = Format.getFormat(new File("src/main/resources/low.tif")).read("low")
+        Raster highRaster = Format.getFormat(new File("src/main/resources/high.tif")).read("high")
+        Raster divideRaster = highRaster.divide(lowRaster)
+        // end::divideRasters[]
+
+        lowRaster.style = rasterStyle
+        highRaster.style = rasterStyle
+        divideRaster.style = rasterStyle
+
+        Closure createLayer = { Raster raster, Style style ->
+            Layer layer = raster.polygonLayer
+            layer.style = style
+            layer
+        }
+
+        draw("raster_divideraster_low", [lowRaster, createLayer(lowRaster, vectorStyle)])
+        draw("raster_divideraster_high", [highRaster, createLayer(highRaster, vectorStyle)])
+        draw("raster_divideraster_subtract", [divideRaster, createLayer(divideRaster, vectorStyle)])
+
+        divideRaster
+    }
+
 
     // Band
 

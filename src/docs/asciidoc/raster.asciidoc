@@ -655,7 +655,6 @@ High - Low
 [.thumb]
 image::raster_subtractraster_subtract.png[]
 
-
 ===== Multiply
 
 Multiply a constant value against a Raster
@@ -670,6 +669,24 @@ include::output/raster_multiply.txt[]
 [.thumb]
 image::raster_multiply.png[]
 
+Multiply a Raster with another Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=multiplyRasters,indent=0]
+----
+
+Low
+[.thumb]
+image::raster_multiplyraster_low.png[]
+High
+[.thumb]
+image::raster_multiplyraster_high.png[]
+High * Low
+[.thumb]
+image::raster_multiplyraster_subtract.png[]
+
+
 ===== Divide
 
 Divide a constant value against a Raster
@@ -683,3 +700,20 @@ include::output/raster_divide.txt[]
 ....
 [.thumb]
 image::raster_divide.png[]
+
+Divide a Raster by another Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=divideRasters,indent=0]
+----
+
+Low
+[.thumb]
+image::raster_divideraster_low.png[]
+High
+[.thumb]
+image::raster_divideraster_high.png[]
+High / Low
+[.thumb]
+image::raster_divideraster_subtract.png[]
