@@ -1975,6 +1975,40 @@ println elevation2</code></pre>
 <img src="./images/raster_multiply.png" alt="raster multiply">
 </div>
 </div>
+<div class="paragraph">
+<p>Multiply a Raster with another Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> lowRaster = <span class="predefined-type">Format</span>.getFormat(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/low.tif</span><span class="delimiter">&quot;</span></span>)).read(<span class="string"><span class="delimiter">&quot;</span><span class="content">low</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> highRaster = <span class="predefined-type">Format</span>.getFormat(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/high.tif</span><span class="delimiter">&quot;</span></span>)).read(<span class="string"><span class="delimiter">&quot;</span><span class="content">high</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> multiplyRaster = highRaster.multiply(lowRaster)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Low</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_multiplyraster_low.png" alt="raster multiplyraster low">
+</div>
+</div>
+<div class="paragraph">
+<p>High</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_multiplyraster_high.png" alt="raster multiplyraster high">
+</div>
+</div>
+<div class="paragraph">
+<p>High * Low</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_multiplyraster_subtract.png" alt="raster multiplyraster subtract">
+</div>
+</div>
 </div>
 <div class="sect4">
 <h5 id="divide"><a class="anchor" href="#divide"></a>Divide</h5>
@@ -2005,6 +2039,40 @@ println elevation2</code></pre>
 <img src="./images/raster_divide.png" alt="raster divide">
 </div>
 </div>
+<div class="paragraph">
+<p>Divide a Raster by another Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> lowRaster = <span class="predefined-type">Format</span>.getFormat(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/low.tif</span><span class="delimiter">&quot;</span></span>)).read(<span class="string"><span class="delimiter">&quot;</span><span class="content">low</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> highRaster = <span class="predefined-type">Format</span>.getFormat(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/high.tif</span><span class="delimiter">&quot;</span></span>)).read(<span class="string"><span class="delimiter">&quot;</span><span class="content">high</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> divideRaster = highRaster.divide(lowRaster)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Low</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_divideraster_low.png" alt="raster divideraster low">
+</div>
+</div>
+<div class="paragraph">
+<p>High</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_divideraster_high.png" alt="raster divideraster high">
+</div>
+</div>
+<div class="paragraph">
+<p>High / Low</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_divideraster_subtract.png" alt="raster divideraster subtract">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2013,7 +2081,7 @@ println elevation2</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-24 23:36:37 UTC
+Last updated 2019-02-25 02:04:32 UTC
 </div>
 </div>
 </body>
