@@ -341,6 +341,21 @@ Bin 45 = ${histogram.bin(45)}
         stylizedRaster
     }
 
+    Raster shadedRelief() {
+        // tag::shadedRelief[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        Raster shadedReliefRaster = raster.createShadedRelief(
+            1.0, // <1>
+            25,  // <2>
+            260  // <3>
+        )
+        // end::shadedRelief[]
+        draw("raster_shadedrelief", [shadedReliefRaster])
+        shadedReliefRaster
+    }
+
     Raster reclassify() {
         // tag::reclassify[]
         File file = new File("src/main/resources/pc.tif")
@@ -726,6 +741,30 @@ Bin 45 = ${histogram.bin(45)}
         ])
         draw("raster_exp", [expRaster])
         expRaster
+    }
+
+    Raster absolute() {
+
+        Style rasterStyle = new ColorMap(-10, 10, "Reds", 10)
+        Style vectorStyle = new Stroke("black",1) + new Label("value")
+
+        Closure createLayer = { Raster raster, Style style ->
+            Layer layer = raster.polygonLayer
+            layer.style = style
+            layer
+        }
+
+        // tag::absolute[]
+        File file = new File("src/main/resources/absolute.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("absolute")
+        Raster absolute = raster.absolute()
+        // end::absolute[]
+        raster.style = rasterStyle
+        absolute.style = rasterStyle
+        draw("raster_absolute_1", [raster, createLayer(raster, vectorStyle)])
+        draw("raster_absolute_2", [absolute, createLayer(absolute, vectorStyle)])
+        absolute
     }
 
     // Raster Algebra

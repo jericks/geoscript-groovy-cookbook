@@ -411,6 +411,21 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=stylize,indent
 [.thumb]
 image::raster_stylize.png[]
 
+==== Shaded Relief
+
+Create a shaded relief Raster from another Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=shadedRelief,indent=0]
+----
+<1> scale
+<2> altitude
+<3> azimuth
+
+[.thumb]
+image::raster_shadedrelief.png[]
+
 ==== Reclassify
 
 Reclassify a Raster
@@ -511,6 +526,19 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=exp,indent=0]
 ----
 [.thumb]
 image::raster_exp.png[]
+
+==== Absolute
+
+Calculate the absolute value of the values of a Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=absolute,indent=0]
+----
+[.thumb]
+image::raster_absolute_1.png[]
+[.thumb]
+image::raster_absolute_2.png[]
 
 ==== Log
 

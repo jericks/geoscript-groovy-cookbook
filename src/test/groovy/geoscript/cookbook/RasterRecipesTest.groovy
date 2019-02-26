@@ -78,6 +78,12 @@ class RasterRecipesTest {
         assertEquals(1, raster.bands.size())
     }
 
+    @Test void shadedRelief() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.shadedRelief()
+        assertNotNull(raster.bands)
+    }
+
     @Test void reclassify() {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.reclassify()
@@ -184,6 +190,12 @@ class RasterRecipesTest {
     @Test void exp() {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.exp()
+        assertNotNull(raster)
+    }
+
+    @Test void absolute() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.absolute()
         assertNotNull(raster)
     }
 
