@@ -564,6 +564,7 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </li>
 <li><a href="#world-file">World File</a></li>
+<li><a href="#map-algebra">Map Algebra</a></li>
 </ul>
 </li>
 </ul>
@@ -2190,12 +2191,105 @@ Upper Left Coordinate = -123.05809, 47.47918</pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="map-algebra"><a class="anchor" href="#map-algebra"></a>Map Algebra</h3>
+<div class="paragraph">
+<p>GeoScript uses Jiffle to perform map or raster algebra.</p>
+</div>
+<div class="paragraph">
+<p>Add two Rasters together</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> lowRaster = <span class="predefined-type">Format</span>.getFormat(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/low.tif</span><span class="delimiter">&quot;</span></span>)).read(<span class="string"><span class="delimiter">&quot;</span><span class="content">low</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Raster</span> highRaster = <span class="predefined-type">Format</span>.getFormat(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/high.tif</span><span class="delimiter">&quot;</span></span>)).read(<span class="string"><span class="delimiter">&quot;</span><span class="content">high</span><span class="delimiter">&quot;</span></span>)
+
+MapAlgebra mapAlgebra = <span class="keyword">new</span> MapAlgebra()
+<span class="predefined-type">Raster</span> output = mapAlgebra.calculate(<span class="string"><span class="delimiter">&quot;</span><span class="content">dest = raster1 + raster2;</span><span class="delimiter">&quot;</span></span>, [<span class="key">raster1</span>: lowRaster, <span class="key">raster2</span>: highRaster], <span class="key">size</span>: [<span class="integer">300</span>, <span class="integer">200</span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Low</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_mapalgebra_add_low.png" alt="raster mapalgebra add low">
+</div>
+</div>
+<div class="paragraph">
+<p>High</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_mapalgebra_add_high.png" alt="raster mapalgebra add high">
+</div>
+</div>
+<div class="paragraph">
+<p>High + Low</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_mapalgebra_add_result.png" alt="raster mapalgebra add result">
+</div>
+</div>
+<div class="paragraph">
+<p>Generate a wave Raster</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MapAlgebra algebra = <span class="keyword">new</span> MapAlgebra()
+
+<span class="predefined-type">String</span> script = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">
+    init {
+      // image centre coordinates
+      xc = width() / 2;
+      yc = height() / 2;
+
+      // constant term
+      C = M_PI * 8;
+    }
+
+    dx = (x() - xc) / xc;
+    dy = (y() - yc) / yc;
+    d = sqrt(dx*dx + dy*dy);
+
+    destImg = sin(C * d);
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+
+<span class="predefined-type">Raster</span> output = algebra.calculate(script, [:], <span class="key">outputName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">destImg</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_mapalgebra_waves.png" alt="raster mapalgebra waves">
+</div>
+</div>
+<div class="paragraph">
+<p>Create a Raster of all cells greater than a given value</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pc.tif</span><span class="delimiter">&quot;</span></span>)
+<span class="predefined-type">Format</span> format = <span class="predefined-type">Format</span>.getFormat(file)
+<span class="predefined-type">Raster</span> raster = format.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">pc</span><span class="delimiter">&quot;</span></span>)
+println raster.size
+MapAlgebra mapAlgebra = <span class="keyword">new</span> MapAlgebra()
+<span class="predefined-type">Raster</span> output = mapAlgebra.calculate(<span class="string"><span class="delimiter">&quot;</span><span class="content">dest = src &gt; 1100;</span><span class="delimiter">&quot;</span></span>, [<span class="key">src</span>: raster], <span class="key">size</span>: [<span class="integer">800</span>, <span class="integer">400</span>])
+println output.extrema</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_mapalgebra_gt.png" alt="raster mapalgebra gt">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-27 01:29:04 UTC
+Last updated 2019-02-27 01:35:38 UTC
 </div>
 </div>
 </body>
