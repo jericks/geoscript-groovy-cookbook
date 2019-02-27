@@ -745,3 +745,25 @@ image::raster_divideraster_high.png[]
 High / Low
 [.thumb]
 image::raster_divideraster_subtract.png[]
+
+=== World File
+
+Create a world file from a Bounds and size.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=raster_worldfile_boundsandsize,indent=0]
+----
+....
+include::output/raster_worldfile_boundsandsize.txt[]
+....
+
+Create a world file from an existing file.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=raster_worldfile_file,indent=0]
+----
+....
+include::output/raster_worldfile_file.txt[]
+....

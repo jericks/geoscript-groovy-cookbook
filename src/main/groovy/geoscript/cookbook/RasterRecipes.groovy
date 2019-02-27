@@ -13,6 +13,7 @@ import geoscript.layer.GeoTIFF
 import geoscript.layer.Histogram
 import geoscript.layer.Layer
 import geoscript.layer.Raster
+import geoscript.layer.WorldFile
 import geoscript.plot.Bar
 import geoscript.plot.Chart
 import geoscript.proj.Projection
@@ -1039,5 +1040,41 @@ Bin 45 = ${histogram.bin(45)}
   Type = ${band.type}
 """ }.join(NEW_LINE))
         bands
+    }
+
+    // World File
+
+    WorldFile createWorldFileFromBoundsAndSize() {
+        // tag::raster_worldfile_boundsandsize[]
+        File file = new File("target/worldfile.txt")
+        WorldFile worldFile = new WorldFile(new Bounds(-123.06, 46.66, -121.15, 47.48), [500,500], file)
+        println "Pixel Size = ${worldFile.pixelSize[0]} x ${worldFile.pixelSize[1]}"
+        println "Rotation = ${worldFile.rotation[0]} x ${worldFile.rotation[1]}"
+        println "Upper Left Coordinate = ${worldFile.ulc.x}, ${worldFile.ulc.y}"
+        println "File = ${file.text}"
+        // end::raster_worldfile_boundsandsize[]
+        writeFile("raster_worldfile_boundsandsize", """
+Pixel Size = ${worldFile.pixelSize[0]} x ${worldFile.pixelSize[1]}
+Rotation = ${worldFile.rotation[0]} x ${worldFile.rotation[1]}
+Upper Left Coordinate = ${worldFile.ulc.x}, ${worldFile.ulc.y} 
+File = ${file.text}
+""")
+        worldFile
+    }
+
+    WorldFile createWorldFileFromFile() {
+        // tag::raster_worldfile_file[]
+        File file = new File("src/main/resources/worldfile.txt")
+        WorldFile worldFile = new WorldFile(file)
+        println "Pixel Size = ${worldFile.pixelSize[0]} x ${worldFile.pixelSize[1]}"
+        println "Rotation = ${worldFile.rotation[0]} x ${worldFile.rotation[1]}"
+        println "Upper Left Coordinate = ${worldFile.ulc.x}, ${worldFile.ulc.y}"
+        // end::raster_worldfile_file[]
+        writeFile("raster_worldfile_file", """
+Pixel Size = ${worldFile.pixelSize[0]} x ${worldFile.pixelSize[1]}
+Rotation = ${worldFile.rotation[0]} x ${worldFile.rotation[1]}
+Upper Left Coordinate = ${worldFile.ulc.x}, ${worldFile.ulc.y}
+""")
+        worldFile
     }
 }

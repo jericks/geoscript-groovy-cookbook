@@ -5,6 +5,7 @@ import geoscript.layer.Band
 import geoscript.layer.Histogram
 import geoscript.layer.Layer
 import geoscript.layer.Raster
+import geoscript.layer.WorldFile
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -252,5 +253,35 @@ class RasterRecipesTest {
         RasterRecipes recipes = new RasterRecipes()
         Raster raster = recipes.divideRasters()
         assertNotNull(raster)
+    }
+
+    // World File
+
+    @Test void createWorldFileFromBoundsAndSize() {
+        RasterRecipes recipes = new RasterRecipes()
+        WorldFile worldFile = recipes.createWorldFileFromBoundsAndSize()
+        assertEquals(0.003819, worldFile.pixelSize[0], 0.00001)
+        assertEquals(-0.00164, worldFile.pixelSize[1], 0.00001)
+        assertEquals(0.0, worldFile.rotation[0], 0.01)
+        assertEquals(0.0, worldFile.rotation[1], 0.01)
+        assertEquals(-123.05809, worldFile.ulc.x, 0.0001)
+        assertEquals(47.47918, worldFile.ulc.y, 0.0001)
+        assertNotNull(worldFile.file)
+        assertEquals("worldfile.txt", worldFile.file.name)
+        assertNotNull(worldFile.file.text)
+    }
+
+    @Test void createWorldFileFromFile() {
+        RasterRecipes recipes = new RasterRecipes()
+        WorldFile worldFile = recipes.createWorldFileFromFile()
+        assertEquals(0.003819, worldFile.pixelSize[0], 0.00001)
+        assertEquals(-0.00164, worldFile.pixelSize[1], 0.00001)
+        assertEquals(0.0, worldFile.rotation[0], 0.01)
+        assertEquals(0.0, worldFile.rotation[1], 0.01)
+        assertEquals(-123.05809, worldFile.ulc.x, 0.0001)
+        assertEquals(47.47918, worldFile.ulc.y, 0.0001)
+        assertNotNull(worldFile.file)
+        assertEquals("worldfile.txt", worldFile.file.name)
+        assertNotNull(worldFile.file.text)
     }
 }
