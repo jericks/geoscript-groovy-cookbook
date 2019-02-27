@@ -767,3 +767,44 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=raster_worldfi
 ....
 include::output/raster_worldfile_file.txt[]
 ....
+
+=== Map Algebra
+
+GeoScript uses Jiffle to perform map or raster algebra.
+
+Add two Rasters together
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=mapAlgebraAdd,indent=0]
+----
+
+Low
+[.thumb]
+image::raster_mapalgebra_add_low.png[]
+High
+[.thumb]
+image::raster_mapalgebra_add_high.png[]
+High + Low
+[.thumb]
+image::raster_mapalgebra_add_result.png[]
+
+Generate a wave Raster
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=mapAlgebraWaves,indent=0]
+----
+
+[.thumb]
+image::raster_mapalgebra_waves.png[]
+
+Create a Raster of all cells greater than a given value
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=mapAlgebraGreaterThan,indent=0]
+----
+
+[.thumb]
+image::raster_mapalgebra_gt.png[]

@@ -284,4 +284,25 @@ class RasterRecipesTest {
         assertEquals("worldfile.txt", worldFile.file.name)
         assertNotNull(worldFile.file.text)
     }
+
+    // Map Algebra
+
+    @Test void mapAlgebraAdd() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.mapAlgebraAdd()
+        assertNotNull(raster)
+    }
+
+    @Test void mapAlgebraWaves() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.mapAlgebraWaves()
+        assertNotNull(raster)
+    }
+
+    @Test void mapAlgebraGreaterThan() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.mapAlgebraGreaterThan()
+        assertNotNull(raster)
+    }
+
 }

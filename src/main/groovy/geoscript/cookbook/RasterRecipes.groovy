@@ -12,6 +12,7 @@ import geoscript.layer.Format
 import geoscript.layer.GeoTIFF
 import geoscript.layer.Histogram
 import geoscript.layer.Layer
+import geoscript.layer.MapAlgebra
 import geoscript.layer.Raster
 import geoscript.layer.WorldFile
 import geoscript.plot.Bar
@@ -1077,4 +1078,81 @@ Upper Left Coordinate = ${worldFile.ulc.x}, ${worldFile.ulc.y}
 """)
         worldFile
     }
+
+    // Map algebra
+
+    Raster mapAlgebraAdd() {
+        
+        Style rasterStyle = new ColorMap(1, 50, "MutedTerrain", 20)
+        Style vectorStyle = new Stroke("black",1) + new Label("value")
+
+        // tag::mapAlgebraAdd[]
+        Raster lowRaster = Format.getFormat(new File("src/main/resources/low.tif")).read("low")
+        Raster highRaster = Format.getFormat(new File("src/main/resources/high.tif")).read("high")
+
+        MapAlgebra mapAlgebra = new MapAlgebra()
+        Raster output = mapAlgebra.calculate("dest = raster1 + raster2;", [raster1: lowRaster, raster2: highRaster], size: [300, 200])
+        // end::mapAlgebraAdd[]
+
+        lowRaster.style = rasterStyle
+        highRaster.style = rasterStyle
+        output.style = rasterStyle
+
+        Closure createLayer = { Raster raster, Style style ->
+            Layer layer = raster.polygonLayer
+            layer.style = style
+            layer
+        }
+
+        draw("raster_mapalgebra_add_low",  [lowRaster, createLayer(lowRaster, vectorStyle)])
+        draw("raster_mapalgebra_add_high", [highRaster, createLayer(highRaster, vectorStyle)])
+        draw("raster_mapalgebra_add_result",  [output, createLayer(output, vectorStyle)])
+
+        output
+    }
+
+    Raster mapAlgebraWaves() {
+
+        // tag::mapAlgebraWaves[]
+        MapAlgebra algebra = new MapAlgebra()
+
+        String script = """
+            init {
+              // image centre coordinates
+              xc = width() / 2;
+              yc = height() / 2;
+    
+              // constant term
+              C = M_PI * 8;
+            }
+    
+            dx = (x() - xc) / xc;
+            dy = (y() - yc) / yc;
+            d = sqrt(dx*dx + dy*dy);
+    
+            destImg = sin(C * d);
+        """
+
+        Raster output = algebra.calculate(script, [:], outputName: "destImg")
+        // end::mapAlgebraWaves[]
+        output.style = new ColorMap(-1, 1, "BlueToOrange", 10)
+        draw("raster_mapalgebra_waves",  [output])
+        output
+    }
+
+    Raster mapAlgebraGreaterThan() {
+        // tag::mapAlgebraGreaterThan[]
+        File file = new File("src/main/resources/pc.tif")
+        Format format = Format.getFormat(file)
+        Raster raster = format.read("pc")
+        println raster.size
+        MapAlgebra mapAlgebra = new MapAlgebra()
+        Raster output = mapAlgebra.calculate("dest = src > 1100;", [src: raster], size: [800, 400])
+        println output.extrema
+        // end::mapAlgebraGreaterThan[]
+        output.style = new ColorMap(0, 1, "BlueToOrange", 2)
+        draw("raster_mapalgebra_gt",  [output])
+        output
+    }
+
 }
