@@ -498,9 +498,11 @@ BOTTOM_LEFT
     @Test void tileLayerFromString() {
         TileRecipes recipes =  new TileRecipes()
         Map<String, TileLayer> tileLayers = recipes.tileLayerFromString()
-        assertEquals(2, tileLayers.size())
+        assertEquals(4, tileLayers.size())
         assertNotNull(tileLayers["mbtiles"])
         assertNotNull(tileLayers["geopackage"])
+        assertNotNull(tileLayers["tms"])
+        assertNotNull(tileLayers["osm"])
     }
 
     // TileCursor

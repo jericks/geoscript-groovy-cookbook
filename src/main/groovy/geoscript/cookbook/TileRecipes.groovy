@@ -468,6 +468,20 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         tileLayers["geopackage"] = geopackage
         writeFile("tileLayerFromString_geopackage", "${geopackage.name} ${geopackage.proj} ${geopackage.bounds} ${geopackage.pyramid}")
 
+        // tag::tileLayerFromString_tms[]
+        TileLayer tms = TileLayer.getTileLayer("type=tms file=src/main/resource/tms format=png pyramid=globalmercator")
+        println "${tms.name} ${tms.proj} ${tms.bounds} ${tms.pyramid}"
+        // end::tileLayerFromString_tms[]
+        tileLayers["tms"] = tms
+        writeFile("tileLayerFromString_tms", "${tms.name} ${tms.proj} ${tms.bounds} ${tms.pyramid}")
+
+        // tag::tileLayerFromString_osm[]
+        TileLayer osm = TileLayer.getTileLayer("type=osm url=http://a.tile.openstreetmap.org")
+        println "${osm.name} ${osm.proj} ${osm.bounds} ${osm.pyramid}"
+        // end::tileLayerFromString_osm[]
+        tileLayers["osm"] = osm
+        writeFile("tileLayerFromString_osm", "${osm.name} ${osm.proj} ${osm.bounds} ${osm.pyramid}")
+
         tileLayers
     }
 
