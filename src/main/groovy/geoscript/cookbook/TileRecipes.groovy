@@ -450,6 +450,27 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         tileLayer
     }
 
+    Map<String, TileLayer> tileLayerFromString() {
+
+        Map<String, TileLayer> tileLayers = [:]
+
+        // tag::tileLayerFromString_mbtiles[]
+        TileLayer mbtiles = TileLayer.getTileLayer("type=mbtiles file=src/main/resources/tiles.mbtiles")
+        println "${mbtiles.name} ${mbtiles.proj} ${mbtiles.bounds} ${mbtiles.pyramid}"
+        // end::tileLayerFromString_mbtiles[]
+        tileLayers["mbtiles"] = mbtiles
+        writeFile("tileLayerFromString_mbtiles", "${mbtiles.name} ${mbtiles.proj} ${mbtiles.bounds} ${mbtiles.pyramid}")
+
+        // tag::tileLayerFromString_geopackage[]
+        TileLayer geopackage = TileLayer.getTileLayer("type=geopackage name=world file=src/main/resources/tiles.gpkg")
+        println "${geopackage.name} ${geopackage.proj} ${geopackage.bounds} ${geopackage.pyramid}"
+        // end::tileLayerFromString_geopackage[]
+        tileLayers["geopackage"] = geopackage
+        writeFile("tileLayerFromString_geopackage", "${geopackage.name} ${geopackage.proj} ${geopackage.bounds} ${geopackage.pyramid}")
+
+        tileLayers
+    }
+
     // Grid
 
     Grid gridProperties() {

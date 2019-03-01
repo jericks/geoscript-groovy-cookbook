@@ -495,6 +495,14 @@ BOTTOM_LEFT
         assertEquals("(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)", tileLayer.bounds.toString())
     }
 
+    @Test void tileLayerFromString() {
+        TileRecipes recipes =  new TileRecipes()
+        Map<String, TileLayer> tileLayers = recipes.tileLayerFromString()
+        assertEquals(2, tileLayers.size())
+        assertNotNull(tileLayers["mbtiles"])
+        assertNotNull(tileLayers["geopackage"])
+    }
+
     // TileCursor
 
     @Test void tileCursorByZoomLevel() {

@@ -585,6 +585,28 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=withTileLayer,in
 include::output/tile_withtilelayer.txt[]
 ....
 
+==== Get Tile Layer from a String
+
+Get an MBTiles TileLayer from a String
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromString_mbtiles,indent=0]
+----
+....
+include::output/tileLayerFromString_mbtiles.txt[]
+....
+
+Get an GeoPackage TileLayer from a String
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromString_geopackage,indent=0]
+----
+....
+include::output/tileLayerFromString_geopackage.txt[]
+....
+
 === TileCursor
 
 A TileCursor is a way to get a collection of Tiles from a TileLayer.
