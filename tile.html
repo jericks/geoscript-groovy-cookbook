@@ -576,6 +576,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#delete-tiles-from-a-tilelayer">Delete Tiles from a TileLayer</a></li>
 <li><a href="#tiles">Tiles</a></li>
 <li><a href="#using-tile-layers">Using Tile Layers</a></li>
+<li><a href="#get-tile-layer-from-a-string">Get Tile Layer from a String</a></li>
 </ul>
 </li>
 <li><a href="#tilecursor">TileCursor</a></li>
@@ -2054,6 +2055,37 @@ EPSG:3857
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="get-tile-layer-from-a-string"><a class="anchor" href="#get-tile-layer-from-a-string"></a>Get Tile Layer from a String</h4>
+<div class="paragraph">
+<p>Get an MBTiles TileLayer from a String</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">TileLayer mbtiles = TileLayer.getTileLayer(<span class="string"><span class="delimiter">&quot;</span><span class="content">type=mbtiles file=src/main/resources/tiles.mbtiles</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>mbtiles.name<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>mbtiles.proj<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>mbtiles.bounds<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>mbtiles.pyramid<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>countries EPSG:3857 (-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857) geoscript.layer.Pyramid(proj:EPSG:3857, bounds:(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857), origin:BOTTOM_LEFT, tileWidth:256, tileHeight:256)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get an GeoPackage TileLayer from a String</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">TileLayer geopackage = TileLayer.getTileLayer(<span class="string"><span class="delimiter">&quot;</span><span class="content">type=geopackage name=world file=src/main/resources/tiles.gpkg</span><span class="delimiter">&quot;</span></span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>geopackage.name<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>geopackage.proj<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>geopackage.bounds<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>geopackage.pyramid<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>world EPSG:4326 (-179.99,-89.99,179.99,89.99,EPSG:4326) geoscript.layer.Pyramid(proj:EPSG:4326, bounds:(-179.99,-89.99,179.99,89.99,EPSG:4326), origin:TOP_LEFT, tileWidth:256, tileHeight:256)</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="tilecursor"><a class="anchor" href="#tilecursor"></a>TileCursor</h3>
@@ -2474,7 +2506,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-27 01:35:38 UTC
+Last updated 2019-03-01 01:53:56 UTC
 </div>
 </div>
 </body>
