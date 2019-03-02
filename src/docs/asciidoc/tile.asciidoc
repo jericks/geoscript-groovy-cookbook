@@ -585,6 +585,68 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=withTileLayer,in
 include::output/tile_withtilelayer.txt[]
 ....
 
+==== Get Tile Layer from a Map
+
+Get an MBTiles TileLayer from a Map
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromMap_mbtiles,indent=0]
+----
+....
+include::output/tileLayerFromMap_mbtiles.txt[]
+....
+
+Get an GeoPackage TileLayer from a Map
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromMap_geopackage,indent=0]
+----
+....
+include::output/tileLayerFromMap_geopackage.txt[]
+....
+
+Get an TMS TileLayer from a Map
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromMap_tms,indent=0]
+----
+....
+include::output/tileLayerFromMap_tms.txt[]
+....
+
+Get an OSM TileLayer from a Map
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromMap_osm,indent=0]
+----
+....
+include::output/tileLayerFromMap_osm.txt[]
+....
+
+Get an PBF Vector TileLayer from a Map
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromMap_pbf,indent=0]
+----
+....
+include::output/tileLayerFromMap_pbf.txt[]
+....
+
+Get an UTF TileLayer from a Map
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromMap_utf,indent=0]
+----
+....
+include::output/tileLayerFromMap_utf.txt[]
+....
+
 ==== Get Tile Layer from a String
 
 Get an MBTiles TileLayer from a String
@@ -625,6 +687,26 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromStr
 ----
 ....
 include::output/tileLayerFromString_osm.txt[]
+....
+
+Get an PBF Vector TileLayer from a String
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromString_pbf,indent=0]
+----
+....
+include::output/tileLayerFromString_pbf.txt[]
+....
+
+Get an UTF TileLayer from a String
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromString_utf,indent=0]
+----
+....
+include::output/tileLayerFromString_utf.txt[]
 ....
 
 === TileCursor

@@ -469,7 +469,7 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         writeFile("tileLayerFromString_geopackage", "${geopackage.name} ${geopackage.proj} ${geopackage.bounds} ${geopackage.pyramid}")
 
         // tag::tileLayerFromString_tms[]
-        TileLayer tms = TileLayer.getTileLayer("type=tms file=src/main/resource/tms format=png pyramid=globalmercator")
+        TileLayer tms = TileLayer.getTileLayer("type=tms file=src/main/resources/tms format=png pyramid=globalmercator")
         println "${tms.name} ${tms.proj} ${tms.bounds} ${tms.pyramid}"
         // end::tileLayerFromString_tms[]
         tileLayers["tms"] = tms
@@ -481,6 +481,69 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         // end::tileLayerFromString_osm[]
         tileLayers["osm"] = osm
         writeFile("tileLayerFromString_osm", "${osm.name} ${osm.proj} ${osm.bounds} ${osm.pyramid}")
+
+        // tag::tileLayerFromString_pbf[]
+        TileLayer pbf = TileLayer.getTileLayer("type=vectortiles name=world file=src/main/resources/pbf format=pbf pyramid=GlobalMercator")
+        println "${pbf.name} ${pbf.proj} ${pbf.bounds} ${pbf.pyramid}"
+        // end::tileLayerFromString_pbf[]
+        tileLayers["pbf"] = pbf
+        writeFile("tileLayerFromString_pbf", "${pbf.name} ${pbf.proj} ${pbf.bounds} ${pbf.pyramid}")
+
+        // tag::tileLayerFromString_utf[]
+        TileLayer utf = TileLayer.getTileLayer("type=utfgrid file=src/main/resources/utf")
+        println "${utf.name} ${utf.proj} ${utf.bounds} ${utf.pyramid}"
+        // end::tileLayerFromString_utf[]
+        tileLayers["utf"] = utf
+        writeFile("tileLayerFromString_utf", "${utf.name} ${utf.proj} ${utf.bounds} ${utf.pyramid}")
+
+        tileLayers
+    }
+
+    Map<String, TileLayer> tileLayerFromMap() {
+
+        Map<String, TileLayer> tileLayers = [:]
+
+        // tag::tileLayerFromMap_mbtiles[]
+        TileLayer mbtiles = TileLayer.getTileLayer([type:'mbtiles', file: 'src/main/resources/tiles.mbtiles'])
+        println "${mbtiles.name} ${mbtiles.proj} ${mbtiles.bounds} ${mbtiles.pyramid}"
+        // end::tileLayerFromMap_mbtiles[]
+        tileLayers["mbtiles"] = mbtiles
+        writeFile("tileLayerFromMap_mbtiles", "${mbtiles.name} ${mbtiles.proj} ${mbtiles.bounds} ${mbtiles.pyramid}")
+
+        // tag::tileLayerFromMap_geopackage[]
+        TileLayer geopackage = TileLayer.getTileLayer([type: 'geopackage', name: 'world', file: 'src/main/resources/tiles.gpkg'])
+        println "${geopackage.name} ${geopackage.proj} ${geopackage.bounds} ${geopackage.pyramid}"
+        // end::tileLayerFromMap_geopackage[]
+        tileLayers["geopackage"] = geopackage
+        writeFile("tileLayerFromMap_geopackage", "${geopackage.name} ${geopackage.proj} ${geopackage.bounds} ${geopackage.pyramid}")
+
+        // tag::tileLayerFromMap_tms[]
+        TileLayer tms = TileLayer.getTileLayer([type: 'tms', file: 'src/main/resources/tms', format: 'png', pyramid: 'globalmercator'])
+        println "${tms.name} ${tms.proj} ${tms.bounds} ${tms.pyramid}"
+        // end::tileLayerFromMap_tms[]
+        tileLayers["tms"] = tms
+        writeFile("tileLayerFromMap_tms", "${tms.name} ${tms.proj} ${tms.bounds} ${tms.pyramid}")
+
+        // tag::tileLayerFromMap_osm[]
+        TileLayer osm = TileLayer.getTileLayer([type: 'osm', url: 'http://a.tile.openstreetmap.org'])
+        println "${osm.name} ${osm.proj} ${osm.bounds} ${osm.pyramid}"
+        // end::tileLayerFromMap_osm[]
+        tileLayers["osm"] = osm
+        writeFile("tileLayerFromMap_osm", "${osm.name} ${osm.proj} ${osm.bounds} ${osm.pyramid}")
+
+        // tag::tileLayerFromMap_pbf[]
+        TileLayer pbf = TileLayer.getTileLayer([type: 'vectortiles', name: 'world', file: 'src/main/resources/pbf', format: 'pbf', pyramid: 'GlobalMercator'])
+        println "${pbf.name} ${pbf.proj} ${pbf.bounds} ${pbf.pyramid}"
+        // end::tileLayerFromMap_pbf[]
+        tileLayers["pbf"] = pbf
+        writeFile("tileLayerFromMap_pbf", "${pbf.name} ${pbf.proj} ${pbf.bounds} ${pbf.pyramid}")
+
+        // tag::tileLayerFromMap_utf[]
+        TileLayer utf = TileLayer.getTileLayer([type: 'utfgrid', file: 'src/main/resources/utf'])
+        println "${utf.name} ${utf.proj} ${utf.bounds} ${utf.pyramid}"
+        // end::tileLayerFromMap_utf[]
+        tileLayers["utf"] = utf
+        writeFile("tileLayerFromMap_utf", "${utf.name} ${utf.proj} ${utf.bounds} ${utf.pyramid}")
 
         tileLayers
     }

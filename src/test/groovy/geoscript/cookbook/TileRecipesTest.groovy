@@ -498,11 +498,25 @@ BOTTOM_LEFT
     @Test void tileLayerFromString() {
         TileRecipes recipes =  new TileRecipes()
         Map<String, TileLayer> tileLayers = recipes.tileLayerFromString()
-        assertEquals(4, tileLayers.size())
+        assertEquals(6, tileLayers.size())
         assertNotNull(tileLayers["mbtiles"])
         assertNotNull(tileLayers["geopackage"])
         assertNotNull(tileLayers["tms"])
         assertNotNull(tileLayers["osm"])
+        assertNotNull(tileLayers["pbf"])
+        assertNotNull(tileLayers["utf"])
+    }
+
+    @Test void tileLayerFromMap() {
+        TileRecipes recipes =  new TileRecipes()
+        Map<String, TileLayer> tileLayers = recipes.tileLayerFromMap()
+        assertEquals(6, tileLayers.size())
+        assertNotNull(tileLayers["mbtiles"])
+        assertNotNull(tileLayers["geopackage"])
+        assertNotNull(tileLayers["tms"])
+        assertNotNull(tileLayers["osm"])
+        assertNotNull(tileLayers["pbf"])
+        assertNotNull(tileLayers["utf"])
     }
 
     // TileCursor
