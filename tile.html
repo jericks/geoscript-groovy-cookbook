@@ -565,6 +565,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#mbtiles">MBTiles</a></li>
 <li><a href="#geopackage">GeoPackage</a></li>
 <li><a href="#tms">TMS</a></li>
+<li><a href="#utfgrid">UTFGrid</a></li>
 </ul>
 </li>
 </ul>
@@ -1465,6 +1466,28 @@ generator.generate(tms, renderer, <span class="integer">0</span>, <span class="i
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/tile_generate_tms.png" alt="tile generate tms">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="utfgrid"><a class="anchor" href="#utfgrid"></a>UTFGrid</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> directory = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/utfgrid</span><span class="delimiter">&quot;</span></span>)
+directory.mkdir()
+UTFGrid utf = <span class="keyword">new</span> UTFGrid(directory)
+
+Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+
+UTFGridTileRenderer renderer = <span class="keyword">new</span> UTFGridTileRenderer(utf, countries, [countries.schema.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>)])
+TileGenerator generator = <span class="keyword">new</span> TileGenerator()
+generator.generate(utf, renderer, <span class="integer">0</span>, <span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/utfgrid.png" alt="utfgrid">
 </div>
 </div>
 </div>
@@ -2650,7 +2673,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-02 19:54:45 UTC
+Last updated 2019-03-06 04:50:28 UTC
 </div>
 </div>
 </body>
