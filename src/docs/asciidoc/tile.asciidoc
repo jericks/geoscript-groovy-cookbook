@@ -368,6 +368,15 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=generateTilesToT
 [.thumb]
 image::tile_generate_tms.png[]
 
+===== UTFGrid
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=generateUTFGrid,indent=0]
+----
+[.thumb]
+image::utfgrid.png[]
+
 === Tile Layer
 
 ==== Tile Layer Properties

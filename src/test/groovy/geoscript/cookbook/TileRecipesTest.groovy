@@ -12,6 +12,7 @@ import geoscript.layer.TMS
 import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import geoscript.layer.TileLayer
+import geoscript.layer.UTFGrid
 import org.junit.Test
 
 import static junit.framework.Assert.assertEquals
@@ -621,6 +622,15 @@ BOTTOM_LEFT
         assertNotNull(tms.get(0,0,0).data)
         assertNotNull(tms.get(1,1,1).data)
         assertNotNull(tms.get(2,2,2).data)
+    }
+
+    @Test void generateUTFGrid() {
+        TileRecipes recipes = new TileRecipes()
+        UTFGrid utfGrid = recipes.generateUTFGrid()
+        assertNotNull(utfGrid)
+        assertNotNull(utfGrid.get(0,0,0).data)
+        assertNotNull(utfGrid.get(1,1,1).data)
+        assertNotNull(utfGrid.get(2,2,2).data)
     }
 
     // OSM

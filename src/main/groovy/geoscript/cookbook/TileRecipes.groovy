@@ -15,6 +15,8 @@ import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import geoscript.layer.TileGenerator
 import geoscript.layer.TileLayer
+import geoscript.layer.UTFGrid
+import geoscript.layer.UTFGridTileRenderer
 import geoscript.layer.io.GdalTmsPyramidReader
 import geoscript.layer.io.GdalTmsPyramidWriter
 import geoscript.layer.io.PyramidReader
@@ -1226,6 +1228,22 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         RenderedImage image = tms.getRaster(tms.tiles(1)).image
         saveImage("tile_generate_tms", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
         tms
+    }
+
+    UTFGrid generateUTFGrid() {
+        // tag::generateUTFGrid[]
+        File directory = new File("target/utfgrid")
+        directory.mkdir()
+        UTFGrid utf = new UTFGrid(directory)
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+
+        UTFGridTileRenderer renderer = new UTFGridTileRenderer(utf, countries, [countries.schema.get("NAME")])
+        TileGenerator generator = new TileGenerator()
+        generator.generate(utf, renderer, 0, 2)
+        // end::generateUTFGrid[]
+        utf
     }
 
     // OSM
