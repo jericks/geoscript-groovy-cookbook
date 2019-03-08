@@ -960,6 +960,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geopackage">GeoPackage</a></li>
 <li><a href="#tms">TMS</a></li>
 <li><a href="#utfgrid">UTFGrid</a></li>
+<li><a href="#vector-tiles">Vector Tiles</a></li>
 </ul>
 </li>
 </ul>
@@ -4910,8 +4911,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 296787235 nanoseconds
-Time with PreparedGeometry = 295177536 nanoseconds</pre>
+<pre>Time with Geometry         = 432218946 nanoseconds
+Time with PreparedGeometry = 220807975 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4956,8 +4957,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 141201213 nanoseconds
-Time with PreparedGeometry = 139909686 nanoseconds</pre>
+<pre>Time with Geometry         = 270536749 nanoseconds
+Time with PreparedGeometry = 120589972 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -8771,7 +8772,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--192ddcd6_169515e71ec_-2866 geom: null, id: null, name: null</pre>
+<pre>cities.fid-63bfa42d_1695b1bc0ee_-2866 geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -9486,7 +9487,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Mar 06 05:00:45 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 08 02:24:17 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9505,7 +9506,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--192ddcd6_169515e71ec_-286a title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-63bfa42d_1695b1bc0ee_-286a title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9529,7 +9530,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Mar 06 05:00:45 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 08 02:24:17 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9549,7 +9550,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--192ddcd6_169515e71ec_-2868 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-63bfa42d_1695b1bc0ee_-2868 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -9711,7 +9712,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--192ddcd6_169515e71ec_-2867 geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-63bfa42d_1695b1bc0ee_-2867 geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9749,7 +9750,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--192ddcd6_169515e71ec_-2869 geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-63bfa42d_1695b1bc0ee_-2869 geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -11123,13 +11124,15 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:union
-geo:intersection
 geo:getX
 geo:getY
 geo:isValid
 geo:buffer
+geo:union
+geo:intersection
 geo:difference
+geo:isRing
+geo:endPoint
 geo:reproject
 geo:splitPolygon
 geo:within
@@ -11159,13 +11162,11 @@ geo:numInteriorRing
 geo:geometryType
 geo:envelope
 geo:polygonize
-geo:isRing
-geo:endPoint
 geo:equalsExact
-geo:pointN
-geo:interiorRingN
 geo:relatePattern
+geo:interiorRingN
 geo:equalsExactTolerance
+geo:pointN
 geo:length
 geo:isEmpty
 geo:contains
@@ -13982,20 +13983,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL
+<pre>H2
 GeoPackage
-H2
-Properties
-Geobuf
-Shapefile
-PostGIS (JNDI)
-SQLite
-Directory of spatial files (shapefiles)
-PostGIS
+MySQL
 Web Feature Server (NG)
+Properties
 SpatiaLite (JNDI)
-H2 (JNDI)
-MySQL (JNDI)</pre>
+Shapefile
+Directory of spatial files (shapefiles)
+MySQL (JNDI)
+SQLite
+PostGIS (JNDI)
+PostGIS
+Geobuf
+H2 (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -14162,20 +14163,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>MySQL
+<pre>H2
 GeoPackage
-H2
-Properties
-Geobuf
-Shapefile
-PostGIS (JNDI)
-SQLite
-Directory of spatial files (shapefiles)
-PostGIS
+MySQL
 Web Feature Server (NG)
+Properties
 SpatiaLite (JNDI)
-H2 (JNDI)
-MySQL (JNDI)</pre>
+Shapefile
+Directory of spatial files (shapefiles)
+MySQL (JNDI)
+SQLite
+PostGIS (JNDI)
+PostGIS
+Geobuf
+H2 (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -16981,7 +16982,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--192ddcd6_169515e71ec_-68df"
+            "id": "fid-63bfa42d_1695b1bc0ee_-68df"
         },
         {
             "type": "Feature",
@@ -16996,7 +16997,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--192ddcd6_169515e71ec_-68dd"
+            "id": "fid-63bfa42d_1695b1bc0ee_-68dd"
         }
     ]
 }</pre>
@@ -17046,7 +17047,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--192ddcd6_169515e71ec_-7e25"
+            "id": "fid-63bfa42d_1695b1bc0ee_-7e25"
         },
         {
             "type": "Feature",
@@ -17061,7 +17062,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--192ddcd6_169515e71ec_-7e23"
+            "id": "fid-63bfa42d_1695b1bc0ee_-7e23"
         }
     ]
 }</pre>
@@ -17245,7 +17246,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--192ddcd6_169515e71ec_-7380"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-63bfa42d_1695b1bc0ee_-7380"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -17267,7 +17268,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--192ddcd6_169515e71ec_-737e"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-63bfa42d_1695b1bc0ee_-737e"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -17333,7 +17334,7 @@ println gml</code></pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--192ddcd6_169515e71ec_-73a6"&gt;
+&lt;gsf:cities fid="fid-63bfa42d_1695b1bc0ee_-73a6"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -17347,7 +17348,7 @@ println gml</code></pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--192ddcd6_169515e71ec_-73a4"&gt;
+&lt;gsf:cities fid="fid-63bfa42d_1695b1bc0ee_-73a4"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -17461,7 +17462,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--192ddcd6_169515e71ec_-69ea
+          fid-63bfa42d_1695b1bc0ee_-69ea
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -17488,7 +17489,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--192ddcd6_169515e71ec_-69e8
+          fid-63bfa42d_1695b1bc0ee_-69e8
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -17548,13 +17549,13 @@ println kml</code></pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid--192ddcd6_169515e71ec_-739e"&gt;
+&lt;kml:Placemark id="fid-63bfa42d_1695b1bc0ee_-739e"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid--192ddcd6_169515e71ec_-739c"&gt;
+&lt;kml:Placemark id="fid-63bfa42d_1695b1bc0ee_-739c"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -17682,15 +17683,15 @@ println georss</code></pre>
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--192ddcd6_169515e71ec_-7a2e&lt;/title&gt;
+&lt;title&gt;fid-63bfa42d_1695b1bc0ee_-7a2e&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Wed Mar 06 04:59:14 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Fri Mar 08 02:22:36 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--192ddcd6_169515e71ec_-7a2c&lt;/title&gt;
+&lt;title&gt;fid-63bfa42d_1695b1bc0ee_-7a2c&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Wed Mar 06 04:59:14 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Fri Mar 08 02:22:36 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -17760,10 +17761,10 @@ println gpx</code></pre>
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid--192ddcd6_169515e71ec_-73a2&lt;/name&gt;
+&lt;name&gt;fid-63bfa42d_1695b1bc0ee_-73a2&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid--192ddcd6_169515e71ec_-73a0&lt;/name&gt;
+&lt;name&gt;fid-63bfa42d_1695b1bc0ee_-73a0&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -20824,6 +20825,44 @@ generator.generate(utf, renderer, <span class="integer">0</span>, <span class="i
 </div>
 </div>
 </div>
+<div class="sect4">
+<h5 id="vector-tiles"><a class="anchor" href="#vector-tiles"></a>Vector Tiles</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> directory = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/pbf</span><span class="delimiter">&quot;</span></span>)
+directory.mkdir()
+
+Workspace workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/shapefiles</span><span class="delimiter">&quot;</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+
+Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+pyramid.origin = Pyramid.Origin.TOP_LEFT
+VectorTiles vectorTiles = <span class="keyword">new</span> VectorTiles(
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">world</span><span class="delimiter">&quot;</span></span>,
+    directory,
+    pyramid,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">pbf</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">style</span>: [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>: <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="integer">1</span>),
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>: <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>)
+    ]
+)
+
+PbfVectorTileRenderer renderer = <span class="keyword">new</span> PbfVectorTileRenderer([countries, ocean], [
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>],
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">FeatureCla</span><span class="delimiter">&quot;</span></span>]
+])
+TileGenerator generator = <span class="keyword">new</span> TileGenerator()
+generator.generate(vectorTiles, renderer, <span class="integer">0</span>, <span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/pbf_vectortiles.png" alt="pbf vectortiles">
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -22007,7 +22046,7 @@ Tile(x:29, y:83, z:7)</pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.13-SNAPSHOT<br>
-Last updated 2019-03-06 04:50:28 UTC
+Last updated 2019-03-08 02:13:10 UTC
 </div>
 </div>
 </body>

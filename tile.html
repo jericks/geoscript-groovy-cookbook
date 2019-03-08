@@ -566,6 +566,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geopackage">GeoPackage</a></li>
 <li><a href="#tms">TMS</a></li>
 <li><a href="#utfgrid">UTFGrid</a></li>
+<li><a href="#vector-tiles">Vector Tiles</a></li>
 </ul>
 </li>
 </ul>
@@ -1488,6 +1489,44 @@ generator.generate(utf, renderer, <span class="integer">0</span>, <span class="i
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/utfgrid.png" alt="utfgrid">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="vector-tiles"><a class="anchor" href="#vector-tiles"></a>Vector Tiles</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> directory = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/pbf</span><span class="delimiter">&quot;</span></span>)
+directory.mkdir()
+
+Workspace workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/shapefiles</span><span class="delimiter">&quot;</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+
+Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+pyramid.origin = Pyramid.Origin.TOP_LEFT
+VectorTiles vectorTiles = <span class="keyword">new</span> VectorTiles(
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">world</span><span class="delimiter">&quot;</span></span>,
+    directory,
+    pyramid,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">pbf</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">style</span>: [
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>: <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="integer">1</span>),
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>: <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>)
+    ]
+)
+
+PbfVectorTileRenderer renderer = <span class="keyword">new</span> PbfVectorTileRenderer([countries, ocean], [
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME</span><span class="delimiter">&quot;</span></span>],
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">FeatureCla</span><span class="delimiter">&quot;</span></span>]
+])
+TileGenerator generator = <span class="keyword">new</span> TileGenerator()
+generator.generate(vectorTiles, renderer, <span class="integer">0</span>, <span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/pbf_vectortiles.png" alt="pbf vectortiles">
 </div>
 </div>
 </div>
@@ -2673,7 +2712,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-06 04:50:28 UTC
+Last updated 2019-03-08 02:13:10 UTC
 </div>
 </div>
 </body>
