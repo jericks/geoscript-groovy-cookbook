@@ -633,6 +633,15 @@ BOTTOM_LEFT
         assertNotNull(utfGrid.get(2,2,2).data)
     }
 
+    @Test void generatePbfVectorTiles() {
+        TileRecipes recipes = new TileRecipes()
+        TileLayer tileLayer = recipes.generatePbfVectorTiles()
+        assertNotNull(tileLayer)
+        assertNotNull(tileLayer.get(0,0,0).data)
+        assertNotNull(tileLayer.get(1,1,1).data)
+        assertNotNull(tileLayer.get(2,2,2).data)
+    }
+
     // OSM
 
     @Test void createOSM() {

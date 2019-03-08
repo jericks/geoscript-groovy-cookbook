@@ -9,6 +9,7 @@ import geoscript.layer.ImageTileRenderer
 import geoscript.layer.Layer
 import geoscript.layer.MBTiles
 import geoscript.layer.OSM
+import geoscript.layer.PbfVectorTileRenderer
 import geoscript.layer.Pyramid
 import geoscript.layer.TMS
 import geoscript.layer.Tile
@@ -17,6 +18,7 @@ import geoscript.layer.TileGenerator
 import geoscript.layer.TileLayer
 import geoscript.layer.UTFGrid
 import geoscript.layer.UTFGridTileRenderer
+import geoscript.layer.VectorTiles
 import geoscript.layer.io.GdalTmsPyramidReader
 import geoscript.layer.io.GdalTmsPyramidWriter
 import geoscript.layer.io.PyramidReader
@@ -26,7 +28,9 @@ import geoscript.layer.io.PyramidWriters
 import geoscript.proj.Projection
 import geoscript.style.Fill
 import geoscript.style.Label
+import geoscript.style.Shape
 import geoscript.style.Stroke
+import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 import groovy.json.JsonOutput
@@ -1244,6 +1248,38 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         generator.generate(utf, renderer, 0, 2)
         // end::generateUTFGrid[]
         utf
+    }
+
+    TileLayer generatePbfVectorTiles() {
+        // tag::generatePbfVectorTiles[]
+        File directory = new File("target/pbf")
+        directory.mkdir()
+
+        Workspace workspace = new Directory("src/main/resources/shapefiles")
+        Layer countries = workspace.get("countries")
+        Layer ocean = workspace.get("ocean")
+
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        pyramid.origin = Pyramid.Origin.TOP_LEFT
+        VectorTiles vectorTiles = new VectorTiles(
+            "world",
+            directory,
+            pyramid,
+            "pbf",
+            style: [
+                "countries": new Fill("white") + new Stroke("black", 1),
+                "ocean": new Fill("blue")
+            ]
+        )
+
+        PbfVectorTileRenderer renderer = new PbfVectorTileRenderer([countries, ocean], [
+            "countries": ["NAME"],
+            "ocean": ["FeatureCla"]
+        ])
+        TileGenerator generator = new TileGenerator()
+        generator.generate(vectorTiles, renderer, 0, 2)
+        // end::generatePbfVectorTiles[]
+        vectorTiles
     }
 
     // OSM

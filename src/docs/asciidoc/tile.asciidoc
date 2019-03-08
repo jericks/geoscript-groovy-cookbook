@@ -377,6 +377,15 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=generateUTFGrid,
 [.thumb]
 image::utfgrid.png[]
 
+===== Vector Tiles
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=generatePbfVectorTiles,indent=0]
+----
+[.thumb]
+image::pbf_vectortiles.png[]
+
 === Tile Layer
 
 ==== Tile Layer Properties
