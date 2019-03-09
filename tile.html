@@ -583,8 +583,11 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </li>
 <li><a href="#tilecursor">TileCursor</a></li>
+<li><a href="#tms-2">TMS</a></li>
 <li><a href="#mbtiles-2">MBTiles</a></li>
 <li><a href="#geopackage-2">GeoPackage</a></li>
+<li><a href="#utfgrid-2">UTFGrid</a></li>
+<li><a href="#vectortiles">VectorTiles</a></li>
 <li><a href="#osm">OSM</a>
 <ul class="sectlevel3">
 <li><a href="#standard-osm">Standard OSM</a></li>
@@ -2597,6 +2600,49 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="tms-2"><a class="anchor" href="#tms-2"></a>TMS</h3>
+<div class="paragraph">
+<p>Access a TileLayer from an TMS directory</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> dir = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/tms</span><span class="delimiter">&quot;</span></span>)
+Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+TMS tms = <span class="keyword">new</span> TMS(
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">world</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">png</span><span class="delimiter">&quot;</span></span>,   <i class="conum" data-value="2"></i><b>(2)</b>
+    dir,     <i class="conum" data-value="3"></i><b>(3)</b>
+    pyramid  <i class="conum" data-value="4"></i><b>(4)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Image type</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Directory</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Pyramid</td>
+</tr>
+</table>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_tms.png" alt="tile tms">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="mbtiles-2"><a class="anchor" href="#mbtiles-2"></a>MBTiles</h3>
 <div class="paragraph">
 <p>Access a TileLayer from an MBTiles file</p>
@@ -2641,6 +2687,66 @@ geoscript.layer.GeoPackage geopackage = <span class="keyword">new</span> geoscri
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/tile_geopackage_worldmerc.png" alt="tile geopackage worldmerc">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="utfgrid-2"><a class="anchor" href="#utfgrid-2"></a>UTFGrid</h3>
+<div class="paragraph">
+<p>Access a TileLayer from an UTFGrid directory</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> dir = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/utf</span><span class="delimiter">&quot;</span></span>)
+UTFGrid utfGrid = <span class="keyword">new</span> UTFGrid(dir)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/utfgrid.png" alt="utfgrid">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vectortiles"><a class="anchor" href="#vectortiles"></a>VectorTiles</h3>
+<div class="paragraph">
+<p>Access a TileLayer from an VectorTiles directory</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> dir = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/pbf</span><span class="delimiter">&quot;</span></span>)
+Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+VectorTiles vectorTiles = <span class="keyword">new</span> VectorTiles(
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">World</span><span class="delimiter">&quot;</span></span>,  <i class="conum" data-value="1"></i><b>(1)</b>
+    dir,      <i class="conum" data-value="2"></i><b>(2)</b>
+    pyramid,  <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">pbf</span><span class="delimiter">&quot;</span></span>     <i class="conum" data-value="4"></i><b>(4)</b>
+)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Directory</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Pyramid</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Type</td>
+</tr>
+</table>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/pbf_vectortiles.png" alt="pbf vectortiles">
 </div>
 </div>
 </div>
@@ -2762,7 +2868,7 @@ geoscript.layer.GeoPackage geopackage = <span class="keyword">new</span> geoscri
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-09 03:10:56 UTC
+Last updated 2019-03-09 20:01:31 UTC
 </div>
 </div>
 </body>
