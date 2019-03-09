@@ -1282,6 +1282,37 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         vectorTiles
     }
 
+    TileLayer generatePbfVectorTilesToMBTiles() {
+        // tag::generatePbfVectorTilesToMBTiles[]
+        File file = new File("target/vectortiles.mbtiles")
+
+        Workspace workspace = new Directory("src/main/resources/shapefiles")
+        Layer countries = workspace.get("countries")
+        Layer ocean = workspace.get("ocean")
+
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        pyramid.origin = Pyramid.Origin.TOP_LEFT
+        VectorTiles vectorTiles = new VectorTiles(
+            "world",
+            file,
+            pyramid,
+            "pbf",
+            style: [
+                    "countries": new Fill("white") + new Stroke("black", 1),
+                    "ocean": new Fill("blue")
+            ]
+        )
+
+        PbfVectorTileRenderer renderer = new PbfVectorTileRenderer([countries, ocean], [
+                "countries": ["NAME"],
+                "ocean": ["FeatureCla"]
+        ])
+        TileGenerator generator = new TileGenerator()
+        generator.generate(vectorTiles, renderer, 0, 2)
+        // end::generatePbfVectorTilesToMBTiles[]
+        vectorTiles
+    }
+
     // Tile Layers
 
     TMS createTMS() {
@@ -1349,6 +1380,20 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
             "pbf"     // <4>
         )
         // end::createVectorTiles[]
+        vectorTiles
+    }
+
+    VectorTiles createVectorTilesFromMBTiles() {
+        // tag::createVectorTilesFromMBTiles[]
+        File file = new File("src/main/resources/vectortiles.mbtiles")
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        VectorTiles vectorTiles = new VectorTiles(
+                "World",  // <1>
+                file,     // <2>
+                pyramid,  // <3>
+                "pbf"     // <4>
+        )
+        // end::createVectorTilesFromMBTiles[]
         vectorTiles
     }
 

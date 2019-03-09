@@ -643,6 +643,15 @@ BOTTOM_LEFT
         assertNotNull(tileLayer.get(2,2,2).data)
     }
 
+    @Test void generatePbfVectorTilesToMBTiles() {
+        TileRecipes recipes = new TileRecipes()
+        TileLayer tileLayer = recipes.generatePbfVectorTilesToMBTiles()
+        assertNotNull(tileLayer)
+        assertNotNull(tileLayer.get(0,0,0).data)
+        assertNotNull(tileLayer.get(1,1,1).data)
+        assertNotNull(tileLayer.get(2,2,2).data)
+    }
+
     // Tile Layers
 
     @Test void createTMS() {
@@ -680,6 +689,13 @@ BOTTOM_LEFT
         VectorTiles vectorTiles = recipes.createVectorTiles()
         assertNotNull(vectorTiles)
     }
+
+    @Test void createVectorTilesFromMBTiles() {
+        TileRecipes recipes = new TileRecipes()
+        VectorTiles vectorTiles = recipes.createVectorTilesFromMBTiles()
+        assertNotNull(vectorTiles)
+    }
+    
 
     // OSM
 

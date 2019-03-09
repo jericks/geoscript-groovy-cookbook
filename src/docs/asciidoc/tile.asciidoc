@@ -379,9 +379,20 @@ image::utfgrid.png[]
 
 ===== Vector Tiles
 
+Generate vector tiles to a directory
+
 [source,groovy]
 ----
 include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=generatePbfVectorTiles,indent=0]
+----
+[.thumb]
+image::pbf_vectortiles.png[]
+
+Generate vector tiles to a MBTiles file
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=generatePbfVectorTilesToMBTiles,indent=0]
 ----
 [.thumb]
 image::pbf_vectortiles.png[]
@@ -859,6 +870,20 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createVectorTile
 ----
 <1> Name
 <2> Directory
+<3> Pyramid
+<4> Type
+
+[.thumb]
+image::pbf_vectortiles.png[]
+
+Access a TileLayer from an VectorTiles MBTiles file
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createVectorTilesFromMBTiles,indent=0]
+----
+<1> Name
+<2> MBTiles File
 <3> Pyramid
 <4> Type
 
