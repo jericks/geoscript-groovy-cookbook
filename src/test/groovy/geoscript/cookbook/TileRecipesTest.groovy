@@ -642,6 +642,26 @@ BOTTOM_LEFT
         assertNotNull(tileLayer.get(2,2,2).data)
     }
 
+    // Tile Layers
+
+    @Test void createMBTiles() {
+        TileRecipes recipes = new TileRecipes()
+        MBTiles mbtiles = recipes.createMBTiles()
+        assertNotNull(mbtiles)
+    }
+
+    @Test void createGeoPackageWorld() {
+        TileRecipes recipes = new TileRecipes()
+        GeoPackage geopackage = recipes.createGeoPackageWorld()
+        assertNotNull(geopackage)
+    }
+
+    @Test void createGeoPackageWorldMerc() {
+        TileRecipes recipes = new TileRecipes()
+        GeoPackage geopackage = recipes.createGeoPackageWorldMerc()
+        assertNotNull(geopackage)
+    }
+
     // OSM
 
     @Test void createOSM() {

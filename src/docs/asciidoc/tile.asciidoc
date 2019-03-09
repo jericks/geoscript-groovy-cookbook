@@ -791,6 +791,37 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByBoun
 include::output/tile_cursor_boundswidthheight.txt[]
 ....
 
+=== MBTiles
+
+Access a TileLayer from an MBTiles file
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createMBTiles,indent=0]
+----
+[.thumb]
+image::tile_mbtiles.png[]
+
+=== GeoPackage
+
+Access a TileLayer with a Global Geodetic Pyramid from an GeoPackage file
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createGeoPackageWorld,indent=0]
+----
+[.thumb]
+image::tile_geopackage_world.png[]
+
+Access a TileLayer with a Global Mercator Pyramid from an GeoPackage file
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createGeoPackageWorldMerc,indent=0]
+----
+[.thumb]
+image::tile_geopackage_worldmerc.png[]
+
 === OSM
 
 Create a TileLayer for OSM tiles.

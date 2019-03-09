@@ -1282,6 +1282,38 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         vectorTiles
     }
 
+    // Tile Layers
+
+    MBTiles createMBTiles() {
+        // tag::createMBTiles[]
+        File file = new File("src/main/resources/tiles.mbtiles")
+        MBTiles mbtiles = new MBTiles(file)
+        // end::createMBTiles[]
+        RenderedImage image = mbtiles.getRaster(mbtiles.tiles(1)).image
+        saveImage("tile_mbtiles", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        mbtiles
+    }
+
+    geoscript.layer.GeoPackage createGeoPackageWorld() {
+        // tag::createGeoPackageWorld[]
+        File file = new File("src/main/resources/data.gpkg")
+        geoscript.layer.GeoPackage geopackage = new geoscript.layer.GeoPackage(file, "world")
+        // end::createGeoPackageWorld[]
+        RenderedImage image = geopackage.getRaster(geopackage.tiles(1)).image
+        saveImage("tile_geopackage_world", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        geopackage
+    }
+
+    geoscript.layer.GeoPackage createGeoPackageWorldMerc() {
+        // tag::createGeoPackageWorldMerc[]
+        File file = new File("src/main/resources/data.gpkg")
+        geoscript.layer.GeoPackage geopackage = new geoscript.layer.GeoPackage(file, "world_mercator")
+        // end::createGeoPackageWorldMerc[]
+        RenderedImage image = geopackage.getRaster(geopackage.tiles(1)).image
+        saveImage("tile_geopackage_worldmerc", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        geopackage
+    }
+
     // OSM
 
     OSM createOSM() {
