@@ -791,6 +791,22 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileCursorByBoun
 include::output/tile_cursor_boundswidthheight.txt[]
 ....
 
+=== TMS
+
+Access a TileLayer from an TMS directory
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createTMS,indent=0]
+----
+<1> Name
+<2> Image type
+<3> Directory
+<4> Pyramid
+
+[.thumb]
+image::tile_tms.png[]
+
 === MBTiles
 
 Access a TileLayer from an MBTiles file
@@ -821,6 +837,33 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createGeoPackage
 ----
 [.thumb]
 image::tile_geopackage_worldmerc.png[]
+
+=== UTFGrid
+
+Access a TileLayer from an UTFGrid directory
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createUTFGrid,indent=0]
+----
+[.thumb]
+image::utfgrid.png[]
+
+=== VectorTiles
+
+Access a TileLayer from an VectorTiles directory
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createVectorTiles,indent=0]
+----
+<1> Name
+<2> Directory
+<3> Pyramid
+<4> Type
+
+[.thumb]
+image::pbf_vectortiles.png[]
 
 === OSM
 

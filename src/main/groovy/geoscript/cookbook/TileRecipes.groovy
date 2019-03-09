@@ -1284,6 +1284,22 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
 
     // Tile Layers
 
+    TMS createTMS() {
+        // tag::createTMS[]
+        File dir = new File("src/main/resources/tms")
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        TMS tms = new TMS(
+            "world", // <1>
+            "png",   // <2>
+            dir,     // <3>
+            pyramid  // <4>
+        )
+        // end::createTMS[]
+        RenderedImage image = tms.getRaster(tms.tiles(1)).image
+        saveImage("tile_tms", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        tms
+    }
+
     MBTiles createMBTiles() {
         // tag::createMBTiles[]
         File file = new File("src/main/resources/tiles.mbtiles")
@@ -1312,6 +1328,28 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         RenderedImage image = geopackage.getRaster(geopackage.tiles(1)).image
         saveImage("tile_geopackage_worldmerc", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
         geopackage
+    }
+
+    UTFGrid createUTFGrid() {
+        // tag::createUTFGrid[]
+        File dir = new File("src/main/resources/utf")
+        UTFGrid utfGrid = new UTFGrid(dir)
+        // end::createUTFGrid[]
+        utfGrid
+    }
+
+    VectorTiles createVectorTiles() {
+        // tag::createVectorTiles[]
+        File dir = new File("src/main/resources/pbf")
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        VectorTiles vectorTiles = new VectorTiles(
+            "World",  // <1>
+            dir,      // <2>
+            pyramid,  // <3>
+            "pbf"     // <4>
+        )
+        // end::createVectorTiles[]
+        vectorTiles
     }
 
     // OSM

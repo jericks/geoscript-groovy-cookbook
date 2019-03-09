@@ -13,6 +13,7 @@ import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import geoscript.layer.TileLayer
 import geoscript.layer.UTFGrid
+import geoscript.layer.VectorTiles
 import org.junit.Test
 
 import static junit.framework.Assert.assertEquals
@@ -644,6 +645,12 @@ BOTTOM_LEFT
 
     // Tile Layers
 
+    @Test void createTMS() {
+        TileRecipes recipes = new TileRecipes()
+        TMS tms = recipes.createTMS()
+        assertNotNull(tms)
+    }
+
     @Test void createMBTiles() {
         TileRecipes recipes = new TileRecipes()
         MBTiles mbtiles = recipes.createMBTiles()
@@ -660,6 +667,18 @@ BOTTOM_LEFT
         TileRecipes recipes = new TileRecipes()
         GeoPackage geopackage = recipes.createGeoPackageWorldMerc()
         assertNotNull(geopackage)
+    }
+
+    @Test void createUTFGrid() {
+        TileRecipes recipes = new TileRecipes()
+        UTFGrid uTFGrid = recipes.createUTFGrid()
+        assertNotNull(uTFGrid)
+    }
+
+    @Test void createVectorTiles() {
+        TileRecipes recipes = new TileRecipes()
+        VectorTiles vectorTiles = recipes.createVectorTiles()
+        assertNotNull(vectorTiles)
     }
 
     // OSM
