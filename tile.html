@@ -583,6 +583,8 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </li>
 <li><a href="#tilecursor">TileCursor</a></li>
+<li><a href="#mbtiles-2">MBTiles</a></li>
+<li><a href="#geopackage-2">GeoPackage</a></li>
 <li><a href="#osm">OSM</a>
 <ul class="sectlevel3">
 <li><a href="#standard-osm">Standard OSM</a></li>
@@ -2595,6 +2597,54 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="mbtiles-2"><a class="anchor" href="#mbtiles-2"></a>MBTiles</h3>
+<div class="paragraph">
+<p>Access a TileLayer from an MBTiles file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/tiles.mbtiles</span><span class="delimiter">&quot;</span></span>)
+MBTiles mbtiles = <span class="keyword">new</span> MBTiles(file)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_mbtiles.png" alt="tile mbtiles">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="geopackage-2"><a class="anchor" href="#geopackage-2"></a>GeoPackage</h3>
+<div class="paragraph">
+<p>Access a TileLayer with a Global Geodetic Pyramid from an GeoPackage file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+geoscript.layer.GeoPackage geopackage = <span class="keyword">new</span> geoscript.layer.GeoPackage(file, <span class="string"><span class="delimiter">&quot;</span><span class="content">world</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_geopackage_world.png" alt="tile geopackage world">
+</div>
+</div>
+<div class="paragraph">
+<p>Access a TileLayer with a Global Mercator Pyramid from an GeoPackage file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">&quot;</span></span>)
+geoscript.layer.GeoPackage geopackage = <span class="keyword">new</span> geoscript.layer.GeoPackage(file, <span class="string"><span class="delimiter">&quot;</span><span class="content">world_mercator</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_geopackage_worldmerc.png" alt="tile geopackage worldmerc">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="osm"><a class="anchor" href="#osm"></a>OSM</h3>
 <div class="paragraph">
 <p>Create a TileLayer for OSM tiles.</p>
@@ -2712,7 +2762,7 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-08 02:13:10 UTC
+Last updated 2019-03-09 03:10:56 UTC
 </div>
 </div>
 </body>
