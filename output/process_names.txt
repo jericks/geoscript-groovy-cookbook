@@ -31,10 +31,10 @@ vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:isValid
 geo:buffer
-geo:getX
-geo:getY
 geo:union
 geo:intersection
+geo:getX
+geo:getY
 geo:difference
 geo:reproject
 geo:splitPolygon
@@ -68,10 +68,10 @@ geo:polygonize
 geo:isRing
 geo:endPoint
 geo:equalsExact
-geo:pointN
 geo:relatePattern
 geo:interiorRingN
 geo:equalsExactTolerance
+geo:pointN
 geo:length
 geo:isEmpty
 geo:contains
