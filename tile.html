@@ -563,6 +563,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#generating-image-tiles">Generating Image Tiles</a>
 <ul class="sectlevel4">
 <li><a href="#mbtiles">MBTiles</a></li>
+<li><a href="#dbtiles">DBTiles</a></li>
 <li><a href="#geopackage">GeoPackage</a></li>
 <li><a href="#tms">TMS</a></li>
 <li><a href="#utfgrid">UTFGrid</a></li>
@@ -585,6 +586,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#tilecursor">TileCursor</a></li>
 <li><a href="#tms-2">TMS</a></li>
 <li><a href="#mbtiles-2">MBTiles</a></li>
+<li><a href="#dbtiles-2">DBTiles</a></li>
 <li><a href="#geopackage-2">GeoPackage</a></li>
 <li><a href="#utfgrid-2">UTFGrid</a></li>
 <li><a href="#vectortiles">VectorTiles</a></li>
@@ -1420,12 +1422,39 @@ generator.generate(mbtiles, renderer, <span class="integer">0</span>, <span clas
 <img src="./images/tile_generate_mbtiles.png" alt="tile generate mbtiles">
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="dbtiles"><a class="anchor" href="#dbtiles"></a>DBTiles</h5>
 <div class="paragraph">
-<p>Generate Image Tiles to a GeoPackage file</p>
+<p>Generate Image Tiles to a MBTiles like JDBC Database.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/world_tiles.db</span><span class="delimiter">&quot;</span></span>)
+DBTiles dbtiles = <span class="keyword">new</span> DBTiles(<span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc:h2:</span><span class="inline"><span class="inline-delimiter">${</span>file<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">org.h2.Driver</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">World</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">World wide tiles</span><span class="delimiter">&quot;</span></span>)
+
+Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+
+ImageTileRenderer renderer = <span class="keyword">new</span> ImageTileRenderer(dbtiles, [ocean, countries])
+TileGenerator generator = <span class="keyword">new</span> TileGenerator()
+generator.generate(dbtiles, renderer, <span class="integer">0</span>, <span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_generate_dbtiles.png" alt="tile generate dbtiles">
+</div>
 </div>
 </div>
 <div class="sect4">
 <h5 id="geopackage"><a class="anchor" href="#geopackage"></a>GeoPackage</h5>
+<div class="paragraph">
+<p>Generate Image Tiles to a GeoPackage file</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/world.gpkg</span><span class="delimiter">&quot;</span></span>)
@@ -1447,12 +1476,12 @@ generator.generate(geopackage, renderer, <span class="integer">0</span>, <span c
 <img src="./images/tile_generate_geopackage.png" alt="tile generate geopackage">
 </div>
 </div>
-<div class="paragraph">
-<p>Generate Image Tiles to a TMS directory</p>
-</div>
 </div>
 <div class="sect4">
 <h5 id="tms"><a class="anchor" href="#tms"></a>TMS</h5>
+<div class="paragraph">
+<p>Generate Image Tiles to a TMS directory</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> directory = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/tiles</span><span class="delimiter">&quot;</span></span>)
@@ -1478,6 +1507,9 @@ generator.generate(tms, renderer, <span class="integer">0</span>, <span class="i
 </div>
 <div class="sect4">
 <h5 id="utfgrid"><a class="anchor" href="#utfgrid"></a>UTFGrid</h5>
+<div class="paragraph">
+<p>Generate UTFGrid tiles to a directory</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> directory = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/utfgrid</span><span class="delimiter">&quot;</span></span>)
@@ -2701,6 +2733,23 @@ MBTiles mbtiles = <span class="keyword">new</span> MBTiles(file)</code></pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="dbtiles-2"><a class="anchor" href="#dbtiles-2"></a>DBTiles</h3>
+<div class="paragraph">
+<p>Access a TileLayer from an DBTiles H2 database</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/h2dbtiles/world_tiles.db</span><span class="delimiter">&quot;</span></span>)
+DBTiles dbtiles = <span class="keyword">new</span> DBTiles(<span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc:h2:</span><span class="inline"><span class="inline-delimiter">${</span>file<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">org.h2.Driver</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">World</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">World wide tiles</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_dbtiles.png" alt="tile dbtiles">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="geopackage-2"><a class="anchor" href="#geopackage-2"></a>GeoPackage</h3>
 <div class="paragraph">
 <p>Access a TileLayer with a Global Geodetic Pyramid from an GeoPackage file</p>
@@ -2977,7 +3026,7 @@ Tile tile = generatingTileLayer.get(<span class="integer">0</span>, <span class=
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-10 02:26:28 UTC
+Last updated 2019-03-10 19:41:40 UTC
 </div>
 </div>
 </body>
