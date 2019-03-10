@@ -29,12 +29,12 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:getX
-geo:getY
 geo:isValid
 geo:buffer
 geo:union
 geo:intersection
+geo:getX
+geo:getY
 geo:difference
 geo:reproject
 geo:splitPolygon
