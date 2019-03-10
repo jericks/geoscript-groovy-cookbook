@@ -1,6 +1,7 @@
 package geoscript.cookbook
 
 import geoscript.geom.Bounds
+import geoscript.layer.DBTiles
 import geoscript.layer.GeneratingTileLayer
 import geoscript.layer.GeoPackage
 import geoscript.layer.Grid
@@ -610,6 +611,13 @@ BOTTOM_LEFT
         assertEquals(2, mbtiles.maxZoom)
     }
 
+    @Test void generateTilesToDBTiles() {
+        TileRecipes recipes = new TileRecipes()
+        DBTiles dbtiles = recipes.generateTilesToDBTiles()
+        assertEquals(0, dbtiles.minZoom)
+        assertEquals(2, dbtiles.maxZoom)
+    }
+
     @Test void generateTilesToGeoPackage() {
         TileRecipes recipes = new TileRecipes()
         GeoPackage geopackage = recipes.generateTilesToGeoPackage()
@@ -665,6 +673,12 @@ BOTTOM_LEFT
         TileRecipes recipes = new TileRecipes()
         MBTiles mbtiles = recipes.createMBTiles()
         assertNotNull(mbtiles)
+    }
+
+    @Test void createDBTiles() {
+        TileRecipes recipes = new TileRecipes()
+        DBTiles dbtiles = recipes.createDBTiles()
+        assertNotNull(dbtiles)
     }
 
     @Test void createGeoPackageWorld() {

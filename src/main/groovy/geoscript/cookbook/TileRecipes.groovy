@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.filter.Expression
 import geoscript.geom.Bounds
 import geoscript.geom.Point
+import geoscript.layer.DBTiles
 import geoscript.layer.GeneratingTileLayer
 import geoscript.layer.Grid
 import geoscript.layer.ImageTile
@@ -1195,6 +1196,26 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         mbtiles
     }
 
+    DBTiles generateTilesToDBTiles() {
+        // tag::generateTilesToDBTiles[]
+        File file = new File("target/world_tiles.db")
+        DBTiles dbtiles = new DBTiles("jdbc:h2:${file}","org.h2.Driver", "World", "World wide tiles")
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+
+        ImageTileRenderer renderer = new ImageTileRenderer(dbtiles, [ocean, countries])
+        TileGenerator generator = new TileGenerator()
+        generator.generate(dbtiles, renderer, 0, 2)
+        // end::generateTilesToDBTiles[]
+        RenderedImage image = dbtiles.getRaster(dbtiles.tiles(1)).image
+        saveImage("tile_generate_dbtiles", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        dbtiles
+    }
+
     geoscript.layer.GeoPackage generateTilesToGeoPackage() {
         // tag::generateTilesToGeoPackage[]
         File file = new File("target/world.gpkg")
@@ -1341,6 +1362,16 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         RenderedImage image = mbtiles.getRaster(mbtiles.tiles(1)).image
         saveImage("tile_mbtiles", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
         mbtiles
+    }
+
+    DBTiles createDBTiles() {
+        // tag::createDBTiles[]
+        File file = new File("src/main/resources/h2dbtiles/world_tiles.db")
+        DBTiles dbtiles = new DBTiles("jdbc:h2:${file}","org.h2.Driver", "World", "World wide tiles")
+        // end::createDBTiles[]
+        RenderedImage image = dbtiles.getRaster(dbtiles.tiles(1)).image
+        saveImage("tile_dbtiles", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        dbtiles
     }
 
     geoscript.layer.GeoPackage createGeoPackageWorld() {
