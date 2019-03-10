@@ -890,6 +890,18 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createVectorTile
 [.thumb]
 image::pbf_vectortiles.png[]
 
+
+=== Generating TileLayer
+
+A GeneratingTileLayer can create tiles on demand when they are accessed.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=createGeneratingTileLayer,indent=0]
+----
+[.thumb]
+image::tile_generatingtilelayer.png[]
+
 === OSM
 
 Create a TileLayer for OSM tiles.

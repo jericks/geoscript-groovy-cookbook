@@ -1,6 +1,7 @@
 package geoscript.cookbook
 
 import geoscript.geom.Bounds
+import geoscript.layer.GeneratingTileLayer
 import geoscript.layer.GeoPackage
 import geoscript.layer.Grid
 import geoscript.layer.ImageTile
@@ -695,7 +696,12 @@ BOTTOM_LEFT
         VectorTiles vectorTiles = recipes.createVectorTilesFromMBTiles()
         assertNotNull(vectorTiles)
     }
-    
+
+    @Test void createGeneratingTileLayer() {
+        TileRecipes recipes = new TileRecipes()
+        GeneratingTileLayer tileLayer = recipes.createGeneratingTileLayer()
+        assertNotNull(tileLayer)
+    }
 
     // OSM
 

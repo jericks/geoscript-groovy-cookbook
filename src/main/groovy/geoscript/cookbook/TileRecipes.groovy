@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.filter.Expression
 import geoscript.geom.Bounds
 import geoscript.geom.Point
+import geoscript.layer.GeneratingTileLayer
 import geoscript.layer.Grid
 import geoscript.layer.ImageTile
 import geoscript.layer.ImageTileRenderer
@@ -16,6 +17,7 @@ import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import geoscript.layer.TileGenerator
 import geoscript.layer.TileLayer
+import geoscript.layer.TileRenderer
 import geoscript.layer.UTFGrid
 import geoscript.layer.UTFGridTileRenderer
 import geoscript.layer.VectorTiles
@@ -1395,6 +1397,28 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         )
         // end::createVectorTilesFromMBTiles[]
         vectorTiles
+    }
+
+    GeneratingTileLayer createGeneratingTileLayer() {
+
+        // tag::createGeneratingTileLayer[]
+        File dir = new File("target/worldtiles")
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        TileLayer tileLayer = new TMS("World", "png", dir, pyramid)
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+        TileRenderer tileRenderer = new ImageTileRenderer(tileLayer, [ocean, countries])
+
+        GeneratingTileLayer generatingTileLayer = new GeneratingTileLayer(tileLayer, tileRenderer)
+        Tile tile = generatingTileLayer.get(0, 0, 0)
+        // end::createGeneratingTileLayer[]
+        saveImage("tile_generatingtilelayer", tile.image)
+
+        generatingTileLayer
     }
 
     // OSM
