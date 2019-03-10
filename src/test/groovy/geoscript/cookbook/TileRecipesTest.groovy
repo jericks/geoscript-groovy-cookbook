@@ -14,6 +14,7 @@ import geoscript.layer.TMS
 import geoscript.layer.Tile
 import geoscript.layer.TileCursor
 import geoscript.layer.TileLayer
+import geoscript.layer.TileRenderer
 import geoscript.layer.UTFGrid
 import geoscript.layer.VectorTiles
 import org.junit.Test
@@ -521,6 +522,38 @@ BOTTOM_LEFT
         assertNotNull(tileLayers["osm"])
         assertNotNull(tileLayers["pbf"])
         assertNotNull(tileLayers["utf"])
+    }
+
+    // TileRenderer
+
+    @Test void getTileLayerRenderer() {
+        TileRecipes recipes = new TileRecipes()
+        TileRenderer tileRenderer = recipes.getTileRenderer()
+        assertNotNull(tileRenderer)
+    }
+
+    @Test void useImageTileRenderer() {
+        TileRecipes recipes = new TileRecipes()
+        TileRenderer tileRenderer = recipes.useImageTileRenderer()
+        assertNotNull(tileRenderer)
+    }
+
+    @Test void useUTFGridTileRenderer() {
+        TileRecipes recipes = new TileRecipes()
+        TileRenderer tileRenderer = recipes.useUTFGridTileRenderer()
+        assertNotNull(tileRenderer)
+    }
+
+    @Test void useVectorTileRenderer() {
+        TileRecipes recipes = new TileRecipes()
+        TileRenderer tileRenderer = recipes.useVectorTileRenderer()
+        assertNotNull(tileRenderer)
+    }
+
+    @Test void usePbfVectorTileRenderer() {
+        TileRecipes recipes = new TileRecipes()
+        TileRenderer tileRenderer = recipes.usePbfVectorTileRenderer()
+        assertNotNull(tileRenderer)
     }
 
     // TileCursor

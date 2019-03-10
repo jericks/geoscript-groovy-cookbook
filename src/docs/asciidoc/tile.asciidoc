@@ -751,6 +751,67 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=tileLayerFromStr
 include::output/tileLayerFromString_utf.txt[]
 ....
 
+=== TileRenderer
+
+TileRenderers know how to create a Tile for a given Bounds.  GeoScript has TileRenderer for creating images,
+vector tiles, and utfgrids.
+
+==== Get default TileRenderer
+
+Get a default TileRenderer for a TileLayer
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getTileRenderer,indent=0]
+----
+[.thumb]
+image::tile_gettilerenderer.png[]
+
+==== ImageTileRenderer
+
+Use an ImageTileRenderer to create an image Tile.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=useImageTileRenderer,indent=0]
+----
+[.thumb]
+image::tile_imagetilerenderer.png[]
+
+==== VectorTileRenderer
+
+Use an VectorTileRenderer to create a Vector Tile.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=useVectorTileRenderer,indent=0]
+----
+....
+include::output/tile_vectortilerenderer.txt[]
+....
+
+==== PbfVectorTileRenderer
+
+Use an PbfVectorTileRenderer to create a Vector Tile.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=usePbfVectorTileRenderer,indent=0]
+----
+
+==== UTFGridTileRenderer
+
+Use an UTFGridTileRenderer to create a UTFGrid Tile.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=useUTFGridTileRenderer,indent=0]
+----
+....
+include::output/tile_utfgridtilerenderer.txt[]
+....
+
+
 === TileCursor
 
 A TileCursor is a way to get a collection of Tiles from a TileLayer.

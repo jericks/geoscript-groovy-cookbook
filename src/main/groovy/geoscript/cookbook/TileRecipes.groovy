@@ -21,9 +21,11 @@ import geoscript.layer.TileLayer
 import geoscript.layer.TileRenderer
 import geoscript.layer.UTFGrid
 import geoscript.layer.UTFGridTileRenderer
+import geoscript.layer.VectorTileRenderer
 import geoscript.layer.VectorTiles
 import geoscript.layer.io.GdalTmsPyramidReader
 import geoscript.layer.io.GdalTmsPyramidWriter
+import geoscript.layer.io.GeoJSONWriter
 import geoscript.layer.io.PyramidReader
 import geoscript.layer.io.PyramidReaders
 import geoscript.layer.io.PyramidWriter
@@ -42,6 +44,7 @@ import javax.imageio.ImageIO
 import javax.media.jai.PlanarImage
 import java.awt.image.BufferedImage
 import java.awt.image.RenderedImage
+import java.nio.charset.StandardCharsets
 
 class TileRecipes extends Recipes {
 
@@ -555,6 +558,119 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         writeFile("tileLayerFromMap_utf", "${utf.name} ${utf.proj} ${utf.bounds} ${utf.pyramid}")
 
         tileLayers
+    }
+
+    TileRenderer getTileRenderer() {
+        // tag::getTileRenderer[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+
+        TileLayer tileLayer = TileLayer.getTileLayer([type:'mbtiles', file: 'target/countries.mbtiles'])
+        TileRenderer tileRenderer = TileLayer.getTileRenderer(tileLayer, [ocean, countries])
+        Pyramid pyramid = tileLayer.pyramid
+        Tile tile = tileLayer.get(0,0,0)
+        Bounds bounds = pyramid.bounds(tile)
+        tile.data = tileRenderer.render(bounds)
+        tileLayer.put(tile)
+        // end::getTileRenderer[]
+        saveImage("tile_gettilerenderer", tileLayer.get(0,0,0).image)
+        tileRenderer
+    }
+
+    ImageTileRenderer useImageTileRenderer() {
+        // tag::useImageTileRenderer[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+
+        TileLayer tileLayer = TileLayer.getTileLayer([type:'mbtiles', file: 'target/countries.mbtiles'])
+        ImageTileRenderer tileRenderer = new ImageTileRenderer(tileLayer, [ocean, countries])
+        Pyramid pyramid = tileLayer.pyramid
+        Tile tile = tileLayer.get(0,0,0)
+        Bounds bounds = pyramid.bounds(tile)
+        tile.data = tileRenderer.render(bounds)
+        tileLayer.put(tile)
+        // end::useImageTileRenderer[]
+        saveImage("tile_imagetilerenderer", tileLayer.get(0,0,0).image)
+        tileRenderer
+    }
+
+    UTFGridTileRenderer useUTFGridTileRenderer() {
+        // tag::useUTFGridTileRenderer[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+
+        File directory = new File("target/countryUtfGrid")
+        directory.mkdir()
+        UTFGrid tileLayer = new UTFGrid(directory)
+
+        UTFGridTileRenderer tileRenderer = new UTFGridTileRenderer(tileLayer, countries, [countries.schema.get("NAME")])
+        Pyramid pyramid = tileLayer.pyramid
+        Tile tile = tileLayer.get(0,0,0)
+        Bounds bounds = pyramid.bounds(tile)
+        tile.data = tileRenderer.render(bounds)
+        tileLayer.put(tile)
+        // end::useUTFGridTileRenderer[]
+        writeFile("tile_utfgridtilerenderer", new String(tileLayer.get(0,0,0).data, StandardCharsets.UTF_8).substring(0,900))
+        tileRenderer
+    }
+
+    VectorTileRenderer useVectorTileRenderer() {
+        // tag::useVectorTileRenderer[]
+        Workspace workspace = new Directory("src/main/resources/shapefiles")
+        Layer countries = workspace.get("countries")
+
+        File directory = new File("target/country_geojson_tiles")
+        directory.mkdir()
+
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        VectorTiles tileLayer = new VectorTiles(
+            "countries",
+            directory,
+            pyramid,
+            "geojson"
+        )
+
+        GeoJSONWriter writer = new GeoJSONWriter()
+        VectorTileRenderer tileRenderer = new VectorTileRenderer(writer, countries, [countries.schema.get("NAME")])
+        Tile tile = tileLayer.get(0,0,0)
+        Bounds bounds = pyramid.bounds(tile)
+        tile.data = tileRenderer.render(bounds)
+        tileLayer.put(tile)
+        // end::useVectorTileRenderer[]
+        writeFile("tile_vectortilerenderer", new String(tileLayer.get(0,0,0).data, StandardCharsets.UTF_8).substring(0,900))
+        tileRenderer
+    }
+
+    PbfVectorTileRenderer usePbfVectorTileRenderer() {
+        // tag::usePbfVectorTileRenderer[]
+        Workspace workspace = new Directory("src/main/resources/shapefiles")
+        Layer countries = workspace.get("countries")
+
+        File directory = new File("target/country_pbf_tiles")
+        directory.mkdir()
+
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        pyramid.origin = Pyramid.Origin.TOP_LEFT
+        VectorTiles tileLayer = new VectorTiles(
+                "countries",
+                directory,
+                pyramid,
+                "pbf"
+        )
+
+        PbfVectorTileRenderer tileRenderer = new PbfVectorTileRenderer(countries, [countries.schema.get("NAME")])
+        Tile tile = tileLayer.get(0,0,0)
+        Bounds bounds = pyramid.bounds(tile)
+        tile.data = tileRenderer.render(bounds)
+        tileLayer.put(tile)
+        // end::usePbfVectorTileRenderer[]
+        tileRenderer
     }
 
     // Grid
