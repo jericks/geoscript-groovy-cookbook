@@ -588,6 +588,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geopackage-2">GeoPackage</a></li>
 <li><a href="#utfgrid-2">UTFGrid</a></li>
 <li><a href="#vectortiles">VectorTiles</a></li>
+<li><a href="#generating-tilelayer">Generating TileLayer</a></li>
 <li><a href="#osm">OSM</a>
 <ul class="sectlevel3">
 <li><a href="#standard-osm">Standard OSM</a></li>
@@ -2831,6 +2832,34 @@ VectorTiles vectorTiles = <span class="keyword">new</span> VectorTiles(
 </div>
 </div>
 <div class="sect2">
+<h3 id="generating-tilelayer"><a class="anchor" href="#generating-tilelayer"></a>Generating TileLayer</h3>
+<div class="paragraph">
+<p>A GeneratingTileLayer can create tiles on demand when they are accessed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> dir = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/worldtiles</span><span class="delimiter">&quot;</span></span>)
+Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+TileLayer tileLayer = <span class="keyword">new</span> TMS(<span class="string"><span class="delimiter">&quot;</span><span class="content">World</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">png</span><span class="delimiter">&quot;</span></span>, dir, pyramid)
+
+Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+TileRenderer tileRenderer = <span class="keyword">new</span> ImageTileRenderer(tileLayer, [ocean, countries])
+
+GeneratingTileLayer generatingTileLayer = <span class="keyword">new</span> GeneratingTileLayer(tileLayer, tileRenderer)
+Tile tile = generatingTileLayer.get(<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">0</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_generatingtilelayer.png" alt="tile generatingtilelayer">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="osm"><a class="anchor" href="#osm"></a>OSM</h3>
 <div class="paragraph">
 <p>Create a TileLayer for OSM tiles.</p>
@@ -2948,7 +2977,7 @@ VectorTiles vectorTiles = <span class="keyword">new</span> VectorTiles(
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-09 20:09:20 UTC
+Last updated 2019-03-10 02:26:28 UTC
 </div>
 </div>
 </body>
