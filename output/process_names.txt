@@ -29,12 +29,12 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:getX
+geo:getY
 geo:isValid
 geo:buffer
 geo:union
 geo:intersection
-geo:getX
-geo:getY
 geo:difference
 geo:reproject
 geo:splitPolygon
@@ -59,11 +59,11 @@ geo:numGeometries
 geo:startPoint
 geo:numPoints
 geo:isClosed
+geo:envelope
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:envelope
 geo:polygonize
 geo:isRing
 geo:endPoint
