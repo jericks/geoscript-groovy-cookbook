@@ -1,0 +1,51 @@
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/groovy]
+
+== WMS Recipes
+
+The WMS classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.13-SNAPSHOT/geoscript/layer/package-summary.html[geoscript.layer]* package.
+
+[source,groovy]
+.Connect to a WMS Server and list properties
+----
+include::{sourcedir}/geoscript/cookbook/WMSRecipes.groovy[tags=wms_create,indent=0]
+----
+....
+include::output/wms_create.txt[]
+....
+
+[source,groovy]
+.Get a list of Layers
+----
+include::{sourcedir}/geoscript/cookbook/WMSRecipes.groovy[tags=wms_layers,indent=0]
+----
+....
+include::output/wms_layers.txt[]
+....
+
+[source,groovy]
+.Get a Layer
+----
+include::{sourcedir}/geoscript/cookbook/WMSRecipes.groovy[tags=wms_layer,indent=0]
+----
+....
+include::output/wms_layer.txt[]
+....
+
+[source,groovy]
+.Get a Raster
+----
+include::{sourcedir}/geoscript/cookbook/WMSRecipes.groovy[tags=wms_raster,indent=0]
+----
+[.thumb]
+image::wms_raster.png[]
+
+[source,groovy]
+.Get an Image
+----
+include::{sourcedir}/geoscript/cookbook/WMSRecipes.groovy[tags=wms_image,indent=0]
+----
+[.thumb]
+image::wms_image.png[]
+
+
