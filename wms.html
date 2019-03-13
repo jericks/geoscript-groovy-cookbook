@@ -527,7 +527,12 @@ table.CodeRay td.code>pre{padding:0}
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#wms-recipes">WMS Recipes</a></li>
+<li><a href="#wms-recipes">WMS Recipes</a>
+<ul class="sectlevel2">
+<li><a href="#wms-server">WMS Server</a></li>
+<li><a href="#wmslayer">WMSLayer</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -538,6 +543,8 @@ table.CodeRay td.code>pre{padding:0}
 <div class="paragraph">
 <p>The WMS classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.13-SNAPSHOT/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
 </div>
+<div class="sect2">
+<h3 id="wms-server"><a class="anchor" href="#wms-server"></a>WMS Server</h3>
 <div class="listingblock">
 <div class="title">Connect to a WMS Server and list properties</div>
 <div class="content">
@@ -637,11 +644,32 @@ Max Scale = NaN</pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="wmslayer"><a class="anchor" href="#wmslayer"></a>WMSLayer</h3>
+<div class="paragraph">
+<p>A WMSLayer is a way to draw one or more WMS layers on a Map.</p>
+</div>
+<div class="listingblock">
+<div class="title">Use WMS Layers to render a Map</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">WMS wms = <span class="keyword">new</span> WMS(<span class="string"><span class="delimiter">&quot;</span><span class="content">http://1maps.geo-solutions.it/geoserver/osm/wms?service=wms&amp;version=1.1.1&amp;request=GetCapabilities</span><span class="delimiter">&quot;</span></span>)
+WMSLayer layer = <span class="keyword">new</span> WMSLayer(wms, [<span class="string"><span class="delimiter">&quot;</span><span class="content">icesheet_polygons</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">ne_10m_admin_0_countries</span><span class="delimiter">&quot;</span></span>])
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(<span class="key">layers</span>: [layer], <span class="key">backgroundColor</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">#B0C4DE</span><span class="delimiter">&quot;</span></span>, <span class="key">bounds</span>: <span class="keyword">new</span> Bounds(-<span class="integer">179</span>, -<span class="integer">85</span>, <span class="integer">179</span>, <span class="integer">85</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>).reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>))
+<span class="predefined-type">BufferedImage</span> image = map.renderToImage()</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/wms_layer_map.png" alt="wms layer map">
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-12 00:32:55 UTC
+Last updated 2019-03-13 00:25:39 UTC
 </div>
 </div>
 </body>
