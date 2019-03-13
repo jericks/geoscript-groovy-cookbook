@@ -5,6 +5,8 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 The WMS classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.13-SNAPSHOT/geoscript/layer/package-summary.html[geoscript.layer]* package.
 
+=== WMS Server
+
 [source,groovy]
 .Connect to a WMS Server and list properties
 ----
@@ -48,4 +50,14 @@ include::{sourcedir}/geoscript/cookbook/WMSRecipes.groovy[tags=wms_image,indent=
 [.thumb]
 image::wms_image.png[]
 
+=== WMSLayer
 
+A WMSLayer is a way to draw one or more WMS layers on a Map.
+
+[source,groovy]
+.Use WMS Layers to render a Map
+----
+include::{sourcedir}/geoscript/cookbook/WMSRecipes.groovy[tags=drawWmsLayer,indent=0]
+----
+[.thumb]
+image::wms_layer_map.png[]

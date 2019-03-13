@@ -1,7 +1,10 @@
 package geoscript.cookbook
 
+import geoscript.geom.Bounds
 import geoscript.layer.Raster
 import geoscript.layer.WMS
+import geoscript.layer.WMSLayer
+import geoscript.render.Map
 
 import java.awt.image.BufferedImage
 
@@ -87,6 +90,16 @@ Max Scale = ${layer.maxScale}
         saveImage("wms_legend", image)
     }
 
+    void drawWmsLayer() {
+        // tag::drawWmsLayer[]
+        WMS wms = new WMS("http://1maps.geo-solutions.it/geoserver/osm/wms?service=wms&version=1.1.1&request=GetCapabilities")
+        WMSLayer layer = new WMSLayer(wms, ["icesheet_polygons", "ne_10m_admin_0_countries"])
+        Map map = new Map(layers: [layer], backgroundColor: "#B0C4DE", bounds: new Bounds(-179, -85, 179, 85, "EPSG:4326").reproject("EPSG:3857"))
+        BufferedImage image = map.renderToImage()
+        // end::drawWmsLayer[]
+        saveImage("wms_layer_map", image)
+    }
+
     static void main(String[] args) {
         WMSRecipes recipes = new WMSRecipes()
         recipes.createWMS()
@@ -94,6 +107,7 @@ Max Scale = ${layer.maxScale}
         recipes.getLayer()
         recipes.getRaster()
         recipes.getImage()
+        recipes.drawWmsLayer()
     }
 
 }
