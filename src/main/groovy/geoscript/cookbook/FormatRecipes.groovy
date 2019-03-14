@@ -2,7 +2,11 @@ package geoscript.cookbook
 
 import geoscript.layer.ArcGrid
 import geoscript.layer.Format
+import geoscript.layer.GTopo30
 import geoscript.layer.GeoTIFF
+import geoscript.layer.ImagePyramid
+import geoscript.layer.MrSID
+import geoscript.layer.NetCDF
 import geoscript.layer.Raster
 import geoscript.layer.WorldImage
 
@@ -105,6 +109,54 @@ class FormatRecipes extends Recipes {
         Raster raster = worldImage.read("earth")
         // end::readWorldImage[]
         draw("format_worldimage_read", [raster])
+        raster
+    }
+
+    Raster readArcGrid() {
+        // tag::readArcGrid[]
+        File file = new File("src/main/resources/raster.asc")
+        ArcGrid arcGrid = new ArcGrid(file)
+        Raster raster = arcGrid.read("raster")
+        // end::readArcGrid[]
+        draw("format_arcgrid_read", [raster])
+        raster
+    }
+
+    Raster readArcGridGrass() {
+        // tag::readArcGridGrass[]
+        File file = new File("src/main/resources/grass.arx")
+        ArcGrid arcGrid = new ArcGrid(file)
+        Raster raster = arcGrid.read("grass")
+        // end::readArcGridGrass[]
+        draw("format_arcgrid_grass_read", [raster])
+        raster
+    }
+
+    Raster readNetCDF() {
+        // tag::readNetCDF[]
+        File file = new File("src/main/resources/O3-NO2.nc")
+        NetCDF netCDF = new NetCDF(file)
+        Raster raster = netCDF.read("NO2")
+        // end::readNetCDF[]
+        draw("format_netcdf_read", [raster])
+        raster
+    }
+
+    Raster readMrSID() {
+        // tag::readMrSID[]
+        File file = new File("src/main/resources/ortho.sid")
+        MrSID mrsid = new MrSID(file)
+        Raster raster = mrsid.read("ortho")
+        // end::readMrSID[]
+        raster
+    }
+
+    Raster readGTopo30() {
+        // tag::readGTopo30[]
+        File file = new File("src/main/resources/topo.dem")
+        GTopo30 gtopo30 = new GTopo30(file)
+        Raster raster = gtopo30.read("topo")
+        // end::readGTopo30[]
         raster
     }
 

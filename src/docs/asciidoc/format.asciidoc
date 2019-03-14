@@ -101,3 +101,54 @@ include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readWorldImage
 ----
 [.thumb]
 image::format_worldimage_read.png[]
+
+=== ArcGrid
+
+==== Read
+
+Read an ArcGrid Raster from a File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readArcGrid,indent=0]
+----
+
+Read a Grass ArcGrid Raster from a File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readArcGridGrass,indent=0]
+----
+
+=== NetCDF
+
+==== Read
+
+Read a NetCDF Raster from a File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readNetCDF,indent=0]
+----
+
+=== MrSID
+
+==== Read
+
+Read a MrSID Raster from a File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readMrSID,indent=0]
+----
+
+=== GTopo30
+
+==== Read
+
+Read a GTopo30 Raster from a File
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readGTopo30,indent=0]
+----

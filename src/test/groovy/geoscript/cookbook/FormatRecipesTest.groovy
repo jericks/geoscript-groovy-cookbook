@@ -57,4 +57,22 @@ class FormatRecipesTest {
         assertNotNull(raster)
     }
 
+    @Test void readArcGrid() {
+        FormatRecipes recipes = new FormatRecipes()
+        Raster raster = recipes.readArcGrid()
+        assertNotNull(raster)
+    }
+
+    @Test void readArcGridGrass() {
+        FormatRecipes recipes = new FormatRecipes()
+        Raster raster = recipes.readArcGridGrass()
+        assertNotNull(raster)
+    }
+
+    @Test void readNetCDF() {
+        FormatRecipes recipes = new FormatRecipes()
+        Raster raster = recipes.readNetCDF()
+        assertNotNull(raster)
+    }
+
 }
