@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Raster Recipes
 
-The Raster classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.13-SNAPSHOT/geoscript/layer/package-summary.html[geoscript.layer]* package.
+The Raster classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.13.0/geoscript/layer/package-summary.html[geoscript.layer]* package.
 
 === Raster Properties
 
@@ -96,6 +96,16 @@ include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=band,indent=0]
 include::output/raster_band.txt[]
 ....
 
+Get the minimum and maximum values from a Raster for a band
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_min_max,indent=0]
+----
+....
+include::output/raster_properties_min_max.txt[]
+....
+
 Get the minimum and maximum values from a Raster for each band
 
 [source,groovy]
@@ -161,6 +171,44 @@ Dispose of the Raster when you are done
 ----
 include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=properties_dispose,indent=0]
 ----
+
+=== Raster Bands
+
+Create a Band
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=createBand,indent=0]
+----
+<1> Description
+<2> Minimum value
+<3> Maximum value
+....
+include::output/raster_createband.txt[]
+....
+
+Create a Band with a no data value
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=createBandWithNoData,indent=0]
+----
+<1> Description
+<2> Minimum value
+<3> Maximum value
+<4> No data value
+....
+include::output/raster_createband_nodata.txt[]
+....
+
+Create a new Raster from Bands and set values to a random color.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/RasterRecipes.groovy[tags=createRasterFromBands,indent=0]
+----
+[.thumb]
+image::raster_create_from_bands.png[]
 
 === Raster Values
 

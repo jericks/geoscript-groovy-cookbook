@@ -1312,6 +1312,26 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         mbtiles
     }
 
+    MBTiles generateTilesToMBTilesWithMetaTiles() {
+        // tag::generateTilesToMBTilesWithMetaTiles[]
+        File file = new File("target/world.mbtiles")
+        MBTiles mbtiles = new MBTiles(file, "World", "World Tiles")
+
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+
+        ImageTileRenderer renderer = new ImageTileRenderer(mbtiles, [ocean, countries])
+        TileGenerator generator = new TileGenerator()
+        generator.generate(mbtiles, renderer,0, 4, metatile: [width:4, height: 4])
+        // end::generateTilesToMBTilesWithMetaTiles[]
+        RenderedImage image = mbtiles.getRaster(mbtiles.tiles(1)).image
+        saveImage("tile_generate_mbtiles_metatile", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        mbtiles
+    }
+
     DBTiles generateTilesToDBTiles() {
         // tag::generateTilesToDBTiles[]
         File file = new File("target/world_tiles.db")

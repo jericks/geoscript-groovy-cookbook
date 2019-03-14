@@ -83,6 +83,13 @@ class RasterRecipes extends Recipes {
         // end::properties_pixelsize[]
         writeFile("raster_properties_pixelsize","Pixel size: ${pixelSize[0]}x${pixelSize[1]}")
 
+        // tag::properties_min_max[]
+        double minValue = raster.getMinValue(0)
+        double maxValue = raster.getMaxValue(0)
+        println "Min values: ${minValue} Max values: ${maxValue}"
+        // end::properties_min_max[]
+        writeFile("raster_properties_min_max","Min values: ${minValue} Max values: ${maxValue}")
+
         // tag::properties_extrema[]
         Map extrema = raster.extrema
         println "Min values: ${extrema.min} Max values: ${extrema.max}"
@@ -134,6 +141,58 @@ class RasterRecipes extends Recipes {
         raster.dispose()
         // end::properties_dispose[]
 
+        raster
+    }
+
+    Band createBand() {
+        // tag::createBand[]
+        Band band = new Band(
+            "red", // <1>
+            0,     // <2>
+            255    // <3>
+        )
+        println "Band = ${band.toString()} Min = ${band.min} Max = ${band.max}"
+        // end::createBand[]
+        writeFile("raster_createband", "Band = ${band.toString()} Min = ${band.min} Max = ${band.max}")
+        band
+    }
+
+    Band createBandWithNoData() {
+        // tag::createBandWithNoData[]
+        Band band = new Band(
+                "red", // <1>
+                0,     // <2>
+                255,   // <3>
+                255    // <4>
+        )
+        println "Band = ${band.toString()} Min = ${band.min} Max = ${band.max} No Data = ${band.noData[0]}"
+        // end::createBandWithNoData[]
+        writeFile("raster_createband_nodata", "Band = ${band.toString()} Min = ${band.min} Max = ${band.max} No Data = ${band.noData[0]}")
+        band
+    }
+
+    Raster createRasterFromBands() {
+
+        // tag::createRasterFromBands[]
+        Raster raster = new Raster(
+                new Bounds(-180,-90,180,90,"EPSG:4326"),
+                400,300,
+                [
+                        new Band("red", 0, 255, 256),
+                        new Band("green", 0, 255, 256),
+                        new Band("blue", 0, 255, 256)
+                ]
+        )
+
+        // Set values of each pixel
+        raster.eachCell { double value, double x, double y ->
+            Color color = Color.randomPastel
+            raster.setValue([x,y], color.rgb[0], 0)
+            raster.setValue([x,y], color.rgb[1], 1)
+            raster.setValue([x,y], color.rgb[2], 2)
+        }
+        // end::createRasterFromBands[]
+        draw("raster_create_from_bands", [raster])
         raster
     }
 

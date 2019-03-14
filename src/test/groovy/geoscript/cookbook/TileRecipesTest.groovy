@@ -644,6 +644,13 @@ BOTTOM_LEFT
         assertEquals(2, mbtiles.maxZoom)
     }
 
+    @Test void generateTilesToMBTilesWithMetaTiles() {
+        TileRecipes recipes = new TileRecipes()
+        MBTiles mbtiles = recipes.generateTilesToMBTilesWithMetaTiles()
+        assertEquals(0, mbtiles.minZoom)
+        assertEquals(3, mbtiles.maxZoom)
+    }
+
     @Test void generateTilesToDBTiles() {
         TileRecipes recipes = new TileRecipes()
         DBTiles dbtiles = recipes.generateTilesToDBTiles()

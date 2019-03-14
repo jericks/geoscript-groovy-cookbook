@@ -26,6 +26,29 @@ class RasterRecipesTest {
         assertEquals(0.4499999999999551, raster.pixelSize[1], 0.00001)
     }
 
+    @Test void createBand() {
+        RasterRecipes recipes = new RasterRecipes()
+        Band band = recipes.createBand()
+        assertEquals("red", band.toString())
+        assertEquals(0.0, band.min, 0.1)
+        assertEquals(255.0, band.max, 0.1)
+    }
+
+    @Test void createBandWithNoData() {
+        RasterRecipes recipes = new RasterRecipes()
+        Band band = recipes.createBandWithNoData()
+        assertEquals("red", band.toString())
+        assertEquals(0.0, band.min, 0.1)
+        assertEquals(255.0, band.max, 0.1)
+        assertEquals(255.0, band.noData[0], 0.1)
+    }
+
+    @Test void createRasterFromBands() {
+        RasterRecipes recipes = new RasterRecipes()
+        Raster raster = recipes.createRasterFromBands()
+        assertNotNull(raster)
+    }
+
     @Test void band() {
         RasterRecipes recipes = new RasterRecipes()
         List<Band> bands = recipes.band()
