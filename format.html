@@ -545,6 +545,26 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#read-2">Read</a></li>
 </ul>
 </li>
+<li><a href="#arcgrid">ArcGrid</a>
+<ul class="sectlevel3">
+<li><a href="#read-3">Read</a></li>
+</ul>
+</li>
+<li><a href="#netcdf">NetCDF</a>
+<ul class="sectlevel3">
+<li><a href="#read-4">Read</a></li>
+</ul>
+</li>
+<li><a href="#mrsid">MrSID</a>
+<ul class="sectlevel3">
+<li><a href="#read-5">Read</a></li>
+</ul>
+</li>
+<li><a href="#gtopo30">GTopo30</a>
+<ul class="sectlevel3">
+<li><a href="#read-6">Read</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -729,12 +749,86 @@ WorldImage worldImage = <span class="keyword">new</span> WorldImage(file)
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="arcgrid"><a class="anchor" href="#arcgrid"></a>ArcGrid</h3>
+<div class="sect3">
+<h4 id="read-3"><a class="anchor" href="#read-3"></a>Read</h4>
+<div class="paragraph">
+<p>Read an ArcGrid Raster from a File</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/raster.asc</span><span class="delimiter">&quot;</span></span>)
+ArcGrid arcGrid = <span class="keyword">new</span> ArcGrid(file)
+<span class="predefined-type">Raster</span> raster = arcGrid.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">raster</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Read a Grass ArcGrid Raster from a File</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/grass.arx</span><span class="delimiter">&quot;</span></span>)
+ArcGrid arcGrid = <span class="keyword">new</span> ArcGrid(file)
+<span class="predefined-type">Raster</span> raster = arcGrid.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">grass</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="netcdf"><a class="anchor" href="#netcdf"></a>NetCDF</h3>
+<div class="sect3">
+<h4 id="read-4"><a class="anchor" href="#read-4"></a>Read</h4>
+<div class="paragraph">
+<p>Read a NetCDF Raster from a File</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/O3-NO2.nc</span><span class="delimiter">&quot;</span></span>)
+NetCDF netCDF = <span class="keyword">new</span> NetCDF(file)
+<span class="predefined-type">Raster</span> raster = netCDF.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">NO2</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mrsid"><a class="anchor" href="#mrsid"></a>MrSID</h3>
+<div class="sect3">
+<h4 id="read-5"><a class="anchor" href="#read-5"></a>Read</h4>
+<div class="paragraph">
+<p>Read a MrSID Raster from a File</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/ortho.sid</span><span class="delimiter">&quot;</span></span>)
+MrSID mrsid = <span class="keyword">new</span> MrSID(file)
+<span class="predefined-type">Raster</span> raster = mrsid.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">ortho</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gtopo30"><a class="anchor" href="#gtopo30"></a>GTopo30</h3>
+<div class="sect3">
+<h4 id="read-6"><a class="anchor" href="#read-6"></a>Read</h4>
+<div class="paragraph">
+<p>Read a GTopo30 Raster from a File</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/topo.dem</span><span class="delimiter">&quot;</span></span>)
+GTopo30 gtopo30 = <span class="keyword">new</span> GTopo30(file)
+<span class="predefined-type">Raster</span> raster = gtopo30.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">topo</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-13 00:25:39 UTC
+Last updated 2019-03-14 03:18:07 UTC
 </div>
 </div>
 </body>
