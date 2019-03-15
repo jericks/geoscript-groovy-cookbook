@@ -198,6 +198,13 @@ class BoundsRecipesTest {
         assertEquals(25, geometry.numGeometries)
     }
 
+    @Test void boundsGetTriangleGridByColumnsAndRows() {
+        BoundsRecipes recipes = new BoundsRecipes()
+        Geometry geometry = recipes.boundsGetTriangleGridByColumnsAndRows()
+        assertTrue(geometry instanceof GeometryCollection)
+        assertEquals(25, geometry.numGeometries)
+    }
+
     @Test void boundsCreateRectangle() {
         BoundsRecipes recipes = new BoundsRecipes()
         Polygon polygon = recipes.boundsCreateRectangle()

@@ -106,6 +106,15 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createIdsFilte
 include::output/filter_ids.txt[]
 ....
 
+[source,groovy]
+.Create an equals Filter
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createEqualsFilter,indent=0]
+----
+....
+include::output/filter_equals.txt[]
+....
+
 === Using Filters
 
 [source,groovy]

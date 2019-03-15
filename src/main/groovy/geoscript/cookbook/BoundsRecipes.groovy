@@ -364,6 +364,15 @@ class BoundsRecipes extends Recipes {
         geometry
     }
 
+    Geometry boundsGetTriangleGridByColumnsAndRows() {
+        // tag::boundsGetTriangleGridByColumnsAndRows[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        Geometry geometry = bounds.getGrid(5,5,"triangle")
+        // end::boundsGetTriangleGridByColumnsAndRows[]
+        drawGeometries("geometry_bounds_grid_triangle_colsrows", [geometry], drawCoords: false)
+        geometry
+    }
+
     Polygon boundsCreateRectangle() {
         // tag::boundsCreateRectangle[]
         Bounds bounds = new Bounds(0,0,20,20)

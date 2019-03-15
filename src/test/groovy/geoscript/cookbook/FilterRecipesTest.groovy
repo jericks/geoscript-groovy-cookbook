@@ -83,6 +83,12 @@ class FilterRecipesTest {
         assertEquals("[ points.1, points.2, points.3 ]", filter.toString())
     }
 
+    @Test void createEqualsFilter() {
+        FilterRecipes recipes = new FilterRecipes()
+        Filter filter = recipes.createEqualsFilter()
+        assertEquals("[ name = Washington ]", filter.toString())
+    }
+
     @Test void getCqlAndXmlFromFilter() {
         FilterRecipes recipes = new FilterRecipes()
         Map<String,String> values = recipes.getCqlAndXmlFromFilter()

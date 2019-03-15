@@ -344,6 +344,14 @@ include::{sourcedir}/geoscript/cookbook/BoundsRecipes.groovy[tags=boundsGetHexag
 image::geometry_bounds_grid_hexagoninv_colsrows.png[]
 
 [source,groovy]
+.Generate a grid from a Bounds with a given cell width and height and a triangle shape.
+----
+include::{sourcedir}/geoscript/cookbook/BoundsRecipes.groovy[tags=boundsGetTriangleGridByColumnsAndRows,indent=0]
+----
+[.thumb]
+image::geometry_bounds_grid_triangle_colsrows.png[]
+
+[source,groovy]
 .Create a rectangle from a Bounds with a given number of Points and a rotation angle in radians.
 ----
 include::{sourcedir}/geoscript/cookbook/BoundsRecipes.groovy[tags=boundsCreateRectangle,indent=0]

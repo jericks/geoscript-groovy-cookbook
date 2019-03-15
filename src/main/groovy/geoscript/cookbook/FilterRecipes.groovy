@@ -127,6 +127,15 @@ class FilterRecipes extends Recipes {
         filter
     }
 
+    Filter createEqualsFilter() {
+        // tag::createEqualsFilter[]
+        Filter filter = Filter.equals("name", "Washington")
+        println filter.toString()
+        // end::createEqualsFilter[]
+        writeFile("filter_equals","${filter}")
+        filter
+    }
+
     Map<String,String> getCqlAndXmlFromFilter() {
         Map<String,String> values = [:]
 
