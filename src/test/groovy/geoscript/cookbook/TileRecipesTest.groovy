@@ -648,7 +648,7 @@ BOTTOM_LEFT
         TileRecipes recipes = new TileRecipes()
         MBTiles mbtiles = recipes.generateTilesToMBTilesWithMetaTiles()
         assertEquals(0, mbtiles.minZoom)
-        assertEquals(3, mbtiles.maxZoom)
+        assertEquals(2, mbtiles.maxZoom)
     }
 
     @Test void generateTilesToDBTiles() {

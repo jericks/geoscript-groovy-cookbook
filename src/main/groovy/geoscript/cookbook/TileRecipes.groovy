@@ -1314,7 +1314,7 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
 
     MBTiles generateTilesToMBTilesWithMetaTiles() {
         // tag::generateTilesToMBTilesWithMetaTiles[]
-        File file = new File("target/world.mbtiles")
+        File file = new File("target/world_meta.mbtiles")
         MBTiles mbtiles = new MBTiles(file, "World", "World Tiles")
 
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
@@ -1325,10 +1325,10 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
 
         ImageTileRenderer renderer = new ImageTileRenderer(mbtiles, [ocean, countries])
         TileGenerator generator = new TileGenerator()
-        generator.generate(mbtiles, renderer,0, 4, metatile: [width:4, height: 4])
+        generator.generate(mbtiles, renderer,0, 2, metatile: [width:4, height: 4])
         // end::generateTilesToMBTilesWithMetaTiles[]
         RenderedImage image = mbtiles.getRaster(mbtiles.tiles(1)).image
-        saveImage("tile_generate_mbtiles_metatile", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        saveImage("Tile", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
         mbtiles
     }
 
