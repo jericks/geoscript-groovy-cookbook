@@ -1050,6 +1050,18 @@ Geometry geometry = bounds.getGrid(<span class="integer">5</span>,<span class="i
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Generate a grid from a Bounds with a given cell width and height and a triangle shape.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>)
+Geometry geometry = bounds.getGrid(<span class="integer">5</span>,<span class="integer">5</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">triangle</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_bounds_grid_triangle_colsrows.png" alt="geometry bounds grid triangle colsrows">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Create a rectangle from a Bounds with a given number of Points and a rotation angle in radians.</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Bounds bounds = <span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">20</span>,<span class="integer">20</span>)
@@ -1151,7 +1163,7 @@ LineString lineString = bounds.createArc(<span class="predefined-type">Math</spa
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-15 00:26:04 UTC
+Last updated 2019-03-15 03:14:02 UTC
 </div>
 </div>
 </body>
