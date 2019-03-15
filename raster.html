@@ -530,6 +530,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#raster-recipes">Raster Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#raster-properties">Raster Properties</a></li>
+<li><a href="#raster-bands">Raster Bands</a></li>
 <li><a href="#raster-values">Raster Values</a></li>
 <li><a href="#raster-processing">Raster Processing</a>
 <ul class="sectlevel3">
@@ -575,7 +576,7 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="raster-recipes"><a class="anchor" href="#raster-recipes"></a>Raster Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Raster classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.13-SNAPSHOT/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
+<p>The Raster classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.13.0/geoscript/layer/package-summary.html">geoscript.layer</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="raster-properties"><a class="anchor" href="#raster-properties"></a>Raster Properties</h3>
@@ -755,6 +756,21 @@ BLUE_BAND
 </div>
 </div>
 <div class="paragraph">
+<p>Get the minimum and maximum values from a Raster for a band</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">double</span> minValue = raster.getMinValue(<span class="integer">0</span>)
+<span class="type">double</span> maxValue = raster.getMaxValue(<span class="integer">0</span>)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Min values: </span><span class="inline"><span class="inline-delimiter">${</span>minValue<span class="inline-delimiter">}</span></span><span class="content"> Max values: </span><span class="inline"><span class="inline-delimiter">${</span>maxValue<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Min values: 56.0 Max values: 255.0</pre>
+</div>
+</div>
+<div class="paragraph">
 <p>Get the minimum and maximum values from a Raster for each band</p>
 </div>
 <div class="listingblock">
@@ -843,6 +859,111 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">raster.dispose()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="raster-bands"><a class="anchor" href="#raster-bands"></a>Raster Bands</h3>
+<div class="paragraph">
+<p>Create a Band</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Band band = <span class="keyword">new</span> Band(
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">red</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="integer">0</span>,     <i class="conum" data-value="2"></i><b>(2)</b>
+    <span class="integer">255</span>    <i class="conum" data-value="3"></i><b>(3)</b>
+)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Band = </span><span class="inline"><span class="inline-delimiter">${</span>band.toString()<span class="inline-delimiter">}</span></span><span class="content"> Min = </span><span class="inline"><span class="inline-delimiter">${</span>band.min<span class="inline-delimiter">}</span></span><span class="content"> Max = </span><span class="inline"><span class="inline-delimiter">${</span>band.max<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Description</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Minimum value</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Maximum value</td>
+</tr>
+</table>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Band = red Min = 0.0 Max = 255.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a Band with a no data value</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Band band = <span class="keyword">new</span> Band(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">red</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="integer">0</span>,     <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="integer">255</span>,   <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="integer">255</span>    <i class="conum" data-value="4"></i><b>(4)</b>
+)
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">Band = </span><span class="inline"><span class="inline-delimiter">${</span>band.toString()<span class="inline-delimiter">}</span></span><span class="content"> Min = </span><span class="inline"><span class="inline-delimiter">${</span>band.min<span class="inline-delimiter">}</span></span><span class="content"> Max = </span><span class="inline"><span class="inline-delimiter">${</span>band.max<span class="inline-delimiter">}</span></span><span class="content"> No Data = </span><span class="inline"><span class="inline-delimiter">${</span>band.noData[<span class="integer">0</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Description</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Minimum value</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Maximum value</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>No data value</td>
+</tr>
+</table>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Band = red Min = 0.0 Max = 255.0 No Data = 255.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a new Raster from Bands and set values to a random color.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Raster</span> raster = <span class="keyword">new</span> <span class="predefined-type">Raster</span>(
+        <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">90</span>,<span class="integer">180</span>,<span class="integer">90</span>,<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>),
+        <span class="integer">400</span>,<span class="integer">300</span>,
+        [
+                <span class="keyword">new</span> Band(<span class="string"><span class="delimiter">&quot;</span><span class="content">red</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>, <span class="integer">255</span>, <span class="integer">256</span>),
+                <span class="keyword">new</span> Band(<span class="string"><span class="delimiter">&quot;</span><span class="content">green</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>, <span class="integer">255</span>, <span class="integer">256</span>),
+                <span class="keyword">new</span> Band(<span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>, <span class="integer">255</span>, <span class="integer">256</span>)
+        ]
+)
+
+<span class="comment">// Set values of each pixel</span>
+raster.eachCell { <span class="type">double</span> value, <span class="type">double</span> x, <span class="type">double</span> y -&gt;
+    <span class="predefined-type">Color</span> color = <span class="predefined-type">Color</span>.randomPastel
+    raster.setValue([x,y], color.rgb[<span class="integer">0</span>], <span class="integer">0</span>)
+    raster.setValue([x,y], color.rgb[<span class="integer">1</span>], <span class="integer">1</span>)
+    raster.setValue([x,y], color.rgb[<span class="integer">2</span>], <span class="integer">2</span>)
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/raster_create_from_bands.png" alt="raster create from bands">
 </div>
 </div>
 </div>
@@ -2289,7 +2410,7 @@ println output.extrema</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-14 03:18:07 UTC
+Last updated 2019-03-15 00:26:04 UTC
 </div>
 </div>
 </body>
