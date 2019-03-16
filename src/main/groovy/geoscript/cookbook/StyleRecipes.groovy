@@ -22,7 +22,6 @@ import geoscript.style.Gradient
 import geoscript.style.Halo
 import geoscript.style.Hatch
 import geoscript.style.Icon
-import geoscript.style.ImageOutline
 import geoscript.style.Label
 import geoscript.style.Shape
 import geoscript.style.Stroke
@@ -427,6 +426,49 @@ class StyleRecipes extends Recipes {
         Layer states = workspace.get("states")
         states.style = symbolizer
         drawOnBasemap("style_label_polygons_expression", [states], new Bounds(-137.416992,40.896906,-105.842285,51.835778))
+        symbolizer
+    }
+
+    Symbolizer createLabelForPolygonsWithStrikeThrough() {
+        // tag::createLabelForPolygonsWithStrikeThrough[]
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("NAME_1")
+                .point(anchor: [0.5,0.5])
+                .polygonAlign("mbr")
+                .strikethrough(true)
+        // end::createLabelForPolygonsWithStrikeThrough[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = symbolizer
+        drawOnBasemap("style_label_polygons_strikethrough", [states], new Bounds(-137.416992,40.896906,-105.842285,51.835778))
+        symbolizer
+    }
+
+    Symbolizer createLabelForPolygonsWithUnderline() {
+        // tag::createLabelForPolygonsWithUnderline[]
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("NAME_1")
+                .point(anchor: [0.5,0.5])
+                .polygonAlign("mbr")
+                .underline(true)
+        // end::createLabelForPolygonsWithUnderline[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = symbolizer
+        drawOnBasemap("style_label_polygons_underline", [states], new Bounds(-137.416992,40.896906,-105.842285,51.835778))
+        symbolizer
+    }
+
+    Symbolizer createLabelForPolygonsWithSpacing() {
+        // tag::createLabelForPolygonsWithSpacing[]
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("NAME_1")
+                .point(anchor: [0.5,0.5])
+                .polygonAlign("mbr")
+                .wordSpacing(8)
+                .characterSpacing(5)
+        // end::createLabelForPolygonsWithSpacing[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = symbolizer
+        drawOnBasemap("style_label_polygons_spacing", [states], new Bounds(-116.608887,40.027614,-85.012207,51.399206))
         symbolizer
     }
 

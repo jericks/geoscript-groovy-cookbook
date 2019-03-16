@@ -205,6 +205,24 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Test void createLabelForPolygonsWithStrikeThrough() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createLabelForPolygonsWithStrikeThrough()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createLabelForPolygonsWithUnderline() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createLabelForPolygonsWithUnderline()
+        assertNotNull(symbolizer)
+    }
+
+    @Test void createLabelForPolygonsWithSpacing() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createLabelForPolygonsWithSpacing()
+        assertNotNull(symbolizer)
+    }
+
     @Test void createLabelWithExpression() {
         StyleRecipes recipes = new StyleRecipes()
         Symbolizer symbolizer = recipes.createLabelWithExpression()

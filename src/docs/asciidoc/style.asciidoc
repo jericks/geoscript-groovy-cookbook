@@ -285,6 +285,30 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelWith
 image::createLabelWithExpression.png[]
 
 [source,groovy]
+.Create a Label for a Polygon Layer with strike through style.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForPolygonsWithStrikeThrough,indent=0]
+----
+[.thumb]
+image::style_label_polygons_strikethrough.png[]
+
+[source,groovy]
+.Create a Label for a Polygon Layer with word and character spacing.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForPolygonsWithSpacing,indent=0]
+----
+[.thumb]
+image::style_label_polygons_spacing.png[]
+
+[source,groovy]
+.Create a Label for a Polygon Layer with underlining.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForPolygonsWithUnderline,indent=0]
+----
+[.thumb]
+image::style_label_polygons_underline.png[]
+
+[source,groovy]
 .Create a Label for a Line Layer
 ----
 include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createLabelForLines,indent=0]
