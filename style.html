@@ -1200,6 +1200,39 @@ countries.style = uniqueValues</code></pre>
 <img src="./images/style_uniquevalues_palette.png" alt="style uniquevalues palette">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a Unique Values Symbolizer from a File with a color per value</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/mars</span><span class="delimiter">&quot;</span></span>)
+Layer marsGeology = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">geo_units_oc_dd</span><span class="delimiter">&quot;</span></span>)
+
+<span class="predefined-type">File</span> uniqueValuesFile = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/mars/I1802ABC_geo_units_RGBlut.txt</span><span class="delimiter">&quot;</span></span>)
+UniqueValuesReader styleReader = <span class="keyword">new</span> UniqueValuesReader(<span class="string"><span class="delimiter">&quot;</span><span class="content">UnitSymbol</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">polygon</span><span class="delimiter">&quot;</span></span>)
+Symbolizer symbolizer = styleReader.read(uniqueValuesFile)</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Unit,R,G,B
+AHa,175,0,111
+AHat,192,54,22
+AHcf,150,70,72
+AHh,109,13,60
+AHpe,232,226,82
+AHt,99,0,95
+AHt3,233,94,94
+Aa1,255,236,207
+Aa2,145,73,76
+Aa3,254,212,164
+Aa4,212,109,19
+Aa5,175,66,28</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_mars_geology.png" alt="style mars geology">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="creating-color-maps"><a class="anchor" href="#creating-color-maps"></a>Creating Color Maps</h3>
@@ -1727,7 +1760,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-16 19:41:51 UTC
+Last updated 2019-03-16 21:38:05 UTC
 </div>
 </div>
 </body>
