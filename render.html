@@ -532,6 +532,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-maps">Creating Maps</a></li>
 <li><a href="#map-properties">Map Properties</a></li>
 <li><a href="#advanced-properties">Advanced Properties</a></li>
+<li><a href="#map-cubes">Map Cubes</a></li>
 <li><a href="#rendering-maps">Rendering Maps</a>
 <ul class="sectlevel3">
 <li><a href="#finding-renderers">Finding Renderers</a></li>
@@ -961,6 +962,74 @@ map.render(falseFile)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/map_continuouswrapping_false.png" alt="map continuouswrapping false">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="map-cubes"><a class="anchor" href="#map-cubes"></a>Map Cubes</h3>
+<div class="listingblock">
+<div class="title">Create a map cube to a file</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/shapefiles</span><span class="delimiter">&quot;</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+
+MapCube mapCube = <span class="keyword">new</span> MapCube(
+    <span class="key">drawOutline</span>: <span class="predefined-constant">true</span>,
+    <span class="key">drawTabs</span>: <span class="predefined-constant">true</span>,
+    <span class="key">tabSize</span>: <span class="integer">30</span>,
+    <span class="key">title</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">World Cube</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">source</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Nartual Earth</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">imageType</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">png</span><span class="delimiter">&quot;</span></span>
+)
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map_cube_file.png</span><span class="delimiter">&quot;</span></span>)
+mapCube.render([ocean, countries], file)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_cube_file.png" alt="map cube file">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map cube to a byte array</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+
+MapCube mapCube = <span class="keyword">new</span> MapCube()
+<span class="type">byte</span><span class="type">[]</span> bytes = mapCube.render([ocean, countries])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_cube_bytes.png" alt="map cube bytes">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map cube to a byte array</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+
+MapCube mapCube = <span class="keyword">new</span> MapCube()
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map_cube_stream.png</span><span class="delimiter">&quot;</span></span>)
+file.withOutputStream { <span class="predefined-type">OutputStream</span> outputStream -&gt;
+    mapCube.render([ocean, countries], outputStream)
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_cube_stream.png" alt="map cube stream">
 </div>
 </div>
 </div>
@@ -1986,7 +2055,7 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-15 03:14:02 UTC
+Last updated 2019-03-16 03:43:33 UTC
 </div>
 </div>
 </body>

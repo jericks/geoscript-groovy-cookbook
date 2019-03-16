@@ -580,6 +580,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#wkb">WKB</a></li>
 <li><a href="#wkt">WKT</a></li>
 <li><a href="#geojson">GeoJSON</a></li>
+<li><a href="#geopackage">GeoPackage</a></li>
 <li><a href="#kml">KML</a></li>
 <li><a href="#geobuf">Geobuf</a></li>
 <li><a href="#gml-2">GML 2</a></li>
@@ -696,6 +697,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-maps">Creating Maps</a></li>
 <li><a href="#map-properties">Map Properties</a></li>
 <li><a href="#advanced-properties">Advanced Properties</a></li>
+<li><a href="#map-cubes">Map Cubes</a></li>
 <li><a href="#rendering-maps">Rendering Maps</a>
 <ul class="sectlevel3">
 <li><a href="#finding-renderers">Finding Renderers</a></li>
@@ -985,7 +987,7 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel4">
 <li><a href="#mbtiles">MBTiles</a></li>
 <li><a href="#dbtiles">DBTiles</a></li>
-<li><a href="#geopackage">GeoPackage</a></li>
+<li><a href="#geopackage-2">GeoPackage</a></li>
 <li><a href="#tms">TMS</a></li>
 <li><a href="#utfgrid">UTFGrid</a></li>
 <li><a href="#vector-tiles">Vector Tiles</a></li>
@@ -1017,7 +1019,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#tms-2">TMS</a></li>
 <li><a href="#mbtiles-2">MBTiles</a></li>
 <li><a href="#dbtiles-2">DBTiles</a></li>
-<li><a href="#geopackage-2">GeoPackage</a></li>
+<li><a href="#geopackage-3">GeoPackage</a></li>
 <li><a href="#utfgrid-2">UTFGrid</a></li>
 <li><a href="#vectortiles">VectorTiles</a></li>
 <li><a href="#generating-tilelayer">Generating TileLayer</a></li>
@@ -4955,8 +4957,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 347691092 nanoseconds
-Time with PreparedGeometry = 212312247 nanoseconds</pre>
+<pre>Time with Geometry         = 348955438 nanoseconds
+Time with PreparedGeometry = 265920258 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5001,8 +5003,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 205718851 nanoseconds
-Time with PreparedGeometry = 147492903 nanoseconds</pre>
+<pre>Time with Geometry         = 337013045 nanoseconds
+Time with PreparedGeometry = 214066228 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5782,6 +5784,63 @@ println json</code></pre>
 <div class="literalblock">
 <div class="content">
 <pre>{"type":"LineString","coordinates":[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="geopackage"><a class="anchor" href="#geopackage"></a>GeoPackage</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from GeoPackage hex encoded string using the GeoPackageReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> str = <span class="string"><span class="delimiter">&quot;</span><span class="content">4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375</span><span class="delimiter">&quot;</span></span>
+GeoPackageReader reader = <span class="keyword">new</span> GeoPackageReader()
+Geometry geometry = reader.read(str)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_from_geopackage_string.png" alt="geometry from geopackage string">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from GeoPackage bytes using the GeoPackageReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">byte</span><span class="type">[]</span> bytes = <span class="string"><span class="delimiter">&quot;</span><span class="content">4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375</span><span class="delimiter">&quot;</span></span>.decodeHex()
+GeoPackageReader reader = <span class="keyword">new</span> GeoPackageReader()
+Geometry geometry = reader.read(bytes)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_from_geopackage_bytes.png" alt="geometry from geopackage bytes">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to a GeoPackage hex encoded string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+GeoPackageWriter writer = <span class="keyword">new</span> GeoPackageWriter()
+<span class="predefined-type">String</span> str = writer.write(geometry)
+println str</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to a GeoPackage byte array</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+GeoPackageWriter writer = <span class="keyword">new</span> GeoPackageWriter()
+<span class="type">byte</span><span class="type">[]</span> bytes = writer.writeBytes(geometry)
+println bytes.encodeHex()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375</pre>
 </div>
 </div>
 </div>
@@ -8828,7 +8887,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--1aa1487e_1697f613090_-284e geom: null, id: null, name: null</pre>
+<pre>cities.fid--4ca69ea_16984a1dc86_-282a geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -9543,7 +9602,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 15 03:26:22 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 16 03:55:34 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9562,7 +9621,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--1aa1487e_1697f613090_-2852 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--4ca69ea_16984a1dc86_-282e title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9586,7 +9645,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Mar 15 03:26:23 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Mar 16 03:55:34 UTC 2019&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9606,7 +9665,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--1aa1487e_1697f613090_-2850 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--4ca69ea_16984a1dc86_-282c title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -9768,7 +9827,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--1aa1487e_1697f613090_-284f geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--4ca69ea_16984a1dc86_-282b geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9806,7 +9865,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--1aa1487e_1697f613090_-2851 geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--4ca69ea_16984a1dc86_-282d geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -11192,14 +11251,13 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:getX
+geo:getY
 geo:union
 geo:intersection
 geo:isValid
 geo:buffer
-geo:getX
-geo:getY
 geo:difference
-geo:endPoint
 geo:reproject
 geo:splitPolygon
 geo:within
@@ -11228,8 +11286,9 @@ geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
 geo:envelope
-geo:polygonize
 geo:isRing
+geo:polygonize
+geo:endPoint
 geo:equalsExact
 geo:interiorRingN
 geo:relatePattern
@@ -11815,6 +11874,74 @@ map.render(falseFile)</code></pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/map_continuouswrapping_false.png" alt="map continuouswrapping false">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="map-cubes"><a class="anchor" href="#map-cubes"></a>Map Cubes</h3>
+<div class="listingblock">
+<div class="title">Create a map cube to a file</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> Directory(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/shapefiles</span><span class="delimiter">&quot;</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+
+MapCube mapCube = <span class="keyword">new</span> MapCube(
+    <span class="key">drawOutline</span>: <span class="predefined-constant">true</span>,
+    <span class="key">drawTabs</span>: <span class="predefined-constant">true</span>,
+    <span class="key">tabSize</span>: <span class="integer">30</span>,
+    <span class="key">title</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">World Cube</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">source</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Nartual Earth</span><span class="delimiter">&quot;</span></span>,
+    <span class="key">imageType</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">png</span><span class="delimiter">&quot;</span></span>
+)
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map_cube_file.png</span><span class="delimiter">&quot;</span></span>)
+mapCube.render([ocean, countries], file)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_cube_file.png" alt="map cube file">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map cube to a byte array</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+
+MapCube mapCube = <span class="keyword">new</span> MapCube()
+<span class="type">byte</span><span class="type">[]</span> bytes = mapCube.render([ocean, countries])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_cube_bytes.png" alt="map cube bytes">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map cube to a byte array</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#ffffff</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#b2b2b2</span><span class="delimiter">&quot;</span></span>, <span class="float">0.5</span>)
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">#a5bfdd</span><span class="delimiter">&quot;</span></span>)
+
+MapCube mapCube = <span class="keyword">new</span> MapCube()
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map_cube_stream.png</span><span class="delimiter">&quot;</span></span>)
+file.withOutputStream { <span class="predefined-type">OutputStream</span> outputStream -&gt;
+    mapCube.render([ocean, countries], outputStream)
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_cube_stream.png" alt="map cube stream">
 </div>
 </div>
 </div>
@@ -14051,20 +14178,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>GeoPackage
-Properties
-SQLite
-Geobuf
-Shapefile
-Web Feature Server (NG)
+<pre>Shapefile
+Directory of spatial files (shapefiles)
+MySQL
+MySQL (JNDI)
 H2
-PostGIS (JNDI)
 SpatiaLite (JNDI)
 PostGIS
-Directory of spatial files (shapefiles)
+SQLite
+Web Feature Server (NG)
+GeoPackage
+Geobuf
+Properties
 H2 (JNDI)
-MySQL (JNDI)
-MySQL</pre>
+PostGIS (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -14231,20 +14358,20 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>GeoPackage
-Properties
-SQLite
-Geobuf
-Shapefile
-Web Feature Server (NG)
+<pre>Shapefile
+Directory of spatial files (shapefiles)
+MySQL
+MySQL (JNDI)
 H2
-PostGIS (JNDI)
 SpatiaLite (JNDI)
 PostGIS
-Directory of spatial files (shapefiles)
+SQLite
+Web Feature Server (NG)
+GeoPackage
+Geobuf
+Properties
 H2 (JNDI)
-MySQL (JNDI)
-MySQL</pre>
+PostGIS (JNDI)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -17050,7 +17177,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--1aa1487e_1697f613090_-68c9"
+            "id": "fid--4ca69ea_16984a1dc86_-68c9"
         },
         {
             "type": "Feature",
@@ -17065,7 +17192,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--1aa1487e_1697f613090_-68c7"
+            "id": "fid--4ca69ea_16984a1dc86_-68c7"
         }
     ]
 }</pre>
@@ -17115,7 +17242,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--1aa1487e_1697f613090_-7e0f"
+            "id": "fid--4ca69ea_16984a1dc86_-7e0f"
         },
         {
             "type": "Feature",
@@ -17130,7 +17257,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--1aa1487e_1697f613090_-7e0d"
+            "id": "fid--4ca69ea_16984a1dc86_-7e0d"
         }
     ]
 }</pre>
@@ -17314,7 +17441,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--1aa1487e_1697f613090_-736a"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--4ca69ea_16984a1dc86_-736a"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -17336,7 +17463,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--1aa1487e_1697f613090_-7368"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--4ca69ea_16984a1dc86_-7368"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -17402,7 +17529,7 @@ println gml</code></pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--1aa1487e_1697f613090_-7390"&gt;
+&lt;gsf:cities fid="fid--4ca69ea_16984a1dc86_-7390"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -17416,7 +17543,7 @@ println gml</code></pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--1aa1487e_1697f613090_-738e"&gt;
+&lt;gsf:cities fid="fid--4ca69ea_16984a1dc86_-738e"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -17530,7 +17657,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--1aa1487e_1697f613090_-69d4
+          fid--4ca69ea_16984a1dc86_-69d4
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -17557,7 +17684,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--1aa1487e_1697f613090_-69d2
+          fid--4ca69ea_16984a1dc86_-69d2
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -17617,13 +17744,13 @@ println kml</code></pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid--1aa1487e_1697f613090_-7388"&gt;
+&lt;kml:Placemark id="fid--4ca69ea_16984a1dc86_-7388"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid--1aa1487e_1697f613090_-7386"&gt;
+&lt;kml:Placemark id="fid--4ca69ea_16984a1dc86_-7386"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -17751,15 +17878,15 @@ println georss</code></pre>
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--1aa1487e_1697f613090_-7a18&lt;/title&gt;
+&lt;title&gt;fid--4ca69ea_16984a1dc86_-7a18&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Fri Mar 15 03:24:48 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Sat Mar 16 03:53:34 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--1aa1487e_1697f613090_-7a16&lt;/title&gt;
+&lt;title&gt;fid--4ca69ea_16984a1dc86_-7a16&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Fri Mar 15 03:24:48 UTC 2019&lt;/updated&gt;
+&lt;updated&gt;Sat Mar 16 03:53:34 UTC 2019&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -17829,10 +17956,10 @@ println gpx</code></pre>
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid--1aa1487e_1697f613090_-738c&lt;/name&gt;
+&lt;name&gt;fid--4ca69ea_16984a1dc86_-738c&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid--1aa1487e_1697f613090_-738a&lt;/name&gt;
+&lt;name&gt;fid--4ca69ea_16984a1dc86_-738a&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -21191,7 +21318,7 @@ generator.generate(dbtiles, renderer, <span class="integer">0</span>, <span clas
 </div>
 </div>
 <div class="sect4">
-<h5 id="geopackage"><a class="anchor" href="#geopackage"></a>GeoPackage</h5>
+<h5 id="geopackage-2"><a class="anchor" href="#geopackage-2"></a>GeoPackage</h5>
 <div class="paragraph">
 <p>Generate Image Tiles to a GeoPackage file</p>
 </div>
@@ -22204,7 +22331,7 @@ tileLayer.put(tile)</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid--1aa1487e_1697f613090_-284c"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.</pre>
+<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid--4ca69ea_16984a1dc86_-2828"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.9</pre>
 </div>
 </div>
 </div>
@@ -22659,7 +22786,7 @@ DBTiles dbtiles = <span class="keyword">new</span> DBTiles(<span class="string">
 </div>
 </div>
 <div class="sect2">
-<h3 id="geopackage-2"><a class="anchor" href="#geopackage-2"></a>GeoPackage</h3>
+<h3 id="geopackage-3"><a class="anchor" href="#geopackage-3"></a>GeoPackage</h3>
 <div class="paragraph">
 <p>Access a TileLayer with a Global Geodetic Pyramid from an GeoPackage file</p>
 </div>
@@ -22936,7 +23063,7 @@ Tile tile = generatingTileLayer.get(<span class="integer">0</span>, <span class=
 <div id="footer">
 <div id="footer-text">
 Version 1.13.0<br>
-Last updated 2019-03-15 03:14:02 UTC
+Last updated 2019-03-16 03:43:33 UTC
 </div>
 </div>
 </body>

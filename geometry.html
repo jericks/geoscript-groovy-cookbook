@@ -562,6 +562,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#wkb">WKB</a></li>
 <li><a href="#wkt">WKT</a></li>
 <li><a href="#geojson">GeoJSON</a></li>
+<li><a href="#geopackage">GeoPackage</a></li>
 <li><a href="#kml">KML</a></li>
 <li><a href="#geobuf">Geobuf</a></li>
 <li><a href="#gml-2">GML 2</a></li>
@@ -4336,8 +4337,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 347691092 nanoseconds
-Time with PreparedGeometry = 212312247 nanoseconds</pre>
+<pre>Time with Geometry         = 348955438 nanoseconds
+Time with PreparedGeometry = 265920258 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4382,8 +4383,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 205718851 nanoseconds
-Time with PreparedGeometry = 147492903 nanoseconds</pre>
+<pre>Time with Geometry         = 337013045 nanoseconds
+Time with PreparedGeometry = 214066228 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5167,6 +5168,63 @@ println json</code></pre>
 </div>
 </div>
 <div class="sect3">
+<h4 id="geopackage"><a class="anchor" href="#geopackage"></a>GeoPackage</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from GeoPackage hex encoded string using the GeoPackageReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">String</span> str = <span class="string"><span class="delimiter">&quot;</span><span class="content">4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375</span><span class="delimiter">&quot;</span></span>
+GeoPackageReader reader = <span class="keyword">new</span> GeoPackageReader()
+Geometry geometry = reader.read(str)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_from_geopackage_string.png" alt="geometry from geopackage string">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from GeoPackage bytes using the GeoPackageReader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">byte</span><span class="type">[]</span> bytes = <span class="string"><span class="delimiter">&quot;</span><span class="content">4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375</span><span class="delimiter">&quot;</span></span>.decodeHex()
+GeoPackageReader reader = <span class="keyword">new</span> GeoPackageReader()
+Geometry geometry = reader.read(bytes)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_from_geopackage_bytes.png" alt="geometry from geopackage bytes">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to a GeoPackage hex encoded string</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+GeoPackageWriter writer = <span class="keyword">new</span> GeoPackageWriter()
+<span class="predefined-type">String</span> str = writer.write(geometry)
+println str</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to a GeoPackage byte array</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry geometry = <span class="keyword">new</span> <span class="predefined-type">Point</span>(-<span class="float">123.15</span>, <span class="float">46.237</span>)
+GeoPackageWriter writer = <span class="keyword">new</span> GeoPackageWriter()
+<span class="type">byte</span><span class="type">[]</span> bytes = writer.writeBytes(geometry)
+println bytes.encodeHex()</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="kml"><a class="anchor" href="#kml"></a>KML</h4>
 <div class="listingblock">
 <div class="title">Read a Geometry from KML using the KmlReader</div>
@@ -5542,7 +5600,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-15 03:14:02 UTC
+Last updated 2019-03-16 03:43:33 UTC
 </div>
 </div>
 </body>
