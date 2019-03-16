@@ -1,5 +1,7 @@
 package geoscript.cookbook
 
+import geoscript.geom.io.GeoPackageReader
+import geoscript.geom.io.GeoPackageWriter
 import org.h2.command.Prepared
 import org.locationtech.jts.geom.IntersectionMatrix
 import geoscript.geom.Bounds
@@ -3709,6 +3711,50 @@ Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
         // end::writeGeometryToGeoJSONUsingWriter[]
         writeFile("geometry_to_geojson_using_writer", json)
         json
+    }
+
+    // GeoPackage
+
+    String writeGeometryToGeoPackageString() {
+        // tag::writeGeometryToGeoPackageString[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        GeoPackageWriter writer = new GeoPackageWriter()
+        String str = writer.write(geometry)
+        println str
+        // end::writeGeometryToGeoPackageString[]
+        writeFile("geometry_to_geopackage_string", str)
+        str
+    }
+
+    byte[] writeGeometryToGeoPackageBytes() {
+        // tag::writeGeometryToGeoPackageBytes[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        GeoPackageWriter writer = new GeoPackageWriter()
+        byte[] bytes = writer.writeBytes(geometry)
+        println bytes.encodeHex()
+        // end::writeGeometryToGeoPackageBytes[]
+        writeFile("geometry_to_geopackage_bytes", bytes.encodeHex().toString())
+        bytes
+    }
+
+    Geometry readGeometryFromGeoPackageString() {
+        // tag::readGeometryFromGeoPackageString[]
+        String str = "4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375"
+        GeoPackageReader reader = new GeoPackageReader()
+        Geometry geometry = reader.read(str)
+        // end::readGeometryFromGeoPackageString[]
+        drawGeometry("geometry_from_geopackage_string", geometry)
+        geometry
+    }
+
+    Geometry readGeometryFromGeoPackageBytes() {
+        // tag::readGeometryFromGeoPackageBytes[]
+        byte[] bytes = "4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375".decodeHex()
+        GeoPackageReader reader = new GeoPackageReader()
+        Geometry geometry = reader.read(bytes)
+        // end::readGeometryFromGeoPackageBytes[]
+        drawGeometry("geometry_from_geopackage_bytes", geometry)
+        geometry
     }
 
     // KML

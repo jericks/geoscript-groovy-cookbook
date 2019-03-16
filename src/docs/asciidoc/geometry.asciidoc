@@ -1826,6 +1826,42 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 include::output/geometry_to_geojson_using_writer.txt[]
 ....
 
+==== GeoPackage
+
+[source,groovy]
+.Read a Geometry from GeoPackage hex encoded string using the GeoPackageReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGeoPackageString,indent=0]
+----
+[.thumb]
+image::geometry_from_geopackage_string.png[]
+
+[source,groovy]
+.Read a Geometry from GeoPackage bytes using the GeoPackageReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromGeoPackageBytes,indent=0]
+----
+[.thumb]
+image::geometry_from_geopackage_bytes.png[]
+
+[source,groovy]
+.Write a Geometry to a GeoPackage hex encoded string
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGeoPackageString,indent=0]
+----
+....
+include::output/geometry_to_geopackage_string.txt[]
+....
+
+[source,groovy]
+.Write a Geometry to a GeoPackage byte array
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToGeoPackageBytes,indent=0]
+----
+....
+include::output/geometry_to_geopackage_bytes.txt[]
+....
+
 ==== KML
 
 [source,groovy]

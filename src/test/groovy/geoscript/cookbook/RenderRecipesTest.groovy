@@ -64,6 +64,26 @@ class RenderRecipesTest {
         assertNotNull(map)
     }
 
+    // Map Cubes
+
+    @Test void createMapCubeToFile() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.createMapCubeToFile()
+        assertTrue(file.exists())
+    }
+
+    @Test void createMapCubeToBytes() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.createMapCubeToBytes()
+        assertTrue(file.exists())
+    }
+
+    @Test void createMapCubeToOutputStream() {
+        RenderRecipes recipes = new RenderRecipes()
+        File file = recipes.createMapCubeToOutputStream()
+        assertTrue(file.exists())
+    }
+
     // Renderer
 
     @Test void getRenderers() {

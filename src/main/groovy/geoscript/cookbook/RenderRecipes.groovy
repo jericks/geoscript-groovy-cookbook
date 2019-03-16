@@ -18,6 +18,7 @@ import geoscript.render.GeoTIFF
 import geoscript.render.Image
 import geoscript.render.JPEG
 import geoscript.render.Map
+import geoscript.render.MapCube
 import geoscript.render.MapWindow
 import geoscript.render.PNG
 import geoscript.render.Pdf
@@ -28,6 +29,7 @@ import geoscript.render.Svg
 import geoscript.render.Window
 import geoscript.style.Fill
 import geoscript.style.Stroke
+import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 
@@ -305,6 +307,70 @@ class RenderRecipes extends Recipes {
         moveFile(trueFile, new File("src/docs/asciidoc/images/map_continuouswrapping_true.png"))
         moveFile(falseFile, new File("src/docs/asciidoc/images/map_continuouswrapping_false.png"))
         map
+    }
+
+    // Map Cube
+
+    File createMapCubeToFile() {
+        // tag::createMapCubeToFile[]
+
+        Workspace workspace = new Directory("src/main/resources/shapefiles")
+        Layer countries = workspace.get("countries")
+        Layer ocean = workspace.get("ocean")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        ocean.style = new Fill("#a5bfdd")
+
+        MapCube mapCube = new MapCube(
+            drawOutline: true,
+            drawTabs: true,
+            tabSize: 30,
+            title: "World Cube",
+            source: "Nartual Earth",
+            imageType: "png"
+        )
+        File file = new File("map_cube_file.png")
+        mapCube.render([ocean, countries], file)
+        // end::createMapCubeToFile[]
+        // @TODO Fix Me
+        // moveFile(file, new File("src/docs/asciidoc/images/map_cube_file.png"))
+        file
+    }
+
+    File createMapCubeToBytes() {
+        // tag::createMapCubeToBytes[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+
+        MapCube mapCube = new MapCube()
+        byte[] bytes = mapCube.render([ocean, countries])
+        // end::createMapCubeToBytes[]
+        File file = new File("map_cube_bytes.png")
+        file.bytes = bytes
+        // @TODO Fix Me
+        // moveFile(file, new File("src/docs/asciidoc/images/map_cube_bytes.png"))
+        file
+    }
+
+    File createMapCubeToOutputStream() {
+        // tag::createMapCubeToOutputStream[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("#b2b2b2", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd")
+
+        MapCube mapCube = new MapCube()
+        File file = new File("map_cube_stream.png")
+        file.withOutputStream { OutputStream outputStream ->
+            mapCube.render([ocean, countries], outputStream)
+        }
+        // end::createMapCubeToOutputStream[]
+        // @TODO Fix Me
+        // moveFile(file, new File("src/docs/asciidoc/images/map_cube_stream.png"))
+        file
     }
 
     // Renderers

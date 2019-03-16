@@ -1246,6 +1246,32 @@ class GeometryRecipesTest {
         assertEquals('{"type":"LineString","coordinates":[[3.198,43.164],[6.713,49.755],[9.702,42.592],[15.32,53.798]]}', json)
     }
 
+    // GeoPackage
+
+    @Test void writeGeometryToGeoPackageString() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String str = recipes.writeGeometryToGeoPackageString()
+        assertEquals("4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375", str)
+    }
+
+    @Test void writeGeometryToGeoPackageBytes() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        byte[] bytes = recipes.writeGeometryToGeoPackageBytes()
+        assertEquals("4750000200000000c05ec9999999999ac05ec9999999999a40471e560418937540471e56041893750000000001c05ec9999999999a40471e5604189375", bytes.encodeHex().toString())
+    }
+
+    @Test void readGeometryFromGeoPackageString() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.readGeometryFromGeoPackageString()
+        assertEquals("POINT (-123.15 46.237)", geometry.wkt)
+    }
+
+    @Test void readGeometryFromGeoPackageBytes() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.readGeometryFromGeoPackageBytes()
+        assertEquals("POINT (-123.15 46.237)", geometry.wkt)
+    }
+
     // KML
 
     @Test void readGeometryFromKMLReader() {

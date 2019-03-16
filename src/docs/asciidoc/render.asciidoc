@@ -181,6 +181,32 @@ No
 [.thumb]
 image::map_continuouswrapping_false.png[]
 
+=== Map Cubes
+
+[source,groovy]
+.Create a map cube to a file
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMapCubeToFile,indent=0]
+----
+[.thumb]
+image::map_cube_file.png[]
+
+[source,groovy]
+.Create a map cube to a byte array
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMapCubeToBytes,indent=0]
+----
+[.thumb]
+image::map_cube_bytes.png[]
+
+[source,groovy]
+.Create a map cube to a byte array
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMapCubeToOutputStream,indent=0]
+----
+[.thumb]
+image::map_cube_stream.png[]
+
 === Rendering Maps
 
 ==== Finding Renderers
