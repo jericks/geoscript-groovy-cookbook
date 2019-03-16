@@ -289,6 +289,12 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Test void createUniqueValuesReader() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer symbolizer = recipes.createUniqueValuesReader()
+        assertNotNull(symbolizer)
+    }
+
     // Raster
 
     @Test void createRasterColorMap() {

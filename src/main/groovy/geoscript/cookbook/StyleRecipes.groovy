@@ -37,10 +37,12 @@ import geoscript.style.io.Readers
 import geoscript.style.io.SLDReader
 import geoscript.style.io.SLDWriter
 import geoscript.style.io.SimpleStyleReader
+import geoscript.style.io.UniqueValuesReader
 import geoscript.style.io.Writer
 import geoscript.style.io.Writers
 import geoscript.style.io.YSLDReader
 import geoscript.style.io.YSLDWriter
+import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
 
@@ -580,6 +582,21 @@ class StyleRecipes extends Recipes {
         // end::createUniqueValuesWithPalette[]
         drawOnBasemap("style_uniquevalues_palette", [countries])
         uniqueValues
+    }
+
+    Symbolizer createUniqueValuesReader() {
+        // tag::createUniqueValuesReader[]
+        Workspace workspace = new Directory("src/main/resources/mars")
+        Layer marsGeology = workspace.get("geo_units_oc_dd")
+
+        File uniqueValuesFile = new File("src/main/resources/mars/I1802ABC_geo_units_RGBlut.txt")
+        UniqueValuesReader styleReader = new UniqueValuesReader("UnitSymbol", "polygon")
+        Symbolizer symbolizer = styleReader.read(uniqueValuesFile)
+        // end::createUniqueValuesReader[]
+        marsGeology.style = symbolizer
+        writeFile("style_mars_geology", uniqueValuesFile.text.substring(0,200))
+        draw("style_mars_geology", [marsGeology])
+        symbolizer
     }
 
     // Transform

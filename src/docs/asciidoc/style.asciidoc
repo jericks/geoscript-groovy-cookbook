@@ -387,6 +387,17 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createUniqueVal
 [.thumb]
 image::style_uniquevalues_palette.png[]
 
+[source,groovy]
+.Create a Unique Values Symbolizer from a File with a color per value
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createUniqueValuesReader,indent=0]
+----
+....
+include::output/style_mars_geology.txt[]
+....
+[.thumb]
+image::style_mars_geology.png[]
+
 === Creating Color Maps
 
 [source,groovy]
