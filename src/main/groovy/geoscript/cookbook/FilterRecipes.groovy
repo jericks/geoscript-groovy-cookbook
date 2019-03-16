@@ -574,11 +574,27 @@ class FilterRecipes extends Recipes {
         color
     }
 
+    Color createColorFromRGBFunctionString() {
+        // tag::createColorFromRGBFunctionString[]
+        Color color = new Color("rgb(0,128,128)")
+        // end::createColorFromRGBFunctionString[]
+        saveImage("filter_color_rgbs_funcstring", Color.drawToImage([color]))
+        color
+    }
+
     Color createColorFromHLSMap() {
         // tag::createColorFromHLSMap[]
         Color color = new Color([h: 0, s: 1.0, l: 0.5])
         // end::createColorFromHLSMap[]
         saveImage("filter_color_hlsmap", Color.drawToImage([color]))
+        color
+    }
+
+    Color createColorFromHSLFunctionString() {
+        // tag::createColorFromHSLFunctionString[]
+        Color color = new Color("hsl(0,1,0.5)")
+        // end::createColorFromHSLFunctionString[]
+        saveImage("filter_color_hsl_functionstr", Color.drawToImage([color]))
         color
     }
 

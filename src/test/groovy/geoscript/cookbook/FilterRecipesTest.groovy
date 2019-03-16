@@ -307,9 +307,21 @@ class FilterRecipesTest {
         assertEquals("#05232d", color.hex)
     }
 
+    @Test void createColorFromRGBFunctionString() {
+        FilterRecipes recipes = new FilterRecipes()
+        Color color = recipes.createColorFromRGBFunctionString()
+        assertEquals("#008080", color.hex)
+    }
+
     @Test void createColorFromHLSMap() {
         FilterRecipes recipes = new FilterRecipes()
         Color color = recipes.createColorFromHLSMap()
+        assertEquals("#ff0000", color.hex)
+    }
+
+    @Test void createColorFromHSLFunctionString() {
+        FilterRecipes recipes = new FilterRecipes()
+        Color color = recipes.createColorFromHSLFunctionString()
         assertEquals("#ff0000", color.hex)
     }
 

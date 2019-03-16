@@ -446,12 +446,29 @@ include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createColorFro
 image::filter_color_rgbmap.png[]
 
 [source,groovy]
+.Create a Color from a RGB function string
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createColorFromRGBFunctionString,indent=0]
+----
+[.thumb]
+image::filter_color_rgbs_funcstring.png[]
+
+[source,groovy]
 .Create a Color from a HLS Map
 ----
 include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createColorFromHLSMap,indent=0]
 ----
 [.thumb]
 image::filter_color_hlsmap.png[]
+
+[source,groovy]
+.Create a Color from a HSL function string
+----
+include::{sourcedir}/geoscript/cookbook/FilterRecipes.groovy[tags=createColorFromHSLFunctionString,indent=0]
+----
+[.thumb]
+image::filter_color_hsl_functionstr.png[]
+
 
 [source,groovy]
 .Get a Random Color
