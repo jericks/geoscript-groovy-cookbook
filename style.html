@@ -1001,6 +1001,49 @@ Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Create a Label for a Polygon Layer with strike through style.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.1</span>) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>)
+        .point(<span class="key">anchor</span>: [<span class="float">0.5</span>,<span class="float">0.5</span>])
+        .polygonAlign(<span class="string"><span class="delimiter">&quot;</span><span class="content">mbr</span><span class="delimiter">&quot;</span></span>)
+        .strikethrough(<span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_label_polygons_strikethrough.png" alt="style label polygons strikethrough">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Label for a Polygon Layer with word and character spacing.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.1</span>) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>)
+        .point(<span class="key">anchor</span>: [<span class="float">0.5</span>,<span class="float">0.5</span>])
+        .polygonAlign(<span class="string"><span class="delimiter">&quot;</span><span class="content">mbr</span><span class="delimiter">&quot;</span></span>)
+        .wordSpacing(<span class="integer">8</span>)
+        .characterSpacing(<span class="integer">5</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_label_polygons_spacing.png" alt="style label polygons spacing">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a Label for a Polygon Layer with underlining.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> Fill(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>) + <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">black</span><span class="delimiter">&quot;</span></span>, <span class="float">0.1</span>) + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">NAME_1</span><span class="delimiter">&quot;</span></span>)
+        .point(<span class="key">anchor</span>: [<span class="float">0.5</span>,<span class="float">0.5</span>])
+        .polygonAlign(<span class="string"><span class="delimiter">&quot;</span><span class="content">mbr</span><span class="delimiter">&quot;</span></span>)
+        .underline(<span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_label_polygons_underline.png" alt="style label polygons underline">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Create a Label for a Line Layer</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">Symbolizer symbolizer = <span class="keyword">new</span> <span class="predefined-type">Stroke</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>, <span class="float">0.75</span>)  + <span class="keyword">new</span> <span class="predefined-type">Label</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>)
@@ -1684,7 +1727,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-16 03:43:33 UTC
+Last updated 2019-03-16 19:26:18 UTC
 </div>
 </div>
 </body>
