@@ -435,21 +435,19 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createMySQL
 
 ==== Creating SpatiaLite Workspaces
 
+The SpatiaLite Workspace requires GDAL and OGR to be installed with Java support.
+
 [source,groovy]
-.Create a SpatiaLite Workspace with file and directory name
+.Create a SpatiaLite Workspace with a File name
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createSpatiaLiteWorkspace,indent=0]
 ----
-<1> File name
-<2> Directory name
 
 [source,groovy]
-.Create a SpatiaLite Workspace with file and a File directory
+.Create a SpatiaLite Workspace with a File
 ----
 include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createSpatiaLiteWorkspaceFile,indent=0]
 ----
-<1> File name
-<2> File Directory
 
 ==== Creating WFS Workspaces
 
@@ -460,6 +458,17 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createWFSWo
 ----
 
 ==== Creating OGR Workspaces
+
+The OGR Workspace requires GDAL and OGR to be installed with Java support.
+
+On Ubuntu, you can install GDAL and OGR with the following commands:
+
+[source,bash]
+----
+sudo apt-get install gdal-bin
+
+sudo apt-get install libgdal-java
+----
 
 [source,groovy]
 .Determine if OGR is available.

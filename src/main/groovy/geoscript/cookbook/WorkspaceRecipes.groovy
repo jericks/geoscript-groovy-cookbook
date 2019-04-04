@@ -558,10 +558,7 @@ class WorkspaceRecipes extends Recipes {
 
     Workspace createSpatiaLiteWorkspace() {
         // tag::createSpatiaLiteWorkspace[]
-        SpatiaLite spatialite = new SpatiaLite(
-                "db.sqlite", // <1>
-                "databases"  // <2>
-        )
+        SpatiaLite spatialite = new SpatiaLite("db.sqlite")
         // end::createSpatiaLiteWorkspace[]
         spatialite
     }
@@ -569,10 +566,8 @@ class WorkspaceRecipes extends Recipes {
     Workspace createSpatiaLiteWorkspaceFile() {
         // tag::createSpatiaLiteWorkspaceFile[]
         File directory = new File("databases")
-        SpatiaLite spatialite = new SpatiaLite(
-                "db.sqlite", // <1>
-                directory    // <2>
-        )
+        File file = new File("db.sqlite")
+        SpatiaLite spatialite = new SpatiaLite(file)
         // end::createSpatiaLiteWorkspaceFile[]
         spatialite
     }
