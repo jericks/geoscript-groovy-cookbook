@@ -653,19 +653,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS
+<pre>H2 (JNDI)
+Properties
+Shapefile
+MySQL (JNDI)
+GeoPackage
+PostGIS (JNDI)
+Directory of spatial files (shapefiles)
+PostGIS
 H2
-H2 (JNDI)
-Geobuf
 SQLite
 Web Feature Server (NG)
-MySQL (JNDI)
-MySQL
-Properties
-GeoPackage
-Directory of spatial files (shapefiles)
-Shapefile
-PostGIS (JNDI)</pre>
+Geobuf
+MySQL</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -832,19 +832,19 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>PostGIS
+<pre>H2 (JNDI)
+Properties
+Shapefile
+MySQL (JNDI)
+GeoPackage
+PostGIS (JNDI)
+Directory of spatial files (shapefiles)
+PostGIS
 H2
-H2 (JNDI)
-Geobuf
 SQLite
 Web Feature Server (NG)
-MySQL (JNDI)
-MySQL
-Properties
-GeoPackage
-Directory of spatial files (shapefiles)
-Shapefile
-PostGIS (JNDI)</pre>
+Geobuf
+MySQL</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1447,48 +1447,22 @@ states (52)</pre>
 </div>
 <div class="sect3">
 <h4 id="creating-spatialite-workspaces"><a class="anchor" href="#creating-spatialite-workspaces"></a>Creating SpatiaLite Workspaces</h4>
+<div class="paragraph">
+<p>The SpatiaLite Workspace requires GDAL and OGR to be installed with Java support.</p>
+</div>
 <div class="listingblock">
-<div class="title">Create a SpatiaLite Workspace with file and directory name</div>
+<div class="title">Create a SpatiaLite Workspace with a File name</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">SpatiaLite spatialite = <span class="keyword">new</span> SpatiaLite(
-        <span class="string"><span class="delimiter">&quot;</span><span class="content">db.sqlite</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
-        <span class="string"><span class="delimiter">&quot;</span><span class="content">databases</span><span class="delimiter">&quot;</span></span>  <i class="conum" data-value="2"></i><b>(2)</b>
-)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">SpatiaLite spatialite = <span class="keyword">new</span> SpatiaLite(<span class="string"><span class="delimiter">&quot;</span><span class="content">db.sqlite</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>File name</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Directory name</td>
-</tr>
-</table>
 </div>
 <div class="listingblock">
-<div class="title">Create a SpatiaLite Workspace with file and a File directory</div>
+<div class="title">Create a SpatiaLite Workspace with a File</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">File</span> directory = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">databases</span><span class="delimiter">&quot;</span></span>)
-SpatiaLite spatialite = <span class="keyword">new</span> SpatiaLite(
-        <span class="string"><span class="delimiter">&quot;</span><span class="content">db.sqlite</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="1"></i><b>(1)</b>
-        directory    <i class="conum" data-value="2"></i><b>(2)</b>
-)</code></pre>
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">db.sqlite</span><span class="delimiter">&quot;</span></span>)
+SpatiaLite spatialite = <span class="keyword">new</span> SpatiaLite(file)</code></pre>
 </div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>File name</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>File Directory</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect3">
@@ -1502,6 +1476,19 @@ SpatiaLite spatialite = <span class="keyword">new</span> SpatiaLite(
 </div>
 <div class="sect3">
 <h4 id="creating-ogr-workspaces"><a class="anchor" href="#creating-ogr-workspaces"></a>Creating OGR Workspaces</h4>
+<div class="paragraph">
+<p>The OGR Workspace requires GDAL and OGR to be installed with Java support.</p>
+</div>
+<div class="paragraph">
+<p>On Ubuntu, you can install GDAL and OGR with the following commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">sudo apt-get install gdal-bin
+
+sudo apt-get install libgdal-java</code></pre>
+</div>
+</div>
 <div class="listingblock">
 <div class="title">Determine if OGR is available.</div>
 <div class="content">
@@ -1722,7 +1709,7 @@ workspace.deleteIndex(<span class="string"><span class="delimiter">&quot;</span>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-04 00:23:07 UTC
+Last updated 2019-04-04 23:32:40 UTC
 </div>
 </div>
 </body>
