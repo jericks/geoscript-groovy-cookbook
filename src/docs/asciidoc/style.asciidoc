@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Style Recipes
 
-Styles are found in the *http://geoscript.github.io/geoscript-groovy/api/1.13.0/geoscript/style/package-summary.html[geoscript.style]* package.
+Styles are found in the *http://geoscript.github.io/geoscript-groovy/api/1.14-SNAPSHOT/geoscript/style/package-summary.html[geoscript.style]* package.
 
 Styles are made up Symbolizers and Composites.  A Symbolizer is a particular style like Stroke or Fill.  Symbolizers also have methods for controlling the drawing order (zindex), the min and max scale (range), and filtering (where).
 
@@ -459,7 +459,7 @@ image::style_raster_channel_constrast_histogram.png[]
 
 === Reading and Writing Styles
 
-Style Readers and Writers are found in the *http://geoscript.github.io/geoscript-groovy/api/1.13.0/geoscript/style/io/package-summary.html[geoscript.style.io]* package.
+Style Readers and Writers are found in the *http://geoscript.github.io/geoscript-groovy/api/1.14-SNAPSHOT/geoscript/style/io/package-summary.html[geoscript.style.io]* package.
 
 ==== Finding Style Readers and Writers
 
