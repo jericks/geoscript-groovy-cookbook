@@ -561,6 +561,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#readers-and-writers">Readers and Writers</a></li>
 <li><a href="#wkb">WKB</a></li>
 <li><a href="#wkt">WKT</a></li>
+<li><a href="#twkb">TWKB</a></li>
 <li><a href="#geojson">GeoJSON</a></li>
 <li><a href="#geopackage">GeoPackage</a></li>
 <li><a href="#kml">KML</a></li>
@@ -4337,8 +4338,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 415278730 nanoseconds
-Time with PreparedGeometry = 310012201 nanoseconds</pre>
+<pre>Time with Geometry         = 410750830 nanoseconds
+Time with PreparedGeometry = 178682372 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4383,8 +4384,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 176298685 nanoseconds
-Time with PreparedGeometry = 112451770 nanoseconds</pre>
+<pre>Time with Geometry         = 186795966 nanoseconds
+Time with PreparedGeometry = 187684512 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5109,6 +5110,27 @@ println wkt</code></pre>
 </div>
 </div>
 <div class="sect3">
+<h4 id="twkb"><a class="anchor" href="#twkb"></a>TWKB</h4>
+<div class="listingblock">
+<div class="title">Read a Geometry from TWKB hex encoded String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">TWkbReader reader = <span class="keyword">new</span> TWkbReader()
+Geometry geometry = reader.read(<span class="string"><span class="delimiter">&quot;</span><span class="content">01000204</span><span class="delimiter">&quot;</span></span>)
+println geometry.wkt</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (1 2)</pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_from_twkb.png" alt="geometry read from twkb">
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="geojson"><a class="anchor" href="#geojson"></a>GeoJSON</h4>
 <div class="listingblock">
 <div class="title">Read a Geometry from GeoJSON using the GeoJSONReader</div>
@@ -5601,7 +5623,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-04-04 23:32:40 UTC
+Last updated 2019-04-05 00:10:57 UTC
 </div>
 </div>
 </body>
