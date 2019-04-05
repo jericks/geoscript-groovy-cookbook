@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.geom.io.GeoPackageReader
 import geoscript.geom.io.GeoPackageWriter
+import geoscript.geom.io.TWkbReader
 import org.h2.command.Prepared
 import org.locationtech.jts.geom.IntersectionMatrix
 import geoscript.geom.Bounds
@@ -3617,6 +3618,19 @@ Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
         // end::writeGeometryToWKBUsingWriter[]
         writeFile("geometry_to_wkb_using_writer", wkb)
         wkb
+    }
+
+    // TWKB
+
+    Geometry readGeometryFromTWkb() {
+        // tag::readGeometryFromTWkb[]
+        TWkbReader reader = new TWkbReader()
+        Geometry geometry = reader.read("01000204")
+        println geometry.wkt
+        // end::readGeometryFromTWkb[]
+        writeFile("geometry_read_from_twkb", "${geometry.wkt}")
+        drawGeometry("geometry_read_from_twkb", geometry)
+        geometry
     }
 
     // WKT

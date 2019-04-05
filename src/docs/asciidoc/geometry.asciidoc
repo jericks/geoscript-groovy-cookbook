@@ -1790,6 +1790,20 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 include::output/geometry_to_wkt_using_writer.txt[]
 ....
 
+==== TWKB
+
+[source,groovy]
+.Read a Geometry from TWKB hex encoded String
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromTWkb,indent=0]
+----
+....
+include::output/geometry_read_from_twkb.txt[]
+....
+[.thumb]
+image::geometry_read_from_twkb.png[]
+
+
 ==== GeoJSON
 
 [source,groovy]
