@@ -45,7 +45,7 @@ class FilterRecipesTest {
     @Test void createBboxFilter() {
         FilterRecipes recipes = new FilterRecipes()
         Filter filter = recipes.createBboxFilter()
-        assertEquals("[ the_geom bbox POLYGON ((-102 43.5, -102 47.5, -100 47.5, -100 43.5, -102 43.5)) ]", filter.toString())
+        assertEquals("[ the_geom bbox ReferencedEnvelope[-102.0 : -100.0, 43.5 : 47.5] ]", filter.toString())
     }
 
     @Test void createContainsFilter() {
