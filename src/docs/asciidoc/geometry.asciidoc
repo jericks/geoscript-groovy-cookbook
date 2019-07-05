@@ -379,6 +379,14 @@ image::geometry_linestring_subline1.png[]
 [.thumb]
 image::geometry_linestring_subline2.png[]
 
+[source,groovy]
+.Create Points along a LineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=lineStringCreatePointsAlong,indent=0]
+----
+[.thumb]
+image::geometry_linestring_createpointsalong.png[]
+
 === Polygons
 
 [source,groovy]
@@ -444,6 +452,14 @@ include::output/geometry_multilinestring_merge.txt[]
 ....
 [.thumb]
 image::geometry_multilinestring_plus.png[]
+
+[source,groovy]
+.Create Points along a MultiLineString
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=multiLineStringCreatePointsAlong,indent=0]
+----
+[.thumb]
+image::geometry_multilinestring_createpointsalong.png[]
 
 === MultiPolygons
 

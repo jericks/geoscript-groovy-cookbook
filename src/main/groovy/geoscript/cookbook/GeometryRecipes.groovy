@@ -887,6 +887,21 @@ Position of ${point3} is ${position3}""")
         subLine
     }
 
+    MultiPoint lineStringCreatePointsAlong() {
+        // tag::lineStringCreatePointsAlong[]
+        LineString lineString = new LineString([
+                [-122.39423990249632, 47.57926150237904],
+                [-122.3918581008911, 47.58121554959838],
+                [-122.38657951354979, 47.58121554959838],
+                [-122.38638639450075, 47.58535499390333],
+                [-122.38374710083008, 47.58535499390333]
+        ])
+        MultiPoint multiPoint = lineString.createPointsAlong(0.001)
+        // end::lineStringCreatePointsAlong[]
+        drawGeometries("geometry_linestring_createpointsalong", [lineString, multiPoint])
+        multiPoint
+    }
+
     // MultiLineString
 
     MultiLineString multiLineStringPlus() {
@@ -938,6 +953,21 @@ Position of ${point3} is ${position3}""")
         writeFile("geometry_multilinestring_merge", "Original MultiLineString = ${multiLineString}${NEW_LINE}${NEW_LINE}Merged MultiLineString   = ${mergedMultiLineString}")
         mergedMultiLineString
     }
+
+    MultiPoint multiLineStringCreatePointsAlong() {
+        // tag::multiLineStringCreatePointsAlong[]
+        MultiLineString lines = new MultiLineString(
+                new LineString ([-5.70068359375, 45.1416015625], [2.47314453125, 53.9306640625]),
+                new LineString ([-1.21826171875, 53.9306640625], [8.88916015625, 46.1962890625]),
+                new LineString ([0.71533203125, 42.63671875], [7.13134765625, 50.37109375]),
+                new LineString ([-5.83251953125, 46.943359375], [4.45068359375, 42.98828125])
+        )
+        MultiPoint points = lines.createPointsAlong(1)
+        // end::multiLineStringCreatePointsAlong[]
+        drawGeometries("geometry_multilinestring_createpointsalong", [lines, points])
+        points
+    }
+
 
     // Point
 

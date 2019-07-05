@@ -325,6 +325,19 @@ class GeometryRecipesTest {
 
     // LineString
 
+    @Test void lineStringCreatePointsAlong() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        MultiPoint points = recipes.lineStringCreatePointsAlong()
+        assertEquals("MULTIPOINT ((-122.39423990249632 47.57926150237904), (-122.39346678909047 47.579895770194476), " +
+                "(-122.39269367568463 47.580530038009904), (-122.39192056227877 47.58116430582534), " +
+                "(-122.39093889290324 47.58121554959838), (-122.38993889290325 47.58121554959838), " +
+                "(-122.38893889290324 47.58121554959838), (-122.38793889290324 47.58121554959838), " +
+                "(-122.38693889290325 47.58121554959838), (-122.3865496589065 47.58185547421352), " +
+                "(-122.3865030562198 47.58285438771808), (-122.38645645353309 47.58385330122264), " +
+                "(-122.38640985084639 47.5848522147272), (-122.38588972053832 47.58535499390333), " +
+                "(-122.38488972053833 47.58535499390333), (-122.38388972053832 47.58535499390333))", points.wkt)
+    }
+
     @Test void getStartPointFromLineString() {
         GeometryRecipes recipes = new GeometryRecipes()
         Map<String,Geometry> geoms = recipes.getStartPointFromLineString()
@@ -476,6 +489,12 @@ class GeometryRecipesTest {
         assertEquals("MULTILINESTRING ((-122.3822021484375 47.57837853860192, -122.32452392578125 47.48380086737799, " +
                 "-122.29705810546874 47.303447043862626, " +
                 "-122.42889404296875 47.23262467463881))", multiLineString.wkt)
+    }
+
+    @Test void multiLineStringCreatePointsAlong() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        MultiPoint points =  recipes.multiLineStringCreatePointsAlong()
+        assertEquals(49, points.numGeometries)
     }
 
     // Point
