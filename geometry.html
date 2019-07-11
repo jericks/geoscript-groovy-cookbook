@@ -1451,6 +1451,24 @@ LineString subLine = lineString.subLine(<span class="float">0.33</span>, <span c
 <img src="./images/geometry_linestring_subline2.png" alt="geometry linestring subline2">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create Points along a LineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString lineString = <span class="keyword">new</span> LineString([
+        [-<span class="float">122.39423990249632</span>, <span class="float">47.57926150237904</span>],
+        [-<span class="float">122.3918581008911</span>, <span class="float">47.58121554959838</span>],
+        [-<span class="float">122.38657951354979</span>, <span class="float">47.58121554959838</span>],
+        [-<span class="float">122.38638639450075</span>, <span class="float">47.58535499390333</span>],
+        [-<span class="float">122.38374710083008</span>, <span class="float">47.58535499390333</span>]
+])
+MultiPoint multiPoint = lineString.createPointsAlong(<span class="float">0.001</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_linestring_createpointsalong.png" alt="geometry linestring createpointsalong">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="polygons"><a class="anchor" href="#polygons"></a>Polygons</h3>
@@ -1689,6 +1707,23 @@ Merged MultiLineString   = MULTILINESTRING ((-122.3822021484375 47.5783785386019
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_multilinestring_plus.png" alt="geometry multilinestring plus">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create Points along a MultiLineString</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiLineString lines = <span class="keyword">new</span> MultiLineString(
+        <span class="keyword">new</span> LineString ([-<span class="float">5.70068359375</span>, <span class="float">45.1416015625</span>], [<span class="float">2.47314453125</span>, <span class="float">53.9306640625</span>]),
+        <span class="keyword">new</span> LineString ([-<span class="float">1.21826171875</span>, <span class="float">53.9306640625</span>], [<span class="float">8.88916015625</span>, <span class="float">46.1962890625</span>]),
+        <span class="keyword">new</span> LineString ([<span class="float">0.71533203125</span>, <span class="float">42.63671875</span>], [<span class="float">7.13134765625</span>, <span class="float">50.37109375</span>]),
+        <span class="keyword">new</span> LineString ([-<span class="float">5.83251953125</span>, <span class="float">46.943359375</span>], [<span class="float">4.45068359375</span>, <span class="float">42.98828125</span>])
+)
+MultiPoint points = lines.createPointsAlong(<span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_multilinestring_createpointsalong.png" alt="geometry multilinestring createpointsalong">
 </div>
 </div>
 </div>
@@ -4338,8 +4373,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 299851645 nanoseconds
-Time with PreparedGeometry = 182335330 nanoseconds</pre>
+<pre>Time with Geometry         = 409745890 nanoseconds
+Time with PreparedGeometry = 185748364 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4384,8 +4419,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 146154229 nanoseconds
-Time with PreparedGeometry = 119129691 nanoseconds</pre>
+<pre>Time with Geometry         = 219896760 nanoseconds
+Time with PreparedGeometry = 161168134 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5623,7 +5658,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-16 15:29:06 UTC
+Last updated 2019-07-11 19:22:53 UTC
 </div>
 </div>
 </body>
