@@ -956,3 +956,21 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createRectangul
 ----
 [.thumb]
 image::layer_graticule_rect.png[]
+
+==== Oval
+
+[source,groovy]
+.Create a oval graticules Layer
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createOvalGraticule,indent=0]
+----
+[.thumb]
+image::layer_graticule_oval.png[]
+
+[source,groovy]
+.Create a oval graticules Layer intersecting Washington States
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=createIntersectingOnlyOvalGraticule,indent=0]
+----
+[.thumb]
+image::layer_graticule_oval_intersecting.png[]

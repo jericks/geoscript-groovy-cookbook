@@ -2065,4 +2065,29 @@ The merged Layer has ${mergedLayer.count} features
         layer
     }
 
+    Layer createOvalGraticule() {
+        // tag::createOvalGraticule[]
+        Bounds bounds = new Bounds(-180,-90,180,90,"EPSG:4326")
+        double length = 20
+        Layer layer = Graticule.createOvals(bounds, length)
+        // end::createOvalGraticule[]
+        layer.style = new Stroke("black", 0.5)
+        drawOnBasemap("layer_graticule_oval", [layer])
+        layer
+    }
+
+    Layer createIntersectingOnlyOvalGraticule() {
+        // tag::createIntersectingOnlyOvalGraticule[]
+        Layer states = new Shapefile("src/main/resources/data/states.shp")
+        Feature feature = states.first(filter: "STATE_NAME = 'Washington'")
+        Layer layer = Graticule.createOvals(feature.bounds.expandBy(1.0), 0.4, createFeature: { GridElement e ->
+            new Point(e.center.x, e.center.y).buffer(0.2).intersects(feature.geom)
+        })
+        // end::createIntersectingOnlyOvalGraticule[]
+        layer.style = new Stroke("black", 0.5)
+        states.style = new Stroke("black", 0.5)
+        drawOnBasemap("layer_graticule_oval_intersecting", [states, layer], layer.bounds.expandBy(1))
+        layer
+    }
+
 }

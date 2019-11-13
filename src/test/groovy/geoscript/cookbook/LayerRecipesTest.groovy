@@ -755,4 +755,18 @@ class LayerRecipesTest {
         assertEquals("Polygon", layer.schema.geom.typ)
         assertEquals(324, layer.count)
     }
+
+    @Test void createOvalGraticule() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createOvalGraticule()
+        assertEquals("Polygon", layer.schema.geom.typ)
+        assertEquals(162, layer.count)
+    }
+
+    @Test void createIntersectingOnlyOvalGraticule() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.createIntersectingOnlyOvalGraticule()
+        assertEquals("Polygon", layer.schema.geom.typ)
+        assertEquals(167, layer.count)
+    }
 }
