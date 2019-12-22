@@ -542,6 +542,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#creating-geopackage-workspaces">Creating GeoPackage Workspaces</a></li>
 <li><a href="#creating-h2-workspaces">Creating H2 Workspaces</a></li>
 <li><a href="#creating-geobuf-workspaces">Creating Geobuf Workspaces</a></li>
+<li><a href="#creating-flatgeobuf-workspaces">Creating Flatgeobuf Workspaces</a></li>
 <li><a href="#creating-property-workspaces">Creating Property Workspaces</a></li>
 <li><a href="#creating-sqlite-workspaces">Creating SQLite Workspaces</a></li>
 <li><a href="#creating-postgis-workspaces">Creating PostGIS Workspaces</a></li>
@@ -653,19 +654,21 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Geobuf
-Shapefile
-H2
-MySQL (JNDI)
-Properties
-PostGIS
+<pre>Directory of spatial files (shapefiles)
 H2 (JNDI)
-Directory of spatial files (shapefiles)
-GeoPackage
-Web Feature Server (NG)
-SQLite
+PostGIS (JNDI)
+MBTiles with vector tiles
 MySQL
-PostGIS (JNDI)</pre>
+MySQL (JNDI)
+H2
+SQLite
+GeoPackage
+Flatgeobuf
+Properties
+Web Feature Server (NG)
+PostGIS
+Shapefile
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -832,19 +835,21 @@ names.each { <span class="predefined-type">String</span> name -&gt;
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Geobuf
-Shapefile
-H2
-MySQL (JNDI)
-Properties
-PostGIS
+<pre>Directory of spatial files (shapefiles)
 H2 (JNDI)
-Directory of spatial files (shapefiles)
-GeoPackage
-Web Feature Server (NG)
-SQLite
+PostGIS (JNDI)
+MBTiles with vector tiles
 MySQL
-PostGIS (JNDI)</pre>
+MySQL (JNDI)
+H2
+SQLite
+GeoPackage
+Flatgeobuf
+Properties
+Web Feature Server (NG)
+PostGIS
+Shapefile
+Geobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1179,6 +1184,29 @@ workspace.names.each { <span class="predefined-type">String</span> name -&gt;
 <div class="literalblock">
 <div class="content">
 <pre>Geobuf
+------
+ocean (2)
+places (326)
+countries (177)</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-flatgeobuf-workspaces"><a class="anchor" href="#creating-flatgeobuf-workspaces"></a>Creating Flatgeobuf Workspaces</h4>
+<div class="listingblock">
+<div class="title">Create a Flatgeobuf Workspace from a File</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> FlatGeobuf(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/resources/flatgeobuf</span><span class="delimiter">&quot;</span></span>))
+println workspace.format
+println <span class="string"><span class="delimiter">&quot;</span><span class="content">------</span><span class="delimiter">&quot;</span></span>
+workspace.names.each { <span class="predefined-type">String</span> name -&gt;
+    println <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>name<span class="inline-delimiter">}</span></span><span class="content"> (</span><span class="inline"><span class="inline-delimiter">${</span>workspace.get(name).count<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>FlatGeobuf
 ------
 ocean (2)
 places (326)
@@ -1709,7 +1737,7 @@ workspace.deleteIndex(<span class="string"><span class="delimiter">&quot;</span>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-11-13 00:48:35 UTC
+Last updated 2019-12-22 02:38:22 UTC
 </div>
 </div>
 </body>
