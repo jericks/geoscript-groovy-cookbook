@@ -9,6 +9,7 @@ import geoscript.layer.Layer
 import geoscript.style.Shape
 import geoscript.workspace.Database
 import geoscript.workspace.Directory
+import geoscript.workspace.FlatGeobuf
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Geobuf
 import geoscript.workspace.H2
@@ -422,6 +423,21 @@ class WorkspaceRecipes extends Recipes {
         }
         // end::createGeobufWorkspaceFromFile[]
         writeFile("workspace_geobuf_file", "${workspace.format}${NEW_LINE}------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
+        workspace
+    }
+
+    // Flatgeobuf
+
+    Workspace createFlatgeobufWorkspaceFromFile() {
+        // tag::createFlatgeobufWorkspaceFromFile[]
+        Workspace workspace = new FlatGeobuf(new File("src/main/resources/flatgeobuf"))
+        println workspace.format
+        println "------"
+        workspace.names.each { String name ->
+            println "${name} (${workspace.get(name).count})"
+        }
+        // end::createFlatgeobufWorkspaceFromFile[]
+        writeFile("workspace_flatgeobuf_file", "${workspace.format}${NEW_LINE}------${NEW_LINE}${workspace.names.collect { "${it} (${workspace.get(it).count})" }.join(NEW_LINE)}")
         workspace
     }
 

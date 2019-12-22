@@ -337,6 +337,18 @@ include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createGeobu
 include::output/workspace_geobuf_file.txt[]
 ....
 
+==== Creating Flatgeobuf Workspaces
+
+[source,groovy]
+.Create a Flatgeobuf Workspace from a File
+----
+include::{sourcedir}/geoscript/cookbook/WorkspaceRecipes.groovy[tags=createFlatgeobufWorkspaceFromFile,indent=0]
+----
+
+....
+include::output/workspace_flatgeobuf_file.txt[]
+....
+
 ==== Creating Property Workspaces
 
 [source,groovy]
