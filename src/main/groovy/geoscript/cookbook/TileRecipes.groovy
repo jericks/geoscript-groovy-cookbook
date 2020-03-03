@@ -846,7 +846,7 @@ Y Resolution: ${grid.yResolution}
         println "The bounds around ${point} is ${bounds}"
         // end::getBoundsAroundPoint[]
         writeFile("tile_pyramid_bounds_around_point","The bounds around ${point} is ${bounds}")
-        OSM osm = OSM.getWellKnownOSM("osm")
+        OSM osm = OSM.getWellKnownOSM("stamen-toner")
         RenderedImage image = osm.getRaster(osm.tiles(point, zoomLevel, width, height)).image
         saveImage("tile_pyramid_bounds_around_point", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
         bounds
