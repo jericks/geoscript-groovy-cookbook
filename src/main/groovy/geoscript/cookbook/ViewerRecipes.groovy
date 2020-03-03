@@ -53,6 +53,23 @@ class ViewerRecipes extends Recipes {
         image
     }
 
+    String drawToBase64EncodedString() {
+        // tag::drawToBase64EncodedString[]
+        Polygon polygon = new Polygon([[
+               [-101.35986328125, 47.754097979680026],
+               [-101.5576171875, 46.93526088057719],
+               [-100.12939453125, 46.51351558059737],
+               [-99.77783203125, 47.44294999517949],
+               [-100.45898437499999, 47.88688085106901],
+               [-101.35986328125, 47.754097979680026]
+        ]])
+        String base64EncodedString = Viewer.drawToBase64EncodedString(polygon)
+        println base64EncodedString
+        // end::drawToBase64EncodedString[]
+        writeFile("viewer_draw2base64", base64EncodedString.substring(0,125) + "...")
+        base64EncodedString
+    }
+
     BufferedImage drawToImageWithOptions() {
         // tag::drawToImageWithOptions[]
         Polygon polygon = new Polygon([[

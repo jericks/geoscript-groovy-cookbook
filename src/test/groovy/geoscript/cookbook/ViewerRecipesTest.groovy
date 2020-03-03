@@ -12,6 +12,13 @@ class ViewerRecipesTest {
         assertNotNull image
     }
 
+    @Test void drawToBase64EncodedString() {
+        ViewerRecipes recipes = new ViewerRecipes()
+        String base64EncodedString = recipes.drawToBase64EncodedString()
+        assertNotNull base64EncodedString
+        assertTrue base64EncodedString.startsWith("image/png;base64,")
+    }
+
     @Test void drawToImageWithOptions() {
         ViewerRecipes recipes = new ViewerRecipes()
         BufferedImage image = recipes.drawToImageWithOptions()

@@ -47,6 +47,15 @@ include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=drawToFile,ind
 [.thumb]
 image::viewer_drawtofile.png[]
 
+[source,groovy]
+.Draw a Geometry to a Base64 Encoded String
+----
+include::{sourcedir}/geoscript/cookbook/ViewerRecipes.groovy[tags=drawToBase64EncodedString,indent=0]
+----
+....
+include::output/viewer_draw2base64.txt[]
+....
+
 === Plotting geometries
 
 [source,groovy]
