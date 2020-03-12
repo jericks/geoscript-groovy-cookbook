@@ -95,4 +95,46 @@ class CartoRecipes extends Recipes {
         ImageIO.read(toFile)
     }
 
+    BufferedImage rectangle() {
+        // tag::rectangle[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        Map map = new Map(
+                layers: [ocean, countries],
+                bounds: new Bounds(-180,-85,180,85, "EPSG:4326").reproject("EPSG:3857"),
+                projection: new Projection("EPSG:3857")
+        )
+
+        File file = new File("map.png")
+        file.withOutputStream { OutputStream outputStream ->
+
+            PageSize pageSize = PageSize.LETTER_LANDSCAPE
+
+            CartoFactories.findByName("png")
+                    .create(pageSize)
+                    .rectangle(new RectangleItem(0, 0, pageSize.width - 1, pageSize.height - 1)
+                        .fillColor(Color.WHITE)
+                    )
+                    .rectangle(new RectangleItem(10,10, pageSize.width - 20, pageSize.height - 20))
+                    .rectangle(new RectangleItem(20,20, pageSize.width - 40, 60))
+                    .rectangle(new RectangleItem(20,90, pageSize.width - 40, pageSize.height - 110))
+                    .text(new TextItem(20,20, pageSize.width - 40, 60)
+                        .text("World Map")
+                        .font(new Font("Arial", Font.BOLD, 32))
+                        .verticalAlign(VerticalAlign.MIDDLE)
+                        .horizontalAlign(HorizontalAlign.CENTER)
+                    )
+                    .map(new MapItem(30, 100, pageSize.width - 60, pageSize.height - 120).map(map))
+                    .build(outputStream)
+
+        }
+        // end::rectangle[]
+        File toFile = new File("src/docs/asciidoc/images/carto_rect.png")
+        moveFile(file, toFile)
+        ImageIO.read(toFile)
+    }
+
 }
