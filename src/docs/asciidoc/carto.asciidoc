@@ -37,3 +37,13 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=rectangle,inden
 ----
 [.thumb]
 image::carto_rect.png[]
+
+=== Adding a North Arrow
+
+[source,groovy]
+.Add a north arrow
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=northArrow,indent=0]
+----
+[.thumb]
+image::carto_northarrow.png[]
