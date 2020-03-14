@@ -29,6 +29,8 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:getX
+geo:getY
 geo:isValid
 geo:buffer
 geo:union
@@ -56,8 +58,6 @@ geo:simplify
 geo:numGeometries
 geo:startPoint
 geo:numPoints
-geo:getX
-geo:getY
 geo:isClosed
 geo:dimension
 geo:exteriorRing
