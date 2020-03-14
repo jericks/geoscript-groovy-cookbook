@@ -48,7 +48,7 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=northArrow,inde
 [.thumb]
 image::carto_northarrow.png[]
 
-=== Adding a date
+=== Adding a Date
 
 [source,groovy]
 .Add a date
@@ -57,3 +57,13 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=dateText,indent
 ----
 [.thumb]
 image::carto_datetext.png[]
+
+=== Adding Scale Text
+
+[source,groovy]
+.Add scale text
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=scaleText,indent=0]
+----
+[.thumb]
+image::carto_scaletext.png[]
