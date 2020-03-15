@@ -48,4 +48,10 @@ class CartoRecipesTest {
         assertNotNull(image)
     }
 
+    @Test void grid() {
+        CartoRecipes recipes = new CartoRecipes()
+        BufferedImage image = recipes.grid()
+        assertNotNull(image)
+    }
+
 }

@@ -77,3 +77,13 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=line,indent=0]
 ----
 [.thumb]
 image::carto_line.png[]
+
+=== Adding a Grid
+
+[source,groovy]
+.Adding a grid is a nice way to placing items.
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=grid,indent=0]
+----
+[.thumb]
+image::carto_grid.png[]
