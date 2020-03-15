@@ -87,3 +87,13 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=grid,indent=0]
 ----
 [.thumb]
 image::carto_grid.png[]
+
+=== Adding a Paragraph
+
+[source,groovy]
+.Adding a paragraph of text
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=paragraph,indent=0]
+----
+[.thumb]
+image::carto_paragraph.png[]

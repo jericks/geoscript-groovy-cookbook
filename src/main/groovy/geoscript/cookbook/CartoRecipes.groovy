@@ -9,6 +9,7 @@ import geoscript.carto.LineItem
 import geoscript.carto.MapItem
 import geoscript.carto.NorthArrowItem
 import geoscript.carto.PageSize
+import geoscript.carto.ParagraphItem
 import geoscript.carto.RectangleItem
 import geoscript.carto.ScaleTextItem
 import geoscript.carto.TextItem
@@ -350,6 +351,47 @@ class CartoRecipes extends Recipes {
         }
         // end::grid[]
         File toFile = new File("src/docs/asciidoc/images/carto_grid.png")
+        moveFile(file, toFile)
+        ImageIO.read(toFile)
+    }
+
+    BufferedImage paragraph() {
+        // tag::paragraph[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        Map map = new Map(
+                layers: [ocean, countries],
+                bounds: new Bounds(-180,-85,180,85, "EPSG:4326").reproject("EPSG:3857"),
+                projection: new Projection("EPSG:3857")
+        )
+
+        File file = new File("map.png")
+        file.withOutputStream { OutputStream outputStream ->
+
+            PageSize pageSize = PageSize.LETTER_LANDSCAPE
+
+            CartoFactories.findByName("png")
+                .create(pageSize)
+                .rectangle(new RectangleItem(0, 0, pageSize.width - 1, pageSize.height - 1)
+                    .fillColor(Color.WHITE)
+                )
+                .map(new MapItem(20, 20, pageSize.width - 40, pageSize.height - 100).map(map))
+                .paragraph(new ParagraphItem(20, pageSize.height - 60, pageSize.width - 40, 60)
+                    .font(new Font("Arial", Font.PLAIN, 12))
+                    .color(Color.BLACK)
+                    .text("""Natural Earth is a public domain map dataset available at 1:10m, 1:50m, and 1:110 million scales. 
+Featuring tightly integrated vector and raster data, with Natural Earth you can make a variety of visually pleasing, 
+well-crafted maps with cartography or GIS software.
+""")
+                )
+                .build(outputStream)
+
+        }
+        // end::paragraph[]
+        File toFile = new File("src/docs/asciidoc/images/carto_paragraph.png")
         moveFile(file, toFile)
         ImageIO.read(toFile)
     }
