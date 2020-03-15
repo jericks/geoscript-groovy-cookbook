@@ -8,7 +8,9 @@ The Carto classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.
 The Carto package contains classes for creating cartographic documents.  All items are added to the document with x and y coordinates whose origin is the upper left
 and width and a height.
 
-=== Adding a Map
+=== Items
+
+==== Adding a Map
 
 [source,groovy]
 .Add a map
@@ -18,7 +20,7 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=map,indent=0]
 [.thumb]
 image::carto_map.png[]
 
-=== Adding a Text
+==== Adding a Text
 
 [source,groovy]
 .Add text
@@ -28,7 +30,7 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=text,indent=0]
 [.thumb]
 image::carto_text.png[]
 
-=== Adding a Rectangle
+==== Adding a Rectangle
 
 [source,groovy]
 .Add a rectangle
@@ -38,7 +40,7 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=rectangle,inden
 [.thumb]
 image::carto_rect.png[]
 
-=== Adding a North Arrow
+==== Adding a North Arrow
 
 [source,groovy]
 .Add a north arrow
@@ -48,7 +50,7 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=northArrow,inde
 [.thumb]
 image::carto_northarrow.png[]
 
-=== Adding a Date
+==== Adding a Date
 
 [source,groovy]
 .Add a date
@@ -58,7 +60,7 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=dateText,indent
 [.thumb]
 image::carto_datetext.png[]
 
-=== Adding Scale Text
+==== Adding Scale Text
 
 [source,groovy]
 .Add scale text
@@ -68,7 +70,7 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=scaleText,inden
 [.thumb]
 image::carto_scaletext.png[]
 
-=== Adding a Line
+==== Adding a Line
 
 [source,groovy]
 .Add a line
@@ -78,7 +80,7 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=line,indent=0]
 [.thumb]
 image::carto_line.png[]
 
-=== Adding a Grid
+==== Adding a Grid
 
 [source,groovy]
 .Adding a grid is a nice way to placing items.
@@ -88,7 +90,7 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=grid,indent=0]
 [.thumb]
 image::carto_grid.png[]
 
-=== Adding a Paragraph
+==== Adding a Paragraph
 
 [source,groovy]
 .Adding a paragraph of text
@@ -97,3 +99,13 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=paragraph,inden
 ----
 [.thumb]
 image::carto_paragraph.png[]
+
+==== Adding an Image
+
+[source,groovy]
+.Adding an image
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=image,indent=0]
+----
+[.thumb]
+image::carto_image.png[]

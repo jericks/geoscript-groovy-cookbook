@@ -5,6 +5,7 @@ import geoscript.carto.CartoFactories
 import geoscript.carto.DateTextItem
 import geoscript.carto.GridItem
 import geoscript.carto.HorizontalAlign
+import geoscript.carto.ImageItem
 import geoscript.carto.LineItem
 import geoscript.carto.MapItem
 import geoscript.carto.NorthArrowItem
@@ -396,4 +397,39 @@ well-crafted maps with cartography or GIS software.
         ImageIO.read(toFile)
     }
 
+    BufferedImage image() {
+        // tag::image[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        Map map = new Map(
+                layers: [ocean, countries],
+                bounds: new Bounds(-180,-85,180,85, "EPSG:4326").reproject("EPSG:3857"),
+                projection: new Projection("EPSG:3857")
+        )
+
+        File file = new File("map.png")
+        file.withOutputStream { OutputStream outputStream ->
+
+            PageSize pageSize = PageSize.LETTER_LANDSCAPE
+
+            CartoFactories.findByName("png")
+                    .create(pageSize)
+                    .rectangle(new RectangleItem(0, 0, pageSize.width - 1, pageSize.height - 1)
+                        .fillColor(Color.WHITE)
+                    )
+                    .map(new MapItem(20, 20, pageSize.width - 40, pageSize.height - 40).map(map))
+                    .image(new ImageItem(pageSize.width - 100, pageSize.height - 100, 80, 80)
+                        .path(new File("src/main/resources/image.png"))
+                    )
+                    .build(outputStream)
+
+        }
+        // end::image[]
+        File toFile = new File("src/docs/asciidoc/images/carto_image.png")
+        moveFile(file, toFile)
+        ImageIO.read(toFile)
+    }
 }
