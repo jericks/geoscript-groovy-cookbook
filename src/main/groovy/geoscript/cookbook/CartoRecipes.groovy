@@ -4,6 +4,7 @@ import geoscript.carto.CartoBuilder
 import geoscript.carto.CartoFactories
 import geoscript.carto.DateTextItem
 import geoscript.carto.HorizontalAlign
+import geoscript.carto.LineItem
 import geoscript.carto.MapItem
 import geoscript.carto.NorthArrowItem
 import geoscript.carto.PageSize
@@ -264,4 +265,48 @@ class CartoRecipes extends Recipes {
         moveFile(file, toFile)
         ImageIO.read(toFile)
     }
+
+    BufferedImage line() {
+        // tag::line[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        Map map = new Map(
+                layers: [ocean, countries],
+                bounds: new Bounds(-180,-85,180,85, "EPSG:4326").reproject("EPSG:3857"),
+                projection: new Projection("EPSG:3857")
+        )
+
+        File file = new File("map.png")
+        file.withOutputStream { OutputStream outputStream ->
+
+            PageSize pageSize = PageSize.LETTER_LANDSCAPE
+
+            CartoFactories.findByName("png")
+                    .create(pageSize)
+                    .rectangle(new RectangleItem(0, 0, pageSize.width - 1, pageSize.height - 1)
+                        .fillColor(Color.WHITE)
+                    )
+                    .text(new TextItem(20,20, pageSize.width - 40, 60)
+                        .text("World Map")
+                        .font(new Font("Arial", Font.BOLD, 42))
+                        .verticalAlign(VerticalAlign.MIDDLE)
+                        .horizontalAlign(HorizontalAlign.CENTER)
+                    )
+                    .line(new LineItem(20, 70, pageSize.width - 40, 1)
+                        .strokeWidth(2)
+                        .strokeColor(Color.DARK_GRAY)
+                    )
+                    .map(new MapItem(20, 80, pageSize.width - 40, pageSize.height - 100).map(map))
+                    .build(outputStream)
+
+        }
+        // end::line[]
+        File toFile = new File("src/docs/asciidoc/images/carto_line.png")
+        moveFile(file, toFile)
+        ImageIO.read(toFile)
+    }
+
 }
