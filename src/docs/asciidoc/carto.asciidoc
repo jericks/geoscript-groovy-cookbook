@@ -109,3 +109,39 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=image,indent=0]
 ----
 [.thumb]
 image::carto_image.png[]
+
+=== Builders
+
+CartoBuilders write cartographic documents to different formats.  Images, PDFs, and SVGs are currently supported.
+
+==== ImageCartoBuilder
+
+The ImageCartoBuilder can produce PNG or JPEG images.
+
+[source,groovy]
+.Use the ImageCartoBuilder to create a PNG image.
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=image_builder,indent=0]
+----
+[.thumb]
+image::carto_image_builder.png[]
+
+==== PdfCartoBuilder
+
+[source,groovy]
+.Use the PdfCartoBuilder to create a PDF.
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=pdf_builder,indent=0]
+----
+[.thumb]
+image::carto_pdf_builder.png[]
+
+==== SvgCartoBuilder
+
+[source,groovy]
+.Use the SvgCartoBuilder to create a SVG document.
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=svg_builder,indent=0]
+----
+[.thumb]
+image::carto_svg_builder.png[]

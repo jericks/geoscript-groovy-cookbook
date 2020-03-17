@@ -3,6 +3,7 @@ package geoscript.cookbook
 import org.junit.Test
 import java.awt.image.BufferedImage
 import static org.junit.Assert.assertNotNull
+import static org.junit.Assert.assertTrue
 
 class CartoRecipesTest {
 
@@ -64,6 +65,26 @@ class CartoRecipesTest {
         CartoRecipes recipes = new CartoRecipes()
         BufferedImage image = recipes.image()
         assertNotNull(image)
+    }
+
+    @Test void imageBuilder() {
+        CartoRecipes recipes = new CartoRecipes()
+        BufferedImage image = recipes.imageBuilder()
+        assertNotNull(image)
+    }
+
+    @Test void pdfBuilder() {
+        CartoRecipes recipes = new CartoRecipes()
+        File file = recipes.pdfBuilder()
+        assertNotNull(file)
+        assertTrue(file.length() > 0)
+    }
+
+    @Test void svgBuilder() {
+        CartoRecipes recipes = new CartoRecipes()
+        File file = recipes.svgBuilder()
+        assertNotNull(file)
+        assertTrue(file.length() > 0)
     }
 
 }
