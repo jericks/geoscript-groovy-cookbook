@@ -543,6 +543,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#adding-an-image">Adding an Image</a></li>
 </ul>
 </li>
+<li><a href="#builders">Builders</a>
+<ul class="sectlevel3">
+<li><a href="#imagecartobuilder">ImageCartoBuilder</a></li>
+<li><a href="#pdfcartobuilder">PdfCartoBuilder</a></li>
+<li><a href="#svgcartobuilder">SvgCartoBuilder</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1015,12 +1022,175 @@ file.withOutputStream { <span class="predefined-type">OutputStream</span> output
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="builders"><a class="anchor" href="#builders"></a>Builders</h3>
+<div class="paragraph">
+<p>CartoBuilders write cartographic documents to different formats.  Images, PDFs, and SVGs are currently supported.</p>
+</div>
+<div class="sect3">
+<h4 id="imagecartobuilder"><a class="anchor" href="#imagecartobuilder"></a>ImageCartoBuilder</h4>
+<div class="paragraph">
+<p>The ImageCartoBuilder can produce PNG or JPEG images.</p>
+</div>
+<div class="listingblock">
+<div class="title">Use the ImageCartoBuilder to create a PNG image.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+        Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+        countries.style = <span class="keyword">new</span> SLDReader().read(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/countries.sld</span><span class="delimiter">'</span></span>))
+        Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+        ocean.style = <span class="keyword">new</span> SLDReader().read(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/ocean.sld</span><span class="delimiter">'</span></span>))
+        <span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+                <span class="key">layers</span>: [ocean, countries],
+                <span class="key">bounds</span>: <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">85</span>,<span class="integer">180</span>,<span class="integer">85</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>).reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>),
+                <span class="key">projection</span>: <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>)
+        )
+
+        <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.png</span><span class="delimiter">&quot;</span></span>)
+        file.withOutputStream { <span class="predefined-type">OutputStream</span> outputStream -&gt;
+
+            <span class="keyword">new</span> ImageCartoBuilder(PageSize.LETTER_LANDSCAPE, ImageCartoBuilder.ImageType.PNG)
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">792</span>, <span class="integer">612</span>).strokeColor(<span class="predefined-type">Color</span>.WHITE).fillColor(<span class="predefined-type">Color</span>.WHITE))
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">10</span>, <span class="integer">10</span>, <span class="integer">772</span>, <span class="integer">592</span>))
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">20</span>, <span class="integer">20</span>, <span class="integer">752</span>, <span class="integer">80</span>))
+                .text(<span class="keyword">new</span> TextItem(<span class="integer">30</span>, <span class="integer">50</span>, <span class="integer">200</span>, <span class="integer">20</span>).text(<span class="string"><span class="delimiter">&quot;</span><span class="content">Map Title</span><span class="delimiter">&quot;</span></span>).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.BOLD, <span class="integer">36</span>)))
+                .dateText(<span class="keyword">new</span> DateTextItem(<span class="integer">30</span>, <span class="integer">85</span>, <span class="integer">200</span>, <span class="integer">10</span>).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.ITALIC, <span class="integer">14</span>)))
+                .scaleText(<span class="keyword">new</span> ScaleTextItem(<span class="integer">150</span>, <span class="integer">85</span>, <span class="integer">200</span>, <span class="integer">10</span>).map(map).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.ITALIC, <span class="integer">14</span>)))
+                .paragraph(<span class="keyword">new</span> ParagraphItem(<span class="integer">250</span>, <span class="integer">30</span>, <span class="integer">380</span>, <span class="integer">70</span>).text(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.PLAIN, <span class="integer">8</span>)))
+                .line(<span class="keyword">new</span> LineItem(<span class="integer">710</span>, <span class="integer">30</span>, <span class="integer">1</span>, <span class="integer">60</span>))
+                .image(<span class="keyword">new</span> ImageItem(<span class="integer">640</span>, <span class="integer">30</span>, <span class="integer">60</span>, <span class="integer">60</span>).path(<span class="keyword">new</span> <span class="predefined-type">File</span>(getClass().getClassLoader().getResource(<span class="string"><span class="delimiter">&quot;</span><span class="content">image.png</span><span class="delimiter">&quot;</span></span>).toURI())))
+                .northArrow(<span class="keyword">new</span> NorthArrowItem(<span class="integer">720</span>, <span class="integer">30</span>, <span class="integer">40</span>, <span class="integer">60</span>))
+                .map(<span class="keyword">new</span> MapItem(<span class="integer">20</span>, <span class="integer">110</span>, <span class="integer">752</span>, <span class="integer">480</span>).map(map))
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">20</span>, <span class="integer">110</span>, <span class="integer">752</span>, <span class="integer">480</span>))
+
+                .build(outputStream)
+
+        }</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/carto_image_builder.png" alt="carto image builder">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pdfcartobuilder"><a class="anchor" href="#pdfcartobuilder"></a>PdfCartoBuilder</h4>
+<div class="listingblock">
+<div class="title">Use the PdfCartoBuilder to create a PDF.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+        Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+        countries.style = <span class="keyword">new</span> SLDReader().read(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/countries.sld</span><span class="delimiter">'</span></span>))
+        Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+        ocean.style = <span class="keyword">new</span> SLDReader().read(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/ocean.sld</span><span class="delimiter">'</span></span>))
+        <span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+                <span class="key">layers</span>: [ocean, countries],
+                <span class="key">bounds</span>: <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">85</span>,<span class="integer">180</span>,<span class="integer">85</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>).reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>),
+                <span class="key">projection</span>: <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>)
+        )
+
+        <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.pdf</span><span class="delimiter">&quot;</span></span>)
+        file.withOutputStream { <span class="predefined-type">OutputStream</span> outputStream -&gt;
+
+            <span class="keyword">new</span> PdfCartoBuilder(PageSize.LETTER_LANDSCAPE)
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">792</span>, <span class="integer">612</span>).strokeColor(<span class="predefined-type">Color</span>.WHITE).fillColor(<span class="predefined-type">Color</span>.WHITE))
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">10</span>, <span class="integer">10</span>, <span class="integer">772</span>, <span class="integer">592</span>))
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">20</span>, <span class="integer">20</span>, <span class="integer">752</span>, <span class="integer">80</span>))
+                .text(<span class="keyword">new</span> TextItem(<span class="integer">30</span>, <span class="integer">50</span>, <span class="integer">200</span>, <span class="integer">20</span>).text(<span class="string"><span class="delimiter">&quot;</span><span class="content">Map Title</span><span class="delimiter">&quot;</span></span>).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.BOLD, <span class="integer">36</span>)))
+                .dateText(<span class="keyword">new</span> DateTextItem(<span class="integer">30</span>, <span class="integer">85</span>, <span class="integer">200</span>, <span class="integer">10</span>).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.ITALIC, <span class="integer">14</span>)))
+                .scaleText(<span class="keyword">new</span> ScaleTextItem(<span class="integer">150</span>, <span class="integer">85</span>, <span class="integer">200</span>, <span class="integer">10</span>).map(map).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.ITALIC, <span class="integer">14</span>)))
+                .paragraph(<span class="keyword">new</span> ParagraphItem(<span class="integer">250</span>, <span class="integer">30</span>, <span class="integer">380</span>, <span class="integer">70</span>).text(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.PLAIN, <span class="integer">8</span>)))
+                .line(<span class="keyword">new</span> LineItem(<span class="integer">710</span>, <span class="integer">30</span>, <span class="integer">1</span>, <span class="integer">60</span>))
+                .image(<span class="keyword">new</span> ImageItem(<span class="integer">640</span>, <span class="integer">30</span>, <span class="integer">60</span>, <span class="integer">60</span>).path(<span class="keyword">new</span> <span class="predefined-type">File</span>(getClass().getClassLoader().getResource(<span class="string"><span class="delimiter">&quot;</span><span class="content">image.png</span><span class="delimiter">&quot;</span></span>).toURI())))
+                .northArrow(<span class="keyword">new</span> NorthArrowItem(<span class="integer">720</span>, <span class="integer">30</span>, <span class="integer">40</span>, <span class="integer">60</span>))
+                .map(<span class="keyword">new</span> MapItem(<span class="integer">20</span>, <span class="integer">110</span>, <span class="integer">752</span>, <span class="integer">480</span>).map(map))
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">20</span>, <span class="integer">110</span>, <span class="integer">752</span>, <span class="integer">480</span>))
+                .build(outputStream)
+
+        }</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/carto_pdf_builder.png" alt="carto pdf builder">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="svgcartobuilder"><a class="anchor" href="#svgcartobuilder"></a>SvgCartoBuilder</h4>
+<div class="listingblock">
+<div class="title">Use the SvgCartoBuilder to create a SVG document.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+        Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+        countries.style = <span class="keyword">new</span> SLDReader().read(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/countries.sld</span><span class="delimiter">'</span></span>))
+        Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+        ocean.style = <span class="keyword">new</span> SLDReader().read(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/ocean.sld</span><span class="delimiter">'</span></span>))
+        <span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+                <span class="key">layers</span>: [ocean, countries],
+                <span class="key">bounds</span>: <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">85</span>,<span class="integer">180</span>,<span class="integer">85</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>).reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>),
+                <span class="key">projection</span>: <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>)
+        )
+
+        <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.svg</span><span class="delimiter">&quot;</span></span>)
+        file.withOutputStream { <span class="predefined-type">OutputStream</span> outputStream -&gt;
+
+            <span class="keyword">new</span> SvgCartoBuilder(PageSize.LETTER_LANDSCAPE)
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">0</span>, <span class="integer">0</span>, <span class="integer">792</span>, <span class="integer">612</span>).strokeColor(<span class="predefined-type">Color</span>.WHITE).fillColor(<span class="predefined-type">Color</span>.WHITE))
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">10</span>, <span class="integer">10</span>, <span class="integer">772</span>, <span class="integer">592</span>))
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">20</span>, <span class="integer">20</span>, <span class="integer">752</span>, <span class="integer">80</span>))
+                .text(<span class="keyword">new</span> TextItem(<span class="integer">30</span>, <span class="integer">50</span>, <span class="integer">200</span>, <span class="integer">20</span>).text(<span class="string"><span class="delimiter">&quot;</span><span class="content">Map Title</span><span class="delimiter">&quot;</span></span>).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.BOLD, <span class="integer">36</span>)))
+                .dateText(<span class="keyword">new</span> DateTextItem(<span class="integer">30</span>, <span class="integer">85</span>, <span class="integer">200</span>, <span class="integer">10</span>).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.ITALIC, <span class="integer">14</span>)))
+                .scaleText(<span class="keyword">new</span> ScaleTextItem(<span class="integer">150</span>, <span class="integer">85</span>, <span class="integer">200</span>, <span class="integer">10</span>).map(map).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.ITALIC, <span class="integer">14</span>)))
+                .paragraph(<span class="keyword">new</span> ParagraphItem(<span class="integer">250</span>, <span class="integer">30</span>, <span class="integer">380</span>, <span class="integer">70</span>).text(<span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>).font(<span class="keyword">new</span> <span class="predefined-type">Font</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Arial</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Font</span>.PLAIN, <span class="integer">8</span>)))
+                .line(<span class="keyword">new</span> LineItem(<span class="integer">710</span>, <span class="integer">30</span>, <span class="integer">1</span>, <span class="integer">60</span>))
+                .image(<span class="keyword">new</span> ImageItem(<span class="integer">640</span>, <span class="integer">30</span>, <span class="integer">60</span>, <span class="integer">60</span>).path(<span class="keyword">new</span> <span class="predefined-type">File</span>(getClass().getClassLoader().getResource(<span class="string"><span class="delimiter">&quot;</span><span class="content">image.png</span><span class="delimiter">&quot;</span></span>).toURI())))
+                .northArrow(<span class="keyword">new</span> NorthArrowItem(<span class="integer">720</span>, <span class="integer">30</span>, <span class="integer">40</span>, <span class="integer">60</span>))
+                .map(<span class="keyword">new</span> MapItem(<span class="integer">20</span>, <span class="integer">110</span>, <span class="integer">752</span>, <span class="integer">480</span>).map(map))
+                .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">20</span>, <span class="integer">110</span>, <span class="integer">752</span>, <span class="integer">480</span>))
+                .build(outputStream)
+
+        }</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/carto_svg_builder.png" alt="carto svg builder">
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-15 17:29:14 UTC
+Last updated 2020-03-17 02:59:05 UTC
 </div>
 </div>
 </body>
