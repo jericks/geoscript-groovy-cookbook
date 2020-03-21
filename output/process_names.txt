@@ -64,14 +64,14 @@ geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
 geo:envelope
-geo:polygonize
 geo:isRing
+geo:polygonize
 geo:endPoint
 geo:equalsExact
 geo:pointN
 geo:relatePattern
-geo:interiorRingN
 geo:equalsExactTolerance
+geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
