@@ -1,7 +1,6 @@
 package geoscript.cookbook
 
 import geoscript.plot.Chart
-import javafx.scene.chart.BarChart
 import org.junit.Test
 
 import java.awt.image.BufferedImage
