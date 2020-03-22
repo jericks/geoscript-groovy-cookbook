@@ -20,6 +20,16 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=map,indent=0]
 [.thumb]
 image::carto_map.png[]
 
+==== Adding an Overview Map
+
+[source,groovy]
+.Add an overview map
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=overViewMap,indent=0]
+----
+[.thumb]
+image::carto_overviewmap.png[]
+
 ==== Adding a Text
 
 [source,groovy]

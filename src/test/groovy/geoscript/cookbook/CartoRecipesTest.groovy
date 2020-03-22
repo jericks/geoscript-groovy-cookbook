@@ -13,6 +13,12 @@ class CartoRecipesTest {
         assertNotNull(image)
     }
 
+    @Test void overViewMap() {
+        CartoRecipes recipes = new CartoRecipes()
+        BufferedImage image = recipes.overViewMap()
+        assertNotNull(image)
+    }
+
     @Test void text() {
         CartoRecipes recipes = new CartoRecipes()
         BufferedImage image = recipes.text()

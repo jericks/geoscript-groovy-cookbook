@@ -10,6 +10,7 @@ import geoscript.carto.ImageItem
 import geoscript.carto.LineItem
 import geoscript.carto.MapItem
 import geoscript.carto.NorthArrowItem
+import geoscript.carto.OverviewMapItem
 import geoscript.carto.PageSize
 import geoscript.carto.ParagraphItem
 import geoscript.carto.PdfCartoBuilder
@@ -62,6 +63,51 @@ class CartoRecipes extends Recipes {
         }
         // end::map[]
         File toFile = new File("src/docs/asciidoc/images/carto_map.png")
+        moveFile(file, toFile)
+        ImageIO.read(toFile)
+    }
+
+    BufferedImage overViewMap() {
+        // tag::overViewMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        Map map = new Map(
+                layers: [ocean, countries],
+                bounds: new Bounds(-166.436348,6.574916,-12.451973,60.715022, "EPSG:4326").reproject("EPSG:3857"),
+                projection: new Projection("EPSG:3857")
+        )
+        Map overViewMap = new Map(
+                layers: [ocean, countries],
+                bounds: new Bounds(-180,-85,180,85, "EPSG:4326").reproject("EPSG:3857"),
+                projection: new Projection("EPSG:3857")
+        )
+
+        File file = new File("map.png")
+        file.withOutputStream { OutputStream outputStream ->
+
+            PageSize pageSize = PageSize.LETTER_LANDSCAPE
+
+            CartoFactories.findByName("png")
+                .create(pageSize)
+                .rectangle(new RectangleItem(0, 0, pageSize.width - 1, pageSize.height - 1)
+                    .fillColor(Color.WHITE)
+                )
+                .map(new MapItem(20, 20, pageSize.width - 40, pageSize.height - 40).map(map))
+                .rectangle(new RectangleItem(20, 20, pageSize.width - 40, pageSize.height - 40))
+                .overViewMap(new OverviewMapItem(40, pageSize.height - 240, 200, 200)
+                    .linkedMap(map)
+                    .overviewMap(overViewMap)
+                    .zoomIntoBounds(false)
+                )
+                .rectangle(new RectangleItem(40, pageSize.height - 240, 200,200))
+                .build(outputStream)
+
+        }
+        // end::overViewMap[]
+        File toFile = new File("src/docs/asciidoc/images/carto_overviewmap.png")
         moveFile(file, toFile)
         ImageIO.read(toFile)
     }
