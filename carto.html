@@ -532,6 +532,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#items">Items</a>
 <ul class="sectlevel3">
 <li><a href="#adding-a-map">Adding a Map</a></li>
+<li><a href="#adding-an-overview-map">Adding an Overview Map</a></li>
 <li><a href="#adding-a-text">Adding a Text</a></li>
 <li><a href="#adding-a-rectangle">Adding a Rectangle</a></li>
 <li><a href="#adding-a-north-arrow">Adding a North Arrow</a></li>
@@ -603,6 +604,56 @@ file.withOutputStream { <span class="predefined-type">OutputStream</span> output
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/carto_map.png" alt="carto map">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-an-overview-map"><a class="anchor" href="#adding-an-overview-map"></a>Adding an Overview Map</h4>
+<div class="listingblock">
+<div class="title">Add an overview map</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Workspace workspace = <span class="keyword">new</span> GeoPackage(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/data.gpkg</span><span class="delimiter">'</span></span>)
+Layer countries = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">countries</span><span class="delimiter">&quot;</span></span>)
+countries.style = <span class="keyword">new</span> SLDReader().read(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/countries.sld</span><span class="delimiter">'</span></span>))
+Layer ocean = workspace.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">ocean</span><span class="delimiter">&quot;</span></span>)
+ocean.style = <span class="keyword">new</span> SLDReader().read(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">src/main/resources/ocean.sld</span><span class="delimiter">'</span></span>))
+<span class="predefined-type">Map</span> map = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">layers</span>: [ocean, countries],
+        <span class="key">bounds</span>: <span class="keyword">new</span> Bounds(-<span class="float">166.436348</span>,<span class="float">6.574916</span>,-<span class="float">12.451973</span>,<span class="float">60.715022</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>).reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>),
+        <span class="key">projection</span>: <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>)
+)
+<span class="predefined-type">Map</span> overViewMap = <span class="keyword">new</span> <span class="predefined-type">Map</span>(
+        <span class="key">layers</span>: [ocean, countries],
+        <span class="key">bounds</span>: <span class="keyword">new</span> Bounds(-<span class="integer">180</span>,-<span class="integer">85</span>,<span class="integer">180</span>,<span class="integer">85</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:4326</span><span class="delimiter">&quot;</span></span>).reproject(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>),
+        <span class="key">projection</span>: <span class="keyword">new</span> Projection(<span class="string"><span class="delimiter">&quot;</span><span class="content">EPSG:3857</span><span class="delimiter">&quot;</span></span>)
+)
+
+<span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">map.png</span><span class="delimiter">&quot;</span></span>)
+file.withOutputStream { <span class="predefined-type">OutputStream</span> outputStream -&gt;
+
+    PageSize pageSize = PageSize.LETTER_LANDSCAPE
+
+    CartoFactories.findByName(<span class="string"><span class="delimiter">&quot;</span><span class="content">png</span><span class="delimiter">&quot;</span></span>)
+        .create(pageSize)
+        .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">0</span>, <span class="integer">0</span>, pageSize.width - <span class="integer">1</span>, pageSize.height - <span class="integer">1</span>)
+            .fillColor(<span class="predefined-type">Color</span>.WHITE)
+        )
+        .map(<span class="keyword">new</span> MapItem(<span class="integer">20</span>, <span class="integer">20</span>, pageSize.width - <span class="integer">40</span>, pageSize.height - <span class="integer">40</span>).map(map))
+        .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">20</span>, <span class="integer">20</span>, pageSize.width - <span class="integer">40</span>, pageSize.height - <span class="integer">40</span>))
+        .overViewMap(<span class="keyword">new</span> OverviewMapItem(<span class="integer">40</span>, pageSize.height - <span class="integer">240</span>, <span class="integer">200</span>, <span class="integer">200</span>)
+            .linkedMap(map)
+            .overviewMap(overViewMap)
+            .zoomIntoBounds(<span class="predefined-constant">false</span>)
+        )
+        .rectangle(<span class="keyword">new</span> RectangleItem(<span class="integer">40</span>, pageSize.height - <span class="integer">240</span>, <span class="integer">200</span>,<span class="integer">200</span>))
+        .build(outputStream)
+
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/carto_overviewmap.png" alt="carto overviewmap">
 </div>
 </div>
 </div>
@@ -1190,7 +1241,7 @@ all copies or substantial portions of the Software.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-21 23:39:11 UTC
+Last updated 2020-03-23 20:48:42 UTC
 </div>
 </div>
 </body>
