@@ -10,6 +10,7 @@ import geoscript.carto.ImageItem
 import geoscript.carto.LineItem
 import geoscript.carto.MapItem
 import geoscript.carto.NorthArrowItem
+import geoscript.carto.NorthArrowStyle
 import geoscript.carto.OverviewMapItem
 import geoscript.carto.PageSize
 import geoscript.carto.ParagraphItem
@@ -217,12 +218,51 @@ class CartoRecipes extends Recipes {
                     .fillColor(Color.WHITE)
                 )
                 .map(new MapItem(20, 20, pageSize.width - 40, pageSize.height - 40).map(map))
-                .northArrow(new NorthArrowItem(pageSize.width - 60, pageSize.height - 80, 40, 60))
+                .northArrow(new NorthArrowItem(pageSize.width - 60, pageSize.height - 100, 40, 80)
+                    .font(new Font("Arial", Font.BOLD, 24))
+                    .drawText(true))
                 .build(outputStream)
 
         }
         // end::northArrow[]
         File toFile = new File("src/docs/asciidoc/images/carto_northarrow.png")
+        moveFile(file, toFile)
+        ImageIO.read(toFile)
+    }
+
+    BufferedImage northArrow2() {
+        // tag::northArrow2[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        Map map = new Map(
+                layers: [ocean, countries],
+                bounds: new Bounds(-180,-85,180,85, "EPSG:4326").reproject("EPSG:3857"),
+                projection: new Projection("EPSG:3857")
+        )
+
+        File file = new File("map.png")
+        file.withOutputStream { OutputStream outputStream ->
+
+            PageSize pageSize = PageSize.LETTER_LANDSCAPE
+
+            CartoFactories.findByName("png")
+                    .create(pageSize)
+                    .rectangle(new RectangleItem(0, 0, pageSize.width - 1, pageSize.height - 1)
+                            .fillColor(Color.WHITE)
+                    )
+                    .map(new MapItem(20, 20, pageSize.width - 40, pageSize.height - 40).map(map))
+                    .northArrow(new NorthArrowItem(pageSize.width - 100, pageSize.height - 100, 80, 80)
+                        .style(NorthArrowStyle.NorthEastSouthWest)
+                        .font(new Font("Arial", Font.BOLD, 14))
+                        .drawText(true))
+                    .build(outputStream)
+
+        }
+        // end::northArrow2[]
+        File toFile = new File("src/docs/asciidoc/images/carto_northarrow2.png")
         moveFile(file, toFile)
         ImageIO.read(toFile)
     }

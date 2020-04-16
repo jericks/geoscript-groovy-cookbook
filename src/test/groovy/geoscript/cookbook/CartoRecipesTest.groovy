@@ -37,6 +37,12 @@ class CartoRecipesTest {
         assertNotNull(image)
     }
 
+    @Test void northArrow2() {
+        CartoRecipes recipes = new CartoRecipes()
+        BufferedImage image = recipes.northArrow2()
+        assertNotNull(image)
+    }
+
     @Test void dateText() {
         CartoRecipes recipes = new CartoRecipes()
         BufferedImage image = recipes.dateText()

@@ -60,6 +60,17 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=northArrow,inde
 [.thumb]
 image::carto_northarrow.png[]
 
+==== Adding a NESW North Arrow
+
+[source,groovy]
+.Add a NESW north arrow
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=northArrow2,indent=0]
+----
+[.thumb]
+image::carto_northarrow2.png[]
+
+
 ==== Adding a Date
 
 [source,groovy]
