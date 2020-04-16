@@ -651,18 +651,19 @@ You are now ready to use GeoScript Groovy!</p>
 <div class="sect3">
 <h4 id="maven"><a class="anchor" href="#maven"></a>Maven</h4>
 <div class="listingblock">
-<div class="title">You can also use GeoScript Groovy as a library. If you use Maven you will need to add the Boundless Maven Repository:</div>
+<div class="title">You can also use GeoScript Groovy as a library. If you use Maven you will need to add the OSGeo Maven Repository:</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;repositories&gt;</span>
-    <span class="tag">&lt;repository&gt;</span>
-        <span class="tag">&lt;id&gt;</span>boundless<span class="tag">&lt;/id&gt;</span>
-        <span class="tag">&lt;name&gt;</span>Boundless Maven Repository<span class="tag">&lt;/name&gt;</span>
-        <span class="tag">&lt;url&gt;</span>https://repo.boundlessgeo.com/main<span class="tag">&lt;/url&gt;</span>
-        <span class="tag">&lt;snapshots&gt;</span>
-            <span class="tag">&lt;enabled&gt;</span>true<span class="tag">&lt;/enabled&gt;</span>
-        <span class="tag">&lt;/snapshots&gt;</span>
-    <span class="tag">&lt;/repository&gt;</span>
-<span class="tag">&lt;/repositories&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;repository&gt;</span>
+    <span class="tag">&lt;id&gt;</span>osgeo-releases<span class="tag">&lt;/id&gt;</span>
+    <span class="tag">&lt;name&gt;</span>OSGeo Nexus Release Repository<span class="tag">&lt;/name&gt;</span>
+    <span class="tag">&lt;url&gt;</span>https://repo.osgeo.org/repository/release/<span class="tag">&lt;/url&gt;</span>
+    <span class="tag">&lt;snapshots&gt;</span>
+        <span class="tag">&lt;enabled&gt;</span>false<span class="tag">&lt;/enabled&gt;</span>
+    <span class="tag">&lt;/snapshots&gt;</span>
+    <span class="tag">&lt;releases&gt;</span>
+        <span class="tag">&lt;enabled&gt;</span>true<span class="tag">&lt;/enabled&gt;</span>
+    <span class="tag">&lt;/releases&gt;</span>
+<span class="tag">&lt;/repository&gt;</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -683,10 +684,7 @@ You are now ready to use GeoScript Groovy!</p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">repositories {
     maven {
-        url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://repo.boundlessgeo.com/main</span><span class="delimiter">&quot;</span></span>
-    }
-    maven {
-        url <span class="string"><span class="delimiter">&quot;</span><span class="content">http://download.osgeo.org/webdav/geotools/</span><span class="delimiter">&quot;</span></span>
+        url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://repo.osgeo.org/repository/release/</span><span class="delimiter">&quot;</span></span>
     }
 }</code></pre>
 </div>
@@ -706,7 +704,7 @@ You are now ready to use GeoScript Groovy!</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-23 20:48:42 UTC
+Last updated 2020-04-16 03:55:56 UTC
 </div>
 </div>
 </body>
