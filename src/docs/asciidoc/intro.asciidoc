@@ -78,18 +78,19 @@ echo "POINT (1 1)" | geom buffer -d 10 | geoscript-groovy -e "println geoscript.
 ==== Maven
 
 [source,xml]
-.You can also use GeoScript Groovy as a library. If you use Maven you will need to add the Boundless Maven Repository:
+.You can also use GeoScript Groovy as a library. If you use Maven you will need to add the OSGeo Maven Repository:
 ----
-<repositories>
-    <repository>
-        <id>boundless</id>
-        <name>Boundless Maven Repository</name>
-        <url>https://repo.boundlessgeo.com/main</url>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-    </repository>
-</repositories>
+<repository>
+    <id>osgeo-releases</id>
+    <name>OSGeo Nexus Release Repository</name>
+    <url>https://repo.osgeo.org/repository/release/</url>
+    <snapshots>
+        <enabled>false</enabled>
+    </snapshots>
+    <releases>
+        <enabled>true</enabled>
+    </releases>
+</repository>
 ----
 
 [source,xml]
@@ -109,10 +110,7 @@ echo "POINT (1 1)" | geom buffer -d 10 | geoscript-groovy -e "println geoscript.
 ----
 repositories {
     maven {
-        url "https://repo.boundlessgeo.com/main"
-    }
-    maven {
-        url "http://download.osgeo.org/webdav/geotools/"
+        url "https://repo.osgeo.org/repository/release/"
     }
 }
 ----
