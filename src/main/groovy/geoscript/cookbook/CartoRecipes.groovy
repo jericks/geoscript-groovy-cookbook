@@ -7,6 +7,7 @@ import geoscript.carto.GridItem
 import geoscript.carto.HorizontalAlign
 import geoscript.carto.ImageCartoBuilder
 import geoscript.carto.ImageItem
+import geoscript.carto.LegendItem
 import geoscript.carto.LineItem
 import geoscript.carto.MapItem
 import geoscript.carto.NorthArrowItem
@@ -24,6 +25,8 @@ import geoscript.geom.Bounds
 import geoscript.layer.Layer
 import geoscript.proj.Projection
 import geoscript.render.Map
+import geoscript.style.Shape
+import geoscript.style.Stroke
 import geoscript.style.io.SLDReader
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
@@ -263,6 +266,44 @@ class CartoRecipes extends Recipes {
         }
         // end::northArrow2[]
         File toFile = new File("src/docs/asciidoc/images/carto_northarrow2.png")
+        moveFile(file, toFile)
+        ImageIO.read(toFile)
+    }
+
+    BufferedImage legendFromMap() {
+        // tag::legendFromMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        Layer places = workspace.get("places")
+        places.style = new Shape("red", 8, "star")
+        Layer rivers = workspace.get("rivers")
+        rivers.style = new Stroke("blue", 1)
+        Map map = new Map(
+                layers: [ocean, countries, rivers, places],
+                bounds: new Bounds(-180,-85,180,85, "EPSG:4326").reproject("EPSG:3857"),
+                projection: new Projection("EPSG:3857")
+        )
+
+        File file = new File("map.png")
+        file.withOutputStream { OutputStream outputStream ->
+
+            PageSize pageSize = PageSize.LETTER_LANDSCAPE
+
+            CartoFactories.findByName("png")
+                    .create(pageSize)
+                    .rectangle(new RectangleItem(0, 0, pageSize.width - 1, pageSize.height - 1)
+                            .fillColor(Color.WHITE)
+                    )
+                    .map(new MapItem(220, 20, pageSize.width - 240, pageSize.height - 40).map(map))
+                    .legend(new LegendItem(20, 20, 200, pageSize.height - 40).addMap(map))
+                    .build(outputStream)
+
+        }
+        // end::legendFromMap[]
+        File toFile = new File("src/docs/asciidoc/images/carto_legendFromMap.png")
         moveFile(file, toFile)
         ImageIO.read(toFile)
     }

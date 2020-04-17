@@ -43,6 +43,12 @@ class CartoRecipesTest {
         assertNotNull(image)
     }
 
+    @Test void legendFromMap() {
+        CartoRecipes recipes = new CartoRecipes()
+        BufferedImage image = recipes.legendFromMap()
+        assertNotNull(image)
+    }
+
     @Test void dateText() {
         CartoRecipes recipes = new CartoRecipes()
         BufferedImage image = recipes.dateText()

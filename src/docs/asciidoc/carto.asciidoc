@@ -70,6 +70,15 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=northArrow2,ind
 [.thumb]
 image::carto_northarrow2.png[]
 
+==== Adding a Legend
+
+[source,groovy]
+.Add a legend for a Map
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=legendFromMap,indent=0]
+----
+[.thumb]
+image::carto_legendFromMap.png[]
 
 ==== Adding a Date
 
