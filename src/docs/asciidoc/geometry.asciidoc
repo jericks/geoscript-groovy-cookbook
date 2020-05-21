@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Geometry Recipes
 
-The Geometry classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.15.0/geoscript/geom/package-summary.html[geoscript.geom]* package.
+The Geometry classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.16-SNAPSHOT/geoscript/geom/package-summary.html[geoscript.geom]* package.
 
 === Creating Geometries
 
@@ -1685,7 +1685,7 @@ include::output/geometry_preparedgeometry_within_2.txt[]
 
 === Reading and Writing Geometries
 
-The *http://geoscript.github.io/geoscript-groovy/api/1.15.0/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
+The *http://geoscript.github.io/geoscript-groovy/api/1.16-SNAPSHOT/geoscript/geom/io/package-summary.html[geoscript.geom.io]* package
 has several Readers and Writers for converting geoscript.geom.Geometry to and from strings.
 
 ==== Readers and Writers
