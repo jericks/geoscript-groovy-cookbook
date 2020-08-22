@@ -1441,6 +1441,63 @@ ${polygon.interiorRings.collect { '  ' + it.wkt }.join(NEW_LINE)}
         geometries
     }
 
+    Geometry variableBufferTwo() {
+
+        // tag::variableBufferTwo[]
+        LineString line = new LineString([
+                [-122.38494873046875, 47.57281986733871],
+                [-122.27508544921875, 47.342545069660225],
+                [-122.15972900390624, 47.14302937421008],
+                [-121.96197509765625, 47.03082254778662],
+                [-121.73950195312499, 46.89586230605985],
+                [-121.56372070312499, 46.81509864599243]
+        ])
+        Geometry buffer = line.variableBuffer([0.03, 0.07])
+        // end::variableBufferTwo[]
+
+        drawGeometries("geometry_variable_buffer_two", [buffer, line])
+
+        buffer
+    }
+
+    Geometry variableBufferThree() {
+
+        // tag::variableBufferThree[]
+        LineString line = new LineString([
+                [-122.38494873046875, 47.57281986733871],
+                [-122.27508544921875, 47.342545069660225],
+                [-122.15972900390624, 47.14302937421008],
+                [-121.96197509765625, 47.03082254778662],
+                [-121.73950195312499, 46.89586230605985],
+                [-121.56372070312499, 46.81509864599243]
+        ])
+        Geometry buffer = line.variableBuffer([0.03, 0.07, 0.1])
+        // end::variableBufferThree[]
+
+        drawGeometries("geometry_variable_buffer_three", [buffer, line])
+
+        buffer
+    }
+
+    Geometry variableBufferSameNumber() {
+
+        // tag::variableBufferSameNumber[]
+        LineString line = new LineString([
+                [-122.38494873046875, 47.57281986733871],
+                [-122.27508544921875, 47.342545069660225],
+                [-122.15972900390624, 47.14302937421008],
+                [-121.96197509765625, 47.03082254778662],
+                [-121.73950195312499, 46.89586230605985],
+                [-121.56372070312499, 46.81509864599243]
+        ])
+        Geometry buffer = line.variableBuffer([0.03, 0.05, 0.07, 0.09, 0.1, 0.2])
+        // end::variableBufferSameNumber[]
+
+        drawGeometries("geometry_variable_buffer_samenumber", [buffer, line])
+
+        buffer
+    }
+
     Map<String, Boolean> contains() {
 
         Map<String, Boolean> results = [:]

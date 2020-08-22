@@ -594,6 +594,24 @@ class GeometryRecipesTest {
         geometries.each { Geometry g -> assertNotNull(g) }
     }
 
+    @Test void variableBufferTwo() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.variableBufferTwo()
+        assertTrue(geometry instanceof Polygon)
+    }
+
+    @Test void variableBufferThree() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.variableBufferThree()
+        assertTrue(geometry instanceof Polygon)
+    }
+
+    @Test void variableBufferSameNumber() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geometry = recipes.variableBufferSameNumber()
+        assertTrue(geometry instanceof Polygon)
+    }
+
     @Test void contains() {
         GeometryRecipes recipes = new GeometryRecipes()
         Map<String,Boolean> results = recipes.contains()

@@ -817,6 +817,30 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=bufferLineSt
 image::geometry_buffer_line_singlesided2.png[]
 
 [source,groovy]
+.Buffer a LineString with a beginning and end distance.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=variableBufferTwo,indent=0]
+----
+[.thumb]
+image::geometry_variable_buffer_two.png[]
+
+[source,groovy]
+.Buffer a LineString with a beginning, middle, and end distance.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=variableBufferThree,indent=0]
+----
+[.thumb]
+image::geometry_variable_buffer_three.png[]
+
+[source,groovy]
+.Buffer a LineString with a list of distances.
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=variableBufferSameNumber,indent=0]
+----
+[.thumb]
+image::geometry_variable_buffer_samenumber.png[]
+
+[source,groovy]
 .Check whether a Geometry contains another Geometry
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=contains1,indent=0]
