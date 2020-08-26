@@ -3665,6 +3665,36 @@ Geometry minimumClearance = geometry.minimumClearance</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Calculate the largest empty circle within a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry g = Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POLYGON ((-122.38855361938475 47.5805786829606, -122.38636493682861 47.5783206388176, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38700866699219 47.5750491969984, -122.38177299499512 47.57502024527343, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38481998443604 47.5780600889959, -122.38151550292969 47.5805786829606, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38855361938475 47.5805786829606))</span><span class="delimiter">&quot;</span></span>)
+Geometry circle = g.getLargestEmptyCircle(<span class="float">1.0</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_largest_empty_circle.png" alt="geometry largest empty circle">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Calculate the maximum inscribed circle within a Geometry</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Geometry g = Geometry.fromWKT(<span class="string"><span class="delimiter">&quot;</span><span class="content">POLYGON ((-122.38855361938475 47.5805786829606, -122.38636493682861 47.5783206388176, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38700866699219 47.5750491969984, -122.38177299499512 47.57502024527343, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38481998443604 47.5780600889959, -122.38151550292969 47.5805786829606, </span><span class="delimiter">&quot;</span></span> +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">-122.38855361938475 47.5805786829606))</span><span class="delimiter">&quot;</span></span>)
+Geometry circle = g.getMaximumInscribedCircle(<span class="float">1.0</span>)</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_maximum_inscribed_circle.png" alt="geometry maximum inscribed circle">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Offset a LineString by a given distance. Positive distances will offset to the right. Negative distance will offset to the left.</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">LineString line = <span class="keyword">new</span> LineString(
@@ -4430,8 +4460,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 209223362 nanoseconds
-Time with PreparedGeometry = 159412199 nanoseconds</pre>
+<pre>Time with Geometry         = 276027343 nanoseconds
+Time with PreparedGeometry = 144890526 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4476,8 +4506,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 226209485 nanoseconds
-Time with PreparedGeometry = 213380266 nanoseconds</pre>
+<pre>Time with Geometry         = 151059946 nanoseconds
+Time with PreparedGeometry = 151318918 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5715,7 +5745,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-26 23:05:25 UTC
+Last updated 2020-08-26 23:23:37 UTC
 </div>
 </div>
 </body>
