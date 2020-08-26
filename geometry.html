@@ -2596,6 +2596,63 @@ Geometry rightBufferedLine = line.singleSidedBuffer(<span class="float">1.5</spa
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Buffer a LineString with a beginning and end distance.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString line = <span class="keyword">new</span> LineString([
+        [-<span class="float">122.38494873046875</span>, <span class="float">47.57281986733871</span>],
+        [-<span class="float">122.27508544921875</span>, <span class="float">47.342545069660225</span>],
+        [-<span class="float">122.15972900390624</span>, <span class="float">47.14302937421008</span>],
+        [-<span class="float">121.96197509765625</span>, <span class="float">47.03082254778662</span>],
+        [-<span class="float">121.73950195312499</span>, <span class="float">46.89586230605985</span>],
+        [-<span class="float">121.56372070312499</span>, <span class="float">46.81509864599243</span>]
+])
+Geometry buffer = line.variableBuffer([<span class="float">0.03</span>, <span class="float">0.07</span>])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_variable_buffer_two.png" alt="geometry variable buffer two">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buffer a LineString with a beginning, middle, and end distance.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString line = <span class="keyword">new</span> LineString([
+        [-<span class="float">122.38494873046875</span>, <span class="float">47.57281986733871</span>],
+        [-<span class="float">122.27508544921875</span>, <span class="float">47.342545069660225</span>],
+        [-<span class="float">122.15972900390624</span>, <span class="float">47.14302937421008</span>],
+        [-<span class="float">121.96197509765625</span>, <span class="float">47.03082254778662</span>],
+        [-<span class="float">121.73950195312499</span>, <span class="float">46.89586230605985</span>],
+        [-<span class="float">121.56372070312499</span>, <span class="float">46.81509864599243</span>]
+])
+Geometry buffer = line.variableBuffer([<span class="float">0.03</span>, <span class="float">0.07</span>, <span class="float">0.1</span>])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_variable_buffer_three.png" alt="geometry variable buffer three">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buffer a LineString with a list of distances.</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">LineString line = <span class="keyword">new</span> LineString([
+        [-<span class="float">122.38494873046875</span>, <span class="float">47.57281986733871</span>],
+        [-<span class="float">122.27508544921875</span>, <span class="float">47.342545069660225</span>],
+        [-<span class="float">122.15972900390624</span>, <span class="float">47.14302937421008</span>],
+        [-<span class="float">121.96197509765625</span>, <span class="float">47.03082254778662</span>],
+        [-<span class="float">121.73950195312499</span>, <span class="float">46.89586230605985</span>],
+        [-<span class="float">121.56372070312499</span>, <span class="float">46.81509864599243</span>]
+])
+Geometry buffer = line.variableBuffer([<span class="float">0.03</span>, <span class="float">0.05</span>, <span class="float">0.07</span>, <span class="float">0.09</span>, <span class="float">0.1</span>, <span class="float">0.2</span>])</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_variable_buffer_samenumber.png" alt="geometry variable buffer samenumber">
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Check whether a Geometry contains another Geometry</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Polygon</span> polygon1 = <span class="keyword">new</span> <span class="predefined-type">Polygon</span>([[
@@ -4373,8 +4430,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 217624658 nanoseconds
-Time with PreparedGeometry = 158847719 nanoseconds</pre>
+<pre>Time with Geometry         = 209223362 nanoseconds
+Time with PreparedGeometry = 159412199 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4419,8 +4476,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 141244085 nanoseconds
-Time with PreparedGeometry = 135136719 nanoseconds</pre>
+<pre>Time with Geometry         = 226209485 nanoseconds
+Time with PreparedGeometry = 213380266 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5658,7 +5715,7 @@ println str</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-21 00:35:17 UTC
+Last updated 2020-08-26 23:05:25 UTC
 </div>
 </div>
 </body>
