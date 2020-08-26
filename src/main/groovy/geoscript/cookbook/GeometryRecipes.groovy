@@ -1498,6 +1498,36 @@ ${polygon.interiorRings.collect { '  ' + it.wkt }.join(NEW_LINE)}
         buffer
     }
 
+    Geometry getLargestEmptyCircle() {
+
+        // tag::getLargestEmptyCircle[]
+        Geometry g = Geometry.fromWKT("POLYGON ((-122.38855361938475 47.5805786829606, -122.38636493682861 47.5783206388176, " +
+                "-122.38700866699219 47.5750491969984, -122.38177299499512 47.57502024527343, " +
+                "-122.38481998443604 47.5780600889959, -122.38151550292969 47.5805786829606, " +
+                "-122.38855361938475 47.5805786829606))")
+        Geometry circle = g.getLargestEmptyCircle(1.0)
+        // end::getLargestEmptyCircle[]
+
+        drawGeometries("geometry_largest_empty_circle", [g, circle])
+
+        circle
+    }
+
+    Geometry getMaximumInscribedCircle() {
+
+        // tag::getMaximumInscribedCircle[]
+        Geometry g = Geometry.fromWKT("POLYGON ((-122.38855361938475 47.5805786829606, -122.38636493682861 47.5783206388176, " +
+                "-122.38700866699219 47.5750491969984, -122.38177299499512 47.57502024527343, " +
+                "-122.38481998443604 47.5780600889959, -122.38151550292969 47.5805786829606, " +
+                "-122.38855361938475 47.5805786829606))")
+        Geometry circle = g.getMaximumInscribedCircle(1.0)
+        // end::getMaximumInscribedCircle[]
+
+        drawGeometries("geometry_maximum_inscribed_circle", [g, circle])
+
+        circle
+    }
+
     Map<String, Boolean> contains() {
 
         Map<String, Boolean> results = [:]

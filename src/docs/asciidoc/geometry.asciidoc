@@ -1211,6 +1211,22 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getMinimumCl
 image::geometry_minimumClearance.png[]
 
 [source,groovy]
+.Calculate the largest empty circle within a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getLargestEmptyCircle,indent=0]
+----
+[.thumb]
+image::geometry_largest_empty_circle.png[]
+
+[source,groovy]
+.Calculate the maximum inscribed circle within a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getMaximumInscribedCircle,indent=0]
+----
+[.thumb]
+image::geometry_maximum_inscribed_circle.png[]
+
+[source,groovy]
 .Offset a LineString by a given distance. Positive distances will offset to the right. Negative distance will offset to the left.
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=offset,indent=0]

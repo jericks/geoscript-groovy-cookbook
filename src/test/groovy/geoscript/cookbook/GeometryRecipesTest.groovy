@@ -858,6 +858,24 @@ class GeometryRecipesTest {
         assertEquals("LINESTRING (-122.08831787109375 47.286681888764214, -122.06231070736864 47.23921547912073)", geom.wkt)
     }
 
+    @Test void getLargestEmptyCircle() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry circle = recipes.getLargestEmptyCircle()
+        assertNotNull circle
+        assertTrue circle.isValid()
+        assertFalse circle.isEmpty()
+        assertTrue(circle instanceof Polygon)
+    }
+
+    @Test void getMaximumInscribedCircle() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry circle = recipes.getMaximumInscribedCircle()
+        assertNotNull circle
+        assertTrue circle.isValid()
+        assertFalse circle.isEmpty()
+        assertTrue(circle instanceof Polygon)
+    }
+
     @Test void offset() {
         GeometryRecipes recipes = new GeometryRecipes()
         List<Geometry> geoms = recipes.offset()
