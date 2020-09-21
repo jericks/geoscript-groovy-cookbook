@@ -2,6 +2,7 @@ package geoscript.cookbook
 
 import geoscript.geom.Bounds
 import geoscript.geom.Point
+import geoscript.index.HPRtree
 import geoscript.index.Quadtree
 import geoscript.index.STRtree
 import org.junit.Test
@@ -12,6 +13,12 @@ class SpatialIndexRecipesTest {
     @Test void createSTRtree() {
         SpatialIndexRecipes recipes = new SpatialIndexRecipes()
         STRtree index = recipes.createSTRtree()
+        assertEquals(4, index.size)
+    }
+
+    @Test void createHPRtree() {
+        SpatialIndexRecipes recipes = new SpatialIndexRecipes()
+        HPRtree index = recipes.createHPRtree()
         assertEquals(4, index.size)
     }
 

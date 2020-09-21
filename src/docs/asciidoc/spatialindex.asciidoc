@@ -37,6 +37,39 @@ include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createST
 include::output/spatialindex_strtree_results.txt[]
 ....
 
+=== Using HPRtree
+
+[source,groovy]
+.Create a HPRtree spatial index
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createHPRtree_create,indent=0]
+----
+
+[source,groovy]
+.Insert Geometries and their Bounds
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createHPRtree_insert,indent=0]
+----
+
+[source,groovy]
+.Get the size of the index
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createHPRtree_size,indent=0]
+----
+....
+include::output/spatialindex_hprtree_size.txt[]
+....
+
+[source,groovy]
+.Query the index
+----
+include::{sourcedir}/geoscript/cookbook/SpatialIndexRecipes.groovy[tags=createHPRtree_results,indent=0]
+----
+....
+include::output/spatialindex_hprtree_results.txt[]
+....
+
+
 === Using Quadtree
 
 [source,groovy]
