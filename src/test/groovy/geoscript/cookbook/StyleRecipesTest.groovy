@@ -8,6 +8,7 @@ import geoscript.style.Style
 import geoscript.style.Symbolizer
 import geoscript.style.io.Reader
 import geoscript.style.io.Writer
+import org.junit.Ignore
 import org.junit.Test
 import static org.junit.Assert.*
 
@@ -229,6 +230,7 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
+    @Ignore
     @Test void createLabelForLines() {
         StyleRecipes recipes = new StyleRecipes()
         Symbolizer symbolizer = recipes.createLabelForLines()
