@@ -530,6 +530,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#spatial-index-recipes">Spatial Index Recipes</a>
 <ul class="sectlevel2">
 <li><a href="#using-strtree">Using STRtree</a></li>
+<li><a href="#using-hprtree">Using HPRtree</a></li>
 <li><a href="#using-quadtree">Using Quadtree</a></li>
 <li><a href="#using-geohash">Using GeoHash</a></li>
 </ul>
@@ -586,6 +587,51 @@ results.each { Geometry geometry -&gt;
 <div class="content">
 <pre>POINT (4 4)
 POINT (5 5)</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-hprtree"><a class="anchor" href="#using-hprtree"></a>Using HPRtree</h3>
+<div class="listingblock">
+<div class="title">Create a HPRtree spatial index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">HPRtree index = <span class="keyword">new</span> HPRtree()</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Insert Geometries and their Bounds</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">index.insert(<span class="keyword">new</span> Bounds(<span class="integer">0</span>,<span class="integer">0</span>,<span class="integer">10</span>,<span class="integer">10</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">5</span>,<span class="integer">5</span>))
+index.insert(<span class="keyword">new</span> Bounds(<span class="integer">2</span>,<span class="integer">2</span>,<span class="integer">6</span>,<span class="integer">6</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">4</span>,<span class="integer">4</span>))
+index.insert(<span class="keyword">new</span> Bounds(<span class="integer">20</span>,<span class="integer">20</span>,<span class="integer">60</span>,<span class="integer">60</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">30</span>,<span class="integer">30</span>))
+index.insert(<span class="keyword">new</span> Bounds(<span class="integer">22</span>,<span class="integer">22</span>,<span class="integer">44</span>,<span class="integer">44</span>), <span class="keyword">new</span> <span class="predefined-type">Point</span>(<span class="integer">32</span>,<span class="integer">32</span>))</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get the size of the index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">int</span> size = index.size
+println size</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>4</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Query the index</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span> results = index.query(<span class="keyword">new</span> Bounds(<span class="integer">1</span>,<span class="integer">1</span>,<span class="integer">5</span>,<span class="integer">5</span>))
+results.each { Geometry geometry -&gt;
+    println geometry
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>POINT (5 5)
+POINT (4 4)</pre>
 </div>
 </div>
 </div>
@@ -902,7 +948,7 @@ bboxes.each { <span class="type">long</span> hash -&gt;
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-26 23:23:37 UTC
+Last updated 2020-09-21 23:44:45 UTC
 </div>
 </div>
 </body>
