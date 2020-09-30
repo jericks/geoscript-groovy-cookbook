@@ -99,7 +99,7 @@ echo "POINT (1 1)" | geom buffer -d 10 | geoscript-groovy -e "println geoscript.
 <dependency>
     <groupId>org.geoscript</groupId>
     <artifactId>geoscript-groovy</artifactId>
-    <version>1.16-SNAPSHOT</version>
+    <version>1.16.0</version>
 </dependency>
 ----
 
@@ -119,6 +119,6 @@ repositories {
 .and the include the GeoScript Groovy dependency:
 ----
 dependencies {
-    compile("org.geoscript:geoscript-groovy:1.16-SNAPSHOT")
+    compile("org.geoscript:geoscript-groovy:1.16.0")
 }
 ----
