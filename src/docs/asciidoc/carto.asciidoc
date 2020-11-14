@@ -100,6 +100,16 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=scaleText,inden
 [.thumb]
 image::carto_scaletext.png[]
 
+==== Adding Scale Bar
+
+[source,groovy]
+.Add scale bar
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=scaleBar,indent=0]
+----
+[.thumb]
+image::carto_scalebar.png[]
+
 ==== Adding a Line
 
 [source,groovy]

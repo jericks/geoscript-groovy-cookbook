@@ -17,6 +17,7 @@ import geoscript.carto.PageSize
 import geoscript.carto.ParagraphItem
 import geoscript.carto.PdfCartoBuilder
 import geoscript.carto.RectangleItem
+import geoscript.carto.ScaleBarItem
 import geoscript.carto.ScaleTextItem
 import geoscript.carto.SvgCartoBuilder
 import geoscript.carto.TextItem
@@ -395,6 +396,49 @@ class CartoRecipes extends Recipes {
         }
         // end::scaleText[]
         File toFile = new File("src/docs/asciidoc/images/carto_scaletext.png")
+        moveFile(file, toFile)
+        ImageIO.read(toFile)
+    }
+
+    BufferedImage scaleBar() {
+        // tag::scaleBar[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        Map map = new Map(
+                layers: [ocean, countries],
+                bounds: new Bounds(-180,-85,180,85, "EPSG:4326").reproject("EPSG:3857"),
+                projection: new Projection("EPSG:3857")
+        )
+
+        File file = new File("map.png")
+        file.withOutputStream { OutputStream outputStream ->
+
+            PageSize pageSize = PageSize.LETTER_LANDSCAPE
+
+            CartoFactories.findByName("png")
+                    .create(pageSize)
+                    .rectangle(new RectangleItem(0, 0, pageSize.width - 1, pageSize.height - 1)
+                            .fillColor(Color.WHITE)
+                    )
+                    .text(new TextItem(20,15, pageSize.width - 40, 60)
+                            .text("World Map")
+                            .font(new Font("Arial", Font.BOLD, 42))
+                            .verticalAlign(VerticalAlign.TOP)
+                            .horizontalAlign(HorizontalAlign.CENTER)
+                    )
+                    .map(new MapItem(20, 80, pageSize.width - 40, pageSize.height - 100).map(map))
+                    .scaleBar(new ScaleBarItem(20,pageSize.height - 40, 300, 20)
+                            .map(map)
+                            .units(ScaleBarItem.Units.METRIC)
+                    )
+                    .build(outputStream)
+
+        }
+        // end::scaleBar[]
+        File toFile = new File("src/docs/asciidoc/images/carto_scalebar.png")
         moveFile(file, toFile)
         ImageIO.read(toFile)
     }

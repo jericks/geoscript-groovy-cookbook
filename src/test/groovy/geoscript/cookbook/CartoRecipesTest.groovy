@@ -61,6 +61,12 @@ class CartoRecipesTest {
         assertNotNull(image)
     }
 
+    @Test void scaleBar() {
+        CartoRecipes recipes = new CartoRecipes()
+        BufferedImage image = recipes.scaleBar()
+        assertNotNull(image)
+    }
+
     @Test void line() {
         CartoRecipes recipes = new CartoRecipes()
         BufferedImage image = recipes.line()
