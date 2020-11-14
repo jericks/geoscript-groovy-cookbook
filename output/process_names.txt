@@ -10,6 +10,7 @@ vec:Count
 vec:Feature
 vec:FeatureClassStats
 vec:Grid
+vec:GroupCandidateSelection
 vec:Heatmap
 vec:InclusionFeatureCollection
 vec:IntersectionFeatureCollection
@@ -68,8 +69,8 @@ geo:isRing
 geo:polygonize
 geo:endPoint
 geo:equalsExact
-geo:relatePattern
 geo:pointN
+geo:relatePattern
 geo:interiorRingN
 geo:equalsExactTolerance
 geo:length
