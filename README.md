@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/jericks/geoscript-groovy-cookbook.svg?branch=master)](https://travis-ci.org/jericks/geoscript-groovy-cookbook)
+.. image:: https://github.com/jericks/geoscript-groovy-cookbook/workflows/Maven%20Build/badge.svg
+    :target: https://github.com/jericks/geoscript-groovy-cookbook/actions
 
 GeoScript Groovy Cookbook
 =========================
