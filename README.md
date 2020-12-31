@@ -1,5 +1,4 @@
-.. image:: https://github.com/jericks/geoscript-groovy-cookbook/workflows/Maven%20Build/badge.svg
-    :target: https://github.com/jericks/geoscript-groovy-cookbook/actions
+[![Github Action](https://github.com/jericks/geoscript-groovy-cookbook/workflows/Build/badge.svg)](https://github.com/jericks/geoscript-groovy-cookbook/actions)
 
 GeoScript Groovy Cookbook
 =========================
