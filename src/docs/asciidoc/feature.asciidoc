@@ -5,6 +5,14 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 The Feature classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.17-SNAPSHOT/geoscript/feature/package-summary.html[geoscript.feature]* package.
 
+The major classes in this package include Field, Schema, and Feature.
+
+A Field has a name and a type and describes a column of data.
+
+A Schema is a collection of Fields together with a name.  Schemas are used to create new Layers.
+
+A Feature contains a geometry and a collection of attributes.  A collection of Features is called a Layer.
+
 === Creating Fields
 
 [source,groovy]

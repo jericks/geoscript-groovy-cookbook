@@ -5,6 +5,8 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 The Bounds class is in the *http://geoscript.github.io/geoscript-groovy/api/1.17-SNAPSHOT/geoscript/geom/package-summary.html[geoscript.geom]* package.
 
+It represents a minimum bounding box or rectangle, so it has minimum and maximum x and y coordinates in a specified projection.
+
 === Creating Bounds
 
 [source,groovy]
