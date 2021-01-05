@@ -664,3 +664,24 @@ include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=plotLayerToIma
 ----
 [.thumb]
 image::render_plottoimage_layer.png[]
+
+==== IO
+
+The IO module can read Maps from JSON or XML documents.
+
+[source,groovy]
+.Read a Map from a JSON String.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=readMapFromJson,indent=0]
+----
+[.thumb]
+image::render_io_json.png[]
+
+[source,groovy]
+.Read a Map from an XML String.
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=readMapFromXml,indent=0]
+----
+[.thumb]
+image::render_io_xml.png[]
+

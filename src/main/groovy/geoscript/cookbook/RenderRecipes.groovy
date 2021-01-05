@@ -27,6 +27,9 @@ import geoscript.render.Renderers
 import geoscript.render.Renderer
 import geoscript.render.Svg
 import geoscript.render.Window
+import geoscript.render.io.JsonMapReader
+import geoscript.render.io.MapReader
+import geoscript.render.io.XmlMapReader
 import geoscript.style.Fill
 import geoscript.style.Stroke
 import geoscript.workspace.Directory
@@ -1129,4 +1132,103 @@ class RenderRecipes extends Recipes {
         saveImage("render_plottoimage_layer", image)
         image
     }
+
+    // IO
+
+    BufferedImage readMapFromJson() {
+        // tag::readMapFromJson[]
+        String json = """{
+    "width": 400,
+    "height": 400,
+    "type": "png",
+    "backgroundColor": "blue",
+    "proj": "EPSG:4326",
+    "bounds": {
+        "minX": -135.911779,
+        "minY": 36.993573,
+        "maxX": -96.536779,
+        "maxY": 51.405899
+    },
+    "layers": [
+        {
+            "layertype": "layer", 
+            "dbtype": "geopkg", 
+            "database": "src/main/resources/data.gpkg", 
+            "layername": "ocean", 
+            "style": "src/main/resources/ocean.sld"
+        },
+        {
+            "layertype": "layer", 
+            "dbtype": "geopkg", 
+            "database": "src/main/resources/data.gpkg", 
+            "layername": "countries", 
+            "style": "src/main/resources/countries.sld"
+        },
+        {   
+            "layertype": "layer", 
+            "dbtype": "geopkg", 
+            "database": "src/main/resources/data.gpkg", 
+            "layername": "states", 
+            "style": "src/main/resources/states.sld"
+        }
+    ]
+}
+"""
+        MapReader mapReader = new JsonMapReader()
+        Map map = mapReader.read(json)
+        BufferedImage image = map.renderToImage()
+        // end::readMapFromJson[]
+        saveImage("render_io_json", image)
+        image
+    }
+
+    BufferedImage readMapFromXml() {
+        // tag::readMapFromXml[]
+        String xml = """<map>
+    <width>400</width>
+    <height>400</height>
+    <type>png</type>
+    <proj>EPSG:4326</proj>
+    <backgroundColor>blue</backgroundColor>
+    <fixAspectRatio>true</fixAspectRatio>
+    <layers>
+        <layer>
+            <layertype>layer</layertype> 
+            <dbtype>geopkg</dbtype> 
+            <database>src/main/resources/data.gpkg</database> 
+            <layername>ocean</layername>
+            <style>src/main/resources/ocean.sld</style>
+        </layer>
+        <layer>
+            <layertype>layer</layertype> 
+            <dbtype>geopkg</dbtype> 
+            <database>src/main/resources/data.gpkg</database> 
+            <layername>countries</layername>
+            <style>src/main/resources/countries.sld</style>
+        </layer>
+        <layer>
+            <layertype>layer</layertype> 
+            <dbtype>geopkg</dbtype> 
+            <database>src/main/resources/data.gpkg</database> 
+            <layername>states</layername>
+            <style>src/main/resources/states.sld</style>
+        </layer>
+    </layers>
+    <bounds>
+        <minX>-135.911779</minX>
+        <minY>36.993573</minY>
+        <maxX>-96.536779</maxX>
+        <maxY>51.405899</maxY>
+    </bounds>
+</map>
+"""
+        MapReader mapReader = new XmlMapReader()
+        Map map = mapReader.read(xml)
+        BufferedImage image = map.renderToImage()
+        // end::readMapFromXml[]
+        saveImage("render_io_xml", image)
+        image
+    }
+
+
 }

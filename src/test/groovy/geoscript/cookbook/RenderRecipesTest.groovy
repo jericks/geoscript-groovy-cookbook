@@ -353,4 +353,16 @@ class RenderRecipesTest {
         BufferedImage image = recipes.plotLayerToImage()
         assertNotNull(image)
     }
+
+    @Test void readMapFromJson() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.readMapFromJson()
+        assertNotNull(image)
+    }
+
+    @Test void readMapFromXml() {
+        RenderRecipes recipes = new RenderRecipes()
+        BufferedImage image = recipes.readMapFromXml()
+        assertNotNull(image)
+    }
 }
