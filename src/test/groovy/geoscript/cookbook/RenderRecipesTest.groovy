@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.render.Displayer
 import geoscript.render.Map
 import geoscript.render.Renderer
+import geoscript.render.io.MapReader
 
 import java.awt.image.BufferedImage
 import org.junit.Test
@@ -352,6 +353,18 @@ class RenderRecipesTest {
         RenderRecipes recipes = new RenderRecipes()
         BufferedImage image = recipes.plotLayerToImage()
         assertNotNull(image)
+    }
+
+    @Test void listMapReaders() {
+        RenderRecipes recipes = new RenderRecipes()
+        List<MapReader> readers = recipes.listMapReaders()
+        assertFalse(readers.isEmpty())
+    }
+
+    @Test void findMapReader() {
+        RenderRecipes recipes = new RenderRecipes()
+        MapReader reader = recipes.findMapReader()
+        assertEquals("json", reader.name)
     }
 
     @Test void readMapFromJson() {

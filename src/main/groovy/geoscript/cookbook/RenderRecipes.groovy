@@ -3,7 +3,6 @@ package geoscript.cookbook
 import geoscript.feature.Feature
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
-import geoscript.geom.GeometryCollection
 import geoscript.geom.Point
 import geoscript.layer.Layer
 import geoscript.layer.Raster
@@ -29,6 +28,7 @@ import geoscript.render.Svg
 import geoscript.render.Window
 import geoscript.render.io.JsonMapReader
 import geoscript.render.io.MapReader
+import geoscript.render.io.MapReaders
 import geoscript.render.io.XmlMapReader
 import geoscript.style.Fill
 import geoscript.style.Stroke
@@ -1134,6 +1134,26 @@ class RenderRecipes extends Recipes {
     }
 
     // IO
+
+    List<MapReader> listMapReaders() {
+        // tag::listMapReaders[]
+        List<MapReader> readers = MapReaders.list()
+        readers.each { MapReader reader ->
+            println reader.name
+        }
+        // end::listMapReaders[]
+        writeFile("render_map_readers_list", "${readers.collect{it.name}.join(NEW_LINE)}")
+        readers
+    }
+
+    MapReader findMapReader() {
+        // tag::findMapReader[]
+        MapReader reader = MapReaders.find("json")
+        println reader.name
+        // end::findMapReader[]
+        writeFile("render_map_readers_find", "${reader.name}")
+        reader
+    }
 
     BufferedImage readMapFromJson() {
         // tag::readMapFromJson[]
