@@ -681,14 +681,15 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:union
-geo:intersection
 geo:isValid
 geo:getX
 geo:getY
+geo:union
+geo:intersection
 geo:difference
 geo:splitPolygon
 geo:distance
+geo:isClosed
 geo:reproject
 geo:within
 geo:touches
@@ -709,19 +710,18 @@ geo:simplify
 geo:numGeometries
 geo:startPoint
 geo:numPoints
-geo:isClosed
+geo:envelope
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:envelope
 geo:equalsExact
 geo:isRing
+geo:endPoint
+geo:relatePattern
 geo:interiorRingN
 geo:pointN
-geo:relatePattern
 geo:equalsExactTolerance
-geo:endPoint
 geo:polygonize
 geo:length
 geo:isEmpty
@@ -917,7 +917,7 @@ places.style = symbolizer</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-05 02:43:31 UTC
+Last updated 2021-01-06 00:09:13 UTC
 </div>
 </div>
 </body>

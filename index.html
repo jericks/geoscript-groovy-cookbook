@@ -731,7 +731,13 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel3">
 <li><a href="#plotting-to-a-file-or-gui">Plotting to a File or GUI</a></li>
 <li><a href="#plotting-to-an-image">Plotting to an Image</a></li>
-<li><a href="#io">IO</a></li>
+</ul>
+</li>
+<li><a href="#reading-maps">Reading Maps</a>
+<ul class="sectlevel3">
+<li><a href="#finding-map-readers">Finding Map Readers</a></li>
+<li><a href="#json-2">JSON</a></li>
+<li><a href="#xml-2">XML</a></li>
 </ul>
 </li>
 </ul>
@@ -978,8 +984,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#reading-and-writing-pyramids">Reading and Writing Pyramids</a>
 <ul class="sectlevel4">
 <li><a href="#finding-pyramid-writer-and-readers">Finding Pyramid Writer and Readers</a></li>
-<li><a href="#json-2">JSON</a></li>
-<li><a href="#xml-2">XML</a></li>
+<li><a href="#json-3">JSON</a></li>
+<li><a href="#xml-3">XML</a></li>
 <li><a href="#csv-2">CSV</a></li>
 <li><a href="#gdal-xml">GDAL XML</a></li>
 </ul>
@@ -5111,8 +5117,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 109472448 nanoseconds
-Time with PreparedGeometry = 204509820 nanoseconds</pre>
+<pre>Time with Geometry         = 115629040 nanoseconds
+Time with PreparedGeometry = 95317067 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5157,8 +5163,8 @@ println <span class="string"><span class="delimiter">&quot;</span><span class="c
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 105454019 nanoseconds
-Time with PreparedGeometry = 111748181 nanoseconds</pre>
+<pre>Time with Geometry         = 115035243 nanoseconds
+Time with PreparedGeometry = 69325206 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -9143,7 +9149,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--c40e721_176d0721c09_-73d6 geom: null, id: null, name: null</pre>
+<pre>cities.fid--63772606_176d50b43cd_-73d6 geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -9858,7 +9864,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Jan 05 02:48:34 UTC 2021&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Jan 06 00:14:22 UTC 2021&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9877,7 +9883,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--c40e721_176d0721c09_-73da title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--63772606_176d50b43cd_-73da title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9901,7 +9907,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Tue Jan 05 02:48:34 UTC 2021&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Wed Jan 06 00:14:22 UTC 2021&lt;/updated&gt;&lt;georss:point xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9921,7 +9927,7 @@ println georss</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--c40e721_176d0721c09_-73d8 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--63772606_176d50b43cd_-73d8 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -10083,7 +10089,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--c40e721_176d0721c09_-73d7 geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--63772606_176d50b43cd_-73d7 geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10121,7 +10127,7 @@ println feature</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--c40e721_176d0721c09_-73d9 geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--63772606_176d50b43cd_-73d9 geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -11531,14 +11537,15 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:union
-geo:intersection
 geo:isValid
 geo:getX
 geo:getY
+geo:union
+geo:intersection
 geo:difference
 geo:splitPolygon
 geo:distance
+geo:isClosed
 geo:reproject
 geo:within
 geo:touches
@@ -11559,19 +11566,18 @@ geo:simplify
 geo:numGeometries
 geo:startPoint
 geo:numPoints
-geo:isClosed
+geo:envelope
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:envelope
 geo:equalsExact
 geo:isRing
+geo:endPoint
+geo:relatePattern
 geo:interiorRingN
 geo:pointN
-geo:relatePattern
 geo:equalsExactTolerance
-geo:endPoint
 geo:polygonize
 geo:length
 geo:isEmpty
@@ -13241,11 +13247,44 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="io"><a class="anchor" href="#io"></a>IO</h4>
+</div>
+<div class="sect2">
+<h3 id="reading-maps"><a class="anchor" href="#reading-maps"></a>Reading Maps</h3>
 <div class="paragraph">
 <p>The IO module can read Maps from JSON or XML documents.</p>
 </div>
+<div class="sect3">
+<h4 id="finding-map-readers"><a class="anchor" href="#finding-map-readers"></a>Finding Map Readers</h4>
+<div class="listingblock">
+<div class="title">List all Map Readers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;MapReader&gt; readers = MapReaders.list()
+readers.each { MapReader reader -&gt;
+    println reader.name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>xml
+json</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Map Reader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MapReader reader = MapReaders.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">json</span><span class="delimiter">&quot;</span></span>)
+println reader.name</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>json</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="json-2"><a class="anchor" href="#json-2"></a>JSON</h4>
 <div class="listingblock">
 <div class="title">Read a Map from a JSON String.</div>
 <div class="content">
@@ -13296,6 +13335,9 @@ Layer layer = workspace.get(<span class="string"><span class="delimiter">&quot;<
 <img src="./images/render_io_json.png" alt="render io json">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="xml-2"><a class="anchor" href="#xml-2"></a>XML</h4>
 <div class="listingblock">
 <div class="title">Read a Map from an XML String.</div>
 <div class="content">
@@ -17654,7 +17696,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--c40e721_176d0721c09_-5a1f"
+            "id": "fid--63772606_176d50b43cd_-5a1f"
         },
         {
             "type": "Feature",
@@ -17669,7 +17711,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--c40e721_176d0721c09_-5a1d"
+            "id": "fid--63772606_176d50b43cd_-5a1d"
         }
     ]
 }</pre>
@@ -17719,7 +17761,7 @@ println geojson</code></pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--c40e721_176d0721c09_-71f7"
+            "id": "fid--63772606_176d50b43cd_-71f7"
         },
         {
             "type": "Feature",
@@ -17734,7 +17776,7 @@ println geojson</code></pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--c40e721_176d0721c09_-71f5"
+            "id": "fid--63772606_176d50b43cd_-71f5"
         }
     ]
 }</pre>
@@ -17918,7 +17960,7 @@ println gml</code></pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--c40e721_176d0721c09_-6604"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--63772606_176d50b43cd_-6604"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -17940,7 +17982,7 @@ println gml</code></pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--c40e721_176d0721c09_-6602"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--63772606_176d50b43cd_-6602"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -18006,7 +18048,7 @@ println gml</code></pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--c40e721_176d0721c09_-662a"&gt;
+&lt;gsf:cities fid="fid--63772606_176d50b43cd_-662a"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -18020,7 +18062,7 @@ println gml</code></pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--c40e721_176d0721c09_-6628"&gt;
+&lt;gsf:cities fid="fid--63772606_176d50b43cd_-6628"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -18134,7 +18176,7 @@ println kml</code></pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--c40e721_176d0721c09_-5b2a
+          fid--63772606_176d50b43cd_-5b2a
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -18161,7 +18203,7 @@ println kml</code></pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--c40e721_176d0721c09_-5b28
+          fid--63772606_176d50b43cd_-5b28
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -18221,13 +18263,13 @@ println kml</code></pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid--c40e721_176d0721c09_-6622"&gt;
+&lt;kml:Placemark id="fid--63772606_176d50b43cd_-6622"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid--c40e721_176d0721c09_-6620"&gt;
+&lt;kml:Placemark id="fid--63772606_176d50b43cd_-6620"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -18355,15 +18397,15 @@ println georss</code></pre>
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--c40e721_176d0721c09_-6e00&lt;/title&gt;
+&lt;title&gt;fid--63772606_176d50b43cd_-6e00&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Tue Jan 05 02:48:41 UTC 2021&lt;/updated&gt;
+&lt;updated&gt;Wed Jan 06 00:14:30 UTC 2021&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--c40e721_176d0721c09_-6dfe&lt;/title&gt;
+&lt;title&gt;fid--63772606_176d50b43cd_-6dfe&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Tue Jan 05 02:48:41 UTC 2021&lt;/updated&gt;
+&lt;updated&gt;Wed Jan 06 00:14:30 UTC 2021&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -18433,10 +18475,10 @@ println gpx</code></pre>
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid--c40e721_176d0721c09_-6626&lt;/name&gt;
+&lt;name&gt;fid--63772606_176d50b43cd_-6626&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid--c40e721_176d0721c09_-6624&lt;/name&gt;
+&lt;name&gt;fid--63772606_176d50b43cd_-6624&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -21506,7 +21548,7 @@ BOTTOM_LEFT
 </div>
 </div>
 <div class="sect4">
-<h5 id="json-2"><a class="anchor" href="#json-2"></a>JSON</h5>
+<h5 id="json-3"><a class="anchor" href="#json-3"></a>JSON</h5>
 <div class="paragraph">
 <p>Get a JSON String from a Pyramid.</p>
 </div>
@@ -21574,7 +21616,7 @@ println json</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="xml-2"><a class="anchor" href="#xml-2"></a>XML</h5>
+<h5 id="xml-3"><a class="anchor" href="#xml-3"></a>XML</h5>
 <div class="paragraph">
 <p>Get a XML String from a Pyramid.</p>
 </div>
@@ -22839,7 +22881,7 @@ tileLayer.put(tile)</code></pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid--c40e721_176d0721c09_-5a14"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.9</pre>
+<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid--63772606_176d50b43cd_-5a14"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.</pre>
 </div>
 </div>
 </div>
@@ -24387,7 +24429,7 @@ all copies or substantial portions of the Software.
 <div id="footer">
 <div id="footer-text">
 Version 1.17-SNAPSHOT<br>
-Last updated 2021-01-05 02:43:31 UTC
+Last updated 2021-01-06 00:09:13 UTC
 </div>
 </div>
 </body>
