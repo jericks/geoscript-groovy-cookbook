@@ -554,6 +554,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#svgcartobuilder">SvgCartoBuilder</a></li>
 </ul>
 </li>
+<li><a href="#reading-cartobuilders">Reading CartoBuilders</a>
+<ul class="sectlevel3">
+<li><a href="#finding-carto-readers">Finding Carto Readers</a></li>
+<li><a href="#json">JSON</a></li>
+<li><a href="#xml">XML</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1374,12 +1381,276 @@ all copies or substantial portions of the Software.
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="reading-cartobuilders"><a class="anchor" href="#reading-cartobuilders"></a>Reading CartoBuilders</h3>
+<div class="paragraph">
+<p>The IO module can read a CartoBuilder from JSON or XML documents.</p>
+</div>
+<div class="sect3">
+<h4 id="finding-carto-readers"><a class="anchor" href="#finding-carto-readers"></a>Finding Carto Readers</h4>
+<div class="listingblock">
+<div class="title">List all Carto Readers</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">List</span>&lt;CartoReader&gt; readers = CartoReaders.list()
+readers.each { CartoReader reader -&gt;
+    println reader.name
+}</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>json
+xml</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Find a Carto Reader</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">CartoReader reader = CartoReaders.find(<span class="string"><span class="delimiter">&quot;</span><span class="content">json</span><span class="delimiter">&quot;</span></span>)
+println reader.name</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>json</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="json"><a class="anchor" href="#json"></a>JSON</h4>
+<div class="listingblock">
+<div class="title">Read a CartoBuilder from a JSON String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> json = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">{
+    &quot;type&quot;: &quot;png&quot;,
+    &quot;width&quot;: 400,
+    &quot;height&quot;: 400,
+    &quot;items&quot;: [
+        {
+            &quot;x&quot;: 0,
+            &quot;y&quot;: 0,
+            &quot;width&quot;: 400,
+            &quot;height&quot;: 400,
+            &quot;type&quot;: &quot;rectangle&quot;,
+            &quot;fillColor&quot;: &quot;white&quot;,
+            &quot;strokeColor&quot;: &quot;white&quot;
+        },
+        {
+            &quot;x&quot;: 10,
+            &quot;y&quot;: 10,
+            &quot;width&quot;: 380,
+            &quot;height&quot;: 380,
+            &quot;type&quot;: &quot;rectangle&quot;
+        },
+        {
+            &quot;x&quot;: 20,
+            &quot;y&quot;: 20,
+            &quot;width&quot;: 360,
+            &quot;height&quot;: 360,
+            &quot;type&quot;: &quot;map&quot;,
+            &quot;name&quot;: &quot;mainMap&quot;,
+            &quot;proj&quot;: &quot;EPSG:4326&quot;,
+            &quot;bounds&quot;: {
+                &quot;minX&quot;: -135.911779,
+                &quot;minY&quot;: 36.993573,
+                &quot;maxX&quot;: -96.536779,
+                &quot;maxY&quot;: 51.405899
+            },
+            &quot;layers&quot;: [
+                {
+                    &quot;layertype&quot;: &quot;layer&quot;,
+                    &quot;dbtype&quot;: &quot;geopkg&quot;,
+                    &quot;database&quot;: &quot;src/main/resources/data.gpkg&quot;,
+                    &quot;layername&quot;: &quot;ocean&quot;,
+                    &quot;style&quot;: &quot;src/main/resources/ocean.sld&quot;
+                },
+                {
+                    &quot;layertype&quot;: &quot;layer&quot;,
+                    &quot;dbtype&quot;: &quot;geopkg&quot;,
+                    &quot;database&quot;: &quot;src/main/resources/data.gpkg&quot;,
+                    &quot;layername&quot;: &quot;countries&quot;,
+                    &quot;style&quot;: &quot;src/main/resources/countries.sld&quot;
+                },
+                {
+                    &quot;layertype&quot;: &quot;layer&quot;,
+                    &quot;dbtype&quot;: &quot;geopkg&quot;,
+                    &quot;database&quot;: &quot;src/main/resources/data.gpkg&quot;,
+                    &quot;layername&quot;: &quot;states&quot;,
+                    &quot;style&quot;: &quot;src/main/resources/states.sld&quot;
+                }
+            ]
+        },
+        {
+            &quot;x&quot;: 20,
+            &quot;y&quot;: 20,
+            &quot;width&quot;: 30,
+            &quot;height&quot;: 40,
+            &quot;type&quot;: &quot;northarrow&quot;
+        },
+        {
+            &quot;x&quot;: 260,
+            &quot;y&quot;: 20,
+            &quot;width&quot;: 50,
+            &quot;height&quot;: 200,
+            &quot;type&quot;: &quot;legend&quot;,
+            &quot;map&quot;: &quot;mainMap&quot;
+        },
+        {
+            &quot;x&quot;: 70,
+            &quot;y&quot;: 20,
+            &quot;width&quot;: 170,
+            &quot;height&quot;: 50,
+            &quot;type&quot;: &quot;text&quot;,
+            &quot;text&quot;: &quot;Western US&quot;,
+            &quot;font&quot;: {
+                &quot;name&quot;: &quot;Arial&quot;,
+                &quot;style&quot;: &quot;BOLD&quot;,
+                &quot;size&quot;: 24
+            },
+            &quot;horizontalAlign&quot;: &quot;CENTER&quot;,
+            &quot;verticalAlign&quot;: &quot;MIDDLE&quot;
+        }
+    ]
+}
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        CartoReader cartoReader = <span class="keyword">new</span> JsonCartoReader()
+        CartoBuilder cartoBuilder = cartoReader.read(json)
+        <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/carto_from_json.png</span><span class="delimiter">&quot;</span></span>)
+        file.withOutputStream { <span class="predefined-type">OutputStream</span> outputStream -&gt;
+            cartoBuilder.build(outputStream)
+        }</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/carto_io_json.png" alt="carto io json">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="xml"><a class="anchor" href="#xml"></a>XML</h4>
+<div class="listingblock">
+<div class="title">Read a CartoBuilder from an XML String</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">        <span class="predefined-type">String</span> json = <span class="string"><span class="delimiter">&quot;&quot;&quot;</span><span class="content">&lt;carto&gt;
+    &lt;type&gt;png&lt;/type&gt;
+    &lt;width&gt;400&lt;/width&gt;
+    &lt;height&gt;400&lt;/height&gt;
+    &lt;items&gt;
+        &lt;item&gt;
+            &lt;x&gt;0&lt;/x&gt;
+            &lt;y&gt;0&lt;/y&gt;
+            &lt;width&gt;400&lt;/width&gt;
+            &lt;height&gt;400&lt;/height&gt;
+            &lt;type&gt;rectangle&lt;/type&gt;
+            &lt;fillColor&gt;white&lt;/fillColor&gt;
+            &lt;strokeColor&gt;white&lt;/strokeColor&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;x&gt;10&lt;/x&gt;
+            &lt;y&gt;10&lt;/y&gt;
+            &lt;width&gt;380&lt;/width&gt;
+            &lt;height&gt;380&lt;/height&gt;
+            &lt;type&gt;rectangle&lt;/type&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;x&gt;20&lt;/x&gt;
+            &lt;y&gt;20&lt;/y&gt;
+            &lt;width&gt;360&lt;/width&gt;
+            &lt;height&gt;360&lt;/height&gt;
+            &lt;type&gt;map&lt;/type&gt;
+            &lt;name&gt;mainMap&lt;/name&gt;
+            &lt;proj&gt;EPSG:4326&lt;/proj&gt;
+            &lt;bounds&gt;
+                &lt;minX&gt;-135.911779&lt;/minX&gt;
+                &lt;minY&gt;36.993573&lt;/minY&gt;
+                &lt;maxX&gt;-96.536779&lt;/maxX&gt;
+                &lt;maxY&gt;51.40589&lt;/maxY&gt;
+            &lt;/bounds&gt;
+            &lt;layers&gt;
+                &lt;layer&gt;
+                    &lt;layertype&gt;layer&lt;/layertype&gt;
+                    &lt;dbtype&gt;geopkg&lt;/dbtype&gt;
+                    &lt;database&gt;src/main/resources/data.gpkg&lt;/database&gt;
+                    &lt;layername&gt;ocean&lt;/layername&gt;
+                    &lt;style&gt;src/main/resources/ocean.sld&lt;/style&gt;
+                &lt;/layer&gt;
+                &lt;layer&gt;
+                    &lt;layertype&gt;layer&lt;/layertype&gt;
+                    &lt;dbtype&gt;geopkg&lt;/dbtype&gt;
+                    &lt;database&gt;src/main/resources/data.gpkg&lt;/database&gt;
+                    &lt;layername&gt;countries&lt;/layername&gt;
+                    &lt;style&gt;src/main/resources/countries.sld&lt;/style&gt;
+                &lt;/layer&gt;
+                &lt;layer&gt;
+                    &lt;layertype&gt;layer&lt;/layertype&gt;
+                    &lt;dbtype&gt;geopkg&lt;/dbtype&gt;
+                    &lt;database&gt;src/main/resources/data.gpkg&lt;/database&gt;
+                    &lt;layername&gt;states&lt;/layername&gt;
+                    &lt;style&gt;src/main/resources/states.sld&lt;/style&gt;
+                &lt;/layer&gt;
+            &lt;/layers&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;x&gt;20&lt;/x&gt;
+            &lt;y&gt;20&lt;/y&gt;
+            &lt;width&gt;30&lt;/width&gt;
+            &lt;height&gt;40&lt;/height&gt;
+            &lt;type&gt;northarrow&lt;/type&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;x&gt;260&lt;/x&gt;
+            &lt;y&gt;20&lt;/y&gt;
+            &lt;width&gt;50&lt;/width&gt;
+            &lt;height&gt;200&lt;/height&gt;
+            &lt;type&gt;legend&lt;/type&gt;
+            &lt;map&gt;mainMap&lt;/map&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;x&gt;70&lt;/x&gt;
+            &lt;y&gt;20&lt;/y&gt;
+            &lt;width&gt;170&lt;/width&gt;
+            &lt;height&gt;50&lt;/height&gt;
+            &lt;type&gt;text&lt;/type&gt;
+            &lt;text&gt;Western US&lt;/text&gt;
+            &lt;font&gt;
+                &lt;name&gt;Arial&lt;/name&gt;
+                &lt;style&gt;BOLD&lt;/style&gt;
+                &lt;size&gt;24&lt;/size&gt;
+            &lt;/font&gt;
+            &lt;horizontalAlign&gt;CENTER&lt;/horizontalAlign&gt;
+            &lt;verticalAlign&gt;MIDDLE&lt;/verticalAlign&gt;
+        &lt;/item&gt;
+    &lt;/items&gt;
+&lt;/carto&gt;
+</span><span class="delimiter">&quot;&quot;&quot;</span></span>
+        CartoReader cartoReader = <span class="keyword">new</span> XmlCartoReader()
+        CartoBuilder cartoBuilder = cartoReader.read(json)
+        <span class="predefined-type">File</span> file = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/carto_from_xml.png</span><span class="delimiter">&quot;</span></span>)
+        file.withOutputStream { <span class="predefined-type">OutputStream</span> outputStream -&gt;
+            cartoBuilder.build(outputStream)
+        }
+        <span class="predefined-type">BufferedImage</span> image = <span class="predefined-type">ImageIO</span>.read(file)
+        saveImage(<span class="string"><span class="delimiter">&quot;</span><span class="content">carto_io_xml</span><span class="delimiter">&quot;</span></span>, image)
+        image
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/carto_io_xml.png" alt="carto io xml">
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-06 00:09:13 UTC
+Last updated 2021-01-27 00:45:23 UTC
 </div>
 </div>
 </body>
