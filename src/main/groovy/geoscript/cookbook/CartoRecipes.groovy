@@ -22,6 +22,10 @@ import geoscript.carto.ScaleTextItem
 import geoscript.carto.SvgCartoBuilder
 import geoscript.carto.TextItem
 import geoscript.carto.VerticalAlign
+import geoscript.carto.io.CartoReader
+import geoscript.carto.io.CartoReaders
+import geoscript.carto.io.JsonCartoReader
+import geoscript.carto.io.XmlCartoReader
 import geoscript.geom.Bounds
 import geoscript.layer.Layer
 import geoscript.proj.Projection
@@ -741,6 +745,240 @@ all copies or substantial portions of the Software.
         }
         // end::svg_builder[]
         file
+    }
+
+    // IO
+
+    List<CartoReader> listCartoReaders() {
+        // tag::listCartoReaders[]
+        List<CartoReader> readers = CartoReaders.list()
+        readers.each { CartoReader reader ->
+            println reader.name
+        }
+        // end::listCartoReaders[]
+        writeFile("carto_readers_list", "${readers.collect{it.name}.join(NEW_LINE)}")
+        readers
+    }
+
+    CartoReader findCartoReader() {
+        // tag::findCartoReader[]
+        CartoReader reader = CartoReaders.find("json")
+        println reader.name
+        // end::findCartoReader[]
+        writeFile("carto_readers_find", "${reader.name}")
+        reader
+    }
+
+    BufferedImage readFromJson() {
+        // tag::readFromJson[]
+        String json = """{
+    "type": "png",
+    "width": 400, 
+    "height": 400,
+    "items": [
+        {
+            "x": 0,
+            "y": 0,
+            "width": 400,
+            "height": 400,
+            "type": "rectangle",
+            "fillColor": "white",
+            "strokeColor": "white"
+        },
+        {
+            "x": 10,
+            "y": 10,
+            "width": 380,
+            "height": 380,
+            "type": "rectangle"
+        },
+        {
+            "x": 20,
+            "y": 20,
+            "width": 360,
+            "height": 360,
+            "type": "map",
+            "name": "mainMap",
+            "proj": "EPSG:4326",
+            "bounds": {
+                "minX": -135.911779,
+                "minY": 36.993573,
+                "maxX": -96.536779,
+                "maxY": 51.405899
+            },
+            "layers": [
+                {
+                    "layertype": "layer", 
+                    "dbtype": "geopkg", 
+                    "database": "src/main/resources/data.gpkg", 
+                    "layername": "ocean", 
+                    "style": "src/main/resources/ocean.sld"
+                },
+                {
+                    "layertype": "layer", 
+                    "dbtype": "geopkg", 
+                    "database": "src/main/resources/data.gpkg", 
+                    "layername": "countries", 
+                    "style": "src/main/resources/countries.sld"
+                },
+                {   
+                    "layertype": "layer", 
+                    "dbtype": "geopkg", 
+                    "database": "src/main/resources/data.gpkg", 
+                    "layername": "states", 
+                    "style": "src/main/resources/states.sld"
+                }
+            ]
+        },
+        {
+            "x": 20,
+            "y": 20,
+            "width": 30,
+            "height": 40,
+            "type": "northarrow"
+        },
+        {
+            "x": 260,
+            "y": 20,
+            "width": 50,
+            "height": 200,
+            "type": "legend",
+            "map": "mainMap"
+        },
+        {
+            "x": 70,
+            "y": 20,
+            "width": 170,
+            "height": 50,
+            "type": "text",
+            "text": "Western US",
+            "font": {
+                "name": "Arial",
+                "style": "BOLD",
+                "size": 24    
+            },
+            "horizontalAlign": "CENTER",
+            "verticalAlign": "MIDDLE"
+        }
+    ]
+}
+"""
+        CartoReader cartoReader = new JsonCartoReader()
+        CartoBuilder cartoBuilder = cartoReader.read(json)
+        File file = new File("target/carto_from_json.png")
+        file.withOutputStream { OutputStream outputStream ->
+            cartoBuilder.build(outputStream)
+        }
+        // end::readFromJson[]
+        BufferedImage image = ImageIO.read(file)
+        saveImage("carto_io_json", image)
+        image
+    }
+
+    BufferedImage readFromXml() {
+        // tag::readFromXml[]
+        String json = """<carto>
+    <type>png</type>
+    <width>400</width> 
+    <height>400</height>
+    <items>
+        <item>
+            <x>0</x>
+            <y>0</y>
+            <width>400</width>
+            <height>400</height>
+            <type>rectangle</type>
+            <fillColor>white</fillColor>
+            <strokeColor>white</strokeColor>
+        </item>
+        <item>
+            <x>10</x>
+            <y>10</y>
+            <width>380</width>
+            <height>380</height>
+            <type>rectangle</type>
+        </item>
+        <item>
+            <x>20</x>
+            <y>20</y>
+            <width>360</width>
+            <height>360</height>
+            <type>map</type>
+            <name>mainMap</name>
+            <proj>EPSG:4326</proj>
+            <bounds>
+                <minX>-135.911779</minX>
+                <minY>36.993573</minY>
+                <maxX>-96.536779</maxX>
+                <maxY>51.40589</maxY>
+            </bounds>
+            <layers>
+                <layer>
+                    <layertype>layer</layertype>
+                    <dbtype>geopkg</dbtype> 
+                    <database>src/main/resources/data.gpkg</database> 
+                    <layername>ocean</layername> 
+                    <style>src/main/resources/ocean.sld</style>
+                </layer>
+                <layer>
+                    <layertype>layer</layertype> 
+                    <dbtype>geopkg</dbtype> 
+                    <database>src/main/resources/data.gpkg</database> 
+                    <layername>countries</layername> 
+                    <style>src/main/resources/countries.sld</style>
+                </layer>
+                <layer>   
+                    <layertype>layer</layertype> 
+                    <dbtype>geopkg</dbtype> 
+                    <database>src/main/resources/data.gpkg</database> 
+                    <layername>states</layername> 
+                    <style>src/main/resources/states.sld</style>
+                </layer>
+            </layers>
+        </item>
+        <item>
+            <x>20</x>
+            <y>20</y>
+            <width>30</width>
+            <height>40</height>
+            <type>northarrow</type>
+        </item>
+        <item>
+            <x>260</x>
+            <y>20</y>
+            <width>50</width>
+            <height>200</height>
+            <type>legend</type>
+            <map>mainMap</map>
+        </item>
+        <item>
+            <x>70</x>
+            <y>20</y>
+            <width>170</width>
+            <height>50</height>
+            <type>text</type>
+            <text>Western US</text>
+            <font>
+                <name>Arial</name>
+                <style>BOLD</style>
+                <size>24</size>    
+            </font>
+            <horizontalAlign>CENTER</horizontalAlign>
+            <verticalAlign>MIDDLE</verticalAlign>
+        </item>
+    </items>
+</carto>
+"""
+        CartoReader cartoReader = new XmlCartoReader()
+        CartoBuilder cartoBuilder = cartoReader.read(json)
+        File file = new File("target/carto_from_xml.png")
+        file.withOutputStream { OutputStream outputStream ->
+            cartoBuilder.build(outputStream)
+        }
+        // end::readFromJson[]
+        BufferedImage image = ImageIO.read(file)
+        saveImage("carto_io_xml", image)
+        image
     }
 
 }

@@ -1,9 +1,9 @@
 package geoscript.cookbook
 
+import geoscript.carto.io.CartoReader
 import org.junit.Test
 import java.awt.image.BufferedImage
-import static org.junit.Assert.assertNotNull
-import static org.junit.Assert.assertTrue
+import static org.junit.Assert.*
 
 class CartoRecipesTest {
 
@@ -109,6 +109,30 @@ class CartoRecipesTest {
         File file = recipes.svgBuilder()
         assertNotNull(file)
         assertTrue(file.length() > 0)
+    }
+
+    @Test void listCartoReaders() {
+        CartoRecipes recipes = new CartoRecipes()
+        List<CartoReader> readers = recipes.listCartoReaders()
+        assertFalse(readers.isEmpty())
+    }
+
+    @Test void findCartoReader() {
+        CartoRecipes recipes = new CartoRecipes()
+        CartoReader reader = recipes.findCartoReader()
+        assertEquals("json", reader.name)
+    }
+
+    @Test void readFromJson() {
+        CartoRecipes recipes = new CartoRecipes()
+        BufferedImage image = recipes.readFromJson()
+        assertNotNull(image)
+    }
+
+    @Test void readFromXml() {
+        CartoRecipes recipes = new CartoRecipes()
+        BufferedImage image = recipes.readFromXml()
+        assertNotNull(image)
     }
 
 }

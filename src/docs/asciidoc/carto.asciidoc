@@ -185,3 +185,47 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=svg_builder,ind
 ----
 [.thumb]
 image::carto_svg_builder.png[]
+
+=== Reading CartoBuilders
+
+The IO module can read a CartoBuilder from JSON or XML documents.
+
+==== Finding Carto Readers
+
+[source,groovy]
+.List all Carto Readers
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=listCartoReaders,indent=0]
+----
+....
+include::output/carto_readers_list.txt[]
+....
+
+[source,groovy]
+.Find a Carto Reader
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=findCartoReader,indent=0]
+----
+....
+include::output/carto_readers_find.txt[]
+....
+
+==== JSON
+
+[source,groovy]
+.Read a CartoBuilder from a JSON String
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=readFromJson,indent=0]
+----
+[.thumb]
+image::carto_io_json.png[]
+
+==== XML
+
+[source,groovy]
+.Read a CartoBuilder from an XML String
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=readFromXml,indent=0]
+----
+[.thumb]
+image::carto_io_xml.png[]
