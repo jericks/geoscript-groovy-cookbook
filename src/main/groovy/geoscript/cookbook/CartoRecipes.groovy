@@ -975,7 +975,7 @@ all copies or substantial portions of the Software.
         file.withOutputStream { OutputStream outputStream ->
             cartoBuilder.build(outputStream)
         }
-        // end::readFromJson[]
+        // end::readFromXml[]
         BufferedImage image = ImageIO.read(file)
         saveImage("carto_io_xml", image)
         image
