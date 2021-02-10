@@ -16,10 +16,10 @@
         <github.global.server>github</github.global.server>
         <github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <asciidoctor.maven.plugin.version>1.5.7.1</asciidoctor.maven.plugin.version>
-        <asciidoctorj.version>1.6.1</asciidoctorj.version>
-        <asciidoctorj.pdf.version>1.5.0-alpha.16</asciidoctorj.pdf.version>
-        <jruby.version>9.2.5.0</jruby.version>
+        <asciidoctor.maven.plugin.version>2.1.0</asciidoctor.maven.plugin.version>
+        <asciidoctorj.version>2.4.2</asciidoctorj.version>
+        <asciidoctorj.pdf.version>1.5.4</asciidoctorj.pdf.version>
+        <jruby.version>9.2.13.0</jruby.version>
     </properties>
     <dependencies>
       <dependency>
@@ -128,10 +128,11 @@
                         </goals>
                         <configuration>
                             <backend>html5</backend>
-                            <sourceHighlighter>coderay</sourceHighlighter>
                             <relativeBaseDir>true</relativeBaseDir>
-                            <imagesDir>./images</imagesDir>
                             <attributes>
+                                <source-highlighter>rouge</source-highlighter>
+                                <pygments-style>emacs</pygments-style>
+                                <imagesDir>./images</imagesDir>
                                 <sourcedir>${project.basedir}/src/main/groovy</sourcedir>
                                 <basedir>${project.basedir}/src/docs/asciidoc</basedir>
                                 <imagesdir>./images</imagesdir>
@@ -153,9 +154,10 @@
                         </goals>
                         <configuration>
                             <backend>pdf</backend>
-                            <sourceHighlighter>rouge</sourceHighlighter>
                             <attributes>
                                 <sourcedir>${project.basedir}/src/main/groovy</sourcedir>
+                                <source-highlighter>rouge</source-highlighter>
+                                <pygments-style>emacs</pygments-style>
                                 <icons>font</icons>
                                 <pagenums/>
                                 <toc/>
