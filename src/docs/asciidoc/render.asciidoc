@@ -691,6 +691,40 @@ include::output/render_map_readers_find.txt[]
 
 ==== JSON
 
+[source,json]
+.JSON Map Format
+----
+{
+    "width": 400,
+    "height": 400,
+    "type": "png",
+    "backgroundColor": "blue",
+    "fixAspectRatio": true,
+    "proj": "EPSG:4326",
+    "bounds": {
+        "minX": -135.911779,
+        "minY": 36.993573,
+        "maxX": -96.536779,
+        "maxY": 51.405899
+    },
+    "layers": [
+      {"layertype": "layer", "file": "shps/states.shp"}
+    ]
+}
+----
+
+* **width** = The map width is optional and defaults to 600.
+* **height** = The map height is optional and defaults to 400.
+* **type** = The image type (png, jpeg, gif) is optional and defaults to png.
+* **backgroundColor** = The map background color is optional and transparent by default.
+* **fixAspectRatio** = Whether to fix the aspect ratio or not.  It is optional and the default is true.
+* **proj** = The optional map projection.  The default is determined by the layers or the bounds.
+* **bounds** = The optional map bounds.  The default is the full extent of the layers.
+* **layers** = The only required property.  A list of layer configurations.
+** **layertype** = The layer type is required.  Values can be layer (vector), raster, or tile.
+** **layername** = The name of the layer is optional and defaults to first layer.
+** **style** = The layer style is optional but can be a SLD or CSS file.
+
 [source,groovy]
 .Read a Map from a JSON String.
 ----
