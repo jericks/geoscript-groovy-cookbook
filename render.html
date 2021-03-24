@@ -715,7 +715,7 @@ pre.rouge {
 <h2 id="render-recipes"><a class="anchor" href="#render-recipes"></a>Render Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Render classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.17-SNAPSHOT/geoscript/render/package-summary.html">geoscript.render</a></strong> package.</p>
+<p>The Render classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.17.0/geoscript/render/package-summary.html">geoscript.render</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="creating-maps"><a class="anchor" href="#creating-maps"></a>Creating Maps</h3>
@@ -2227,6 +2227,69 @@ json</pre>
 <div class="sect3">
 <h4 id="json"><a class="anchor" href="#json"></a>JSON</h4>
 <div class="listingblock">
+<div class="title">JSON Map Format</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"png"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fixAspectRatio"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"proj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EPSG:4326"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bounds"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"minX"</span><span class="p">:</span><span class="w"> </span><span class="mf">-135.911779</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minY"</span><span class="p">:</span><span class="w"> </span><span class="mf">36.993573</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maxX"</span><span class="p">:</span><span class="w"> </span><span class="mf">-96.536779</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maxY"</span><span class="p">:</span><span class="w"> </span><span class="mf">51.405899</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"layers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="nl">"layertype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"layer"</span><span class="p">,</span><span class="w"> </span><span class="nl">"file"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shps/states.shp"</span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>width</strong> = The map width is optional and defaults to 600.</p>
+</li>
+<li>
+<p><strong>height</strong> = The map height is optional and defaults to 400.</p>
+</li>
+<li>
+<p><strong>type</strong> = The image type (png, jpeg, gif) is optional and defaults to png.</p>
+</li>
+<li>
+<p><strong>backgroundColor</strong> = The map background color is optional and transparent by default.</p>
+</li>
+<li>
+<p><strong>fixAspectRatio</strong> = Whether to fix the aspect ratio or not.  It is optional and the default is true.</p>
+</li>
+<li>
+<p><strong>proj</strong> = The optional map projection.  The default is determined by the layers or the bounds.</p>
+</li>
+<li>
+<p><strong>bounds</strong> = The optional map bounds.  The default is the full extent of the layers.</p>
+</li>
+<li>
+<p><strong>layers</strong> = The only required property.  A list of layer configurations.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>layertype</strong> = The layer type is required.  Values can be layer (vector), raster, or tile.</p>
+</li>
+<li>
+<p><strong>layername</strong> = The name of the layer is optional and defaults to first layer.</p>
+</li>
+<li>
+<p><strong>style</strong> = The layer style is optional but can be a SLD or CSS file.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
 <div class="title">Read a Map from a JSON String.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy">        <span class="n">String</span> <span class="n">json</span> <span class="o">=</span> <span class="s2">"""{
@@ -2337,7 +2400,7 @@ json</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-10 01:09:05 UTC
+Last updated 2021-03-24 00:26:32 UTC
 </div>
 </div>
 </body>
