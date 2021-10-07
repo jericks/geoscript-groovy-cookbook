@@ -4007,6 +4007,26 @@ Self-intersection</pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Fix a Geometry</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Geometry</span> <span class="n">line</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LineString</span><span class="o">([[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">],</span> <span class="o">[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">],</span> <span class="o">[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">],</span> <span class="o">[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">],</span> <span class="o">[</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">],</span> <span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">]])</span>
+<span class="n">println</span> <span class="s2">"LineString with duplicated Points = ${line.wkt}"</span>
+<span class="n">Geometry</span> <span class="n">fixedLine</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="na">fix</span><span class="o">()</span>
+<span class="n">println</span> <span class="s2">"Fixed LineString = ${fixedLine}"</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_fix.png" alt="geometry fix">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>LineString with duplicated Points = LINESTRING (0 0, 0 0, 0 0, 0 0, 0 0, 1 1)
+Fixed LineString = LINESTRING (0 0, 1 1)</pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Determine if a Geometry is curved</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Geometry</span> <span class="n">geom1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CircularString</span><span class="o">([</span>
@@ -4592,8 +4612,8 @@ Floating Point Single Geometry: POINT (5.19775390625 51.07421875)</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 95826787 nanoseconds
-Time with PreparedGeometry = 64766508 nanoseconds</pre>
+<pre>Time with Geometry         = 122572559 nanoseconds
+Time with PreparedGeometry = 125961318 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4638,8 +4658,8 @@ Time with PreparedGeometry = 64766508 nanoseconds</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 125766801 nanoseconds
-Time with PreparedGeometry = 62613885 nanoseconds</pre>
+<pre>Time with Geometry         = 87016645 nanoseconds
+Time with PreparedGeometry = 76346329 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5877,7 +5897,7 @@ POINT (-123.15 46.237)</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-28 19:00:26 UTC
+Last updated 2021-10-07 21:22:19 UTC
 </div>
 </div>
 </body>

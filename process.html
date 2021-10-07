@@ -813,23 +813,24 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:isValid
 geo:union
 geo:intersection
 geo:getX
 geo:getY
+geo:isValid
 geo:difference
+geo:equalsExactTolerance
 geo:area
 geo:numGeometries
 geo:distance
 geo:reproject
+geo:symDifference
 geo:isClosed
 geo:splitPolygon
 geo:within
 geo:touches
 geo:convexHull
 geo:crosses
-geo:symDifference
 geo:boundary
 geo:centroid
 geo:interiorPoint
@@ -842,19 +843,18 @@ geo:densify
 geo:simplify
 geo:startPoint
 geo:numPoints
+geo:envelope
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:envelope
+geo:endPoint
+geo:polygonize
+geo:isRing
 geo:equalsExact
 geo:relatePattern
-geo:isRing
-geo:polygonize
-geo:endPoint
-geo:equalsExactTolerance
-geo:interiorRingN
 geo:pointN
+geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
@@ -881,8 +881,7 @@ ras:RasterZonalStatistics2
 ras:ScaleCoverage
 ras:StyleCoverage
 ras:TransparencyFill
-geoscript:convexhull
-geoscript:bounds</pre>
+geoscript:convexhull</pre>
 </div>
 </div>
 </div>
@@ -1049,7 +1048,7 @@ geoscript:bounds</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-03-28 19:00:26 UTC
+Last updated 2021-10-07 21:22:19 UTC
 </div>
 </div>
 </body>
