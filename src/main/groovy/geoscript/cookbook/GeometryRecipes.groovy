@@ -2525,6 +2525,21 @@ Polygon Dimension = ${polygon.dimension}
         [isGeom1Valid, isGeom2Valid]
     }
 
+    Geometry fix() {
+        // tag::fix[]
+        Geometry line = new LineString([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [1, 1]])
+        println "LineString with duplicated Points = ${line.wkt}"
+        Geometry fixedLine = line.fix()
+        println "Fixed LineString = ${fixedLine}"
+        // end::fix[]
+        drawGeometry("geometry_fix", fixedLine)
+        writeFile("geometry_fix", """LineString with duplicated Points = ${line.wkt}
+Fixed LineString = ${fixedLine}
+""")
+        fixedLine
+    }
+
+
     List<Boolean> isCurved() {
         // tag::isCurved1[]
         Geometry geom1 = new CircularString([

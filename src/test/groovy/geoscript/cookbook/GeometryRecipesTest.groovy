@@ -919,6 +919,12 @@ class GeometryRecipesTest {
         assertFalse(values[1])
     }
 
+    @Test void fix() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.fix()
+        assertEquals("LINESTRING (0 0, 1 1)", geom.wkt)
+    }
+
     @Test void isCurved() {
         GeometryRecipes recipes = new GeometryRecipes()
         List<Boolean> values = recipes.isCurved()

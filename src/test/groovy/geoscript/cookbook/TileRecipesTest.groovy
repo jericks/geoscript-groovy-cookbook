@@ -801,4 +801,10 @@ BOTTOM_LEFT
         assertNotNull(osm)
     }
 
+    @Test void getWellKnownOSMWikiMedia() {
+        TileRecipes recipes = new TileRecipes()
+        OSM osm = recipes.getWellKnownOSMWikiMedia()
+        assertNotNull(osm)
+    }
+
 }

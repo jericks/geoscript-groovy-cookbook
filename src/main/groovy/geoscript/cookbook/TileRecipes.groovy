@@ -1656,4 +1656,13 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         saveImage("tile_osm_stamen_terrain", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
         osm
     }
+
+    OSM getWellKnownOSMWikiMedia() {
+        // tag::getWellKnownOSMWikiMedia[]
+        OSM osm = OSM.getWellKnownOSM("wikimedia")
+        // end::getWellKnownOSMWikiMedia[]
+        RenderedImage image = osm.getRaster(osm.tiles(1)).image
+        saveImage("tile_osm_wikimedia", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        osm
+    }
 }

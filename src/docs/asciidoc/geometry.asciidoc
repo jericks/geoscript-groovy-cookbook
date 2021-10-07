@@ -1313,6 +1313,17 @@ include::output/geometry_isvalid2.txt[]
 ....
 
 [source,groovy]
+.Fix a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=fix,indent=0]
+----
+[.thumb]
+image::geometry_fix.png[]
+....
+include::output/geometry_fix.txt[]
+....
+
+[source,groovy]
 .Determine if a Geometry is curved
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=isCurved1,indent=0]

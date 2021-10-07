@@ -1072,3 +1072,14 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMS
 ----
 [.thumb]
 image::tile_osm_stamen_terrain.png[]
+
+==== WikiMedia
+
+Create a TileLayer for OSM WikiMedia tiles.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMWikiMedia,indent=0]
+----
+[.thumb]
+image::tile_osm_wikimedia.png[]

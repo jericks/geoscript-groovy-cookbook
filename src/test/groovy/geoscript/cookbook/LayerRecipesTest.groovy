@@ -624,7 +624,7 @@ class LayerRecipesTest {
     @Test void readLayerFromGeoBufString() {
         LayerRecipes recipes = new LayerRecipes()
         Layer layer = recipes.readLayerFromGeoBufString()
-        assertEquals(2, layer.count)
+        assertEquals(1, layer.count)
     }
 
     // CSV
