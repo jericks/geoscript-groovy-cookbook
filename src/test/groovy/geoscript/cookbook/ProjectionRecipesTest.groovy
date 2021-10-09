@@ -5,8 +5,8 @@ import geoscript.geom.Point
 import geoscript.proj.DecimalDegrees
 import geoscript.proj.Geodetic
 import geoscript.proj.Projection
-import org.junit.Test
-import static org.junit.Assert.*
+import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.*
 
 class ProjectionRecipesTest {
 

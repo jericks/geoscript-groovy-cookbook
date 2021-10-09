@@ -6,8 +6,8 @@ import geoscript.layer.Property
 import geoscript.layer.Raster
 import geoscript.layer.Shapefile
 import geoscript.workspace.Workspace
-import org.junit.Test
-import static org.junit.Assert.*
+import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.*
 
 class LayerRecipesTest {
 

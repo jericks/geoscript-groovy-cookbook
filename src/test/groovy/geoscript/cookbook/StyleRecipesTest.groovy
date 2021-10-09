@@ -8,9 +8,9 @@ import geoscript.style.Style
 import geoscript.style.Symbolizer
 import geoscript.style.io.Reader
 import geoscript.style.io.Writer
-import org.junit.Ignore
-import org.junit.Test
-import static org.junit.Assert.*
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.*
 
 class StyleRecipesTest {
 
@@ -230,7 +230,7 @@ class StyleRecipesTest {
         assertNotNull(symbolizer)
     }
 
-    @Ignore
+    @Disabled
     @Test void createLabelForLines() {
         StyleRecipes recipes = new StyleRecipes()
         Symbolizer symbolizer = recipes.createLabelForLines()

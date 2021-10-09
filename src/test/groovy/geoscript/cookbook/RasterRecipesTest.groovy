@@ -6,8 +6,8 @@ import geoscript.layer.Histogram
 import geoscript.layer.Layer
 import geoscript.layer.Raster
 import geoscript.layer.WorldFile
-import org.junit.Test
-import static org.junit.Assert.*
+import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.*
 
 class RasterRecipesTest {
 

@@ -7,8 +7,8 @@ import geoscript.feature.io.Reader
 import geoscript.feature.io.SchemaReader
 import geoscript.feature.io.SchemaWriter
 import geoscript.feature.io.Writer
-import org.junit.Test
-import static org.junit.Assert.*
+import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.*
 
 class FeatureRecipesTest {
 

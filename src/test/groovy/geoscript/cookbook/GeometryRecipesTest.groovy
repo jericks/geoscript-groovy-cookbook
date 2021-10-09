@@ -3,8 +3,8 @@ package geoscript.cookbook
 import org.locationtech.jts.geom.IntersectionMatrix
 import geoscript.geom.*
 import geoscript.geom.io.Reader
-import org.junit.Test
-import static org.junit.Assert.*
+import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.*
 
 class GeometryRecipesTest {
 

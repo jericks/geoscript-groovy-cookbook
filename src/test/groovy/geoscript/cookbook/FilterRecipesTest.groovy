@@ -8,11 +8,11 @@ import geoscript.filter.Function
 import geoscript.filter.ProcessFunction
 import geoscript.filter.Property
 import geoscript.geom.Polygon
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 import java.awt.image.BufferedImage
 
-import static org.junit.Assert.*
+import static org.junit.jupiter.api.Assertions.*
 
 class FilterRecipesTest {
 

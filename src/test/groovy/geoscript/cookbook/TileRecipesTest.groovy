@@ -17,13 +17,9 @@ import geoscript.layer.TileLayer
 import geoscript.layer.TileRenderer
 import geoscript.layer.UTFGrid
 import geoscript.layer.VectorTiles
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
-import static junit.framework.Assert.assertEquals
-import static junit.framework.Assert.assertEquals
-import static junit.framework.Assert.assertEquals
-import static junit.framework.Assert.assertEquals
-import static org.junit.Assert.*
+import static org.junit.jupiter.api.Assertions.*
 
 class TileRecipesTest {
 

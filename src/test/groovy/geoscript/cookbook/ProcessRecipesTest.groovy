@@ -3,8 +3,8 @@ package geoscript.cookbook
 import geoscript.filter.Function
 import geoscript.filter.ProcessFunction
 import geoscript.layer.Cursor
-import org.junit.Test
-import static org.junit.Assert.*
+import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.*
 
 class ProcessRecipesTest {
 

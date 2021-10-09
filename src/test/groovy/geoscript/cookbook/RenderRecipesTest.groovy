@@ -6,8 +6,8 @@ import geoscript.render.Renderer
 import geoscript.render.io.MapReader
 
 import java.awt.image.BufferedImage
-import org.junit.Test
-import static org.junit.Assert.*
+import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.*
 
 class RenderRecipesTest {
 

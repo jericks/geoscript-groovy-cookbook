@@ -6,9 +6,9 @@ import geoscript.geom.GeometryCollection
 import geoscript.geom.LineString
 import geoscript.geom.Point
 import geoscript.geom.Polygon
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
-import static org.junit.Assert.*
+import static org.junit.jupiter.api.Assertions.*
 
 class BoundsRecipesTest {
 
