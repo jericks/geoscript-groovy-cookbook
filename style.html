@@ -682,6 +682,15 @@ pre.rouge {
 <li><a href="#color-table">Color Table</a></li>
 </ul>
 </li>
+<li><a href="#style-repositories">Style Repositories</a>
+<ul class="sectlevel3">
+<li><a href="#flat-directory">Flat Directory</a></li>
+<li><a href="#nested-directory">Nested Directory</a></li>
+<li><a href="#postgis-database">PostGIS Database</a></li>
+<li><a href="#sqlite-database">SQLite Database</a></li>
+<li><a href="#h2-database">H2 Database</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1612,6 +1621,50 @@ SimpleStyleReader</pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Write a Symbolizer to SLD with NamedLayer element.</div>
+<div class="content">
+<pre>Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.5)
+SLDWriter writer = new SLDWriter()
+String sld = writer.write(symbolizer, type: "NamedLayer") <i class="conum" data-value="1"></i><b>(1)</b>
+println sld</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>type can be UserLayer (default) or NamedLayer</td>
+</tr>
+</table>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" version="1.0.0"&gt;
+  &lt;sld:NamedLayer&gt;
+    &lt;sld:Name/&gt;
+    &lt;sld:UserStyle&gt;
+      &lt;sld:Name&gt;Default Styler&lt;/sld:Name&gt;
+      &lt;sld:FeatureTypeStyle&gt;
+        &lt;sld:Name&gt;name&lt;/sld:Name&gt;
+        &lt;sld:Rule&gt;
+          &lt;sld:PolygonSymbolizer&gt;
+            &lt;sld:Fill&gt;
+              &lt;sld:CssParameter name="fill"&gt;#ffffff&lt;/sld:CssParameter&gt;
+            &lt;/sld:Fill&gt;
+          &lt;/sld:PolygonSymbolizer&gt;
+          &lt;sld:LineSymbolizer&gt;
+            &lt;sld:Stroke&gt;
+              &lt;sld:CssParameter name="stroke-width"&gt;0.5&lt;/sld:CssParameter&gt;
+            &lt;/sld:Stroke&gt;
+          &lt;/sld:LineSymbolizer&gt;
+        &lt;/sld:Rule&gt;
+      &lt;/sld:FeatureTypeStyle&gt;
+    &lt;/sld:UserStyle&gt;
+  &lt;/sld:NamedLayer&gt;
+&lt;/sld:StyledLayerDescriptor&gt;</pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Read a Style from an SLD String</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy">        <span class="n">String</span> <span class="n">sld</span> <span class="o">=</span> <span class="s2">"""&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -1887,12 +1940,153 @@ Rasters.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="style-repositories"><a class="anchor" href="#style-repositories"></a>Style Repositories</h3>
+<div class="paragraph">
+<p>Style Repositories can be found in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.18-SNAPSHOT/geoscript/style/package-summary.html">geoscript.style</a></strong> package.</p>
+</div>
+<div class="paragraph">
+<p>Style Repositories are useful for storing styles for layers in a directories or databases.</p>
+</div>
+<div class="sect3">
+<h4 id="flat-directory"><a class="anchor" href="#flat-directory"></a>Flat Directory</h4>
+<div class="paragraph">
+<p>All files are stored in a single directory.</p>
+</div>
+<div class="listingblock">
+<div class="title">Store styles in a flat directory.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">File</span> <span class="n">directory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"target/styles"</span><span class="o">)</span>
+<span class="n">directory</span><span class="o">.</span><span class="na">mkdir</span><span class="o">()</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"src/main/resources/states.sld"</span><span class="o">)</span>
+
+<span class="n">StyleRepository</span> <span class="n">styleRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DirectoryStyleRepository</span><span class="o">(</span><span class="n">directory</span><span class="o">)</span>
+<span class="n">styleRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="s2">"states"</span><span class="o">,</span> <span class="s2">"states"</span><span class="o">,</span> <span class="n">file</span><span class="o">.</span><span class="na">text</span><span class="o">)</span>
+
+<span class="n">String</span> <span class="n">sld</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getDefaultForLayer</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">sld</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">stylesForLayer</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getForLayer</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">stylesForLayer</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">allStyles</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getAll</span><span class="o">()</span>
+<span class="n">println</span> <span class="n">stylesForLayer</span>
+
+<span class="n">styleRepository</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s2">"states"</span><span class="o">,</span><span class="s2">"states"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="nested-directory"><a class="anchor" href="#nested-directory"></a>Nested Directory</h4>
+<div class="paragraph">
+<p>Files are stories in nested directories based on the layer name.</p>
+</div>
+<div class="listingblock">
+<div class="title">Store styles in nested directories.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">File</span> <span class="n">directory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"target/styles"</span><span class="o">)</span>
+<span class="n">directory</span><span class="o">.</span><span class="na">mkdir</span><span class="o">()</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"src/main/resources/states.sld"</span><span class="o">)</span>
+
+<span class="n">StyleRepository</span> <span class="n">styleRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NestedDirectoryStyleRepository</span><span class="o">(</span><span class="n">directory</span><span class="o">)</span>
+<span class="n">styleRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="s2">"states"</span><span class="o">,</span> <span class="s2">"states"</span><span class="o">,</span> <span class="n">file</span><span class="o">.</span><span class="na">text</span><span class="o">)</span>
+
+<span class="n">String</span> <span class="n">sld</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getDefaultForLayer</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">sld</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">stylesForLayer</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getForLayer</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">stylesForLayer</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">allStyles</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getAll</span><span class="o">()</span>
+<span class="n">println</span> <span class="n">stylesForLayer</span>
+
+<span class="n">styleRepository</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s2">"states"</span><span class="o">,</span><span class="s2">"states"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="postgis-database"><a class="anchor" href="#postgis-database"></a>PostGIS Database</h4>
+<div class="listingblock">
+<div class="title">Store styles in a PostGIS database.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">File</span> <span class="n">databaseFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"target/styles_h2.db"</span><span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"src/main/resources/states.sld"</span><span class="o">)</span>
+
+<span class="n">Sql</span> <span class="n">sql</span> <span class="o">=</span> <span class="n">Sql</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="s2">"jdbc:postgres://localhost/world"</span><span class="o">,</span> <span class="s2">"user"</span><span class="o">,</span> <span class="s2">"pass"</span><span class="o">,</span> <span class="s2">"org.postgresql.Driver"</span><span class="o">)</span>
+<span class="n">StyleRepository</span> <span class="n">styleRepository</span> <span class="o">=</span> <span class="n">DatabaseStyleRepository</span><span class="o">.</span><span class="na">forPostgres</span><span class="o">(</span><span class="n">sql</span><span class="o">)</span>
+<span class="n">styleRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="s2">"states"</span><span class="o">,</span> <span class="s2">"states"</span><span class="o">,</span> <span class="n">file</span><span class="o">.</span><span class="na">text</span><span class="o">)</span>
+
+<span class="n">String</span> <span class="n">sld</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getDefaultForLayer</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">sld</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">stylesForLayer</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getForLayer</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">stylesForLayer</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">allStyles</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getAll</span><span class="o">()</span>
+<span class="n">println</span> <span class="n">stylesForLayer</span>
+
+<span class="n">styleRepository</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s2">"states"</span><span class="o">,</span><span class="s2">"states"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sqlite-database"><a class="anchor" href="#sqlite-database"></a>SQLite Database</h4>
+<div class="listingblock">
+<div class="title">Store styles in a SQLite database. This works with GeoPackage layers.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">File</span> <span class="n">databaseFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"target/styles_sqlite.db"</span><span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"src/main/resources/states.sld"</span><span class="o">)</span>
+
+<span class="n">Sql</span> <span class="n">sql</span> <span class="o">=</span> <span class="n">Sql</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="s2">"jdbc:sqlite:${databaseFile.absolutePath}"</span><span class="o">,</span> <span class="s2">"org.sqlite.JDBC"</span><span class="o">)</span>
+<span class="n">StyleRepository</span> <span class="n">styleRepository</span> <span class="o">=</span> <span class="n">DatabaseStyleRepository</span><span class="o">.</span><span class="na">forSqlite</span><span class="o">(</span><span class="n">sql</span><span class="o">)</span>
+<span class="n">styleRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="s2">"states"</span><span class="o">,</span> <span class="s2">"states"</span><span class="o">,</span> <span class="n">file</span><span class="o">.</span><span class="na">text</span><span class="o">)</span>
+
+<span class="n">String</span> <span class="n">sld</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getDefaultForLayer</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">sld</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">stylesForLayer</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getForLayer</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">stylesForLayer</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">allStyles</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getAll</span><span class="o">()</span>
+<span class="n">println</span> <span class="n">stylesForLayer</span>
+
+<span class="n">styleRepository</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s2">"states"</span><span class="o">,</span><span class="s2">"states"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="h2-database"><a class="anchor" href="#h2-database"></a>H2 Database</h4>
+<div class="listingblock">
+<div class="title">Store styles in a H2 database.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">File</span> <span class="n">databaseFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"target/styles_h2.db"</span><span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"src/main/resources/states.sld"</span><span class="o">)</span>
+
+<span class="n">H2</span> <span class="n">h2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">H2</span><span class="o">(</span><span class="n">databaseFile</span><span class="o">)</span>
+<span class="n">Sql</span> <span class="n">sql</span> <span class="o">=</span> <span class="n">h2</span><span class="o">.</span><span class="na">sql</span>
+<span class="n">StyleRepository</span> <span class="n">styleRepository</span> <span class="o">=</span> <span class="n">DatabaseStyleRepository</span><span class="o">.</span><span class="na">forH2</span><span class="o">(</span><span class="n">sql</span><span class="o">)</span>
+<span class="n">styleRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="s2">"states"</span><span class="o">,</span> <span class="s2">"states"</span><span class="o">,</span> <span class="n">file</span><span class="o">.</span><span class="na">text</span><span class="o">)</span>
+
+<span class="n">String</span> <span class="n">sld</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getDefaultForLayer</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">sld</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">stylesForLayer</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getForLayer</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">stylesForLayer</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">allStyles</span> <span class="o">=</span> <span class="n">styleRepository</span><span class="o">.</span><span class="na">getAll</span><span class="o">()</span>
+<span class="n">println</span> <span class="n">stylesForLayer</span>
+
+<span class="n">styleRepository</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="s2">"states"</span><span class="o">,</span><span class="s2">"states"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-10-09 00:33:42 UTC
+Last updated 2021-10-18 18:03:57 UTC
 </div>
 </div>
 </body>
