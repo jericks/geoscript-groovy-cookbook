@@ -512,6 +512,15 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=writeSld,indent
 include::output/style_write_sld.txt[]
 ....
 
+.Write a Symbolizer to SLD with NamedLayer element.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=writeSldWithNamedLayer,indent=0]
+----
+<1> type can be UserLayer (default) or NamedLayer
+....
+include::output/style_write_namedlayer_sld.txt[]
+....
+
 [source,groovy]
 .Read a Style from an SLD String
 ----
@@ -615,3 +624,53 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readColorTable,
 ----
 [.thumb]
 image::style_colortable_read_str.png[]
+
+=== Style Repositories
+
+Style Repositories can be found in the *http://geoscript.github.io/geoscript-groovy/api/1.18-SNAPSHOT/geoscript/style/package-summary.html[geoscript.style]* package.
+
+Style Repositories are useful for storing styles for layers in a directories or databases.
+
+==== Flat Directory
+
+All files are stored in a single directory.
+
+[source,groovy]
+.Store styles in a flat directory.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=useDirectoryStyleRepository,indent=0]
+----
+
+==== Nested Directory
+
+Files are stories in nested directories based on the layer name.
+
+[source,groovy]
+.Store styles in nested directories.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=useNestedDirectoryStyleRepository,indent=0]
+----
+
+==== PostGIS Database
+
+[source,groovy]
+.Store styles in a PostGIS database.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=usePostGISDatabaseStyleRepository,indent=0]
+----
+
+==== SQLite Database
+
+[source,groovy]
+.Store styles in a SQLite database. This works with GeoPackage layers.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=useSqliteDatabaseStyleRepository,indent=0]
+----
+
+==== H2 Database
+
+[source,groovy]
+.Store styles in a H2 database.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=useH2DatabaseStyleRepository,indent=0]
+----

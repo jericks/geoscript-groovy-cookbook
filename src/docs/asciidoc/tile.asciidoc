@@ -788,6 +788,17 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=useImageTileRend
 [.thumb]
 image::tile_imagetilerenderer.png[]
 
+==== RasterTileRenderer
+
+Use an RasterTileRenderer to create a image Tiles from a single Raster.
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=useRasterTileRenderer,indent=0]
+----
+[.thumb]
+image::tile_rastertilerenderer.png[]
+
 ==== VectorTileRenderer
 
 Use an VectorTileRenderer to create a Vector Tile.

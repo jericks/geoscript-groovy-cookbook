@@ -552,6 +552,12 @@ BOTTOM_LEFT
         assertNotNull(tileRenderer)
     }
 
+    @Test void useRasterTileRenderer() {
+        TileRecipes recipes = new TileRecipes()
+        TileRenderer tileRenderer = recipes.useRasterTileRenderer()
+        assertNotNull(tileRenderer)
+    }
+
     // TileCursor
 
     @Test void tileCursorByZoomLevel() {

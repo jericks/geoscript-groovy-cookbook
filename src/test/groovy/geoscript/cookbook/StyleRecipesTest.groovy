@@ -5,6 +5,7 @@ import geoscript.style.Fill
 import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.Style
+import geoscript.style.StyleRepository
 import geoscript.style.Symbolizer
 import geoscript.style.io.Reader
 import geoscript.style.io.Writer
@@ -369,6 +370,12 @@ class StyleRecipesTest {
         assertNotNull(sld)
     }
 
+    @Test void writeSldWithNamedLayer() {
+        StyleRecipes recipes = new StyleRecipes()
+        String sld = recipes.writeSldWithNamedLayer()
+        assertNotNull(sld)
+    }
+
     @Test void readSld() {
         StyleRecipes recipes = new StyleRecipes()
         Style style = recipes.readSld()
@@ -439,6 +446,38 @@ class StyleRecipesTest {
         StyleRecipes recipes = new StyleRecipes()
         Style style = recipes.readColorTable()
         assertNotNull(style)
+    }
+
+    // Style Repositories
+
+    @Test void useDirectoryStyleRepository() {
+        StyleRecipes recipes = new StyleRecipes()
+        StyleRepository styleRepository = recipes.useDirectoryStyleRepository()
+        assertNotNull(styleRepository)
+    }
+
+    @Test void useNestedDirectoryStyleRepository() {
+        StyleRecipes recipes = new StyleRecipes()
+        StyleRepository styleRepository = recipes.useNestedDirectoryStyleRepository()
+        assertNotNull(styleRepository)
+    }
+
+    @Test void useSqliteDatabaseStyleRepository() {
+        StyleRecipes recipes = new StyleRecipes()
+        StyleRepository styleRepository = recipes.useSqliteDatabaseStyleRepository()
+        assertNotNull(styleRepository)
+    }
+
+    @Test void useH2DatabaseStyleRepository() {
+        StyleRecipes recipes = new StyleRecipes()
+        StyleRepository styleRepository = recipes.useH2DatabaseStyleRepository()
+        assertNotNull(styleRepository)
+    }
+
+    @Disabled @Test void usePostGISDatabaseStyleRepository() {
+        StyleRecipes recipes = new StyleRecipes()
+        StyleRepository styleRepository = recipes.usePostGISDatabaseStyleRepository()
+        assertNotNull(styleRepository)
     }
 
 }

@@ -4,7 +4,9 @@ import geoscript.filter.Expression
 import geoscript.geom.Bounds
 import geoscript.geom.Point
 import geoscript.layer.DBTiles
+import geoscript.layer.Format
 import geoscript.layer.GeneratingTileLayer
+import geoscript.layer.GeoTIFF
 import geoscript.layer.Grid
 import geoscript.layer.ImageTile
 import geoscript.layer.ImageTileRenderer
@@ -13,6 +15,8 @@ import geoscript.layer.MBTiles
 import geoscript.layer.OSM
 import geoscript.layer.PbfVectorTileRenderer
 import geoscript.layer.Pyramid
+import geoscript.layer.Raster
+import geoscript.layer.RasterTileRenderer
 import geoscript.layer.TMS
 import geoscript.layer.Tile
 import geoscript.layer.TileCursor
@@ -23,6 +27,7 @@ import geoscript.layer.UTFGrid
 import geoscript.layer.UTFGridTileRenderer
 import geoscript.layer.VectorTileRenderer
 import geoscript.layer.VectorTiles
+import geoscript.layer.WorldImage
 import geoscript.layer.io.GdalTmsPyramidReader
 import geoscript.layer.io.GdalTmsPyramidWriter
 import geoscript.layer.io.GeoJSONWriter
@@ -670,6 +675,31 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         tile.data = tileRenderer.render(bounds)
         tileLayer.put(tile)
         // end::usePbfVectorTileRenderer[]
+        tileRenderer
+    }
+
+    RasterTileRenderer useRasterTileRenderer() {
+
+        // tag::useRasterTileRenderer[]
+        File dir = new File("target/earthtiles")
+        Pyramid pyramid = Pyramid.createGlobalMercatorPyramid()
+        TileLayer tileLayer = new TMS("Earth", "png", dir, pyramid)
+
+        Format format = new GeoTIFF(new File('src/main/resources/earth.tif'))
+        Raster raster = format.read()
+
+        // Resize and Reproject Raster to Web Mercator
+        Projection latLonProj = new Projection("EPSG:4326")
+        Projection mercatorProj = new Projection("EPSG:3857")
+        Bounds latLonBounds = new Bounds(-179.99, -85.0511, 179.99, 85.0511, latLonProj)
+        Raster webMercatorRaster = raster.resample(bbox: latLonBounds).reproject(mercatorProj)
+
+        RasterTileRenderer tileRenderer = new RasterTileRenderer(webMercatorRaster)
+        GeneratingTileLayer generatingTileLayer = new GeneratingTileLayer(tileLayer, tileRenderer)
+        Tile tile = generatingTileLayer.get(0, 0, 0)
+        // end::useRasterTileRenderer[]
+        saveImage("tile_rastertilerenderer", tile.image)
+
         tileRenderer
     }
 

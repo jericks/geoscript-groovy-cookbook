@@ -16,6 +16,8 @@ import geoscript.style.ChannelSelection
 import geoscript.style.ColorMap
 import geoscript.style.Composite
 import geoscript.style.ContrastEnhancement
+import geoscript.style.DatabaseStyleRepository
+import geoscript.style.DirectoryStyleRepository
 import geoscript.style.Fill
 import geoscript.style.Font
 import geoscript.style.Gradient
@@ -23,9 +25,11 @@ import geoscript.style.Halo
 import geoscript.style.Hatch
 import geoscript.style.Icon
 import geoscript.style.Label
+import geoscript.style.NestedDirectoryStyleRepository
 import geoscript.style.Shape
 import geoscript.style.Stroke
 import geoscript.style.Style
+import geoscript.style.StyleRepository
 import geoscript.style.Symbolizer
 import geoscript.style.Transform
 import geoscript.style.UniqueValues
@@ -44,7 +48,9 @@ import geoscript.style.io.YSLDReader
 import geoscript.style.io.YSLDWriter
 import geoscript.workspace.Directory
 import geoscript.workspace.GeoPackage
+import geoscript.workspace.H2
 import geoscript.workspace.Workspace
+import groovy.sql.Sql
 
 class StyleRecipes extends Recipes {
 
@@ -786,6 +792,17 @@ class StyleRecipes extends Recipes {
         sld
     }
 
+    String writeSldWithNamedLayer() {
+        // tag::writeSldWithNamedLayer[]
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.5)
+        SLDWriter writer = new SLDWriter()
+        String sld = writer.write(symbolizer, type: "NamedLayer") // <1>
+        println sld
+        // end::writeSldWithNamedLayer[]
+        writeFile("style_write_namedlayer_sld", sld)
+        sld
+    }
+
     Style readSld() {
         // tag::readSld[]
         String sld = """<?xml version="1.0" encoding="UTF-8"?>
@@ -983,5 +1000,162 @@ feature-styles:
         colorMap
     }
 
+    // Style Repository
+
+    StyleRepository useDirectoryStyleRepository() {
+
+        // tag::useDirectoryStyleRepository[]
+        File directory = new File("target/styles")
+        directory.mkdir()
+        File file = new File("src/main/resources/states.sld")
+
+        StyleRepository styleRepository = new DirectoryStyleRepository(directory)
+        styleRepository.save("states", "states", file.text)
+
+        String sld = styleRepository.getDefaultForLayer("states")
+        println sld
+
+        List<Map<String, String>> stylesForLayer = styleRepository.getForLayer("states")
+        println stylesForLayer
+
+        List<Map<String, String>> allStyles = styleRepository.getAll()
+        println stylesForLayer
+
+        styleRepository.delete("states","states")
+        // end::useDirectoryStyleRepository[]
+        writeFile("style_directory_style_repo", """
+${sld}
+
+${stylesForLayer}
+
+${allStyles}
+""")
+        styleRepository
+    }
+
+    StyleRepository useNestedDirectoryStyleRepository() {
+
+        // tag::useNestedDirectoryStyleRepository[]
+        File directory = new File("target/styles")
+        directory.mkdir()
+        File file = new File("src/main/resources/states.sld")
+
+        StyleRepository styleRepository = new NestedDirectoryStyleRepository(directory)
+        styleRepository.save("states", "states", file.text)
+
+        String sld = styleRepository.getDefaultForLayer("states")
+        println sld
+
+        List<Map<String, String>> stylesForLayer = styleRepository.getForLayer("states")
+        println stylesForLayer
+
+        List<Map<String, String>> allStyles = styleRepository.getAll()
+        println stylesForLayer
+
+        styleRepository.delete("states","states")
+        // end::useNestedDirectoryStyleRepository[]
+        writeFile("style_nested_directory_style_repo", """
+${sld}
+
+${stylesForLayer}
+
+${allStyles}
+""")
+        styleRepository
+    }
+
+    StyleRepository useSqliteDatabaseStyleRepository() {
+
+        // tag::useSqliteDatabaseStyleRepository[]
+        File databaseFile = new File("target/styles_sqlite.db")
+        File file = new File("src/main/resources/states.sld")
+
+        Sql sql = Sql.newInstance("jdbc:sqlite:${databaseFile.absolutePath}", "org.sqlite.JDBC")
+        StyleRepository styleRepository = DatabaseStyleRepository.forSqlite(sql)
+        styleRepository.save("states", "states", file.text)
+
+        String sld = styleRepository.getDefaultForLayer("states")
+        println sld
+
+        List<Map<String, String>> stylesForLayer = styleRepository.getForLayer("states")
+        println stylesForLayer
+
+        List<Map<String, String>> allStyles = styleRepository.getAll()
+        println stylesForLayer
+
+        styleRepository.delete("states","states")
+        // end::useSqliteDatabaseStyleRepository[]
+        writeFile("style_sqlite_database_style_repo", """
+${sld}
+
+${stylesForLayer}
+
+${allStyles}
+""")
+        styleRepository
+    }
+
+    StyleRepository useH2DatabaseStyleRepository() {
+
+        // tag::useH2DatabaseStyleRepository[]
+        File databaseFile = new File("target/styles_h2.db")
+        File file = new File("src/main/resources/states.sld")
+
+        H2 h2 = new H2(databaseFile)
+        Sql sql = h2.sql
+        StyleRepository styleRepository = DatabaseStyleRepository.forH2(sql)
+        styleRepository.save("states", "states", file.text)
+
+        String sld = styleRepository.getDefaultForLayer("states")
+        println sld
+
+        List<Map<String, String>> stylesForLayer = styleRepository.getForLayer("states")
+        println stylesForLayer
+
+        List<Map<String, String>> allStyles = styleRepository.getAll()
+        println stylesForLayer
+
+        styleRepository.delete("states","states")
+        // end::useH2DatabaseStyleRepository[]
+        writeFile("style_h2_database_style_repo", """
+${sld}
+
+${stylesForLayer}
+
+${allStyles}
+""")
+        styleRepository
+    }
+
+    StyleRepository usePostGISDatabaseStyleRepository() {
+
+        // tag::usePostGISDatabaseStyleRepository[]
+        File databaseFile = new File("target/styles_h2.db")
+        File file = new File("src/main/resources/states.sld")
+
+        Sql sql = Sql.newInstance("jdbc:postgres://localhost/world", "user", "pass", "org.postgresql.Driver")
+        StyleRepository styleRepository = DatabaseStyleRepository.forPostgres(sql)
+        styleRepository.save("states", "states", file.text)
+
+        String sld = styleRepository.getDefaultForLayer("states")
+        println sld
+
+        List<Map<String, String>> stylesForLayer = styleRepository.getForLayer("states")
+        println stylesForLayer
+
+        List<Map<String, String>> allStyles = styleRepository.getAll()
+        println stylesForLayer
+
+        styleRepository.delete("states","states")
+        // end::usePostGISDatabaseStyleRepository[]
+        writeFile("style_postgis_database_style_repo", """
+${sld}
+
+${stylesForLayer}
+
+${allStyles}
+""")
+        styleRepository
+    }
 
 }
