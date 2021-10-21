@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Format Recipes
 
-The Format classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.18-SNAPSHOT/geoscript/layer/package-summary.html[geoscript.layer]* package.
+The Format classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.18.0/geoscript/layer/package-summary.html[geoscript.layer]* package.
 
 A Format is a collection of Rasters.
 
@@ -140,15 +140,4 @@ Read a MrSID Raster from a File
 [source,groovy]
 ----
 include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readMrSID,indent=0]
-----
-
-=== GTopo30
-
-==== Read
-
-Read a GTopo30 Raster from a File
-
-[source,groovy]
-----
-include::{sourcedir}/geoscript/cookbook/FormatRecipes.groovy[tags=readGTopo30,indent=0]
 ----

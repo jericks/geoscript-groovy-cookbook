@@ -2,9 +2,7 @@ package geoscript.cookbook
 
 import geoscript.layer.ArcGrid
 import geoscript.layer.Format
-import geoscript.layer.GTopo30
 import geoscript.layer.GeoTIFF
-import geoscript.layer.ImagePyramid
 import geoscript.layer.MrSID
 import geoscript.layer.NetCDF
 import geoscript.layer.Raster
@@ -148,15 +146,6 @@ class FormatRecipes extends Recipes {
         MrSID mrsid = new MrSID(file)
         Raster raster = mrsid.read("ortho")
         // end::readMrSID[]
-        raster
-    }
-
-    Raster readGTopo30() {
-        // tag::readGTopo30[]
-        File file = new File("src/main/resources/topo.dem")
-        GTopo30 gtopo30 = new GTopo30(file)
-        Raster raster = gtopo30.read("topo")
-        // end::readGTopo30[]
         raster
     }
 

@@ -2,7 +2,6 @@ package geoscript.cookbook
 
 import geoscript.layer.Layer
 import geoscript.workspace.Workspace
-import geoscript.workspace.WorkspaceFactory
 import org.junit.jupiter.api.Test
 import static org.junit.jupiter.api.Assertions.*
 
