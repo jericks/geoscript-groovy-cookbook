@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Workspace Recipes
 
-The Workspace classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.18.0/geoscript/workspace/package-summary.html[geoscript.workspace]* package.
+The Workspace classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.19-SNAPSHOT/geoscript/workspace/package-summary.html[geoscript.workspace]* package.
 
 A Workspace is a collection of Layers.  You can create, add, remove, and get Layers.  There are many
 different kinds of Workspaces in GeoScript including Memory, PostGIS, Directory (for Shapefiles), GeoPackage,
