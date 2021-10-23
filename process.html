@@ -675,7 +675,7 @@ pre.rouge {
 <h2 id="process-recipes"><a class="anchor" href="#process-recipes"></a>Process Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Process classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.18.0/geoscript/process/package-summary.html">geoscript.process</a></strong> package.</p>
+<p>The Process classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.19-SNAPSHOT/geoscript/process/package-summary.html">geoscript.process</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="execute-a-built-in-process"><a class="anchor" href="#execute-a-built-in-process"></a>Execute a built-in Process</h3>
@@ -812,12 +812,10 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:buffer
 geo:union
 geo:intersection
 geo:isValid
-geo:getX
-geo:getY
-geo:buffer
 geo:difference
 geo:splitPolygon
 geo:within
@@ -839,9 +837,14 @@ geo:numPoints
 geo:isClosed
 geo:area
 geo:numGeometries
-geo:distance
+geo:relatePattern
+geo:equalsExactTolerance
 geo:reproject
 geo:symDifference
+geo:distance
+geo:pointN
+geo:getX
+geo:getY
 geo:dimension
 geo:envelope
 geo:exteriorRing
@@ -852,15 +855,13 @@ geo:polygonize
 geo:isRing
 geo:interiorRingN
 geo:equalsExact
-geo:equalsExactTolerance
-geo:pointN
-geo:relatePattern
 geo:length
 geo:isEmpty
 geo:contains
 geo:disjoint
 geo:intersects
 polygonlabelprocess:PolyLabeller
+skeltonize:centerLine
 ras:AddCoverages
 ras:Affine
 ras:AreaGrid
@@ -1048,7 +1049,7 @@ geoscript:convexhull</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-10-21 23:24:05 UTC
+Last updated 2021-10-23 22:10:33 UTC
 </div>
 </div>
 </body>
