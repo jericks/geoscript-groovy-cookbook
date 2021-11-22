@@ -73,6 +73,24 @@ geoscript-groovy -e "new geoscript.layer.Shapefile('states.shp').eachFeature{ pr
 echo "POINT (1 1)" | geom buffer -d 10 | geoscript-groovy -e "println geoscript.geom.Geometry.fromWKT(System.in.text).kml"
 ----
 
+=== Uber Jar
+
+GeoScript Groovy also comes packaged as an uber jar which contains all dependencies.  Download geoscript-groovy-app-1.19-SNAPSHOT.jar
+from github.
+
+[source,bash]
+.Run uber jar from the command line.
+----
+java -jar geoscript-groovy-app-1.19-SNAPSHOT.jar
+----
+
+The uber jar can take four commands:
+
+* script = Runs a script file like the geoscript-groovy command.
+* shell = Start an interactive shell like the geoscript-groovysh commmand.
+* console = Open the simple GUI like the geoscript-groovyConsole command.
+* version = Print the versions of GeoScript, GeoTools, and Groovy
+
 === Library
 
 ==== Maven

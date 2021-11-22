@@ -1383,6 +1383,9 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
     }
 
     geoscript.layer.GeoPackage generateTilesToGeoPackage() {
+        if (new File("target/world.gpkg").exists()) {
+            new File("target/world.gpkg").delete()
+        }
         // tag::generateTilesToGeoPackage[]
         File file = new File("target/world.gpkg")
         geoscript.layer.GeoPackage geopackage = new geoscript.layer.GeoPackage(file, "World", Pyramid.createGlobalGeodeticPyramid())

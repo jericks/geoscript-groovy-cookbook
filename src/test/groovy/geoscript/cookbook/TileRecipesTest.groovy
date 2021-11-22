@@ -20,6 +20,7 @@ import geoscript.layer.VectorTiles
 import org.junit.jupiter.api.Test
 
 import static org.junit.jupiter.api.Assertions.*
+import static geoscript.cookbook.Assertions.*
 
 class TileRecipesTest {
 
@@ -63,7 +64,7 @@ class TileRecipesTest {
         TileRecipes recipes = new TileRecipes()
         Pyramid pyramid = recipes.pyramidProperties()
         assertEquals("EPSG:3857", pyramid.proj.id)
-        assertEquals("(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)", pyramid.bounds.toString())
+        assertBoundsEquals(Bounds.fromString("-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857"), pyramid.bounds, 0.0000001)
         assertEquals("BOTTOM_LEFT", pyramid.origin.toString())
         assertEquals(256, pyramid.tileWidth)
         assertEquals(256, pyramid.tileHeight)
@@ -73,7 +74,7 @@ class TileRecipesTest {
         TileRecipes recipes = new TileRecipes()
         Pyramid pyramid = recipes.createGlobalMercatorPyramid()
         assertEquals("EPSG:3857", pyramid.proj.id)
-        assertEquals("(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)", pyramid.bounds.toString())
+        assertBoundsEquals(Bounds.fromString("-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857"), pyramid.bounds, 0.00001)
         assertEquals("BOTTOM_LEFT", pyramid.origin.toString())
         assertEquals(19, pyramid.maxGrid.z)
         assertEquals(256, pyramid.tileWidth)
@@ -167,20 +168,21 @@ class TileRecipesTest {
     @Test void getBoundsForTile() {
         TileRecipes recipes = new TileRecipes()
         Bounds bounds = recipes.getBoundsForTile()
-        assertEquals("(-1.0018197573940657E7,-1.0018735602568535E7,0.0,-3.725290298461914E-9,EPSG:3857)", bounds.toString())
+        assertBoundsEquals(Bounds.fromString("-1.0018197573940657E7,-1.0018735602568535E7,0.0,-3.725290298461914E-9,EPSG:3857"), bounds, 0.000001)
     }
 
     @Test void getBoundsAroundPoint() {
         TileRecipes recipes = new TileRecipes()
-        Bounds bounds = recipes.getBoundsAroundPoint()
-        assertEquals("(2343967.4055929263,4410824.650424092,2588361.1555929263,4655218.400424092,EPSG:3857)", bounds.toString())
+        Bounds actual = recipes.getBoundsAroundPoint()
+        Bounds expected = Bounds.fromString("2343967.4055929263, 4410824.650424092, 2588361.1555929263, 4655218.400424092, EPSG:3857")
+        assertBoundsEquals(expected, actual, 0.0000001)
     }
 
     @Test void createPyramidFromString() {
         TileRecipes recipes = new TileRecipes()
         Pyramid pyramid = recipes.createPyramidFromString()
         assertEquals("EPSG:3857", pyramid.proj.id)
-        assertEquals("(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)", pyramid.bounds.toString())
+        assertBoundsEquals(Bounds.fromString("-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857"), pyramid.bounds, 0.0000001)
         assertEquals("BOTTOM_LEFT", pyramid.origin.toString())
         assertEquals(19, pyramid.maxGrid.z)
         assertEquals(256, pyramid.tileWidth)
@@ -216,7 +218,7 @@ class TileRecipesTest {
     @Test void pyramidToJson() {
         TileRecipes recipes = new TileRecipes()
         String json = recipes.pyramidToJson()
-        assertEquals("""{
+        assertStringsAreSimilar("""{
     "proj": "EPSG:3857",
     "bounds": {
         "minX": -2.0036395147881314E7,
@@ -266,13 +268,13 @@ class TileRecipesTest {
             "yres": 9775.75
         }
     ]
-}""", json)
+}""", json, 4)
     }
 
     @Test void pyramidToXml() {
         TileRecipes recipes = new TileRecipes()
         String xml = recipes.pyramidToXml()
-        assertEquals("""<pyramid>
+        assertStringsAreSimilar("""<pyramid>
   <proj>EPSG:3857</proj>
   <bounds>
     <minX>-2.0036395147881314E7</minX>
@@ -322,13 +324,13 @@ class TileRecipesTest {
       <yres>9775.75</yres>
     </grid>
   </grids>
-</pyramid>""", xml)
+</pyramid>""", xml, 4)
     }
 
     @Test void pyramidToCsv() {
         TileRecipes recipes = new TileRecipes()
         String csv = recipes.pyramidToCsv()
-        assertEquals("""EPSG:3857
+        assertStringsAreSimilar("""EPSG:3857
 -2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857
 BOTTOM_LEFT
 256,256
@@ -337,13 +339,13 @@ BOTTOM_LEFT
 2,4,4,39103.0,39103.0
 3,8,8,19551.5,19551.5
 4,16,16,9775.75,9775.75
-""", csv)
+""", csv, 4)
     }
 
     @Test void writePyramidToGdalTms() {
         TileRecipes recipes = new TileRecipes()
         String xml = recipes.writePyramidToGdalTms()
-        assertEquals('''<GDAL_WMS>
+        assertStringsAreSimilar('''<GDAL_WMS>
   <Service name='TMS'>
     <ServerURL>https://myserver.com/${z}/${x}/${y}</ServerURL>
     <SRS>EPSG:3857</SRS>
@@ -363,7 +365,7 @@ BOTTOM_LEFT
   <BlockSizeX>256</BlockSizeX>
   <BlockSizeY>256</BlockSizeY>
   <BandsCount>3</BandsCount>
-</GDAL_WMS>''', xml)
+</GDAL_WMS>''', xml, 4)
     }
 
     @Test void readPyramidFromGdalTms() {
@@ -378,7 +380,7 @@ BOTTOM_LEFT
         TileRecipes recipes = new TileRecipes()
         MBTiles mbtiles = recipes.tileLayerProperties()
         assertEquals("countries", mbtiles.name)
-        assertEquals("(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)", mbtiles.bounds.toString())
+        assertBoundsEquals(Bounds.fromString("-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857"), mbtiles.bounds, 0.0000001)
         assertEquals("EPSG:3857", mbtiles.proj.id)
     }
 
@@ -493,7 +495,7 @@ BOTTOM_LEFT
         TileLayer tileLayer = recipes.withTileLayer()
         assertEquals("countries", tileLayer.name)
         assertEquals("EPSG:3857", tileLayer.proj.toString())
-        assertEquals("(-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857)", tileLayer.bounds.toString())
+        assertBoundsEquals(Bounds.fromString("-2.0036395147881314E7,-2.0037471205137067E7,2.0036395147881314E7,2.003747120513706E7,EPSG:3857"), tileLayer.bounds, 0.000001)
     }
 
     @Test void tileLayerFromString() {

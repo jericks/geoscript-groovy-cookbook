@@ -7,6 +7,7 @@ import geoscript.proj.Geodetic
 import geoscript.proj.Projection
 import org.junit.jupiter.api.Test
 import static org.junit.jupiter.api.Assertions.*
+import static geoscript.cookbook.Assertions.*
 
 class ProjectionRecipesTest {
 
@@ -57,26 +58,31 @@ class ProjectionRecipesTest {
 
     @Test void transformProj() {
         ProjectionRecipes recipes = new ProjectionRecipes()
-        Geometry geom = recipes.transformProj()
-        assertEquals("POINT (1158609.2040371667 703068.0661327888)", geom.wkt)
+        Point expected = Point.fromWKT("POINT (1158609.2040371667 703068.0661327888)")
+        Point actual = recipes.transformProj()
+        assertPointsAreEqual(expected, actual, 0.000001)
     }
 
     @Test void transformStr() {
         ProjectionRecipes recipes = new ProjectionRecipes()
-        Geometry geom = recipes.transformStr()
-        assertEquals("POINT (1158609.2040371667 703068.0661327888)", geom.wkt)
+        Point expected = Point.fromWKT("POINT (1158609.2040371667 703068.0661327888)")
+        Point actual = recipes.transformStr()
+        assertPointsAreEqual(expected, actual, 0.000001)
     }
 
     @Test void transformStaticProj() {
-      ProjectionRecipes recipes = new ProjectionRecipes()
-      Geometry geom = recipes.transformStaticProj()
-      assertEquals("POINT (1158609.2040371667 703068.0661327888)", geom.wkt)
+        ProjectionRecipes recipes = new ProjectionRecipes()
+        Point expected = Point.fromWKT("POINT (1158609.2040371667 703068.0661327888)")
+        Point actual = recipes.transformStaticProj()
+        assertPointsAreEqual(expected, actual, 0.000001)
     }
 
     @Test void transformStaticStr() {
         ProjectionRecipes recipes = new ProjectionRecipes()
         Geometry geom = recipes.transformStaticStr()
-        assertEquals("POINT (1158609.2040371667 703068.0661327888)", geom.wkt)
+        Point expected = Point.fromWKT("POINT (1158609.2040371667 703068.0661327888)")
+        Point actual = recipes.transformStaticStr()
+        assertPointsAreEqual(expected, actual, 0.000001)
     }
 
     @Test void createGeodetic() {
@@ -96,7 +102,9 @@ class ProjectionRecipesTest {
     @Test void forwardGeodetic() {
         ProjectionRecipes recipes = new ProjectionRecipes()
         Map results = recipes.forwardGeodetic()
-        assertEquals("POINT (-123.6835797667373 45.516427795897236)", results.point.wkt)
+        Point expected = Point.fromWKT("POINT (-123.6835797667373 45.516427795897236)")
+        Point actual = results.point
+        assertPointsAreEqual(expected, actual, 0.000001)
         assertEquals(75.65, results.backAzimuth, 0.1)
     }
 
