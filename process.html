@@ -812,23 +812,25 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:isValid
 geo:union
 geo:intersection
-geo:isValid
 geo:getX
 geo:getY
 geo:buffer
 geo:difference
+geo:relatePattern
 geo:isClosed
 geo:reproject
+geo:symDifference
+geo:distance
+geo:area
+geo:numGeometries
 geo:splitPolygon
 geo:within
 geo:touches
 geo:convexHull
-geo:area
 geo:crosses
-geo:symDifference
-geo:distance
 geo:boundary
 geo:centroid
 geo:interiorPoint
@@ -839,21 +841,19 @@ geo:isWithinDistance
 geo:relate
 geo:densify
 geo:simplify
-geo:numGeometries
 geo:startPoint
 geo:numPoints
 geo:dimension
-geo:envelope
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
-geo:equalsExact
-geo:relatePattern
-geo:polygonize
-geo:isRing
-geo:endPoint
+geo:envelope
 geo:equalsExactTolerance
 geo:interiorRingN
+geo:equalsExact
+geo:polygonize
+geo:endPoint
+geo:isRing
 geo:pointN
 geo:length
 geo:isEmpty
@@ -861,6 +861,7 @@ geo:contains
 geo:disjoint
 geo:intersects
 polygonlabelprocess:PolyLabeller
+centerLine:centerLine
 skeltonize:centerLine
 ras:AddCoverages
 ras:Affine
@@ -882,8 +883,7 @@ ras:RasterZonalStatistics2
 ras:ScaleCoverage
 ras:StyleCoverage
 ras:TransparencyFill
-geoscript:convexhull
-geoscript:bounds</pre>
+geoscript:convexhull</pre>
 </div>
 </div>
 </div>
@@ -1050,7 +1050,7 @@ geoscript:bounds</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-11-22 23:02:16 UTC
+Last updated 2021-12-31 21:00:41 UTC
 </div>
 </div>
 </body>
