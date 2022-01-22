@@ -703,6 +703,7 @@ pre.rouge {
 <li><a href="#gpx">GPX</a></li>
 <li><a href="#georss">GeoRSS</a></li>
 <li><a href="#google-polyline">Google Polyline</a></li>
+<li><a href="#yaml">YAML</a></li>
 </ul>
 </li>
 </ul>
@@ -4612,8 +4613,8 @@ Floating Point Single Geometry: POINT (5.19775390625 51.07421875)</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 75888615 nanoseconds
-Time with PreparedGeometry = 73791643 nanoseconds</pre>
+<pre>Time with Geometry         = 94680403 nanoseconds
+Time with PreparedGeometry = 87578090 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4658,8 +4659,8 @@ Time with PreparedGeometry = 73791643 nanoseconds</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 56805563 nanoseconds
-Time with PreparedGeometry = 57759655 nanoseconds</pre>
+<pre>Time with Geometry         = 71147846 nanoseconds
+Time with PreparedGeometry = 63058786 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5187,7 +5188,8 @@ WkbReader
 WktReader
 GeoPackageReader
 GooglePolylineEncoder
-TWkbReader</pre>
+TWkbReader
+YamlReader</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5224,7 +5226,8 @@ KmlWriter
 WkbWriter
 WktWriter
 GeoPackageWriter
-GooglePolylineEncoder</pre>
+GooglePolylineEncoder
+YamlWriter</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5891,13 +5894,101 @@ POINT (-123.15 46.237)</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="yaml"><a class="anchor" href="#yaml"></a>YAML</h4>
+<div class="listingblock">
+<div class="title">Get a Geometry from a GeoYaml String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy">        <span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="s2">"""---
+geometry:
+    type: "Point"
+    coordinates:
+    - -122.23
+    - 45.67
+"""</span>
+        <span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="na">fromYaml</span><span class="o">(</span><span class="n">yaml</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_from_yaml.png" alt="geometry from yaml">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get GeoYaml from a Geometry</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(-</span><span class="mf">123.15</span><span class="o">,</span> <span class="mf">46.237</span><span class="o">)</span>
+<span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="na">yaml</span>
+<span class="n">println</span> <span class="n">yaml</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>---
+geometry:
+  type: "Point"
+  coordinates:
+  - -123.15
+  - 46.237</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from a GeoYaml String using the YamlReader</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy">        <span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="s2">"""---
+geometry:
+    type: "Point"
+    coordinates:
+    - -122.23
+    - 45.67
+"""</span>
+        <span class="n">YamlReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YamlReader</span><span class="o">()</span>
+        <span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">yaml</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_yaml.png" alt="geometry read yaml">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to a GeoYaml String using the YamlWriter</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LineString</span><span class="o">(</span>
+        <span class="o">[</span><span class="mf">3.198</span><span class="o">,</span> <span class="mf">43.164</span><span class="o">],</span>
+        <span class="o">[</span><span class="mf">6.713</span><span class="o">,</span> <span class="mf">49.755</span><span class="o">],</span>
+        <span class="o">[</span><span class="mf">9.702</span><span class="o">,</span> <span class="mf">42.592</span><span class="o">],</span>
+        <span class="o">[</span><span class="mf">15.32</span><span class="o">,</span> <span class="mf">53.798</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">YamlWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YamlWriter</span><span class="o">()</span>
+<span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">geometry</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">yaml</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>---
+geometry:
+  type: "LineString"
+  coordinates:
+  - - 3.198
+    - 43.164
+  - - 6.713
+    - 49.755
+  - - 9.702
+    - 42.592
+  - - 15.32
+    - 53.798</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-12-31 21:00:41 UTC
+Last updated 2022-01-22 00:18:19 UTC
 </div>
 </div>
 </body>

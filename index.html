@@ -722,6 +722,7 @@ pre.rouge {
 <li><a href="#gpx">GPX</a></li>
 <li><a href="#georss">GeoRSS</a></li>
 <li><a href="#google-polyline">Google Polyline</a></li>
+<li><a href="#yaml">YAML</a></li>
 </ul>
 </li>
 </ul>
@@ -796,6 +797,7 @@ pre.rouge {
 <li><a href="#gml">GML</a></li>
 <li><a href="#gpx-2">GPX</a></li>
 <li><a href="#kml-2">KML</a></li>
+<li><a href="#yaml-2">YAML</a></li>
 </ul>
 </li>
 </ul>
@@ -998,6 +1000,7 @@ pre.rouge {
 <li><a href="#geobuf-3">GeoBuf</a></li>
 <li><a href="#gml-4">GML</a></li>
 <li><a href="#kml-3">KML</a></li>
+<li><a href="#yaml-3">YAML</a></li>
 <li><a href="#csv">CSV</a></li>
 <li><a href="#georss-3">GeoRSS</a></li>
 <li><a href="#gpx-3">GPX</a></li>
@@ -5315,8 +5318,8 @@ Floating Point Single Geometry: POINT (5.19775390625 51.07421875)</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 75888615 nanoseconds
-Time with PreparedGeometry = 73791643 nanoseconds</pre>
+<pre>Time with Geometry         = 94680403 nanoseconds
+Time with PreparedGeometry = 87578090 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5361,8 +5364,8 @@ Time with PreparedGeometry = 73791643 nanoseconds</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 56805563 nanoseconds
-Time with PreparedGeometry = 57759655 nanoseconds</pre>
+<pre>Time with Geometry         = 71147846 nanoseconds
+Time with PreparedGeometry = 63058786 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5890,7 +5893,8 @@ WkbReader
 WktReader
 GeoPackageReader
 GooglePolylineEncoder
-TWkbReader</pre>
+TWkbReader
+YamlReader</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5927,7 +5931,8 @@ KmlWriter
 WkbWriter
 WktWriter
 GeoPackageWriter
-GooglePolylineEncoder</pre>
+GooglePolylineEncoder
+YamlWriter</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6591,6 +6596,94 @@ POINT (-123.15 46.237)</pre>
 <div class="literalblock">
 <div class="content">
 <pre>_nmfGoroRwhfg@womTv_vj@gxfQotkcAogha@</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="yaml"><a class="anchor" href="#yaml"></a>YAML</h4>
+<div class="listingblock">
+<div class="title">Get a Geometry from a GeoYaml String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy">        <span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="s2">"""---
+geometry:
+    type: "Point"
+    coordinates:
+    - -122.23
+    - 45.67
+"""</span>
+        <span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="na">fromYaml</span><span class="o">(</span><span class="n">yaml</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_from_yaml.png" alt="geometry from yaml">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get GeoYaml from a Geometry</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(-</span><span class="mf">123.15</span><span class="o">,</span> <span class="mf">46.237</span><span class="o">)</span>
+<span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="na">yaml</span>
+<span class="n">println</span> <span class="n">yaml</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>---
+geometry:
+  type: "Point"
+  coordinates:
+  - -123.15
+  - 46.237</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Geometry from a GeoYaml String using the YamlReader</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy">        <span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="s2">"""---
+geometry:
+    type: "Point"
+    coordinates:
+    - -122.23
+    - 45.67
+"""</span>
+        <span class="n">YamlReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YamlReader</span><span class="o">()</span>
+        <span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">yaml</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_read_yaml.png" alt="geometry read yaml">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to a GeoYaml String using the YamlWriter</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LineString</span><span class="o">(</span>
+        <span class="o">[</span><span class="mf">3.198</span><span class="o">,</span> <span class="mf">43.164</span><span class="o">],</span>
+        <span class="o">[</span><span class="mf">6.713</span><span class="o">,</span> <span class="mf">49.755</span><span class="o">],</span>
+        <span class="o">[</span><span class="mf">9.702</span><span class="o">,</span> <span class="mf">42.592</span><span class="o">],</span>
+        <span class="o">[</span><span class="mf">15.32</span><span class="o">,</span> <span class="mf">53.798</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">YamlWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YamlWriter</span><span class="o">()</span>
+<span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">geometry</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">yaml</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>---
+geometry:
+  type: "LineString"
+  coordinates:
+  - - 3.198
+    - 43.164
+  - - 6.713
+    - 49.755
+  - - 9.702
+    - 42.592
+  - - 15.32
+    - 53.798</pre>
 </div>
 </div>
 </div>
@@ -9347,7 +9440,7 @@ cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid--66ebd03_17e124d0f6b_-305b geom: null, id: null, name: null</pre>
+<pre>cities.fid-4de182aa_17e7f27bcc0_-64d4 geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -9839,7 +9932,8 @@ GeoJSONWriter
 GeoRSSWriter
 GmlWriter
 GpxWriter
-KmlWriter</pre>
+KmlWriter
+YamlWriter</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9870,7 +9964,8 @@ GeoJSONReader
 GeoRSSReader
 GmlReader
 GpxReader
-KmlReader</pre>
+KmlReader
+YamlReader</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10062,7 +10157,7 @@ KmlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Dec 31 21:04:21 UTC 2021&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Jan 22 00:20:58 UTC 2022&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10081,7 +10176,7 @@ KmlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--66ebd03_17e124d0f6b_-305f title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-4de182aa_17e7f27bcc0_-64d8 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10105,7 +10200,7 @@ KmlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Fri Dec 31 21:04:21 UTC 2021&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Jan 22 00:20:58 UTC 2022&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10125,7 +10220,7 @@ KmlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid--66ebd03_17e124d0f6b_-305d title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-4de182aa_17e7f27bcc0_-64d6 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -10287,7 +10382,7 @@ KmlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--66ebd03_17e124d0f6b_-305c geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-4de182aa_17e7f27bcc0_-64d5 geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10325,7 +10420,7 @@ KmlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid--66ebd03_17e124d0f6b_-305e geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-4de182aa_17e7f27bcc0_-64d7 geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -10413,6 +10508,121 @@ KmlReader</pre>
 <div class="literalblock">
 <div class="content">
 <pre>placemark.city.1 name: Seattle, description: null, Geometry: POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="yaml-2"><a class="anchor" href="#yaml-2"></a>YAML</h4>
+<div class="listingblock">
+<div class="title">Get a Yaml String from a Feature</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Schema</span> <span class="n">schema</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Schema</span><span class="o">(</span><span class="s2">"cities"</span><span class="o">,</span> <span class="o">[</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"geom"</span><span class="o">,</span> <span class="s2">"Point"</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"id"</span><span class="o">,</span> <span class="s2">"Integer"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"name"</span><span class="o">,</span> <span class="s2">"String"</span><span class="o">)</span>
+<span class="o">])</span>
+<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Feature</span><span class="o">([</span>
+        <span class="k">new</span> <span class="nf">Point</span><span class="o">(-</span><span class="mf">122.3204</span><span class="o">,</span> <span class="mf">47.6024</span><span class="o">),</span>
+        <span class="mi">1</span><span class="o">,</span>
+        <span class="s2">"Seattle"</span>
+<span class="o">],</span> <span class="s2">"city.1"</span><span class="o">,</span> <span class="n">schema</span><span class="o">)</span>
+
+<span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="na">yaml</span>
+<span class="n">println</span> <span class="n">yaml</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>---
+type: "Feature"
+properties:
+  id: 1
+  name: "Seattle"
+geometry:
+  type: "Point"
+  coordinates:
+  - -122.3204
+  - 47.6024</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get a Feature from a Yaml String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy">        <span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="s2">"""---
+type: "Feature"
+properties:
+  id: 1
+  name: "Seattle"
+geometry:
+  type: "Point"
+  coordinates:
+  - -122.3204
+  - 47.6024
+"""</span>
+        <span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">Feature</span><span class="o">.</span><span class="na">fromYaml</span><span class="o">(</span><span class="n">yaml</span><span class="o">)</span>
+        <span class="n">println</span> <span class="n">feature</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>feature.1 id: 1, name: Seattle, geom: POINT (-122.3204 47.6024)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Feature to a YAML String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Schema</span> <span class="n">schema</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Schema</span><span class="o">(</span><span class="s2">"cities"</span><span class="o">,</span> <span class="o">[</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"geom"</span><span class="o">,</span> <span class="s2">"Point"</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"id"</span><span class="o">,</span> <span class="s2">"Integer"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"name"</span><span class="o">,</span> <span class="s2">"String"</span><span class="o">)</span>
+<span class="o">])</span>
+<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Feature</span><span class="o">([</span>
+        <span class="k">new</span> <span class="nf">Point</span><span class="o">(-</span><span class="mf">122.3204</span><span class="o">,</span> <span class="mf">47.6024</span><span class="o">),</span>
+        <span class="mi">1</span><span class="o">,</span>
+        <span class="s2">"Seattle"</span>
+<span class="o">],</span> <span class="s2">"city.1"</span><span class="o">,</span> <span class="n">schema</span><span class="o">)</span>
+
+<span class="n">YamlWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YamlWriter</span><span class="o">()</span>
+<span class="n">String</span> <span class="n">yml</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">feature</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">yml</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>---
+type: "Feature"
+properties:
+  id: 1
+  name: "Seattle"
+geometry:
+  type: "Point"
+  coordinates:
+  - -122.3204
+  - 47.6024</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Feature from a YAML String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy">        <span class="n">YamlReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YamlReader</span><span class="o">()</span>
+        <span class="n">String</span> <span class="n">yml</span> <span class="o">=</span> <span class="s2">"""---
+type: "Feature"
+properties:
+  id: 1
+  name: "Seattle"
+geometry:
+  type: "Point"
+  coordinates:
+  - -122.3204
+  - 47.6024
+"""</span>
+        <span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">yml</span><span class="o">)</span>
+        <span class="n">println</span> <span class="n">feature</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>feature.1 id: 1, name: Seattle, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -11734,25 +11944,23 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:isValid
+geo:buffer
 geo:union
 geo:intersection
+geo:isValid
 geo:getX
 geo:getY
-geo:buffer
 geo:difference
-geo:relatePattern
-geo:isClosed
 geo:reproject
-geo:symDifference
-geo:distance
-geo:area
-geo:numGeometries
+geo:isClosed
 geo:splitPolygon
 geo:within
 geo:touches
 geo:convexHull
+geo:area
 geo:crosses
+geo:symDifference
+geo:distance
 geo:boundary
 geo:centroid
 geo:interiorPoint
@@ -11763,6 +11971,7 @@ geo:isWithinDistance
 geo:relate
 geo:densify
 geo:simplify
+geo:numGeometries
 geo:startPoint
 geo:numPoints
 geo:dimension
@@ -11770,12 +11979,13 @@ geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
 geo:envelope
-geo:equalsExactTolerance
-geo:interiorRingN
-geo:equalsExact
-geo:polygonize
 geo:endPoint
+geo:polygonize
 geo:isRing
+geo:equalsExact
+geo:relatePattern
+geo:interiorRingN
+geo:equalsExactTolerance
 geo:pointN
 geo:length
 geo:isEmpty
@@ -15131,20 +15341,20 @@ and many more.</p>
 <div class="literalblock">
 <div class="content">
 <pre>GeoPackage
-Web Feature Server (NG)
-MySQL (JNDI)
 H2 (JNDI)
-FlatGeobuf
 MBTiles with vector tiles
-MySQL
-Directory of spatial files (shapefiles)
-PostGIS
+PostGIS (JNDI)
 SQLite
 H2
-Shapefile
 Geobuf
-PostGIS (JNDI)
-Properties</pre>
+FlatGeobuf
+Web Feature Server (NG)
+Properties
+MySQL (JNDI)
+MySQL
+Shapefile
+Directory of spatial files (shapefiles)
+PostGIS</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -15312,20 +15522,20 @@ Copied Layer has 500 features.</pre>
 <div class="literalblock">
 <div class="content">
 <pre>GeoPackage
-Web Feature Server (NG)
-MySQL (JNDI)
 H2 (JNDI)
-FlatGeobuf
 MBTiles with vector tiles
-MySQL
-Directory of spatial files (shapefiles)
-PostGIS
+PostGIS (JNDI)
 SQLite
 H2
-Shapefile
 Geobuf
-PostGIS (JNDI)
-Properties</pre>
+FlatGeobuf
+Web Feature Server (NG)
+Properties
+MySQL (JNDI)
+MySQL
+Shapefile
+Directory of spatial files (shapefiles)
+PostGIS</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -15663,9 +15873,9 @@ states (52)</pre>
 <div class="content">
 <pre>Geobuf
 ------
+ocean (2)
 countries (177)
-places (326)
-ocean (2)</pre>
+places (326)</pre>
 </div>
 </div>
 </div>
@@ -15686,8 +15896,8 @@ ocean (2)</pre>
 <div class="content">
 <pre>FlatGeobuf
 ------
-ocean (2)
 places (326)
+ocean (2)
 countries (177)</pre>
 </div>
 </div>
@@ -15709,8 +15919,8 @@ countries (177)</pre>
 <div class="content">
 <pre>Property
 ------
-circles (10)
-places (10)</pre>
+places (10)
+circles (10)</pre>
 </div>
 </div>
 </div>
@@ -18024,7 +18234,8 @@ GeoRSSWriter
 GmlWriter
 GpxWriter
 KmlWriter
-MvtWriter</pre>
+MvtWriter
+YamlWriter</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -18078,7 +18289,8 @@ GeoRSSReader
 GmlReader
 GpxReader
 KmlReader
-MvtReader</pre>
+MvtReader
+YamlReader</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -18143,7 +18355,7 @@ MvtReader</pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--66ebd03_17e124d0f6b_-663b"
+            "id": "fid-4de182aa_17e7f27bcc0_-64e1"
         },
         {
             "type": "Feature",
@@ -18158,7 +18370,7 @@ MvtReader</pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--66ebd03_17e124d0f6b_-6639"
+            "id": "fid-4de182aa_17e7f27bcc0_-64df"
         }
     ]
 }</pre>
@@ -18208,7 +18420,7 @@ MvtReader</pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid--66ebd03_17e124d0f6b_-7e13"
+            "id": "fid-4de182aa_17e7f27bcc0_-7cc5"
         },
         {
             "type": "Feature",
@@ -18223,7 +18435,7 @@ MvtReader</pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid--66ebd03_17e124d0f6b_-7e11"
+            "id": "fid-4de182aa_17e7f27bcc0_-7cc3"
         }
     ]
 }</pre>
@@ -18308,7 +18520,7 @@ MvtReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>0a0269640a046e616d65100218062289010a430a0c08001a089fd8d374c0ebb22d5a1e6669642d2d363665626430335f31376531323464306636625f2d376162386a0218016a090a0753656174746c657204000001010a420a0c08001a08ffd6e77498a3892d5a1e6669642d2d363665626430335f31376531323464306636625f2d376162366a0218026a080a065461636f6d61720400000101</pre>
+<pre>0a0269640a046e616d65100218062289010a430a0c08001a089fd8d374c0ebb22d5a1e6669642d34646531383261615f31376537663237626363305f2d373936366a0218016a090a0753656174746c657204000001010a420a0c08001a08ffd6e77498a3892d5a1e6669642d34646531383261615f31376537663237626363305f2d373936346a0218026a080a065461636f6d61720400000101</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -18339,7 +18551,7 @@ MvtReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>0a0269640a046e616d6510021806228b010a430a0c08001a089fd8d374c0ebb22d5a1e6669642d2d363665626430335f31376531323464306636625f2d376132306a0218016a090a0753656174746c657204000001010a440a0c08001a08afe9ff7480d2b42b5a1e6669642d2d363665626430335f31376531323464306636625f2d376131656a0218026a0a0a08506f72746c616e64720400000101</pre>
+<pre>0a0269640a046e616d6510021806228b010a430a0c08001a089fd8d374c0ebb22d5a1e6669642d34646531383261615f31376537663237626363305f2d373863656a0218016a090a0753656174746c657204000001010a440a0c08001a08afe9ff7480d2b42b5a1e6669642d34646531383261615f31376537663237626363305f2d373863636a0218026a0a0a08506f72746c616e64720400000101</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -18407,7 +18619,7 @@ MvtReader</pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--66ebd03_17e124d0f6b_-7220"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4de182aa_17e7f27bcc0_-70ca"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -18429,7 +18641,7 @@ MvtReader</pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--66ebd03_17e124d0f6b_-721e"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4de182aa_17e7f27bcc0_-70c8"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -18495,7 +18707,7 @@ MvtReader</pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--66ebd03_17e124d0f6b_-7246"&gt;
+&lt;gsf:cities fid="fid-4de182aa_17e7f27bcc0_-70f0"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -18509,7 +18721,7 @@ MvtReader</pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid--66ebd03_17e124d0f6b_-7244"&gt;
+&lt;gsf:cities fid="fid-4de182aa_17e7f27bcc0_-70ee"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -18623,7 +18835,7 @@ MvtReader</pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--66ebd03_17e124d0f6b_-6746
+          fid-4de182aa_17e7f27bcc0_-65ec
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -18650,7 +18862,7 @@ MvtReader</pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid--66ebd03_17e124d0f6b_-6744
+          fid-4de182aa_17e7f27bcc0_-65ea
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -18710,13 +18922,13 @@ MvtReader</pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid--66ebd03_17e124d0f6b_-723e"&gt;
+&lt;kml:Placemark id="fid-4de182aa_17e7f27bcc0_-70e8"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid--66ebd03_17e124d0f6b_-723c"&gt;
+&lt;kml:Placemark id="fid-4de182aa_17e7f27bcc0_-70e6"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -18754,6 +18966,138 @@ MvtReader</pre>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/layer_read_kml.png" alt="layer read kml">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="yaml-3"><a class="anchor" href="#yaml-3"></a>YAML</h4>
+<div class="listingblock">
+<div class="title">Convert a Layer to a YAML String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Memory</span><span class="o">()</span>
+<span class="n">Schema</span> <span class="n">schema</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Schema</span><span class="o">(</span><span class="s2">"cities"</span><span class="o">,</span> <span class="o">[</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"geom"</span><span class="o">,</span> <span class="s2">"Point"</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"id"</span><span class="o">,</span> <span class="s2">"Integer"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"name"</span><span class="o">,</span> <span class="s2">"String"</span><span class="o">)</span>
+<span class="o">])</span>
+<span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="na">add</span><span class="o">([</span>
+        <span class="nl">geom:</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(-</span><span class="mf">122.3204</span><span class="o">,</span> <span class="mf">47.6024</span><span class="o">),</span>
+        <span class="nl">id:</span> <span class="mi">1</span><span class="o">,</span>
+        <span class="nl">name:</span> <span class="s2">"Seattle"</span>
+<span class="o">])</span>
+<span class="n">layer</span><span class="o">.</span><span class="na">add</span><span class="o">([</span>
+        <span class="nl">geom:</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(-</span><span class="mf">122.48416</span><span class="o">,</span> <span class="mf">47.2619</span><span class="o">),</span>
+        <span class="nl">id:</span> <span class="mi">2</span><span class="o">,</span>
+        <span class="nl">name:</span> <span class="s2">"Tacoma"</span>
+<span class="o">])</span>
+
+<span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">toYamlString</span><span class="o">()</span>
+<span class="n">println</span> <span class="n">yaml</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>---
+type: "FeatureCollection"
+features:
+- properties:
+    id: 1
+    name: "Seattle"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.3204
+    - 47.6024
+- properties:
+    id: 2
+    name: "Tacoma"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.48416
+    - 47.2619</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Layer to a YAML String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Memory</span><span class="o">()</span>
+<span class="n">Schema</span> <span class="n">schema</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Schema</span><span class="o">(</span><span class="s2">"cities"</span><span class="o">,</span> <span class="o">[</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"geom"</span><span class="o">,</span> <span class="s2">"Point"</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"id"</span><span class="o">,</span> <span class="s2">"Integer"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Field</span><span class="o">(</span><span class="s2">"name"</span><span class="o">,</span> <span class="s2">"String"</span><span class="o">)</span>
+<span class="o">])</span>
+<span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="na">add</span><span class="o">([</span>
+        <span class="nl">geom:</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(-</span><span class="mf">122.3204</span><span class="o">,</span> <span class="mf">47.6024</span><span class="o">),</span>
+        <span class="nl">id:</span> <span class="mi">1</span><span class="o">,</span>
+        <span class="nl">name:</span> <span class="s2">"Seattle"</span>
+<span class="o">])</span>
+<span class="n">layer</span><span class="o">.</span><span class="na">add</span><span class="o">([</span>
+        <span class="nl">geom:</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(-</span><span class="mf">122.48416</span><span class="o">,</span> <span class="mf">47.2619</span><span class="o">),</span>
+        <span class="nl">id:</span> <span class="mi">2</span><span class="o">,</span>
+        <span class="nl">name:</span> <span class="s2">"Tacoma"</span>
+<span class="o">])</span>
+
+<span class="n">YamlWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YamlWriter</span><span class="o">()</span>
+<span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">layer</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">yaml</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>---
+type: "FeatureCollection"
+features:
+- properties:
+    id: 1
+    name: "Seattle"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.3204
+    - 47.6024
+- properties:
+    id: 2
+    name: "Tacoma"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.48416
+    - 47.2619</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Layer from a YAML String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy">        <span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="s2">"""---
+type: "FeatureCollection"
+features:
+- properties:
+    id: 1
+    name: "Seattle"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.3204
+    - 47.6024
+- properties:
+    id: 2
+    name: "Tacoma"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.48416
+    - 47.2619
+"""</span>
+        <span class="n">YamlReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YamlReader</span><span class="o">()</span>
+        <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">yaml</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/layer_read_yaml.png" alt="layer read yaml">
 </div>
 </div>
 </div>
@@ -18844,15 +19188,15 @@ MvtReader</pre>
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--66ebd03_17e124d0f6b_-7a1c&lt;/title&gt;
+&lt;title&gt;fid-4de182aa_17e7f27bcc0_-78ca&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Fri Dec 31 21:02:50 UTC 2021&lt;/updated&gt;
+&lt;updated&gt;Sat Jan 22 00:20:48 UTC 2022&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid--66ebd03_17e124d0f6b_-7a1a&lt;/title&gt;
+&lt;title&gt;fid-4de182aa_17e7f27bcc0_-78c8&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Fri Dec 31 21:02:50 UTC 2021&lt;/updated&gt;
+&lt;updated&gt;Sat Jan 22 00:20:48 UTC 2022&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -18922,10 +19266,10 @@ MvtReader</pre>
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid--66ebd03_17e124d0f6b_-7242&lt;/name&gt;
+&lt;name&gt;fid-4de182aa_17e7f27bcc0_-70ec&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid--66ebd03_17e124d0f6b_-7240&lt;/name&gt;
+&lt;name&gt;fid-4de182aa_17e7f27bcc0_-70ea&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -23343,7 +23687,7 @@ vector tiles, and utfgrids.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid--66ebd03_17e124d0f6b_-31c8"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.9</pre>
+<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid-4de182aa_17e7f27bcc0_-7fff"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.9</pre>
 </div>
 </div>
 </div>
@@ -25165,7 +25509,7 @@ xml</pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.19-SNAPSHOT<br>
-Last updated 2021-12-31 21:00:41 UTC
+Last updated 2022-01-22 00:18:19 UTC
 </div>
 </div>
 </body>
