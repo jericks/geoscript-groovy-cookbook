@@ -38,6 +38,8 @@ import geoscript.layer.io.Writer
 import geoscript.layer.io.Reader
 import geoscript.layer.io.Readers
 import geoscript.layer.io.Writers
+import geoscript.layer.io.YamlReader
+import geoscript.layer.io.YamlWriter
 import geoscript.proj.Projection
 import geoscript.render.Map as GMap
 import geoscript.style.ColorMap
@@ -1529,6 +1531,93 @@ The merged Layer has ${mergedLayer.count} features
         // end::readLayerFromKmlString[]
         layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
         drawOnBasemap("layer_read_kml", [layer], layer.bounds.expandBy(3.5))
+        layer
+    }
+
+    // YAML
+
+    String convertLayerToYamlString() {
+        // tag::convertLayerToYamlString[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        String yaml = layer.toYamlString()
+        println yaml
+        // end::convertLayerToYamlString[]
+        writeFile("layer_to_yaml_string", yaml)
+        yaml
+    }
+
+    String writeLayerToYaml() {
+        // tag::writeLayerToYaml[]
+        Workspace workspace = new Memory()
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Layer layer = workspace.create(schema)
+        layer.add([
+                geom: new Point(-122.3204, 47.6024),
+                id: 1,
+                name: "Seattle"
+        ])
+        layer.add([
+                geom: new Point(-122.48416, 47.2619),
+                id: 2,
+                name: "Tacoma"
+        ])
+
+        YamlWriter writer = new YamlWriter()
+        String yaml = writer.write(layer)
+        println yaml
+        // end::writeLayerToYaml[]
+        writeFile("layer_to_yaml", yaml)
+        yaml
+    }
+
+    Layer readLayerFromYamlString() {
+        // tag::readLayerFromYamlString[]
+        String yaml = """---
+type: "FeatureCollection"
+features:
+- properties:
+    id: 1
+    name: "Seattle"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.3204
+    - 47.6024
+- properties:
+    id: 2
+    name: "Tacoma"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.48416
+    - 47.2619
+"""
+        YamlReader reader = new YamlReader()
+        Layer layer = reader.read(yaml)
+        // end::readLayerFromYamlString[]
+        layer.style = new Shape("#B0E0E6", 10).stroke("#4169E1", 0.5) + new Label("name").point([0.5,0.5], [0, 5.0], 0)
+        drawOnBasemap("layer_read_yaml", [layer], layer.bounds.expandBy(3.5))
         layer
     }
 

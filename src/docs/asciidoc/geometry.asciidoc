@@ -2160,3 +2160,39 @@ include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometr
 ....
 include::output/geometry_to_googlepolyline.txt[]
 ....
+
+==== YAML
+
+[source,groovy]
+.Get a Geometry from a GeoYaml String
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getGeometryFromYaml,indent=0]
+----
+[.thumb]
+image::geometry_from_yaml.png[]
+
+[source,groovy]
+.Get GeoYaml from a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getYamlFromGeometry,indent=0]
+----
+....
+include::output/geometry_from_yaml.txt[]
+....
+
+[source,groovy]
+.Read a Geometry from a GeoYaml String using the YamlReader
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=readGeometryFromYaml,indent=0]
+----
+[.thumb]
+image::geometry_read_yaml.png[]
+
+[source,groovy]
+.Write a Geometry to a GeoYaml String using the YamlWriter
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToYaml,indent=0]
+----
+....
+include::output/geometry_to_yaml.txt[]
+....

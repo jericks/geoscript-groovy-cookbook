@@ -788,6 +788,34 @@ include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromKm
 [.thumb]
 image::layer_read_kml.png[]
 
+==== YAML
+
+[source,groovy]
+.Convert a Layer to a YAML String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=convertLayerToYamlString,indent=0]
+----
+....
+include::output/layer_to_yaml_string.txt[]
+....
+
+[source,groovy]
+.Write a Layer to a YAML String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=writeLayerToYaml,indent=0]
+----
+....
+include::output/layer_to_yaml.txt[]
+....
+
+[source,groovy]
+.Read a Layer from a YAML String
+----
+include::{sourcedir}/geoscript/cookbook/LayerRecipes.groovy[tags=readLayerFromYamlString,indent=0]
+----
+[.thumb]
+image::layer_read_yaml.png[]
+
 ==== CSV
 
 [source,groovy]

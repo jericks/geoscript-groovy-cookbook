@@ -508,6 +508,54 @@ class FeatureRecipesTest {
         assertEquals("placemark.city.1 name: Seattle, description: null, Geometry: POINT (-122.3204 47.6024)", feature.toString())
     }
 
+    // Yaml
+
+    @Test void getYamlFromFeature() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.getYamlFromFeature()
+        assertEquals("""---
+type: "Feature"
+properties:
+  id: 1
+  name: "Seattle"
+geometry:
+  type: "Point"
+  coordinates:
+  - -122.3204
+  - 47.6024
+""", str)
+    }
+
+    @Test void getFeatureFromYaml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.getFeatureFromYaml()
+        assertEquals("feature.1 id: 1, name: Seattle, geom: POINT (-122.3204 47.6024)", feature.toString())
+    }
+
+    @Test void writeFeatureToYml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        String str = recipes.writeFeatureToYml()
+        assertEquals("""---
+type: "Feature"
+properties:
+  id: 1
+  name: "Seattle"
+geometry:
+  type: "Point"
+  coordinates:
+  - -122.3204
+  - 47.6024
+""", str)
+    }
+
+    @Test void readFeatureFromYml() {
+        FeatureRecipes recipes = new FeatureRecipes()
+        Feature feature = recipes.readFeatureFromYml()
+        assertEquals("feature.1 id: 1, name: Seattle, geom: POINT (-122.3204 47.6024)", feature.toString())
+    }
+
+    // Writers and Readers
+
     @Test void listFeatureWriters() {
         FeatureRecipes recipes = new FeatureRecipes()
         List<Writer> writers = recipes.listFeatureWriters()

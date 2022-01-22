@@ -29,6 +29,8 @@ import geoscript.feature.io.Writer
 import geoscript.feature.io.Writers
 import geoscript.feature.io.XmlSchemaReader
 import geoscript.feature.io.XmlSchemaWriter
+import geoscript.feature.io.YamlReader
+import geoscript.feature.io.YamlWriter
 import geoscript.geom.Bounds
 import geoscript.geom.Geometry
 import geoscript.geom.Point
@@ -1233,6 +1235,92 @@ Is Geometry = ${field.geometry}
         writeFile("feature_read_kml", "${feature}")
         feature
     }
+
+    // GeoYaml
+
+    String getYamlFromFeature() {
+        // tag::getYamlFromFeature[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        String yaml = feature.yaml
+        println yaml
+        // end::getYamlFromFeature[]
+        writeFile("feature_get_yaml", "${yaml}")
+        yaml
+    }
+
+    Feature getFeatureFromYaml() {
+        // tag::getFeatureFromYaml[]
+        String yaml = """---
+type: "Feature"
+properties:
+  id: 1
+  name: "Seattle"
+geometry:
+  type: "Point"
+  coordinates:
+  - -122.3204
+  - 47.6024
+"""
+        Feature feature = Feature.fromYaml(yaml)
+        println feature
+        // end::getFeatureFromYaml[]
+        writeFile("feature_from_yaml", "${feature}")
+        feature
+    }
+
+    String writeFeatureToYml() {
+        // tag::writeFeatureToYml[]
+        Schema schema = new Schema("cities", [
+                new Field("geom", "Point", "EPSG:4326"),
+                new Field("id", "Integer"),
+                new Field("name", "String")
+        ])
+        Feature feature = new Feature([
+                new Point(-122.3204, 47.6024),
+                1,
+                "Seattle"
+        ], "city.1", schema)
+
+        YamlWriter writer = new YamlWriter()
+        String yml = writer.write(feature)
+        println yml
+        // end::writeFeatureToYml[]
+        writeFile("feature_write_yml", "${yml}")
+        yml
+    }
+
+    Feature readFeatureFromYml() {
+        // tag::readFeatureFromYml[]
+        YamlReader reader = new YamlReader()
+        String yml = """---
+type: "Feature"
+properties:
+  id: 1
+  name: "Seattle"
+geometry:
+  type: "Point"
+  coordinates:
+  - -122.3204
+  - 47.6024
+"""
+        Feature feature = reader.read(yml)
+        println feature
+        // end::readFeatureFromYml[]
+        writeFile("feature_read_yml", "${feature}")
+        feature
+    }
+
+    // Writers and Readers
 
     List<Writer> listFeatureWriters() {
         // tag::listFeatureWriters[]

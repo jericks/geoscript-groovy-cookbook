@@ -587,6 +587,64 @@ class LayerRecipesTest {
         assertEquals(2, layer.count)
     }
 
+    // Yaml
+
+    @Test void convertLayerToYamlString() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.convertLayerToYamlString()
+        assertEquals("""---
+type: "FeatureCollection"
+features:
+- properties:
+    id: 1
+    name: "Seattle"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.3204
+    - 47.6024
+- properties:
+    id: 2
+    name: "Tacoma"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.48416
+    - 47.2619
+""", str)
+    }
+
+    @Test void writeLayerToYaml() {
+        LayerRecipes recipes = new LayerRecipes()
+        String str = recipes.writeLayerToYaml()
+        assertEquals("""---
+type: "FeatureCollection"
+features:
+- properties:
+    id: 1
+    name: "Seattle"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.3204
+    - 47.6024
+- properties:
+    id: 2
+    name: "Tacoma"
+  geometry:
+    type: "Point"
+    coordinates:
+    - -122.48416
+    - 47.2619
+""", str)
+    }
+
+    @Test void readLayerFromYamlString() {
+        LayerRecipes recipes = new LayerRecipes()
+        Layer layer = recipes.readLayerFromYamlString()
+        assertEquals(2, layer.count)
+    }
+
     // GML
 
     @Test void layerToGMLString() {

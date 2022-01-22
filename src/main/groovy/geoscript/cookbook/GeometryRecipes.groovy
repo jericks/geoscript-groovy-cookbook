@@ -3,6 +3,8 @@ package geoscript.cookbook
 import geoscript.geom.io.GeoPackageReader
 import geoscript.geom.io.GeoPackageWriter
 import geoscript.geom.io.TWkbReader
+import geoscript.geom.io.YamlReader
+import geoscript.geom.io.YamlWriter
 import org.h2.command.Prepared
 import org.locationtech.jts.geom.IntersectionMatrix
 import geoscript.geom.Bounds
@@ -4192,5 +4194,63 @@ Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
         // end::writeGeometryToGooglePolyline[]
         writeFile("geometry_to_googlepolyline", str)
         str
+    }
+
+    // GeoYaml
+    Geometry readGeometryFromYaml() {
+        // tag::readGeometryFromYaml[]
+        String yaml = """---
+geometry:
+    type: "Point"
+    coordinates:
+    - -122.23
+    - 45.67
+"""
+        YamlReader reader = new YamlReader()
+        Geometry geometry = reader.read(yaml)
+        // end::readGeometryFromYaml[]
+        drawGeometry("geometry_read_yaml", geometry)
+        geometry
+    }
+
+    String writeGeometryToYaml() {
+        // tag::writeGeometryToYaml[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        YamlWriter writer = new YamlWriter()
+        String yaml = writer.write(geometry)
+        println yaml
+        // end::writeGeometryToYaml[]
+        writeFile("geometry_to_yaml", yaml)
+        yaml
+    }
+
+    Geometry getGeometryFromYaml() {
+        // tag::getGeometryFromYaml[]
+        String yaml = """---
+geometry:
+    type: "Point"
+    coordinates:
+    - -122.23
+    - 45.67
+"""
+        Geometry geometry = Geometry.fromYaml(yaml)
+        // end::getGeometryFromYaml[]
+        drawGeometry("geometry_from_yaml", geometry)
+        geometry
+    }
+
+    String getYamlFromGeometry() {
+        // tag::getYamlFromGeometry[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        String yaml = geometry.yaml
+        println yaml
+        // end::getYamlFromGeometry[]
+        writeFile("geometry_from_yaml", yaml)
+        yaml
     }
 }

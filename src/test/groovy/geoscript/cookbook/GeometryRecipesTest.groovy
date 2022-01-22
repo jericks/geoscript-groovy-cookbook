@@ -1428,4 +1428,48 @@ class GeometryRecipesTest {
         String georss = recipes.writeGeometryToGooglePolyline()
         assertEquals("_nmfGoroRwhfg@womTv_vj@gxfQotkcAogha@", georss)
     }
+
+    // GeoYaml
+
+    @Test void readGeometryFromYaml() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.readGeometryFromYaml()
+        assertEquals("POINT (-122.23 45.67)", geom.wkt)
+    }
+
+    @Test void writeGeometryToYaml() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String yaml = recipes.writeGeometryToYaml()
+        assertEquals("""---
+geometry:
+  type: "LineString"
+  coordinates:
+  - - 3.198
+    - 43.164
+  - - 6.713
+    - 49.755
+  - - 9.702
+    - 42.592
+  - - 15.32
+    - 53.798
+""", yaml)
+    }
+
+    @Test void getGeometryFromYaml() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.getGeometryFromYaml()
+        assertEquals("POINT (-122.23 45.67)", geom.wkt)
+    }
+
+    @Test void getYamlFromGeometry() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String yaml = recipes.getYamlFromGeometry()
+        assertEquals("""---
+geometry:
+  type: "Point"
+  coordinates:
+  - -123.15
+  - 46.237
+""", yaml)
+    }
 }
