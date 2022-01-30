@@ -734,9 +734,9 @@ pre.rouge {
 <div class="listingblock">
 <div class="title">A Symbolizer can use the where method to restrict which features are styled.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffcc"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"PEOPLE &lt; 4504128.33"</span><span class="o">)</span> <span class="o">+</span>
-        <span class="k">new</span> <span class="nf">Fill</span><span class="o">(</span><span class="s2">"#41b6c4"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"PEOPLE BETWEEN 4504128.33 AND 16639804.33"</span><span class="o">)</span> <span class="o">+</span>
-        <span class="k">new</span> <span class="nf">Fill</span><span class="o">(</span><span class="s2">"#253494"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"PEOPLE &gt; 16639804.33"</span><span class="o">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffcc"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"POP_EST &lt; 4504128.33"</span><span class="o">)</span> <span class="o">+</span>
+        <span class="k">new</span> <span class="nf">Fill</span><span class="o">(</span><span class="s2">"#41b6c4"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"POP_EST BETWEEN 4504128.33 AND 16639804.33"</span><span class="o">)</span> <span class="o">+</span>
+        <span class="k">new</span> <span class="nf">Fill</span><span class="o">(</span><span class="s2">"#253494"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"POP_EST &gt; 16639804.33"</span><span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -758,7 +758,7 @@ pre.rouge {
 <div class="listingblock">
 <div class="title">The scale method is used to create Symbolizers that are dependent on map scale.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">))</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">))</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
         <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="nl">max:</span> <span class="mi">16000000</span><span class="o">)</span></code></pre>
@@ -1106,7 +1106,7 @@ pre.rouge {
 <div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
     <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
     <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span></code></pre>
 </div>
@@ -1119,7 +1119,7 @@ pre.rouge {
 <div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer using an Expression</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="n">Expression</span><span class="o">.</span><span class="na">fromCQL</span><span class="o">(</span><span class="s2">"strToLowerCase(NAME_1)"</span><span class="o">))</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="n">Expression</span><span class="o">.</span><span class="na">fromCQL</span><span class="o">(</span><span class="s2">"strToLowerCase(name)"</span><span class="o">))</span>
         <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
         <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span></code></pre>
 </div>
@@ -1144,7 +1144,7 @@ pre.rouge {
 <div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer with strike through style.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
         <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">strikethrough</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span></code></pre>
@@ -1158,7 +1158,7 @@ pre.rouge {
 <div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer with word and character spacing.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
         <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">wordSpacing</span><span class="o">(</span><span class="mi">8</span><span class="o">)</span>
@@ -1173,7 +1173,7 @@ pre.rouge {
 <div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer with underlining.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
         <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">underline</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span></code></pre>
@@ -1251,7 +1251,7 @@ pre.rouge {
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
-<span class="n">Gradient</span> <span class="n">gradient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gradient</span><span class="o">(</span><span class="n">countries</span><span class="o">,</span> <span class="s2">"PEOPLE"</span><span class="o">,</span> <span class="s2">"quantile"</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="s2">"Greens"</span><span class="o">)</span>
+<span class="n">Gradient</span> <span class="n">gradient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gradient</span><span class="o">(</span><span class="n">countries</span><span class="o">,</span> <span class="s2">"POP_EST"</span><span class="o">,</span> <span class="s2">"quantile"</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="s2">"Greens"</span><span class="o">)</span>
 <span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="n">gradient</span></code></pre>
 </div>
 </div>
@@ -1265,7 +1265,7 @@ pre.rouge {
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
-<span class="n">Gradient</span> <span class="n">gradient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gradient</span><span class="o">(</span><span class="n">countries</span><span class="o">,</span> <span class="s2">"PEOPLE"</span><span class="o">,</span> <span class="s2">"equalinterval"</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="s2">"Reds"</span><span class="o">)</span>
+<span class="n">Gradient</span> <span class="n">gradient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gradient</span><span class="o">(</span><span class="n">countries</span><span class="o">,</span> <span class="s2">"POP_EST"</span><span class="o">,</span> <span class="s2">"equalinterval"</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="s2">"Reds"</span><span class="o">)</span>
 <span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="n">gradient</span></code></pre>
 </div>
 </div>
@@ -2086,7 +2086,7 @@ Rasters.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-22 00:18:19 UTC
+Last updated 2022-01-30 00:30:04 UTC
 </div>
 </div>
 </body>

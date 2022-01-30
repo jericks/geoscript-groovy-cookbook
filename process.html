@@ -812,15 +812,15 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:buffer
 geo:union
 geo:intersection
-geo:isValid
 geo:getX
 geo:getY
+geo:isValid
+geo:buffer
 geo:difference
-geo:reproject
 geo:isClosed
+geo:reproject
 geo:splitPolygon
 geo:within
 geo:touches
@@ -847,14 +847,14 @@ geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
 geo:envelope
-geo:endPoint
 geo:polygonize
 geo:isRing
+geo:endPoint
 geo:equalsExact
 geo:relatePattern
-geo:interiorRingN
-geo:equalsExactTolerance
 geo:pointN
+geo:equalsExactTolerance
+geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
@@ -1003,6 +1003,7 @@ geoscript:convexhull</pre>
         <span class="o">[</span><span class="nl">result:</span> <span class="n">geoscript</span><span class="o">.</span><span class="na">layer</span><span class="o">.</span><span class="na">Cursor</span><span class="o">],</span>
         <span class="o">{</span> <span class="n">inputs</span> <span class="o">-&gt;</span>
             <span class="kt">def</span> <span class="n">geoms</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeometryCollection</span><span class="o">(</span><span class="n">inputs</span><span class="o">.</span><span class="na">features</span><span class="o">.</span><span class="na">collect</span><span class="o">{</span> <span class="n">f</span> <span class="o">-&gt;</span> <span class="n">f</span><span class="o">.</span><span class="na">geom</span><span class="o">})</span>
+            <span class="n">println</span> <span class="n">geoms</span>
             <span class="kt">def</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Layer</span><span class="o">()</span>
             <span class="n">output</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">geoms</span><span class="o">.</span><span class="na">convexHull</span><span class="o">])</span>
             <span class="o">[</span><span class="nl">result:</span> <span class="n">output</span><span class="o">]</span>
@@ -1050,7 +1051,7 @@ geoscript:convexhull</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-22 00:18:19 UTC
+Last updated 2022-01-30 00:30:04 UTC
 </div>
 </div>
 </body>

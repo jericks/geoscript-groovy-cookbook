@@ -834,6 +834,7 @@ pre.rouge {
 <li><a href="#creating-maps">Creating Maps</a></li>
 <li><a href="#map-properties">Map Properties</a></li>
 <li><a href="#advanced-properties">Advanced Properties</a></li>
+<li><a href="#projections">Projections</a></li>
 <li><a href="#map-cubes">Map Cubes</a></li>
 <li><a href="#rendering-maps">Rendering Maps</a>
 <ul class="sectlevel3">
@@ -5318,8 +5319,8 @@ Floating Point Single Geometry: POINT (5.19775390625 51.07421875)</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 94680403 nanoseconds
-Time with PreparedGeometry = 87578090 nanoseconds</pre>
+<pre>Time with Geometry         = 100215746 nanoseconds
+Time with PreparedGeometry = 97558090 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5364,8 +5365,8 @@ Time with PreparedGeometry = 87578090 nanoseconds</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 71147846 nanoseconds
-Time with PreparedGeometry = 63058786 nanoseconds</pre>
+<pre>Time with Geometry         = 80721909 nanoseconds
+Time with PreparedGeometry = 75335293 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -9440,7 +9441,7 @@ cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-4de182aa_17e7f27bcc0_-64d4 geom: null, id: null, name: null</pre>
+<pre>cities.fid-48aaca2a_17ea866cfe7_-68fa geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -10157,7 +10158,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Jan 22 00:20:58 UTC 2022&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Jan 30 00:34:27 UTC 2022&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10176,7 +10177,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-4de182aa_17e7f27bcc0_-64d8 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-48aaca2a_17ea866cfe7_-68fe title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10200,7 +10201,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sat Jan 22 00:20:58 UTC 2022&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun Jan 30 00:34:27 UTC 2022&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10220,7 +10221,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-4de182aa_17e7f27bcc0_-64d6 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid-48aaca2a_17ea866cfe7_-68fc title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -10382,7 +10383,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-4de182aa_17e7f27bcc0_-64d5 geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-48aaca2a_17ea866cfe7_-68fb geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10420,7 +10421,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-4de182aa_17e7f27bcc0_-64d7 geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid-48aaca2a_17ea866cfe7_-68fd geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -11944,15 +11945,15 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
-geo:buffer
 geo:union
 geo:intersection
-geo:isValid
 geo:getX
 geo:getY
+geo:isValid
+geo:buffer
 geo:difference
-geo:reproject
 geo:isClosed
+geo:reproject
 geo:splitPolygon
 geo:within
 geo:touches
@@ -11979,14 +11980,14 @@ geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
 geo:envelope
-geo:endPoint
 geo:polygonize
 geo:isRing
+geo:endPoint
 geo:equalsExact
 geo:relatePattern
-geo:interiorRingN
-geo:equalsExactTolerance
 geo:pointN
+geo:equalsExactTolerance
+geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
@@ -12135,6 +12136,7 @@ geoscript:convexhull</pre>
         <span class="o">[</span><span class="nl">result:</span> <span class="n">geoscript</span><span class="o">.</span><span class="na">layer</span><span class="o">.</span><span class="na">Cursor</span><span class="o">],</span>
         <span class="o">{</span> <span class="n">inputs</span> <span class="o">-&gt;</span>
             <span class="kt">def</span> <span class="n">geoms</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeometryCollection</span><span class="o">(</span><span class="n">inputs</span><span class="o">.</span><span class="na">features</span><span class="o">.</span><span class="na">collect</span><span class="o">{</span> <span class="n">f</span> <span class="o">-&gt;</span> <span class="n">f</span><span class="o">.</span><span class="na">geom</span><span class="o">})</span>
+            <span class="n">println</span> <span class="n">geoms</span>
             <span class="kt">def</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Layer</span><span class="o">()</span>
             <span class="n">output</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">geoms</span><span class="o">.</span><span class="na">convexHull</span><span class="o">])</span>
             <span class="o">[</span><span class="nl">result:</span> <span class="n">output</span><span class="o">]</span>
@@ -12573,6 +12575,289 @@ geoscript:convexhull</pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="projections"><a class="anchor" href="#projections"></a>Projections</h3>
+<div class="listingblock">
+<div class="title">Create a map in the mercator projection</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffff"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">graticules</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"graticules"</span><span class="o">)</span>
+<span class="n">graticules</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Projection</span> <span class="n">proj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"Mercator"</span><span class="o">)</span>
+<span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mf">179.99</span><span class="o">,</span> <span class="o">-</span><span class="mf">85.0511</span><span class="o">,</span> <span class="mf">179.99</span><span class="o">,</span> <span class="mf">85.0511</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="n">proj</span><span class="o">)</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">width:</span> <span class="mi">400</span><span class="o">,</span>
+        <span class="nl">height:</span> <span class="mi">400</span><span class="o">,</span>
+        <span class="nl">proj:</span> <span class="n">proj</span><span class="o">,</span>
+        <span class="nl">bounds:</span> <span class="n">bounds</span><span class="o">,</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">graticules</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_mercator.png"</span><span class="o">)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">file</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_mercator.png" alt="map mercator">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map in the WGS84 projection</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffff"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">graticules</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"graticules"</span><span class="o">)</span>
+<span class="n">graticules</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Projection</span> <span class="n">proj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"WGS84"</span><span class="o">)</span>
+<span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mi">180</span><span class="o">,</span> <span class="o">-</span><span class="mi">90</span><span class="o">,</span> <span class="mi">180</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="n">proj</span><span class="o">)</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">width:</span> <span class="mi">600</span><span class="o">,</span>
+        <span class="nl">height:</span> <span class="mi">350</span><span class="o">,</span>
+        <span class="nl">proj:</span> <span class="n">proj</span><span class="o">,</span>
+        <span class="nl">bounds:</span> <span class="n">bounds</span><span class="o">,</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">graticules</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_wgs84.png"</span><span class="o">)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">file</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_wgs84.png" alt="map wgs84">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map in the Equal Earth projection</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffff"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">graticules</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"graticules"</span><span class="o">)</span>
+<span class="n">graticules</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Projection</span> <span class="n">proj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"EqualEarth"</span><span class="o">)</span>
+<span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mi">180</span><span class="o">,</span> <span class="o">-</span><span class="mi">90</span><span class="o">,</span> <span class="mi">180</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="n">proj</span><span class="o">)</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">width:</span> <span class="mi">600</span><span class="o">,</span>
+        <span class="nl">height:</span> <span class="mi">350</span><span class="o">,</span>
+        <span class="nl">proj:</span> <span class="n">proj</span><span class="o">,</span>
+        <span class="nl">bounds:</span> <span class="n">bounds</span><span class="o">,</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">graticules</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_equalearth.png"</span><span class="o">)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">file</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_equalearth.png" alt="map equalearth">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map in the Mollweide projection</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffff"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">graticules</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"graticules"</span><span class="o">)</span>
+<span class="n">graticules</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Projection</span> <span class="n">proj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"Mollweide"</span><span class="o">)</span>
+<span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mi">180</span><span class="o">,</span> <span class="o">-</span><span class="mi">90</span><span class="o">,</span> <span class="mi">180</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="n">proj</span><span class="o">)</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">width:</span> <span class="mi">600</span><span class="o">,</span>
+        <span class="nl">height:</span> <span class="mi">350</span><span class="o">,</span>
+        <span class="nl">proj:</span> <span class="n">proj</span><span class="o">,</span>
+        <span class="nl">bounds:</span> <span class="n">bounds</span><span class="o">,</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">graticules</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_mollweide.png"</span><span class="o">)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">file</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_mollweide.png" alt="map mollweide">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map in the Aitoff projection</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffff"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">graticules</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"graticules"</span><span class="o">)</span>
+<span class="n">graticules</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Projection</span> <span class="n">proj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"Aitoff"</span><span class="o">)</span>
+<span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mi">180</span><span class="o">,</span> <span class="o">-</span><span class="mi">90</span><span class="o">,</span> <span class="mi">180</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="n">proj</span><span class="o">)</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">width:</span> <span class="mi">600</span><span class="o">,</span>
+        <span class="nl">height:</span> <span class="mi">350</span><span class="o">,</span>
+        <span class="nl">proj:</span> <span class="n">proj</span><span class="o">,</span>
+        <span class="nl">bounds:</span> <span class="n">bounds</span><span class="o">,</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">graticules</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_aitoff.png"</span><span class="o">)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">file</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_aitoff.png" alt="map aitoff">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map in the Eckert IV projection</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffff"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">graticules</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"graticules"</span><span class="o">)</span>
+<span class="n">graticules</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Projection</span> <span class="n">proj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"EckertIV"</span><span class="o">)</span>
+<span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mi">180</span><span class="o">,</span> <span class="o">-</span><span class="mi">90</span><span class="o">,</span> <span class="mi">180</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="n">proj</span><span class="o">)</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">width:</span> <span class="mi">600</span><span class="o">,</span>
+        <span class="nl">height:</span> <span class="mi">350</span><span class="o">,</span>
+        <span class="nl">proj:</span> <span class="n">proj</span><span class="o">,</span>
+        <span class="nl">bounds:</span> <span class="n">bounds</span><span class="o">,</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">graticules</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_eckertIV.png"</span><span class="o">)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">file</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_eckertIV.png" alt="map eckertIV">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map in the Wagner IV projection</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffff"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">graticules</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"graticules"</span><span class="o">)</span>
+<span class="n">graticules</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Projection</span> <span class="n">proj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"WagnerIV"</span><span class="o">)</span>
+<span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mi">180</span><span class="o">,</span> <span class="o">-</span><span class="mi">90</span><span class="o">,</span> <span class="mi">180</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="n">proj</span><span class="o">)</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">width:</span> <span class="mi">600</span><span class="o">,</span>
+        <span class="nl">height:</span> <span class="mi">350</span><span class="o">,</span>
+        <span class="nl">proj:</span> <span class="n">proj</span><span class="o">,</span>
+        <span class="nl">bounds:</span> <span class="n">bounds</span><span class="o">,</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">graticules</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_wagnerIV.png"</span><span class="o">)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">file</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_wagnerIV.png" alt="map wagnerIV">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map in the Robinson projection</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffff"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">graticules</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"graticules"</span><span class="o">)</span>
+<span class="n">graticules</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Projection</span> <span class="n">proj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"Robinson"</span><span class="o">)</span>
+<span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mi">180</span><span class="o">,</span> <span class="o">-</span><span class="mi">90</span><span class="o">,</span> <span class="mi">180</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="n">proj</span><span class="o">)</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">width:</span> <span class="mi">600</span><span class="o">,</span>
+        <span class="nl">height:</span> <span class="mi">350</span><span class="o">,</span>
+        <span class="nl">proj:</span> <span class="n">proj</span><span class="o">,</span>
+        <span class="nl">bounds:</span> <span class="n">bounds</span><span class="o">,</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">graticules</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_robinson.png"</span><span class="o">)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">file</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_robinson.png" alt="map robinson">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map in the Winkel Tripel projection</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffff"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">graticules</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"graticules"</span><span class="o">)</span>
+<span class="n">graticules</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Projection</span> <span class="n">proj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"WinkelTripel"</span><span class="o">)</span>
+<span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mi">180</span><span class="o">,</span> <span class="o">-</span><span class="mi">90</span><span class="o">,</span> <span class="mi">180</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="n">proj</span><span class="o">)</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">width:</span> <span class="mi">600</span><span class="o">,</span>
+        <span class="nl">height:</span> <span class="mi">350</span><span class="o">,</span>
+        <span class="nl">proj:</span> <span class="n">proj</span><span class="o">,</span>
+        <span class="nl">bounds:</span> <span class="n">bounds</span><span class="o">,</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">graticules</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_winkeltripel.png"</span><span class="o">)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">file</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_winkeltripel.png" alt="map winkeltripel">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Create a map in the World Vander Grinten I projection</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Directory</span><span class="o">(</span><span class="s1">'src/main/resources/shapefiles'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffff"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">graticules</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"graticules"</span><span class="o">)</span>
+<span class="n">graticules</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+<span class="n">Projection</span> <span class="n">proj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"WorldVanderGrintenI"</span><span class="o">)</span>
+<span class="n">Bounds</span> <span class="n">bounds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mi">180</span><span class="o">,</span> <span class="o">-</span><span class="mi">90</span><span class="o">,</span> <span class="mi">180</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="n">proj</span><span class="o">)</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">width:</span> <span class="mi">600</span><span class="o">,</span>
+        <span class="nl">height:</span> <span class="mi">350</span><span class="o">,</span>
+        <span class="nl">proj:</span> <span class="n">proj</span><span class="o">,</span>
+        <span class="nl">bounds:</span> <span class="n">bounds</span><span class="o">,</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">graticules</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_worldVanderGrintenIMap.png"</span><span class="o">)</span>
+<span class="n">map</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">file</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/map_worldVanderGrintenIMap.png" alt="map worldVanderGrintenIMap">
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="map-cubes"><a class="anchor" href="#map-cubes"></a>Map Cubes</h3>
 <div class="listingblock">
 <div class="title">Create a map cube to a file</div>
@@ -12893,7 +13178,7 @@ Svg</pre>
 
 <span class="n">GIF</span> <span class="n">gif</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GIF</span><span class="o">()</span>
 <span class="n">List</span> <span class="n">images</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"Washington"</span><span class="o">,</span><span class="s2">"Oregon"</span><span class="o">,</span><span class="s2">"California"</span><span class="o">].</span><span class="na">collect</span> <span class="o">{</span> <span class="n">String</span> <span class="n">state</span> <span class="o">-&gt;</span>
-    <span class="n">map</span><span class="o">.</span><span class="na">bounds</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="na">getFeatures</span><span class="o">(</span><span class="s2">"NAME_1 = '${state}'"</span><span class="o">)[</span><span class="mi">0</span><span class="o">].</span><span class="na">bounds</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">bounds</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="na">getFeatures</span><span class="o">(</span><span class="s2">"name = '${state}'"</span><span class="o">)[</span><span class="mi">0</span><span class="o">].</span><span class="na">bounds</span>
     <span class="kt">def</span> <span class="n">image</span> <span class="o">=</span> <span class="n">gif</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">map</span><span class="o">)</span>
     <span class="n">image</span>
 <span class="o">}</span>
@@ -12924,7 +13209,7 @@ Svg</pre>
 
 <span class="n">GIF</span> <span class="n">gif</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GIF</span><span class="o">()</span>
 <span class="n">List</span> <span class="n">images</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"Washington"</span><span class="o">,</span><span class="s2">"Oregon"</span><span class="o">,</span><span class="s2">"California"</span><span class="o">].</span><span class="na">collect</span> <span class="o">{</span> <span class="n">String</span> <span class="n">state</span> <span class="o">-&gt;</span>
-    <span class="n">map</span><span class="o">.</span><span class="na">bounds</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="na">getFeatures</span><span class="o">(</span><span class="s2">"NAME_1 = '${state}'"</span><span class="o">)[</span><span class="mi">0</span><span class="o">].</span><span class="na">bounds</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">bounds</span> <span class="o">=</span> <span class="n">states</span><span class="o">.</span><span class="na">getFeatures</span><span class="o">(</span><span class="s2">"name = '${state}'"</span><span class="o">)[</span><span class="mi">0</span><span class="o">].</span><span class="na">bounds</span>
     <span class="kt">def</span> <span class="n">image</span> <span class="o">=</span> <span class="n">gif</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">map</span><span class="o">)</span>
     <span class="n">image</span>
 <span class="o">}</span>
@@ -13013,24 +13298,24 @@ Svg</pre>
 (((((((((((((((^(^(.(?......((((((((((((((^(((((((((((((((((
 .....:.^(^..!?^^!^:..!(^...(((((^.^((((...........:.^(^..!?^
 .....(:((.........((.(((.((((((:(.................(:((......
-?..(^((((((((^.........((((((.(..............?..(^((((((((^.
-.^((((((((((((^.......((((((((...:^.^?...(..:.^((((((((((((^
-((.((((((((((((.....:((((((((^^(((:!^(^^.....((.((((((((((((
-((((((((((((((((.:(((((((((((................(((((((((((((((
-((((((((((^((((((.((.(((((((....:....((..^(((((((((((((^((((
-(((((((((((((((((((.((((((((^:(...^((((.((^(((((((((((((((((
+!..(^((((((((^.........((((((.(..............!..(^((((((((^.
+.(((((((((((((^.......((((((((...:^.^?...^..:.(((((((((((((^
+((.((((((((((((.....:((((((((^^(((:!^((^.....((.((((((((((((
+((((((((((((((((.!(((((((((((................(((((((((((((((
+(((((((((((((((((.((.(((((((....:....((..(((((((((((((((((((
+(((((((((((((((((((.((((((((^.(...(((((.((^(((((((((((((((((
 ((((((((((((((((((((.!:((((((((.....((((((((((((((((((((((((
 ((.(((((((((((((((((.....(((((((...((((((((((((.((((((((((((
 (^((((((((((((((((((.....(((((((.^.(((((((((((^(((((((((((((
-....((((((((((((((((((...(((((((.((^((((((((^....(((((((((((
-....(((((((((((((((((...(((((((((:((((((((((.....(((((((((((
+....(((((((((((((((((?...(((((((.((^((((((((^....(((((((((((
+....(((((((((((((((((...((((((((^.((((((((((.....(((((((((((
 (((.(((((((((((((((((..(((((((((((((((((((((((((.(((((((((((
 (((((((((((((((((((((.((((((((((((((((((((((((((((((((((((((
 (((((((((((((((((((((^((((((((((((((((((((((((((((((((((((((
 ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
 ....(((((((((((((((((?((((((((((((?....(.........(((((((((((
 .....(((((...........(((((........................(((((.....
-....................................................^.......</pre>
+.......^....................................................</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -13059,24 +13344,24 @@ Svg</pre>
 (((((((((((((((^(^(.(?......((((((((((((((^(((((((((((((((((
 .....:.^(^..!?^^!^:..!(^...(((((^.^((((...........:.^(^..!?^
 .....(:((.........((.(((.((((((:(.................(:((......
-?..(^((((((((^.........((((((.(..............?..(^((((((((^.
-.^((((((((((((^.......((((((((...:^.^?...(..:.^((((((((((((^
-((.((((((((((((.....:((((((((^^(((:!^(^^.....((.((((((((((((
-((((((((((((((((.:(((((((((((................(((((((((((((((
-((((((((((^((((((.((.(((((((....:....((..^(((((((((((((^((((
-(((((((((((((((((((.((((((((^:(...^((((.((^(((((((((((((((((
+!..(^((((((((^.........((((((.(..............!..(^((((((((^.
+.(((((((((((((^.......((((((((...:^.^?...^..:.(((((((((((((^
+((.((((((((((((.....:((((((((^^(((:!^((^.....((.((((((((((((
+((((((((((((((((.!(((((((((((................(((((((((((((((
+(((((((((((((((((.((.(((((((....:....((..(((((((((((((((((((
+(((((((((((((((((((.((((((((^.(...(((((.((^(((((((((((((((((
 ((((((((((((((((((((.!:((((((((.....((((((((((((((((((((((((
 ((.(((((((((((((((((.....(((((((...((((((((((((.((((((((((((
 (^((((((((((((((((((.....(((((((.^.(((((((((((^(((((((((((((
-....((((((((((((((((((...(((((((.((^((((((((^....(((((((((((
-....(((((((((((((((((...(((((((((:((((((((((.....(((((((((((
+....(((((((((((((((((?...(((((((.((^((((((((^....(((((((((((
+....(((((((((((((((((...((((((((^.((((((((((.....(((((((((((
 (((.(((((((((((((((((..(((((((((((((((((((((((((.(((((((((((
 (((((((((((((((((((((.((((((((((((((((((((((((((((((((((((((
 (((((((((((((((((((((^((((((((((((((((((((((((((((((((((((((
 ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
 ....(((((((((((((((((?((((((((((((?....(.........(((((((((((
 .....(((((...........(((((........................(((((.....
-....................................................^.......</pre>
+.......^....................................................</pre>
 </div>
 </div>
 </div>
@@ -13390,7 +13675,7 @@ the following optional parameters:</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
-<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"NAME_1='Washington'"</span><span class="o">)</span>
+<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"name='Washington'"</span><span class="o">)</span>
 <span class="n">Draw</span><span class="o">.</span><span class="na">draw</span><span class="o">(</span><span class="n">feature</span><span class="o">,</span> <span class="nl">bounds:</span> <span class="n">feature</span><span class="o">.</span><span class="na">bounds</span><span class="o">,</span> <span class="nl">out:</span> <span class="s2">"feature.png"</span><span class="o">)</span></code></pre>
 </div>
 </div>
@@ -13491,7 +13776,7 @@ the following optional parameters:</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
-<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"NAME_1='Washington'"</span><span class="o">)</span>
+<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"name='Washington'"</span><span class="o">)</span>
 <span class="n">BufferedImage</span> <span class="n">image</span> <span class="o">=</span> <span class="n">Draw</span><span class="o">.</span><span class="na">drawToImage</span><span class="o">(</span><span class="n">feature</span><span class="o">,</span> <span class="nl">bounds:</span> <span class="n">feature</span><span class="o">.</span><span class="na">bounds</span><span class="o">)</span></code></pre>
 </div>
 </div>
@@ -13573,7 +13858,7 @@ a simple GUI.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
-<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"NAME_1='Washington'"</span><span class="o">)</span>
+<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"name='Washington'"</span><span class="o">)</span>
 <span class="n">Plot</span><span class="o">.</span><span class="na">plot</span><span class="o">(</span><span class="n">feature</span><span class="o">,</span> <span class="nl">out:</span> <span class="s2">"feature.png"</span><span class="o">)</span></code></pre>
 </div>
 </div>
@@ -13633,7 +13918,7 @@ a simple GUI.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
-<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"NAME_1='Washington'"</span><span class="o">)</span>
+<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"name='Washington'"</span><span class="o">)</span>
 <span class="n">BufferedImage</span> <span class="n">image</span> <span class="o">=</span> <span class="n">Plot</span><span class="o">.</span><span class="na">plotToImage</span><span class="o">(</span><span class="n">feature</span><span class="o">,</span> <span class="nl">bounds:</span> <span class="n">feature</span><span class="o">.</span><span class="na">bounds</span><span class="o">)</span></code></pre>
 </div>
 </div>
@@ -13902,9 +14187,9 @@ json</pre>
 <div class="listingblock">
 <div class="title">A Symbolizer can use the where method to restrict which features are styled.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffcc"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"PEOPLE &lt; 4504128.33"</span><span class="o">)</span> <span class="o">+</span>
-        <span class="k">new</span> <span class="nf">Fill</span><span class="o">(</span><span class="s2">"#41b6c4"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"PEOPLE BETWEEN 4504128.33 AND 16639804.33"</span><span class="o">)</span> <span class="o">+</span>
-        <span class="k">new</span> <span class="nf">Fill</span><span class="o">(</span><span class="s2">"#253494"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"PEOPLE &gt; 16639804.33"</span><span class="o">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#ffffcc"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"POP_EST &lt; 4504128.33"</span><span class="o">)</span> <span class="o">+</span>
+        <span class="k">new</span> <span class="nf">Fill</span><span class="o">(</span><span class="s2">"#41b6c4"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"POP_EST BETWEEN 4504128.33 AND 16639804.33"</span><span class="o">)</span> <span class="o">+</span>
+        <span class="k">new</span> <span class="nf">Fill</span><span class="o">(</span><span class="s2">"#253494"</span><span class="o">).</span><span class="na">where</span><span class="o">(</span><span class="s2">"POP_EST &gt; 16639804.33"</span><span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -13926,7 +14211,7 @@ json</pre>
 <div class="listingblock">
 <div class="title">The scale method is used to create Symbolizers that are dependent on map scale.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">))</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">))</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
         <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">range</span><span class="o">(</span><span class="nl">max:</span> <span class="mi">16000000</span><span class="o">)</span></code></pre>
@@ -14274,7 +14559,7 @@ json</pre>
 <div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
     <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
     <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span></code></pre>
 </div>
@@ -14287,7 +14572,7 @@ json</pre>
 <div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer using an Expression</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="n">Expression</span><span class="o">.</span><span class="na">fromCQL</span><span class="o">(</span><span class="s2">"strToLowerCase(NAME_1)"</span><span class="o">))</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="n">Expression</span><span class="o">.</span><span class="na">fromCQL</span><span class="o">(</span><span class="s2">"strToLowerCase(name)"</span><span class="o">))</span>
         <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
         <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span></code></pre>
 </div>
@@ -14312,7 +14597,7 @@ json</pre>
 <div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer with strike through style.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
         <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">strikethrough</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span></code></pre>
@@ -14326,7 +14611,7 @@ json</pre>
 <div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer with word and character spacing.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
         <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">wordSpacing</span><span class="o">(</span><span class="mi">8</span><span class="o">)</span>
@@ -14341,7 +14626,7 @@ json</pre>
 <div class="listingblock">
 <div class="title">Create a Label for a Polygon Layer with underlining.</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"white"</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"black"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">point</span><span class="o">(</span><span class="nl">anchor:</span> <span class="o">[</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span>
         <span class="o">.</span><span class="na">polygonAlign</span><span class="o">(</span><span class="s2">"mbr"</span><span class="o">)</span>
         <span class="o">.</span><span class="na">underline</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span></code></pre>
@@ -14419,7 +14704,7 @@ json</pre>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
-<span class="n">Gradient</span> <span class="n">gradient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gradient</span><span class="o">(</span><span class="n">countries</span><span class="o">,</span> <span class="s2">"PEOPLE"</span><span class="o">,</span> <span class="s2">"quantile"</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="s2">"Greens"</span><span class="o">)</span>
+<span class="n">Gradient</span> <span class="n">gradient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gradient</span><span class="o">(</span><span class="n">countries</span><span class="o">,</span> <span class="s2">"POP_EST"</span><span class="o">,</span> <span class="s2">"quantile"</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="s2">"Greens"</span><span class="o">)</span>
 <span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="n">gradient</span></code></pre>
 </div>
 </div>
@@ -14433,7 +14718,7 @@ json</pre>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
-<span class="n">Gradient</span> <span class="n">gradient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gradient</span><span class="o">(</span><span class="n">countries</span><span class="o">,</span> <span class="s2">"PEOPLE"</span><span class="o">,</span> <span class="s2">"equalinterval"</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="s2">"Reds"</span><span class="o">)</span>
+<span class="n">Gradient</span> <span class="n">gradient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gradient</span><span class="o">(</span><span class="n">countries</span><span class="o">,</span> <span class="s2">"POP_EST"</span><span class="o">,</span> <span class="s2">"equalinterval"</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="s2">"Reds"</span><span class="o">)</span>
 <span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="n">gradient</span></code></pre>
 </div>
 </div>
@@ -15340,21 +15625,21 @@ and many more.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>GeoPackage
-H2 (JNDI)
+<pre>Directory of spatial files (shapefiles)
 MBTiles with vector tiles
-PostGIS (JNDI)
 SQLite
-H2
-Geobuf
-FlatGeobuf
+H2 (JNDI)
+PostGIS (JNDI)
 Web Feature Server (NG)
-Properties
-MySQL (JNDI)
+GeoPackage
 MySQL
+MySQL (JNDI)
 Shapefile
-Directory of spatial files (shapefiles)
-PostGIS</pre>
+Geobuf
+Properties
+H2
+PostGIS
+FlatGeobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -15521,21 +15806,21 @@ Copied Layer has 500 features.</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>GeoPackage
-H2 (JNDI)
+<pre>Directory of spatial files (shapefiles)
 MBTiles with vector tiles
-PostGIS (JNDI)
 SQLite
-H2
-Geobuf
-FlatGeobuf
+H2 (JNDI)
+PostGIS (JNDI)
 Web Feature Server (NG)
-Properties
-MySQL (JNDI)
+GeoPackage
 MySQL
+MySQL (JNDI)
 Shapefile
-Directory of spatial files (shapefiles)
-PostGIS</pre>
+Geobuf
+Properties
+H2
+PostGIS
+FlatGeobuf</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -15610,10 +15895,11 @@ Parameter = memory map size Type = java.lang.Integer Required? false</pre>
 <pre>GeoPackage
 ---------
 countries (177)
+graticules (27)
 ocean (2)
-places (326)
-rivers (460)
-states (52)</pre>
+places (243)
+rivers (13)
+states (51)</pre>
 </div>
 </div>
 </div>
@@ -15667,10 +15953,11 @@ states (52)</pre>
 <pre>GeoPackage
 ---------
 countries (177)
+graticules (27)
 ocean (2)
-places (326)
-rivers (460)
-states (52)</pre>
+places (243)
+rivers (13)
+states (51)</pre>
 </div>
 </div>
 </div>
@@ -15692,7 +15979,8 @@ states (52)</pre>
 <pre>Directory
 ---------
 ocean (2)
-countries (177)</pre>
+countries (177)
+graticules (27)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -15711,7 +15999,8 @@ countries (177)</pre>
 <pre>Directory
 ---------
 ocean (2)
-countries (177)</pre>
+countries (177)
+graticules (27)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -15754,10 +16043,11 @@ ne_110m_admin_0_countries (177)</pre>
 <pre>GeoPackage
 ----------
 countries (177)
+graticules (27)
 ocean (2)
-places (326)
-rivers (460)
-states (52)</pre>
+places (243)
+rivers (13)
+states (51)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -15776,10 +16066,11 @@ states (52)</pre>
 <pre>GeoPackage
 ----------
 countries (177)
+graticules (27)
 ocean (2)
-places (326)
-rivers (460)
-states (52)</pre>
+places (243)
+rivers (13)
+states (51)</pre>
 </div>
 </div>
 </div>
@@ -16492,7 +16783,7 @@ Index name = megacity_idx, unique = false, attributes = [MEGACITY]</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Bounds: (-179.99999999999997,-90.00000000000003,180.00000000000014,83.64513000000002,EPSG:4326)</pre>
+<pre>Bounds: (-180.0,-90.0,180.00000000000006,83.64513000000001,EPSG:4326)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -16507,8 +16798,8 @@ Index name = megacity_idx, unique = false, attributes = [MEGACITY]</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Minimum Population in 2050 = 0.0
-Maximum Population in 2050 = 36400.0</pre>
+<pre>Minimum Population in 2050 = 0
+Maximum Population in 2050 = 36400</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -16681,7 +16972,7 @@ Maximum Population in 2050 = 36400.0</pre>
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s2">"src/main/resources/data.gpkg"</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="na">eachFeature</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">feature</span> <span class="o">-&gt;</span>
-    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">]</span>
+    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
@@ -16705,8 +16996,8 @@ Nevada
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s2">"src/main/resources/data.gpkg"</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
-<span class="n">layer</span><span class="o">.</span><span class="na">eachFeature</span><span class="o">(</span><span class="s2">"NAME_1 LIKE 'M%'"</span><span class="o">)</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">feature</span> <span class="o">-&gt;</span>
-    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">]</span>
+<span class="n">layer</span><span class="o">.</span><span class="na">eachFeature</span><span class="o">(</span><span class="s2">"name LIKE 'M%'"</span><span class="o">)</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">feature</span> <span class="o">-&gt;</span>
+    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
@@ -16727,8 +17018,8 @@ Michigan</pre>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s2">"src/main/resources/data.gpkg"</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
-<span class="n">layer</span><span class="o">.</span><span class="na">eachFeature</span><span class="o">(</span><span class="nl">sort:</span> <span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">],</span> <span class="nl">start:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">max:</span> <span class="mi">5</span><span class="o">,</span> <span class="nl">fields:</span> <span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">],</span> <span class="nl">filter:</span> <span class="s2">"NAME_1 LIKE 'M%'"</span><span class="o">)</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">feature</span> <span class="o">-&gt;</span>
-    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">]</span>
+<span class="n">layer</span><span class="o">.</span><span class="na">eachFeature</span><span class="o">(</span><span class="nl">sort:</span> <span class="o">[</span><span class="s2">"name"</span><span class="o">],</span> <span class="nl">start:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">max:</span> <span class="mi">5</span><span class="o">,</span> <span class="nl">fields:</span> <span class="o">[</span><span class="s2">"name"</span><span class="o">],</span> <span class="nl">filter:</span> <span class="s2">"name LIKE 'M%'"</span><span class="o">)</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">feature</span> <span class="o">-&gt;</span>
+    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
@@ -16775,13 +17066,13 @@ Minnesota</pre>
 
 <span class="n">println</span> <span class="s2">"# Features = ${features.size()}"</span>
 <span class="n">features</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">feature</span> <span class="o">-&gt;</span>
-    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">]</span>
+    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre># Features = 52
+<pre># Features = 51
 Minnesota
 Montana
 North Dakota
@@ -16804,7 +17095,7 @@ Nevada
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s2">"src/main/resources/data.gpkg"</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">names</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">collectFromFeature</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">f</span> <span class="o">-&gt;</span>
-    <span class="n">f</span><span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">]</span>
+    <span class="n">f</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>
 <span class="o">}.</span><span class="na">sort</span><span class="o">()</span>
 
 <span class="n">println</span> <span class="s2">"# Names = ${names.size()}"</span>
@@ -16815,7 +17106,7 @@ Nevada
 </div>
 <div class="literalblock">
 <div class="content">
-<pre># Names = 52
+<pre># Names = 51
 Alabama
 Alaska
 Arizona
@@ -16835,12 +17126,12 @@ Florida
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s2">"src/main/resources/data.gpkg"</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">names</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">collectFromFeature</span><span class="o">(</span>
-    <span class="nl">sort:</span> <span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">],</span>
+    <span class="nl">sort:</span> <span class="o">[</span><span class="s2">"name"</span><span class="o">],</span>
     <span class="nl">start:</span> <span class="mi">0</span><span class="o">,</span>
     <span class="nl">max:</span> <span class="mi">5</span><span class="o">,</span>
-    <span class="nl">fields:</span> <span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">],</span>
-    <span class="nl">filter:</span> <span class="s2">"NAME_1 LIKE 'M%'"</span><span class="o">)</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">f</span> <span class="o">-&gt;</span>
-        <span class="n">f</span><span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">]</span>
+    <span class="nl">fields:</span> <span class="o">[</span><span class="s2">"name"</span><span class="o">],</span>
+    <span class="nl">filter:</span> <span class="s2">"name LIKE 'M%'"</span><span class="o">)</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">f</span> <span class="o">-&gt;</span>
+        <span class="n">f</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>
     <span class="o">}</span>
 
 <span class="n">println</span> <span class="s2">"# Names = ${names.size()}"</span>
@@ -16867,8 +17158,8 @@ Minnesota</pre>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s2">"src/main/resources/data.gpkg"</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
-<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"NAME_1='Washington'"</span><span class="o">)</span>
-<span class="n">println</span> <span class="n">feature</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span></code></pre>
+<span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"name='Washington'"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">feature</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="literalblock">
@@ -16887,11 +17178,11 @@ Minnesota</pre>
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s2">"src/main/resources/data.gpkg"</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
 
-<span class="n">Feature</span> <span class="n">featureAsc</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">sort:</span> <span class="s2">"NAME_1 ASC"</span><span class="o">)</span>
-<span class="n">println</span> <span class="n">featureAsc</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span>
+<span class="n">Feature</span> <span class="n">featureAsc</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">sort:</span> <span class="s2">"name ASC"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">featureAsc</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span>
 
-<span class="n">Feature</span> <span class="n">featureDesc</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">sort:</span> <span class="s2">"NAME_1 DESC"</span><span class="o">)</span>
-<span class="n">println</span> <span class="n">featureDesc</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"NAME_1"</span><span class="o">)</span></code></pre>
+<span class="n">Feature</span> <span class="n">featureDesc</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">first</span><span class="o">(</span><span class="nl">sort:</span> <span class="s2">"name DESC"</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">featureDesc</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"name"</span><span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="literalblock">
@@ -16913,7 +17204,7 @@ Wyoming</pre>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Directory</span><span class="o">(</span><span class="s2">"target"</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
-<span class="n">Layer</span> <span class="n">disputedLayer</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="s2">"TYPE='Disputed'"</span><span class="o">)</span></code></pre>
+<span class="n">Layer</span> <span class="n">disputedLayer</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="s2">"TYPE='Indeterminate'"</span><span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -16931,7 +17222,7 @@ Wyoming</pre>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
 <span class="n">Cursor</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">cursor</span>
 <span class="n">cursor</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">feature</span> <span class="o">-&gt;</span>
-    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">]</span>
+    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
@@ -16955,10 +17246,10 @@ Nevada
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s2">"src/main/resources/data.gpkg"</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
-<span class="n">Cursor</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">getCursor</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"NAME_1 LIKE 'M%'"</span><span class="o">)</span>
+<span class="n">Cursor</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="na">getCursor</span><span class="o">(</span><span class="nl">filter:</span> <span class="s2">"name LIKE 'M%'"</span><span class="o">)</span>
 <span class="k">while</span><span class="o">(</span><span class="n">cursor</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
     <span class="n">Feature</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="na">next</span><span class="o">()</span>
-    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">]</span>
+    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
@@ -16979,8 +17270,8 @@ Michigan</pre>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s2">"src/main/resources/data.gpkg"</span><span class="o">)</span>
 <span class="n">Layer</span> <span class="n">layer</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
-<span class="n">layer</span><span class="o">.</span><span class="na">getCursor</span><span class="o">(</span><span class="nl">sort:</span> <span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">],</span> <span class="nl">start:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">max:</span> <span class="mi">5</span><span class="o">,</span> <span class="nl">fields:</span> <span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">],</span> <span class="nl">filter:</span> <span class="s2">"NAME_1 LIKE 'M%'"</span><span class="o">).</span><span class="na">each</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">feature</span> <span class="o">-&gt;</span>
-    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"NAME_1"</span><span class="o">]</span>
+<span class="n">layer</span><span class="o">.</span><span class="na">getCursor</span><span class="o">(</span><span class="nl">sort:</span> <span class="o">[</span><span class="s2">"name"</span><span class="o">],</span> <span class="nl">start:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">max:</span> <span class="mi">5</span><span class="o">,</span> <span class="nl">fields:</span> <span class="o">[</span><span class="s2">"name"</span><span class="o">],</span> <span class="nl">filter:</span> <span class="s2">"name LIKE 'M%'"</span><span class="o">).</span><span class="na">each</span> <span class="o">{</span> <span class="n">Feature</span> <span class="n">feature</span> <span class="o">-&gt;</span>
+    <span class="n">println</span> <span class="n">feature</span><span class="o">[</span><span class="s2">"name"</span><span class="o">]</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
@@ -17807,13 +18098,8 @@ The merged Layer has 100 features</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>rivers_0 has 1 features
-rivers_1 has 27 features
-rivers_2 has 35 features
-rivers_3 has 53 features
-rivers_4 has 71 features
-rivers_5 has 67 features
-rivers_6 has 206 features</pre>
+<pre>rivers_1 has 6 features
+rivers_2 has 7 features</pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -17857,9 +18143,9 @@ rivers_6 has 206 features</pre>
 <pre>countries_1_1 has 6 features
 countries_1_2 has 6 features
 countries_2_1 has 44 features
-countries_2_2 has 74 features
+countries_2_2 has 75 features
 countries_3_1 has 13 features
-countries_3_2 has 70 features</pre>
+countries_3_2 has 69 features</pre>
 </div>
 </div>
 <div class="imageblock thumb">
@@ -18355,7 +18641,7 @@ YamlReader</pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-4de182aa_17e7f27bcc0_-64e1"
+            "id": "fid-48aaca2a_17ea866cfe7_-6907"
         },
         {
             "type": "Feature",
@@ -18370,7 +18656,7 @@ YamlReader</pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-4de182aa_17e7f27bcc0_-64df"
+            "id": "fid-48aaca2a_17ea866cfe7_-6905"
         }
     ]
 }</pre>
@@ -18420,7 +18706,7 @@ YamlReader</pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-4de182aa_17e7f27bcc0_-7cc5"
+            "id": "fid-48aaca2a_17ea866cfe7_-7cc5"
         },
         {
             "type": "Feature",
@@ -18435,7 +18721,7 @@ YamlReader</pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-4de182aa_17e7f27bcc0_-7cc3"
+            "id": "fid-48aaca2a_17ea866cfe7_-7cc3"
         }
     ]
 }</pre>
@@ -18520,7 +18806,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>0a0269640a046e616d65100218062289010a430a0c08001a089fd8d374c0ebb22d5a1e6669642d34646531383261615f31376537663237626363305f2d373936366a0218016a090a0753656174746c657204000001010a420a0c08001a08ffd6e77498a3892d5a1e6669642d34646531383261615f31376537663237626363305f2d373936346a0218026a080a065461636f6d61720400000101</pre>
+<pre>0a0269640a046e616d65100218062289010a430a0c08001a089fd8d374c0ebb22d5a1e6669642d34386161636132615f31376561383636636665375f2d373936366a0218016a090a0753656174746c657204000001010a420a0c08001a08ffd6e77498a3892d5a1e6669642d34386161636132615f31376561383636636665375f2d373936346a0218026a080a065461636f6d61720400000101</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -18551,7 +18837,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>0a0269640a046e616d6510021806228b010a430a0c08001a089fd8d374c0ebb22d5a1e6669642d34646531383261615f31376537663237626363305f2d373863656a0218016a090a0753656174746c657204000001010a440a0c08001a08afe9ff7480d2b42b5a1e6669642d34646531383261615f31376537663237626363305f2d373863636a0218026a0a0a08506f72746c616e64720400000101</pre>
+<pre>0a0269640a046e616d6510021806228b010a430a0c08001a089fd8d374c0ebb22d5a1e6669642d34386161636132615f31376561383636636665375f2d373863656a0218016a090a0753656174746c657204000001010a440a0c08001a08afe9ff7480d2b42b5a1e6669642d34386161636132615f31376561383636636665375f2d373863636a0218026a0a0a08506f72746c616e64720400000101</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -18619,7 +18905,7 @@ YamlReader</pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4de182aa_17e7f27bcc0_-70ca"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-48aaca2a_17ea866cfe7_-7170"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -18641,7 +18927,7 @@ YamlReader</pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-4de182aa_17e7f27bcc0_-70c8"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-48aaca2a_17ea866cfe7_-716e"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -18707,7 +18993,7 @@ YamlReader</pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid-4de182aa_17e7f27bcc0_-70f0"&gt;
+&lt;gsf:cities fid="fid-48aaca2a_17ea866cfe7_-7196"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -18721,7 +19007,7 @@ YamlReader</pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid-4de182aa_17e7f27bcc0_-70ee"&gt;
+&lt;gsf:cities fid="fid-48aaca2a_17ea866cfe7_-7194"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -18835,7 +19121,7 @@ YamlReader</pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-4de182aa_17e7f27bcc0_-65ec
+          fid-48aaca2a_17ea866cfe7_-6a12
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -18862,7 +19148,7 @@ YamlReader</pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-4de182aa_17e7f27bcc0_-65ea
+          fid-48aaca2a_17ea866cfe7_-6a10
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -18922,13 +19208,13 @@ YamlReader</pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid-4de182aa_17e7f27bcc0_-70e8"&gt;
+&lt;kml:Placemark id="fid-48aaca2a_17ea866cfe7_-718e"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid-4de182aa_17e7f27bcc0_-70e6"&gt;
+&lt;kml:Placemark id="fid-48aaca2a_17ea866cfe7_-718c"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -19188,15 +19474,15 @@ features:
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid-4de182aa_17e7f27bcc0_-78ca&lt;/title&gt;
+&lt;title&gt;fid-48aaca2a_17ea866cfe7_-78ca&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Sat Jan 22 00:20:48 UTC 2022&lt;/updated&gt;
+&lt;updated&gt;Sun Jan 30 00:34:08 UTC 2022&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid-4de182aa_17e7f27bcc0_-78c8&lt;/title&gt;
+&lt;title&gt;fid-48aaca2a_17ea866cfe7_-78c8&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Sat Jan 22 00:20:48 UTC 2022&lt;/updated&gt;
+&lt;updated&gt;Sun Jan 30 00:34:08 UTC 2022&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -19266,10 +19552,10 @@ features:
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid-4de182aa_17e7f27bcc0_-70ec&lt;/name&gt;
+&lt;name&gt;fid-48aaca2a_17ea866cfe7_-7192&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid-4de182aa_17e7f27bcc0_-70ea&lt;/name&gt;
+&lt;name&gt;fid-48aaca2a_17ea866cfe7_-7190&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -23687,7 +23973,7 @@ vector tiles, and utfgrids.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid-4de182aa_17e7f27bcc0_-7fff"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.9</pre>
+<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid-48aaca2a_17ea866cfe7_-7fff"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.9</pre>
 </div>
 </div>
 </div>
@@ -25509,7 +25795,7 @@ xml</pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.19-SNAPSHOT<br>
-Last updated 2022-01-22 00:18:19 UTC
+Last updated 2022-01-30 00:30:04 UTC
 </div>
 </div>
 </body>
