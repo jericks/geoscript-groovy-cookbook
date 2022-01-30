@@ -18,7 +18,7 @@ class LayerRecipesTest {
         assertEquals("GeoPackage", values.format)
         assertEquals(177, values.count)
         assertEquals("EPSG:4326", values.proj.id)
-        assertEquals("(-179.99999999999997,-90.00000000000003,180.00000000000014,83.64513000000002,EPSG:4326)", values.bounds.toString())
+        assertEquals("(-180.0,-90.0,180.00000000000006,83.64513000000001,EPSG:4326)", values.bounds.toString())
     }
 
     @Test void getLayerMinMax() {
@@ -45,7 +45,7 @@ class LayerRecipesTest {
 
     @Test void getLayerFeatures() {
         LayerRecipes recipes = new LayerRecipes()
-        assertEquals(52, recipes.getLayerFeatures())
+        assertEquals(51, recipes.getLayerFeatures())
     }
 
     @Test void getLayerFeaturesFiltered() {
@@ -61,13 +61,13 @@ class LayerRecipesTest {
     @Test void getLayerFeaturesInAList() {
         LayerRecipes recipes = new LayerRecipes()
         List<Feature> features = recipes.getLayerFeaturesInAList()
-        assertEquals(52, features.size())
+        assertEquals(51, features.size())
     }
 
     @Test void collectFromFeature() {
         LayerRecipes recipes = new LayerRecipes()
         List<String> values = recipes.collectFromFeature()
-        assertEquals(52, values.size())
+        assertEquals(51, values.size())
     }
 
     @Test void collectFromFeatureWithOptions() {
@@ -79,14 +79,14 @@ class LayerRecipesTest {
     @Test void first() {
         LayerRecipes recipes = new LayerRecipes()
         Feature feature = recipes.first()
-        assertEquals("Washington", feature.get("NAME_1"))
+        assertEquals("Washington", feature.get("name"))
     }
 
     @Test void firstSort() {
         LayerRecipes recipes = new LayerRecipes()
         Map<String,Feature> features = recipes.firstSort()
-        assertEquals("Alabama", features.asc.get("NAME_1"))
-        assertEquals("Wyoming", features.desc.get("NAME_1"))
+        assertEquals("Alabama", features.asc.get("name"))
+        assertEquals("Wyoming", features.desc.get("name"))
     }
 
     @Test void filter() {
@@ -99,7 +99,7 @@ class LayerRecipesTest {
 
     @Test void getCursor() {
         LayerRecipes recipes = new LayerRecipes()
-        assertEquals(52, recipes.getCursor())
+        assertEquals(51, recipes.getCursor())
     }
 
     @Test void getCursorWithFilter() {
@@ -203,7 +203,7 @@ class LayerRecipesTest {
         LayerRecipes recipes = new LayerRecipes()
         Layer layer = recipes.buffer()
         assertEquals("Polygon", layer.schema.geom.typ)
-        assertEquals(326, layer.count)
+        assertEquals(243, layer.count)
     }
 
     @Test void merge() {
@@ -216,7 +216,7 @@ class LayerRecipesTest {
     @Test void splitByField() {
         LayerRecipes recipes = new LayerRecipes()
         Workspace workspace = recipes.splitByField()
-        assertEquals(7, workspace.layers.size())
+        assertEquals(2, workspace.layers.size())
     }
 
     @Test void splitByLayer() {

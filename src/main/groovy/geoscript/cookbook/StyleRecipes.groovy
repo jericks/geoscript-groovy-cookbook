@@ -82,9 +82,9 @@ class StyleRecipes extends Recipes {
 
     Symbolizer createBasicSymbolizerWithWhere() {
         // tag::createBasicSymbolizerWithWhere[]
-        Symbolizer symbolizer = new Fill("#ffffcc").where("PEOPLE < 4504128.33") +
-                new Fill("#41b6c4").where("PEOPLE BETWEEN 4504128.33 AND 16639804.33") +
-                new Fill("#253494").where("PEOPLE > 16639804.33")
+        Symbolizer symbolizer = new Fill("#ffffcc").where("POP_EST < 4504128.33") +
+                new Fill("#41b6c4").where("POP_EST BETWEEN 4504128.33 AND 16639804.33") +
+                new Fill("#253494").where("POP_EST > 16639804.33")
         // end::createBasicSymbolizerWithWhere[]
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer countries = workspace.get("countries")
@@ -110,7 +110,7 @@ class StyleRecipes extends Recipes {
     
     Symbolizer createBasicSymbolizerWithScale() {
         // tag::createBasicSymbolizerWithScale[]
-        Symbolizer symbolizer = (new Fill("white") + new Stroke("black", 0.1)) + new Label("NAME_1")
+        Symbolizer symbolizer = (new Fill("white") + new Stroke("black", 0.1)) + new Label("name")
                 .point(anchor: [0.5,0.5])
                 .polygonAlign("mbr")
                 .range(max: 16000000)
@@ -413,7 +413,7 @@ class StyleRecipes extends Recipes {
 
     Symbolizer createLabelForPolygons() {
         // tag::createLabelForPolygons[]
-        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("NAME_1")
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("name")
             .point(anchor: [0.5,0.5])
             .polygonAlign("mbr")
         // end::createLabelForPolygons[]
@@ -426,7 +426,7 @@ class StyleRecipes extends Recipes {
 
     Symbolizer createLabelForPolygonsWithExpression() {
         // tag::createLabelForPolygonsWithExpression[]
-        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label(Expression.fromCQL("strToLowerCase(NAME_1)"))
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label(Expression.fromCQL("strToLowerCase(name)"))
                 .point(anchor: [0.5,0.5])
                 .polygonAlign("mbr")
         // end::createLabelForPolygonsWithExpression[]
@@ -439,7 +439,7 @@ class StyleRecipes extends Recipes {
 
     Symbolizer createLabelForPolygonsWithStrikeThrough() {
         // tag::createLabelForPolygonsWithStrikeThrough[]
-        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("NAME_1")
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("name")
                 .point(anchor: [0.5,0.5])
                 .polygonAlign("mbr")
                 .strikethrough(true)
@@ -453,7 +453,7 @@ class StyleRecipes extends Recipes {
 
     Symbolizer createLabelForPolygonsWithUnderline() {
         // tag::createLabelForPolygonsWithUnderline[]
-        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("NAME_1")
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("name")
                 .point(anchor: [0.5,0.5])
                 .polygonAlign("mbr")
                 .underline(true)
@@ -467,7 +467,7 @@ class StyleRecipes extends Recipes {
 
     Symbolizer createLabelForPolygonsWithSpacing() {
         // tag::createLabelForPolygonsWithSpacing[]
-        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("NAME_1")
+        Symbolizer symbolizer = new Fill("white") + new Stroke("black", 0.1) + new Label("name")
                 .point(anchor: [0.5,0.5])
                 .polygonAlign("mbr")
                 .wordSpacing(8)
@@ -515,7 +515,7 @@ class StyleRecipes extends Recipes {
         // tag::createGradientOnFieldWithQuantile[]
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer countries = workspace.get("countries")
-        Gradient gradient = new Gradient(countries, "PEOPLE", "quantile", 8, "Greens")
+        Gradient gradient = new Gradient(countries, "POP_EST", "quantile", 8, "Greens")
         countries.style = gradient
         // end::createGradientOnFieldWithQuantile[]
         drawOnBasemap("style_gradient_field_quantile", [countries])
@@ -526,7 +526,7 @@ class StyleRecipes extends Recipes {
         // tag::createGradientOnFieldWithEqualInterval[]
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer countries = workspace.get("countries")
-        Gradient gradient = new Gradient(countries, "PEOPLE", "equalinterval", 3, "Reds")
+        Gradient gradient = new Gradient(countries, "POP_EST", "equalinterval", 3, "Reds")
         countries.style = gradient
         // end::createGradientOnFieldWithEqualInterval[]
         drawOnBasemap("style_gradient_field_equalinterval", [countries])
@@ -638,7 +638,7 @@ class StyleRecipes extends Recipes {
         Symbolizer symbolizer =  new Transform(function, Transform.RENDERING) + new Fill("aqua", 0.75) + new Stroke("navy", 0.5)
         places.style = symbolizer
         // end::createRenderingTransform[]
-        drawOnBasemap("style_transform_rendering", [places])
+        drawOnBasemap("style_transform_rendering", [workspace.get("places"),places])
         symbolizer
     }
 

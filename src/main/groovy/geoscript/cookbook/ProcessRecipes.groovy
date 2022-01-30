@@ -174,6 +174,7 @@ class ProcessRecipes extends Recipes {
                 [result: geoscript.layer.Cursor],
                 { inputs ->
                     def geoms = new GeometryCollection(inputs.features.collect{ f -> f.geom})
+                    println geoms
                     def output = new Layer()
                     output.add([geoms.convexHull])
                     [result: output]
@@ -183,7 +184,7 @@ class ProcessRecipes extends Recipes {
         Symbolizer symbolizer =  new Transform(function, Transform.RENDERING) + new Fill("aqua", 0.75) + new Stroke("navy", 0.5)
         places.style = symbolizer
         // end::processFunctionProcess[]
-        drawOnBasemap("processFunctionProcess", [places])
+        drawOnBasemap("processFunctionProcess", [workspace.get("places"), places])
         function
     }
 
@@ -206,7 +207,7 @@ class ProcessRecipes extends Recipes {
         Symbolizer symbolizer =  new Transform(processFunction, Transform.RENDERING) + new Fill("aqua", 0.75) + new Stroke("navy", 0.5)
         places.style = symbolizer
         // end::processProcessFunction[]
-        drawOnBasemap("processProcessFunction", [places])
+        drawOnBasemap("processProcessFunction", [workspace.get("places"), places])
         processFunction
     }
 

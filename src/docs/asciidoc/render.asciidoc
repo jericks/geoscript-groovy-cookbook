@@ -181,6 +181,88 @@ No
 [.thumb]
 image::map_continuouswrapping_false.png[]
 
+=== Projections
+
+[source,groovy]
+.Create a map in the mercator projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMercatorMap,indent=0]
+----
+[.thumb]
+image::map_mercator.png[]
+
+[source,groovy]
+.Create a map in the WGS84 projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createWGS84Map,indent=0]
+----
+[.thumb]
+image::map_wgs84.png[]
+
+[source,groovy]
+.Create a map in the Equal Earth projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createEqualEarthMap,indent=0]
+----
+[.thumb]
+image::map_equalearth.png[]
+
+[source,groovy]
+.Create a map in the Mollweide projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createMollweideMap,indent=0]
+----
+[.thumb]
+image::map_mollweide.png[]
+
+[source,groovy]
+.Create a map in the Aitoff projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createAitoffMap,indent=0]
+----
+[.thumb]
+image::map_aitoff.png[]
+
+[source,groovy]
+.Create a map in the Eckert IV projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createEckertIVMap,indent=0]
+----
+[.thumb]
+image::map_eckertIV.png[]
+
+[source,groovy]
+.Create a map in the Wagner IV projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createWagnerIVMap,indent=0]
+----
+[.thumb]
+image::map_wagnerIV.png[]
+
+[source,groovy]
+.Create a map in the Robinson projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createRobinsonMap,indent=0]
+----
+[.thumb]
+image::map_robinson.png[]
+
+[source,groovy]
+.Create a map in the Winkel Tripel projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createWinkelTripelMap,indent=0]
+----
+[.thumb]
+image::map_winkeltripel.png[]
+
+[source,groovy]
+.Create a map in the World Vander Grinten I projection
+----
+include::{sourcedir}/geoscript/cookbook/RenderRecipes.groovy[tags=createWorldVanderGrintenIMap,indent=0]
+----
+[.thumb]
+image::map_worldVanderGrintenIMap.png[]
+
 === Map Cubes
 
 [source,groovy]

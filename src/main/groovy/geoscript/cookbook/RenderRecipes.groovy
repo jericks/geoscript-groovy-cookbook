@@ -312,6 +312,258 @@ class RenderRecipes extends Recipes {
         map
     }
 
+    // Projections
+
+    Map createMercatorMap() {
+        // tag::createMercatorMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("black", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd") + new Stroke("black", 0.5)
+        Layer graticules = workspace.get("graticules")
+        graticules.style = new Stroke("black", 0.5)
+        Projection proj = new Projection("Mercator")
+        Bounds bounds = new Bounds(-179.99, -85.0511, 179.99, 85.0511, "EPSG:4326").reproject(proj)
+        Map map = new Map(
+                width: 400,
+                height: 400,
+                proj: proj,
+                bounds: bounds,
+                layers: [ocean, countries, graticules]
+        )
+        File file = new File("map_mercator.png")
+        map.render(file)
+        // end::createMercatorMap[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_mercator.png"))
+        map
+    }
+
+    Map createWGS84Map() {
+        // tag::createWGS84Map[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("black", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd") + new Stroke("black", 0.5)
+        Layer graticules = workspace.get("graticules")
+        graticules.style = new Stroke("black", 0.5)
+        Projection proj = new Projection("WGS84")
+        Bounds bounds = new Bounds(-180, -90, 180, 90, "EPSG:4326").reproject(proj)
+        Map map = new Map(
+                width: 600,
+                height: 350,
+                proj: proj,
+                bounds: bounds,
+                layers: [ocean, countries, graticules]
+        )
+        File file = new File("map_wgs84.png")
+        map.render(file)
+        // end::createWGS84Map[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_wgs84.png"))
+        map
+    }
+
+    Map createEqualEarthMap() {
+        // tag::createEqualEarthMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("black", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd") + new Stroke("black", 0.5)
+        Layer graticules = workspace.get("graticules")
+        graticules.style = new Stroke("black", 0.5)
+        Projection proj = new Projection("EqualEarth")
+        Bounds bounds = new Bounds(-180, -90, 180, 90, "EPSG:4326").reproject(proj)
+        Map map = new Map(
+                width: 600,
+                height: 350,
+                proj: proj,
+                bounds: bounds,
+                layers: [ocean, countries, graticules]
+        )
+        File file = new File("map_equalearth.png")
+        map.render(file)
+        // end::createEqualEarthMap[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_equalearth.png"))
+        map
+    }
+
+    Map createMollweideMap() {
+        // tag::createMollweideMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("black", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd") + new Stroke("black", 0.5)
+        Layer graticules = workspace.get("graticules")
+        graticules.style = new Stroke("black", 0.5)
+        Projection proj = new Projection("Mollweide")
+        Bounds bounds = new Bounds(-180, -90, 180, 90, "EPSG:4326").reproject(proj)
+        Map map = new Map(
+                width: 600,
+                height: 350,
+                proj: proj,
+                bounds: bounds,
+                layers: [ocean, countries, graticules]
+        )
+        File file = new File("map_mollweide.png")
+        map.render(file)
+        // end::createMollweideMap[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_mollweide.png"))
+        map
+    }
+
+    Map createAitoffMap() {
+        // tag::createAitoffMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("black", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd") + new Stroke("black", 0.5)
+        Layer graticules = workspace.get("graticules")
+        graticules.style = new Stroke("black", 0.5)
+        Projection proj = new Projection("Aitoff")
+        Bounds bounds = new Bounds(-180, -90, 180, 90, "EPSG:4326").reproject(proj)
+        Map map = new Map(
+                width: 600,
+                height: 350,
+                proj: proj,
+                bounds: bounds,
+                layers: [ocean, countries, graticules]
+        )
+        File file = new File("map_aitoff.png")
+        map.render(file)
+        // end::createAitoffMap[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_aitoff.png"))
+        map
+    }
+
+    Map createEckertIVMap() {
+        // tag::createEckertIVMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("black", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd") + new Stroke("black", 0.5)
+        Layer graticules = workspace.get("graticules")
+        graticules.style = new Stroke("black", 0.5)
+        Projection proj = new Projection("EckertIV")
+        Bounds bounds = new Bounds(-180, -90, 180, 90, "EPSG:4326").reproject(proj)
+        Map map = new Map(
+                width: 600,
+                height: 350,
+                proj: proj,
+                bounds: bounds,
+                layers: [ocean, countries, graticules]
+        )
+        File file = new File("map_eckertIV.png")
+        map.render(file)
+        // end::createEckertIVMap[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_eckertIV.png"))
+        map
+    }
+
+    Map createWagnerIVMap() {
+        // tag::createWagnerIVMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("black", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd") + new Stroke("black", 0.5)
+        Layer graticules = workspace.get("graticules")
+        graticules.style = new Stroke("black", 0.5)
+        Projection proj = new Projection("WagnerIV")
+        Bounds bounds = new Bounds(-180, -90, 180, 90, "EPSG:4326").reproject(proj)
+        Map map = new Map(
+                width: 600,
+                height: 350,
+                proj: proj,
+                bounds: bounds,
+                layers: [ocean, countries, graticules]
+        )
+        File file = new File("map_wagnerIV.png")
+        map.render(file)
+        // end::createWagnerIVMap[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_wagnerIV.png"))
+        map
+    }
+
+    Map createRobinsonMap() {
+        // tag::createRobinsonMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("black", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd") + new Stroke("black", 0.5)
+        Layer graticules = workspace.get("graticules")
+        graticules.style = new Stroke("black", 0.5)
+        Projection proj = new Projection("Robinson")
+        Bounds bounds = new Bounds(-180, -90, 180, 90, "EPSG:4326").reproject(proj)
+        Map map = new Map(
+                width: 600,
+                height: 350,
+                proj: proj,
+                bounds: bounds,
+                layers: [ocean, countries, graticules]
+        )
+        File file = new File("map_robinson.png")
+        map.render(file)
+        // end::createRobinsonMap[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_robinson.png"))
+        map
+    }
+
+    Map createWinkelTripelMap() {
+        // tag::createWinkelTripelMap[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("black", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd") + new Stroke("black", 0.5)
+        Layer graticules = workspace.get("graticules")
+        graticules.style = new Stroke("black", 0.5)
+        Projection proj = new Projection("WinkelTripel")
+        Bounds bounds = new Bounds(-180, -90, 180, 90, "EPSG:4326").reproject(proj)
+        Map map = new Map(
+                width: 600,
+                height: 350,
+                proj: proj,
+                bounds: bounds,
+                layers: [ocean, countries, graticules]
+        )
+        File file = new File("map_winkeltripel.png")
+        map.render(file)
+        // end::createWinkelTripelMap[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_winkeltripel.png"))
+        map
+    }
+
+    Map createWorldVanderGrintenIMap() {
+        // tag::createWorldVanderGrintenIMap[]
+        Workspace workspace = new Directory('src/main/resources/shapefiles')
+        Layer countries = workspace.get("countries")
+        countries.style = new Fill("#ffffff") + new Stroke("black", 0.5)
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new Fill("#a5bfdd") + new Stroke("black", 0.5)
+        Layer graticules = workspace.get("graticules")
+        graticules.style = new Stroke("black", 0.5)
+        Projection proj = new Projection("WorldVanderGrintenI")
+        Bounds bounds = new Bounds(-180, -90, 180, 90, "EPSG:4326").reproject(proj)
+        Map map = new Map(
+                width: 600,
+                height: 350,
+                proj: proj,
+                bounds: bounds,
+                layers: [ocean, countries, graticules]
+        )
+        File file = new File("map_worldVanderGrintenIMap.png")
+        map.render(file)
+        // end::createWorldVanderGrintenIMap[]
+        moveFile(file, new File("src/docs/asciidoc/images/map_worldVanderGrintenIMap.png"))
+        map
+    }
+
     // Map Cube
 
     File createMapCubeToFile() {
@@ -588,7 +840,7 @@ class RenderRecipes extends Recipes {
 
         GIF gif = new GIF()
         List images = ["Washington","Oregon","California"].collect { String state ->
-            map.bounds = states.getFeatures("NAME_1 = '${state}'")[0].bounds
+            map.bounds = states.getFeatures("name = '${state}'")[0].bounds
             def image = gif.render(map)
             image
         }
@@ -620,7 +872,7 @@ class RenderRecipes extends Recipes {
 
         GIF gif = new GIF()
         List images = ["Washington","Oregon","California"].collect { String state ->
-            map.bounds = states.getFeatures("NAME_1 = '${state}'")[0].bounds
+            map.bounds = states.getFeatures("name = '${state}'")[0].bounds
             def image = gif.render(map)
             image
         }
@@ -948,7 +1200,7 @@ class RenderRecipes extends Recipes {
         // tag::drawFeatureToFileName[]
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer layer = workspace.get("states")
-        Feature feature = layer.first(filter: "NAME_1='Washington'")
+        Feature feature = layer.first(filter: "name='Washington'")
         Draw.draw(feature, bounds: feature.bounds, out: "feature.png")
         // end::drawFeatureToFileName[]
         File file = new File("feature.png")
@@ -1011,7 +1263,7 @@ class RenderRecipes extends Recipes {
         // tag::drawFeatureToImage[]
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer layer = workspace.get("states")
-        Feature feature = layer.first(filter: "NAME_1='Washington'")
+        Feature feature = layer.first(filter: "name='Washington'")
         BufferedImage image = Draw.drawToImage(feature, bounds: feature.bounds)
         // end::drawFeatureToImage[]
         saveImage("render_drawtoimage_feature", image)
@@ -1072,7 +1324,7 @@ class RenderRecipes extends Recipes {
         // tag::plotFeatureToFileName[]
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer layer = workspace.get("states")
-        Feature feature = layer.first(filter: "NAME_1='Washington'")
+        Feature feature = layer.first(filter: "name='Washington'")
         Plot.plot(feature, out: "feature.png")
         // end::plotFeatureToFileName[]
         File file = new File("feature.png")
@@ -1116,7 +1368,7 @@ class RenderRecipes extends Recipes {
         // tag::plotFeatureToImage[]
         Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
         Layer layer = workspace.get("states")
-        Feature feature = layer.first(filter: "NAME_1='Washington'")
+        Feature feature = layer.first(filter: "name='Washington'")
         BufferedImage image = Plot.plotToImage(feature, bounds: feature.bounds)
         // end::plotFeatureToImage[]
         saveImage("render_plottoimage_feature", image)

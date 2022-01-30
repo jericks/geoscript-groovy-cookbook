@@ -65,6 +65,68 @@ class RenderRecipesTest {
         assertNotNull(map)
     }
 
+    // Projection
+
+    @Test void createMercatorMap() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createMercatorMap()
+        assertNotNull(map)
+    }
+
+    @Test void createWGS84Map() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createWGS84Map()
+        assertNotNull(map)
+    }
+
+    @Test void createEqualEarthMap() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createEqualEarthMap()
+        assertNotNull(map)
+    }
+
+    @Test void createMollweideMap() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createMollweideMap()
+        assertNotNull(map)
+    }
+
+    @Test void createAitoffMap() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createAitoffMap()
+        assertNotNull(map)
+    }
+
+    @Test void createEckertIVMap() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createEckertIVMap()
+        assertNotNull(map)
+    }
+
+    @Test void createWagnerIVMap() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createWagnerIVMap()
+        assertNotNull(map)
+    }
+
+    @Test void createRobinsonMap() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createRobinsonMap()
+        assertNotNull(map)
+    }
+
+    @Test void createWinkelTripelMap() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createWinkelTripelMap()
+        assertNotNull(map)
+    }
+
+    @Test void createWorldVanderGrintenIMap() {
+        RenderRecipes recipes = new RenderRecipes()
+        Map map = recipes.createWorldVanderGrintenIMap()
+        assertNotNull(map)
+    }
+
     // Map Cubes
 
     @Test void createMapCubeToFile() {

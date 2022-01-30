@@ -181,7 +181,7 @@ class LayerRecipes extends Recipes {
         Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
         Layer layer = workspace.get("states")
         layer.eachFeature { Feature feature ->
-            println feature["NAME_1"]
+            println feature["name"]
         }
         // end::getLayerFeatures[]
         int max = 10
@@ -189,7 +189,7 @@ class LayerRecipes extends Recipes {
         String str = ""
         layer.eachFeature { Feature feature ->
             if (count < max) {
-                str += feature["NAME_1"] + NEW_LINE
+                str += feature["name"] + NEW_LINE
             } 
             count++
         }
@@ -201,14 +201,14 @@ class LayerRecipes extends Recipes {
         // tag::getLayerFeaturesFiltered[]
         Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
         Layer layer = workspace.get("states")
-        layer.eachFeature("NAME_1 LIKE 'M%'") { Feature feature ->
-            println feature["NAME_1"]
+        layer.eachFeature("name LIKE 'M%'") { Feature feature ->
+            println feature["name"]
         }
         // end::getLayerFeaturesFiltered[]
         int count = 0
         String str = ""
-        layer.eachFeature("NAME_1 LIKE 'M%'") { Feature feature ->
-            str += feature["NAME_1"] + NEW_LINE
+        layer.eachFeature("name LIKE 'M%'") { Feature feature ->
+            str += feature["name"] + NEW_LINE
             count++
         }
         writeFile("layer_features_filtered", "${str}")
@@ -219,14 +219,14 @@ class LayerRecipes extends Recipes {
         // tag::getLayerFeaturesWithParameters[]
         Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
         Layer layer = workspace.get("states")
-        layer.eachFeature(sort: ["NAME_1"], start: 0, max: 5, fields: ["NAME_1"], filter: "NAME_1 LIKE 'M%'") { Feature feature ->
-            println feature["NAME_1"]
+        layer.eachFeature(sort: ["name"], start: 0, max: 5, fields: ["name"], filter: "name LIKE 'M%'") { Feature feature ->
+            println feature["name"]
         }
         // end::getLayerFeaturesWithParameters[]
         int count = 0
         String str = ""
-        layer.eachFeature(sort: ["NAME_1"], start: 0, max: 5, fields: ["NAME_1"], filter: "NAME_1 LIKE 'M%'") { Feature feature ->
-            str += feature["NAME_1"] + NEW_LINE
+        layer.eachFeature(sort: ["name"], start: 0, max: 5, fields: ["name"], filter: "name LIKE 'M%'") { Feature feature ->
+            str += feature["name"] + NEW_LINE
             count++
         }
         writeFile("layer_features_params", "${str}")
@@ -241,7 +241,7 @@ class LayerRecipes extends Recipes {
         
         println "# Features = ${features.size()}"
         features.each { Feature feature ->
-            println feature["NAME_1"]
+            println feature["name"]
         }
         // end::getLayerFeaturesInAList[]
         int count = 0
@@ -249,7 +249,7 @@ class LayerRecipes extends Recipes {
         String str = "# Features = ${features.size()}${NEW_LINE}"
         features.each { Feature feature ->
             if (count < max) {
-                str += feature["NAME_1"] + NEW_LINE
+                str += feature["name"] + NEW_LINE
             }
             count++
         }
@@ -262,7 +262,7 @@ class LayerRecipes extends Recipes {
         Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
         Layer layer = workspace.get("states")
         List<String> names = layer.collectFromFeature { Feature f ->
-            f["NAME_1"]
+            f["name"]
         }.sort()
 
         println "# Names = ${names.size()}"
@@ -288,12 +288,12 @@ class LayerRecipes extends Recipes {
         Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
         Layer layer = workspace.get("states")
         List<String> names = layer.collectFromFeature(
-            sort: ["NAME_1"],
+            sort: ["name"],
             start: 0,
             max: 5,
-            fields: ["NAME_1"],
-            filter: "NAME_1 LIKE 'M%'") { Feature f ->
-                f["NAME_1"]
+            fields: ["name"],
+            filter: "name LIKE 'M%'") { Feature f ->
+                f["name"]
             }
 
         println "# Names = ${names.size()}"
@@ -313,14 +313,14 @@ class LayerRecipes extends Recipes {
         // tag::first[]
         Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
         Layer layer = workspace.get("states")
-        Feature feature = layer.first(filter: "NAME_1='Washington'")
-        println feature.get("NAME_1")
+        Feature feature = layer.first(filter: "name='Washington'")
+        println feature.get("name")
         // end::first[]
         Memory featureWorkspace = new Memory()
         Layer featureLayer = featureWorkspace.create(feature.schema)
         featureLayer.add(feature)
         drawOnBasemap("layer_first", [featureLayer], feature.bounds.expandBy(4))
-        writeFile("layer_first", "${feature.get('NAME_1')}")
+        writeFile("layer_first", "${feature.get('name')}")
         feature
     }
 
@@ -329,11 +329,11 @@ class LayerRecipes extends Recipes {
         Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
         Layer layer = workspace.get("states")
 
-        Feature featureAsc = layer.first(sort: "NAME_1 ASC")
-        println featureAsc.get("NAME_1")
+        Feature featureAsc = layer.first(sort: "name ASC")
+        println featureAsc.get("name")
 
-        Feature featureDesc = layer.first(sort: "NAME_1 DESC")
-        println featureDesc.get("NAME_1")
+        Feature featureDesc = layer.first(sort: "name DESC")
+        println featureDesc.get("name")
 
         // end::firstSort[]
         Memory featureWorkspace = new Memory()
@@ -341,7 +341,7 @@ class LayerRecipes extends Recipes {
         featureLayer.add(featureAsc)
         featureLayer.add(featureDesc)
         drawOnBasemap("layer_first_sort", [featureLayer], featureLayer.bounds.expandBy(4))
-        writeFile("layer_first_sort", "${featureAsc.get('NAME_1')}${NEW_LINE}${featureDesc.get('NAME_1')}")
+        writeFile("layer_first_sort", "${featureAsc.get('name')}${NEW_LINE}${featureDesc.get('name')}")
         [asc: featureAsc, desc: featureDesc]
     }
 
@@ -354,7 +354,7 @@ class LayerRecipes extends Recipes {
         // tag::filter[]
         Workspace workspace = new Directory("target")
         Layer layer = workspace.get("countries")
-        Layer disputedLayer = layer.filter("TYPE='Disputed'")
+        Layer disputedLayer = layer.filter("TYPE='Indeterminate'")
         // end::filter[]
         disputedLayer.style = new Fill("red") + new Stroke("black")
         drawOnBasemap("layer_filter", [disputedLayer], disputedLayer.bounds.expandBy(4))
@@ -369,7 +369,7 @@ class LayerRecipes extends Recipes {
         Layer layer = workspace.get("states")
         Cursor cursor = layer.cursor
         cursor.each { Feature feature ->
-            println feature["NAME_1"]
+            println feature["name"]
         }
         // end::getCursor[]
         int max = 10
@@ -377,7 +377,7 @@ class LayerRecipes extends Recipes {
         String str = ""
         layer.cursor.each { Feature feature ->
             if (count < max) {
-                str += feature["NAME_1"] + NEW_LINE
+                str += feature["name"] + NEW_LINE
             }
             count++
         }
@@ -389,16 +389,16 @@ class LayerRecipes extends Recipes {
         // tag::getCursorWithFilter[]
         Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
         Layer layer = workspace.get("states")
-        Cursor cursor = layer.getCursor(filter: "NAME_1 LIKE 'M%'")
+        Cursor cursor = layer.getCursor(filter: "name LIKE 'M%'")
         while(cursor.hasNext()) {
             Feature feature = cursor.next()
-            println feature["NAME_1"]
+            println feature["name"]
         }
         // end::getCursorWithFilter[]
         int count = 0
         String str = ""
-        layer.getCursor("NAME_1 LIKE 'M%'").each { Feature feature ->
-            str += feature["NAME_1"] + NEW_LINE
+        layer.getCursor("name LIKE 'M%'").each { Feature feature ->
+            str += feature["name"] + NEW_LINE
             count++
         }
         writeFile("layer_cursor_filtered", "${str}")
@@ -409,14 +409,14 @@ class LayerRecipes extends Recipes {
         // tag::getCursorWithParameters[]
         Workspace workspace = new GeoPackage("src/main/resources/data.gpkg")
         Layer layer = workspace.get("states")
-        layer.getCursor(sort: ["NAME_1"], start: 0, max: 5, fields: ["NAME_1"], filter: "NAME_1 LIKE 'M%'").each { Feature feature ->
-            println feature["NAME_1"]
+        layer.getCursor(sort: ["name"], start: 0, max: 5, fields: ["name"], filter: "name LIKE 'M%'").each { Feature feature ->
+            println feature["name"]
         }
         // end::getCursorWithParameters[]
         int count = 0
         String str = ""
-        layer.getCursor(sort: ["NAME_1"], start: 0, max: 5, fields: ["NAME_1"], filter: "NAME_1 LIKE 'M%'").each { Feature feature ->
-            str += feature["NAME_1"] + NEW_LINE
+        layer.getCursor(sort: ["name"], start: 0, max: 5, fields: ["name"], filter: "name LIKE 'M%'").each { Feature feature ->
+            str += feature["name"] + NEW_LINE
             count++
         }
         writeFile("layer_cursor_parameters", "${str}")

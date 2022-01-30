@@ -80,14 +80,14 @@ class WorkspaceRecipesTest {
         WorkspaceRecipes recipes = new WorkspaceRecipes()
         Map<String, Workspace> values = recipes.withWorkspaceFromString()
         assertEquals("GeoPackage", values.format)
-        assertEquals(["countries","ocean","places","rivers","states"], values.names)
+        assertEquals(["countries","graticules","ocean","places","rivers","states"], values.names)
     }
 
     @Test void withWorkspaceFromMap() {
         WorkspaceRecipes recipes = new WorkspaceRecipes()
         Map<String, Workspace> values = recipes.withWorkspaceFromMap()
         assertEquals("GeoPackage", values.format)
-        assertEquals(["countries","ocean","places","rivers","states"], values.names)
+        assertEquals(["countries","graticules","ocean","places","rivers","states"], values.names)
     }
 
     @Test void createDirectoryWorkspaceFromName() {
