@@ -23,7 +23,7 @@
 </sld:StyledLayerDescriptor>
 
 
-[[layerName:states, styleName:states, style:<?xml version="1.0" encoding="UTF-8"?>
+[[layerName:states, styleName:states, style:geoscript.style.io.SLDReader$SLDStyle@8cf943a, styleStr:<?xml version="1.0" encoding="UTF-8"?>
 <sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml" version="1.0.0">
   <sld:UserLayer>
     <sld:LayerFeatureConstraints>
@@ -45,9 +45,9 @@
     </sld:UserStyle>
   </sld:UserLayer>
 </sld:StyledLayerDescriptor>
-]]
+, type:sld]]
 
-[[layerName:states, styleName:states, style:<?xml version="1.0" encoding="UTF-8"?>
+[[layerName:states, styleName:states, style:geoscript.style.io.SLDReader$SLDStyle@7f980364, styleStr:<?xml version="1.0" encoding="UTF-8"?>
 <sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml" version="1.0.0">
   <sld:UserLayer>
     <sld:LayerFeatureConstraints>
@@ -69,4 +69,4 @@
     </sld:UserStyle>
   </sld:UserLayer>
 </sld:StyledLayerDescriptor>
-]]
+, type:sld]]

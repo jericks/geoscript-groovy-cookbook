@@ -942,6 +942,22 @@ pre.rouge {
 <img src="./images/style_fill_random.png" alt="style fill random">
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Create a Fill Symbolizer with a Recode Function</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Function</span> <span class="n">recodeFunction</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Function</span><span class="o">(</span><span class="s2">"Recode(region,"</span> <span class="o">+</span>
+        <span class="s2">"'West','#B0C4DE',"</span> <span class="o">+</span>
+        <span class="s2">"'South','#00FFFF',"</span> <span class="o">+</span>
+        <span class="s2">"'Northeast','#9ACD32',"</span> <span class="o">+</span>
+        <span class="s2">"'Midwest','#6495ED')"</span><span class="o">)</span>
+<span class="n">Symbolizer</span> <span class="n">symbolizer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="n">recodeFunction</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Stroke</span><span class="o">(</span><span class="s2">"#999999"</span><span class="o">,</span><span class="mf">0.1</span><span class="o">)</span> <span class="o">+</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s2">"postal"</span><span class="o">).</span><span class="na">point</span><span class="o">([</span><span class="mf">0.5</span><span class="o">,</span><span class="mf">0.5</span><span class="o">])</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_fill_recode_function.png" alt="style fill recode function">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="creating-shapes"><a class="anchor" href="#creating-shapes"></a>Creating Shapes</h3>
@@ -2086,7 +2102,7 @@ Rasters.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-01-30 00:30:04 UTC
+Last updated 2022-05-08 01:13:39 UTC
 </div>
 </div>
 </body>
