@@ -20,6 +20,30 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=map,indent=0]
 [.thumb]
 image::carto_map.png[]
 
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|map
+|geoscript.render.Map
+|The Map to display
+|===
+
 ==== Adding an Overview Map
 
 [source,groovy]
@@ -29,6 +53,47 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=overViewMap,ind
 ----
 [.thumb]
 image::carto_overviewmap.png[]
+
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|overviewMap
+|geoscript.render.Map
+|The overview Map
+
+|linkedMap
+|geoscript.render.Map
+|The Map the overview Map is linked to
+
+|areaStyle
+|geoscript.style.Style
+|The GeoScript style to display the rectangle
+
+|zoomIntoBounds
+|boolean
+|Whether to zoom into the bounds of the linked Map or not
+
+|scaleFactor
+|double
+|The scale factor for expanding the linked Map Bounds
+
+|===
 
 ==== Adding a Text
 
@@ -40,6 +105,46 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=text,indent=0]
 [.thumb]
 image::carto_text.png[]
 
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|text
+|String
+|The text to display
+
+|color
+|java.awt.Color
+|The text Color
+
+|font
+|java.awt.Font
+| The text font
+
+|horizontalAlign
+|HorizontalAlign (LEFT, CENTER, RIGHT)
+|The horizontal alignment
+
+|verticalAlign
+|VerticalAlign (TOP, MIDDLE, BOTTOM)
+|The vertical alignment
+|===
+
 ==== Adding a Rectangle
 
 [source,groovy]
@@ -49,6 +154,38 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=rectangle,inden
 ----
 [.thumb]
 image::carto_rect.png[]
+
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|strokeColor
+|java.awt.Color
+|The outline Color
+
+|fillColor
+|java.awt.Color
+|The fill Color
+
+|strokeWidth
+|float
+|The width of the stroke
+|===
 
 ==== Adding a North Arrow
 
@@ -70,6 +207,62 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=northArrow2,ind
 [.thumb]
 image::carto_northarrow2.png[]
 
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|fillColor1
+|java.awt.Color
+|The first Fill Color
+
+|strokeColor1
+|java.awt.Color
+|The first Stroke Color
+
+|fillColor2
+|java.awt.Color
+|The second Fill Color
+
+|strokeColor2
+|java.awt.Color
+|The second Stroke Color
+
+|strokeWidth
+|float
+|The width of the stroke
+
+|drawText
+|boolean
+|Whether to draw text (n,s,e,w) or not
+
+|font
+|java.awt.Font
+|The Font for the text
+
+|textColor
+|java.awt.Color
+|The text Color
+
+|style
+|NorthArrowStyle
+|The North Arrow style (North or NorthEastSouthWest)
+|===
+
 ==== Adding a Legend
 
 [source,groovy]
@@ -79,6 +272,70 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=legendFromMap,i
 ----
 [.thumb]
 image::carto_legendFromMap.png[]
+
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|backgroudColor
+|java.awt.Color
+|The background Color
+
+|title
+|String
+|The legend title
+
+|titleFont
+|java.awt.Font
+|The title Font
+
+|titleColor
+|java.awt.Color
+|The title Color
+
+|textFont
+|java.awt.Font
+|The text Font
+
+|textColor
+|java.awt.Color
+|The text Color
+
+|entries
+|List of LegendEntry instances
+|Legend entries
+
+|legendEntryWidth
+|int
+|The width of individual entries
+
+|legendEntryHeight
+|int
+|The height of individual entries
+
+|gapBetweenEntries
+|int
+|The gap between entries
+
+|numberFormat
+|String
+|The number format (\#.##)
+|===
 
 ==== Adding a Date
 
@@ -90,6 +347,50 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=dateText,indent
 [.thumb]
 image::carto_datetext.png[]
 
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|format
+|String
+|The date format (MM/dd/yyyy)
+
+|date
+|Date
+|The Date to display
+
+|color
+|java.awt.Color
+|The text Color
+
+|font
+|java.awt.Font
+|The text Font
+
+|horizontalAlign
+|HorizontalAlign
+|The horizontal alingment of the text
+
+|verticalAlign
+|VerticalAlign
+|The vertical alingment of the text
+|===
+
 ==== Adding Scale Text
 
 [source,groovy]
@@ -99,6 +400,54 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=scaleText,inden
 ----
 [.thumb]
 image::carto_scaletext.png[]
+
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|map
+|geoscript.render.Map
+|The Map to get the scale from
+
+|color
+|java.awt.Color
+|The text Color
+
+|font
+|java.awt.Font
+|The text Font
+
+|horizontalAlign
+|HorizontalAlign
+|The horizontal alingment of the text
+
+|verticalAlign
+|VerticalAlign
+|The vertical alingment of the text
+
+|format
+|String
+|The number format for displaying the scale
+
+|prefixText
+|String
+|The text to display before the scale (Scale: ...)
+|===
 
 ==== Adding Scale Bar
 
@@ -110,6 +459,54 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=scaleBar,indent
 [.thumb]
 image::carto_scalebar.png[]
 
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|map
+|geoscript.render.Map
+|The Map to get the scale from
+
+|strokeColor
+|java.awt.Color
+|The stroke Color
+
+|fillColor
+|java.awt.Color
+|The fill Color
+
+|strokeWidth
+|float
+|The stroke width
+
+|font
+|java.awt.Font
+|The text Font
+
+|border
+|int
+|The border padding
+
+|units
+|Units
+|The units (metric or us)
+|===
+
 ==== Adding a Line
 
 [source,groovy]
@@ -119,6 +516,38 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=line,indent=0]
 ----
 [.thumb]
 image::carto_line.png[]
+
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|map
+|geoscript.render.Map
+|The Map to get the scale from
+
+|strokeColor
+|java.awt.Color
+|The stroke Color
+
+|strokeWidth
+|float
+|The stroke width
+|===
 
 ==== Adding a Grid
 
@@ -130,6 +559,38 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=grid,indent=0]
 [.thumb]
 image::carto_grid.png[]
 
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|size
+|int
+|The cell size
+
+|strokeColor
+|java.awt.Color
+|The stroke Color
+
+|strokeWidth
+|float
+|The stroke width
+|===
+
 ==== Adding a Paragraph
 
 [source,groovy]
@@ -140,6 +601,38 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=paragraph,inden
 [.thumb]
 image::carto_paragraph.png[]
 
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|text
+|String
+|The paragraph text
+
+|font
+|java.awt.Font
+|The text Font
+
+|color
+|java.awt.Color
+|The text Color
+|===
+
 ==== Adding an Image
 
 [source,groovy]
@@ -149,6 +642,30 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=image,indent=0]
 ----
 [.thumb]
 image::carto_image.png[]
+
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|path
+|File or URL
+|The source path of the image
+|===
 
 === Builders
 
