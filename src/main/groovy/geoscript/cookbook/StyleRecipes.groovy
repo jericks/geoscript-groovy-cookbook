@@ -289,6 +289,22 @@ class StyleRecipes extends Recipes {
         symbolizer
     }
 
+    Symbolizer createFillWithRecodeFunction() {
+        // tag::createFillWithRecodeFunction[]
+        Function recodeFunction = new Function("Recode(region," +
+                "'West','#B0C4DE'," +
+                "'South','#00FFFF'," +
+                "'Northeast','#9ACD32'," +
+                "'Midwest','#6495ED')")
+        Symbolizer symbolizer = new Fill(recodeFunction) + new Stroke("#999999",0.1) + new Label("postal").point([0.5,0.5])
+        // end::createFillWithRecodeFunction[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = symbolizer
+        drawOnBasemap("style_fill_recode_function", [states], states.bounds.expandBy(3.0))
+        symbolizer
+    }
+
     // Shape
 
     Shape createShapeWithColor() {

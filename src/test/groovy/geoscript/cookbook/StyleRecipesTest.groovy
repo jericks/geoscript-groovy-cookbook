@@ -135,6 +135,12 @@ class StyleRecipesTest {
         assertNotNull(fill)
     }
 
+    @Test void createFillWithRecodeFunction() {
+        StyleRecipes recipes = new StyleRecipes()
+        Symbolizer fill = recipes.createFillWithRecodeFunction()
+        assertNotNull(fill)
+    }
+
     // Shape
 
     @Test void createShapeWithColor() {

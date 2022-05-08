@@ -169,6 +169,13 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createFillWithR
 [.thumb]
 image::style_fill_random.png[]
 
+[source,groovy]
+.Create a Fill Symbolizer with a Recode Function
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createFillWithRecodeFunction,indent=0]
+----
+[.thumb]
+image::style_fill_recode_function.png[]
 === Creating Shapes
 
 [source,groovy]
