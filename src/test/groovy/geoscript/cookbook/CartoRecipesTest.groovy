@@ -91,6 +91,12 @@ class CartoRecipesTest {
         assertNotNull(image)
     }
 
+    @Test void table() {
+        CartoRecipes recipes = new CartoRecipes()
+        BufferedImage image = recipes.table()
+        assertNotNull(image)
+    }
+
     @Test void imageBuilder() {
         CartoRecipes recipes = new CartoRecipes()
         BufferedImage image = recipes.imageBuilder()

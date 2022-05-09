@@ -20,6 +20,7 @@ import geoscript.carto.RectangleItem
 import geoscript.carto.ScaleBarItem
 import geoscript.carto.ScaleTextItem
 import geoscript.carto.SvgCartoBuilder
+import geoscript.carto.TableItem
 import geoscript.carto.TextItem
 import geoscript.carto.VerticalAlign
 import geoscript.carto.io.CartoReader
@@ -607,6 +608,47 @@ well-crafted maps with cartography or GIS software.
         }
         // end::image[]
         File toFile = new File("src/docs/asciidoc/images/carto_image.png")
+        moveFile(file, toFile)
+        ImageIO.read(toFile)
+    }
+
+    BufferedImage table() {
+        // tag::table[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = new SLDReader().read(new File('src/main/resources/states.sld'))
+        Layer countries = workspace.get("countries")
+        countries.style = new SLDReader().read(new File('src/main/resources/countries.sld'))
+        Layer ocean = workspace.get("ocean")
+        ocean.style = new SLDReader().read(new File('src/main/resources/ocean.sld'))
+        Map map = new Map(
+                layers: [ocean, countries, states],
+                bounds: new Bounds(-135.225466,36.256870,-95.850466,50.746340, "EPSG:4326").reproject("EPSG:3857"),
+                projection: new Projection("EPSG:3857")
+        )
+
+        File file = new File("map.png")
+        file.withOutputStream { OutputStream outputStream ->
+
+            PageSize pageSize = PageSize.LETTER_LANDSCAPE
+
+            CartoFactories.findByName("png")
+                    .create(pageSize)
+                    .rectangle(new RectangleItem(0, 0, pageSize.width - 1, pageSize.height - 1)
+                            .fillColor(Color.WHITE)
+                    )
+                    .map(new MapItem(20, 20, pageSize.width - 40, pageSize.height - 140).map(map))
+                    .table(new TableItem(20, pageSize.height - 100, pageSize.width - 40, 80)
+                        .columns(["Name", "Abbreviation"])
+                        .row([[Name: "Washington", Abbreviation: "WA"]])
+                        .row([[Name: "Oregon", Abbreviation: "OR"]])
+                        .row([[Name: "California", Abbreviation: "CA"]])
+                    )
+                    .build(outputStream)
+
+        }
+        // end::table[]
+        File toFile = new File("src/docs/asciidoc/images/carto_table.png")
         moveFile(file, toFile)
         ImageIO.read(toFile)
     }

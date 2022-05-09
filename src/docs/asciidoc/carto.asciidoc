@@ -667,6 +667,61 @@ image::carto_image.png[]
 |The source path of the image
 |===
 
+==== Adding a Table
+
+[source,groovy]
+.Adding a Table
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=table,indent=0]
+----
+[.thumb]
+image::carto_table.png[]
+
+|===
+|Property | Type | Description
+
+|x
+|int
+|The number of pixels from left
+
+|y
+|int
+|The number of pixels from top
+
+|width
+|int
+|The width of the item in pixels
+
+|height
+|int
+|The height of the item in pixels
+
+|columns
+|List of Strings
+|The column names
+
+|row
+|A Maps of values
+|One row of values where the keys are the column names.
+
+|rows
+|A List of Maps
+|The data as a List of Maps where the keys are the column names.
+
+|columnRowStyle
+|TableItem.RowStyle
+|backGroudColor, font, textColor, strokeColor for columns
+
+|evenRowStyle
+|TableItem.RowStyle
+|backGroudColor, font, textColor, strokeColor for even rows
+
+|oddRowStyle
+|TableItem.RowStyle
+|backGroudColor, font, textColor, strokeColor for odd rows
+
+|===
+
 === Builders
 
 CartoBuilders write cartographic documents to different formats.  Images, PDFs, and SVGs are currently supported.
