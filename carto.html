@@ -677,6 +677,7 @@ pre.rouge {
 <li><a href="#adding-a-grid">Adding a Grid</a></li>
 <li><a href="#adding-a-paragraph">Adding a Paragraph</a></li>
 <li><a href="#adding-an-image">Adding an Image</a></li>
+<li><a href="#adding-a-table">Adding a Table</a></li>
 </ul>
 </li>
 <li><a href="#builders">Builders</a>
@@ -2137,6 +2138,118 @@ well-crafted maps with cartography or GIS software.
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="adding-a-table"><a class="anchor" href="#adding-a-table"></a>Adding a Table</h4>
+<div class="listingblock">
+<div class="title">Adding a Table</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">states</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">states</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SLDReader</span><span class="o">().</span><span class="na">read</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s1">'src/main/resources/states.sld'</span><span class="o">))</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SLDReader</span><span class="o">().</span><span class="na">read</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s1">'src/main/resources/countries.sld'</span><span class="o">))</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SLDReader</span><span class="o">().</span><span class="na">read</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s1">'src/main/resources/ocean.sld'</span><span class="o">))</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">states</span><span class="o">],</span>
+        <span class="nl">bounds:</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mf">135.225466</span><span class="o">,</span><span class="mf">36.256870</span><span class="o">,-</span><span class="mf">95.850466</span><span class="o">,</span><span class="mf">50.746340</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="s2">"EPSG:3857"</span><span class="o">),</span>
+        <span class="nl">projection:</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"EPSG:3857"</span><span class="o">)</span>
+<span class="o">)</span>
+
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map.png"</span><span class="o">)</span>
+<span class="n">file</span><span class="o">.</span><span class="na">withOutputStream</span> <span class="o">{</span> <span class="n">OutputStream</span> <span class="n">outputStream</span> <span class="o">-&gt;</span>
+
+    <span class="n">PageSize</span> <span class="n">pageSize</span> <span class="o">=</span> <span class="n">PageSize</span><span class="o">.</span><span class="na">LETTER_LANDSCAPE</span>
+
+    <span class="n">CartoFactories</span><span class="o">.</span><span class="na">findByName</span><span class="o">(</span><span class="s2">"png"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">pageSize</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">rectangle</span><span class="o">(</span><span class="k">new</span> <span class="n">RectangleItem</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">width</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">height</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">fillColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">WHITE</span><span class="o">)</span>
+            <span class="o">)</span>
+            <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">new</span> <span class="n">MapItem</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">width</span> <span class="o">-</span> <span class="mi">40</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">height</span> <span class="o">-</span> <span class="mi">140</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">map</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">table</span><span class="o">(</span><span class="k">new</span> <span class="n">TableItem</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">height</span> <span class="o">-</span> <span class="mi">100</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">width</span> <span class="o">-</span> <span class="mi">40</span><span class="o">,</span> <span class="mi">80</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">columns</span><span class="o">([</span><span class="s2">"Name"</span><span class="o">,</span> <span class="s2">"Abbreviation"</span><span class="o">])</span>
+                <span class="o">.</span><span class="na">row</span><span class="o">([[</span><span class="nl">Name:</span> <span class="s2">"Washington"</span><span class="o">,</span> <span class="nl">Abbreviation:</span> <span class="s2">"WA"</span><span class="o">]])</span>
+                <span class="o">.</span><span class="na">row</span><span class="o">([[</span><span class="nl">Name:</span> <span class="s2">"Oregon"</span><span class="o">,</span> <span class="nl">Abbreviation:</span> <span class="s2">"OR"</span><span class="o">]])</span>
+                <span class="o">.</span><span class="na">row</span><span class="o">([[</span><span class="nl">Name:</span> <span class="s2">"California"</span><span class="o">,</span> <span class="nl">Abbreviation:</span> <span class="s2">"CA"</span><span class="o">]])</span>
+            <span class="o">)</span>
+            <span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">outputStream</span><span class="o">)</span>
+
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/carto_table.png" alt="carto table">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of pixels from left</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of pixels from top</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">width</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The width of the item in pixels</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">height</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The height of the item in pixels</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">columns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of Strings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The column names</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">row</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Maps of values</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One row of values where the keys are the column names.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A List of Maps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The data as a List of Maps where the keys are the column names.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">columnRowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TableItem.RowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backGroudColor, font, textColor, strokeColor for columns</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">evenRowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TableItem.RowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backGroudColor, font, textColor, strokeColor for even rows</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oddRowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TableItem.RowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backGroudColor, font, textColor, strokeColor for odd rows</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="builders"><a class="anchor" href="#builders"></a>Builders</h3>
@@ -2564,7 +2677,7 @@ xml</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-05-08 18:25:34 UTC
+Last updated 2022-05-09 23:37:40 UTC
 </div>
 </div>
 </body>

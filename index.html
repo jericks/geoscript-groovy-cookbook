@@ -1206,6 +1206,7 @@ pre.rouge {
 <li><a href="#adding-a-grid">Adding a Grid</a></li>
 <li><a href="#adding-a-paragraph">Adding a Paragraph</a></li>
 <li><a href="#adding-an-image">Adding an Image</a></li>
+<li><a href="#adding-a-table">Adding a Table</a></li>
 </ul>
 </li>
 <li><a href="#builders">Builders</a>
@@ -5319,8 +5320,8 @@ Floating Point Single Geometry: POINT (5.19775390625 51.07421875)</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 84345539 nanoseconds
-Time with PreparedGeometry = 79956483 nanoseconds</pre>
+<pre>Time with Geometry         = 85874081 nanoseconds
+Time with PreparedGeometry = 84245266 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5365,8 +5366,8 @@ Time with PreparedGeometry = 79956483 nanoseconds</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 83868712 nanoseconds
-Time with PreparedGeometry = 73155885 nanoseconds</pre>
+<pre>Time with Geometry         = 75915658 nanoseconds
+Time with PreparedGeometry = 60494850 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -9441,7 +9442,7 @@ cities.city.1 geom: POINT (-122.3204 47.6024), id: 1, name: Seattle</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>cities.fid-36f3401b_180a4ee460e_-29d3 geom: null, id: null, name: null</pre>
+<pre>cities.fid--17efeb9f_180ab32152b_-29d3 geom: null, id: null, name: null</pre>
 </div>
 </div>
 </div>
@@ -10158,7 +10159,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun May 08 18:30:55 UTC 2022&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon May 09 23:42:34 UTC 2022&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10177,7 +10178,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-36f3401b_180a4ee460e_-29d7 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--17efeb9f_180ab32152b_-29d7 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10201,7 +10202,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Sun May 08 18:30:55 UTC 2022&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
+<pre>&lt;entry xmlns:georss='http://www.georss.org/georss' xmlns='http://www.w3.org/2005/Atom'&gt;&lt;title&gt;city.1&lt;/title&gt;&lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;&lt;updated&gt;Mon May 09 23:42:34 UTC 2022&lt;/updated&gt;&lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;&lt;/entry&gt;</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10221,7 +10222,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>georss.fid-36f3401b_180a4ee460e_-29d5 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
+<pre>georss.fid--17efeb9f_180ab32152b_-29d5 title: city.1, summary: [geom:POINT (-122.3204 47.6024), id:1, name:Seattle], updated: Sat Jan 28 15:51:47 PST 2017, geom: POINT (-122.3204 47.6024)</pre>
 </div>
 </div>
 </div>
@@ -10383,7 +10384,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-36f3401b_180a4ee460e_-29d4 geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--17efeb9f_180ab32152b_-29d4 geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10421,7 +10422,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>gpx.fid-36f3401b_180a4ee460e_-29d6 geom: POINT (-122.3204 47.6024), name: city.1</pre>
+<pre>gpx.fid--17efeb9f_180ab32152b_-29d6 geom: POINT (-122.3204 47.6024), name: city.1</pre>
 </div>
 </div>
 </div>
@@ -11946,11 +11947,11 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:isValid
 geo:union
 geo:intersection
 geo:getX
 geo:getY
+geo:isValid
 geo:difference
 geo:within
 geo:touches
@@ -11978,16 +11979,16 @@ geo:symDifference
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
-geo:geometryType
 geo:envelope
-geo:endPoint
-geo:isRing
-geo:polygonize
+geo:geometryType
 geo:equalsExact
-geo:pointN
-geo:interiorRingN
-geo:relatePattern
+geo:isRing
+geo:endPoint
+geo:polygonize
 geo:equalsExactTolerance
+geo:pointN
+geo:relatePattern
+geo:interiorRingN
 geo:length
 geo:isEmpty
 geo:contains
@@ -15642,20 +15643,20 @@ and many more.</p>
 <div class="literalblock">
 <div class="content">
 <pre>Web Feature Server (NG)
-PostGIS (JNDI)
-MBTiles with vector tiles
-H2
+MySQL
 Geobuf
-SQLite
-GeoPackage
-Properties
-Shapefile
-Directory of spatial files (shapefiles)
-PostGIS
-MySQL (JNDI)
 H2 (JNDI)
+PostGIS
 FlatGeobuf
-MySQL</pre>
+Properties
+GeoPackage
+Directory of spatial files (shapefiles)
+SQLite
+MySQL (JNDI)
+MBTiles with vector tiles
+PostGIS (JNDI)
+H2
+Shapefile</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -15823,20 +15824,20 @@ Copied Layer has 500 features.</pre>
 <div class="literalblock">
 <div class="content">
 <pre>Web Feature Server (NG)
-PostGIS (JNDI)
-MBTiles with vector tiles
-H2
+MySQL
 Geobuf
-SQLite
-GeoPackage
-Properties
-Shapefile
-Directory of spatial files (shapefiles)
-PostGIS
-MySQL (JNDI)
 H2 (JNDI)
+PostGIS
 FlatGeobuf
-MySQL</pre>
+Properties
+GeoPackage
+Directory of spatial files (shapefiles)
+SQLite
+MySQL (JNDI)
+MBTiles with vector tiles
+PostGIS (JNDI)
+H2
+Shapefile</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -18658,7 +18659,7 @@ YamlReader</pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-36f3401b_180a4ee460e_-29e0"
+            "id": "fid--17efeb9f_180ab32152b_-29e0"
         },
         {
             "type": "Feature",
@@ -18673,7 +18674,7 @@ YamlReader</pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-36f3401b_180a4ee460e_-29de"
+            "id": "fid--17efeb9f_180ab32152b_-29de"
         }
     ]
 }</pre>
@@ -18723,7 +18724,7 @@ YamlReader</pre>
                 "id": 1,
                 "name": "Seattle"
             },
-            "id": "fid-36f3401b_180a4ee460e_-3d9e"
+            "id": "fid--17efeb9f_180ab32152b_-3d9e"
         },
         {
             "type": "Feature",
@@ -18738,7 +18739,7 @@ YamlReader</pre>
                 "id": 2,
                 "name": "Tacoma"
             },
-            "id": "fid-36f3401b_180a4ee460e_-3d9c"
+            "id": "fid--17efeb9f_180ab32152b_-3d9c"
         }
     ]
 }</pre>
@@ -18823,7 +18824,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>0a0269640a046e616d65100218062289010a430a0c08001a089fd8d374c0ebb22d5a1e6669642d33366633343031625f31383061346565343630655f2d336133666a0218016a090a0753656174746c657204000001010a420a0c08001a08ffd6e77498a3892d5a1e6669642d33366633343031625f31383061346565343630655f2d336133646a0218026a080a065461636f6d61720400000101</pre>
+<pre>0a0269640a046e616d6510021806228b010a440a0c08001a089fd8d374c0ebb22d5a1f6669642d2d31376566656239665f31383061623332313532625f2d336133666a0218016a090a0753656174746c657204000001010a430a0c08001a08ffd6e77498a3892d5a1f6669642d2d31376566656239665f31383061623332313532625f2d336133646a0218026a080a065461636f6d61720400000101</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -18854,7 +18855,7 @@ YamlReader</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>0a0269640a046e616d6510021806228b010a430a0c08001a089fd8d374c0ebb22d5a1e6669642d33366633343031625f31383061346565343630655f2d333961376a0218016a090a0753656174746c657204000001010a440a0c08001a08afe9ff7480d2b42b5a1e6669642d33366633343031625f31383061346565343630655f2d333961356a0218026a0a0a08506f72746c616e64720400000101</pre>
+<pre>0a0269640a046e616d6510021806228d010a440a0c08001a089fd8d374c0ebb22d5a1f6669642d2d31376566656239665f31383061623332313532625f2d333961376a0218016a090a0753656174746c657204000001010a450a0c08001a08afe9ff7480d2b42b5a1f6669642d2d31376566656239665f31383061623332313532625f2d333961356a0218026a0a0a08506f72746c616e64720400000101</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -18922,7 +18923,7 @@ YamlReader</pre>
     &lt;/gml:Box&gt;
   &lt;/gml:boundedBy&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-36f3401b_180a4ee460e_-3249"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--17efeb9f_180ab32152b_-3249"&gt;
       &lt;gml:name&gt;
         Seattle
       &lt;/gml:name&gt;
@@ -18944,7 +18945,7 @@ YamlReader</pre>
     &lt;/gsf:cities&gt;
   &lt;/gml:featureMember&gt;
   &lt;gml:featureMember xmlns:gml="http://www.opengis.net/gml"&gt;
-    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid-36f3401b_180a4ee460e_-3247"&gt;
+    &lt;gsf:cities xmlns:gsf="http://geoscript.org/feature" fid="fid--17efeb9f_180ab32152b_-3247"&gt;
       &lt;gml:name&gt;
         Tacoma
       &lt;/gml:name&gt;
@@ -19010,7 +19011,7 @@ YamlReader</pre>
 &lt;/gml:Box&gt;
 &lt;/gml:boundedBy&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid-36f3401b_180a4ee460e_-326f"&gt;
+&lt;gsf:cities fid="fid--17efeb9f_180ab32152b_-326f"&gt;
 &lt;gml:name&gt;Seattle&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -19024,7 +19025,7 @@ YamlReader</pre>
 &lt;/gsf:cities&gt;
 &lt;/gml:featureMember&gt;
 &lt;gml:featureMember&gt;
-&lt;gsf:cities fid="fid-36f3401b_180a4ee460e_-326d"&gt;
+&lt;gsf:cities fid="fid--17efeb9f_180ab32152b_-326d"&gt;
 &lt;gml:name&gt;Tacoma&lt;/gml:name&gt;
 &lt;gsf:geom&gt;
 &lt;gml:Point&gt;
@@ -19138,7 +19139,7 @@ YamlReader</pre>
       &lt;/kml:Schema&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-36f3401b_180a4ee460e_-2aeb
+          fid--17efeb9f_180ab32152b_-2aeb
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -19165,7 +19166,7 @@ YamlReader</pre>
       &lt;/kml:Placemark&gt;
       &lt;kml:Placemark&gt;
         &lt;kml:name&gt;
-          fid-36f3401b_180a4ee460e_-2ae9
+          fid--17efeb9f_180ab32152b_-2ae9
         &lt;/kml:name&gt;
         &lt;kml:Style&gt;
           &lt;kml:IconStyle&gt;
@@ -19225,13 +19226,13 @@ YamlReader</pre>
 <div class="content">
 <pre>&lt;kml:kml xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kml="http://earth.google.com/kml/2.1"&gt;
 &lt;kml:Document&gt;
-&lt;kml:Placemark id="fid-36f3401b_180a4ee460e_-3267"&gt;
+&lt;kml:Placemark id="fid--17efeb9f_180ab32152b_-3267"&gt;
 &lt;kml:name&gt;Seattle&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.3204,47.6024&lt;/kml:coordinates&gt;
 &lt;/kml:Point&gt;
 &lt;/kml:Placemark&gt;
-&lt;kml:Placemark id="fid-36f3401b_180a4ee460e_-3265"&gt;
+&lt;kml:Placemark id="fid--17efeb9f_180ab32152b_-3265"&gt;
 &lt;kml:name&gt;Tacoma&lt;/kml:name&gt;
 &lt;kml:Point&gt;
 &lt;kml:coordinates&gt;-122.48416,47.2619&lt;/kml:coordinates&gt;
@@ -19491,15 +19492,15 @@ features:
 &lt;subtitle&gt;cities geom: Point(EPSG:4326), id: Integer, name: String&lt;/subtitle&gt;
 &lt;link&gt;http://geoscript.org/feature&lt;/link&gt;
 &lt;entry&gt;
-&lt;title&gt;fid-36f3401b_180a4ee460e_-39a3&lt;/title&gt;
+&lt;title&gt;fid--17efeb9f_180ab32152b_-39a3&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]&lt;/summary&gt;
-&lt;updated&gt;Sun May 08 18:30:35 UTC 2022&lt;/updated&gt;
+&lt;updated&gt;Mon May 09 23:42:14 UTC 2022&lt;/updated&gt;
 &lt;georss:point&gt;47.6024 -122.3204&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;entry&gt;
-&lt;title&gt;fid-36f3401b_180a4ee460e_-39a1&lt;/title&gt;
+&lt;title&gt;fid--17efeb9f_180ab32152b_-39a1&lt;/title&gt;
 &lt;summary&gt;[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]&lt;/summary&gt;
-&lt;updated&gt;Sun May 08 18:30:35 UTC 2022&lt;/updated&gt;
+&lt;updated&gt;Mon May 09 23:42:14 UTC 2022&lt;/updated&gt;
 &lt;georss:point&gt;47.2619 -122.48416&lt;/georss:point&gt;
 &lt;/entry&gt;
 &lt;/feed&gt;</pre>
@@ -19569,10 +19570,10 @@ features:
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="geoscript"&gt;
 &lt;wpt lat="47.6024" lon="-122.3204"&gt;
-&lt;name&gt;fid-36f3401b_180a4ee460e_-326b&lt;/name&gt;
+&lt;name&gt;fid--17efeb9f_180ab32152b_-326b&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;wpt lat="47.2619" lon="-122.48416"&gt;
-&lt;name&gt;fid-36f3401b_180a4ee460e_-3269&lt;/name&gt;
+&lt;name&gt;fid--17efeb9f_180ab32152b_-3269&lt;/name&gt;
 &lt;/wpt&gt;
 &lt;/gpx&gt;</pre>
 </div>
@@ -23990,7 +23991,7 @@ vector tiles, and utfgrids.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid-36f3401b_180a4ee460e_-29d1"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.9</pre>
+<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid--17efeb9f_180ab32152b_-29d1"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.</pre>
 </div>
 </div>
 </div>
@@ -26172,6 +26173,118 @@ well-crafted maps with cartography or GIS software.
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="adding-a-table"><a class="anchor" href="#adding-a-table"></a>Adding a Table</h4>
+<div class="listingblock">
+<div class="title">Adding a Table</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">states</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"states"</span><span class="o">)</span>
+<span class="n">states</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SLDReader</span><span class="o">().</span><span class="na">read</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s1">'src/main/resources/states.sld'</span><span class="o">))</span>
+<span class="n">Layer</span> <span class="n">countries</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"countries"</span><span class="o">)</span>
+<span class="n">countries</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SLDReader</span><span class="o">().</span><span class="na">read</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s1">'src/main/resources/countries.sld'</span><span class="o">))</span>
+<span class="n">Layer</span> <span class="n">ocean</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"ocean"</span><span class="o">)</span>
+<span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SLDReader</span><span class="o">().</span><span class="na">read</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s1">'src/main/resources/ocean.sld'</span><span class="o">))</span>
+<span class="n">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Map</span><span class="o">(</span>
+        <span class="nl">layers:</span> <span class="o">[</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">,</span> <span class="n">states</span><span class="o">],</span>
+        <span class="nl">bounds:</span> <span class="k">new</span> <span class="n">Bounds</span><span class="o">(-</span><span class="mf">135.225466</span><span class="o">,</span><span class="mf">36.256870</span><span class="o">,-</span><span class="mf">95.850466</span><span class="o">,</span><span class="mf">50.746340</span><span class="o">,</span> <span class="s2">"EPSG:4326"</span><span class="o">).</span><span class="na">reproject</span><span class="o">(</span><span class="s2">"EPSG:3857"</span><span class="o">),</span>
+        <span class="nl">projection:</span> <span class="k">new</span> <span class="n">Projection</span><span class="o">(</span><span class="s2">"EPSG:3857"</span><span class="o">)</span>
+<span class="o">)</span>
+
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map.png"</span><span class="o">)</span>
+<span class="n">file</span><span class="o">.</span><span class="na">withOutputStream</span> <span class="o">{</span> <span class="n">OutputStream</span> <span class="n">outputStream</span> <span class="o">-&gt;</span>
+
+    <span class="n">PageSize</span> <span class="n">pageSize</span> <span class="o">=</span> <span class="n">PageSize</span><span class="o">.</span><span class="na">LETTER_LANDSCAPE</span>
+
+    <span class="n">CartoFactories</span><span class="o">.</span><span class="na">findByName</span><span class="o">(</span><span class="s2">"png"</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">pageSize</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">rectangle</span><span class="o">(</span><span class="k">new</span> <span class="n">RectangleItem</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">width</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">height</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">fillColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">WHITE</span><span class="o">)</span>
+            <span class="o">)</span>
+            <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">new</span> <span class="n">MapItem</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">width</span> <span class="o">-</span> <span class="mi">40</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">height</span> <span class="o">-</span> <span class="mi">140</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">map</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">table</span><span class="o">(</span><span class="k">new</span> <span class="n">TableItem</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">height</span> <span class="o">-</span> <span class="mi">100</span><span class="o">,</span> <span class="n">pageSize</span><span class="o">.</span><span class="na">width</span> <span class="o">-</span> <span class="mi">40</span><span class="o">,</span> <span class="mi">80</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">columns</span><span class="o">([</span><span class="s2">"Name"</span><span class="o">,</span> <span class="s2">"Abbreviation"</span><span class="o">])</span>
+                <span class="o">.</span><span class="na">row</span><span class="o">([[</span><span class="nl">Name:</span> <span class="s2">"Washington"</span><span class="o">,</span> <span class="nl">Abbreviation:</span> <span class="s2">"WA"</span><span class="o">]])</span>
+                <span class="o">.</span><span class="na">row</span><span class="o">([[</span><span class="nl">Name:</span> <span class="s2">"Oregon"</span><span class="o">,</span> <span class="nl">Abbreviation:</span> <span class="s2">"OR"</span><span class="o">]])</span>
+                <span class="o">.</span><span class="na">row</span><span class="o">([[</span><span class="nl">Name:</span> <span class="s2">"California"</span><span class="o">,</span> <span class="nl">Abbreviation:</span> <span class="s2">"CA"</span><span class="o">]])</span>
+            <span class="o">)</span>
+            <span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">outputStream</span><span class="o">)</span>
+
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/carto_table.png" alt="carto table">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of pixels from left</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of pixels from top</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">width</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The width of the item in pixels</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">height</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The height of the item in pixels</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">columns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of Strings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The column names</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">row</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Maps of values</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One row of values where the keys are the column names.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A List of Maps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The data as a List of Maps where the keys are the column names.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">columnRowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TableItem.RowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backGroudColor, font, textColor, strokeColor for columns</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">evenRowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TableItem.RowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backGroudColor, font, textColor, strokeColor for even rows</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">oddRowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TableItem.RowStyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backGroudColor, font, textColor, strokeColor for odd rows</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="builders"><a class="anchor" href="#builders"></a>Builders</h3>
@@ -26600,7 +26713,7 @@ xml</pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.19-SNAPSHOT<br>
-Last updated 2022-05-08 18:25:34 UTC
+Last updated 2022-05-09 23:37:40 UTC
 </div>
 </div>
 </body>
