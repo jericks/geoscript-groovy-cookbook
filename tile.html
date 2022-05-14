@@ -741,6 +741,15 @@ pre.rouge {
 <li><a href="#stamen-water-color">Stamen Water Color</a></li>
 <li><a href="#stamen-terrain">Stamen Terrain</a></li>
 <li><a href="#wikimedia">WikiMedia</a></li>
+<li><a href="#usgs-national-map">USGS National Map</a>
+<ul class="sectlevel4">
+<li><a href="#topo">Topo</a></li>
+<li><a href="#shaded-relief">Shaded Relief</a></li>
+<li><a href="#imagery">Imagery</a></li>
+<li><a href="#imagery-topo">Imagery &amp; Topo</a></li>
+<li><a href="#hydro">Hydro</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2662,7 +2671,7 @@ vector tiles, and utfgrids.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid--17efeb9f_180ab32152b_-29d1"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.</pre>
+<pre>{"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[180,-16.0671],[180,-16.5552],[179.3641,-16.8014],[178.7251,-17.012],[178.5968,-16.6392],[179.0966,-16.434],[179.4135,-16.3791],[180,-16.0671]]],[[[178.1256,-17.5048],[178.3736,-17.3399],[178.7181,-17.6285],[178.5527,-18.1506],[177.9327,-18.288],[177.3815,-18.1643],[177.285,-17.7246],[177.6709,-17.3811],[178.1256,-17.5048]]],[[[-179.7933,-16.0209],[-179.9174,-16.5018],[-180,-16.5552],[-180,-16.0671],[-179.7933,-16.0209]]]]},"properties":{"NAME":"Fiji"},"id":"fid-424fca4_180c408f785_-29ee"},{"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[33.9037,-0.95],[34.0726,-1.0598],[37.6987,-3.097],[37.7669,-3.6771],[39.2022,-4.6768],[38.7405,-5.9089],[38.7998,-6.4757],[39.44,-6.84],[39.47,-7.1],[39.1947,-7.7039],[39.252,-8.0078],[39.1865,-8.4855],[39.5357,-9.1124],[39.94</pre>
 </div>
 </div>
 </div>
@@ -3403,13 +3412,84 @@ Tile(x:29, y:83, z:7)</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="usgs-national-map"><a class="anchor" href="#usgs-national-map"></a>USGS National Map</h4>
+<div class="paragraph">
+<p>Create a TileLayer for USGS National Map tiles.</p>
+</div>
+<div class="sect4">
+<h5 id="topo"><a class="anchor" href="#topo"></a>Topo</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">USGSTileLayer</span> <span class="n">tileLayer</span> <span class="o">=</span> <span class="n">USGSTileLayer</span><span class="o">.</span><span class="na">getWellKnown</span><span class="o">(</span><span class="s2">"usgs-topo"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_usgs_topo.png" alt="tile usgs topo">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="shaded-relief"><a class="anchor" href="#shaded-relief"></a>Shaded Relief</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">USGSTileLayer</span> <span class="n">tileLayer</span> <span class="o">=</span> <span class="n">USGSTileLayer</span><span class="o">.</span><span class="na">getWellKnown</span><span class="o">(</span><span class="s2">"usgs-shadedrelief"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_usgs_shadedrelief.png" alt="tile usgs shadedrelief">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="imagery"><a class="anchor" href="#imagery"></a>Imagery</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">USGSTileLayer</span> <span class="n">tileLayer</span> <span class="o">=</span> <span class="n">USGSTileLayer</span><span class="o">.</span><span class="na">getWellKnown</span><span class="o">(</span><span class="s2">"usgs-imagery"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_usgs_imagery.png" alt="tile usgs imagery">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="imagery-topo"><a class="anchor" href="#imagery-topo"></a>Imagery &amp; Topo</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">USGSTileLayer</span> <span class="n">tileLayer</span> <span class="o">=</span> <span class="n">USGSTileLayer</span><span class="o">.</span><span class="na">getWellKnown</span><span class="o">(</span><span class="s2">"usgs-imagerytopo"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_usgs_imagery_topo.png" alt="tile usgs imagery topo">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="hydro"><a class="anchor" href="#hydro"></a>Hydro</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">USGSTileLayer</span> <span class="n">tileLayer</span> <span class="o">=</span> <span class="n">USGSTileLayer</span><span class="o">.</span><span class="na">getWellKnown</span><span class="o">(</span><span class="s2">"usgs-hydro"</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/tile_usgs_hydro.png" alt="tile usgs hydro">
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-05-09 23:37:40 UTC
+Last updated 2022-05-14 19:22:46 UTC
 </div>
 </div>
 </body>
