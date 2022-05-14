@@ -23,6 +23,7 @@ import geoscript.layer.TileCursor
 import geoscript.layer.TileGenerator
 import geoscript.layer.TileLayer
 import geoscript.layer.TileRenderer
+import geoscript.layer.USGSTileLayer
 import geoscript.layer.UTFGrid
 import geoscript.layer.UTFGridTileRenderer
 import geoscript.layer.VectorTileRenderer
@@ -1698,4 +1699,52 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         saveImage("tile_osm_wikimedia", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
         osm
     }
+
+    // USGS National Map
+
+    TileLayer getWellKnownUSGSTopo() {
+        // tag::getWellKnownUSGSTopo[]
+        USGSTileLayer tileLayer = USGSTileLayer.getWellKnown("usgs-topo")
+        // end::getWellKnownUSGSTopo[]
+        RenderedImage image = tileLayer.getRaster(tileLayer.tiles(1)).image
+        saveImage("tile_usgs_topo", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        tileLayer
+    }
+
+    TileLayer getWellKnownUSGSShadedRelief() {
+        // tag::getWellKnownUSGSShadedRelief[]
+        USGSTileLayer tileLayer = USGSTileLayer.getWellKnown("usgs-shadedrelief")
+        // end::getWellKnownUSGSShadedRelief[]
+        RenderedImage image = tileLayer.getRaster(tileLayer.tiles(1)).image
+        saveImage("tile_usgs_shadedrelief", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        tileLayer
+    }
+
+    TileLayer getWellKnownUSGSImagery() {
+        // tag::getWellKnownUSGSImagery[]
+        USGSTileLayer tileLayer = USGSTileLayer.getWellKnown("usgs-imagery")
+        // end::getWellKnownUSGSImagery[]
+        RenderedImage image = tileLayer.getRaster(tileLayer.tiles(1)).image
+        saveImage("tile_usgs_imagery", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        tileLayer
+    }
+
+    TileLayer getWellKnownUSGSImageryTopo() {
+        // tag::getWellKnownUSGSImageryTopo[]
+        USGSTileLayer tileLayer = USGSTileLayer.getWellKnown("usgs-imagerytopo")
+        // end::getWellKnownUSGSImageryTopo[]
+        RenderedImage image = tileLayer.getRaster(tileLayer.tiles(1)).image
+        saveImage("tile_usgs_imagery_topo", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        tileLayer
+    }
+
+    TileLayer getWellKnownUSGSHydro() {
+        // tag::getWellKnownUSGSHydro[]
+        USGSTileLayer tileLayer = USGSTileLayer.getWellKnown("usgs-hydro")
+        // end::getWellKnownUSGSHydro[]
+        RenderedImage image = tileLayer.getRaster(tileLayer.tiles(1)).image
+        saveImage("tile_usgs_hydro", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
+        tileLayer
+    }
+
 }

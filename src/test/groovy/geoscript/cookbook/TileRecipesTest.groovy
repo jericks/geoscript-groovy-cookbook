@@ -811,4 +811,36 @@ BOTTOM_LEFT
         assertNotNull(osm)
     }
 
+    // USGS National Map
+
+    @Test void getWellKnownUSGSTopo() {
+        TileRecipes recipes = new TileRecipes()
+        TileLayer tileLayer = recipes.getWellKnownUSGSTopo()
+        assertNotNull(tileLayer)
+    }
+
+    @Test void getWellKnownUSGSShadedRelief() {
+        TileRecipes recipes = new TileRecipes()
+        TileLayer tileLayer = recipes.getWellKnownUSGSShadedRelief()
+        assertNotNull(tileLayer)
+    }
+
+    @Test void getWellKnownUSGSImagery() {
+        TileRecipes recipes = new TileRecipes()
+        TileLayer tileLayer = recipes.getWellKnownUSGSImagery()
+        assertNotNull(tileLayer)
+    }
+
+    @Test void getWellKnownUSGSImageryTopo() {
+        TileRecipes recipes = new TileRecipes()
+        TileLayer tileLayer = recipes.getWellKnownUSGSImageryTopo()
+        assertNotNull(tileLayer)
+    }
+
+    @Test void getWellKnownUSGSHydro() {
+        TileRecipes recipes = new TileRecipes()
+        TileLayer tileLayer = recipes.getWellKnownUSGSHydro()
+        assertNotNull(tileLayer)
+    }
+
 }

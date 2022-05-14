@@ -1039,7 +1039,6 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSM,
 [.thumb]
 image::tile_osm_wellknown.png[]
 
-
 ==== Stamen Toner
 
 Create a TileLayer for OSM Stamen Toner tiles.
@@ -1094,3 +1093,52 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMW
 ----
 [.thumb]
 image::tile_osm_wikimedia.png[]
+
+==== USGS National Map
+
+Create a TileLayer for USGS National Map tiles.
+
+===== Topo
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownUSGSTopo,indent=0]
+----
+[.thumb]
+image::tile_usgs_topo.png[]
+
+===== Shaded Relief
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownUSGSShadedRelief,indent=0]
+----
+[.thumb]
+image::tile_usgs_shadedrelief.png[]
+
+===== Imagery
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownUSGSImagery,indent=0]
+----
+[.thumb]
+image::tile_usgs_imagery.png[]
+
+===== Imagery & Topo
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownUSGSImageryTopo,indent=0]
+----
+[.thumb]
+image::tile_usgs_imagery_topo.png[]
+
+===== Hydro
+
+[source,groovy]
+----
+include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownUSGSHydro,indent=0]
+----
+[.thumb]
+image::tile_usgs_hydro.png[]
