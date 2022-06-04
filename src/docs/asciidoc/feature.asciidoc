@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Feature Recipes
 
-The Feature classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.19-SNAPSHOT/geoscript/feature/package-summary.html[geoscript.feature]* package.
+The Feature classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.19.0/geoscript/feature/package-summary.html[geoscript.feature]* package.
 
 The major classes in this package include Field, Schema, and Feature.
 
@@ -370,7 +370,7 @@ include::output/schema_create_feature_empty.txt[]
 
 === Reading and Writing Schemas
 
-The Schema IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.19-SNAPSHOT/geoscript/feature/io/package-summary.html[geoscript.feature.io]* package.
+The Schema IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.19.0/geoscript/feature/io/package-summary.html[geoscript.feature.io]* package.
 
 ==== Finding Schema Writer and Readers
 
@@ -595,7 +595,7 @@ include::output/feature_attribute_6.txt[]
 
 === Reading and Writing Features
 
-The Feature IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.19-SNAPSHOT/geoscript/feature/io/package-summary.html[geoscript.feature.io]* package.
+The Feature IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.19.0/geoscript/feature/io/package-summary.html[geoscript.feature.io]* package.
 
 ==== Finding Feature Writer and Readers
 
