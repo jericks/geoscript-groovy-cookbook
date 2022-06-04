@@ -675,7 +675,7 @@ pre.rouge {
 <h2 id="process-recipes"><a class="anchor" href="#process-recipes"></a>Process Recipes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Process classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.19-SNAPSHOT/geoscript/process/package-summary.html">geoscript.process</a></strong> package.</p>
+<p>The Process classes are in the <strong><a href="http://geoscript.github.io/geoscript-groovy/api/1.19.0/geoscript/process/package-summary.html">geoscript.process</a></strong> package.</p>
 </div>
 <div class="sect2">
 <h3 id="execute-a-built-in-process"><a class="anchor" href="#execute-a-built-in-process"></a>Execute a built-in Process</h3>
@@ -813,20 +813,22 @@ vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
 geo:buffer
-geo:isValid
-geo:getX
-geo:getY
 geo:union
 geo:intersection
+geo:getX
+geo:getY
+geo:isValid
 geo:difference
-geo:splitPolygon
+geo:isClosed
+geo:symDifference
 geo:reproject
+geo:splitPolygon
+geo:area
+geo:numGeometries
 geo:within
 geo:touches
 geo:convexHull
-geo:area
 geo:crosses
-geo:symDifference
 geo:distance
 geo:boundary
 geo:centroid
@@ -838,20 +840,18 @@ geo:isWithinDistance
 geo:relate
 geo:densify
 geo:simplify
-geo:numGeometries
 geo:startPoint
 geo:numPoints
-geo:relatePattern
-geo:isClosed
-geo:envelope
 geo:dimension
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
+geo:envelope
+geo:polygonize
 geo:isRing
 geo:endPoint
-geo:polygonize
 geo:equalsExact
+geo:relatePattern
 geo:pointN
 geo:equalsExactTolerance
 geo:interiorRingN
@@ -883,8 +883,7 @@ ras:RasterZonalStatistics2
 ras:ScaleCoverage
 ras:StyleCoverage
 ras:TransparencyFill
-geoscript:convexhull
-geoscript:bounds</pre>
+geoscript:convexhull</pre>
 </div>
 </div>
 </div>
@@ -1052,7 +1051,7 @@ geoscript:bounds</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-05-14 19:22:46 UTC
+Last updated 2022-06-04 23:03:17 UTC
 </div>
 </div>
 </body>
