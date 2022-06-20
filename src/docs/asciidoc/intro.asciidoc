@@ -75,13 +75,13 @@ echo "POINT (1 1)" | geom buffer -d 10 | geoscript-groovy -e "println geoscript.
 
 === Uber Jar
 
-GeoScript Groovy also comes packaged as an uber jar which contains all dependencies.  Download geoscript-groovy-app-1.19.0.jar
+GeoScript Groovy also comes packaged as an uber jar which contains all dependencies.  Download geoscript-groovy-app-1.20-SNAPSHOT.jar
 from github.
 
 [source,bash]
 .Run uber jar from the command line.
 ----
-java -jar geoscript-groovy-app-1.19.0.jar
+java -jar geoscript-groovy-app-1.20-SNAPSHOT.jar
 ----
 
 The uber jar can take four commands:
@@ -117,7 +117,7 @@ The uber jar can take four commands:
 <dependency>
     <groupId>org.geoscript</groupId>
     <artifactId>geoscript-groovy</artifactId>
-    <version>1.19.0</version>
+    <version>1.20-SNAPSHOT</version>
 </dependency>
 ----
 
@@ -137,6 +137,6 @@ repositories {
 .and the include the GeoScript Groovy dependency:
 ----
 dependencies {
-    compile("org.geoscript:geoscript-groovy:1.19.0")
+    compile("org.geoscript:geoscript-groovy:1.20-SNAPSHOT")
 }
 ----

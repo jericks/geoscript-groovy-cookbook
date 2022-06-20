@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Bounds Recipes
 
-The Bounds class is in the *http://geoscript.github.io/geoscript-groovy/api/1.19.0/geoscript/geom/package-summary.html[geoscript.geom]* package.
+The Bounds class is in the *http://geoscript.github.io/geoscript-groovy/api/1.20-SNAPSHOT/geoscript/geom/package-summary.html[geoscript.geom]* package.
 
 It represents a minimum bounding box or rectangle, so it has minimum and maximum x and y coordinates in a specified projection.
 

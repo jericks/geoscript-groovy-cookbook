@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Tile Recipes
 
-The Tile classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.19.0/geoscript/layer/package-summary.html[geoscript.layer]* package.
+The Tile classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.20-SNAPSHOT/geoscript/layer/package-summary.html[geoscript.layer]* package.
 
 === Tile
 
@@ -232,7 +232,7 @@ include::output/tile_pyramid_gettilecoordinates_bounds_grid.txt[]
 
 ==== Reading and Writing Pyramids
 
-The Pyramid IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.19.0/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
+The Pyramid IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.20-SNAPSHOT/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
 
 ===== Finding Pyramid Writer and Readers
 
