@@ -494,9 +494,21 @@ image::carto_scalebar.png[]
 |float
 |The stroke width
 
+|barStrokeColor
+|java.awt.Color
+|The bar stroke Color
+
+|barStrokeWidth
+|float
+|The bar stroke width
+
 |font
 |java.awt.Font
 |The text Font
+
+|textColor
+|java.awt.Color
+|The text Color
 
 |border
 |int

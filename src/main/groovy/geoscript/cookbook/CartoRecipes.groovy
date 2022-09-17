@@ -438,6 +438,11 @@ class CartoRecipes extends Recipes {
                     .scaleBar(new ScaleBarItem(20,pageSize.height - 40, 300, 20)
                             .map(map)
                             .units(ScaleBarItem.Units.METRIC)
+                            .barStrokeColor(Color.BLACK)
+                            .barStrokeWidth(1.4f)
+                            .strokeColor(Color.DARK_GRAY)
+                            .strokeWidth(1.0f)
+                            .textColor(Color.DARK_GRAY)
                     )
                     .build(outputStream)
 
