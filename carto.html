@@ -1677,6 +1677,11 @@ and width and a height.</p>
             <span class="o">.</span><span class="na">scaleBar</span><span class="o">(</span><span class="k">new</span> <span class="n">ScaleBarItem</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span><span class="n">pageSize</span><span class="o">.</span><span class="na">height</span> <span class="o">-</span> <span class="mi">40</span><span class="o">,</span> <span class="mi">300</span><span class="o">,</span> <span class="mi">20</span><span class="o">)</span>
                     <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">map</span><span class="o">)</span>
                     <span class="o">.</span><span class="na">units</span><span class="o">(</span><span class="n">ScaleBarItem</span><span class="o">.</span><span class="na">Units</span><span class="o">.</span><span class="na">METRIC</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">barStrokeColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">BLACK</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">barStrokeWidth</span><span class="o">(</span><span class="mf">1.4f</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">strokeColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">DARK_GRAY</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">strokeWidth</span><span class="o">(</span><span class="mf">1.0f</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">textColor</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">DARK_GRAY</span><span class="o">)</span>
             <span class="o">)</span>
             <span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">outputStream</span><span class="o">)</span>
 
@@ -1743,9 +1748,24 @@ and width and a height.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The stroke width</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">barStrokeColor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.awt.Color</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The bar stroke Color</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">barStrokeWidth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The bar stroke width</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">font</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">java.awt.Font</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The text Font</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">textColor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.awt.Color</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The text Color</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">border</p></td>
@@ -2677,7 +2697,7 @@ xml</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-06-20 17:15:01 UTC
+Last updated 2022-09-17 16:29:36 UTC
 </div>
 </div>
 </body>
