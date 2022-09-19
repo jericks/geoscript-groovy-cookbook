@@ -26,6 +26,19 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createBasicComp
 image::style_basic_composite.png[]
 
 [source,groovy]
+.A Symbolizer can have a human readable title. When titles are set on a Composite style, the last title is used.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createWithTitle,indent=0]
+----
+....
+include::output/style_basic_symbolizer_title.txt[]
+....
+[.thumb]
+image::style_basic_symbolizer_title1.png[]
+[.thumb]
+image::style_basic_symbolizer_title2.png[]
+
+[source,groovy]
 .A Symbolizer can use the where method to restrict which features are styled.
 ----
 include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=createBasicSymbolizerWithWhere,indent=0]

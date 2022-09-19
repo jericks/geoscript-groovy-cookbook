@@ -78,6 +78,25 @@ class StyleRecipes extends Recipes {
         composite
     }
 
+    // Title
+
+    List<String> createWithTitle() {
+        // tag::createWithTitle[]
+        Fill fill = new Fill("#6B8E23").title("States")
+        println "${fill.title}"
+        Composite composite = new Fill("#6B8E23") + new Stroke("black", 0.75).title("States with Outline")
+        println "${composite.title}"
+        // end::createWithTitle[]
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer states = workspace.get("states")
+        states.style = fill
+        drawOnBasemap("style_basic_symbolizer_title1", [states], states.bounds.expandBy(3.0))
+        states.style = composite
+        drawOnBasemap("style_basic_symbolizer_title2", [states], states.bounds.expandBy(3.0))
+        writeFile("style_basic_symbolizer_title", "${fill.title}\n${composite.title}")
+        [fill.title, composite.title]
+    }
+
     // Where
 
     Symbolizer createBasicSymbolizerWithWhere() {

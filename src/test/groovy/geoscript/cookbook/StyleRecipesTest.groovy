@@ -29,6 +29,13 @@ class StyleRecipesTest {
         assertNotNull(composite)
     }
 
+    @Test void createWithTitle() {
+        StyleRecipes recipes = new StyleRecipes()
+        List<String> titles = recipes.createWithTitle()
+        assertEquals("States", titles[0])
+        assertEquals("States with Outline", titles[1])
+    }
+
     @Test void createBasicSymbolizerWithScale() {
         StyleRecipes recipes = new StyleRecipes()
         Symbolizer symbolizer = recipes.createBasicSymbolizerWithScale()
