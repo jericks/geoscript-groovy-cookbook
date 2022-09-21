@@ -1849,7 +1849,7 @@ include::output/geometry_to_wkt.txt[]
 ....
 
 [source,groovy]
-.Write a Geometry to  WKT using the WktWriter
+.Write a Geometry to WKT using the WktWriter
 ----
 include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToWKTUsingWriter,indent=0]
 ----
@@ -1858,6 +1858,23 @@ include::output/geometry_to_wkt_using_writer.txt[]
 ....
 
 ==== TWKB
+
+[source,groovy]
+.Get a Geometry from a TWKB Encoded String
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getGeometryFromTWKB,indent=0]
+----
+[.thumb]
+image::geometry_from_twkb.png[]
+
+[source,groovy]
+.Get TWKB Encoded String from a Geometry
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=getTWKBFromGeometry,indent=0]
+----
+....
+include::output/geometry_from_twkb.txt[]
+....
 
 [source,groovy]
 .Read a Geometry from TWKB hex encoded String
@@ -1870,6 +1887,14 @@ include::output/geometry_read_from_twkb.txt[]
 [.thumb]
 image::geometry_read_from_twkb.png[]
 
+[source,groovy]
+.Write a Geometry to a TWKB hex encoded String using the TwkbWriter
+----
+include::{sourcedir}/geoscript/cookbook/GeometryRecipes.groovy[tags=writeGeometryToTWKB,indent=0]
+----
+....
+include::output/geometry_to_twkb.txt[]
+....
 
 ==== GeoJSON
 

@@ -1268,7 +1268,25 @@ class GeometryRecipesTest {
     @Test void readGeometryFromTWkb() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geometry = recipes.readGeometryFromTWkb()
-        assertEquals("POINT (1 2)", geometry.wkt)
+        assertEquals("POINT (-123.15 46.237)", geometry.wkt)
+    }
+
+    @Test void writeGeometryToTWKB() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String twkb = recipes.writeGeometryToTWKB()
+        assertEquals("E2080104C0E7BF1E80B7D29B0300E0E2C221E0D3ED3E00A0D7C01CDFF2A74400C0F4C935C099EF6A00", twkb)
+    }
+
+    @Test void getGeometryFromTWKB() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.getGeometryFromTWKB()
+        assertEquals("POINT (-123.15 46.237)", geom.wkt)
+    }
+
+    @Test void getTWKBFromGeometry() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        String twkb = recipes.getTWKBFromGeometry()
+        assertEquals("E10801BFCBB99609A0D3F9B80300", twkb)
     }
 
     // KML

@@ -3,6 +3,7 @@ package geoscript.cookbook
 import geoscript.geom.io.GeoPackageReader
 import geoscript.geom.io.GeoPackageWriter
 import geoscript.geom.io.TWkbReader
+import geoscript.geom.io.TWkbWriter
 import geoscript.geom.io.YamlReader
 import geoscript.geom.io.YamlWriter
 import org.h2.command.Prepared
@@ -3759,12 +3760,47 @@ Time with PreparedGeometry = ${timeWithPreparedGeometry} nanoseconds
     Geometry readGeometryFromTWkb() {
         // tag::readGeometryFromTWkb[]
         TWkbReader reader = new TWkbReader()
-        Geometry geometry = reader.read("01000204")
+        Geometry geometry = reader.read("E10801BFCBB99609A0D3F9B80300")
         println geometry.wkt
         // end::readGeometryFromTWkb[]
         writeFile("geometry_read_from_twkb", "${geometry.wkt}")
         drawGeometry("geometry_read_from_twkb", geometry)
         geometry
+    }
+
+    String writeGeometryToTWKB() {
+        // tag::writeGeometryToTWKB[]
+        Geometry geometry = new LineString(
+                [3.198, 43.164],
+                [6.713, 49.755],
+                [9.702, 42.592],
+                [15.32, 53.798]
+        )
+        TWkbWriter writer = new TWkbWriter()
+        String twkb = writer.write(geometry)
+        println twkb
+        // end::writeGeometryToTWKB[]
+        writeFile("geometry_to_twkb", twkb)
+        twkb
+    }
+
+    Geometry getGeometryFromTWKB() {
+        // tag::getGeometryFromTWKB[]
+        String twkb = "E10801BFCBB99609A0D3F9B80300"
+        Geometry geometry = Geometry.fromTwkb(twkb)
+        // end::getGeometryFromTWKB[]
+        drawGeometry("geometry_from_twkb", geometry)
+        geometry
+    }
+
+    String getTWKBFromGeometry() {
+        // tag::getTWKBFromGeometry[]
+        Geometry geometry = new Point(-123.15, 46.237)
+        String twkb = geometry.twkb
+        println twkb
+        // end::getTWKBFromGeometry[]
+        writeFile("geometry_from_twkb", twkb)
+        twkb
     }
 
     // WKT
