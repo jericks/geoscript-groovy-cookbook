@@ -4613,8 +4613,8 @@ Floating Point Single Geometry: POINT (5.19775390625 51.07421875)</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 78611729 nanoseconds
-Time with PreparedGeometry = 59257500 nanoseconds</pre>
+<pre>Time with Geometry         = 86785330 nanoseconds
+Time with PreparedGeometry = 81371822 nanoseconds</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4659,8 +4659,8 @@ Time with PreparedGeometry = 59257500 nanoseconds</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Time with Geometry         = 94321615 nanoseconds
-Time with PreparedGeometry = 51921014 nanoseconds</pre>
+<pre>Time with Geometry         = 102901142 nanoseconds
+Time with PreparedGeometry = 157697865 nanoseconds</pre>
 </div>
 </div>
 </div>
@@ -5368,7 +5368,7 @@ POINT (-123.15 46.237)</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Write a Geometry to  WKT using the WktWriter</div>
+<div class="title">Write a Geometry to WKT using the WktWriter</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LineString</span><span class="o">(</span>
         <span class="o">[</span><span class="mf">3.198</span><span class="o">,</span> <span class="mf">43.164</span><span class="o">],</span>
@@ -5390,21 +5390,65 @@ POINT (-123.15 46.237)</pre>
 <div class="sect3">
 <h4 id="twkb"><a class="anchor" href="#twkb"></a>TWKB</h4>
 <div class="listingblock">
+<div class="title">Get a Geometry from a TWKB Encoded String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">String</span> <span class="n">twkb</span> <span class="o">=</span> <span class="s2">"E10801BFCBB99609A0D3F9B80300"</span>
+<span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="na">fromTwkb</span><span class="o">(</span><span class="n">twkb</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/geometry_from_twkb.png" alt="geometry from twkb">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Get TWKB Encoded String from a Geometry</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">(-</span><span class="mf">123.15</span><span class="o">,</span> <span class="mf">46.237</span><span class="o">)</span>
+<span class="n">String</span> <span class="n">twkb</span> <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="na">twkb</span>
+<span class="n">println</span> <span class="n">twkb</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>E10801BFCBB99609A0D3F9B80300</pre>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Read a Geometry from TWKB hex encoded String</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">TWkbReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TWkbReader</span><span class="o">()</span>
-<span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="s2">"01000204"</span><span class="o">)</span>
+<span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="s2">"E10801BFCBB99609A0D3F9B80300"</span><span class="o">)</span>
 <span class="n">println</span> <span class="n">geometry</span><span class="o">.</span><span class="na">wkt</span></code></pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>POINT (1 2)</pre>
+<pre>POINT (-123.15 46.237)</pre>
 </div>
 </div>
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/geometry_read_from_twkb.png" alt="geometry read from twkb">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Write a Geometry to a TWKB hex encoded String using the TwkbWriter</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">Geometry</span> <span class="n">geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LineString</span><span class="o">(</span>
+        <span class="o">[</span><span class="mf">3.198</span><span class="o">,</span> <span class="mf">43.164</span><span class="o">],</span>
+        <span class="o">[</span><span class="mf">6.713</span><span class="o">,</span> <span class="mf">49.755</span><span class="o">],</span>
+        <span class="o">[</span><span class="mf">9.702</span><span class="o">,</span> <span class="mf">42.592</span><span class="o">],</span>
+        <span class="o">[</span><span class="mf">15.32</span><span class="o">,</span> <span class="mf">53.798</span><span class="o">]</span>
+<span class="o">)</span>
+<span class="n">TWkbWriter</span> <span class="n">writer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TWkbWriter</span><span class="o">()</span>
+<span class="n">String</span> <span class="n">twkb</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">geometry</span><span class="o">)</span>
+<span class="n">println</span> <span class="n">twkb</span></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>E2080104C0E7BF1E80B7D29B0300E0E2C221E0D3ED3E00A0D7C01CDFF2A74400C0F4C935C099EF6A00</pre>
 </div>
 </div>
 </div>
@@ -5989,7 +6033,7 @@ geometry:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-09-19 02:10:18 UTC
+Last updated 2022-09-21 03:28:56 UTC
 </div>
 </div>
 </body>
