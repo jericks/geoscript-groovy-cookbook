@@ -881,6 +881,12 @@ class GeometryRecipesTest {
         assertNotNull(geom)
     }
 
+    @Test void triangulate() {
+        GeometryRecipes recipes = new GeometryRecipes()
+        Geometry geom = recipes.triangulate()
+        assertNotNull(geom)
+    }
+
     @Test void normalize() {
         GeometryRecipes recipes = new GeometryRecipes()
         Geometry geom = recipes.normalize()

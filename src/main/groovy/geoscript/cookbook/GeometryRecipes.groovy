@@ -2598,7 +2598,7 @@ Fixed LineString = ${fixedLine}
         Geometry delaunayTriangle = points.delaunayTriangleDiagram
         // end::getDelaunayTriangleDiagram[]
         drawOnBasemap("geometry_delaunaytrianglediagram", [
-                createLayerFromGeometry("delaunay", delaunayTriangle, "fill=#0066FF stroke=#navy fill-opacity=0.5"),
+                createLayerFromGeometry("delaunay", delaunayTriangle, "fill=#0066FF stroke=navy fill-opacity=0.5"),
                 createLayerFromGeometry("points", points, "shape=#0066FF shape-size=8")
         ])
         delaunayTriangle
@@ -2610,10 +2610,26 @@ Fixed LineString = ${fixedLine}
         Geometry voronoiDiagram = points.voronoiDiagram
         // end::getVoronoiDiagram[]
         drawOnBasemap("geometry_voronoidiagram", [
-                createLayerFromGeometry("voronoi", voronoiDiagram, "fill=#0066FF stroke=#navy fill-opacity=0.5"),
+                createLayerFromGeometry("voronoi", voronoiDiagram, "fill=#0066FF stroke=navy fill-opacity=0.5"),
                 createLayerFromGeometry("points", points, "shape=#0066FF shape-size=8")
         ], new Bounds(-180, -90, 180, 90, "EPSG:4326"))
         voronoiDiagram
+    }
+
+    Geometry triangulate() {
+        // tag::triangulate[]
+        Geometry geometry = Geometry.fromWKT("POLYGON ((-120.047607421875 48.100094697973795, -121.53076171875 48.44377831058802, " +
+                "-122.03613281249999 47.5394554474239, -120.81665039062499 47.249406957888446, -121.78344726562499 46.437856895024204, " +
+                "-119.20166015625 46.31658418182218, -118.05908203124999 47.39834920035926, -117.61962890624999 48.50204750525715, " +
+                "-119.3115234375 48.65468584817256, -119.20166015625 47.82053186746053, -120.003662109375 47.60616304386874, " +
+                "-120.0146484375 48.06339653776211, -120.047607421875 48.100094697973795))")
+        Geometry triangles = geometry.triangulate()
+        // end::triangulate[]
+        drawOnBasemap("geometry_triangulate", [
+                createLayerFromGeometry("triangles", triangles, "fill=#0066FF stroke=navy fill-opacity=0.5"),
+                createLayerFromGeometry("polygon", geometry, "stroke=black stroke-width=1.4")
+        ], geometry.bounds.expandBy(0.1))
+        triangles
     }
 
     Geometry normalize() {
