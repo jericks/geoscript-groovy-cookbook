@@ -586,10 +586,22 @@ image::style_read_ysld.png[]
 
 A SimpleStyleReader that can easily create simple Styles using Maps or Strings.
 
-* Fill properties: fill and fill-opacity
-* Stroke properties: stroke, stroke-width, stroke-opacity
-* Shape properties: shape, shape-size, shape-type
-* Label properties: label-size, label-style, label-weight, label-family
+* Fill properties
+** *fill* (color)
+** *fill-opacity* (0-1)
+* Stroke properties
+** *stroke* (color)
+** *stroke-width* (double)
+** *stroke-opacity* (0-1)
+* Shape properties
+** *shape* (color)
+** *shape-size* (double)
+** *shape-type* (circle, square, triangle, star, cross, or x)
+* Label properties
+** *label-size* (12)
+** *label-style* (normal, italic, oblique)
+** *label-weight* (normal, bold)
+** *label-family* (serif, Arial, Verdana)
 
 [source,groovy]
 .Read a Style with fill and stroke properties from a Simple Style String
