@@ -443,6 +443,18 @@ class StyleRecipesTest {
         assertNotNull(style)
     }
 
+    @Test void readSimpleStyleLineLabelString() {
+        StyleRecipes recipes = new StyleRecipes()
+        Style style = recipes.readSimpleStyleLineLabelString()
+        assertNotNull(style)
+    }
+
+    @Test void readSimpleStylePointLabelString() {
+        StyleRecipes recipes = new StyleRecipes()
+        Style style = recipes.readSimpleStylePointLabelString()
+        assertNotNull(style)
+    }
+
     // ColorTable
 
     @Test void writeColorTable() {

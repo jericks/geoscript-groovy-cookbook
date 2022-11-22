@@ -1005,6 +1005,36 @@ feature-styles:
         style
     }
 
+    Style readSimpleStyleLineLabelString() {
+        // tag::readSimpleStyleLineLabelString[]
+        String str = "stroke=blue stroke-width=0.75 label=name label-color=navy label-placement=line" +
+                " label-line-follow=true label-line-offset=2 label-line-displacement=5 label-line-repeat=10" +
+                " label-maxdisplacement=6 label-maxangledelta=90" +
+                " label-halo-color=white label-halo-radius=2.5 label-size=10 label-weight=bold"
+        SimpleStyleReader reader = new SimpleStyleReader()
+        Style style = reader.read(str)
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer rivers = workspace.get("rivers")
+        rivers.style = style
+        // end::readSimpleStyleLineLabelString[]
+        drawOnBasemap("style_read_simple_label_lines", [rivers]/*, new Bounds(-137.416,40.896,-105.842,51.835)*/)
+        style
+    }
+
+    Style readSimpleStylePointLabelString() {
+        // tag::readSimpleStylePointLabelString[]
+        String str = "shape=blue shape-size=6 stroke=navy stroke-width=navy stroke-width=0.5 label=NAME label-placement=point" +
+                " label-point-anchor=0.5,0.5 label-point-displace=0,6 label-point-rotate=0"
+        SimpleStyleReader reader = new SimpleStyleReader()
+        Style style = reader.read(str)
+        Workspace workspace = new GeoPackage('src/main/resources/data.gpkg')
+        Layer places = workspace.get("places")
+        places.style = style
+        // end::readSimpleStylePointLabelString[]
+        drawOnBasemap("style_simple_label_points", [places], new Bounds(-169.541016,29.382175,-45.615234,68.236823))
+        style
+    }
+
     // ColorTable
 
     String writeColorTable() {

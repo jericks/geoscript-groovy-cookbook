@@ -598,10 +598,26 @@ A SimpleStyleReader that can easily create simple Styles using Maps or Strings.
 ** *shape-size* (double)
 ** *shape-type* (circle, square, triangle, star, cross, or x)
 * Label properties
+** *label* The name of the Field
+** *label-color* (black)
 ** *label-size* (12)
 ** *label-style* (normal, italic, oblique)
 ** *label-weight* (normal, bold)
 ** *label-family* (serif, Arial, Verdana)
+** *label-halo-color* (white)
+** *label-halo-radius* (5)
+** *label-placement* (point, line)
+** *label-point-anchor* (0.5,0.5)
+** *label-point-displace* (1,2)
+** *label-point-rotate* (45)
+** *label-line-offset* (2)
+** *label-line-gap* (3)
+** *label-line-igap* (4)
+** *label-line-align* (true, false)
+** *label-line-follow* (true, false)
+** *label-line-group* (true, false)
+** *label-line-displacement* (4)
+** *label-line-repeat* (true, false)
 
 [source,groovy]
 .Read a Style with fill and stroke properties from a Simple Style String
@@ -626,6 +642,22 @@ include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSimpleStyle
 ----
 [.thumb]
 image::style_read_shape_str.png[]
+
+[source,groovy]
+.Read a Style with line labels from a Simple Style String.
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSimpleStyleLineLabelString,indent=0]
+----
+[.thumb]
+image::style_read_simple_label_lines.png[]
+
+[source,groovy]
+.Read a Style with shape and label properties from a Simple Style String
+----
+include::{sourcedir}/geoscript/cookbook/StyleRecipes.groovy[tags=readSimpleStylePointLabelString,indent=0]
+----
+[.thumb]
+image::style_simple_label_points.png[]
 
 [source,groovy]
 .Read a Style with fill and stroke properties from a Simple Style Map
