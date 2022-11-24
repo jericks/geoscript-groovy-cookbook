@@ -1896,6 +1896,12 @@ feature-styles:
 <div class="ulist">
 <ul>
 <li>
+<p><strong>label</strong> The name of the Field</p>
+</li>
+<li>
+<p><strong>label-color</strong> (black)</p>
+</li>
+<li>
 <p><strong>label-size</strong> (12)</p>
 </li>
 <li>
@@ -1906,6 +1912,48 @@ feature-styles:
 </li>
 <li>
 <p><strong>label-family</strong> (serif, Arial, Verdana)</p>
+</li>
+<li>
+<p><strong>label-halo-color</strong> (white)</p>
+</li>
+<li>
+<p><strong>label-halo-radius</strong> (5)</p>
+</li>
+<li>
+<p><strong>label-placement</strong> (point, line)</p>
+</li>
+<li>
+<p><strong>label-point-anchor</strong> (0.5,0.5)</p>
+</li>
+<li>
+<p><strong>label-point-displace</strong> (1,2)</p>
+</li>
+<li>
+<p><strong>label-point-rotate</strong> (45)</p>
+</li>
+<li>
+<p><strong>label-line-offset</strong> (2)</p>
+</li>
+<li>
+<p><strong>label-line-gap</strong> (3)</p>
+</li>
+<li>
+<p><strong>label-line-igap</strong> (4)</p>
+</li>
+<li>
+<p><strong>label-line-align</strong> (true, false)</p>
+</li>
+<li>
+<p><strong>label-line-follow</strong> (true, false)</p>
+</li>
+<li>
+<p><strong>label-line-group</strong> (true, false)</p>
+</li>
+<li>
+<p><strong>label-line-displacement</strong> (4)</p>
+</li>
+<li>
+<p><strong>label-line-repeat</strong> (true, false)</p>
 </li>
 </ul>
 </div>
@@ -1962,6 +2010,42 @@ feature-styles:
 <div class="imageblock thumb">
 <div class="content">
 <img src="./images/style_read_shape_str.png" alt="style read shape str">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Style with line labels from a Simple Style String.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s2">"stroke=blue stroke-width=0.75 label=name label-color=navy label-placement=line"</span> <span class="o">+</span>
+        <span class="s2">" label-line-follow=true label-line-offset=2 label-line-displacement=5 label-line-repeat=10"</span> <span class="o">+</span>
+        <span class="s2">" label-maxdisplacement=6 label-maxangledelta=90"</span> <span class="o">+</span>
+        <span class="s2">" label-halo-color=white label-halo-radius=2.5 label-size=10 label-weight=bold"</span>
+<span class="n">SimpleStyleReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleStyleReader</span><span class="o">()</span>
+<span class="n">Style</span> <span class="n">style</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">str</span><span class="o">)</span>
+<span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">rivers</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"rivers"</span><span class="o">)</span>
+<span class="n">rivers</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="n">style</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_read_simple_label_lines.png" alt="style read simple label lines">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Read a Style with shape and label properties from a Simple Style String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy"><span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s2">"shape=blue shape-size=6 stroke=navy stroke-width=navy stroke-width=0.5 label=NAME label-placement=point"</span> <span class="o">+</span>
+        <span class="s2">" label-point-anchor=0.5,0.5 label-point-displace=0,6 label-point-rotate=0"</span>
+<span class="n">SimpleStyleReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleStyleReader</span><span class="o">()</span>
+<span class="n">Style</span> <span class="n">style</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">str</span><span class="o">)</span>
+<span class="n">Workspace</span> <span class="n">workspace</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GeoPackage</span><span class="o">(</span><span class="s1">'src/main/resources/data.gpkg'</span><span class="o">)</span>
+<span class="n">Layer</span> <span class="n">places</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">"places"</span><span class="o">)</span>
+<span class="n">places</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="n">style</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/style_simple_label_points.png" alt="style simple label points">
 </div>
 </div>
 <div class="listingblock">
@@ -2179,7 +2263,7 @@ Rasters.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-10-10 00:17:26 UTC
+Last updated 2022-11-24 01:53:21 UTC
 </div>
 </div>
 </body>
