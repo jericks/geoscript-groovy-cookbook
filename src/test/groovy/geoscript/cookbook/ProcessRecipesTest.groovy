@@ -24,7 +24,12 @@ class ProcessRecipesTest {
         assertEquals("1.0.0", values.version)
         assertEquals("[features:class geoscript.layer.Cursor]", values.parameters.toString())
         assertEquals("[bounds:class geoscript.geom.Bounds]", values.results.toString())
-        assertEquals("(-175.2205644999999,-41.29998789999999,179.2166470999999,64.15002359999998,EPSG:4326)", values.executeResults.bounds.toString())
+        String bounds = values.executeResults.bounds.toString()
+        assertTrue(bounds.contains("-175.22"))
+        assertTrue(bounds.contains("-41.29"))
+        assertTrue(bounds.contains("179.21"))
+        assertTrue(bounds.contains("64.15"))
+        assertTrue(bounds.contains("EPSG:4326"))
     }
 
     @Test void createClosureProcess() {
