@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Carto Recipes
 
-The Carto classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.20-SNAPSHOT/geoscript/carto/package-summary.html[geoscript.carto]* package.
+The Carto classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.20.0/geoscript/carto/package-summary.html[geoscript.carto]* package.
 
 The Carto package contains classes for creating cartographic documents.  All items are added to the document with x and y coordinates whose origin is the upper left
 and width and a height.
