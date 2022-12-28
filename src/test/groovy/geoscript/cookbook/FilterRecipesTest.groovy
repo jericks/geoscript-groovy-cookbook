@@ -94,10 +94,10 @@ class FilterRecipesTest {
         Map<String,String> values = recipes.getCqlAndXmlFromFilter()
         assertEquals("name = 'Seattle'", values.cql)
         assertEquals("""<ogc:Filter xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc">
-<ogc:PropertyIsEqualTo>
-<ogc:PropertyName>name</ogc:PropertyName>
-<ogc:Literal>Seattle</ogc:Literal>
-</ogc:PropertyIsEqualTo>
+  <ogc:PropertyIsEqualTo>
+    <ogc:PropertyName>name</ogc:PropertyName>
+    <ogc:Literal>Seattle</ogc:Literal>
+  </ogc:PropertyIsEqualTo>
 </ogc:Filter>
 """.normalize(), values.xml.normalize())
     }
