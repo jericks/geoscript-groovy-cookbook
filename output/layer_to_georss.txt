@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns:georss="http://www.georss.org/georss" xmlns="http://www.w3.org/2005/Atom">
-<title>cities</title>
-<subtitle>cities geom: Point(EPSG:4326), id: Integer, name: String</subtitle>
-<link>http://geoscript.org/feature</link>
-<entry>
-<title>fid-72ddd47e_1854f9bdcdf_-3827</title>
-<summary>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>
-<updated>Mon Dec 26 18:07:32 UTC 2022</updated>
-<georss:point>47.6024 -122.3204</georss:point>
-</entry>
-<entry>
-<title>fid-72ddd47e_1854f9bdcdf_-3825</title>
-<summary>[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]</summary>
-<updated>Mon Dec 26 18:07:32 UTC 2022</updated>
-<georss:point>47.2619 -122.48416</georss:point>
-</entry>
+  <title>cities</title>
+  <subtitle>cities geom: Point(EPSG:4326), id: Integer, name: String</subtitle>
+  <link>http://geoscript.org/feature</link>
+  <entry>
+    <title>fid--14d8aa0c_185bcb243d0_-3824</title>
+    <summary>[geom:POINT (-122.3204 47.6024), id:1, name:Seattle]</summary>
+    <updated>Mon Jan 16 22:30:12 UTC 2023</updated>
+    <georss:point>47.6024 -122.3204</georss:point>
+  </entry>
+  <entry>
+    <title>fid--14d8aa0c_185bcb243d0_-3822</title>
+    <summary>[geom:POINT (-122.48416 47.2619), id:2, name:Tacoma]</summary>
+    <updated>Mon Jan 16 22:30:12 UTC 2023</updated>
+    <georss:point>47.2619 -122.48416</georss:point>
+  </entry>
 </feed>
