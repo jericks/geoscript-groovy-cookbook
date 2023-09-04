@@ -812,13 +812,19 @@ vec:UnionFeatureCollection
 vec:Unique
 vec:VectorToRaster
 vec:VectorZonalStatistics
+geo:difference
 geo:union
-geo:intersection
+geo:isValid
+geo:intersects
 geo:getX
 geo:getY
-geo:isValid
-geo:buffer
-geo:difference
+geo:area
+geo:numGeometries
+geo:splitPolygon
+geo:reproject
+geo:isClosed
+geo:within
+geo:touches
 geo:convexHull
 geo:crosses
 geo:symDifference
@@ -826,6 +832,7 @@ geo:boundary
 geo:centroid
 geo:interiorPoint
 geo:getGeometryN
+geo:intersection
 geo:overlaps
 geo:isSimple
 geo:isWithinDistance
@@ -834,32 +841,25 @@ geo:densify
 geo:simplify
 geo:startPoint
 geo:numPoints
-geo:isClosed
-geo:splitPolygon
-geo:within
-geo:touches
-geo:reproject
-geo:distance
-geo:area
-geo:numGeometries
-geo:pointN
 geo:dimension
-geo:envelope
 geo:exteriorRing
 geo:numInteriorRing
 geo:geometryType
+geo:envelope
 geo:equalsExact
-geo:interiorRingN
 geo:isRing
 geo:polygonize
 geo:endPoint
+geo:interiorRingN
 geo:relatePattern
+geo:pointN
 geo:equalsExactTolerance
 geo:length
+geo:buffer
 geo:isEmpty
 geo:contains
+geo:distance
 geo:disjoint
-geo:intersects
 polygonlabelprocess:PolyLabeller
 centerLine:centerLine
 skeltonize:centerLine
@@ -1051,7 +1051,7 @@ geoscript:convexhull</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-16 22:25:53 UTC
+Last updated 2023-09-04 22:14:30 UTC
 </div>
 </div>
 </body>

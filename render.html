@@ -903,7 +903,7 @@ pre.rouge {
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Bounds = (-2.0037508342789244E7,-1.9971868880408555E7,2.0037508342789244E7,1.9971868880408563E7,EPSG:3857)</pre>
+<pre>Bounds = (-2.0037508342789244E7,-1.997186888040857E7,2.0037508342789244E7,1.9971868880408563E7,EPSG:3857)</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1407,7 +1407,7 @@ pre.rouge {
     <span class="nl">source:</span> <span class="s2">"Nartual Earth"</span><span class="o">,</span>
     <span class="nl">imageType:</span> <span class="s2">"png"</span>
 <span class="o">)</span>
-<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_cube_file.png"</span><span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"target/map_cube_file.png"</span><span class="o">)</span>
 <span class="n">mapCube</span><span class="o">.</span><span class="na">render</span><span class="o">([</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">],</span> <span class="n">file</span><span class="o">)</span></code></pre>
 </div>
 </div>
@@ -1444,7 +1444,7 @@ pre.rouge {
 <span class="n">ocean</span><span class="o">.</span><span class="na">style</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fill</span><span class="o">(</span><span class="s2">"#a5bfdd"</span><span class="o">)</span>
 
 <span class="n">MapCube</span> <span class="n">mapCube</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MapCube</span><span class="o">()</span>
-<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"map_cube_stream.png"</span><span class="o">)</span>
+<span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"target/map_cube_stream.png"</span><span class="o">)</span>
 <span class="n">file</span><span class="o">.</span><span class="na">withOutputStream</span> <span class="o">{</span> <span class="n">OutputStream</span> <span class="n">outputStream</span> <span class="o">-&gt;</span>
     <span class="n">mapCube</span><span class="o">.</span><span class="na">render</span><span class="o">([</span><span class="n">ocean</span><span class="o">,</span> <span class="n">countries</span><span class="o">],</span> <span class="n">outputStream</span><span class="o">)</span>
 <span class="o">}</span></code></pre>
@@ -2492,7 +2492,8 @@ a simple GUI.</p>
 <div class="literalblock">
 <div class="content">
 <pre>xml
-json</pre>
+json
+yaml</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2684,7 +2685,7 @@ json</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-16 22:25:53 UTC
+Last updated 2023-09-04 22:14:30 UTC
 </div>
 </div>
 </body>

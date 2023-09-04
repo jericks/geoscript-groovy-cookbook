@@ -692,6 +692,7 @@ pre.rouge {
 <li><a href="#finding-carto-readers">Finding Carto Readers</a></li>
 <li><a href="#json">JSON</a></li>
 <li><a href="#xml">XML</a></li>
+<li><a href="#yaml">YAML</a></li>
 </ul>
 </li>
 </ul>
@@ -2453,7 +2454,8 @@ all copies or substantial portions of the Software.
 <div class="literalblock">
 <div class="content">
 <pre>json
-xml</pre>
+xml
+yaml</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2691,13 +2693,101 @@ xml</pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="yaml"><a class="anchor" href="#yaml"></a>YAML</h4>
+<div class="listingblock">
+<div class="title">Read a CartoBuilder from an YAML String</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="groovy">        <span class="n">String</span> <span class="n">yaml</span> <span class="o">=</span> <span class="s2">"""---
+type: png
+width: 400
+height: 400
+items:
+- x: 0
+  y: 0
+  width: 400
+  height: 400
+  type: rectangle
+  fillColor: white
+  strokeColor: white
+- x: 10
+  y: 10
+  width: 380
+  height: 380
+  type: rectangle
+- x: 20
+  y: 20
+  width: 360
+  height: 360
+  type: map
+  name: mainMap
+  proj: EPSG:4326
+  bounds:
+    minX: -135.911779
+    minY: 36.993573
+    maxX: -96.536779
+    maxY: 51.405899
+  layers:
+  - layertype: layer
+    dbtype: geopkg
+    database: src/main/resources/data.gpkg
+    layername: ocean
+    style: src/main/resources/ocean.sld
+  - layertype: layer
+    dbtype: geopkg
+    database: src/main/resources/data.gpkg
+    layername: countries
+    style: src/main/resources/countries.sld
+  - layertype: layer
+    dbtype: geopkg
+    database: src/main/resources/data.gpkg
+    layername: states
+    style: src/main/resources/states.sld
+- x: 20
+  y: 20
+  width: 30
+  height: 40
+  type: northarrow
+- x: 260
+  y: 20
+  width: 50
+  height: 200
+  type: legend
+  map: mainMap
+- x: 70
+  y: 20
+  width: 170
+  height: 50
+  type: text
+  text: Western US
+  font:
+    name: Arial
+    style: BOLD
+    size: 24
+  horizontalAlign: CENTER
+  verticalAlign: MIDDLE
+"""</span>
+        <span class="n">CartoReader</span> <span class="n">cartoReader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">YamlCartoReader</span><span class="o">()</span>
+        <span class="n">CartoBuilder</span> <span class="n">cartoBuilder</span> <span class="o">=</span> <span class="n">cartoReader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">yaml</span><span class="o">)</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">"target/carto_from_yaml.png"</span><span class="o">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="na">withOutputStream</span> <span class="o">{</span> <span class="n">OutputStream</span> <span class="n">outputStream</span> <span class="o">-&gt;</span>
+            <span class="n">cartoBuilder</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="n">outputStream</span><span class="o">)</span>
+        <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="./images/carto_io_yaml.png" alt="carto io yaml">
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-16 22:25:53 UTC
+Last updated 2023-09-04 22:14:30 UTC
 </div>
 </div>
 </body>

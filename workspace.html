@@ -786,21 +786,21 @@ and many more.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>H2
-H2 (JNDI)
-Geobuf
-PostGIS (JNDI)
-MySQL (JNDI)
-GeoPackage
+<pre>FlatGeobuf
 PostGIS
-SQLite
-Web Feature Server (NG)
-FlatGeobuf
+Geobuf
 Shapefile
-MySQL
-MBTiles with vector tiles
+PostGIS (JNDI)
+GeoPackage
+SQLite
 Properties
-Directory of spatial files (shapefiles)</pre>
+MBTiles with vector tiles
+MySQL
+MySQL (JNDI)
+Directory of spatial files (shapefiles)
+H2 (JNDI)
+Web Feature Server (NG)
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -967,21 +967,21 @@ Copied Layer has 500 features.</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>H2
-H2 (JNDI)
-Geobuf
-PostGIS (JNDI)
-MySQL (JNDI)
-GeoPackage
+<pre>FlatGeobuf
 PostGIS
-SQLite
-Web Feature Server (NG)
-FlatGeobuf
+Geobuf
 Shapefile
-MySQL
-MBTiles with vector tiles
+PostGIS (JNDI)
+GeoPackage
+SQLite
 Properties
-Directory of spatial files (shapefiles)</pre>
+MBTiles with vector tiles
+MySQL
+MySQL (JNDI)
+Directory of spatial files (shapefiles)
+H2 (JNDI)
+Web Feature Server (NG)
+H2</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1080,12 +1080,12 @@ states (51)</pre>
 <div class="title">Create a PostGIS Workspace</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="groovy"><span class="n">params</span> <span class="o">=</span> <span class="o">[</span>
-    <span class="nl">dbtype:</span> <span class="s1">'postgis'</span><span class="o">,</span>
-    <span class="nl">database:</span> <span class="s1">'postgres'</span><span class="o">,</span>
-    <span class="nl">host:</span> <span class="s1">'localhost'</span><span class="o">,</span>
-    <span class="nl">port:</span> <span class="mi">5432</span><span class="o">,</span>
-    <span class="nl">user:</span> <span class="s1">'postgres'</span><span class="o">,</span>
-    <span class="nl">passwd:</span> <span class="s1">'postgres'</span>
+        <span class="n">dbtype</span>  <span class="o">:</span> <span class="s1">'postgis'</span><span class="o">,</span>
+        <span class="nl">database:</span> <span class="s1">'postgres'</span><span class="o">,</span>
+        <span class="n">host</span>    <span class="o">:</span> <span class="s1">'localhost'</span><span class="o">,</span>
+        <span class="n">port</span>    <span class="o">:</span> <span class="mi">5432</span><span class="o">,</span>
+        <span class="n">user</span>    <span class="o">:</span> <span class="s1">'postgres'</span><span class="o">,</span>
+        <span class="n">passwd</span>  <span class="o">:</span> <span class="s1">'postgres'</span>
 <span class="o">]</span>
 <span class="n">workspace</span> <span class="o">=</span> <span class="n">Workspace</span><span class="o">.</span><span class="na">getWorkspace</span><span class="o">(</span><span class="n">params</span><span class="o">)</span></code></pre>
 </div>
@@ -1372,8 +1372,8 @@ countries (177)</pre>
 <div class="content">
 <pre>Property
 ------
-places (10)
-circles (10)</pre>
+circles (10)
+places (10)</pre>
 </div>
 </div>
 </div>
@@ -1878,7 +1878,7 @@ Index name = megacity_idx, unique = false, attributes = [MEGACITY]</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-01-16 22:25:53 UTC
+Last updated 2023-09-04 22:14:30 UTC
 </div>
 </div>
 </body>
