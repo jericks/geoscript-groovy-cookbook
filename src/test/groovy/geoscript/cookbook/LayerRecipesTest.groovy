@@ -593,21 +593,21 @@ class LayerRecipesTest {
         LayerRecipes recipes = new LayerRecipes()
         String str = recipes.convertLayerToYamlString()
         assertEquals("""---
-type: "FeatureCollection"
+type: FeatureCollection
 features:
 - properties:
     id: 1
-    name: "Seattle"
+    name: Seattle
   geometry:
-    type: "Point"
+    type: Point
     coordinates:
     - -122.3204
     - 47.6024
 - properties:
     id: 2
-    name: "Tacoma"
+    name: Tacoma
   geometry:
-    type: "Point"
+    type: Point
     coordinates:
     - -122.48416
     - 47.2619
@@ -618,21 +618,21 @@ features:
         LayerRecipes recipes = new LayerRecipes()
         String str = recipes.writeLayerToYaml()
         assertEquals("""---
-type: "FeatureCollection"
+type: FeatureCollection
 features:
 - properties:
     id: 1
-    name: "Seattle"
+    name: Seattle
   geometry:
-    type: "Point"
+    type: Point
     coordinates:
     - -122.3204
     - 47.6024
 - properties:
     id: 2
-    name: "Tacoma"
+    name: Tacoma
   geometry:
-    type: "Point"
+    type: Point
     coordinates:
     - -122.48416
     - 47.2619

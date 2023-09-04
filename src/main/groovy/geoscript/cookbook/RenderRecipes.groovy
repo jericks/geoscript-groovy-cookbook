@@ -583,12 +583,10 @@ class RenderRecipes extends Recipes {
             source: "Nartual Earth",
             imageType: "png"
         )
-        File file = new File("map_cube_file.png")
+        File file = new File("target/map_cube_file.png")
         mapCube.render([ocean, countries], file)
         // end::createMapCubeToFile[]
-        // @TODO Fix Me
-        // moveFile(file, new File("src/docs/asciidoc/images/map_cube_file.png"))
-        file
+        moveFile(file, new File("src/docs/asciidoc/images/map_cube_file.png"))
     }
 
     File createMapCubeToBytes() {
@@ -602,11 +600,9 @@ class RenderRecipes extends Recipes {
         MapCube mapCube = new MapCube()
         byte[] bytes = mapCube.render([ocean, countries])
         // end::createMapCubeToBytes[]
-        File file = new File("map_cube_bytes.png")
+        File file = new File("target/map_cube_bytes.png")
         file.bytes = bytes
-        // @TODO Fix Me
-        // moveFile(file, new File("src/docs/asciidoc/images/map_cube_bytes.png"))
-        file
+        moveFile(file, new File("src/docs/asciidoc/images/map_cube_bytes.png"))
     }
 
     File createMapCubeToOutputStream() {
@@ -618,14 +614,12 @@ class RenderRecipes extends Recipes {
         ocean.style = new Fill("#a5bfdd")
 
         MapCube mapCube = new MapCube()
-        File file = new File("map_cube_stream.png")
+        File file = new File("target/map_cube_stream.png")
         file.withOutputStream { OutputStream outputStream ->
             mapCube.render([ocean, countries], outputStream)
         }
         // end::createMapCubeToOutputStream[]
-        // @TODO Fix Me
-        // moveFile(file, new File("src/docs/asciidoc/images/map_cube_stream.png"))
-        file
+        moveFile(file, new File("src/docs/asciidoc/images/map_cube_stream.png"))
     }
 
     // Renderers

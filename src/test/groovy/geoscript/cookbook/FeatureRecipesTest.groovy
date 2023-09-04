@@ -514,12 +514,12 @@ class FeatureRecipesTest {
         FeatureRecipes recipes = new FeatureRecipes()
         String str = recipes.getYamlFromFeature()
         assertEquals("""---
-type: "Feature"
+type: Feature
 properties:
   id: 1
-  name: "Seattle"
+  name: Seattle
 geometry:
-  type: "Point"
+  type: Point
   coordinates:
   - -122.3204
   - 47.6024
@@ -536,12 +536,12 @@ geometry:
         FeatureRecipes recipes = new FeatureRecipes()
         String str = recipes.writeFeatureToYml()
         assertEquals("""---
-type: "Feature"
+type: Feature
 properties:
   id: 1
-  name: "Seattle"
+  name: Seattle
 geometry:
-  type: "Point"
+  type: Point
   coordinates:
   - -122.3204
   - 47.6024

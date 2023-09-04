@@ -141,4 +141,10 @@ class CartoRecipesTest {
         assertNotNull(image)
     }
 
+    @Test void readFromYaml() {
+        CartoRecipes recipes = new CartoRecipes()
+        BufferedImage image = recipes.readFromYaml()
+        assertNotNull(image)
+    }
+
 }

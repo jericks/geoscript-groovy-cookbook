@@ -813,3 +813,13 @@ include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=readFromXml,ind
 ----
 [.thumb]
 image::carto_io_xml.png[]
+
+==== YAML
+
+[source,groovy]
+.Read a CartoBuilder from an YAML String
+----
+include::{sourcedir}/geoscript/cookbook/CartoRecipes.groovy[tags=readFromYaml,indent=0]
+----
+[.thumb]
+image::carto_io_yaml.png[]

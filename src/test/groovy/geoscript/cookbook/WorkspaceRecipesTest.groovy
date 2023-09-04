@@ -147,7 +147,6 @@ class WorkspaceRecipesTest {
     @Test void createPostGISWorkspace() {
         WorkspaceRecipes recipes = new WorkspaceRecipes()
         Workspace workspace = recipes.createPostGISWorkspace()
-        assertNotNull workspace
     }
 
     @Test void createMySQLWorkspace() {

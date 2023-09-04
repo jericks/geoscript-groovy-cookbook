@@ -27,6 +27,7 @@ import geoscript.carto.io.CartoReader
 import geoscript.carto.io.CartoReaders
 import geoscript.carto.io.JsonCartoReader
 import geoscript.carto.io.XmlCartoReader
+import geoscript.carto.io.YamlCartoReader
 import geoscript.geom.Bounds
 import geoscript.layer.Layer
 import geoscript.proj.Projection
@@ -1025,6 +1026,89 @@ all copies or substantial portions of the Software.
         // end::readFromXml[]
         BufferedImage image = ImageIO.read(file)
         saveImage("carto_io_xml", image)
+        image
+    }
+
+    BufferedImage readFromYaml() {
+        // tag::readFromYaml[]
+        String yaml = """---
+type: png
+width: 400
+height: 400
+items:
+- x: 0
+  y: 0
+  width: 400
+  height: 400
+  type: rectangle
+  fillColor: white
+  strokeColor: white
+- x: 10
+  y: 10
+  width: 380
+  height: 380
+  type: rectangle
+- x: 20
+  y: 20
+  width: 360
+  height: 360
+  type: map
+  name: mainMap
+  proj: EPSG:4326
+  bounds:
+    minX: -135.911779
+    minY: 36.993573
+    maxX: -96.536779
+    maxY: 51.405899
+  layers:
+  - layertype: layer
+    dbtype: geopkg
+    database: src/main/resources/data.gpkg
+    layername: ocean
+    style: src/main/resources/ocean.sld
+  - layertype: layer
+    dbtype: geopkg
+    database: src/main/resources/data.gpkg
+    layername: countries
+    style: src/main/resources/countries.sld
+  - layertype: layer
+    dbtype: geopkg
+    database: src/main/resources/data.gpkg
+    layername: states
+    style: src/main/resources/states.sld
+- x: 20
+  y: 20
+  width: 30
+  height: 40
+  type: northarrow
+- x: 260
+  y: 20
+  width: 50
+  height: 200
+  type: legend
+  map: mainMap
+- x: 70
+  y: 20
+  width: 170
+  height: 50
+  type: text
+  text: Western US
+  font:
+    name: Arial
+    style: BOLD
+    size: 24
+  horizontalAlign: CENTER
+  verticalAlign: MIDDLE
+"""
+        CartoReader cartoReader = new YamlCartoReader()
+        CartoBuilder cartoBuilder = cartoReader.read(yaml)
+        File file = new File("target/carto_from_yaml.png")
+        file.withOutputStream { OutputStream outputStream ->
+            cartoBuilder.build(outputStream)
+        }
+        // end::readFromYaml[]
+        BufferedImage image = ImageIO.read(file)
+        saveImage("carto_io_yaml", image)
         image
     }
 

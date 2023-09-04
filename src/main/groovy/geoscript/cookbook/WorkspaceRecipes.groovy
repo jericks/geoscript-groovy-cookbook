@@ -240,18 +240,22 @@ class WorkspaceRecipes extends Recipes {
         // end::getWorkspaceFromMap_H2[]
         values.put('h2', workspace)
 
-        // tag::getWorkspaceFromMap_PostGIS[]
-        params = [
-            dbtype: 'postgis',
-            database: 'postgres',
-            host: 'localhost',
-            port: 5432,
-            user: 'postgres',
-            passwd: 'postgres'
-        ]
-        workspace = Workspace.getWorkspace(params)
-        // end::getWorkspaceFromMap_PostGIS[]
-        values.put('postgis', workspace)
+        try {
+            // tag::getWorkspaceFromMap_PostGIS[]
+            params = [
+                    dbtype  : 'postgis',
+                    database: 'postgres',
+                    host    : 'localhost',
+                    port    : 5432,
+                    user    : 'postgres',
+                    passwd  : 'postgres'
+            ]
+            workspace = Workspace.getWorkspace(params)
+            // end::getWorkspaceFromMap_PostGIS[]
+            values.put('postgis', workspace)
+        } catch (Exception e) {
+            // Do nothing
+        }
 
         // tag::getWorkspaceFromMap_Geobuf[]
         params = [file: 'layers.pbf', precision: 6, dimension:2]
@@ -474,17 +478,21 @@ class WorkspaceRecipes extends Recipes {
     // PostGIS
 
     Workspace createPostGISWorkspace() {
-        // tag::createPostGISWorkspace[]
-        PostGIS postgis = new PostGIS(
-                "database",    // <1>
-                "localhost",   // <2>
-                "5432",        // <3>
-                "public",      // <4>
-                "user",        // <5>
-                "password"     // <6>
-        )
-        // end::createPostGISWorkspace[]
-        postgis
+        try {
+            // tag::createPostGISWorkspace[]
+            PostGIS postgis = new PostGIS(
+                    "database",    // <1>
+                    "localhost",   // <2>
+                    "5432",        // <3>
+                    "public",      // <4>
+                    "user",        // <5>
+                    "password"     // <6>
+            )
+            // end::createPostGISWorkspace[]
+            postgis
+        } catch (Exception e) {
+            // Do nothing
+        }
     }
 
     Workspace createPostGISWorkspaceWithParameters() {

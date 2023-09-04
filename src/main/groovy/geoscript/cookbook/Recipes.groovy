@@ -15,6 +15,8 @@ import geoscript.style.io.SimpleStyleReader
 import geoscript.viewer.Viewer
 import geoscript.workspace.GeoPackage
 import geoscript.workspace.Workspace
+import groovy.xml.XmlNodePrinter
+import groovy.xml.XmlParser
 import org.apache.commons.io.FileUtils
 
 import javax.imageio.ImageIO
