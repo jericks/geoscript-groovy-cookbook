@@ -877,7 +877,7 @@ Y Resolution: ${grid.yResolution}
         println "The bounds around ${point} is ${bounds}"
         // end::getBoundsAroundPoint[]
         writeFile("tile_pyramid_bounds_around_point","The bounds around ${point} is ${bounds}")
-        OSM osm = OSM.getWellKnownOSM("stamen-toner")
+        OSM osm = OSM.getWellKnownOSM("osm")
         RenderedImage image = osm.getRaster(osm.tiles(point, zoomLevel, width, height)).image
         saveImage("tile_pyramid_bounds_around_point", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
         bounds
@@ -1652,42 +1652,6 @@ ${tileCursor.collect { it.toString() }.join(NEW_LINE)}
         // end::getWellKnownOSM[]
         RenderedImage image = osm.getRaster(osm.tiles(1)).image
         saveImage("tile_osm_wellknown", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
-        osm
-    }
-
-    OSM getWellKnownOSMStamenToner() {
-        // tag::getWellKnownOSMStamenToner[]
-        OSM osm = OSM.getWellKnownOSM("stamen-toner")
-        // end::getWellKnownOSMStamenToner[]
-        RenderedImage image = osm.getRaster(osm.tiles(1)).image
-        saveImage("tile_osm_stamen_toner", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
-        osm
-    }
-
-    OSM getWellKnownOSMStamenTonerLite() {
-        // tag::getWellKnownOSMStamenTonerLite[]
-        OSM osm = OSM.getWellKnownOSM("stamen-toner-lite")
-        // end::getWellKnownOSMStamenTonerLite[]
-        RenderedImage image = osm.getRaster(osm.tiles(1)).image
-        saveImage("tile_osm_stamen_toner_lite", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
-        osm
-    }
-
-    OSM getWellKnownOSMStamenWaterColor() {
-        // tag::getWellKnownOSMStamenWaterColor[]
-        OSM osm = OSM.getWellKnownOSM("stamen-watercolor")
-        // end::getWellKnownOSMStamenWaterColor[]
-        RenderedImage image = osm.getRaster(osm.tiles(1)).image
-        saveImage("tile_osm_stamen_water_color", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
-        osm
-    }
-
-    OSM getWellKnownOSMStamenTerrain() {
-        // tag::getWellKnownOSMStamenTerrain[]
-        OSM osm = OSM.getWellKnownOSM("stamen-terrain")
-        // end::getWellKnownOSMStamenTerrain[]
-        RenderedImage image = osm.getRaster(osm.tiles(1)).image
-        saveImage("tile_osm_stamen_terrain", PlanarImage.wrapRenderedImage(image).getAsBufferedImage())
         osm
     }
 

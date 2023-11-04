@@ -781,30 +781,6 @@ BOTTOM_LEFT
         assertNotNull(osm)
     }
 
-    @Test void getWellKnownOSMStamenToner() {
-        TileRecipes recipes = new TileRecipes()
-        OSM osm = recipes.getWellKnownOSMStamenToner()
-        assertNotNull(osm)
-    }
-
-    @Test void getWellKnownOSMStamenTonerLite() {
-        TileRecipes recipes = new TileRecipes()
-        OSM osm = recipes.getWellKnownOSMStamenTonerLite()
-        assertNotNull(osm)
-    }
-
-    @Test void getWellKnownOSMStamenWaterColor() {
-        TileRecipes recipes = new TileRecipes()
-        OSM osm = recipes.getWellKnownOSMStamenWaterColor()
-        assertNotNull(osm)
-    }
-
-    @Test void getWellKnownOSMStamenTerrain() {
-        TileRecipes recipes = new TileRecipes()
-        OSM osm = recipes.getWellKnownOSMStamenTerrain()
-        assertNotNull(osm)
-    }
-
     @Test void getWellKnownOSMWikiMedia() {
         TileRecipes recipes = new TileRecipes()
         OSM osm = recipes.getWellKnownOSMWikiMedia()

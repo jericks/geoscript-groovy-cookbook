@@ -3,7 +3,7 @@ ifndef::sourcedir[:sourcedir: ../../main/groovy]
 
 == Tile Recipes
 
-The Tile classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.22.0/geoscript/layer/package-summary.html[geoscript.layer]* package.
+The Tile classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.23.0-SNAPSHOT/geoscript/layer/package-summary.html[geoscript.layer]* package.
 
 === Tile
 
@@ -232,7 +232,7 @@ include::output/tile_pyramid_gettilecoordinates_bounds_grid.txt[]
 
 ==== Reading and Writing Pyramids
 
-The Pyramid IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.22.0/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
+The Pyramid IO classes are in the *http://geoscript.github.io/geoscript-groovy/api/1.23.0-SNAPSHOT/geoscript/layer/io/package-summary.html[geoscript.layer.io]* package.
 
 ===== Finding Pyramid Writer and Readers
 
@@ -1038,50 +1038,6 @@ include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSM,
 ----
 [.thumb]
 image::tile_osm_wellknown.png[]
-
-==== Stamen Toner
-
-Create a TileLayer for OSM Stamen Toner tiles.
-
-[source,groovy]
-----
-include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMStamenToner,indent=0]
-----
-[.thumb]
-image::tile_osm_stamen_toner.png[]
-
-==== Stamen Toner Lite
-
-Create a TileLayer for OSM Stamen Toner Lite tiles.
-
-[source,groovy]
-----
-include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMStamenTonerLite,indent=0]
-----
-[.thumb]
-image::tile_osm_stamen_toner_lite.png[]
-
-==== Stamen Water Color
-
-Create a TileLayer for OSM Stamen Water Color tiles.
-
-[source,groovy]
-----
-include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMStamenWaterColor,indent=0]
-----
-[.thumb]
-image::tile_osm_stamen_water_color.png[]
-
-==== Stamen Terrain
-
-Create a TileLayer for OSM Stamen Terrain tiles.
-
-[source,groovy]
-----
-include::{sourcedir}/geoscript/cookbook/TileRecipes.groovy[tags=getWellKnownOSMStamenTerrain,indent=0]
-----
-[.thumb]
-image::tile_osm_stamen_terrain.png[]
 
 ==== WikiMedia
 
